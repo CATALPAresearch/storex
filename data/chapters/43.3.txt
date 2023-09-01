@@ -1,0 +1,35 @@
+43.3 Beschränkter paramet rischer Polymorphismus in JAVA
+Wie bereits in Kurseinheit 3, Abschnitt 29.4 erwähnt, kauft man sich mit einfachem para-
+metrischem Polymorphismus außerhalb der Typdefinition Typsicherheit zum Preis der man-
+gelnden Typsicherheit innerhalb: Solange man keine Aussagen über den konkreten Typ, der
+für einen Typparameter eingesetzt wird, machen kann, kann man bei der Implementierung
+einer Klasse, die den parametrischen Typ definiert, auch keine Eigenschaften der Objekte,
+die von dem (unbekannten) Typ sein sollen, voraussetzen. Was man vielmehr braucht, ist
+beschränkter parametrischer Polymorphismus. Natürlich gibt es den auch in JAVA.
+Wenn man beispielsweise die parametrische Definition sortierter Listen, SortedList<E> ,
+auf Elementtypen einschränken will, die Subtypen von Comparable sind (damit die in
+Comparable definierte Methode compareTo(.) zur Verfügung steht), dann schreibt man
+in JAVA
+1086 interface SortedList<E extends Comparable> {
+1087 void insert(E element);
+1088 void remove(E element);
+1089 …
+1090 }
+Die möglichen Werte der Typvariable E werden dadurch auf Typen eingeschränkt, die
+Comparable (direkt oder indirekt) erweitern. Die Implementierung der Methode zum Ein-
+fügen und Entfernen von Elementen in sortierten Listen kann also davon ausgehen, dass
+alle Objekte, die in einer solchen Liste ges peichert sind, die Nachricht compareTo(.) ver-
+stehen, die vom Interface Comparable vorgeschrieben wird. Man beachte, dass dadurch
+keine neue Subtypenrelation zwischen irgendwelchen Typen hergestellt wird — es werden
+lediglich die Möglichkeiten, konkrete Typ en (z. B. in Variablendeklarationen) zu bilden, ein-
+geschränkt. Eine Variablendeklaration
+1091 SortedList<String> liste;
+wobei String ein Subtyp von Comparable ist, ist also möglich, eine wie
+1092 SortedList<Point> liste;
+hingegen nicht. Dennoch ist SortedList<Strin g>, wie bereits in Abschnitt 29.3 be-
+merkt , kein Subtyp von SortedList<Comparable> .
+Selbsttestaufgabe 43.4 (nur für JAVA-Programmiererinnen )
+Probieren Sie aus, ob zwei Instanzen generischer Typen (also z. B. ArrayList<Object> und
+ArrayList<String> als Instanzen von ArrayList<E> ) in JAVA zur Laufzeit denselben oder ver-
+schiedene Typen haben. Verwenden Sie dazu die Methode getClass() auf Objekten, die Sie von
+diesen Typen erzeugt haben.

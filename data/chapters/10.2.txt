@@ -1,0 +1,35 @@
+10.2 Vererbung in prototypenbasierten Sprachen
+In der klassenbasierten Form der objektorientierte n Programmierung ist die Vererbung an
+Klassen gebunden: Selbst wenn sich die Definitionen eigentlich auf die Instanzen der Klas-
+sen beziehen, so ist es doch die Klasse, die Teile ihrer Definition (Intension) von anderen
+erbt. Im Gegensatz dazu ist die Verer bung in prototypenbasierten objektorientierten Pro-Umkehrung der
+Vererbungsrichtung
+Löschen von
+Geerbtem
+Außen - und
+Innensicht
+grammiersprachen, in denen es ja keine Klassen gibt, vollständig zwischen Objekten defi-
+niert: Jedes Objekt gibt eines oder mehrere andere an, deren Eigenschaften und Verhalten
+es übernimmt. Dabei kann es ge erbte Teile der Definition überschreiben und auch löschen.
+Auf den ersten Blick scheint es so, als sei dies sogar der natürlichere Weg
+der Vererbung: Schließlich findet in der Natur Vererbung ja auch aus-
+schlie ßlich zwischen Individuen statt, ja genaugenommen gibt es so et-
+was wie biologische Klassen (Arten etc.) in der Natur überhaupt nicht36, denn es differen-
+zieren sich ständig einzelne „Arten“ zu neuen und es ist nicht ausgeschlossen, dass einmal
+ausdifferenzie rte Arten irgendwann wieder verschmelzen. Abgesehen davon ist , wie bereits
+in Kapitel 7 erwähnt, die reale Existenz von Allgemeinbegriffen strittig (der Universalien-
+streit ).
+Man kann dem freilich entgegenhalten, dass man als Programmiererin ja
+auch keine einzelnen Objekte, sondern Klassen entwirft, die damit die
+eigentliche „Schöpfung “ der objektorientierten Weltsicht abgeben. Auch
+sind objektorientierte Programme nicht für die Ewigkei t gemacht, sondern unterliegen der
+ständigen Anpassung, eben der Evolution, und somit sind auch Klassendefinitionen im stän-
+digen Wandel. Eine Übertragung der Vererbung auf Klassen ist also nicht vollkommen un-
+natürlich.
+Nicht zuletzt muss man auch erkennen, dass viele Anwendungsdomänen,
+für die programmiert wird, aus massenhaft gleichen Objekten bestehen,
+die durch den klassenbasierten Ansatz besser abgedeckt werden als
+durch den prototypenbasierten (vgl. die entsprec henden Kommentare zur Klassifikation in
+Abschnitt 7.1). Und so macht denn auch die Vererbung unter Instanzen das Nachvollziehen
+(und Debuggen) eines Programms eher noch schwieriger als die Vererbung unter Klassen
+ohnehin schon (s. Kapitel 56 in Kurseinheit 6).

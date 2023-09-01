@@ -1,0 +1,9 @@
+28.1 Subklassen und Subtypen
+Man könnte nun versucht sein, den Zusammenhang von Klassen und Typen auch unter
+Vererbung bzw. Subtyping beizubehalten und damit zu erwarten, dass eine Instanz einer
+Subklasse einer Klasse dem Wertebereich des zur Superklasse gehörenden Typs angehört.
+Das ist jedoch dann nicht der Fall, wenn in der Subklasse Änderungen vorgenommen wer-
+den, die eine Typkonformität vom zur Subklasse gehörendem zum zur Superklasse gehö-
+renden Typ aufheben, also z. B. Methoden gelöscht oder inkompatibel redefiniert werden.
+Die meisten objektorientierten Programmiersprachen verbieten das jedoch, so dass sich die
+Subklassenbeziehung tatsächlich auf eine parallele Subtypenbez iehung übertragen lässt.

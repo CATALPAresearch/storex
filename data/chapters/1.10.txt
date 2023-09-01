@@ -1,0 +1,14 @@
+1.10 Zusammenfassung
+Objekte können also über textuelle Repräsentationen, die sog. Literale , in ein Programm
+eingeführt und Variablen zugewiesen werden. Dabei speichern die Variablen die Objekte in
+aller Regel nicht, sondern benennen sie lediglich. Technisch gesehen enthalten die Variablen
+dann Verweise (Referenzen, Zeiger, Pointer) auf die Objekte, die selbst durch Stellen im
+Speicher repräsentiert werden (sog. Referenzsemantik ). Wenn mehrere Variablen dasselbe
+Objekt bezeichnen, spricht man von einem Aliasing . Aliasing erlaubt über die gemeinsame
+Nutzung vo n Objekten eine außerordentlich speicher - und recheneffiziente Informations-
+verarbeitung. Gleichzeitig stellt es aber eine der größten Fehlerquellen der objektorientier-
+ten Programmierung dar, da im allgemeinen nicht bekannt ist, ob und wie viele Aliase auf
+ein Objekt existieren. Ein besonderes Problem liegt vor, wenn sich die Programmiererin nicht
+bewuss t ist, dass sie (nur) mit Aliasen hantiert, und sich dann wundert, wenn sich an ent-
+fernten Orten plötzlich die (vermeintlichen, denn eigentlich sind es ja gar keine) Inhalte von
+Variablen ändern.

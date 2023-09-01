@@ -1,0 +1,48 @@
+29 Generische Typen oder parametrischer Polymor-
+phismus
+Typen beschränken die Wertebereiche von Variablen und Methoden. Inklusionspolymorphie
+lockert diese Beschränkung insofern, als dadurch Wertebereiche von Typen um die von Sub-
+typen erweitert werden können, selbst wenn diese Subtypen zum Zeitpunkt der Typdefi ni-
+tion noch gar nicht bekannt waren (Abschnitt 26.4). Nun ist Inklusionspolymorphie nicht
+die einzige Möglichkeit, den Wertebereich eines Typs variabel zu halten, ohne die statische
+Typprüfung aufgeben zu müssen. Eine andere ist, einen Typ mit einem oder mehreren an-
+deren zu parametrisieren.
+Eine parametrisch e Typdefinition unterscheidet sich von einer norma-
+len dadurch, dass in der Typdefinition verwendete, andere Typen nicht
+genannt (referenziert) werden müssen, sondern durch Platzhalter, die
+Typparameter, vertreten werd en können. Diese Platzhalter sind Variablen, deren Wert im-
+plizit (also ohne entsprechende Deklaration) auf Typen beschränkt ist; man nennt sie auch
+Typvariablen . Diese Typvariablen werden erst bei der Verwendung eines parametrisierten
+Typs in der Deklaration eines anderen Programmelements mit einem Wert, also einem Typ,
+belegt. Man spricht bei dieser Wertzuweisung an eine Typvariable von einer Instanziierung
+des parametrischen Typs ; erst bei ihr entsteht ein konkreter Wertebereich, der dann dem
+deklarierten Programmelement zugeordnet wird. Insbesondere hat ein pa rametrischer Typ,
+bei dem Typvariablen nicht belegt sind, keinen konkreten Wertebereich. Dieser Umstand ist
+bei der Betrachtung von Zuweisungskompatibilität unter parametrischem Polymor phismus
+wichtig.
+Die Idee des parametrischen Polymorphismus ist, aus einer Typdefini-
+tion durch Parametrisierung viele zu machen. Eine parametrische Typdefinition steht also
+nicht für einen Typ, sondern für (theoretisch) beliebig viele — sie erlaubt es gewissermaßen, Unterschiede zur
+Laufzeit
+parametrische
+Typdefinition ;
+Instanziierung
+generische Typen
+Typen nach Bedarf zu generieren.54 Wohl deswegen bezeichnet man parametrische Typen
+(Typdefinitionen) auch als generische Typen (Typdefinitionen) oder kurz als Generics . Wie
+eben schon erwähnt, wird der Wertebereich bei einer solchen Typgeneration jeweils mitge-
+neriert.
+Es erfolgt also die Zuweisung eines Typs zu einer Typvariable bei der Ver-
+wendung eines parametrisch defi nierten Typs in einer Deklaration, bei-
+spielsweise der Deklaration einer Variable oder des Rückgabewerts einer
+Methode. Oberflächlich betrachtet entspricht diese Verwendung in etwa dem Aufruf einer
+(ja auch an einer anderen Stelle definierten) Methode oder besser (und schon aufgrund der
+Verwendung des Begriffs Instanziierung) eines Konstruktors; deswegen nennt man die Typ-
+variablen, die in parametrischen Typdefinitionen vorkommen, auch formale Typpar ame-
+ter und die konkreten Typen, die bei der Verwendung des Typen in Deklarationen in die
+formalen Parameter eingesetzt werden, auch tatsächlich e Typparameter . Trotz dieser
+Analogie zu Methoden - bzw. Konstruktoraufrufen muss man sich immer vor Augen halten,
+dass die Verwendung eines parametrisch definierten Typs bereits zur Übersetzungszeit zu
+einer Zuweisung an die Typvariab len führt, man es also keineswegs mit etwas Dynamischem
+zu tun hat. Insbesondere müssen Typen keine Objekte sein, um Typvariablen zugewiesen
+werden zu können.

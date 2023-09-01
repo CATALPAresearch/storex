@@ -1,0 +1,122 @@
+8 Metaklassen
+Da in SMALLTALK auch eine Klasse ein Objekt ist, kann die Klasse selbst, genau wie alle an-
+deren Objekte, Instanzvariablen und -methoden haben. Aber wo werden diese definiert?
+Der Analogie der Objekte , die Instanzen der Klasse sind, folgend müsste das in der jeweili-
+gen Kl asse der Klasse, also der Klasse, von der die Klasse (als Objekt) eine Instanz ist, erfol-
+gen. Und so ist es tatsächlich auch. Beispiel
+Klonen als
+Alternative zum
+Instanziieren
+Zunächst könnte man annehmen, dass alle Klassen Instanzen einer spezi-
+ellen Klasse, nennen wir s ie Class , sind. Jede Klasse hätte dann (als In-
+stanz dieser Klasse) die Instanzvariablen und Methoden, die in Class definiert sind. Insbe-
+sondere hätte jede Klasse dieselbe Menge von Instanzvariablen und Methoden. Dies scheint
+zunächst auch sinnvoll, denn be i den Klassen handelt es sich ja um Objekte derselben Art,
+nämlich einheitlich um Klassen.
+Es stellt s ich dann die Frage, welche die Instanzvariablen und Methoden, die alle Klassen
+gleichermaßen charakterisieren, sein könnten. Es könnte z. B. jede Klasse e ine Instanzvari-
+able haben, die alle von der Klasse instanziierten Objekte enthält, sowie eine weitere, die
+diese Objekte zählt.31 Eine typische Methode jeder Klasse wäre z. B. new, die eine neue
+Instanz dieser Klasse zurückgibt. Was aber, wenn man weitere E igenschaften (Instanzvari-
+ablen oder Methoden) für eine Klasse haben möchte, die diese nicht mit allen anderen teilt?
+Was, wenn man eine Methode wie z. B. new für eine Klasse anders definieren will als für
+andere? Im Fall von new z. B. ist es denkbar, dass man sie für bestimmte Klassen so um-
+schreiben möchte, dass die Instanzvariablen der neu erzeugten Instanzen bestimmte Start-
+werte zugewiesen bekommen (so wie die eine oder andere es vielleicht von den Kon-
+struktoren von C++, JAVA oder C# schon kennt und wie es beim Beispiel mit Stack oben
+natürlich gewesen wäre).
+Tatsächlich hat die Programmierpraxis gezeigt, dass es günstig ist, wenn
+jede Klasse (als Inst anz) ihre eigenen Instanzvariablen und Methoden be-
+sitzt und wenn die Programmiererin diese jeweils frei bestimmen kann,
+ohne dabei gleichzeitig an andere Klassen denken zu müssen. Um dies zu ermöglichen,
+muss aber jede Klasse Instanz einer eigenen Klasse sein, in der diese Variablen und Metho-
+den nur für sie angelegt werden können. Und gena u das ist in SMALLTALK der Fall.32
+Zu jeder Klasse des SMALLTALK -Systems gehört nämlich genau eine Klasse,
+von der erstere (und nur diese) eine Instanz ist. Diese zweite Klasse wird
+Metaklasse der ersten genannt. Da eine 1:1 -Beziehung zwischen Klas-
+sen und ihren Metaklassen besteht, ist es nicht sinnvoll, ihre Benennung den Progra mmie-
+rerinnen zu überlassen; sie wird in SMALLTALK stets durch den Ausdruck <Klassenname>
+class , also beispielsweise Stack class , bezeichnet. Daraus folgt bereits, dass die Pro-
+grammiererin die Metaklasse nicht selbst anlegen muss (denn dabei müsste sie ja auch einen
+Namen vergeben) — sie wird vielmehr automatisch mit angelegt, wenn die Programmiererin
+eine neue Klasse definiert.
+Im Prinzip ist die Definition einer Metaklasse genauso aufgebaut wie die
+einer normalen Klasse: Sie besteht aus der Angabe einer Menge von be-
+31 Tatsächlich gibt es solche Variablen. Sie können ja mal zum Spaß versuchen, sie zu finden.
+32 In früheren Versionen SMALLTALK s war das übrigens nicht so und ALAN KAY, der das Projekt bereits
+vor der Veröffentlichung von SMALLTALK -80 verlassen hatte, ist selbst einer der gr ößten Kritiker dieser
+Festlegung. Tatsächlich ist sie, wie Sie noch merken werden, nicht immer ganz leicht zu durchblicken. Klassen als Instanzen
+einer Klasse
+Klassen als Instanzen
+einer jeweils eigenen
+Metaklasse
+das
+Metaklassenkonzept
+in SMALLTALK
+Schema einer
+Metaklassen -
+definition
+nannten Instanzvariablen und einer Menge von Instanzmethodendefinitionen. Lediglich in-
+dizierte Instanzvariablen sind nicht vorgesehen und der Klassenname kann wie gesagt nicht
+frei angegeben werden. Dem Schema aus Abschnitt 7.2 folgend sähe eine Metaklassende-
+finition wie folgt aus:
+Klasse  <Klassenname> class
+benannte Instanzvariablen  <Liste von Instanzvariablennamen>
+Instanzmethoden
+<Liste von Methodendefinitionen>
+Im konkreten Fall der zweiten Implementierung von Stack oben fände man beispielsweise
+die folgenden Einträge:
+Klasse  Stack class
+benannte Instanzvariablen
+Instanzmethoden
+301 new
+302  "liefert neuen Stack mit Platz für 100 Elemente"
+303  …
+Für die Implementierung der Methode new fehlt uns noch etwas; sie wird im nächsten Ab-
+schnitt nachgeliefert. Hier ist wichtig, dass Sie verstehen, dass new eine Instanzmethode der
+Metaklasse Stack class ist und damit das Verhalten der Klasse Stack bestimmt und
+nicht ihrer Objekte.
+Aufgrund der bestehenden 1:1 -Beziehung zwischen Klassen und Me-
+taklassen werden diese in SMALLTALK nicht getrennt voneinander defi-
+niert, sondern in einem gemeinsamen Schema. Jede Klassendefinition
+verfügt demnach neben den Abschnitten zur Deklaration der Instanzvari-
+ablen und zur Definition der Methoden auch noch über zwei Abschnitte für die entspre-
+chenden Angabe n zur ihrer Metaklasse, die Angabe der sog. Klassenvariablen und -me-
+thoden : Es s ind dies die Variablen bzw. Methoden, die den Klassen als Instanzen ihrer Me-
+taklassen zugeordnet sind. Das Schema
+Klasse  <Klassenname>
+Klassenvariablen  <Liste von Klassenvariablennamen>
+Klassenmethoden
+<Liste von Methodendefinitionen>
+benannte Instanzvariablen  <Liste von Instanzvariablennamen>
+indizierte Instanzvariablen  <ja/nein>
+Instanzmethoden  Schema einer
+Klassendefinition mit
+integrierter Meta -
+klassendefinition
+<Liste von Methodendefinitionen>
+besorgt also nicht nur die Definition der genannten Klasse, sondern gleichzeitig auch die
+ihrer Metaklasse; es ersetzt damit die zwei zuvor präsentierten getrennten Schemata. Klas-
+senvariablen sind übrigens relativ zu den Instanzen der Klassen global; sie b eginnen deswe-
+gen mit einem Großbuchstaben. Klassenmethoden schreibt man jedoch wie Instanzmetho-
+den klein. Beachten Sie, dass Klassenvariablen nur einmal pro Klasse angelegt werden —
+sie sind also für alle Instanzen einer Klasse dieselben.33
+Ein Beispiel für eine Klassenvariable ist Dependents Fields in der Klasse
+Object (zu ihrer Verwendung s. Abschnitt 14.3), eins für eine Klassenmethode ist pi in der
+Klasse Float :
+304 pi
+305 ^ Pi
+Sie retourniert (den Inhalt der) Klassenvariable Pi und ist, da sie eine Klassenmethode ist,
+allen Instanzen der Klasse Float zugeordnet. Dazu, wie der Wert in Pi hineinkommt , s.
+Abschnitt 8.2.
+Wir sehen also, dass die Bezeichnungen Klassenvariable bzw. -methode
+und Instanzvariable bzw. -methode eigentlich nur relative Bedeutung haben, da es sich in
+beiden Fällen um Variablen und Methoden handelt, die Objekten zugeordnet sind. Da man
+von Instanzen einer Klasse a us aber auch häufiger auf die Variablen und Methoden ihrer
+Klassen zugreift, ist es guter Brauch (und vermeidet umständliche Formulierungen), stets die
+langen Bezeichnungen zu führen. Zudem gibt es neben Instanz - und Klassenvariablen ja
+auch noch andere Va riablentypen ( formale Parameter und temporäre Variablen ), so dass die
+Verwendung von „Variable“ allein meist mehrdeutig wäre. Lediglich bei Methoden hat es
+sich eingebürgert, anstelle von Instanzm ethoden nur von Methoden zu sprechen. Wenn der
+Kontext nichts anderes nahelegt, können Sie dann immer davon ausgehen, dass Instanzme-
+thoden gemeint sind.

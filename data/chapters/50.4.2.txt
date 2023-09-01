@@ -1,0 +1,80 @@
+50.4.2 Interfacetypen in C#
+Zwar hat C# das Interface -als-Typ-Konzept von JAVA übernommen, doch hat man hier seine
+Rolle deutlich gestärkt. So ist es in C# möglich, dass von verschiedenen Interfaces „ge-
+erbte“, gleiche Methodendeklarationen in einer Klasse getrennt voneinander implementiert
+werden können. Dies geschieht mit sog. expliziten Interfaceimplementierungen , wie im Klassenhierarchie Werttypen Referenztypen Attribute
+ primitive Typen
+ Aufzählungstypen
+ Strukturtypen (Records)  Klassen
+ Interfaces
+ Arrays
+ Delegates
+Object
+Array
+Attribute
+Delegate
+MulticastDelegate
+AsyncCallback
+EventHandler
+Exception
+ValueType
+Boolean
+Enum
+DayOfWeek
+Guid
+TimeSpan
+TypedReference
+Void
+folgenden Beispiel dargestellt (man beachte, dass in C# der Doppelpunkt die Schlüsselwör-
+ter extends und implements ersetzt75):
+1338 interface Angestellte {
+1339 Telefonnummer gibTelefonnummer();
+1340 }
+1341 interface Privatperson {
+1342 Telefonnummer gibTelefonnummer();
+1343 }
+1344 class Person : Angestellte , Privatperson {
+1345 private Telefonnummer privat, büro;
+1346 Telefonnummer Angestellte .gibTelefonnummer() {
+1347  return büro;
+1348 }
+1349 Telefonnummer Privatperson.gibTelefonnummer() {
+1350  return privat;
+1351 }
+1352 }
+Der Nutzen der expliziten Interfaceimplementierung in den Zeilen 1346 –
+1351 ist der, dass ein Objekt der Klasse Person auf die gleiche Nachricht
+gibTelefonnummer() unterschiedlich reagiert , und zwar abhä ngig davon, über welches
+Interface es angesprochen wird . Der Typ der Variable (oder des Ausdrucks), die als Empfän-
+ger fungiert, gibt also gewissermaßen die Rolle (hier: Angestellte bzw. Privatperson )
+vor, in der das Objekt angesprochen wird. Es ist weder vorgesehen noch möglich, dass man
+an der Aufrufstelle etwas wie x.Angestellte .gibTelefonnummer() schreibt (wobei x
+das Objekt bezeichne) ; vielmehr steht dort einfach nur x.gibTelefonnummer() . Falls üb-
+rigens die Methodendeklaration Telefonnummer gibTelefonnummer() von einem ge-
+meinsamen Superinterface von Angestellte und Privatperson , z. B. Erreichbar , ge-
+erbt würde, wäre das Programm ungültig; es muss nämlich immer der tatsächlich deklarie-
+rende Typ als Qualifizierer angegeben werden.
+Wenn im obigen Beispiel für die beiden expliziten Interfaceimplementie-
+rungen von gibTelefonnummer() nicht wie in JAVA verlangt der Zu-
+griffsmodifikator public angegeben wurde, dann geschah das nicht ohne Grund: Es ist in
+C# nämlich möglich, Methoden nicht public zu deklarieren und trotzdem, per Inter-
+faceimpl ementierung, von außen zugreifbar zu haben . Allerdings ist dies an die explizite
+Interfaceimplementierung gebunden. Die sog. implizite Int erfaceimplementierung , also
+75 Der (berechtigten) Kritik, dass dies eine wichtige Unterscheidung verwischt und man so bei B e-
+trachtung einer Klasse manchmal nicht sagen kann, welcher der aufgelisteten Supertypen Interface
+und welcher Superklasse ist, wird eine Namenskonvention entgegengehalten: Im Common Type Sys-
+tem von .NET sollten alle Interfacenamen mit einem „I“ beginnen. D as steht in der Tradition der bei
+MICROSOFT weithin gebrauchten und nach dem früheren Mitarbeiter CHARLES SIMONYI so genannten
+ungarischen Notation . explizite Interface -
+implemen tierung
+implizite Interface -
+implemen tierung
+die, die Sie von JAVA her kennen, ist in C# natürlich auch vorgesehen ; dort müssen Metho-
+den jedoch immer (wie auch in JAVA) public deklariert werden.
+Explizite Interfaceimplementierungen können nicht überschrieben wer-
+den (dürfen also auch nicht virtual deklariert sein). Eine Klasse, die von
+einer mit expliziten Interfaceimplementierungen erbt, erbt diese also,
+ohne dass sie diese überschreiben könnte — es sei denn, sie „reimple-
+mentiert“ das Interface, d. h., sie deklariert selbst, es zu implementieren. Man beachte aber,
+dass diese erneute explizite Implementierung keine Überschreibung darstellt: insbesondere
+findet bei Aufruf der explizit implementierten Methode kein dynamisches Binden statt.

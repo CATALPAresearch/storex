@@ -1,0 +1,18 @@
+11 Superklasse n und Subklassen
+Wenn Sie sich schon vor diesem Kurs mit der objektorientierten Programmierung befasst
+haben, dann fragen Sie sich vielleicht, warum die Begriffe der Super - und Subklasse bislang
+nicht fielen. Das liegt daran, dass diese in verschiedenen Pr ogrammiersprachen verschiedene
+Bedeutungen haben, während die Begriffe der Generalisierung und Spezialisierung sowie
+die der Vererbung und der abstrakten Klassen recht einheitlich interpretiert werden.
+Die Subklassenbeziehung ist, genau wie Generalisierung, Spezialisie-
+rung und Vererbung, eine Beziehung zwischen Klassen. Die beiden Enden
+der Beziehung vergeben die Rollen Superklasse bzw. Subklasse ; die Präfixe legen nahe,
+dass die Subklassenbeziehung eine Klassenhierarchie aufbaut, in der die Superklassen
+über den Subklassen stehen. Außerdem ist die Subklassenbeziehung transitiv: Wenn A eine
+Subklasse von B ist und B eine von C, dann ist A auch eine Subklas se von C. Analoges gilt
+natürlich auch für Superklassen. Man spricht übrigens von einer direkten Subklasse bzw. Eigenschaften der
+Subklassenbeziehung
+von einer direkten Superklasse , wenn es keine weitere Klasse gibt, die in der Subklassen-
+beziehung dazwischen steht. Die Subklassenbeziehung ist (anders als die Subtypenbezie-
+hung; vgl. Kapitel 26) nicht reflexiv (irreflexiv) — eine Klasse kann also keine Subklasse von
+sich selbst sein.

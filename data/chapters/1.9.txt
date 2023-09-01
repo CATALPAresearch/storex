@@ -1,0 +1,64 @@
+1.9 Lebenslauf von Objekten
+In SMALLTALK beginnt der Lebenslauf eines Objekts mit seiner Erzeugung und endet mit sei-
+ner Entsorgung durch eine Speicherbereinigung, die sog. Garbage collection . Garbage
+collection ist ein Mechanismus, der Objekte aus dem Speicher entfernt, wenn diese nicht
+mehr zugreifbar sind. Da in SMALLTALK auf Objekte nach ihrer Erzeugung ausschließlich über
+Variablen (Namen) zugegriffen werden kann, kann ein solches Objekt genau dann entfernt
+werden, wenn keine Variable mehr auf es verweist. Es kann entfernt werd en, muss aber
+nicht; aus Sicht der Programmiererin ist es ausreichend, dass das Objekt nicht mehr be-
+kannt/benannt ist — es kann somit nicht mehr aufgefunden und durch eine Zu weisung
+einer Variable zugewiesen werden. Bei der Implementierung von Garbage -collection -Algo-
+rithmen besteht denn auch erhebliche Freiheit.
+Wenn Peter und Michaela heiraten, dann schlägt sich dies u. a. in der
+Zuweisung
+32 petersNachname := michaelas Nachname
+nieder. Wenn 'Müller' keine Aliase (wie beispielsweise paulasNachname ) hatte, kann
+es nach der Zuweisung aus dem Speicher entfernt werden — es wäre selbst bei Bedarf nicht
+mehr auffindbar.
+Von der automatischen Speicherbereinigung ausgenommen sind be-
+stimmte Objekte mit eindeutiger literaler Repräsentation (wie z. B. kleine
+Zahlen, Zeichen und Symbole). Im Falle von Zahlen und Zeichen liegt das jedoch weniger an
+der Natur dieser Objekte selbs t als vielmehr an der Tatsache, dass diese in der Regel nicht
+als Objekte im Speicher angelegt werden (so dass Variablen darauf verweisen könnten), Beispiel
+Sonderbehandlung
+bestimmter Objekte
+sondern dass sie selbst, als Werte (und anstelle von Zeigern), in Variablen gespeichert wer-
+den ( Abschnitt 1.5.1 ). Sie werden „entfernt “, indem einer Variable ein neuer Wert zuge-
+wiesen wird. Symbole werden schon deswegen nicht aus dem Speicher entfernt, weil sie in
+einer Symboltabelle abgelegt (und somit immer mindestens einmal referenziert ; s. Fußnote
+5) werden.
+Der M ut zur Verabschiedung von der expliziten Speicherfreigabe war eine
+der wichtigsten Entscheidungen beim Entwurf SMALLTALK s. Man hat ein-
+fach anerkannt, dass die genaue Buchführung darüber, auf welche Ob-
+jekte noch zugegriffen wird, zu schwierig ist, um die Ve rantwortung da-
+für Anwendungsprogrammiererinnen zu überlassen. Wer das Problem nicht unmittelbar
+einsichtig ist, die halte sich vor Augen, dass
+ der Ort der Erzeugung eines Objektes und seine erste Zuweisung zu einer Variable
+im Programm möglicherweise weit entfernt sind von der Stelle, an der dieser Vari-
+able ein anderes Objekt zugewiesen wird, dass
+ es möglicherweise viele solcher Stellen gibt, von denen mal die eine, mal die andere
+zuerst erreicht wird, und dass
+ in der Zwischenzeit beliebig viele Aliase auf das Objekt angelegt w orden sein kön-
+nen, die alle mit berücksichtigt werden müssen, um zu entscheiden, ob das Objekt
+noch in Verwendung ist.
+Eine vorzeitige Entfernung aus dem Speicher hingegen führt dazu, dass Variablen ins Nichts
+zeigen (eine häufige Quelle von Progr ammabstürzen) oder dass, bei einer Wiederverwen-
+dung des Speichers, die Variable plötzlich auf ein anderes Objekt verweist, das ihr aber nie
+explizit zugewiesen wurde — ein quasi zufälliges Programmverhalten, das mit hoher Wahr-
+scheinlichkeit zu schweren Pro grammfehlern führen würde. Ein anderes Beispiel entsteht,
+wenn in einer Verzweigung eines Programms entweder ein neues oder ein bereits vorhan-
+denes Objekt einer Variable zugewiesen wird. Woher weiß man bei der weitere n Benutzung
+dieser Variable, ob das Obj ekt schon vorher existierte und vielleicht schon andere Variablen
+auf es verweisen, oder ob es gerade erst neu erzeugt wurde und damit noch unbenutzt ist?
+Wer ist für die Entsorgung des Objekts verantwortlich? All diese Betrachtungen kann man
+sich in Gegen wart der Garbage collection ersparen.
+Im objektorientierten Jargon spricht man übrigens häufig auch vom Le-
+benszyklu s („life cycle “) eines Objekts. Genaugenommen ist dies aber
+irreführend, denn das Wort „Zyklus“ verspricht, dass das Leben nach seinem Ende wieder
+neu beginnt. Gerade dies ist aber, wie eben erläutert, nicht der Fall: Objekte werden nicht
+recycelt, sondern höchstens der Speicherplatz, den sie belegen. warum automatische
+Speicherbereinigung
+richtig und wichtig
+ist
+„Lebenszyklus “ ist
+irreführend

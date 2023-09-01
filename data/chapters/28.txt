@@ -1,0 +1,67 @@
+28 Der Zusammenhang von Typen und Klassen
+Wenn in dieser Kurseinheit bislang ausschließlich von Typen die Rede war und Klassen dabei
+ignoriert wurden, so hat das gute Gründe: Während eine Klasse die Implementierung ihrer
+Objekte festlegt, ist eine Typdefinition vollkommen frei von Implementierungsaspekten.
+Zwar können auch abstrakte Klassen (Kurseinheit 2, Abschnitt 10.3) ausschließlich aus Me-
+thodendekla rationen bestehen, also ohne jeden Implementierungsanteil daherkommen,
+aber auch ihr Zweck ist in der Regel, zumindest eine partielle Implementierung vorzugeben,
+die anderen Klassen, ihren Subklassen, gemeinsam ist, so dass sie diese erben können:
+Schließlich drückt die Klassenhierarchie ja eine „genetische“ Verwandtschaft aus (s. Ab-
+schnitt 10.1 und Kapitel 11). Eine Typprüfung soll aber ohne Ansehen der Implementierung
+stattfinden; sie baut daher auf abstrakte Spezifikationen, eben auf Typen.
+Es sind also Typen abstrakte Spezifikationen, die zum einen den Wertebereich von Variablen
+einschränken und zum anderen das Protokoll (den Funktionsumfang) von Objekten ange-Arten von
+Typumwandlungen
+Verwendungs -
+empfeh lungen
+ben. Im Gegensatz dazu sind Klassen Konstrukte, die Objekte als Instanzen zu bilden erlau-
+ben und mit Implementierung versehen. Da Objekte aber auch den Wertebereich von Typen
+ausmachen, stellt sich natürlich die Frage, welcher Art der Zusammenhang zwischen Typen
+und Klassen ist.
+Diese Frage soll anhand der schematischen Klassendefinitionen aus Kurseinheit 2, Abschnitt
+7.2 beantwortet werden. In SMALLTALK ist diese ja stets von der Form53
+Klasse  <Klasse 1>
+Superklasse  <Klasse 2>
+benannte Instanzvariablen  <Instanzvariable 1>, …
+Instanzmethoden
+919 <Instanzmethode 1>: <formaler Parameter 1> …
+920 …
+Es fällt zunächst auf, dass bestimmte Elemente einer Klassendefinit ion
+auch in einer Typdefinition auftauchen. Im einzelnen sind dies
+ ein (eindeutiger) Name,
+ ein zweiter Name, von dessen dazugehöriger Definition abgeleitet wird sowie
+ eine Men ge von Methodennamen, jeweils mit einer Anzahl formaler Parameter.
+Nun werden in SMALLTALK s Klassendefinitionen anders als bei den Typdefinitionen STRONG-
+TALKs keine Typen verwendet — wie auch, denn in SMALLTALK gibt es ja schließlich keine
+Typen. Stattdess en findet man aber in SMALLTALK -Programmen manchmal Namen wie „aSt-
+ring“, „anInteger“ etc. für formale Parameter, die nahelegen, dass der Wert einer Variable
+Instanz einer bestimmten Klasse sein soll. Überprüft wird das jedoch nicht. In STRONGTALK
+hingegen ist die Ähnlichkeit von Klassendefinitionen mit Typdefinitionen noch größer: Hier
+sind auch die formalen Parameter der Methoden in den Klassendefinitionen typisiert (s. Ka-
+pitel 20). Man beachte, dass in STRONGTALK , anders als z. B. in JAVA oder C++, Instanzvari-
+ablen kein Bestandteil einer Typdefinition sein können (vgl. dazu Fußnote 50).
+Nun dient ja ein Typsystem in der objektorientierten Programmierung vor allem der Sicher-
+stellung des Umstands, dass alle von einem Objekt aufgrund des deklarierten Typs der Va-
+riable, die es benennt, erwarteten Eigenschaften (Methoden) bei di esem Objekt auch vor-
+handen sind. Dies ist aber immer dann der Fall, wenn sich die Elemente der Typdefinition in
+der Klassendefinition des Objekts wiederfinden, die Klassendefinition also mit der Typdefi-
+nition gewissermaßen strukturell konform ist, so dass die Zuweisung einer Instanz der Klasse
+an eine Variable des Typs die Anforderungen der Zuweisungskompatibilität erfüllt. Um einen
+53 Klassenvariablen und -methoden können hier unter den Tisch fallen, da diese ja nicht Objekte,
+sondern Klassen (als Instanzen ihrer Metaklassen) charakterisieren. Vergleich von
+Klassen - und
+Typdefinition
+Compiler diese Zuweisungskompatibilität auf einfachere Weise als die Prüfung der Struktur-
+konformität, die ja eine rekursive Expansion der Typdefinitionen erfordert, feststellen zu las-
+sen, gibt es zwei Möglichkeiten (bei beiden handelt es sich gewissermaßen um Varianten
+einer Namenskonformität):
+1. jede Klasse sagt explizit, mit welchen Typen sie konform ist, oder
+2. jede Klasse spezifiziert i mplizit selbst einen Typ.
+Im ersten Fall müsste der Compiler noch prüfen, ob eine Klasse tatsächlich auch über alle
+Eigenschaften der von ihr genannten Typen verfügt; im zweiten Fall ist das automatisch der
+Fall, da der Typ ja gewissermaßen aus der Klasse erzeugt wird. Diese zweite Art wird von
+den allermeisten typisierten, objektorientierten Programmiersprachen bevorzugt, doch auch
+die erste kommt in populären Sprachen vor: So kann beispielsweise in JAVA und C# jede
+Klasse angeben, mit Variablen welcher In terface -Typen ihre Instanzen zuweisungskompati-
+bel sein sollen (s. Kurseinheit 4, Kapitel 40 und Kurseinheit 5, Abschnitt 50.4.2 ). Auch
+STRONGTALK stellt beide Möglichkeiten zur Verfügung .

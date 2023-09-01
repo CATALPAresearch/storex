@@ -1,0 +1,65 @@
+8.5 Die Metaklassenleiter SMALLTALK s
+Es müssen nach der SMALLTALK -Philosophie auch Metaklassen (als Objekte) Instanzen von
+Klassen sein. Da es aber nicht mehr sinnvoll erscheint, jeder Metaklasse eigene Instanzvari-
+ablen und Methoden zu geben, ist es nicht notwendig, dass jede Metaklasse (als Klasse)
+ihre eigene Meta -Metaklasse (als Metaklasse der Klasse) hat. Vielmehr reicht es für die Praxis
+aus, eine gemeinsame Meta -Metaklasse, von der alle Metaklassen Instanzen sind, vorzuse-
+hen. SMALLTALK s Benennungspraxis, nach der jede Klasse so heißt, dass ihre Instanzen als
+Subjek t den Satz „<eine Instanz> ist ein <Klassenname>“ korrekt ergänzen, folgend heißt
+diese Klasse Metaclass (da eben alle ihre Instanzen Metaklassen sind).
+Es ergibt sich sofort die Frage, von welcher Klasse die Klasse Metaclass
+eine Instanz ist — tatsächlich muss ja nach der Philosophie SMALLTALK s,
+nach der Klassen Objekte und jedes Objekt Instanz einer Klasse ist, auch Metaclass Instanz
+einer Klasse sein. Um dieses Spiel nicht bis ins Unendliche fortsetzen zu müssen, hat man in
+SMALLTALK zu einem einfachen Trick gegriffen: Man betrachtet die Klasse von Metaclass ,
+also Metaclass class , selbst nur als einfache Metaklasse (obwohl sie ja eigentlich eine
+Meta -Meta -Metaklasse ist), die, genau wie alle anderen Metaklassen, Instanz von
+Metaclass sein muss . Es gilt also für Metaclass
+395 Metaclass class class == Metaclass
+Nachfolgendes Diagramm veranschaulicht die Zusammenhänge. Man beachte, dass alle Ob-
+jekte bis auf die der Ebene 0 gleichzeitig Klassen und Instanzen sind. Der gestrichelte Pfeil
+bezeichnet übrigens die Ist -eine-Instanz -von-Beziehung (in UML -Notation). Metaklasse der
+Metaklassen
+Metaclass
+1 nilInteger UndefinedObjectInteger class UndefinedObject class
+2 Ebene 0: AnwendungsobjekteEbene 1: AnwendungsklassenEbene 2: MetaklassenEbene 3: die Meta-MetaklasseMetaclass class Ebene 4: die Meta-Meta-Metaklasse
+Die theoretisch am bitionierte Leserin wird sofort bemerken, dass der
+Kunstgriff der Terminierung der Ist -eine-Instanz -von-Beziehung es verbie-
+tet, Klassen als Mengen von Objekten und deren Instanzen als Elemente
+dieser Mengen im Sinne von Abschnitt 7.3 zu interpretieren: Sonst wäre nämlich die zu
+Metaclass gehörende Menge von Objekten indirekt ein Element von sich selbst, was
+schlechterdings unmöglich ist. Außer einem etwas faden Beigeschma ck hat das jedoch
+keine praktischen Auswirkungen.
+Wir haben es also in SMALLTALK mit einem mehrstufigen Zusammenspiel
+von Klassen und Instanzen zu tun. Auf der untersten Stufe, der Ebene 0,
+stehen kon krete Objekte, die nicht instanziierbar sind. Diese Objekte re-
+präsentieren in der Regel Dinge aus dem Anwendungsbereich eines Programms, also zum
+Beispiel konkrete Personen, Dokumente, Adressen etc. Eine Stufe darüber, auf Ebene 1,
+stehen die Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte lie-
+fern und anhand derer die Objekte der Ebene 0 (per Instanziierung) erzeugt werden. Diese
+Klassen repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit; sie repräsentieren die
+Konzepte o der Allgemeinbegriffe des Anwendungsbereichs. Zu jeder Klasse der Ebene 1
+werden im Laufe des Programms in der Regel mehrere Objekte der Ebene 0 erzeugt — es
+besteht also eine 1: n-Beziehung zwischen ihnen.
+Nun sind auch die Klassen der Ebene 1 Objekte und damit selbst Instanzen von Klassen, die
+eine Stufe höher, also auf Ebene 2 stehen. Die Klassen der Ebene 2, die Metaklassen, geben
+die Definition der Klassen vor. Da es nicht sinnvoll ist, von Klassen der Ebene 1 mehrere
+Exemplare zu haben, die, analog zu den Objekten der Ebene 0, alle über die gleiche Defini-
+tion verfügen, hat jede Metaklasse genau eine Instanz. Es besteht also eine 1:1 -Beziehung
+zwischen Metaklassen und ihren Instanzen, den Klassen der Ebene 1, die die Objekte der
+Anwendung beschreiben.
+Auf Ebene 3 bekommen alle Metaklassen eine gemeinsame Klasse spendiert, von der sie
+eine Instanz sind, nämlich die Klasse Metaclass . Man beachte, dass hier wieder eine 1: n-
+Beziehung vorliegt. Anders als auf Ebene 2, auf der man für die unterschiedlichen Konz epte Verlust der mengen-
+theoretischen Inter-
+pretation
+stufenweise Reduk-
+tion der Vielfalt
+durch Klassifikation
+einer Anwendung jeweils eine Klasse vorfindet, hat man hier, auf Ebene 3, die Vielfalt auf
+genau eine Klasse verdichtet. Diese hat dann wieder genau eine Metaklasse.
+Das nachfolgende Diagramm zeigt noch einmal die Reduktion durch die ersten vier Stu fen.
+Eine ähnliche Verdichtung über vier Ebenen findet man übrigens auch beim Information
+Resource Dictionary System (IRDS) der ISO .
+Objekt Klasse Metaklasse Meta-Metaklasse
+* 1 1 1 * 1

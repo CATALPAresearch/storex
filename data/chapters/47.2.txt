@@ -1,0 +1,96 @@
+47.2 Exception handling
+Wie Sie schon bei den Anweisungen in Kapitel 38 gesehen haben, sieht JAVA ein sog. Excep-
+tion handling vor. Beim Exception handling handelt es sich um eine Möglichkeit, bei der
+Spezifikation des Kontrollflusses eines Programms zunächst mögl iche Ausnahmesituationen
+und deren Behandlung unberücksichtigt zu lassen und so zu tun, als würde immer alles
+gutgehen. Da das normalerweise auch der Fall sein sollte, erlaubt es sowohl der Auto rin als
+auch der Leserin eines Programms, bei seiner hauptsächlichen Funktion zu bleiben, ganz
+nach dem Motto „zu den Ausnahmen kommen wir später!“
+Die möglichen Ausnahmesituationen eines Programms werden in JAVA in
+Klassen ein geteilt , deren Instanzen jeweils eine konkrete Ausnahmesitu-
+ation während des Programmablaufs repräsentieren. Wenn also beispielsweise in einem
+Programm auf ein Element eines Arrays zugegriffen Exception -Klassen
+und Try -catch -Blöcke
+werden soll, dessen Index außerhalb der Grenzen des Arrays liegt, dann erzeugt die JVM,
+die über die Einhaltung der Array -Grenzen wacht, eine Instanz der Klasse
+ArrayIndexOutOfBoundsException und wirft diese. Dabei bedeutet das Werfen einer
+Exception (genauer: einer Instanz einer Exception -Klasse), dass der Programmablauf an der
+gegenwärtigen Stelle abgebrochen und an der nächsten Stelle fortgesetzt wird, die angibt,
+den zum Typ (zur Klasse) der Exception -Instanz passenden Exception handler zu haben.
+Dazu ist es notwendig, die Codestrecke, in der die Exception auftreten kann, mit einer Try -
+catch -Klammer zu versehen, also mit einem Konstrukt der Form
+1160 try {
+1161 … anArray[anIndex] …
+1162 }
+1163 catch (ArrayIndexOutOfBoundsException e) {…}
+1164 catch (<andere Exceptionklasse> e) {…}
+1165 …
+wobei der Typ der geworfenen Exception idealerweise in einer de r Catch -Klauseln vor-
+kommt. Ist dies nicht der Fall, gilt die Exception als durch die Try -catch -Klammer nicht be-
+handelt und es wird die nächste umschließende Klammer gesucht (wobei mit nächste die
+vorherige im Programmablauf gemeint ist). Wird auf diese Wei se keine passende Klausel
+gefunden, wird das Programm mit einer entsprechenden Fehlermeldung („Exception in
+thread …“) abgebrochen.
+Ausnahmesituationen können aber nicht nur durch die JVM, sondern
+auch durch das Programm selbst entdeckt und gemeldet (entsprechende Exceptions gewor-
+fen) werden. Dazu dient die schon erwähnte Throw -Anweisung, die mittels einer Instanzi-
+ierung der Exception -Klasse eine entsprechende Ausnahme wirft. So verlagert beispiels-
+weise
+1166 try {
+1167 …
+1168 if (anIndex < 0 || anIndex >= anArray.length)
+1169  throw new ArrayIndexOutOfBoundsException();
+1170 else {
+1171  … anArray[anIndex] …
+1172 }
+1173 }
+den Test von der virtuellen Maschine ins Programm.
+Try-catch -Anweisungen stehen wie fast alle Anweisungen in JAVA im
+Rumpf von Methoden. Wenn eine Methode eine bestimmte Exception wirft, ohne sie selbst
+zu fangen (also wenn die Throw -Anweisung nicht lokal von einer Try -catch -Anweisung um-
+schlossen wird, die eine Catch -Klausel mit dem entsprechenden Typ enthält), dann verlangt
+die JAVA-Sprachdefinition zunächst, dass die Methode dies deklariert, dass sie also bekannt-
+gibt, dass sie u. U. eine Exception des genannten Typs werfen wird. Dies geschieht mittels
+einer Throws -Klausel und sieht dann wie folgt aus:
+1174 … <Methodennam e> (<Parameterliste>) throws <Exceptionname> {…} Throw -Anweisung
+Checked exceptions
+Eine Methode, die diese Methode aufruft, muss also den Aufruf entweder mit einer Try -
+catch -Anweisung klammern, die die geforderte Catch -Klausel enthält, oder selbst deklarie-
+ren, die Exception zu werfen. Dies e Praxis führt zwar zu erheblicher Schreibarbeit, stellt aber
+letztlich die einzige Möglichkeit dar, zu erzwingen, dass sich die Programmiererinnen der
+möglichen Ausnahmesituationen, die auftreten können, bewusst sind, ohne die Spezifika-
+tion des Kontrollflusses dadurch über Gebühr zu belasten. Jede, die schon einmal in C die
+Aufrufe von B etriebssystemroutinen durch Abfrage der Return -Codes abzusichern versucht
+hat, weiß, wovon ich spreche. Man nennt Exceptions, die ein Abfangen innerhalb einer
+Methode oder eine Deklaration im Methodenkopf verlangen, Checked exceptions .
+Nun gibt es aber Exceptions, die so gut wie überall auftreten können. Das prominenteste
+Beispiel ist vielleicht die Out of memory exception , die auftritt, wenn eine Speicheranforde-
+rung des Pr ogramms von der JVM nicht bedient werden kann. In der Praxis häufiger, wenn
+auch durch das Programm selbst vermeidbar, ist die Null pointer exception , die immer auf-
+tritt, wenn ein Ausdruck, auf dem ein Feld oder eine Methode zugegriffen werden soll, zu
+null ausgewertet wird (vgl. Selbsttestaufgabe 11.1). In dieselbe Kategorie fällt auch die
+Array index out of bounds exception , die sich natürlich durch vorsichtige Prog rammierung
+vermeiden ließe, die aber in der Praxis trotzdem immer wieder vorkommt. In all diesen Fällen
+wäre es außerordentlich mühsam, wenn man alle Anweisungen, bei denen die jeweilige
+Exception auftreten könnte, mit einer entsprechenden Try -catch -Anweis ung absichern
+müsste .
+Deswegen gibt es in JAVA Exceptions, bei denen das nicht nötig ist, die
+sogenannten Unchecked exceptions . Man könnte meinen, dass ob eine
+Exception checked oder unchecked ist, von Fall zu Fall (von Auftreten zu Auftreten) von der
+Programmiererin , die sie wirft, zu unterschei den wäre — dies ist aber nicht so. Statt dessen
+sind alle Exceptions, die von der Klasse RuntimeException abgeleitet sind, per Definition
+unchecked . RuntimeException ist selbst Subklasse der Klasse Exception , die wiederum
+Subklasse von Throwable ist. Throwable ist die Superklasse aller Klassen, die in einer
+Throw -Anweisung und in Catch -Zweigen bzw. Throws -Klauseln vorkommen dürfen. Mit
+RuntimeException wird also ein Zweig der Exception -Klassenhierarchie eingeleitet, des-
+sen Elemente alle unchecked sind.
+Neben Exception ist auch Error Subklasse von Throwable . Errors je-
+doch nicht gefangen werden , sondern zu einem sofortigen Programmabbruch führen. Die
+Konstruktion
+1175 if (…) throw new Error("das ist schiefgegangen!");
+wobei die Auslassungszeichen für die Formulierung einer Invariante stehen, hat man früher
+zur Emulation der inzwischen vorhandenen Assert -Anweisung verwendet; auch heute sollte
+man Errors eigentlich nur während der Testphase eines Programms einsetzen. Gena u wie
+Exceptions der Sorte RuntimeException sind Errors unchecked . Unchecked
+exceptions
+Error s

@@ -1,0 +1,10 @@
+40 Interfaces
+Modul und Interface sind eigentlich ein Begriffspaar — das eine lässt sich nur mithilfe des
+anderen definieren. Die Interfaces in JAVA sind jedoch durchaus eigenständige Konstrukte,
+die inzwischen weit über die eigentliche Bedeutung des Begriffs, nämlich eine Schnittstelle
+zu definieren, hinausgehen. Auch wenn JAVAs Interfaces Vorgänger haben , betrachte ich
+sie doch als einen von JAVAs wichtigsten Beiträgen für die Entwicklung objektorientierter
+Programmiersprachen.
+66 Dies ist beispielsweise in C++ anders: Dessen Friend -Konstrukt erlaubt den privilegierten Zugriff
+zwischen Klassen jenseits derer öffentlichen und privaten Schnittstellen (s. Abschnitt 51.3 in Kursein-
+heit 5).

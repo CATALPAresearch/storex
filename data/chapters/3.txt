@@ -1,0 +1,11 @@
+3 Zustand
+Wie bereits in Abschnitt 1.3 beschrieben , kann man zwischen veränderlichen und unverän-
+derlichen Objekten unterscheiden. Veränderungen veränderlicher Objekte erfolgen über die
+Zeit und die Objekte wechseln dabei ihren Zustand ; unveränderliche Objekte dagegen h a-
+ben keinen Zustand.14 Was aber macht den Zustand eines Objektes aus?
+Der Zustand eines Objektes ist die Summe der Belegungen seiner In-
+stanzvariablen . Insofern Instanzvariablen Beziehungen ausdrücken, wird
+der Zustand eines Objekts ausschließlich durch seine Verknüpfung mit
+anderen Objekten definiert. Zudem folgt, dass die einzige Möglichkeit, den Zustand eines
+Objekts zu ändern, der über die Zuweisung von Instanzvariablen , gleichbedeutend mit der
+Änderung seiner Beziehun gen, ist.

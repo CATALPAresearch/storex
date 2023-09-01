@@ -1,0 +1,101 @@
+15 Ein- und Ausgabeströme
+Ein- und Ausgabeströme spielen in der konventionellen (objektorientierten) Programmie-
+rung eine wichtige Rolle, da über sie Eingaben in und Ausgaben aus dem System erfolgen,
+und zwar sowohl von/zu der Benutzerin als auch vom/zum Dateisystem. Nun ist SMALLTALK
+aber als fensterbasiertes, grafisches System konzipiert, das der zeilenorientierten und text-
+basierten Ein - und Ausgabe der damals vorherrschenden Programme eine Alternativ e ge-
+genüberstellen wollte. Zudem ist auch eine Speicherung permanenter Daten in Dateien
+nicht nötig, da mit dem Image alle Objekte dauerhaft gespeichert werden. Da ist es nur
+konsequent, dass die Ein - und Ausgabe über Streams wenig Gewicht hat.
+In SMALLTALK haben Streams somit zunächst auch eine andere Aufgabe:
+Sie erlauben eine Form des Zugriffs auf Collections , die das Collection -
+Protokoll nicht bieten kann, nämlich
+ den sequentiellen Zugriff auf einzelne Elemente in beliebigen zeitlichen Abständen
+(bei den Iteratoren wird immer in einem Schritt, oder in einer Anweisung, über die
+ganze C ollection iteriert) sowie
+ den gleichzeitigen bzw. zeitlich abwechselnden Zugriff auf (die Elemente einer) Col-
+lection durch mehrere andere Objekte.
+Um dies umzusetzen, braucht man Positionszeiger in eine Collection hinein, und genau die
+zu liefern ist die F unktion von Streams.
+Streams werden zunächst immer auf einer Collection erzeugt, deren In-
+halt Basis des Streams ist. Die Erzeugung erfolgt mittels der Klassenme-
+thode on:, die als Parameter eine Collection erhält. Das Basis protokoll auf Instanzebene
+enthält die folgenden Methoden:
+647 contents
+648  "Answer the collection over which
+649  the receiver is streaming."
+650 next
+651  "Answer the next object accessible by the receiver
+652  and advance the stream position. Report an error
+653  if the receiver stream is positioned at end."
+654 nextPut: anObject
+655  "Write anObject to the receiver stream.
+656  Answer anObject."
+657 next: anInteger
+658  "Answer the next anInteger number of items from
+659  the receiver, returned in a collection of the
+660  same species as the collection being streamed
+661  over."
+662 nextPutAll: aCollection Streams als
+Iteratoren mit
+besonderen
+Eigenschaften
+Implementierung der
+Klasse Stream
+663  "Write each of the objects in aCollection to the
+664  receiver stream. Answer aCollection."
+665 nextMatchFor: anObject
+666  "Access the next object in the receiver. Answer
+667  true if it equals anObject, else answer false."
+668 skip: anInteger
+669  "Increment the position of the
+670  receiver by anInteger."
+671 skipTo: anObject
+672  "Advance the receiver position beyond the next
+673  occurrence of anObject, or if none, to the end of
+674  stream. An swer true if anObject occurred, else
+675  answer false."
+676 atEnd
+677  "Answer true if the receiver is
+678  positioned at the end (beyond
+679  the last object), else answer
+680  false."
+Für frei positionierbare Streams kommt noch das Protokoll zur Änderung des Zeigers hinzu:
+681 position
+682  "Answer the current receiver stream position."
+683 position: anInteger
+684  "Set the receiver stream position to anInteger.
+685  Report an error if anInteger is outside the
+686  bounds of the receiver collection."
+687 reset
+688  "Position the receiver stream to the beginning."
+689 setToEnd
+690  "Set the position of the receiver stream to
+691  the end."
+692 peek
+693  "Answer the next object in the receiver stream
+694  without advancing the stream position. If the
+695  stream is positioned at the end, answer nil."
+Für peek ist die freie Positionierbarkeit notwendig, weil man dazu erst das nächste Element
+anspringen und dann wieder einen Schritt zurückgehen muss .
+Da ein Stream (wie eine Collection) eine Menge von Objekten repräsen-
+tiert, möchte man darüber (genau wie über eine Collection) iterieren kön-
+nen. Kein Problem:
+696 do: aBlock
+697  "Evaluate aBlock once for each element in the
+698  receiver, from the current position to the end."
+699 [self atEnd] Iteration über
+Streams
+700  whileFalse: [aBlock value: self next]
+Außerdem wird nat ürlich zwischen (nur) lesbaren und schreibbaren Streams unterschieden.
+Erst eine weitere Kategorie von Streams operiert nicht auf Collections,
+sondern auf externen Daten. Dazu gehören insbesondere die File streams . In SMALLTALK -80
+wurde mit den Klassen FileDirectory , File und FilePage (die selbst keine Streams
+sind) ein eigenes Dateisystem geschaffen; die meisten heute gebräuchlichen Implementie-
+rungen nehmen jedoch eine Abbildung auf das Betriebssystem vor, für das sie geschrieben
+wurden . Man erkennt hier noch sehr schön, welche Funktion SMALLTALK ursprünglich zuge-
+dacht war: die der einzigen Software auf einem Computer.
+Besonders in SQUEAK gibt es noch zahllose weitere Streams, so u. a. für Multimedia -Aufga-
+ben; insgesamt unterscheiden sic h die verschiedenen SMALLTALK -Dialekte bei der Handha-
+bung von Streams zum Teil erheblich, weswegen wir hier auch nicht weiter darauf einge-
+hen.

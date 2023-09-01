@@ -1,0 +1,34 @@
+51.4 Mehrfachvererbung
+Getreu sein em Motto, alle Freiheit in die Hand der Programmiererin zu legen und ihr nicht
+mit einer gouvernantenhaften Du -kannst -das-bestimmt -nicht -Attitüde zu begegnen, bietet
+C++ (im Gegensatz zu SMALLTALK , JAVA und C#) uneingeschränkte Mehrfachvererbung .
+Das kann aus verschiedenen Gründen sinnvoll erscheinen:
+Eine Klasse, die von mehreren, vollständig abstrakten (also mit keinerlei Implemen-
+tierung versehenen) Klassen erbt, implementiert damit faktisch mehrere Interfaces.
+Der einzige Nachteil ist, dass die Programmiererin nicht in Mitteln der Sprache aus-
+drücken kann, ob eine abstrakte Klasse die Funktion eines Interfaces oder die einer
+Generalisierung (von der man Implementierung erben kann ; vgl. Abschnitt 9.1) ha-
+ben soll — dazu sind dann schon Namenskonventionen notwendig.
+ Nicht selten ergibt sich aus der Aufgabenstellung, dass eine Klasse Eigenschaften
+von mehreren anderen gebrauchen könnte. In S prachen mit Einfachvererbung muss
+man sich dann für eine Klasse als Superklasse entscheiden und den Beitrag der an-
+deren Klassen wiederholen, also erneut implementieren oder per Delegation bzw.
+Forwarding einbinden.78 Mehrfachvererbung erlaubt im Gegensatz dazu, sich alles
+zusammenzuerben, was man benötigt.
+Da das Erben jedoch nicht se lektiv (in dem Sinne, dass man sich aussuchen könnte, was
+man von einer Klasse erbt) erfolgt und das Löschen von geerbten Membern in C++ nicht
+möglich ist, fühlt man sich häufig bemüßigt , die Klassen, von denen man erbt, in viele kleine
+78 Bei der Delegation, oder genauer beim Forwarding , ordnet man der Instanz der Hauptklasse In-
+stanzen der anderen Klassen bei und delegiert die Funktionen, die die Hauptklasse nicht erben kann,
+an die beigeordneten Instanzen. Das ist dann je doch jedes mal auszuprogrammieren und daher ziem-
+lich lästig.
+aufzusplitten un d nur die zu beerben, deren Eigenschaften man braucht, um sich von un-
+nötigem Ballast freizuhalten .
+Mehrfachvererbung ist etwas, das sich Programmiere rinnen gerne wün-
+schen. Sie bringt jedoch einige praktische Probleme mit sich, unter ande-
+rem die Frage, was zu tun ist, wenn eine Klasse von mehreren anderen Klassen verschiedene
+Definitionen desselben Elements (Feld oder Methode) erbt. Da die Klasse sich dann für eine
+der beiden Definitionen entscheiden muss , geht die der anderen verloren. Dies kann, insbe-
+sondere im Zusammenhang mit dynamischem Binden und offener Rekursion , zu unerwar-
+tetem Verhalten führen. Darüber hinaus führt die Mehrfachvererbung noch zu zahlreichen
+weiteren Problemen, die hier nich t weiter ausgeführt werden sollen.

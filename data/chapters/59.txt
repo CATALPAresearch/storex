@@ -1,0 +1,46 @@
+59 Das Problem der mangelnden Skalierbarkeit
+Zwar besteht jed es laufende objektorientierte Programm aus einer Menge von Objekten,
+jede Spezifikation eines solchen Programms besteht aber bei den heute gebräuchlichen klas-
+senbasierten objektorientierten Programmiersprachen aus einer Menge von Klassen. Die
+strukturbilde nde Einheit der objektorientierten Programmierung auf Programmebene ist da-
+her die Klasse. Größere Einheiten sind innerhalb der gängigsten objektorientierten Program-
+miersprachen nicht vorgesehen: JAVAs Packages und ähnliche Konstrukte sind allenfalls Na-
+mens räume und Einheiten der Auslieferung — der Status eines Sprachkonstrukts vergleich-
+bar mit Klasse oder Methode kommt ihnen kaum zu.
+Nun sind Klassen relativ feingranulare Gebilde. Zwar hindert einen nichts
+daran, große Klassen (mit Hunderten von Attributen und Methoden) zu
+schreiben, aber dies gilt nicht nur als schlechter Stil, es spiegelt auch die Anwendungsdo-
+mäne in aller Regel nicht angemessen wieder. Dort sind nämlich alle großen (komplexen)
+Dinge aus einfacheren zusammengesetzt , die, wenn sie selbst eine gewisse Komplexität
+haben, selbst wieder aus kleineren zusammengesetzt sind usw. Dasselbe gilt auch für die die Lösung in EIFFEL
+Granularität von
+Klassen
+Artefakte anderer Ingenieursdisziplinen: Baupläne sind in Komponenten und Unterkompo-
+nenten bzw. Systeme und Untersysteme strukturiert. Da wünscht man sich natürlich ana-
+loge Möglichkeiten in der objektorientierten Programmierung.
+Nun ist es zwar möglich, Objekte mit Hilfe der Teil -Ganzes -Beziehung re-
+kursiv aufzubaue n (und im oben diskutierten Rahmen auch zu kapseln,
+also Teile vollständig hinter Ganzen zu verbergen), aber für Klassen gilt
+das nicht. Zwar ist es hier möglich, über sog. innere Klassen (in JAVA) Klas-
+sen zu strukturieren, aber allein schon die Tatsache, wie relativ wenig davon Gebrauch ge-
+macht wird, zeigt, dass es sich dabei um keinen besonders nützlichen Mechanismus han-
+delt.93 Tatsächlich ist es nämlich — wie schon in Kapitel 58 angesprochen — so, dass Ob-
+jekte einer Klasse nicht immer Teile von Objekten anderer Klassen sind (und schon gar nicht
+immer der gleichen Kl assen), sondern vielmehr einzelne Exemplare (Instanzen) Teil sein und
+vielleicht sogar selbst Teile haben können. Man kann also die hierarchische Struktur objekt-
+orientierter Systeme genauso wenig auf Klassenebene vorschreiben, wie man den Aufbau
+einer Masc hine anhand lediglich der Typen ihrer Teile (Schrauben etc.) beschreiben könnte
+(ohne festzulegen, wo jede einzelne Instanz genau hingehörte). Was man vielmehr
+bräuchte, sind Komponenten als zusätzliches, von Klassen und Objekten verschiedenes
+Programmiersprachenkonstrukt.
+Leider ist es mit der Einführung von Komponenten in objektorientierte
+Programmiersprachen bislang noch nicht be sonders weit. Das merkt man
+schon daran, dass keine weit verbreitete objektorientierte Programmier-
+sprache das Schlüsselwort component verwendet, ja nicht einmal reser-
+viert. Statt dessen lässt man die Programmiererinnen alles in Form von Klassen definieren
+und Komponenten immer zur Laufzeit, per Aggregation von Objekten, zusammenbauen.
+So schwache Konzepte wie Pakete (JAVA) oder Assemblies (C#) können dabei k eineswegs
+einen Komponentenbegriff ersetzen, da sie lediglich Klassen gruppieren (und dabei auch
+noch ignorieren, dass dieselbe Klasse Instanzen für Komponenten verschiedenen Typs lie-
+fern kann). Es ist meine persönliche Vermutung, dass an dieser Front in d en nächsten Jahren
+noch der größte Fortschritt erzielt werden kann.

@@ -1,0 +1,34 @@
+14.2 Reinkarnation von Objekten
+Eine der vielleicht interessantesten Methoden SMALLTALK s ist die Methode become: :
+582 become: anObject klassenspezifische
+Kopiertiefe
+Kopiervorgänge mit
+self species
+583  "The receiver takes on the identity of anObject.
+584  All the objects that referenced the receiver
+585  will now point to anObject."
+Sie bewirkt, dass das Empfängerobjekt die Identität des Parameterobjekts annimmt bzw. sie
+mit ihm tauscht (je nach Dialekt). Das hat u. a. zur Folge, dass alle Variablen, die vor der
+Ausführung der Methode den Empfänger benannten (genauer: auf das Empfängerobjekt
+verwiesen) , danach den Parameter benennen (auf ihn verweisen) .
+Eine mögliche Anwendung ist das Wachsen von Objekten : Wenn einem
+Objekt der ihm zur Verfügung gestellte Speicherplatz nicht mehr ausreicht, muss es „um-
+ziehen“, d. h., seine Repräsentation im Speicher muss an eine andere Stelle kopiert werden.
+Da aber alle Referenzen auf das Objekt noch auf die alte Stelle verweisen, legt man am
+besten die neue Stelle als entsprechend groß dimensioniertes Objekt an (beispielsweise m it-
+tels new: ) und lässt dann das alte Objekt zum neuen werden. So könnte man beispielsweise
+eine Methode grow in der Klasse ArrayedCollection wie folgt definieren :
+586 grow
+587     "Answer the receiver expanded in
+588     size to accomodate more elements."
+589   | size new |
+590   size := self size.
+591   new := self species new: size + self growSize.
+592   new replaceFrom: 1 to: self size with: self.
+593   self become: new
+Eine andere mögliche Anwendung von become: ist die Durchführung
+eines sog. Rollback, wenn also, nachdem an einem Objekt (oder Objekt-
+geflecht) eine Menge von Änderungen durchgeführt worden sind, der ursprüngliche Zu-
+stand wiederhergestellt werden soll. Man legt dann einfach vor den Änderungen eine ( tiefe)
+Kopie des Objekts (der Wurzel des Objektgeflechts) an und ersetzt beim Rollback das ur-
+sprüngliche (und inzwischen geänderte) Objekt(geflecht) mittels become: durch die Kopie.

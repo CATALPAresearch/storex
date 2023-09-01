@@ -1,0 +1,19 @@
+52.3 Anweisungen
+Anweisungen sind in EIFFEL die Zuweisung, der Methodenaufruf , der Konstruktoraufruf (der
+Umgang mit Ko nstruktoren in EIFFEL unterscheidet sich erheblich von dem in SMALLTALK und
+auch von dem in JAVA/C#/C++; es wird hier jedoch nicht weiter darauf eingegangen) sowie
+die üblichen Kontrollstrukturen zur Verzweigung und der Wiederholung. EIFFEL hält sich da-
+bei strikt an die Regeln der strukturierten Programmierung — jede Kontrollstruktur hat also
+genau einen Eingang und einen Ausgang . Das ist in der Praxis natürlich richtig lästig, führt
+zu ärgerlich langen Programmen und dürfte mit ein Grund für die mangeln de Akzeptanz
+EIFFELs unter professionellen Programmiererinnen sein. Davon unbeschadet bietet EIFFEL ein
+Exception handling , das sich angenehm von dem in JAVA/C#/C++ unterscheidet (es erlaubt
+insbesondere ein Retry, also ein Wiederholen eines fehlgeschlagenen Versuchs, das in an-
+deren Sprachen durch Codiermuster realisiert werden muss); auf Details von EIFFELs Excep-
+tion handling wird hier jedoch nicht eingegangen, da es nur bedingt etwas mit Objektori-
+entierung zu tun hat.
+In EIFFEL ist, genau wie in PASCAL , das Semikolon Trennzeichen und nicht Teil einer Anwei-
+sung; darüber hinaus ka nn es am Ende einer Zeile auch weggelassen werden. Kleine EIFFEL-
+Programme wirken daher, und aufgrund des Verzichts auf Blöcke außerhalb von Kontroll-
+strukturen — es gibt weder {…} noch begin … end —, optisch aufgeräumt; große Pro-
+gramme wirken jedoch schnel l aufgebläht.

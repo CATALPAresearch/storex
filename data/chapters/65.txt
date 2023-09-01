@@ -1,0 +1,60 @@
+65 Deklarativer Stil
+Einhergehend mit kurzen Methoden und sprechenden Bezeichnern ist ein deklarativer Pro-
+grammierstil für die objektorientierte Programmierung typisch: Die Ausdrucksform bemüht
+sich mehr um das Was als um das Wie. Der Effizienzgedanke ist dabei sekundär — mögliche
+Optimierungen werden dem Compiler überlassen und ansonsten für später aufgehoben,
+wenn sich herausstellen sollte, dass die Abarbeitung einer deklarativ formulierten Lösung
+zu ineffizient ist.
+Da die objek torientierte Programmierung aber ihrem Wesen nach eher imperativ als dekla-
+rativ ist, wird sich das Deklarative im wesentlichen auf den Aufruf von Methoden beschrän-
+ken, die nach dem benannt sind, was sie tun. So ist es in der objektorientierten Program-
+mieru ng durchaus üblich, einzelne Schleifen, in denen beispielsweise ein Element gesucht
+wird, aus einem Methodenrumpf in eine eigene Methode zu verbannen und durch einen
+entsprechenden Methodenaufruf zu ersetzen. Das Programm liest sich also nur deklarativ
+und ist es nicht wirklich — es handelt sich ja auch nur um einen Stil.
+Ein Beispiel für einen deklarativen Programmierstil geben die folgenden Gegenüberstellun-
+gen (Atome und Literale sind hier Konzepte aus der Aussagenlogik):
+1637 auswerten
+1638   ^ atom auswerten = negiert not
+(deklarativ) in einer Klasse Literal mit Instanzvariable atom anstelle von
+1639 auswerten
+1640 negiert
+1641  ifFalse: [^ atom auswerten]
+1642  ifTrue: [^ atom auswerten not]
+(imperativ) oder
+1643 auswerten
+1644 ^ (literale collect: [ :l | l auswerten]) includes: true
+(deklarativ) in einer Klasse Klausel mit Instanzvariable literale anstelle von
+1645 auswerten
+1646 | answer |
+1647 answer := false.
+1648 literale do: [ :l | answer := answer or: l auswerten]
+1649 ^ answer
+(imperativ). Es dauert eine Weile, bis man sich das Imperative abgewöhnt hat, aber es lohnt
+sich.
+Für beide Alternativen der Methode auswerten in Klasse Klausel gibt es übrigens eine
+Shortcut -Variante (die so heißt, weil die Iteration ggf. vorzeitig abgebrochen wird):
+1650 auswerten
+1651 literale detect: [ :l | l auswerten] ifNone: [^ false].
+1652 ^ true
+bzw.
+1653 auswerten
+1654 literale do: [ :l | l auswerten ifTrue: [^ true]]
+1655 ^ false
+aber solange man sich nicht sicher ist, dass eine (vermeintliche) Abkürzung funktional äqui-
+valent ist (also dasselbe Ergebnis liefert), sollte man von solchen Optimi erungen die Finger
+lassen. (Es könnte beispielsweise sein, dass auswerten für Literale einen Seiteneffekt hat;
+in diesem Fall wären die optimierten Versionen nicht mehr äquivalent! )
+Ein anderes Zeichen eines deklarativen Programmierstils ist die Verwen-
+dung von Zusicherungen (Vor - und Nachbedingungen, Invarianten) an-
+stelle von Kommentaren. Anstatt also umständlich zu formulieren
+1656 pop
+1657  "der Empfänger darf nicht leer sein"
+1658 …
+schreibt man besser
+1659 pop
+1660 assert: [self empty not].
+1661 …
+wenn es die Sprache zu lässt. Damit schlägt man zwei Fliegen mit einer Klappe: Man kann
+die Zusicherungen zur Laufzeitverifikation einsetzen und man zeigt dem Aufrufer der Me-
+thode, wie er selbst prüfen ka nn, ob die Vorbedingung eingehalten ist.

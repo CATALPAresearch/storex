@@ -1,0 +1,18 @@
+11.2 Mechanismus der Vererbung von Superklassen auf Subklassen
+Es stellt sich die Frage, wie der Mechanismus der Vererbung genau umgesetzt wird. Eine
+Möglichkeit wäre z. B., die Definition einer Superklasse per Kopieren und Einfüg en auf ihre
+Subklassen zu übertragen. Das wäre zwar möglich und würde auch die Semantik der Ver-
+erbung korrekt wiedergeben, würde aber das (technische) Problem mit sich bringen, dass
+bei einer Änderung einer Superklasse auch alle ihre Subklassen mit geändert werden müss-
+ten.
+Eine weitere Möglichkeit wäre, für jede Instanz einer Subklasse automatisch je eine Instanz
+aller ihrer Superklassen mit zu erzeugen und diese Instanzen zu einer z u vereinen. Diese
+Umsetzung der Vererbung steht jedoch mit dem Konzept der Identität von Objekten in
+Konflikt: Ein Objekt einer Subklasse hätte auf einmal mehrere Identitäten, und zwar eine für
+sich selbst und eine pro Superklasse, von der sie erbt. Auch d as wäre problematisch .
+Stattdessen wird die Vererbung in SMALLTALK und vielen anderen objekt-
+orientierten Programmiersprachen als ein Aufteilen der Klassendefinitio-
+nen realisiert: Vereinbarungen, die in einer Kla sse getroffen wurden, gel-
+ten automatisch auch für alle Subklassen, es sei denn, diese spezifizieren etwas anderes.
+Dabei werden die Vereinbarungen nicht übertragen (wie per Kopieren und Einfügen), son-
+dern einfach nur mitbenutzt.

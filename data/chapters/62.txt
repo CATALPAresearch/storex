@@ -1,0 +1,18 @@
+62 Namenwahl
+Gegen die Verwendung langer, sprechender Bezeichner kann man einwenden, dass der
+Programmtext dadurch übermäßig lang wird. Anweisungen, die sonst in eine Zeil e gepasst
+hätten, müssen u. U. mehrfach umgebrochen werden, was die Lesbarkeit nicht gerade er-
+höht. Auch hört man hier und da, dass lange Namen für die Programmiererin zusätzliche
+Schreibarbeit bedeuten. Letzteres Argument kann man jedoch kaum gelten lassen, da die
+meisten Entwicklungsumgebungen über eine automatische Vervollständigungsfunktion ver-
+fügen, die einem das Tippen abnimmt (und damit auch Tippfehler aufdeckt od er vermeidet).
+Das erste Argument ist schon schwieriger zu entkräften: Natürlich sind prägnante Namen
+geschwätzigen vorzuziehen und auch in der Programmierung liegt die Würze in der Kürze
+— insbesondere sind lange Namen, die sich nur geringfügig unterschei den (und das auch
+noch wenig offensichtlich), zu vermeiden. Als Faustregel ist ein Name dann gut gewählt,
+wenn man alle Ausdrücke, in denen er vorkommt, schnell verstehen kann (und nicht nur,
+aufgrund falscher Assoziationen und Vermutungen, zu verstehen gl aubt). Eine sorgfältige
+Programmiererin wird sich also häufiger dabei beobachten, wie sie über eine n passenden
+Namen für ein Programmelement länger nachsinnt. Diese Zeit ist jedoch gut investiert. Namen als Ersatz für
+Kommentare
+IImmmmeerr sspprreecchheennddee NNaammeenn vveerrwweennddeenn..

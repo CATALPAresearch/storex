@@ -1,0 +1,14 @@
+13.2.3 Arrays
+Nicht zuletzt werden auch ganz banale Arrays häufig verwendet, insbesondere wegen der
+(bereits in Abschnitt 1.2 vorgestellten) Möglichkeit der einfachen literalen Definition . So
+kann man ohne viel Aufwand über die Elemente einer beliebigen, ad hoc spezifizierten Auf-
+zählung iterieren:
+541 #(1 'abc' true) collect : [ :element | … ]
+beispielsweise weist dem Laufparameter des Blocks, element , nacheinander die Elemente
+des literalen Arrays zu.
+Der wesentliche Nachteil von Arrays ist, dass ihre Größe beschränkt ist.
+Benötigt man eine geordn ete Collection, die beliebig wachsen kann, der
+also am Anfang, am Ende oder an einer beliebigen Position dazwischen Elemente hinzuge-
+fügt werden können, dann kann man auf Instanzen der Klasse OrderedCollection zu-
+rückgreifen. Diese eignen sich aufgrund des a ngebotenen Methodensatzes, ihres Protokolls ,
+speziell für die Implementierung von Stapeln ( Stacks ) und Puffern ( Queues ).

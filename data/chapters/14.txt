@@ -1,0 +1,9 @@
+14 Verhalten für alle Objekte
+In der Klasse Object ist das Protokoll definiert, das allen Obj ekten gemein ist, d. h., für das
+alle Klassen Methodendefinitionen haben, und zwar entweder eigene oder geerbte.
+Object gibt zu diesem Zweck Standardimplementierungen vor, die von den meisten Ob-
+jekten direkt übernommen werden können (und nur von den wenigs ten überschrieben wer-
+den müssen). Dazu zählen z. B. die bereits mehrfach erwähnten isNil und notNil (die
+nur von UndefinedObject überschrieben werden) sowie zahlreiche weitere Typtests
+(isInteger , isFloat usw.). Daneben gibt es auch noch eine ganze Reihe a nderer Me-
+thoden, die zu kennen es sich lohnt.

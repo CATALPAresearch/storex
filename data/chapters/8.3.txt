@@ -1,0 +1,29 @@
+8.3 Factory -Methoden
+Da in SMALLTALK Konstruktoren ganz normale Klassenmethoden sind, sind sie an keine be-
+sonderen Konventionen gebunden. Sie müssen also insbesondere nicht ein neues Objekt
+genau der Klasse, der sie angehören, zurückgeben. Dies nutzen die sog. Factory -Methoden
+aus.
+Eine Factory -Methode ist eine Methode, die wie ein Konstruktor eine
+neue Instanz liefert, die aber die Klasse der Instanz von anderen Faktore n
+als nur der Klasse, zu der die Methode gehört, abhängig macht. Zum Bei-
+spiel könnte eine Klasse Number eine (Klassen -)Methode fromString: vorsehen, die an-
+hand eines zu analysierenden Strings entweder eine Instanz der Klasse Integer oder eine Initialisierung von
+Klassenvariablen
+Erzeugung von
+Instanzen beliebiger
+Klassen
+der Klasse Float zurückgibt. Die Implementierung solcher Factory -Methoden ist in SMALL-
+TALK leicht möglich; sie unterscheiden sich formal auch überhaupt nicht von Konstruktoren
+— es sind einfach alles Klassenmethoden.34
+Folgende Klassenmethode der Klasse Number (für beli ebige Zahlen) ist eine Factory -Me-
+thode:
+Klasse  Number
+Klassenmethoden
+380 fromString: aString
+381  "Factory für Zahlen"
+382  (aString includes: $.)
+383  ifTrue: [^ aString asFloat]
+384  ifFalse: [^ aString asInteger]
+Wenn der Parameter aString einen Dezimalpunkt enthält, wird eine neue Fließkommazahl
+zurückgegeben (mittels der Methode asFloat , die, in der Klasse String implementiert,
+eine Instanz der Klasse Float zurückliefert), sonst eine Ganzzahl.

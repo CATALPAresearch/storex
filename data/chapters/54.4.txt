@@ -1,0 +1,131 @@
+54.4 Das Liskov -Substitutionsprinzip
+In Sac hen verhaltensbasiertes Subtyping am meisten Bekanntheit erlangt haben die Arbei-
+ten von Barbara Liskov und Jeannette Wing. Tatsächlich ist das sog. Liskov -Substitutions-
+prinzip (Liskov substitution principle , LSP) eines der am häufigsten zum Thema Subtyping
+angeführten, weswegen es auch hier behandelt werden soll. Ohne den Beitrag der beiden
+schmälern zu wollen, ist dies durch die Sache jedoch nicht gerechtfertigt — anderen, frühe-
+ren Arbeiten gebührt mindestens gleicher Ruhm und außerdem ist, wie Sie noch sehen
+werden, das LSP zu streng gefasst , weswegen es nützliche, für die Praxis relevante Fälle des
+verhaltensbasierten Subtyping ausschließt.
+Historischer Hintergrund des Liskov -Substitutionsprinzips war die Suche
+nach einer hinreichenden Bedingung für die Subtypenrelation zwischen zwei Typen. Wir
+hatten ja in Kapitel 26 (Kurseinheit 3) festgestellt, dass es bei den meisten Programmier-
+sprachen ausreicht, dass ein Typ B deklariert, Subtyp eines Typs A zu sein, damit Zuwei-
+sungskompatibilität von B nach A festgestellt werden kann.88 Dazu war es allerdings not-
+wendig, dass die Eigenschaften von A auf B übertragen (vererbt) und dass dabei die Regeln
+von den ko - bzw. kontravarianten Redefi nitionen von Parametertypen eingehalten werden.
+Dies wird im allgemeinen durch die Sprachdefinition und durch den Compiler sichergestellt.
+Das verhaltensbezogene Subtyping geht nun über die auf die Kontrolle
+der Parametertypen beschränkte, syntaktische Subtypenbeziehung hin-
+aus, indem es — nach Liskov und Wing — fordert, dass sich Objekte eines Subtyps und
+seines Supertyps gleich verhalten sollen, und zwar insoweit irgend jemand oder irgendein
+Programm dies feststellen kann. Diese Forderung kulminiert in der Regel
+Subtype Requirement: Let (x) be a property provable about objects x of type
+T. Then  (y) should be true for objects y of type S where S is a subtype of T.
+Eine deutsche Paraphrase dessen fanden Sie bereits in Abschnitt 26.1.
+Diese Definition ist gleich in mehrfacher Hinsicht problematisch.
+1. Da sie die Subtypenbeziehung definiert, ist da von auszugehen, dass x exakt vom
+Typ T ist und y exakt vom Typ S. Es sind also insbesondere x und y keine Objekte
+von Subtypen von T bzw. S. Damit ist die Definition nicht auf abstrakte Typen und
+Interfaces ausdehnbar.
+2. Damit zusammenhängend ist die Aussage losgelöst von jedem konkreten Gebrauch
+der Objekte. Wie in Abschnitt 54.5 noch genauer dargestellt werden wird, kann
+88 Man beachte den Zirkel in der Definition: Für das Subtyping reicht aus, dass Zuweisungskompati-
+bilität besteht; der Compiler leitet die Zuweisungskompatibilität aus dem Bestehen einer Subtypen-
+beziehung (z. B. extends oder implements in JAVA) ab.
+Motivation
+verhaltensbezogenes
+Subtyping
+kritische Betrachtung
+eine Substituierbarkeit in einem gegebenen Kontext sehr wohl bestehen, auch wenn
+die Typen nach obiger Definition nicht substituierbar sind. Man würde die Anforde-
+rungen in einem solchen Fall in einem Interfacetypen festhalten, der nur die im Kon-
+text benötigten Eigenschaften spezifiziert. Dieser Typ hat dann aber (gemäß Punkt
+1) keine Objekte x.
+3. Die Aussage ist implizit allquantifiziert über , d. h., sie soll für alle möglichen Eigen-
+schaften (Prädikate)  gelten. Das bedeutet wiederum, dass alle Eigenschaften von
+T auch für S gelten — die Objekte von S müssen sich also, sieht man einmal von
+zusätz lichem Verhalten ab, exakt gleich verhalten. Das aber stellt die Idee des Sub-
+typing weitgehend infrage: Wenn ein Objekt sich von dem, das es ersetzen soll ,
+überhaupt nicht unterscheidet, wozu brauche ich es denn dann überhaupt?
+Zu Punkt 3 ist abschwächend zu sagen, dass hier vermutlich Verhalten des Programms in-
+sofern unverändert sein soll, als es immer noch seinen Zweck erfüllt, d. h., seiner Spezifika-
+tion genügt. Das ist jed och etwas anderes, als in dem Prinzip ausgedrückt wird.
+Eine Subtypenrelation zwischen S und T, die das obige Subtype require-
+ment erfüllt, definieren Liskov und Wing zunächst wie folgt:
+1. Überschreibende Methoden in S erhalten das Verhalten der überschriebenen Me-
+thoden in T. Dazu gehört:
+a. Kontravarianz der Argumenttypen der überschreibenden Methode
+b. Kovarianz des Ergebnistyps der überschreibenden Methode
+c. Kovarianz der Ausnahmen der überschreibenden Methode (die Typen der ge-
+worfenen Exceptions sind entweder Subtypen von den Typen der Exceptions der
+überschriebenen Methode oder die Exceptions werden gar nicht geworfen; kei-
+nesfalls kommen Exceptions hinzu)
+d. Vorbedingungen der überschriebenen Methode implizieren Vorbedingungen
+der überschreibenden: 𝑝𝑟𝑒𝑚𝑇(𝑠𝑒𝑙𝑓:S)⇒𝑝𝑟𝑒𝑚S(𝑠𝑒𝑙𝑓:S)
+e. Nachbedingungen der überschriebenen Methode werden von Nachbedingun-
+gen der überschreibenden Methode impliziert, also gilt hier: 𝑝𝑜𝑠𝑡𝑚𝑆(𝑠𝑒𝑙𝑓:S)⇒
+𝑝𝑜𝑠𝑡𝑚𝑇(𝑠𝑒𝑙𝑓:S)
+2. Die Invarianten von S implizieren die von T.
+Man beachte, dass die (auch semantisch genannten) Regeln 1.d und 1.e die (auch syntak-
+tisch genannten) Regeln 1.a – 1.c implizieren: In typlosen Sprachen wie SMALLTALK beispiels-
+weise würde man die entsprechenden Anforderungen an die Parameterobjekte mittels Vor -
+und Nachbedingungen formulieren und die Menge der geworfenen Exceptions wäre Teil
+der Nachbedingungen.
+Man kann sich die Wirksamkeit der Bedingungen wie folgt erklären: Subtypenrelation
+nach Liskov und
+Wing
+Veranschaulichung
+Aus den obigen Regeln der Subtyp relation und aus der Korrektheit der überschreibenden
+Methode in S folgt die gewünschte Substituierbarkeit.
+Es bleibt jedoch noch das eingangs beschriebene, mit dem Aliasing und
+der damit verbundenen Möglichkeit des zu sätzlichen Methodenaufrufs assoziierte Problem
+bestehen. Dafür identifizieren Liskov und Wing zwei Lösungen:
+Die erste sagt aus, dass das Verhalten eines Subtyps immer dann mit dem
+des Supertyps konform ist, wenn alles zusätzliche Verhalten des Subtyps durch Verhalten
+des Supertyps simuliert werden kann, wenn es also für jede zusätzliche Methode eine Kom-
+bination von Methodenaufrufen des Supertyps (bzw. deren überschriebenen, verhaltens-
+konformen Varianten) gibt, die den Effekt der zusätzlichen Methode hat und die der Klient
+des Objekts auch selbst (oder ein anderer Klient, der aber das Objekt durch denselben Typ
+sieht) durchführen könn te. Diese Bedingung ist jedoch ziemlich hart, da sie im Grunde aus-
+sagt, dass ein Subtyp lediglich Makros hinzufügen darf. Auf der anderen Seite ist ihre Ein-
+haltung, wenn auch nicht automatisch, so jedoch zumindest anschaulich relativ einfach
+nachzuweisen ( was für die Praxis eminent wichtig ist).
+Die zweite Lösung ist denn auch weniger einschränkend, dafür aber in
+der Praxis kaum nachzuweisen: Sie verlangt von jedem Typ zusätzlich zur
+Verhaltensspezifikation der Methoden (übe r die üblichen Vor - und Nachbedingungen) die
+Einhaltung von Verlaufseigenschaften , die die möglichen Zustandswechsel der Objekte des
+Typs betreffen und die wir deswegen Zustandswechselinvaria nten nennen. Dazu wäre
+eine Art endlicher Automatenspezifikation, also eine Spezifikation der Menge der möglichen
+Zustände und Zustandsübergänge, notwendig. Das Problem dabei ist jedoch, dass die Zu-
+stände eines Objekt s nicht abstrakt (z. B. in Form einer Aufzählung von Zustandsnamen)
+existieren, sondern sich in der Belegung von Instanzvariablen manifestieren, so dass sich der
+Zustandsraum kombinatorisch (abzüglich der funktionalen Abhängigkeiten der Attribute)
+ergibt. Um dem aus dem Weg zu gehen, werden bei den historischen Zustandswechseln
+lediglich zwei beliebige, zeitlich nicht notwendig unmittelbar aufeinander folgende Zu-
+stände betrachtet und für diese eine Bedingung formuliert, die eingehalten werden muss .
+Man beac hte, dass die Einhaltung der ersten Bedingung die zweite impliziert: Wenn alle
+Methoden des Supertyps die historischen Invarianten einhalten und wenn eine Methode das Aliasing -Problem
+Verhaltenssimulation
+Zustands wechsel in-
+varianten Korrektheit
+Substituierbarkeit
+Kontravarianz
+Kovarianz
+𝑝𝑜𝑠𝑡𝑚S(𝑠𝑒𝑙𝑓:S)⇒𝑝𝑜𝑠𝑡𝑚T(𝑠𝑒𝑙𝑓:S)
+𝑝𝑟𝑒𝑚S(𝑠𝑒𝑙𝑓:S)⇒𝑝𝑜𝑠𝑡𝑚S(𝑠𝑒𝑙𝑓:S) 𝑝𝑟𝑒𝑚𝑇(𝑠𝑒𝑙𝑓:S)⇒𝑝𝑟𝑒𝑚S(𝑠𝑒𝑙𝑓:S) 𝑝𝑟𝑒𝑚𝑇(𝑠𝑒𝑙𝑓:S)⇒𝑝𝑜𝑠𝑡𝑚𝑇(𝑠𝑒𝑙𝑓:S)
+des Subtyps sich als Kombination von Methoden des Supertyps darstellen lässt, dann hält
+auch diese die historischen Invarianten ein.
+So gut das Liskov -Substitutionsprinzip auch begründet sein mag, es er-
+weist sich für die Praxis als zu streng. So könnte man beispielsweise in einem Typ T eine
+Methode echo: i <Integer> ^Integer definieren, die den Eingabeparameter gleich
+wieder ausgibt (die sog. Identität oder Identitätsfunktion) . In einem Subtyp S könnte man
+dann die Methode so überschreiben, dass sie beliebige Objekte entgegennimmt und gleich
+wieder zurückgibt: echo: i <Object> ^ Object . Die Methode ist damit zwar in ihrem
+Eingabeparameter kontravariant, aber in ihrem Ausgabeparameter nicht kovariant, und er-
+füllt somit die Bedingung des LSP nicht. Gleichwohl kann echo: auf einem Objekt vom Typ
+S überall da aufgerufen werden, wo es auch auf einem Objekt von Typ T aufgerufen werden
+kann, denn es kommt so niemals dazu, dass die Regel der Kovarianz des Ausgabeparame-
+ters verletzt wird. Wir haben es beim LSP also mit einer Typprüfung zu tun, die gültige
+Programme zurückweist. Dafür, dass die Einhaltung des LSP für den allgemeinen Fall gar
+nicht automatisch überprüft werden kann, ein ziemlich hoher Preis.

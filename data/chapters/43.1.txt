@@ -1,0 +1,90 @@
+43.1 Einfache parametrische Typdefinitionen
+So, wie auch unparametrisierte (nicht generische) Typen in JAVA nicht aus eigenständigen
+Typdefinitionen hervorgehen, sondern mit der Definition einer Klasse oder eines Interfaces
+einhergehen, so werden auch parametrische (generische) Typen nicht separat definiert, son-
+dern sind das Produkt parametrischer Klassen - bzw. Interfacedefinitionen. Da aber die for-
+malen Typparameter einer Klassen - bzw. Interfacedefinition durch verschiedene Typen er-
+setzt werden können, wird die alte 1:1 -Beziehung zwischen Klassen und Typen aufgebro-
+chen: Jede Klasse, deren Definition einen Typparameter enthält, steht tats ächlich für eine
+ganze Menge von Typen, nämlich einen pro möglicher Belegung des Typparameters. Insbe-
+sondere führt die „Instanziierung“68 einer parametrisch definierten Klasse mit einem tat-
+sächlich en Typparameter nur zu einem neuen Typ, aber nicht zu einer neuen Klasse. Des-
+wegen sind auch die Klassenvariablen und -methoden einer parametrischen Klasse für alle
+Instanzen ihrer generierten Typen gleich; Instanzvariablen und -methoden können dagegen
+den Typparameter als Typ verwenden und sich insofern unterschei den.
+Die klassische Anwendung generischer Typen findet man bei Collections:
+Genauso, wie man in JAVA Arrays über einen bestimmten Elementtyp bil-
+den kann, will man auch andere Arten von Collections über Elementtypen haben. Zu dies em
+Zweck verfügt JAVA ähnlich wie SMALLTALK über eine ganze Reihe von Collection -Klassen
+wie z. B. Sets (für Mengen) oder Maps (die JAVA-Variante von SMALLTALK s Dictionaries). Nun
+sind diese Collections (anders als Arrays) nicht Bestandteil der Sprachdefin ition JAVAs, son-
+dern Elemente einer Bibliothek, also in der Sprache selbst programmierte, für die allgemeine
+Verwendung gedachte Klassen. Da es vor JAVA 5 keine Möglichkeit gab, bei der Deklaration
+einer Variable mit einer Collection als Typ anzugeben, wel chen Typ die Elemente der Coll-
+ection haben sollen, wurde implizit davon ausgegangen, dass diese vom Typ Object sind.
+So hatte z. B. die Klasse ArrayList ein (privates) Feld elementData vom Typ Object[] ,
+in dem die Elemente gespeichert wurden. Da Object Supertyp aller Referenztypen in JAVA
+ist, konnten auch Instanzen aller Referenztypen in elementData und somit in Instanzen
+von ArrayList gespeichert werden.
+Dank der generischen Typen ist es aber möglich, bei der Deklaration einer Variable vom Typ
+einer C ollection — in Analogie zur Deklaration einer Variable vom Typ eines Arrays über
+einen Elementtyp — den Elementtyp mit anzugeben. Um beispielsweise eine Liste von Inte-
+gern zu deklarieren und zu initialisieren , muss man lediglich
+1051 List<Integer> liste = new ArrayList<Integer>();
+schreiben.69 Die Klassendefinition von ArrayList ist dazu wie folgt parametrisiert:
+1052 public class ArrayList<E> … {
+1053 private E[] elementData;
+1054 public E get(int index) {
+1055  …
+1056  return elementData[index];
+1057 }
+1058 public void add(E element) {
+68 nicht zu verwechseln mit der Instanziierung einer Klasse — insbesondere wird hier auch kein Typ
+aus einem Metatyp erzeugt
+69 Man beachte, dass hier als Typ der Variable ein Interface, nämlich List , gewählt wurde und nicht
+die Klasse ArrayList , von der ihr In halt eine Instanz ist. Dies hat den Vorteil, dass die Instanz auch
+gegen solche anderer Klassen ausgetauscht werden kann, solange diese nur ebenfalls den Typ List
+implementieren. Sie sollten sich zur Angewohnheit machen, immer den allgemeinsten verfügbaren
+Typ zu verwenden, solange Sie nicht eine speziellere Filterfunktion beabsichtigen. Anwendungsfall
+Collections
+1059  …
+1060 }
+1061 …
+1062 }
+Dabei ist das in spitzen Klammern stehende E der (formale) Typparameter der Definition von
+ArrayList . Die bereits in Abschnitt 29.1 erwähnte Konvention, einzelne Großbuchstaben
+für Typparameter zu wählen, wurde auch in JAVA übernommen, ganz einfach, um Typpara-
+meter von Klassen - und Variablennamen im Programmtext besser un terscheiden zu können.
+So steht E üblicherweise für den Elementtyp von Containern, wie es die Collections sind.
+Durch die Sprachdefinition erzwungen wird das jedoch nicht.
+Die Zuweisung von Zeile 1051 ist übrigens nur gültig, wenn der (para-
+metrisierte) Typ ArrayList<Integer> Subtyp von List<Integer>
+ist. Dies wird, in JAVA-Syntax, durch die Deklaration
+1063 class ArrayList<E> implements List<E>
+(nominales Subtyping) sichergestellt. Man beachte, dass die Variable E hier eine logische
+Bedingung ausdrückt, nämlich die, dass ein bei der Verwendung von ArrayList<E> an-
+gegebener tatsächlich er Typparameter auch in die Definition von List<E> eingesetzt wer-
+den muss .
+Der Compiler weiß nun aufgrund der Ersetzung des formalen Parameters
+E mit dem tatsächlich en Parameter Integer in Zeile 1051 , dass die Ele-
+mente der Variable liste alle vom Typ Integer sind und dass eine Zuweisung der Form
+1064 Integer i = liste.get(1);
+typkorrekt ist. Um das zu überprüfen, muss er nämlich nur den Wert d es Typparameters in
+der Deklaration von liste , Integer , in die Variable E der Implementierung von get ein-
+setzen. Er kann dann feststellen, dass der Rückgabetyp des Ausdrucks mit der Variable zu-
+weisungskompatibel ist. Man beachte, dass ohne Typparameter in Zeile 1064 eine Typum-
+wandlung von Object auf Integer (Down cast ) notwendig wäre, die aber zu einem Lauf-
+zeitfehler führen kann (s. Abschnitt 44.1). Die Einführung von Generics erhöht hingegen die
+Typsicherheit statisch, also zur Übersetzungszeit. Ein fundamentaler Gewinn.
+Nun wissen Sie ja bereits aus der Schilderung aus Kapitel 41, dass List<Integer> nicht
+unbedingt ein Subtyp von List<Object> sein sollte, selbst wenn Integer ein Subtyp von
+Object ist. Und so führt in JAVA bei generischen Typen anders als bei Arrays sc hon die
+Zuweisung
+1065 List<Object> objektliste = liste; Subtyping
+parametrischer
+Typen
+erhöhte
+Typsicherheit
+(bei Beibehaltung obiger Deklaration von liste ) zu einem statischen Typfehler, der schon
+während der Übersetzung gemeldet wird Man hat den oben diskutierten Kompromiss of-
+fenbar nicht weiter fortführen wol len.

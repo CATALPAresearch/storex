@@ -1,0 +1,24 @@
+36 Klassen
+JAVA ist (wie SMALLTALK und alle in der nächsten Kurseinheit behandelten Sprachen) klassen -
+und nicht prototypenbasiert; man programmiert also, i ndem man Klassendefinitionen an-
+gibt. Wie bereits in Kapitel 34 erwähnt gibt es in JAVA keine Anweisungen außerhalb von
+Klassen (sieht man einmal von Import -Anweis ungen ab) .
+Wie dort ebenfalls bereits erwähnt gibt es in JAVA einen relativ engen
+Zusammenhang zwischen Klassen und Dateien: Jede Datei enthält die Definition einer
+Klasse, die den Dateinamen (ohne Erweiterung) als Namen trägt. Eine Dat ei (oder Compila-
+tion unit ) kann auch mehrere Klassen enthalten, die dann natürlich anders heißen — unter
+ihnen darf jedoch keine als public deklariert werden. Schon weil die meisten integrierten
+Entwicklungsumgebungen für JAVA heute auf Dateibasis arbeiten und Dateien die Basis von
+vielen Versionsverwaltungssystemen sind , ist es jedoch wenig gebräuchlich, mehrere Klas-
+sen in einer Datei zu def inieren (es sei denn, es handelt sich um innere Klassen ; s. u.).
+Nun hatten wir ja bereits in Kurseinheit 3, Kapitel 28, gesagt, dass Klassen
+und Typen zunächst zwei verschiedene Konzepte sind, dass aber eine Typdefinition aus einer
+Klassendefinition abgeleitet werden kann. Genau so verhält es sich in JAVA: Jede Klasse
+definiert ihren eigenen Typ. Genauer: Jede Klasse spezifiziert einen Typ, der genauso heißt
+wie die Klasse und der als Eigenschaften die Felddefinitionen und die Methodendeklaratio-
+nen der Klasse enthält. Eine Deklaration
+985 <Klassenname> <variablenname>
+ist also eine gültige Variablendeklaration in JAVA. Man beachte, dass, anders als in STRONG-
+TALK, in JAVA der Typ bei Deklarationen ohne sp itze Klammern vorangestellt wird. Es folgt
+dies der Tradition von C und C++. Die spitzen Klammern in Zeile 985 kennzeichnen hier
+lediglich wieder metasyntaktische Variablen .

@@ -1,0 +1,8 @@
+10 Vererbung und abstrakte Klassen
+Generalisierung und Spezialisierung wie oben dargestellt sind eher theoretisch motivierte
+Konzepte. In der Programmierung geht man jedoch häufig, wie im obigen Beispiel von Pin-
+guinen schon anged eutet, an praktischen Gesichtspunkten orientiert vor. So haben denn
+auch nicht Generalisierung und Spezialisierung die Entwicklung objektorientierter Program-
+miersprachen geprägt, sondern abstrakte Klassen und Vererbung . Diese pragmatische Ori-
+entierung ist jedoch nicht ohne Probleme und so werden uns die Überlegungen zu Genera-
+lisierung und Spezialisierung spätestens in Kurseinheit 3 wieder begegnen.

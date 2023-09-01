@@ -1,0 +1,24 @@
+70 Fazit
+Die Quintessenz der Bedeutung von Stil lässt sich kaum besser wiedergeben als durch ei n
+weiteres Zitat von BERTRAND MEYER:
+Good software is good in the large and in the small, in its highlevel architec-
+ture and in its low -level details. True, quality in the details does not guarantee
+quality of the whole; but sloppiness in the details usually indicates that some-
+thing more serio us is wrong too. … A serious engineering process requires
+doing everything right: the grandiose and the mundane.
+So you should not neglect the relevance of such seemingly humble details as
+text layout and choice of names. True, it may seem surprising to mo ve on …
+from … formal specifications … to whether a semicolon should be preceded
+by a space …. The explanation is simply that both issues deserve our care, in
+the same way that when you write quality O -O software both the design and
+the realization will re quire your attention.
+Das Kapitel „A sense of style“ aus BERTRAND MEYERs Buch empfehle ich jeder, die glaubt,
+Stil sei eine persö nliche Angelegenheit und ansonsten nicht so wichtig. Über MEYERs kon-
+krete Vorgaben mag man streiten, über die prinzipielle Würdigung der Wichtigkeit von Stil
+hingegen nicht.
+Wer JAVA programmiert, die mag sich die JAVA Coding Standards des Software Engineering
+Institutes der Carnegie -Mellon -Universität zu Gemüte führen. Man kann sich wundern, was
+an der Verwendung einer Programmiersprache alles regul ierungsfähig ist (und fragen, wa-
+rum man die eine oder andere Regel nicht in die Definition der Sprache gepackt hat). Le-
+senswert ist auch der Eintrag zum Thema „Programmierstil “ in der deutsch sprachig en Wi-
+kipedia.

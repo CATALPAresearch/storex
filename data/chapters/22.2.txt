@@ -1,0 +1,41 @@
+22.2 Namensäquivalenz
+Nun können Typen neben ihrer formalen Funktion, Fehler zu vermeiden,
+noch eine inhaltliche, nämlich eine Filterfunktion ausfüllen. Diese setzt
+allerdings voraus, dass dem Typ auch eine Bedeutung, die über seine
+bloße Struktur (seine Syntax) hinausgeht, beigemessen werden kann. Dies geschieht heute
+vor allem durch die Benennung des Typs, die dann, gepaart mit Namensäquivalenz als Be-
+dingung der Zuweisungskompatibilität, verlangt, dass einer Variable nur Werte gleicher Be-
+deutung zugewiesen werden können. Eine Zuweisung einer Wohnung an ein Büro oder
+umgekehrt ist dann, trotz im obigen Beispiel strukturell gleich definierter Typen und deswe-
+gen ausbleibenden Typfehlern, aufgrund fehlender Namensgleichheit ausgeschlossen, was
+auch sinnvoll ist, da es sich dabei mit einer gewissen Wahrschein lichkeit um einen logischen
+Programmierfehler handelt, der auf mechanische Art sonst kaum zu entdecken wäre. Die
+Filterfunktion der geforderten Namensäquivalenz drückt also eher eine Absicht der Pro-
+grammiererin aus denn eine technische Notwendigkeit. Die Bedeutung gerade dieser Funk-
+tion sollte man jedoch nicht unterschätzen — nur wenige Möglichkeiten, Fehler in einem
+Programm aufzudecken bzw. zu vermeiden, sind so einfach zu h aben.
+Ein der Typprüfung per Namensäquivalenz ähnliches Prinzip kommt übri-
+gens in der Physik zur Anwendung: Bei ihren Berechnungen führen Physikerinnen stets eine
+Art Typprüfung durch, indem sie nicht nur mit den Beträgen der physikalisc hen Größen,
+sondern auch mit deren Einheiten rechnen. Wenn Physikerinnen also beispielsweise eine
+Geschwindigkeit berechnen und bei der Behandlung der Einheiten etwas anderes als m/s
+herauskommt, dann steckt im Rechenvorgang ein Fehler — das Ergebnis hat n icht den rich-
+tigen Typ (die richtige Einheit) und ist deswegen mit hoher Wahrscheinlichkeit falsch.
+Namensäquivalenz hat aber auch einen entscheidenden Nachteil: Sie
+setzt voraus, dass getrennt voneinander entwickelte Programm e zumin-
+dest an ihren Schnittstellen (also da, wo Objekte ausgetauscht werden) dieselben Typen
+verwenden. Dies kann für die Interoperabilität von getrennt voneinander entwickelten Pro-
+grammen (wie z. B. Web services) ein echtes Hindernis sein.
+Strukturelle Typäquivalenz bietet mehr Flexibilität als nominale: Sie er-
+laubt Äquivalenz von Typen, bei deren Definition man vom jeweils ande-
+ren nichts wusste . Die erhöhte Flexibilität hat jedoch ihren Preis: Zufällige strukturelle Über-
+einstimmun gen können zu einer Äquivalenz führen, die nicht der intendierten Semantik
+entspricht. Type branding führt in solchen Fällen eine Namensäquivalenz durch die Hin tertür
+ein, mit dem Vorteil, dass diese optional ist. inhaltliche
+Filterfunktion der
+Typprüfung
+Rechnen mit Größen
+Nachteil der
+Namensäquivalenz
+strukturell vs .
+nominal

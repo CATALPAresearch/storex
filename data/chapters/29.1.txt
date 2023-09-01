@@ -1,0 +1,63 @@
+29.1 Einfacher parametrischer Polymorphismus
+Ein einfaches Beispiel für eine generische Typdefinition in STRONGTALK ist das folgende:
+Typ A
+Typvariablen  T
+Protokoll
+921 x ^ <T>
+922 x: einT <T> ^ <Self>
+T ist dabei eine Typvariable. Beim Vorkommen von T im Abschnitt „Typvariablen“ handelt
+es sich um ihre Deklaration (Vereinbarung); beim Vorkommen im Abschnitt „Protokoll“ um
+ihre Verwendung.
+Das für den Tatbestand der Parametrisierung wichtige an dieser Typdefinition ist, dass x:
+anstelle des Parameter - und x anstelle des Rückgabetyps T nennt, wobei T eben kein Typ,
+sondern eine Typvariable ist. Für Typvariablen verwendet man traditionell einzelne Groß-
+buchstaben; dies hat den nützlichen Nebeneffekt, dass man durch eine Typvariable keinen
+tatsächlichen Typen verdeckt, wie es sonst versehentlich passieren könnte: Man könnte die
+Typvariable nämlich auch beispielsweise „Integer“ nennen, aber sie wäre deswegen immer
+54 Entsprechend gehören, einen Zusammenhang von Klassen und Typen wie in Abschnitt 28 be-
+schrieben vorausgesetzt, zu einer parametrischen Klassendefinition beliebig viele Typen. formale und
+tatsächlich e
+Typparameter
+noch eine Variable und der Typ Integer wäre innerhalb der Typdefinition nicht mehr sicht-
+bar.
+Wenn man nun den Typ A verwenden, also z. B. eine temporäre Variable
+vom Typ A deklarieren möchte, muss man sich festlegen, welchen Wert
+die Typvariable T in der Typdefinition un d damit welchen Typ die Rückgabe von x und die
+Eingabe von x: haben sollen. Soll T beispielsweise den Wert Integer bekommen, dann
+schreibt man
+923 | a <A[Integer]> |
+und instanziiert dabei den parametrischen Typen. Integer ist dabei der tatsächlich e
+Typparameter (eine Typkonstante, wenn man so will), der in STRONGTALK in eckige Klammern
+gesetzt wird. Er wird für diese Verw endung des parametrischen Typs (und nur für diese) in
+den formalen Typparameter (die Typvariable) eingesetzt. Der Typ von a, A[Integer] , wird
+damit zu
+Typ A[Integer]
+Protokoll
+924 x ^ <Integer>
+925 x: einInteger <Integer> ^ <Self>
+definiert, wobei hier A[Integer] der (generische) Name des Typen ist. Diese Typdefinition
+wird jedoch nirgends hingeschrieben — sie ergibt sich immer neu aus der Instanziierung der
+parametrischen Typdefinition mit einem konkreten Typen. Es sind dann bei obiger Deklara-
+tion von a die Methodenaufrufe
+926 a x: 12
+927 a x + a x
+zulässig,
+928 a x: 'mal sehen, was passiert'
+929 a x, a x
+hingegen nicht. Für letztere wäre eine Typdeklaration
+930 | a <A[String]> |
+notwendig gewesen, die natürlich auch möglich ist.
+Ein und dieselbe parametrische Typdefinition kann in einem Programm
+beliebig oft verwendet werden, selbst in derselben Deklaration:
+931 | a <A[Integer]> b <A[String]> c <A[Boolean]> | beispielhafte
+Instanziierung
+mangelnde
+Zuweisungs -
+kompatibilität
+verschie dener
+Typinstanzen
+gibt a, b und c jeweils verschiedene Typen, die jedoch a lle Instanzen der parametrischen
+Definition von A sind. Dennoch sind a, b und c wechselseitig nicht zuweisungskompatibel;
+sie haben tatsächlich verschiedene Typen. a ist jedoch mit d wie in
+932 | d <A[Integer]> |
+deklariert zuweisungskompatibel und umgekehrt, da beide denselben Typen haben.

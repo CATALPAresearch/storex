@@ -1,0 +1,189 @@
+56 Das Problem der schlechten Tracebarkeit
+Spätestens mit der Verfügba rkeit sog. Hochsprachen und den gleichzeitig immer größer
+werdenden Programmen kam die Frage auf, was „gute Programmierung“ ausmacht. Eines
+der Hauptprobleme schlechter Programmierung war schnell identifiziert: die große Diskre-
+panz zwischen statischem, lin earem Programmtext und dynamischem, stark verzweigen-
+dem und sich wiederholendem Programmablauf. Eine gute Programmiererin hatte ihre Pro-
+gramme so zu schreiben, dass Programmtext und Programmablauf einander möglichst ähn-
+lich waren, dass genauer die (statische) Struktur des Programms möglichst viele Rück-
+schlüsse über seinen (dynamischen) Ablauf erlaubte. Man wollte also von den Programmie-
+rerinnen Klartext.
+Ebenso schnell wie das Problem wurde sein e Hauptverursacher in ausge-
+macht: die Goto -Anweisung. Sie e rlaubt Sprünge von beliebigen Stellen
+eines Programms an beliebige andere Stellen des Programms und durchbricht dabei auf
+brutale Art und Weise das ungemein nützliche Lokalitätsprinzip von Programmen: Dinge,
+die zusammengehören, stehen im Programmtext beieinander. So, und nur so, ist bei Inspek-
+tion des Programmtextes unmittelbar klar, wie man an eine Stelle im Programm gelangt ist
+und, mindestens ebenso wichtig, wie eine Va riable ihren Wert bekommen hat.
+Zur Veranschaulichung soll die nachfolgende Abbildung dienen, die einen
+Programmtext als eine Folge von Anweisungen stilisiert. Anweisungen
+sind durch Kreise dargestellt, die (textuelle) Folge der Anweisungen im Programmtext durch
+die kleinen Pfeile. Ohne besondere, den Kontroll fluss beeinflussende Anweisungen ent-
+spricht die (dynamische) Reihenfolge der Ausführung der (statischen) Folge der Anweisun-
+gen im Programmtext. Bei Betrachtung des stärker
+Goto -Anweisung vs.
+Lokalitätsprinzip
+Anweisungsfolgen
+ohne Goto
+umrandeten, mittleren Kreises (der entsprechenden Anweisung), z. B. während einer De-
+bug-Sitzung, ist daher aus dem unmittelbaren Kontext heraus (der Ellipse; Lokalitätsprinzip!)
+klar, welche Anweisung davor ausgeführt wurde und welche als nächstes drankommt. Alles
+ist in bester Ordnung.
+Handelt es sich nun bei einer der Anweisungen um ein Goto, dann ist die
+Sachlage längst nicht mehr so klar. Man hat vielmehr die folgenden Fälle zu unterscheiden:
+1. Die betrachtete Anweisung ist selbst ein Goto:
+GoTo
+In diesem Fall ist zwar klar, woher der Programm fluss kommt, und auch, wohin er
+geht, letzteres aber nur mit einer gewissen Einschränkung — das Ziel ist nicht der
+Nachbar im Programmtext, sondern befindet sich außerhalb des gewählten Kontex-
+tes. Nun kann man den Kontext natürlich so wählen, dass er das Ziel enthält, und
+kurze Sprünge sind vielleicht auch so innerhalb des betrachteten Kontextes; allge-
+mein gilt aber, dass jede gewählte Lokalität durch einen Sprung verletzt werden
+kann. Immerhin lässt sich aber das Ziel des Sprungs aus dem Kontext erkennen und
+der Kontext entsprechend wechseln.
+2. Die betrachtete Anweisung ist Ziel eines Gotos:
+GoTo
+Hier ist das Sachverhalt schon schwieriger. Der Programm fluss scheint bei Betrach-
+tung des Kontextes genau wie im ersten Beispiel zu verlaufen. Wenn man den Kon-
+text allerdings vergrößert, lernt man, dass die dynamische Vorgänger in der betrach-
+teten Anweisung auch ein anderer sein kann. Der Kontext selbst gibt aber keinen
+Hinweis darauf; zwar kann das Vorhandensein ein es Sprunglabels einen Hinweis
+darauf geben, dass die so markierte Anweisung Ziel eines Gotos sein kann, sie muss
+es aber nicht; in Sprachen wie BASIC beispielsweise (damals noch weit verbreitet), in
+denen Zeilennummern gültige Sprungziele sind, muss jede A nweisung als mit einem
+Label versehen betrachtet werden und kann somit Sprungziel von irgendwoher sein. Probleme des Goto
+Außerdem kann eine Anweisung von verschiedenen Gotos angesprungen werden,
+so dass unklar bleibt, welches die (zeitliche) Vorgängeranweisung war.89
+3. Die be trachtete Anweisung ist unmittelbare Nachfolgerin eines Gotos:
+GoTo
+Hier ist zwar aus dem Kontext ersichtlich, dass die statische Vorgänger in nicht die
+dynamische sein kann, ansonsten kann man aber nur mutmaßen, dass es sich viel-
+leicht um toten Code handeln k önnte (also um Code, der niemals ausgeführt wird).
+Es kann nämlich die Anweisung Sprungziel von Gotos außerhalb des Kontexts (wie
+in allen anderen Fällen auch) sein.
+Fazit: Die Verwendung von Goto -Anweisungen verursacht ein hohes Maß
+an Nichtwissen bei der Interpretation von Quelltext. Speziell beim Debug-
+ging von Programmen ist der Blick in den Quelltext des Programms so nur sehr bedingt von
+Nutzen. Von daher, so der allgemeine Konsens, ist die Benutzung von Gotos zu vermeiden.
+Wenn man also kein Goto benutzen darf, wie steuert man dann den Ab-
+lauf von Programmen? Die sog. strukturierte Programmierung sieht
+dafür neben der Sequenz von Anweisungen (ausgedrückt durch die un-
+mittelbare Nachbarschaft im Programmtext) die Verzweigung, die Wiederholung und den
+Unterprogrammaufruf vor. Von diesen behalten die ersten beiden das Lokalitätsprinz ip bei,
+solange man den Kontext auf den Umfang der Fallunterscheidung bzw. Schleife, die damit
+ausgedrückt wird, ausdehnt. Für den Unterprogrammaufruf gilt das jedoch n icht mehr:
+Schon weil ein Unterprogramm in der Regel von mehreren Stellen eines Programms aus
+aufgerufen werden kann und weil diese Stellen nicht automatisch denselben Kontext ha-
+ben, wird hier das Lokalitätsprinzip durchbrochen. Dies ist aber unvermeidlich und man
+tröstet sich damit, dass ein Unterprogramm, genauer eine Prozedur oder eine Funktion,
+immer genau an die Stelle zurückkehrt, von der es aufgerufen wurde. Es ergibt sich also
+anschaulich die folgende Situation:
+GoSub
+Return
+Unterprogramm
+89 So geseh en gibt es den eingangs geschilderten Fall, bei dem alles klar ist, bei Programmen mit
+Gotos eigentlich gar nicht. Vermeidung von
+Gotos
+struktur ierte
+Programmierung und
+Lokalitätsprinzip
+Bei Betrachtung des textuell unmittelbaren Vorgängers der betrachteten
+Anweisung sieht man sofort, dass es sich beim dynamischen Vorgänger
+um die Return -Anweisung des aufgerufenen Unterprogramms handeln
+muss . Dies ist zwar nicht lokal, aber wenn man sich sicher sein kann, dass das Unterpro-
+gramm nur die Variablen manipuliert, die bei seinem Aufruf als tatsächlich e Parameter über-
+geben wurden, und wenn zudem das Unterprogramm bekannte Vor - und Nachbedingun-
+gen ei nhält, dann ist das kein Problem. Selbst wenn man nicht weiß, wie die Variablen
+manipuliert wurden, so ist die Unwissenheit, die durch einen Unterprogrammaufruf verur-
+sacht wird, im Vergleich zu der beim Goto gering. Ihr steht auf der anderen Seite ein groß er
+Nutzen gegenüber:
+1. Man vermeidet die Duplizierung von Code, die nötig wäre, wenn man die Anwei-
+sungen des Unterprogramms im Aufrufkontext halten wollte und es mehrere solche
+Aufrufkontexte gibt (das sog. Inlining , das manche Compiler aus Optimierungsgrün-
+den durchführen).
+Man erlaubt der Programmiererin, ihre Programme in Abschnitte zu unterteilen, die sie ge-
+trennt untersuchen und verstehen kann.
+Besonders der zweite Punkt ist wichtig: Aus Sicht der Programmiererin sollte es nämlich
+reichen, zu wissen, was ein Unterprogramm tut, um es korrekt benutzen zu können. Sie
+muss also insbesondere nicht in das Unterprogramm hineinschauen, also seine Anweisun-
+gen inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umge-
+kehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall
+aufgerufen wird — es reicht dann, zu wissen, mit welchen Parametern es versorgt wird,
+und die sind ihr per formale Paramete rdeklaration bekannt. (Voraussetzung dieser Argu-
+mentation ist jedoch, dass es keine globalen Variablen gibt, die eine gegenseitige Beeinflus-
+sung von Aufrufstelle und Unterprogramm an den tatsächlich en und formalen Parametern
+vorbei erlauben. Diese globalen Variablen sind jedoch mindestens so sehr verpönt wie das
+Goto.)
+Bei der objektorientierten Programmierung hat man es zunächst mit einer
+leicht veränderten Situation zu tun. Hier sind nämlich nicht allein das Ver-
+meiden von doppeltem Code sowie die stufenweise Verfeinerung Krite-
+rien für die Aufteilung in Unterprogramme, sondern auch die Disziplin,
+jede Teilfunktion der Klasse zuzuordnen, deren Daten sie manipuliert. Typische objektorien-
+tierte Programme teilen daher die Implementierung größerer Funktionen nicht nur in klei-
+nere auf, sondern verteilen diese auch noch über vi ele Klassen. Auch wenn es sich dabei Abwägung bei
+Unterprogramm -
+aufrufen
+Unterprogramm -
+aufrufe bei
+objektorientierter
+Programmierung
+stets nur um Unterprogrammaufrufe handelt, die allen obengenannten Anforderungen ge-
+nügen, so erfolgen die zum Programmverstehen notwendigen Kontextwechsel doch in so
+kurzer Folge, dass man schnell den Überblick darüber verliert.90
+Nun ergibt sich aber mit der Einführung von dynamisch gebundenen Un-
+terprogrammaufrufen, wie sie ja für die objektorientierte Programmie-
+rung prägend sind, das Problem, dass aus dem Programmtext nicht unmittelbar ersichtlich
+ist, wohin der Sprung geht: Wie bereits in Kurseinheit 1, Abschnitt 4.3.2 bemerkt, verbindet
+das dynamische Binden den Unterprogrammaufruf mit der Verzweigung. Anschaulich be-
+trachtet findet man im Quelltext die folgende Situation vor:
+Return ReturnGoSub
+Implementierung 1 Implementierung 2
+Es ist an der Stelle der betrachte ten Anweisung nicht klar, von woher der in der Anweisung
+zuvor angestoßene Unterprogrammaufruf zurückkehrt — es könnte von jeder Implemen-
+tierung der im Gosub genannten Methode sein. Um das Sprungziel und damit die Return -
+Anweisung, die unmittelbarer Vorgän ger war, zu identifizieren, muss man die Klasse des
+Empfängerobjekts kennen, also die Klasse des Werts der Variable, auf der die Methode
+aufgerufen wurde. Die ist aber in der Regel nur auf Basis einer vollständigen Programmana-
+lyse bestimmbar, die sich nich t lokal durchführen lässt. Das Lokalitätsprinzip wird also durch
+das dynamische Binden weiter aufgeweicht als durch den Unterprogrammaufruf allein.
+Dieser Umstand hat dazu geführt, dass das dynamische Binden vo n Skep-
+tikerinnen und Gegnerinnen der objektorientierten Programmierung
+schon als eine Art Goto der 90er Jahre betrachtet wurde. Dieser Vergleich
+ist jedoch nicht ganz fair, weil, genau wie beim statisch gebundenen Unterprogrammaufruf,
+die Aufruferin ja gar nicht wissen muss , welche genauen Anweisungen als Antwort darauf
+90 Jede, die einmal ein größeres objektorientiertes Programm debugt hat, weiß, wovon ich spreche:
+Im Single -step-Modus der IDE springt der Programmzähler wild zwischen den verschiedenen Metho-
+den und deren Klassen hin und her und häufig ist es schon nach kurzer Zeit kaum mehr möglich, zu
+rekonstruieren, wie man an die Stelle gekommen ist, an der man sich gerade befindet. Viele Pro-
+grammiererinnen ertappen sich dann dabei, dass sie, wie in der Steinzeit der Programmierung, Print -
+Anweisungen in ihre Programme ein bauen, die den Programmablauf in nicht -flüchtiger Form fest-
+halten. Zahlreiche Frameworks bieten darüber hinaus Tracing - oder Logging -Funktionen, mit denen
+es mit vergleichsweise wenig Aufwand möglich ist, den Programmablauf aufzuzeichnen und zu re-
+konstruie ren. Aus der Betrachtung des Programmtexts ist dies nämlich meistens unmöglich. dynamisches Binden
+als Störenfried
+dynamisches Binden
+als Goto der 90er
+Jahre?
+ausgeführt werden müssen — es reicht, zu wissen, welchen Vertrag die a ufgerufene Me-
+thode (das aufgerufene Unterprogramm) erfüllt. Dies sollte nach den Regeln des Subtyping
+(Abschnitt 54.2) stets unabhängig vom v ertragerfüllenden Objekt sein.
+Andererseits sind die Verträge in der Praxis gar nicht im Programmtext spezifiziert, oder
+kennen Sie ein Pr ogramm, in dem für jede dynamisch gebundene Methode Vor - und Nach-
+bedingungen spezifiziert wären? Daher kann es bei der Betrachtung der Aufrufstelle sehr
+wohl interessant sein, was denn nun gen au in der aufgerufenen Methode passiert ist, z. B.
+weil man sich eine bestimmte, resultierende Variablenbelegung nicht erklären kann. In die-
+sen Fällen wird man sich also, beim Tracen oder beim Debuggen, auch den aufgerufenen
+Code anschauen wollen. Das Problem ist nur, dass man gar nicht weiß, an welcher Stelle
+man scha uen muss . Es bleibt in der Praxis also nur, das Programm erneut auszuführen, vor
+dem dynamisch gebundenen Aufruf zu stoppen und sich den Variableninhalt anzusehen
+oder den Programmablauf Schritt für Schritt zu verfolgen, mit all den oben beschriebenen
+Problemen.
+Es ist wohl unbestritten, dass objektorientierte Programme schwerer zu
+tracen und zu debuggen sind als prozedurale. Wie schon bei den statisch gebundenen Un-
+terprogrammaufrufen (die ja ebenfalls ein Problem darstellen können) ist die Frage jedo ch,
+ob das, was man durch das dynamische Binden hinzugewinnt , den Preis aufwiegt. Während
+diese Frage jede für sich selbst entscheiden muss , so scheint die Antwort für viele Program-
+miererinnen — weit mehr als eine Generation nach dem Aufkommen der Objektorientie-
+rung und damit vor dem Hintergrund genügend praktischer Erfahrung — überwiegend po-
+sitiv zu sein. M an darf aber auch die Neinsagerinnen nicht als Ewiggestrige abstempeln —
+sie mögen gute Gründe haben.

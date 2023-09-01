@@ -1,0 +1,74 @@
+11.4 Subklassenhierarchie und Vererbung unter Metaklassen
+Vererbung ist nicht auf die Klassen der Ebene 1 beschränkt — es können in SMALLTALK viel-
+mehr auch Metaklassen, die ja ebenfalls Klassen sind (s. Kapitel 8), voneinander erben. Da
+Metaklassen aber bei der Erzeugung von Klassen automatisch angelegt werden (und auch
+keine eigenen Namen haben), hat die Programmiererin auch keinen direkten Einfluss auf
+die Vererbungshierarchie der Metaklassen. Vielmehr wird diese automatis ch parallel zur Ver-
+erbungshierarchie der Klassen, die Instanzen der Metaklassen sind, angelegt. Dies hat zur Löschen durch
+Überschreiben
+Folge, dass in SMALLTALK neben den Instanzvariablen und -methoden auch die Klassenvari-
+ablen und -methoden von einer Klasse auf ihre Subklassen vere rbt werden.
+Da in SMALLTALK jede Klasse direkte oder indirekte Subklasse von Object
+ist und die Subklassenhierarchie der Metaklassen parallel zu der ihrer Klas-
+sen angelegt ist, erbt jede Metaklasse in SMALLTALK automatisch von
+Object class , der Metaklasse von Object . Was läge also näher, als die Klassenmetho-
+den, die allen Klassen zur Verfügung stehen sollen — darunter auch die beiden Standard-
+konstruktoren new und new: — in Object (genauer: als Instanzmethoden von Object
+class ) zu definieren?
+Nun gibt es ja schon, wie bereits in Fußnote 29 oben erwähnt, in SMALLTALK zwei Arten von
+Objekten, nämlich solche, die instanziierbar sind (also Klassen) und solche, die es nicht sind.
+Darüber hinaus gibt es auch noch eine Unterscheidung zwischen Klassen, die Metaklassen
+sind, und solchen, die es nicht sind — bei allen Gemeinsa mkeiten von Klassen und Me-
+taklassen muss man z. B. von Klassen neue Subklassen bilden können, von Metaklassen
+jedoch nicht. Diese Unterscheidungen müssen schließlich irgendwo getroffen werden. Und
+so kommt es, dass Object class nicht die Wurzel der Vererbu ngshierarchie der Metaklas-
+sen ist (kann sie sowieso nicht, denn auch sie muss eine Subklasse von Object sein!), son-
+dern selbst von einer für diesen Zweck vorgesehenen Klasse erbt. Aus demselben Grund,
+aus dem die Klasse Object „Object “ und die Klasse Metaclass „Metaclass “ heißt, heißt
+diese Klasse „Class“: Es gilt nämlich für jede Instanz dieser Klasse, dass sie eine Klasse ist.
+Man beachte übrigens, dass Class , auch wenn sie die Superklasse aller Metaklassen ist,
+selbst keine Metaklasse ist, denn sonst müsste Class ja als Superklasse von Object class
+und wegen der parallelen Vererbungshierarchie von Metaklassen und Klassen die (Meta -
+)Klasse einer Klasse sein, die Superklasse von Object ist. Ist sie aber nicht. Außerdem ist,
+wie man sich leicht überzeugen ka nn, die Klasse von Class die Klasse Class class und
+erst Class class eine Metaklasse. Zugegebenermaßen etwas kompliziert.
+Selbsttestaufgabe 11.2
+Finden Sie für das SMALLTALK -System Ihrer Wahl hera us, wie die Zusammenhänge der Klassen
+Object , Class und Metaclass sowie derer jeweiligen Metaklassen Object class , Class
+class und Metaclass class sind. Benutzen Sie dazu die Methoden allSuperclasses ,
+allSubclasses und isKindOf: . (Um zu testen, ob ein Objekt in einer Aufzählung, wie sie von
+allSuperclasses und allSubclasses zurückgeliefert wird, enthalten ist, können sie die
+Methode includes: verwenden.)
+Die Klasse Class steht in der Vererbung shierarchie SMALLTALK s neben der
+Klasse Metaclass . Gemeinsam erben sie von der Klasse Behavior (in
+SMALLTALK -80 und direkten Derivaten indirekt, über die Klasse ClassDescription ), in der
+endlich, neben vielen anderen Methoden, new und new: definiert sind. Man beachte, dass
+diese Methoden als Instanzmethoden deklariert sind; da sie aber in der Vererbungshierar-
+chie SMALLTALK s von den Metaklassen der Klassen geerbt werden (z. B. Object class ), Ursprung von
+Klassenmethoden
+aller Klassen
+Einordnung in die
+Klassenhierarchie
+stehen sie in den Klassen als Klassenmethoden zur Verfügung. new und new: werden also
+in der Praxis immer an Klassen geschickt.
+ObjectObject class ClassMetaclass
+Behavior
+new und new:
+als Instanzmethoden
+new und new:
+als Klassenmethoden
+Nun ist es in SMALLTALK so, dass auch alle Metaklassen (Ebene 2) und die
+Klasse Metaclass (Ebene 3) Subklassen von Object sein müssen. Dabei
+komm t es natürlich zu einem fröhlichen Ebenenmix, der nur sehr schwer
+nachzuvollziehen ist. Wenn Ihnen das Probleme bereitet, brauchen Sie sich keine Sorgen zu
+machen, denn Sie haben einen guten Grund: Legt man nämlich wie schon in den Abschnit-
+ten 7.3 und 9.1 eine mengentheoretische Interpretation von Klassen als Mengen ihrer I n-
+stanzen und von Superklassen als Obermengen der Mengen, für die ihre Subklassen stehen,
+zugrunde, dann ergibt sich, da Object class , die Metaklasse von Object , auch eine
+Subklasse von Object sein muss , dass die Menge von Object in sich selbst enthalten sein
+müsste , was aber aus theoretischen Gründen nicht möglich ist. Schon daran erkennt man,
+dass beim Entwurf von SMALLTALK der pragmatische Gesichtspunkt der Vererbung im Vor-
+dergrund stand und nicht etwa der konzeptuelle der Gene ralisierung.
+ObjectObject class
+ClassClass classMetaclass
+BehaviorBehavior classMetaclass class

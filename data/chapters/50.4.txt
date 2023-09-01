@@ -1,0 +1,8 @@
+50.4 Das Typsystem von C#
+Auch wenn es in großen Teilen recht ähnlich ausfällt, so weicht das Typsystem von C# von
+dem JAVAs gleich in mehreren wesentlichen Punkten ab:
+ der Art der Unterscheidung von Wert - und Referenztypen,
+ den angebotenen Typkonstruktoren für Wert - und Referenztypen und
+ dem Umgang mit Interfaces als Typen.
+Darüber hinaus hat C# noch eine ganze Reihe w eiterer Verbesserungen, die man mit dem
+Typsystem in Verbindung bringen kann; auf sie wird hier aber nur am Rande eingegangen.

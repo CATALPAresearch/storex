@@ -1,0 +1,111 @@
+26.3 Kovarianz und Kontravarianz bei Methodenaufrufen
+Dass Typerweiterung als Basis des Subtyping kei ne technischen Probleme bereitet, sollte
+hinreichend klargeworden sein: Typfehler sind damit ausgeschossen und es bleibt lediglich
+das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps
+sind (wie im Beispiel von zwei - und dr eidimensionalen Punkten). Es bleibt noch die Frage,
+ob und falls ja in welchem Umfang Typeinschränkung im Rahmen des Subtyping erlaubt ist.
+Diese Frage soll an einem Beispiel beantwortet werden.
+Angenommen, es ist ein Typ A wie folgt definiert:
+Typ A
+Protokoll  Subtypen - als Teil -
+mengenbeziehung
+914 m: y <Y> ^ <Y>
+Zuweisungen der Art
+915 x := a m: z
+wobei a eine Variable vom Typ A sei (für ein Objekt vom Typ A steht), sind nach den Regeln
+des Subtyping dann zulässig, wenn die Variable x mit einem Supertyp und z mit einem
+Subtyp von Y (jeweils einschließlich des Typs Y selbst) deklariert ist.
+Nun sei weiterhin der Typ B wie folgt als Subtyp von A abgeleitet:
+Typ B
+Supertyp  A
+Protokoll
+916 m: y <Z> ^ <X>
+Die Methode m: wird also in B redefiniert . Die Frage ist nun, in welchem Verhältnis die dabei
+verwendeten Typen X und Z zu Y stehen müssen, damit die Zuweisung aus Zeile 915 wei-
+terhin zulässig ist, selbst wenn die Variable a auf ein Objekt vom Typ B verweist. Mit anderen
+Worten: Welche Bedingungen sind an die Parametertypen bei der Redefinition zu stellen,
+damit eine Zuweisung eines Objekts vom Typ B an eine Variable vom Typ A in der Folge zu
+keiner Verletzung einer (anderen) Typinvariante führt? Solche Folgefehler waren ja bereits
+in Kapitel 25 thematisiert worden.
+Die Antwort lässt sich systematisch herleiten, indem man sich die zu Zeile
+915 gehörenden impliziten Zuweisungen genau anschaut. Zuerst wird ja
+z dem formalen Parameter von m:, y, zugewiesen. Wenn y nun in B einen anderen Typ als
+Y bekommen soll, dann darf es sich dabei nur um einen handeln, der mehr Werte zu lässt
+— würde er weniger Werte zulas sen, könnte es sein, dass er die Zuweisung von z aus-
+schließt, wodurch Zeile 915 zu einem Typfehler (einem typinkorrekten Programm) führen
+würde. Der Typ des fo rmalen Parameters y von m: in B, Z, muss also ein Supertyp dessen
+in A, Y, sein. Zuletzt, d. h., nach erfolgter Auswertung des Methodenaufrufs, wird dann das
+Ergebnis x zugewiesen. Wenn nun der Rückgabewert von m: in B, X, einen anderen Typ als
+in A, Y, bekommen soll, dann kann dies aufgrund der geforderten Zuweisungskompatibilität
+nur um einen Typen handeln, der weniger Werte zu lässt, da ja sonst die Zuweisung an x zu
+einem Typfehler führen könnte. Es kommt also als Rückgabetyp für m: in B nur ein Subtyp
+von dem in A, Y, infrage. Es ergibt sich also, dass sich bei einer Redefinition einer Methode
+die Eingabeparametertypen einer Funktion nur „nach oben“ (also zu einem Supertypen hin),
+die Ausgabeparameter hingegen nur „na ch unten“ (hin zu einem Subtyp ) verändern dürfen,
+wenn die Typkorrektheit eines Programms nicht verletzt werden soll. analytische
+Betrachtung
+Nun ändern sich aber bei der Redefinition nicht nur die Parametertypen
+(Ein- und Aus - bzw. Rückgabe), sondern auch der Typ des Empfängers.
+Dieser ändert sich bei der Redefinition aber immer nach unten (da der
+redefinierende Typ ja als Subtyp vom redefinierten abgeleitet wird). Es
+folgt also, dass die Eingabeparameter zum Empfängertyp gegenläufi g va-
+riieren müssen, der Ausgabeparameter hingegen gleichgerichtet. Man
+spricht im ersten Fall daher von einer Kontravarianz , im zweiten von einer Kovarianz , und
+sagt:
+Man spricht im Kontext von Subtyping auch von Typkonformität des Subtypen mit dem
+Supertypen .
+Nun enthält die Idee von der Gegenläufigkeit der Veränderung von Para-
+meter - und Ergebnistypen beim Redefinieren einen kleinen Schönheits-
+fehler: We nn es sich nämlich bei der Eingabe in eine Funktion und bei
+ihrer Ausgabe um dasselbe Objekt handelt, kann diesem nicht einmal (bei der Eingabe) ein
+Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden, denn der Subtyp
+verlangt ja mehr Eigensc haften, als der Supertyp garantiert. Wenn also z. B. ein Typ A wie
+Typ A
+Protokoll
+917 x ^ <X>
+918 x: <X> ^ <Self>
+definiert ist und x das Objekt zurückgeben soll, das mit x: geliefert wurde, dann kann ein
+Subtyp B die beiden Methoden schlecht so redefinieren, dass x: Objekte eines Supertypen
+von X entgegennimmt, während gleichzeitig x Objekte eines Subtyp s zurückliefert. Da das
+Umgekehrte freilich auch nicht geht, bleibt nichts anderes, als die Unveränderlichkeit d er
+Parametertypen, auch als Invarianz oder besser (da das dazu passende Adjektiv „invariant“
+in seiner Bedeutung schon belegt ist) als Novarianz bezeichnet, zu verlangen.
+Obige analytischen Überlegungen führen also, mit der eben gemachten
+Einschränkung, zur Regel von den kontravarianten Parameter - und den
+kovarianten Rückgabetypredefinitionen. Es gibt aber noch einen zweiten
+Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redef inierter
+Funktionen, die diese Betrachtung deutlich in Frage stellen. Dazu soll (wie schon in Kapitel
+25) die Interpretation von Methoden als Relationen bzw., da hier der Rückgabetyp mit be-Änderung im
+Verhältnis zur
+Änderung des
+Empfängertyps:
+Kovarianz und
+Kontravarianz
+Problem bei Identität
+von Ein - und
+Ausgabeparametern
+Problem des
+mangelnden
+Realismus WWeennnn ddiiee EEiinnggaabbeeppaarraammeetteerr eeiinneerr rreeddeeffiinniieerrtteenn MMeetthhooddee kkoonnttrraavvaarriiaanntt uunndd ddiiee AAuussggaa--
+bbeeppaarraammeetteerr kkoovvaarriiaanntt rreeddeeffiinniieerrtt wweerrddeenn,, ddaannnn bblleeiibbtt ZZuuwweeiissuunnggsskkoommppaattiibbiilliittäätt ddeess
+rreeddeeffiinniieerreennddeenn TTyyppeenn mmiitt ddeemm rreeddeeffiinniieerrtteenn eerrhhaalltteenn..
+rücksichtigt wird, als Funktionen oder Abbildungen herhalten. Der hier zweistellige Defini-
+tionsbereich (Empfängertyp plus Parametertyp) der Funktion steht dabei stellvertretend für
+beliebige Stellenzahl, also für Methoden mit bel iebig vielen Parametern. Der Wertebereich
+ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
+Wertebereich
+Definitionsbereich
+Wenn man nun die Anzahl der Empfängerobjekte einschränkt (was ja beim Übergang zu
+einem Subtypen geschieht), dann schrumpft damit ni cht nur der Wertebereich der Funktion
+(wie in Kapitel 25 schon illustriert), sondern auch die Menge der möglichen Eingabewerte
+(der zweite und alle weiteren Defin itionsbereiche), die mit der bereits eingeschränkten
+Menge der Empfänger gemeinsam auftreten können. Es verhalten sich also nicht nur die
+Ergebnis -, sondern auch die Parametertypen kovariant.
+Dieses Ergebnis ist gewissermaßen frustrierend, da es die soeben hergeleitete Kontravari-
+anzregel für Parametertypen infrage stellt: Was programmiertechnisch möglich und sinnvoll
+erscheint, hat in der Realität (der Interpretation oder Semantik) keine Bedeutung. Auf der
+anderen Seite erklärt es aber, warum kontravariante Parameterredefinitionen in der Pro-
+grammierpraxis nicht benötigt werden.52 Kovarianz für Parametertypen zuzulassen, so sinn-
+voll es auch zu sein scheint, erlaubt jedoch typinkorrekte Programme; Sie werden im Kontext
+der Programmiersprache EIFFEL (Kurseinheit 5, Abschnitt 52.5) noch ausführlicher auf das
+Problem und eine mögliche Lösung hingewiesen.

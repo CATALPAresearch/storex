@@ -1,0 +1,30 @@
+51.5.2 Dynamische Komponente
+Die Beschreibung der dynamischen Typprüfung in C++ fällt knapp aus: Es gibt keine.
+Nun wissen aber manche Objekte in C++ zumindest im Prinzip, von welcher Klasse sie In-
+stanz sind, und zwar ganz einfach deswegen, weil sie einen Zeiger in die Sprungtabelle ihrer
+virtuellen Methoden besitzen. Da diese virtuelle Funktionstabelle für alle Objekte einer
+Klasse dieselbe ist, steht sie gewissermaßen für die Klasse. Und so wurde sc hließlich C++
+doch noch eine Bibliotheksfunktion spendiert, die es erlaubt, für Objekte mit dynamisch
+gebundenen Methoden herauszufinden, Instanzen welcher Klassen sie sind.80 Diese Infor-
+mation ist unter dem Namen Runtime Type Information (RTTI) bekannt.
+Konkret kann die RTTI folgendermaßen ausgenutzt werden. Es gibt zu-
+nächst eine Funktion typeid , die man auf einer Referenz aufrufen kann.
+Da die Funktion auf Klassennamen überladen ist und zudem eine Struktur zurückliefert, auf
+der == als Gleichheitstest definiert ist, lässt sich der Typ eines Objekts z. B. durch
+80 Aber leider eben nur für solche Objekte. Man kann freilich argumentieren, dass diese Information
+für andere Objekte auch nicht sonderlich interessant ist. Typumwandlungen
+Runtime Type
+Information
+1387 typeid(x) == typeid(T)
+prüfen (wobe i x für eine Variable und T für eine Klasse stehen soll). Eine andere nützliche
+Funktion, die die RTTI ausnutzt, ist dynamic_cast<T>(x) ; sie nimmt zwei Parameter, ei-
+nen Typ (T) und ein Objekt ( x), und liefert das Objekt mit dem Typ zurück, wenn die RTTI
+dies als typkorrekt erkennt, oder 0 sonst. In JAVA übersetzt hieße das:
+1388 (x instanceof T) ? (T) x : null
+wobei der Ausdruck <A> ? <B> : <C> je nachdem, ob <A> zu wahr oder falsch auswertet,
+entweder das Ergebnis der Auswertung von <B> oder von <C> zurückliefe rt (s. Kapitel 37
+in Kurseinheit 4). dynamic_cast<T>(x) entspricht im wesentlichen x as T in C# (Ab-
+schnitt 50.4.4 ).
+Selbsttestaufgabe 51.1
+Schlagen Sie ein Verfahren vor, wie man mit Bordmitteln von C++ für Instanzen aller Klassen (und
+ohne Verwendung von typeid ) herausfinden kann, Instanzen welcher Klasse sie sind.

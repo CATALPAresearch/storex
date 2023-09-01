@@ -1,0 +1,11 @@
+4.5.2 Dynamisch gebundener Methodenaufruf
+Wie bereits in Abschnitt 4.3.2 erläutert, verbirgt sich hinter dem Nachrichtenversand in
+SMALLTALK der Methodenaufruf. Wann immer ein Objekt eine Nachricht an ein Empfänge-
+robjekt verschickt, wechselt der Kontroll fluss damit zum Empfängerobjekt, genauer zu der
+Methode des Empfängerobjek ts, das zur Reaktion auf die Nachricht vorgesehen ist. Nach
+der Abarbeitung der Methode kehrt der Kontroll fluss an das sendende Objekt (genauer: zu
+der Methode, aus der die Nachricht versandt wurde) zurück und setzt seine Arbeit dort fort.
+Bei der Rückkehr wird auch das Ergebnis der Methode, (eine Referenz auf) ein Objekt, ge-
+liefert, das dann an der Stelle des Nachrichtenausdrucks, der den Methodenaufruf bewirkt
+hat, eingesetzt wird. Der genaue Mechanismus des dynamischen Bindens in SMALLTALK wird
+in Kapite l 12 von Kurseinheit 2 untersucht.

@@ -1,0 +1,27 @@
+4.3.8 Protokoll
+In SMALLTALK ist das Interface eines Objekts die Menge der Nachrichten, die es versteht.
+Dieses Interface wird in Form der sog. Protokollbeschreibung o. kurz des Protok olls spe-
+zifiziert, die aus den Methodensignaturen und den Kommentaren der zu den Nachrichten
+passenden Methoden besteht und der die Implementation , also die Liste der Meth oden-
+rümpfe , gegenübersteht. Letztere sind, zusammen mit den Instanzvariablen, das Imple-
+mentationsgeheimnis eines Objekts, das hin ter seiner Protokollbeschreibung (dem Inter-
+face) verborgen wird. Die Kommentare dürfen übrigens, wie in den meisten anderen Spra-
+chen auch, als (schwacher) Ersatz für eine formale Spezifikation des Verhaltens, das in einer
+Methode implementiert wird, angese hen werden (vgl. dazu Abschnitt 52.6 in Kursein-
+heit 5).
+Um die Programmierung zu erleichtern, wird in den meisten SMALLTALK -
+Systemen das Protokoll von Objekten in sog. Nachrichtenkategorien
+eingeteilt, die jeweils einen Namen tragen, der die in der Kategorie ent-
+haltenen Namen zusammenfasst . Da jede Methode in genau eine Nachrichtenkategorie fal-
+len muss , stellen diese eine Partitionierung des Interfaces eines Objekts dar. Unter den Ka-
+tegorien sind solche, die das Wort „private“ enthalten; deren Methoden sollten dann nicht
+„von außerhalb“, also nur vom Objekt selbst (über self ) aufgerufen werden. Dies wird
+jedoch nicht vom Compiler erzwungen. Nachrichtenkategorien haben auch sonst keinerlei
+die Programmausführung betreffende Bedeutung, sondern dienen lediglich der besseren
+Lesbarkeit.
+Wie Sie in der nächsten Kurseinheit lernen werden, werden Protokolle in SMALLTALK nicht
+auf Objektebene, sondern auf Klassenebene spezifiziert. In STRONGTALK , einer Erweiterung
+von SMALLTALK um ein (optionales) Typsystem, werden Protokolle dann zu Typen erhoben
+(s. Kurseinheit 3, Kapitel 20). Da Protokolle nur Methoden enthalten, sind sie den Interfaces
+JAVAs sehr ähnlich. Tatsächlich werden Protokolle in STRONGTALK auch manchmal Interfaces
+genannt .

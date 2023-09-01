@@ -1,0 +1,32 @@
+43.4 Rekursiv beschränkter parametrischer Polymorphismus
+Wenn Ihnen das noch nicht kompliziert genug ist , geht es noch weiter: Es ist nämlich
+Comparable selbst ein Typ, der von einer Parametrisierbarkeit profitieren würde. In einem
+ersten Ansatz würde man verlangen, dass von zwei vergleichbaren Elementen beide vom
+selben Typ sein müssen. Dies könnte man durc h die Deklaration von
+1093 interface Comparable<T> {
+1094 int compareTo(T o);
+1095 }
+(tatsächliche Definition von Comparable in JAVA) sowie
+1096 interface SortedList<E extends Comparable<E>> …
+erreichen. Man beachte die Parallelität zu STRONGTALK (Abschnitt 29.5).
+Bei genauerer Betrachtung des Beispiels stellt sich allerdings heraus, dass
+die Bedingung, dass die zu vergleichenden Elemente für eine Sortierung
+alle vom selben Typ sein müssen, zu hart ist. Vielmehr würde es ja ausreichen, wenn die
+Objekte der sortierten Liste unter anderem mit den Objekten desselben Typs vergleichbar
+wären — sie könnten mit Objekten von noch mehr Typen vergle ichbar sein. Die Bedingung
+muss also lauten, dass der Parametertyp von Comparable mindestens E umfassen muss , er
+kann aber auch allgemeiner, z. B. Object (für einen Vergleich beliebiger Objekte, wie auch
+immer der erfolgen soll), sein. Genau dies wird durc h
+1097 interface SortedList<E extends Comparable<? super E>> …
+ausgedrückt, wobei das Typ -Wildcard wieder für einen beliebigen Typen, der die nachfol-
+gende Bedingung erfüllt, steht. Im gegebenen Fall muss es sich bei dem für das Wildcard
+einzusetzenden Typ um ei nen (direkten oder indirekten) Supertypen von E handeln (wobei
+E ja selbst eine Typvariable ist, die erst bei einer Variablendeklaration an einen konkreten
+Typ gebunden wird). So ist
+1098 SortedList<String> liste;
+zulässig, wenn String wie in
+1099 class String extends Comparable<String>
+oder in
+1100 class String extends Comparable<Object>
+deklariert ist. Wildcards in
+Typdefinitionen

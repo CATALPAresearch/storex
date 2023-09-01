@@ -1,0 +1,136 @@
+43.2 Parametrische Typen und Subtyping: Wildcards
+Nun ist es aber für generische Typen genau wie für Arrays durchaus sinnvoll, eine liberalere
+Form von Zuweisungskompatibilität zuzulassen, z. B. um Objekte verschiedener Instanzen70
+eines parametrisierten Ty ps bei einem Methodenaufruf demselben formalen Parameter zu-
+zuweisen. So möchte man eben auch für generische Collections eine Methode sort mit
+einem Parameter, der eine zu sortierende Liste o. ä. enthalten soll, definieren und diese
+dann mit Objekten versch iedener Instanzen von ArrayList<E> (wie in Zeile 1052 ff. defi-
+niert) aufrufen können, also z. B. mit Objekten vom ArrayList<Integer> und
+ArrayList<String> . Intuitiv möchte man dazu zunächst
+1066 void sort(ArrayList<Comparable> liste) {…}
+schreiben, aber wie wir schon gesehen haben, sind , obwohl Integer und String Subty-
+pen von Comparable sind, ArrayList<Integer> und ArrayList<String> nicht zu-
+weisungskompatibel mit ArrayList<Comparable> .
+Was also tun? In JAVA hat man dafür das Konzept der Typ -Wildcards (zu
+deutsch vielleicht Typ -Joker oder -Platzhalter) eingeführt, die bei der In-
+stanziierung eines generischen Typs den Platz des tatsächl ichen Typparameters einnehmen
+können und dort zunächst für einen beliebigen Typ stehen. Das Symbol für das Typ -
+Wildcard ist das Fragezeichen: List<?> ist also ein Typ, mit dem Variablen (inkl. forma le
+Parameter) deklariert werden können. Per Definition ist dieser Typ, List<?> , Supertyp aller
+Instanziierungen von List<T> — List<Integer> beispielsweise und List<String>
+sind mit List<?> zuweisungskompatibel. Man beachte, dass bei einer Deklaration und an-
+schließenden Zuweisung
+1067 List<?> liste = new ArrayList<Integer>();
+das Fragezeichen nicht durch Integer ersetzt wird; die anschließende Zuweisung
+1068 liste = new ArrayList<String>();
+ist also möglich.71
+70 s. Fußnote 68
+71 Man beachte, dass die Varianz bei der Verwendung des generisc hen Typs bei seiner Benutzung in
+einer (anderen) Deklaration hergestellt wird. Man nennt dies daher auch Use-site variance , im Ge-
+gensatz zur Declaration -site variance , wie man sie beispielsweise in C# vorfindet (s. Abschnitt 50.4.3
+in Kurseinheit 5). Wildcards ersetzen
+Subtyping
+List<?> ist gena u ein Typ; das Fragezeichen selbst ist jedoch keiner (und
+ist auch keine Typvariable). Mit Typ -Wildcards parametrisierte Typen wie List<?> und auch
+ArrayList<?> , im folgenden Wildcard -Typen genannt, sind abstrakt in dem Sinne, dass
+es keine direkten Instanzen von ihnen gibt:
+1069 new ArrayList<?>()
+ist also illegal.
+Nun kann man mittels Typ -Wildcards natürlich nicht die oben geschilderten Probleme im
+Zusammenhang mit dem Aliasing aushebel n. Es ist also insbesondere nicht möglich, nach
+Deklaration und Zuweisung von Zeile 1067
+1070 liste.add(2)
+zu schreiben, da ja nicht sichergestellt werden kann, dass Liste tatsächlich auf ein Objekt
+vom Typ List<Integer> verweist. Tatsächlich ist die einzige gültige Zuweisung an Ele-
+mente von liste die von null . Umgekehrt kann beim Lesen der Elemente aus liste kein
+anderer Typ als Object angenommen werden, da ja liste Listen mit beliebigem Element-
+typ zugewiesen werden dürfen. Das aber ist unbefriedigend.
+Nun kennen Sie aus Abschnitt 29.4 bereits das Konzept der Beschränkung
+von Typparametern. Dieses lässt sich auch auf Typ -Wildcards übertragen.
+Wenn man also sicherstellen will, dass die Elemente einer Liste eines un-
+bekannten Elementtyps mindestens vom Typ Number sind, schreibt man in der Deklaration
+der entsprechenden Variable, hier wieder liste , einfach
+1071 List<? extends Number> liste;
+Es sind damit nur noch Zuweisungen von Listenobjekten an liste gestattet, deren Ele-
+menttyp den Typ Number oder einen Subtyp davon (z. B. Integer ) hat:
+1072 liste = new ArrayList<Integer>();
+ist also legal,
+1073 liste = new ArrayList<Object>();
+hingegen nicht. Das erlaubt einer lesende Zugriffe der Form
+1074 Number n = liste.get(1);
+wobei Number auch durch einen beliebigen Supertyp von Number ersetzt werden dürfte,
+jedoch durch keinen Subtyp. Das Einfügen von Elementen in liste bleibt jedoch weiter
+nicht gestattet, da nicht bekannt ist, welchen Typs die Elemen te mindestens sein müssen. Wildcard -Typen
+nach oben
+beschränkte Typ -
+Wildcards
+Selbsttestaufgabe 43.1
+Überprüfen Sie die letzte Aussage, indem Sie versuchen, ein Gegenbeispiel zu finden.
+Per extends beschränkte Typ -Wildcards erlauben also eine spezielle Art
+des Subtypings, nämlich eine, bei der Zuweisungen von Objekten eines
+Subtyps ganz normal an Variablen eines Supertyps erlaubt sind, aber in der Folge schrei-
+bende Zugriffe auf Variablen, die mit de m Typparameter als Typ deklariert sind, verboten
+(lesende Zugriffe sind hingegen erlaubt). Die Situation unterscheidet sich von der bei den
+Arrays ( Kapitel 41) lediglich dadurch, dass die Typprüfung statisch, also bereits zur Überset-
+zungszeit durchgeführt wird. Es ist damit sichergestellt, dass es niemals zu einem Laufzeit-
+fehler entsprechend der Array store exception kommt; ein entsprechender dynamischer Typ-
+test kann damit entfallen. Wie allgemein üblich werden damit auch Verwendungen ausge-
+schlossen, die eigentlich legal wären; so ist z. B.
+1075 List<? extends Integer> liste = new ArrayList<Integer>();
+1076 liste.add( new Integer(1));
+nicht zulässig, obwohl hier eigentlich kein Problem vorliegt.
+Nun kann man sich fragen, ob nicht auch eine umgekehrte, nur schrei-
+benden Zugriff erlaubende Art des Subtyp ing möglich ist. Die Antwort ist
+einfach: ja. Man muss dazu nur die Beschränkung des Typ -Wildcards um-
+kehren und verlangen, dass nur Supertypen der Schranke eingesetzt werden dürfen. Da
+Supertypen mit ihren Subtypen zuweisungskompatibel sind, weiß der Compi ler, dass er Ele-
+mente jedes beliebigen Subtyps der Schranke zuweisen darf. Für eine Deklaration
+1077 List<? super Integer> liste;
+beispielsweise, bei der super Integer die untere Schranke für tatsächlich e Typparameter
+bei einer Zuweisung angibt, ist
+1078 liste = new ArrayList<Number>();
+und in der Folge sogar
+1079 liste.add(1);
+erlaubt, denn Listen mit Elementtyp Number (oder einem beliebigen anderen Supertyp von
+Integer ) können, aufgrund des Subtypings der Elementtypen, problemlos Integer zuge-
+wiesen werden. Der lesende Z ugriff auf Elemente von liste hat jedoch immer den Typ
+Object zum Ergebnis, so dass
+1080 Integer i = liste.get(1) spezielle Art des
+Subtypings
+nach unten
+beschränkte Typ -
+Wildcards
+bei obiger Deklaration von liste nicht erlaubt ist: Der Elementtyp dürfte ja auch ein Su-
+pertyp von Integer sein, so dass die Zuweisung zu i ungültig wäre. List<? super
+Integer> ist also spezieller Supertyp von allen Instanzen von List<E> , deren tatsächlich er
+Typparameter (also der für E eingesetzte Typ) ein Supertyp von Integer ist. Der Supertyp
+ist speziell, weil zwar eine Zuweisungskompatib ilität gegeben ist, der Zugriff auf die Ele-
+menttypen (die mit dem Typparameter typisierten Elemente des Typs) auf schreibenden be-
+schränkt ist.
+Selbsttestaufgabe 43.2
+Überlegen Sie, ob es möglich u nd sinnvoll ist, für einen Typparameter ein Typ -Wildcard mit oberer
+und unterer Schranke anzugeben.
+Durch die mögliche Beschränkung von Typ -Wildcards entsteht für jeden
+generischen Typ eine (potentiell unendlich große) Menge von Typen, so
+dass man sich fragen kann, ob diese Ty pen in einer bestimmten Subtyp beziehung zueinan-
+der stehen. Dies ist tatsächlich der Fall: Für mit extends nach oben beschränkte Wildcard -
+Typen gilt, dass wenn die Schranken Subtypen sind, dann auch die Wildcard -Typen Subty-
+pen sind. Wenn also Integer ein Subtyp von Number ist, dann ist auch List<? extends
+Integer> ein Subtyp von List<? extends Number> . Umgekehrt gilt für mit super nach
+unten beschränkte Typen, dass List<? super Integer> ein Supertyp von List<?
+super Number> ist. Man sagt auch, das Subtyping mit extends beschränkter Wildcard -
+Typen sei kovariant (da das Subtyping der Wildcard -Typen sich am Subtyping der Schran-
+ken orientiert) und das mit super beschränkter Wildcard -Typen kontravariant (aus ent-
+sprechendem Grund).
+Selbsttestaufgabe 43.3
+Überlegen Sie sich, ob ArrayList<? extends Integer> ein Subtyp von List<? extends
+Number> ist.
+Ein typisches Beispiel für die Verwendung von Wildcard -Typen ist das fol-
+gende:
+1081 class List<T> {
+1082 copyFrom (List<? extends T> andereListe) {…}
+1083 copyTo (List<? super T> andereListe) {…}
+1084 …
+1085 } Subtyping von
+Wildcard -Typen
+typisches Beispiel

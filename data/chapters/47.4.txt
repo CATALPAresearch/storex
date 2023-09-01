@@ -1,0 +1,15 @@
+47.4 Metaprogrammierung
+Obwohl in JAVA längst nicht alles ein Objekt ist, gibt es doch die Möglichkeit, auf die Ele-
+mente eines Programms zuzugreifen. Dafür ist das sog. Reflection API zuständig, in dem für
+jede Art von Programmelement eine Klasse existiert, deren Instanzen entsprechende Pro-
+grammelemente repräsentieren. (So gibt es dort eine Klasse Method , eine Klasse Field
+etc.) Eine genauere Betrachtung dieser API würde an dieser Stelle jedoch zu weit führen; sie
+wird im Kurs 01853 („Moderne Programmiertechniken und -methoden“) ausführlicher be-
+handelt.
+Eine andere Form der Metaprogrammierun g, die sog. Annotationen ,
+haben zunächst nichts mit Objektorientierung zu tun — es werden damit lediglich Program-
+melementen im Quelltext Daten, sog. Metadaten, zugeordnet. Diese können dann während
+der Übersetzung und/oder während der Ausführung des Programms abgefragt werden und
+so den jeweiligen Prozess beeinflussen oder sogar steuern. In JAVA 5 wurden Annotationen
+als eine spezielle Art von Interfaces eingeführt, die jedoch keine Met hoden, sondern nur
+Felder (!) deklarieren. Annotation sind ebenfalls Gegenstand des Kurses 01853.

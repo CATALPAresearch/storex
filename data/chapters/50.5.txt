@@ -1,0 +1,11 @@
+50.5 Ausblick
+C# ist nicht nur Nachahmer JAVAs, sondern war auch Pionier für Sprach-
+erweiterungen, die es inzwischen auch in JAVA gibt: So gab es in C# von Anfang an sog.
+Attributes, die in JAVA in der Version 5 als Annotationen (was in jedem Fall der bessere Name
+ist) Einzug gehalten haben. C# hatte auch schon ab der Version 3.0 Lambda -Ausdrücke (ein
+Element funktionaler Programmiersprachen , in SMALLTALK — in Form von Blöcken — schon
+immer vorhanden und ein Grundelement der Sprache); JAVA ist erst mit Version 8 nachge-
+zogen . Die Gefahr ist jedoch, dass sich die beiden Sprachen gegenseitig totrüsten — irgend-
+wann wird jemand auf die Idee kommen, aus den besten Eigenschaften beider eine neue
+Sprache zu destillieren (KOTLIN mag hier ein erstes Beispiel sein) . Vielleicht wird bei der Ge-
+legenheit ja auch endlich mit dem C -Erbe aufgeräumt und die fürchterliche Syntax entsorgt.

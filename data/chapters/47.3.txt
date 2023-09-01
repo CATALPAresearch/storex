@@ -1,0 +1,55 @@
+47.3 Multi -threading
+Ähnlich wie SMALLTALK erlaubt auch JAVA, parallele Ausführungsstränge zu programmieren.
+Diese heißen in JAVA jedoch nicht Prozesse, sondern Threads . Threads sind im Gegensatz zu
+den Prozessen eines Betriebssystems leichtgewichtig, was soviel heißen soll wie dass sich
+Threads die getrennte Allokierung von Ressourcen (wie Hauptspeicher) sparen, und alle a uf
+denselben Ressourcen operieren. Es können also mehrere Threads innerhalb eines Prozesses
+laufen. Der Preis dafür ist, dass die Mechanismen zur Synchronisation bei Threads selbst
+realisiert werden müssen; bei Prozessen sind sie über die Inter -Prozess -Kommunikation des
+Betriebssystems geregelt. (Bei den Prozessen SMALLTALK s handelt es sich also auch eher um
+Threads als um Prozesse im eben beschriebenen Sinn.)
+In JAVA wird ein neuer Thread gestartet, indem man eine neue Insta nz der
+Klasse Thread erzeugt und auf ihr die Methode start() aufruft.
+1176 (new Thread()).start()
+startet also einen neuen Thread. Bleibt die Frage, was dieser Thread tut.
+Die Klasse Thread besitzt dafür eine Methode run() , die von start() aufgerufen wird.
+Diese Methode ist jedoch leer , so dass der Thread gleich wieder beendet wird. Damit ein
+neuer Thread etwas Sinnvolles tut, gibt es zwei Möglichkeiten:
+1. Man definiert eine neue Subklasse von Thread und überschreibt darin die Methode
+run() so, dass sie das Gewüns chte tut oder zumindest anstößt.
+2. Man lässt eine Klasse das Interface Runnable implementieren, implementiert dann
+in der Klasse die vom Interface geforderte Methode run() , erzeugt von dieser
+Klasse eine Instanz i und startet deren Methode run() mittels (new
+Thread(i)).start() (start() ruft dann run() auf i auf).
+Auch im zweiten Fall wird eine Instanz der Klasse Thread erzeugt, die den neuen Thread
+repräsentiert. Man beachte jedoch, dass diese Instanz nicht selbst der Thread ist — der
+Thread ist, wie gesagt, ein paralleler Ausführungsstrang der JVM, der, genau wie der Aus-
+führungsstrang, mit dem das Programm startet, nicht an ein Objekt gebunden ist, sondern
+mit dem Kontroll fluss zwischen den Empfängerobjekten hin - und herwechselt. Aktive Ob-
+jekte, also Objekte, die ihren eigenen Ausführungsstrang haben und auch behalten (s. Ka-
+pitel 16), müssen in JAVA genau wie in SMALLTALK simuliert werden. Jeder Thread hat aber
+ein Thread -Objekt, das ihn repräsentiert; es kann mit Thread.currentThread() erfragt
+werden. Mit ihm sind so spezifische Daten wie der Name des Threads, seine Priorität etc.
+gespeichert.
+Die Threads JAVAs benötigen also eine explizite Synchronisation. Ähnlich
+wie die Prozesse SMALLTALK s funktioniert dies mit Semaphoren, die hier
+allerdings Monitore genannt werden. Jeder Monitor ist mit einem Objekt verbunden (und
+jedes Objekt mit einem Monitor); wenn ein Thread einen Monitor eines Objektes sperrt
+Thread erzeugen und
+starten
+Synchronisation über
+Locking: Monitore
+(„lockt“), dann kann kein anderer Thread den Monitor sperren, bevor die Sperre durch den
+ersten Thread wieder aufgehoben wird.
+Es gibt zwei Möglichkeiten, die Synchronisation von Threads zu erzwin-
+gen. Die eine erfolgt mittels der Synchronized -Anweisung, die Sie oben
+schon kurz kennengelernt haben: Die Anweisungen eines Blocks können
+nur ausgeführt werden, wenn sie nicht gerade von einem anderen Thread ausgeführt wer-
+den. Das mit dem Block assoziierte Objekt, auf dessen Monitor die Sperre durchgeführt
+wird, wird explizit mit der Synchronized -Anweisung angegeben (häufig ist es this , also das
+Objekt, in dessen Kontext sich der Block be findet).
+Die zweite Möglichkeit ist, eine ganze Methode mit synchronized zu deklarieren. Wenn
+es sich dabei um eine Instanzmethode handelt, wird die Sperre auf dem Objekt, auf dem
+die Methode aufgerufen wurde, erwirkt; handelt es sich dagegen um eine Klass enmethode
+(also um eine, die static deklariert wurde), dann geht die Sperre auf das Objekt, das die
+Klasse repräsentiert. Felder lassen sich übrigens nicht synchronized deklarieren

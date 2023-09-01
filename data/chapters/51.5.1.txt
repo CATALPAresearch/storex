@@ -1,0 +1,10 @@
+schnitt 51.5.2 ) — wenn sie falsch war, dann hat man halt nicht richtig programmiert. So
+steht denn auch zu lesen:
+Explicit type conversi on is best avoided. Using a cast suppresses the type
+checking provided by the compiler and will therefore lead to surprises unless
+the programmer was right.
+Margaret A. Ellis und Bjarne Stroustrup
+Man spürt die Distanz der Autoren zu dem, was sie da beschreiben. Und so darf es als eine
+der großen Errungenschaften JAVAs gefeiert werden, dass es Type casts wenigstens zur Lauf-
+zeit auf Zulässigkeit prüft und damit ein Loch in der Typsicherheit schließt. Das führt uns zur
+dynamischen Seite des Typsystems von C++.

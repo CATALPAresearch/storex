@@ -1,0 +1,27 @@
+20.2 Verwendung definierter Typen
+Definierte Typen können in Programmen verwendet werden, in STRONGTALK bei der Dekla-
+ration von (anderen) Typen, von Variablen, von Blöcken und von Methoden. Man spricht
+dann von einer Typisierung der deklarierten Programmelemente. Die Verwendung in
+Typdefinitionen haben Sie ja oben bereits kennengelernt, die Verwendung in Methoden
+verläuft analog. Variablen (Instanzvariablen, tem poräre Variablen etc.) werden in STRONG-
+TALK genau wie formale Parameter (die ja auch Variablen sind) typannotiert, nämlich durch
+Hintanstellung eines in spitzen Klammern eingeschlossenen Typnamens. Bei Blöcken taucht
+der Rückgabetyp im selben Segment wie die formalen Parameter auf, also vor dem Sep ara-
+tor |. Die vollständig typannotierte Klasse Stack aus Abschnitt 8.2 sieht in STRONGTALK
+beispielsweise so aus:
+Klasse  Stack
+benannte Instanzvariablen  stackcontent <Array>
+stackpointer <Integer>
+indizierte Instanzvariablen  nein
+Instanzmethoden
+852 push: anElement <Object> ^ <Self>
+853  "legt neues Element auf Stapel"
+854  stackpointer := stackpointer + 1.
+855  stackcontent at: stackpointer put: anElement
+856 pop ^ <Self>
+857  "entfernt oberstes Element vom Stapel"
+858  stackpointer := stackpointer – 1
+859 top ^ <Object>
+860  "liefert oberstes Element des Stapels"
+861  ^ stackcontent at: stackpointer
+Ein Beispiel für einen typisierten Block finden Sie in Abschnitt 29.3, Codezeile 950.

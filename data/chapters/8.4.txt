@@ -1,0 +1,35 @@
+8.4 Erzeugung von Klassen in SMALLTALK
+Da Instanz en, für die es keine literale Repräsentation gibt, in SMALLTALK grundsätzlich über
+Konstruktoren erzeugt werden und jede Klasse Instanz ihrer Metaklasse ist, kann man sich
+fragen, wie in SMALLTALK eigentlich Klassen erzeugt werden. Die Tatsache, dass es einen
+Browser mit einer entsprechenden Funktion gibt, reicht als Erklärung hierfür nicht aus. An-
+dererseits kann es auch keine Lösung sein, einfach new o. ä. an die Metaklasse der Klasse
+zu senden, da diese ja zunächst noch gar nicht existiert. Es stellt sich hier tatsächlich die
+sprichwörtliche Frage nach der Henne und dem Ei, genauer, wer von beiden zuerst existie-
+ren muss .
+Dieses Dilemma wird von SMALLTALK intern gelöst. Eine Klasse wird i n
+SMALLTALK nämlich erzeugt, indem man einer anderen Klasse eine ent-
+sprechende Nachricht schickt. Der Protokolleintrag der dazugehörigen
+Methode (je nach System in der Klasse Class oder Behavior zu finden)
+für Klassen ohne indizierte Instanzvariablen sieht in SQUEAK wie folgt aus:
+385 subclass: t instanceVariableNames: f classVariableNames: d
+poolDictionaries: s category: cat
+386  "This is the standard initialization message for creating a new
+387  class as a subclass of an existing class (the receiver)."
+388 ^(ClassBuilder new)
+389  superclass: self
+390  subclass: t
+34 Das erklärt vermutlich auch, warum der Begriff des Konstruktors in SMALLTALK wenig gebräuchlich
+ist. Verwendung der
+Klassen Class und
+Behavior zur Erzeu -
+gung einer Klasse
+391  instanceVariableNames: f
+392  classVariableNames: d
+393  poolDictionaries: s
+394  category: cat
+Durch Ausführung dieser Methode wird eine neue Klasse und zugleich ihre Metaklasse an-
+gelegt. Dabei kann man dem Kommentar entnehmen , dass die neue Klasse Subklasse des
+Empfängers (einer Klasse) werden soll. Was das heißt, wird Gegenstand von Kapitel 11 sein.
+Hier wenden wir uns lieber der Frage zu, von welchen Klassen die miterzeugten Metaklassen
+Instanzen sind.

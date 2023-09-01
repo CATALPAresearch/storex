@@ -1,0 +1,22 @@
+52.4 Vererbung und Überladen
+EIFFEL erlaubt Mehrfachvererbung. Es gestattet zudem sowohl das Überschreiben (in EIFFEL
+Redefinition genannt) als auch das Löschen von Methoden. Auf der Haben -Seite steht dabei,
+dass zu Beginn einer Klassendefinition deklariert werden muss , welche Methoden in der
+Klasse überschrieben (welche „Features redefiniert“) werden. Natürlich gibt es in EIFFEL auch
+abstrakte Klassen ; das dazugehörige Schlüsselwort heißt jedoch deferred anstatt
+abstract , ansonsten ist aber alles wie in JAVA (richtiger: in JAVA ist alles wie in EIFFEL —
+EIFFEL ist ca. zehn Jahre älter als JAVA).
+BERTRAND MEYER ist ein bek ennender Gegner des Überladens. Es ist in EIF-
+FEL daher nicht erlaubt, dass eine Klasse zwei Methoden besitzt, die gleich
+heißen. Gleichwohl ist es erlaubt, dass verschiedene Klassen gleichnamige
+Methoden besitzen — nur dann dürfen diese Klassen nicht in Ve rerbungsbeziehung zuei-
+nander stehen, es sei denn, die Methoden besitzen gleiche oder kovariant redefinierte Pa-
+rametertypen , denn dann sind die Methoden nicht überladen, sondern werden überschrie-
+ben (was dann allerdings durch eine Redefine -Deklaration anzuzeigen ist). Nun kann man
+aber nicht erzwingen, dass zwei Klassen, von denen man erben möchte, keine gleichnami-
+gen Methoden verwenden. Anstatt auf das Erben zu verzichten, ist e s in EIFFEL deswegen
+möglich, geerbte Features umzubenennen. Es gibt zu diesem Zweck eine Rename -Klausel,
+die es erlaubt, zwei geerbte Features gleichen Namens mit unterschiedlichen Benennungen
+nebeneinander stehen zu lassen. Man beachte, dass das dynamisc he Binden davon unbe-
+rührt bleibt: Über den Typ der Klasse, von der ein umbenanntes Feature geerbt wurde, an-
+gesprochen hört das Feature weiterhin auf seinen ursprünglichen Namen.

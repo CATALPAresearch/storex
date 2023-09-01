@@ -1,0 +1,102 @@
+4.3.4 Verbergen der Repräsentation des Zustands hinter Methoden
+In SMALLTALK sind die Instanzvariablen eines Objekts nur für das Objekt selbst sichtbar (und
+damit auch zugreifbar).23 Genauer sind seine Methoden die einzigen Stellen im ganzen
+Programm, an denen auf die Instanzvariablen des Objekts , dem die Methoden zugeordnet
+sind, direkt zugegriffen werden kann. Die Struktur des Objekts bleibt somit verborgen (das
+Implementationsgeheimnis ) und sein Zustand wird gekapselt (s. Abschnitt 3.2 sowie unten
+für ein praktisches Beispiel ).
+Um die Belegung der Instanzvariablen und damit den Zustand eines Ob-
+jektes auszulesen oder verändern zu können, sind also Methoden not-
+wendig. Um beispielsweise den Wert einer Instanzvariable mit Namen a auszulesen, muss
+das Objekt eine Methode vorsehen, die den Wert von a zurückgibt. Diese (parameterlose)
+Methode wird in SMALLTALK üblicherweise wie folgt notiert:
+114 a
+115  "gib den Wert von a zurück"
+116 ^ a
+Sie entspricht im wesentlichem einem auch in JAVA gebräuchlichen sog. Getter einer an-
+sonsten nicht zugreifbaren Variable. Die Namensgleichheit von Methode und Variable soll
+dabei nicht darüber hinwegtäuschen, dass es sich bei beiden um verschiedene Dinge han-
+delt — Methode und Variable könnten genauso gut verschieden benannt werden.
+Um den Wert von a zu setzen, definiert man üblicherweise die folgende, auch Setter ge-
+nannte Methode:
+117 a: einWert
+118  "setze den Wert von a auf einWert"
+119  a := einWert
+Getter und Setter werden zusammen auch als Zugriffsmethoden (oder Accessoren ; engl.
+accessor methods ) bezeichnet.
+Die obigen Zugriffsmethoden werden aufgerufen, indem man dem Objekt, zu dem die In-
+stanzvariable a gehört, die Nachricht a (zum Lesen) bzw. a: mit einem Objekt als Parameter
+(zum Schreiben) schickt. Das Empfängerobjekt antwortet darauf im ersten Fall mit Rü ckgabe
+von a und im zweiten Fall mit Rückgabe von sich selbst. Man beachte, dass bei der Rückgabe
+keine Kopie, sondern der Inhalt der Variable (bzw. ein Verweis darauf) zurückgegeben wird.
+Nach Auswertung des Ausdrucks
+23 Dass dies in anderen S prachen anders ist (z. B. in JAVA), kann man durchaus als Entwurfsfehler
+ansehen. Auf der anderen Seite schützt die mangelnde Sichtbarkeit von Instanzvariablen ja nicht vor
+dem Zugriff auf Objekte, auf die sie verweisen (wegen des möglichen Aliasing ), so dass man sich an
+dieser Stelle nicht versteigen sollte. Zugriffsmethoden,
+Getter und Setter
+120 b := einObjekt a
+verweisen also b und die Instanzvariable a von einObjekt (genauer: dem von einObjekt
+bezeichneten Objekt) auf dasselbe Objekt, genauso wie nach Auswertung von
+121 einObjekt a: b
+Bei beiden ist hinterher b ein Alias auf a, was de facto die Kapselung des Zustandes von
+einObjekt durchbricht.
+Es soll nochmals darauf hingewiesen werden, dass im ersten Ausdruck a eine Nachricht
+darstellt und keinesfalls der Name der Instanzvariable des Objekts ist. Insbesondere handelt
+es sich bei dem (Teil -)Ausdruck einObjekt a mitnichten um das Äqui valent zu dem aus
+JAVA bekannten einObjekt.a , sondern vielmehr dem von einObjekt.getA() (wobei
+man die Methode getA() in JAVA per Konvention natürlich genauso gut nur a() nennen
+könnte). Ein direkter Zugriff auf die Instanzvariable von außen wie in JAVA ist in SMALLTALK
+nicht möglich. Man kann also den Zugriff auf eine Instanzvariable verhindern, indem man
+einfach keine Zugriffsmethoden dafür vorsieht; man kann ihn auf Nur-Lesen oder Nur-
+Schreiben beschränken, indem man nur die jeweilige Zugriffsmethode zur Verfügung stellt.
+Man beachte schließlich, dass anders al s benannte Instanzvariablen indi-
+zierte Instanzvariablen auch von dem Objekt, zu dem sie gehören, nicht
+direkt, sondern nur über die beiden vordefinierten Nachrichten at: und
+at:put: gelesen und geschrieben werden können:
+122 einObjekt at: i
+liefert den Wert de r Instanzvariable mit dem Index i,
+123 einObjekt at: i put: einAnderesObjekt
+setzt ihn. Es ist in SMALLTALK also nicht möglich, indizierte Instanzvariablen eines Objekts (im
+Gegensatz zu benannten) durch Nicht -Deklaration von Zugriffsmethoden zu verbergen (vor
+Zugriff zu schützen). Zugleich folgt aus der festen Vorgabe der beiden Zugriffsmethoden,
+dass jedes Ob jekt nur genau eine (unbenannte) Menge von indizierten Instanzvariablen ha-
+ben kann.
+Die ausschließliche Abfrage und Änderung des Zustandes von Objekten
+über Methoden hat den Vorteil, dass man sich n icht festlegt, wie man
+den Zustand eines Objekts tatsächlich codiert. So kann man beispiels-
+weise einem Punktobjekt Methoden zum Setzen und Abfragen sowohl
+von kartesischen als auch von polaren Koordinaten zuordnen, muss aber nur Instanzvariab-
+len für eine A rt von Koordinaten vorsehen und kann die anderen jeweils berechnen:
+124 kartesischX: a y: b
+125  "setzt kartesische Werte“
+126 x := a.
+127 y := b Zugriffsmethoden für
+indizierte
+Instanzvariablen
+Repräsentation des
+Zustands als
+Implementations -
+geheimnis
+128 x
+129  "liefert die x -Koordinate"
+130 ^ x
+131 y
+132  "liefert die y -Koordinate"
+133 ^ y
+134 polarRadius: r winkel: a
+135  "setzt polare Werte"
+136 x := a cos * r.
+137 y := a sin * r
+138 radius
+139  "liefert die Radius -Koordinate"
+140 ^ (x * x + (y * y)) sqrt
+141 winkel
+142  "liefert die Winkel -Koordinate"
+143 ^ (x / self radius) arcCos
+Man könnte die Koordinaten natürlich genauso gut in polarer Form spei-
+chern und die kartesischen berechnen — für die Benutzerin dieser Ob-
+jekte spielt das keine Rolle. Man betrachtet die Art und Weise, wie ein
+Objekt seinen Zustand codiert, als sein Implementationsgeheimnis und die Menge der Me-
+thodensignaturen, die den Zugriff auf das Objekt (seinen Zustand) erlauben (das Protokoll ),
+als sein Interface . Mehr dazu in Abschnitt 4.3.8 .
