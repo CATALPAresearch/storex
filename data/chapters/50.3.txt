@@ -1,0 +1,3 @@
+50.3 Zusätzliche Ingredienzien von Klassendefinitionen in C#
+Für die Programmierpraxis recht nützlich sind die in C# vorgesehenen zusätzlichen Elemente
+einer Klassendefinition. Es sind dies Prop erties, Indexer und Events.

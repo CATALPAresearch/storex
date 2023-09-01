@@ -1,0 +1,81 @@
+7.3 Instanziierung
+Klassendefinitionen bilden also eine Art Vorlage für Objekte. Um nun von einer solchen
+Vorlage Objekte mit Eigenschaften (Instanzvariablen und Methoden), wie sie durch die De-
+finition (Intension) festgelegt si nd, zu erzeugen, muss man sie instanziieren . Die Instanzi-
+ierung ist ein Vorgang, bei dem ein neues Objekt entsteht — sie ist gewissermaßen die
+Umkehrung der Klassifikation , also des Übergangs vom Individuum zu seiner Klasse (wobei
+die Klassifikation, anders als die Instanziierung, in der Programmierung kein Vorgan g ist).
+Vom erzeugten Objekt sagt man dann, es sei Instanz dieser Klasse . Tatsächlich spricht man
+in SMALLTALK , da ja auch Klassen Objekte sind, häufig von Instanzen anstelle von Objekten,
+wenn keine Klassen gemeint sind. Wie wir schon im nächsten Kapitel sehen werden, sind
+in SMALLTALK jedoch auch Klassen Instanzen. So gesehen
+handelt es sich bei den Begriffen Instanz und Klasse also eher um Rollen von Objekten, die
+im Verhältnis der Instanz iierung zueinander stehen. Die Begriffsbildung der objektorientier-
+ten Programmierung ist an dieser Stelle aber leider nicht besonders gelungen.29
+In SMALLTALK ist jedes Objekt Instanz genau einer Klasse. (Genaugenom-
+men ist es direkte Instanz genau einer Klasse, aber zum Unterschied zu
+indirekten Instanzen kommen wir erst in Abschnitt 9.1.) Dabei weiß jedes Objekt , von wel-
+cher Klasse es eine Instanz ist; diese Information lässt sich dem Objekt durch Senden der
+Nachr icht class entlocken; der entsprechende Ausdruck liefert das Objekt, das die Klas se
+repräsentiert, zurück .
+Mit der Instanziierung wird der Extension einer Klasse ein neues Element
+hinzugefügt. Das Elementsein auf Mengenebene entspricht also in etwa
+dem Instanzsein auf programmiersprachlicher Ebene (in UML wie im obigen Diagramm
+durch einen gestrichelten Pfeil angedeutet). Wir werden noch öfter auf diese mengentheo-
+retische Interpretation zurückkommen.
+Die Objekte, die wir in Kurseinheit 1 kennengelernt haben, wurden sämt-
+lich durch Literale repräsentiert; diese Objekte sind, da sie vom Compiler
+erzeugt werden, aus Sicht des Programms „schon da“, wenn es ausgeführt wird.30 Mittels
+Instanziierung und Klassen hat man nun die Möglichkeit, neue — und neuartige — Objekte
+programmatisch, also per Pr ogrammausführung, zu erzeugen. Dies geschieht standardmä-
+ßig, indem man der Klasse, von der man eine Instanz haben möchte, die Nachricht new (für
+Klassen ohne indizierte Instanzvariablen) oder new: (für Klassen mit indizierten Instanzvari-
+ablen) schickt. Das neue Objekt wird in Reaktion auf die Nachricht (durch eine entspre-
+chende primitive Methode des SMALLTALK -Systems; s. Abschnitt 4.3.7 ) im Speicher angelegt
+und seine Instanzvariablen werden alle mit nil initialisiert. Der Parameter der Nachricht
+29 Auch wenn in SMALLTALK alles ein Objekt ist, gibt es in SMALLTALK doch zwei verschiedene Arten
+von Objekten, nämlich solche, die instanziierbar sind, und solche, die es nicht sind. Instanziierbare
+Objekte sind immer (auch) Klassen; für solche, die es nicht sind, gibt es leider keine spezielle Bezeich-
+nung. Man könnte sie jedoch, wie wir in Abschnitt 8.5 sehen werden, Ebene -0-Objekte nennen.
+30 Dabei sind die Klassen, von denen es solche Objekte gibt, insofern privilegiert, als sie der Compiler
+kennen muss, damit er ihnen die Literale (anhand ihrer Syntax) zuordnen kann, um die richtigen
+Objekte (Objekte der richtigen Klassen) zu erzeugen. Da Klassen (zumindest in SMALLTALK -80 und
+allen davon abgeleiteten Dialekten) keine Schnittstelle zum Compiler haben, ist es auch nicht mög-
+lich, für selbst definierte Klassen eigene literale Objektrepräsentationen zu kreieren.
+Klasse
+InstanzObjekte kennen ihre
+Klassen
+mengentheoretische
+Interpretation
+Instanziierung mit
+new und new:
+new: muss immer eine natürliche Zahl sein und legt die Anzahl der indizierten Instanzva ri-
+ablen fest, über die ein Objekt verfügt. Hat ein Objekt (per Klassendefinition; s. Ab-
+schnitt 7.2) keine indizierten Instanzvariablen, führt new: zu einem Laufzeitfehler.
+Einen neuen Stack mit Platz für 100 Elemente erhält man, indem man,
+bei obiger erster Klassendefinition von Stack , den Ausdruck
+299 Stack new: 100
+auswertet. Dabei ist Stack wie gesagt eine Pseudovariable, die den Klassennamen trägt,
+die auf das Objekt verweist, das die Klasse repräsentiert, und der ihr Wert beim Anlegen der
+Klasse vom System zugewiesen wurde. In der zweiten Form der Implementierung wäre eben
+dieser Ausdruck verboten: Stattdessen dürfte der Ausdruck dann nur noch
+300 Stack new
+heißen. Dass der Stack dann trotzdem 100 Elemente halten kann, muss in diesem Fall bei
+der Instanziierung des Zwischenobjekts, auf das die Variable stackcontent verweist, mit-
+tels eines entsp rechenden New -Ausdrucks angegeben werden. Diese Instanziierung hatten
+wir jedoch oben unterschlagen; wo und wie sie durchgeführt wird, wird Gegenstand des
+nächsten Kapitel s sein, wenn es um Konstruktoren und Initialisierung geht.
+Eine Alternative zum Instanziieren ist übrigens das Klonen . Beim Klonen
+wird ein neues Objekt auf der Basis eines bereits existierenden erzeugt.
+Der Klon stellt also eine Kopie dar. Beim Klonvorgang ist festzulegen, wie
+weit (tief) das Kopieren gehen soll, also ob nur das Objekt oder auch seine Attributobjekte
+und die, zu denen es in Beziehung steht (auf die die Instanzvariablen verweisen; s. Kapitel 2
+in Kurseinheit 1) kopiert werden sollen. Während in prototypenbasierten objektorientierten
+Programmiersprachen, die das Konzept der Klasse ja nicht kennen, Klonen die einzige Mög-
+lichkeit ist, neue Objekte zu erstellen, müssen bei Programmiersprachen mit Klassen, in de-
+nen jedes Objekt Instanz einer Klasse sein muss , Klone in der Regel durch Instanz iierung
+und Übertragung der Inhalte der Instanzvariablen erzeugt werden. Da wir hier aber die klas-
+senbasierte Linie verfolgen und auf klassenlose objektorientierte Programmiersprachen nur
+eingehen, wo dies interessant erscheint, werden wir das Klonen, das in klassenbasierten
+objektorientierten Programmiersprachen eine untergeordnete Rolle spielt, erst in Abschnitt
+14.1 vertiefen.

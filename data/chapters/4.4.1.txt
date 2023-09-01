@@ -1,0 +1,46 @@
+4.4.1 Home context und Closure
+Da Blöcke Objekte sind, die Variablen zugwiesen werden können, können sie auch an an-
+dere Methoden übergeben werden. Werden sie dort (mittels value) ausgewertet, dann
+27 In einem Workspace definierte und mittels doIt usw. ausgef ührte Blöcke werden zu diesem
+Zweck in (temporäre) Methoden übersetzt, die keinem Objekt (oder nil) zugeordnet sind. Definition von
+Blöcken
+Kontext eines Blocks
+Ausführung von
+Blockausdrücken
+Auswertung von
+Blöcken
+Wert eines Blocks
+findet die Auswertung in einem anderen Kontext statt. In diesem sind die „freien“ Variablen
+des Blocks (also die, die nicht selbst als lokale Variablen deklariert wurden; x und y in Zeile
+175) aber gar nicht zugreifbar. Der Block nimmt deswegen seinen Kontext mit (oder, richti-
+ger, der Ko ntext ist im Block mit eingeschlossen). Der Kontext, in dem ein Block definiert
+wurde ( in dem das ihn repräs entierende Objekt erzeugt wurde) , nennt man seinen Home
+context . Die Auswertung eines Blocks erfolgt stets in seinem Home context, insbesondere
+auch dann, wenn ihm value in einem anderen Kontext gesendet wurde.
+Das folgende Beispiel zweier Methoden soll den Sachverhalt erläutern:
+178 homeContext
+179 | x |
+180 x := 2.
+181 self otherContext: [Transcript show: x printString]
+182 otherContext: x
+183 x value
+gibt auf dem Transcript 2 aus, obwohl im Kontext von otherContext: die Variable x einen
+Block und nicht 2 zum Wert hat. Die (Werte der) Pseudovariablen self und super zählen
+übrigens auch zum Home context ; dies ist vor allem im Zusammenhang mit dem dynami-
+schen Binden ( Kapitel 12 in Kurseinheit 2) interessant.
+Dass ein Block aus seinem Home c ontext herausgelöst und in einem anderen gespeichert
+werden kann beinhaltet das Problem, dass die lokale Variablen des Home conte xts schon
+verschwunden sein können, wenn der Block ausgewertet wird. Die durch den Block „ein-
+gefangenen“ lokalen Variablen (inkl. formale Parameter) müssen daher unabhängig von der
+Ausführung der Methoden, die sie definieren, weiterleben. Die Umsetzu ng von Blöcken
+durch den SMALLTALK -Compiler ist alles andere als trivial und verschiedene SMALLTALK -Sys-
+teme unterscheiden sich darin zum Teil erheblich voneinander, was sich (leider) auch in un-
+terschiedlichem Verhalten äußert.
+Die Blöc ke SMALLTALK s heißen in anderen Sprachen übrigens (lexikalische)
+Closures ; sie werden für die sog. Lambda -Ausdrücke , also (anonyme)
+Funktionen, die selbst Objekte oder Werte sind und die deswegen aus ihrem Kontext her-
+ausgelöst und in andere verschoben werden können, gebraucht . Dabei unterscheiden sich
+die Sprachen zum Teil erheblich darin, was alles in eine Clos ure einbezogen werden kann;
+so können die lokalen Namen (Variablen) beispielsweise auf Konstanten eingeschränkt wer-
+den, um zu vermeiden , dass temporäre Variablen weiterleben müssen, weil sie in einer Clo-
+sure entha lten sind.

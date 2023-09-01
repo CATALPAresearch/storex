@@ -1,0 +1,14 @@
+9 Generalisierung und Spezialisierung
+Es gibt in SMALLTALK also eine Hierarchie, die auf dem Konzept der Klassifikation aufbaut.
+Aufgrund praktischer Überlegungen ist diese Hierarchie beschränkt; sie ist mit der Sprach-
+definition festgelegt und stellt gewissermaßen einen Teil derselben dar. Konzeptionell ist
+diese Hierarchie eine Abstraktionshierarchie : Von den konkreten Objekten der Ebene 0 geht
+es über die Allgemeinbegriffe oder Konzepte der Ebene 1 zu den Definitionen dieser Kon-
+zepte auf Ebene 2 hin zur Fassung von Definitionen allgemein auf Ebene 3. Mit jeder Stufe
+mit Ausnahme der mittleren wird die Zahl der Objekte, die unter die darin angesiedelten
+Konzepte fallen, drastisch reduziert: von Ebene 0 auf Ebene 1 von theoretisch unendlich
+vielen Objekten einer Anwendung zur Zahl der Anwendungsklassen, von Ebene 2 auf Ebene
+3 von der Zahl der Anwendungsklassen zu einer Klasse Metaclass . Als Programmiererin
+bewegen Sie sich jedoch vor allem auf Ebene 1: Sie definieren Anwendungsklassen, von
+denen zur Laufzeit des Programms die Anwendungsobjekte erzeugt werden. Dire kt nutzen
+Sie also nur eine Abstraktionsstufe für die Programmierung.

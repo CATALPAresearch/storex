@@ -1,0 +1,67 @@
+1.6 Zuweisung
+Damit eine Variable ein Objekt bezeichnet, muss ihr dieses durch eine sog. Zuweisung , in
+anderen Kontexten auch Wertzuweisung genannt, zugeordnet werden. Ursprünglich
+wurde als Zuweisungsoperator das Symb ol „“ gewählt; wegen der mangelnden Verfüg-
+barkeit auf Tastaturen wurde es jedoch in den meisten SMALLTALK -Implementierungen durch
+das aus ALGOL und PASCAL bekannte := ( englisch als „ becomes “ gelesen) ersetzt.7 Die
+Variable lieblingszahl bezeichnet also i n Folge der Zuweisung
+20 lieblingszahl := 2
+ein Objekt „2“ (in der Zuweisung repräsentiert durch das Literal 2). Nach einer Zuweisung
+7 Dass in C und allen davon abgelei teten Sprachen (sowie in BASIC) das einfache Gleichheitszeichen
+= für die Zuweisung steht, darf als eine der Tragödien in der Geschichte der Programmiersprachen
+angesehen werden. Ich möchte nicht wissen, wie viele fatale Fehler auf die dadurch provozierte Ver-
+wechselung von Test auf Gleichheit und Zuweisung zurückzuführen sind. lokale und globale
+Variablen
+Benennungs -
+konvention in
+SMALLTALK
+21 x := y
+bezeichnen x und y das gleiche Objekt (genau welches ist hier nicht er-
+sichtlich); ob sie auch dasselbe bezeichnen, hängt von der Semantik der
+Variablen ab. Man beachte, dass in SMALLTALK (anders als in typisierten
+Sprachen) aus Sicht des Compilers nichts dagegen spricht, der Variable x erst eine Zahl und
+dann einen String zuzuweis en. Auch Array -Literale können jeder beliebigen Variable zuge-
+wiesen werden.
+Man beachte weiterhin, dass die Zuweisung (anders als der Test auf
+Gleichheit = oder Identität ==) nicht kommutativ ist: x := y hat nur dann
+dieselbe Bedeutung wie y := x , wenn x und y schon vor der jeweiligen Zuweisung den-
+selben Wert hatten. Zur besseren sprachlichen Unterscheidung der Seite, der zugewiesen
+wird, und der, die zugewiesen wird, spricht man häufig von der linken und der rechten Seite
+einer Zuweisung .
+Nach den drei Zuweisungen
+22 x := 5
+23 y := 3
+24 x := y
+bezeichnen x und y beide die „3“. Wäre die letzte Z uweisung hingegen y := x gewesen,
+bezeichneten x und y beide „5“.
+Die Zuweisung ist ein elementares Konstrukt der objektorientierten Programmierung sowie
+der Programmierung überhaupt. Nur die wenigsten Sprachen kommen ohne sie aus. Neben
+der expliziten Zuw eisung durch den Zuweisungsoperator kommt auch eine implizite (bei
+Methodena ufrufen ) vor; diese wird jedoch erst in Abschnitt 4.3.2 behandelt.
+Der oben geschilderte Unterschied zwischen Wert - und Verweissemantik
+von Variablen hat für die Zuweisung erhebliche Konsequenzen: Bei einer
+Zuweisung unter Wertsemantik muss , da die Variable das Objekt zum In-
+halt hat (also in der Variable gespeichert ist) und ein Objekt nicht in zwei Variablen gespei-
+chert sein kann, eine Kopie angefertigt werden. Das hat zur Folge, dass die beiden Variablen
+x und y nach der Zuweisung aus Zeile 21 nicht dasselbe (also identische) Objekt bezeichnen
+(was ja unter Wertsemantik, wie oben bereits gesagt, auch gar nicht geht), so dass z. B.
+Änderungen am in x gespeicherten Objekt das in y gespeicherte Objekt nicht betreffen. Bei
+einer Zuweisung unter Verweissemantik wird jedoch nur der Verweis der rechten Seite ko-
+piert und in der Variablen auf der linken gespeichert. Wenn die Variablen auf der linken und
+der rechten Seite unterschiedliche Sem antiken haben, dann liegt entweder eine unzulässige
+Zuweisung (s. Kapitel 18) vor oder es muss , je nach Art der Variable auf der linken Seite,
+eine Kopie eines Objektes oder ein Verweis auf ein Objekt angefertigt werden (s. dazu auch
+Abschnitt 52.5.2 in Kurseinheit 5). keine
+Einschränkungen bei
+der Zuweisung
+zwei Seiten einer
+Zuweisung
+Beispiel
+Wert - und
+Verweissemantik bei
+der Zuweisung
+Selbsttestaufgabe 1.3
+Finden Sie (durch Experimentieren) heraus, welche Objekte Ihres SMALLTALK -Systems per Wertseman-
+tik gespeichert werden. Nutzen Sie dabei aus, das SMALLTALK vor der Erzeugung eines Objekts mit
+Ausnahme von Symbolen nicht prüft, ob das Objekt schon vorhanden ist.
+Hinweis: Verwenden Sie den Identitätstest ( ==).

@@ -1,0 +1,12 @@
+31 Grenzen der Typisierung
+Wie Sie sehen, ist das Problem der kovarianten Redefinition ziemlich hartnäckig. Man muss
+aber gar nicht so weit gehen, um an die praktischen Grenzen der Typisierung zu gelangen:
+Bereits der Ausdruck
+974 x reciprocal
+beinhaltet einen Typfehler, wenn nicht sichergestellt ist, dass x nicht 0 enthält. Nun könnte
+man einen Typ NotZero definieren und x als von diesem Typ deklarieren, womit der obige
+Ausdruck kein Problem mehr wäre; mit den hier vorgestellten Mitteln der statischen Typprü-
+fung wäre dann aber schon die einfache Zuweisung
+975 x := y - z
+nicht mehr auf Zulässigkeit prüfbar. Selbst wenn es Typsy steme gibt, die das können56, so
+sind diese kaum praxistauglich.

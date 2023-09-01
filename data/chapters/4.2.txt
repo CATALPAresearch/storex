@@ -1,0 +1,26 @@
+4.2 Anweisungen
+Anweisungen spezifizieren die Schritte, in denen ein Programm ausgeführt wird. In SMALL-
+TALK sind alle Ausdrücke, die nicht Bestandteil von anderen Ausdrücken sind, Anweisungen.
+Während ihnen in JAVA und C# dazu noch ein Semikolon hintangestellt werden muss, ist
+Vergleichbares in SMALLTALK nicht nötig.
+Folgen von Anweisungen werden in SMALLTALK durch einen Punkt ge-
+trennt. Dabei handelt es sich (genau wie in PASCAL oder EIFFEL) um ein
+Trennzeichen und nicht (wie in den von C abgeleiteten Sprachen wie JAVA oder C# ) um
+einen Teil der A nweisung selbst. Der Punkt am Ende einer Anweisung darf also fehlen, wenn
+keine weitere Anweisung folgt. Ansonsten entspricht die Wahl des Punktes dem Vorsatz
+SMALLTALK s, der natürlichen Sprache möglichst ähnlich zu sein. So ist auch die Wahl des
+Semikolon s zur Kaskadierung von Nachrichtenausdrücken zu sehen. mehrstellige
+Schlüsselwort -
+nachrichten
+der P unkt als
+Trennzeichen
+Return -Anweisung
+Die einzige andere Form der Anweisung in SMALLTALK ist die Return -Anweisung . Auf sie
+werden wir im Zusammenhang mit Methoden im nächsten Kapitel noch ausführlicher zu
+sprechen kommen. Sie besteht in SMALLTALK aus dem Sonderzeichen ^ (ursprünglich , je-
+doch genau wie  auf den meisten Tastaturen nicht verfügbar), gefolgt von einem Aus-
+druck. Die Return -Anweisung „retourniert“ das Objekt, zu dem dieser Ausdruck auswertet.
+Da alle anderen Anweisungen Ausdrücke sind, die zu einem Objekt auswerten, brauchen
+Methoden (Abschnitt 4.3) und Blöcke (Abschnitt 4.4) in SMALLTALK keine Return -Anweisun-
+gen, um ein Objekt zurückzuliefern; sie liefern dann das Objekt, zu dem die letzte Anwei-
+sung auswertet.

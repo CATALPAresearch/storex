@@ -1,0 +1,125 @@
+48 Ein abschließendes Beispiel
+Um Ihnen eine grobe Vorstellung davon zu geben, wie JAVA-Programme aussehen, finden
+Sie nachfolgend den Quellcode für ein Programm, das ein einfaches Ratespiel umsetzt . Das
+Programm besteht aus vier Klassen, nämlich der Klasse Ratespiel , die im wesentlichen
+die Startmethode nebst Initialisierung der Datenst ruktur enthält, sowie den Klassen Knoten ,
+Tier und Merkmal . Das Interface Frage dient der gemeinsamen Abstraktion von Tier Möglichkeiten zur
+Synchronisation von
+Threads
+Annotationen
+und Merkmal und verlangt von den beiden Klassen lediglich, dass sie eine Methode
+stellen() implementieren und auf den Aufruf derselbe n einen Wahrheitswert (die Ant-
+wort auf die gestellte Frage) zurückliefern. Die Methoden der Klasse KeyboardInput die-
+nen der Interaktion mit der Benutzerin über die Konsole, deren Möglichkeiten in JAVA (wie
+in SMALLTALK ) von Haus aus nur schwach ausgeprägt sind. System.out bezeichnet denn
+auch den Ausgabestrom , der mit der Konsole ver bunden ist, und die Methode println(.)
+gibt etwas darauf aus.
+1177 public class Ratespiel {
+1178  public static void main(String[] args) {
+1179   Knoten startKnoten = new Knoten(new Tier("Huhn"));
+1180   do {
+1181    System.out.println("Denke dir ein Tier aus und drücke Rt n!");
+1182    KeyboardInput.tasteDrücken();
+1183    startKnoten.fragen();
+1184    System.out.println("Möchtest du nochmal?");
+1185   } while (KeyboardInput.ja());
+1186  }
+1187 }
+1188 interface Frage {
+1189  boolean stellen();
+1190 }
+1191 public class Knoten {
+1192  Frage frage;
+1193  Knoten ja;
+1194  Knoten nein;
+1195  public Knoten(Frage frage) {
+1196   this.frage = frage;
+1197   nein = null;
+1198   ja = null;
+1199  }
+1200  public void fragen() {
+1201   boolean antwort = frage.stellen();
+1202   if (antwort) {// Antwort positiv
+1203    if (ja != null) // weitere Fragen vorhanden :
+1204     ja.fragen(); // mit Ja -Knoten weitermachen
+1205    else // keine weiteren Fragen vorhanden:
+1206     System.out.println("Fertig.");
+1207   }
+1208   else { // Antwort negativ
+1209    if (nein != null) // weitere Fragen vorhanden:
+1210     nein.fragen(); // m it Nein-Knoten weitermachen
+1211    else {// keine weiteren Fragen vorhanden:
+1212     String name = KeyboardInput.antwort("Wie heißt es dann?");
+1213     Tier neuesTier = new Tier(name);
+1214  String merkmalsfrage =
+1215      KeyboardInput.antwort("Nenne mir ei ne Frage, die für "
+1216       + neuesTier.name() + " mit Ja und für "
+1217       + ((Tier) frage).name()
+1218       + " mit Nein beantwortet werden muss!");
+1219     Merkmal neuesMerkmal = new Merkmal(merkmalsfrage);
+1220     ja = new Knoten(neuesTier);
+1221     nein = new Knoten(frage); // frage wandert nach unten!
+1222     frage = neuesMerkmal;
+1223     System.out.println("Gut!");
+1224    }
+1225   }
+1226  }
+1227 }
+1228 public class Tier implements Frage {
+1229  private String name;
+1230  public Tier(String name) {
+1231   this.name = name;
+1232  }
+1233  public String name() {
+1234   return name;
+1235  }
+1236  public boolean stellen() {
+1237   System.out.println("Heißt es " + name + "?");
+1238   return KeyboardInput.ja();
+1239  }
+1240 }
+1241 public class Merkmal implements Frage {
+1242  String frage;
+1243  public Merkmal(String frage) {
+1244   this.frage = frage;
+1245  }
+1246  public boolean stellen() {
+1247   System.out.println(frage);
+1248   return KeyboardInput.ja();
+1249  }
+1250 }
+Die Klassen Tier und Merkmal sind beide recht klein und unterscheiden sich nur wenig.
+Beide speichern pro Instanz einen String, einmal in der Instanzvariable name , einmal in der
+Instanzvariable frage . Diese Strings werden jeweils bei der Erzeugung der Objekte per Kon-
+struktoraufruf üb ergeben (so z. B. in Zeile 1179 ) und in der Folge nicht mehr geändert (die
+Instanzvariablen sind private deklariert und es gibt außer dem Konstruktor keine Met ho-
+den der Klassen, die schreibend darauf zugreifen, also die Instanzvariable auf der linken
+Seite einer Zuweisung stehen haben). Beim Stellen der Frage fügt Tier noch etwas Text zu
+dem Inhalt von name hinzu, so dass sich eine vollständige Frage ergibt; für Merkmale muss
+die Frage so eingegeben werden, wie sie hinterher gestellt wird.
+Das Gros der Anwendungslogik steckt in der Klasse Knoten . Ihre Instanzen stellen die Kno-
+ten eines binären Baums, von denen der eine Nachfolger den Ja -, der andere den Nein -
+Zweig beinhaltet. Zudem muss jeder Knoten eine Frage haben; dass die entsprechende
+Instanzvariable frage heißt und vom Typ Frage ist, drückt aus, dass mit jedem Knoten
+entweder eine Tier - oder eine Merkmalsfrage verbunden ist. Dass nur die Blätter eines
+Baums Tierfragen beinhalten dürfen, wird durch die Variablendeklarationen nicht ausge-
+drückt; das steckt in der nachfolgenden Programmlogik, der Implementierung der Methode
+fragen() .
+Die Methode fragen() enthält eine Unterscheidung von vier Fällen, die sich aus d er Be-
+antwortung der zu dem Knoten gehörenden Frage (ja oder nein) und dem Umstand, ob es
+sich um einen Blattknoten handelt (was man daran sehen kann, dass ja bzw. nein den
+Wert null haben) ergeben. Die Schachtelung der insgesamt drei If -else-Anweisungen is t
+Standard und hat mit Objektorientierung nichts zu tun. Objektorientiert ist dagegen die
+Fallunterscheidung, die sich hinter dem Aufruf frage.stellen() (Zeile 1201 ) verbirgt: Da
+frage eine Instanz der Klasse Tier oder Merkmal benennen kann, die beiden Klassen die
+Methode stellen() aber jede für sich implementieren, wird hier eine Fallunterscheidung
+per dynamischem Binden  getroffen. Man beachte, dass die Unte rscheidung, ob ein Knoten
+Blattknoten ist, ebenfalls per dynamisches Binden getroffen werden könnte; ihre Program-
+miererin hat sich aber im Rahmen ihrer kreativen Freiheit dagegen entschieden.
+Vielleicht ist Ihnen aufgefallen, dass außer den Konstruktoren keine der Methoden einen
+Parameter hat. Es ist dies ein Zeichen für ein gelungenes objektorientiertes Design. Für Pro-
+grammiererinnen , die aus der imperativen Programmierung kommen, ist dies gewöhnungs-
+bedürftig — intuitiv denkt man zunächst, dass die Methoden statt dessen wohl auf globale
+Variablen z ugreifen werden, weswegen man spontan die Nase rümpfen möchte. Das ist
+aber nicht der Fall: Alle Methoden greifen ausschließlich auf Instanzvariablen zu. Diese gibt
+es aber in der imperativen Programmierung nicht.

@@ -1,0 +1,48 @@
+54 Das Problem der Substituierbarkeit
+In Kapitel 26 sind wir ja schon ausführlicher auf den Begriff des Subtypings eingegangen.
+Das Subtyping sollte Zuweisungskompatibilität zwischen verschiedenen Typen gestatten,
+also erlauben, dass Objekte eines Typs Variablen eines anderen Typs, nämlich eines Super-
+typs, zugewiesen werden. Das führt nun zu dem Problem, dass man — aufgrund des dyna-
+mischen Bindens von Methodenaufrufen — bei Vorliegen des Programmfragments
+1507 | e <T> |
+1508 e := <ein Ausdruck>.
+1509 e m
+selbst bei Kenntnis des Typs T nicht sagen kann, welchen Effekt der Aufruf von Methode m
+in Zeile 1509 hat.82 Nach den Regeln gängiger objektorientierter Programmiersprachen zur
+Zuweisungskom patibilität weiß man lediglich, dass es sich beim Typ des Empfängerobjekts
+e um einen Subtyp von T handeln muss83 — man weiß aber nicht, um welchen. Bei stati-
+scher, lokaler Betrachtung84, also bei mangelnder Kenntnis des Typs des von e bezeichneten
+Objekts s owie aller infrage kommenden Subtypen von T, tappt man hier vollkommen im
+Dunkeln. Da die Erweiterung um Subklassen bzw. Subtypen aber gerade eine der Errungen-
+schaften der objektorientierten Programmierung ist, hat man es dabei mit einem echten
+Problem zu tun.
+Das Problem lässt sich als ein Problem der formalen Programmverifikation ausdrücken: Wie
+lässt sich
+82 Die Parameter des Methodenaufrufs si nd hier unwichtig, da wir davon ausgehen, dass Metho-
+denaufrufe nur unter Berücksichtigung des Empfängerobjekts gebunden werden.
+83 In typlosen Programmiersprachen wie SMALLTALK weiß man nicht einmal das.
+84 Zur Wichtigkeit von lokaler Betrachtung s. a. Absch nitt 56.
+P {e m} Q (54.1)
+also dass bei Vorliegen der Bedingung P vor Ausführung des Methodenaufrufs e m nach
+dessen Ausführung die Bedingung Q eingehalten wird, beweisen? Ein solcher Beweis ver-
+langt immerhin genaue Kenntnis davon, was der Methodenaufruf tut, oder vielmehr, wel-
+chen Effekt dieses Tun hat. Dazu muss man aber die Implementierung der Methode ken nen.
+Umgekehrt ist es für die Pflege und Weiterentwicklung eines Programms wichtig zu wissen,
+welchen Bedingungen die Methoden einer in ein Programm neu eingeführten Klasse genü-
+gen müssen, damit das Programm auch hinterher noch funktioniert. Wenn die neue Imple-
+mentierung sich in den Kanon der bereits bestehenden einordnet, ohne ein unerwartetes
+Verhalten einzubringen, wenn sie also für alle Aufrufe gemachte Zusicherungen der Form
+von (54.1) einhält, dann ist das Funktionieren nicht gefährdet — andernfalls hingegen
+schon. Nur um das zu garantieren, müssen die Bedingungen bekannt sein.
+Es stellt sich also die Frage, wie man den Effekt aller Implementierungen von m für Subtypen
+von T (einschl ießlich T selbst) fassen kann. Eine naive Beantwortung der Frage würde vor-
+schlagen, dass man sic h alle diese Implementierungen ansieht und auf dieser Basis eine
+Fallunterscheidung präsentiert: Wenn das Objekt e vom Typ T ist, dann hat m den und den
+Effekt, wenn es von Subtyp T1 ist, dann hat m den und den Effekt usw. Die Zusammenfas-
+sung dieser Fallunterscheidungen würde dann alle Effekte mit logisch Oder verknüpfen.
+Diese Möglichkeit hat jedoch neben ihrer unnötigen Sperrigkeit den Nachteil, dass dabei
+noch gar nicht vorhandene Implementierungen unberücksichtig t bleiben müssen. Was man
+stattdessen möchte, ist die Gewissheit , dass eine lokale, „modulare“ Betrachtung ausrei cht
+und man nicht jedes Mal eine Analyse des gesamten Programms durchführen muss , um zu
+entschlüsseln, was ein Methodenaufruf bewirken könnte. Genau dies soll der Begriff der
+Substituierbarkeit bringen.

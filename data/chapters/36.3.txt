@@ -1,0 +1,50 @@
+36.3 Konstruktoren
+Objekte, für die es keine literale Repräsentation gibt, müssen in JAVA (wie in SMALLTALK )
+explizit, als Instanzen von Klassen, erzeugt werden. Dazu gibt es in JAVA eine spezielle Ka-
+tegorie von Methoden, Konstruktoren genannt, die, anders als in SMALLTALK , keine Klassen-
+methoden sind, sondern zwischen Klassen - und Instanzmethoden stehen. Dabei sind Kon-
+struktoren wie I nstanzmethoden, weil in ihrem Rumpf auf alle Felder und Methoden der
+neu erzeugten Instanz zugegriffen werden kann (und zwar genau so, als sei der Konstruktor
+eine Instanzmethode, die auf der neu erzeugten Instanz aufgerufen würde). Konstruktoren
+können al so all die Anweisungen enthalten, für die in SMALLTALK noch eine spezielle Me-
+thode initialize notwendig war (vgl. Abschnitt 8.2 in Kurseinheit 2). Konstruktoren
+sind aber auch wie Klassenmethoden, weil sie eben nicht auf einer Instanz aufgerufen wer-
+den, sondern auf der Klasse. Allerdings sieht JAVA dafür keine spezielle Klassenm ethode new
+o. ä. vor, sondern verwendet den Klassennamen selbst wie einen Methodennamen. Wenn
+man also, von SMALLTALK kommend, etwas der Form
+997 class A {
+998 static A new(<formale Parameterliste>) {…} // Klassenmethode
+999 …
+1000  A a = A. new(<tatsächlich e Parameterliste>);
+1001 …
+1002 }
+erwarten würde, findet man in JAVA stattdessen
+1003 class A {
+1004 A(<formale Parameterliste>) {…} // Konstruktor
+1005 …
+1006  A a = new A(<tatsächlich e Parameterliste>);
+1007 …
+1008 }
+Wie man sieht, erlauben Konstruktordefinitionen in JAVA anders als (andere ) Methoden
+keine Angabe eines Rückgabetypen — da die erzeugte Instanz immer eine der Klasse ist, in
+der der Konstruktor definiert ist, steht der Typ fest. Die Angabe des Rückgabetyps in Zeile
+998 wäre also redundant.
+Wenn man keinen Konstruktor definiert, nimmt JAVA stets den (implizi-
+ten) Standardkonstruktor an, der parameterlos ist und der nichts weiter
+tut, als eine n eue Instanz der Klasse zu liefern. Außerdem werden Kon-
+struktoren nicht vererbt; stattdessen wird der Standardkonstruktor einer Klasse beim Erzeu-Standardkonstruktor
+und
+Superk onstruktor en
+gen einer Instanz von einer ihrer Subklassen automatisch mit aufgerufen. Um dieses Verhal-
+ten zu überschreiben, k ann man aus einem Konstruktor heraus einen beliebigen Konstruk-
+tor der Superklasse mittels super aufrufen; darin wiederum aufgerufene Methoden werden
+dann dynamisch gebunden, was dazu führen kann, dass von diesen Methoden auf noch
+nicht ini tialisierte Variablen zurückgeg riffen wird. Tatsächlich ist der ganze Komplex Kon-
+struktoren und Initialisierung von Variablen in JAVA recht komplex , was, da Instanziierung
+und Initialisierung fundamentale und für jedes Programm unverzichtbare Vorgänge sind,
+nicht gera de für JAVA als Anfängerinnensprache spricht.
+Konstruktionen zur Objekterzeugung mit Klassenmethoden wie oben (Zeile 998) sind in
+JAVA übrigens auch möglich; allerdings muss eine solche Klassenmethode dann in ihrem
+Rumpf einen Konstruktor wie in Zeile 1006 aufrufen. Man spricht dann von der Klassenme-
+thode auch als einer Factory -Methode (vgl. Abschnitt 8.3 in Kurseinheit 2); sie kann auch
+Instanzen anderen Typs als des deklarierten zurückgeben.

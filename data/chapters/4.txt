@@ -1,0 +1,10 @@
+4 Verhalten
+Wenn Objekte ihren Zustand kapseln, ist es ausschließlich ihr Verhalten, welches ihn ändert,
+welches also die Zustandsänderungen eines Objekts herbeiführt. Umgekehrt hängt das Ver-
+halten eines Objekts in der Regel von seinem Zustand ab. Wie aber wird das Verhalten eines
+Objekts beschrieben? Bevor wir uns dieser Frage zuwenden, müssen wir erst wir zunächst
+den Begriff des Ausdrucks klären.
+15 Die Programmiersprache Rust ist hier vielleicht eine Ausnahme. lokale Variablen und
+das Geheimnisprinzip
+lokale Variablen und
+Kapselung

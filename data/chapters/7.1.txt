@@ -1,0 +1,55 @@
+7.1 Klassifikation
+Durch die Zuordnung von Individuen oder Objekten zu Allgemeinbegriffen oder Klassen
+findet eine Klassifikation statt. Diese Klassifikation erlaubt e ine Ordnung oder Strukturie-
+rung der Anwendungsdomäne, indem bestimmte Aussagen nur noch für die Klassen ge-
+troffen werden müssen und nicht mehr für jedes einzelne Objekt. Anstatt also wie in der
+vorangegangenen Kurseinheit Instanzvariablen und Methoden dire kt Objekten zuzuordnen,
+verbindet man sie mit Klassen und vereinbart, dass alle mit einer Klasse verbundenen Eigen-
+schaften und Verhaltensspezifikationen nicht die Klasse in ihrer Gesamtheit, sondern die
+einzelnen Objekte, die zu der Klasse gehören, beschre iben.
+In diesem Zusammenhang ist es sinnvoll, die Unterscheidung von Exten-
+sion und Intension eines Begriffs ins Spiel zu bringen. Unter der Exten-
+sion (Ausdehnung oder Erstreckung) eines (Allgemein -)Begriffs versteht
+man die Menge der Objekte, die darunterfallen. Im Fall von Person etwa ist das die Menge
+aller Personen, im Fall von Dokument die Menge aller Dokumente. Die Intension (nicht zu
+verwechseln mit Intention!) eines (Allgemein -)Begriffs hingegen ist die Summe der Merk-
+male, die den Begriff ausmachen und die die Objekte, die darunter fallen, charakterisieren.
+Sie ist gewissermaßen das Auswahlprädikat oder die charakteristisch e Funktion, die zu ei-
+nem beliebigen Element entscheidet, ob es unter den Begriff fällt. Schon Aristoteles fiel auf,
+dass Intension und Extension in einem inver sen Größenverhältnis zueinander stehen: Mit
+wachsender Intension schrumpft die Extension und umgek ehrt. Dies ist freilich nicht weiter
+verwunderlich: Je umfangreicher die Charakterisierung einer Menge von Objekten ist, d. h.,
+je strenger die Bedingungen sind, die ein Objekt erfüllen muss , um dazuzugehören, desto
+weniger Objekte erfüllen diese Bedingung en und desto kleiner ist entsprechend die Menge.
+Wir werden in Kapitel 9 noch einmal darauf zurückkommen. Charakterisierung
+durch Eigenschaften
+und Verhalten
+Intension und
+Extension von
+Klassen
+Allgemeinbeg riffe sind die Vorbilder für Klassen in der objektorientierten
+Programmierung. Interessanterweise bildet eine wichtige philosophische
+Abweichung vom Glauben an die Adäquatheit von Allgemeinbegriffen, die Idee der Fami-
+lienähnlichkeiten , wie sie von Ludwig Wittgenstein in seiner späten Philosophie entworfen
+wurde, die Grundlage für die schon erwähnte Alternative zu den Klassen, nämlich die Pro-
+totypen . Die Idee Wittgensteins, wie auch der prototypenbasierten Programmierung, ist,
+dass ein Allgemeinbegriff (eine Klasse) niemals eine adäquate Beschreibung aller Individuen
+(Objekte) sein kann, die man mit dem Begriff verbindet. Wittgenstei n verwendet dafür das
+Beispiel vom Spiel: Auch wenn es Spiele gibt, die einander stark ähneln, so ist der Begriff
+vom Spiel doch nicht so scharf gefasst , dass es eine Grenze gäbe, innerhalb derer etwas ein
+Spiel wie alle anderen, außerhalb derer es aber kein Spiel mehr ist. Vielmehr gibt es, nach
+Wittgenstein, mehr oder weniger „spielhafte“ Spiele, also p rototypische Spiele und solche,
+die diesen mehr oder weniger gleichen.
+Zwar gibt es Anwendungsdomänen, in denen Wittgensteins Familienähn-
+lichkeiten die Sachlage besser beschreiben als die traditionellen Allge-
+meinbegriffe (man denke z. B. an Musik, in der es zwar Töne und Noten gibt, aber dennoch
+zwei Töne selten genau gleich klingen sollen und die Notenzeichen entsprechend vielfältig
+variieren) , aber insgesamt sind die üblichen Anwendungen doch eher der Natur, dass es von
+einigen wenigen Sorten eine große Menge von Objekten gibt, die alle mehr oder weniger
+gleich zu behandeln sind. Und so vereinfachen Allgemeinbegriffe, oder Klassen, unsere
+Weltsicht ganz erheblich und damit auch die Programme, die wir schreiben, um unsere
+Weltsicht zu reflektieren.
+Nachdem wir uns also auf Klassen festgelegt haben, können wir nun endlich zur Lüftung
+des Geheimnisses kommen, wo in einem SMALLTALK -Programm die Instanzvariablen und
+Methoden, die Objekte ihr eigen nennen, vereinbart (deklari ert) und im Falle der Methoden
+auch definiert (mit Inhalt versehen) werden: in Klassen.

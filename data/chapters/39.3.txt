@@ -1,0 +1,33 @@
+39.3 Die Module von JAVA 9
+Als JAVA entworfen wurde, ging man wohl davon aus, dass ein Programm aus mehreren
+Klassen besteht, die alle zu einem Paket zusammengefasst werden können. Die Klassen
+eines Programms gewähren sich somit untereinander privilegierten Zugriff (alles, was nicht
+private deklariert ist, ist zugreifbar), nach außen sind jedoch nur public deklarierte Pro-
+grammelemente sichtbar.
+Dieser Ansatz funktioniert jedoch in dem Moment nicht mehr, in dem Programme auf meh-
+rere Pakete aufgeteilt werden. Wenn zwischen den Paketen nämlich Abhängigkeiten beste-
+hen (was, wenn die Pakete zusammen ein Programm repräsentieren, naturgemäß der Fall zirkuläre
+Abhängigkeiten
+ist), dann sind hierfür public Deklarationen erforderlich, die die so deklarierten Program-
+melemente jedoch für alle gleichermaßen sichtbar machen.66 Ein Programm kann also keine
+andere (eingeschränktere) öffentliche Schnittstelle haben als die Summe seiner Pakete.
+Diese unbefriedigende Situation wurde von der JAVA-Community aufgegriffen, die mit der
+Open Services Gateway Initiative (OSGi ) einen Standard etablierte, der die Zusammenfas-
+sung von JAVA-Paketen zu Modulen mit einer eigenen Schnittstellenspezifikation erlaubte.
+Dieser Standard ist u. a. Grundlage von Eclipse, das nicht nur eine JAVA-IDE, sondern im
+Kern ein Framework für die Entwicklung beliebig komplexer JAVA-Programme (sog. Rich
+Clients) ist.
+Mit JAVA 9 wurde dann JAVA ein eigenes, über K lassen und Paketen stehendes Mo dulkon-
+zept verpasst. Ein Modul ist demnach eine Menge von Paketen, die, über eine Moduldekla-
+ration, eine gemeinsame Schnittstelle spezifiziere n. Eine Moduldeklaration besteht aus ei-
+nem (eindeutigen) Namen des Moduls, einer Deklaration der angebotenen Schnittstelle ( bis-
+lang über public Deklarationen hergestellt ) und einer Deklaration der benötigten Schnitt-
+stelle ( bislang ausschließlich über import Direktiven deklariert ). Neben den allgemeinen
+Export tritt der sog. qualifizierte Export , wie er auch in EIFFEL vorgesehen ist: Er nennt die
+Module, an die exportiert wird, namentlich und erlaubt so einen „privaten“ Austausch zwi-
+schen bestimmten Modulen (die somit ihre eigenen, oder privaten, Schnittstellen haben).
+Das besondere an der Moduldefinition von JAVA ist, dass die Einhaltung der damit einher-
+gehenden Schnittstellenspezifikationen sowohl zur Übersetzungszeit als auch zur Laufzeit
+erzwungen wird. A ußerdem kontrolliert sie auch den reflektiven Zugriff auf Programmele-
+mente, der bislang gar nicht unterbunden werden konnte. JAVA-Programme werden
+dadurch erheblich si cherer.

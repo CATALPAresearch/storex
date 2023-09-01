@@ -2,10 +2,12 @@ import PyPDF2
 import re
 
 import logging
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.disabled = False
 
 INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf/Kurstext_OOP.pdf'
+OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/'
 
 
 def extract_text_from_pdf(file_path):
@@ -42,6 +44,9 @@ def get_chapters(document):
         title, seperator, tail = content_table[i].partition(' ..')
         content_table[i] = title
 
+    # Remove second element from too long chapter name
+    content_table.remove('Klasseninvarianten')
+
     # Remove everything before first chapter
     for line in document[end_content:]:
         if re.search('1 Objekte', line):
@@ -53,20 +58,22 @@ def get_chapters(document):
 
 text_lines = extract_text_from_pdf(INPUT_PATH)
 chapters = get_chapters(text_lines)
-logger.info("Amount of chapters:" + str(len(chapters)))
+logger.debug("Amount of chapters:" + str(len(chapters)))
 
 num = 0
-for lines in text_lines:
-    if re.search(chapters[0][:6], lines):
-    # if lines == chapters[0]:
-        print(chapters[0])
-        chapters.pop(0)
-        num += 1
+for i in reversed(range(len(text_lines))):
+    if chapters and re.search(chapters[-1][:5], text_lines[i]):
+        chapter = chapters.pop()
+        # Save chapters as individual text files
+        if chapter[0].isdigit() and not re.search('Lösungen zu den Selbsttestaufgaben', chapter):
+            paragraph = text_lines[i:]
+            chapter_no = chapter.split(' ', 1)[0]
+            outpath = OUTPUT_PATH + chapter_no + '.txt'
+            with open(outpath, 'w') as outfile:
+                for lines in paragraph:
+                    outfile.write("%s\n" % lines)
+            num += 1
+        text_lines = text_lines[:i]
 
-
-print(num)
-print(chapters[0])
-
-# for line in text:
-    # if re.search(chapter[0], line):
-
+logger.debug("Left lines of text:" + str(len(text_lines)))
+logger.debug("Amount of paragraphs:" + str(num))

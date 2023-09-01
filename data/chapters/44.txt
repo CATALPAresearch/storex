@@ -1,0 +1,11 @@
+44 Dynamische Typprüfung in JAVA
+Wie Sie gesehen haben, hat das Typsystem JAVAs eine starke statische Komponente. Gleich-
+wohl können nicht alle Typprüfungen zur Übersetzungszeit durchgeführt werden. Während
+man die dynamischen Typprüfungen bei Arrays (Kapitel 41) noch durch die Einführung von
+Wildcards hätte vermeiden können, gilt das nicht für die gelegentlich notwendigen Typum-
+wandlung en (Type casts; zumindest nicht für alle ). Beschränkung der
+Typparameter in
+generischen
+Methoden
+Typ-Wildcards in
+Methoden

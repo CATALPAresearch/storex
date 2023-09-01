@@ -1,0 +1,135 @@
+25 Typeinschränkung
+Typerweiterung ist nicht die einzige Möglichkeit, auf der Basis eines bereits bestehenden
+einen neuen, verwandten Typen zu erzeugen; Typeinschränkung ist eine andere.
+Eine erste, offensichtliche Form der Typeinschränkung liegt dann vor,
+wenn ein Typ auf Basis eines anderen unter Entfernen von Eigenschaften
+(Methoden) definiert wird (das Beispiel vom Pinguin als einem Vogel, der
+nicht fliegen kann, kennen Sie ja bereits aus Kurseinheit 1, Abschnitt 9.2; das Beispiel vom
+Quadrat als einem Rechteck, das nur eine Kantenlänge braucht, ist ein anderes). Diese Form
+der Typeinschränkung stellt zumindest auf Ebene der Typdefinition (der Intensionen) die
+Umkehrung der Typerweiterung dar. Es liegt auf der Hand, dass diese Form der Typein-
+schränkung nicht zur Zuweisungskompatibilität führt; dies folgt schon aus der fehlenden
+Symmetrie der Typkonformität. Sie soll hier d eswegen keine weitere Berücksichtigung fin-
+den, auch wenn es Sprachen gibt, die sie erlauben (z. B. EIFFEL).
+Eine unter dem Gesichtspunkt der Zuweisungskompatibilität interessan-
+tere Form der Typeinschränkung besteht da rin, die verwendeten Typen
+einer Typdefinition durch andere, speziellere zu ersetzen (ohne hier schon zu sagen, was
+„spezieller“ im Zusammenhang mit Typen bedeutet). Diese Form der Typeinschränkung
+ergibt sich auf natürliche Weise, wenn man sich den Zusamm enhang von Extensionen von
+definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht.
+Das Ganze soll an einem Beispiel verdeutlicht werden. Man denke sich einen Typ Dokument
+wie folgt definiert: Konformität bei
+Funktionsaufrufen
+Typeinschränkung
+durch Löschen von
+Methoden
+Typeinschränkung
+durch Spezialisierung
+Typ Dokument
+Protokoll
+896 name ^ <String>
+897 name: einString <String> ^ <Self>
+898 druckenAuf: einemDrucker <Drucker> ^ <Self>
+Für die Dauer eines Ausdrucks wird durch die Methode druckenAuf: ein konkretes Doku-
+ment einem konkreten Drucker zugeordnet. Mengentheoretisch betrachtet ist diese Zuord-
+nung eine Relation zwischen zwei Mengen:
+Empf änger
+(Dokument)Parameter
+(Drucker)
+Nun gibt es verschiedene Arten von Dokumenten und Druckern: Man kann z. B. bei Doku-
+menten zwischen Texten und Diagrammen unterscheiden und bei Druckern zwischen Zei-
+lendruckern und Plottern. Die Extensionen entsprechender Typen sind dann jeweils Teilmen-
+gen der Extensionen von Dokument und Drucker .
+Weiterhin ergibt es sich aus der Natur der Sache, dass man Diagramm e nur auf Plottern
+drucken sollte und Texte nur auf Zeilendruckern. Dies geht konform zur obigen Betrachtung
+eines Methodenaufrufs als Relation: Wenn man die Menge einer Stelle einer Relation wie
+der obigen auf eine Teilmenge einschränkt, dann schränkt sic h dadurch in der Regel auch
+die Menge der anderen Stelle auf eine Teilmenge ein:
+Empf änger Parameter
+Die andere Menge kann auch gleich bleiben; größer wird sie jedoch nie.
+Es ergibt sich daraus die folgende Definition eines Typs Zeichnung als Typeinschränkung
+von Dokument :
+Typ Zeichnung
+eingeschränkter Typ Dokument
+Protokoll
+899 druckenAuf: einemDrucker <Plotter> ^ <Self>
+Man beachte, dass die Methode druckenAuf: nicht hinzugefügt wurde
+— sie ersetzt vielmehr die von Dokument übernommene. So unterscheidet sich die Methode
+von der ursprünglichen auch nur in der Typannotation des formalen Parameters. Man
+spricht in diesem Zusammenh ang von einer Redefinition der Methode (an den ebenfalls
+dafür verwendeten Begriff des Überschreibens sind je nach Programmiersprache andere Be-
+dingungen geknüpft). Die Methoden name und name: werden übrigens, genau wie bei der
+Typerweiterung, bei der Typeinschränkung übernommen, solange nichts anderes ausgesagt
+wird.
+Man mag sich fragen, warum bei der Typerweiterung in Kapitel 23 keine
+zwei Formen analog zur Typeinschränkung eingeführt wurden. Di e Ty-
+perweiterung würde damit zur vollständigen Umkehrung der Typein-
+schränkung wie hier beschrieben. Wie Sie noch sehen werden, ist das Ziel nicht die Schaf-
+fung zweier Komplementäre, sondern die Vereinigung beider zu einer Beziehung zwischen
+Typen — dazu mü ssen sie aber in dieselbe und nicht in gegensätzliche Richtungen gehen.
+Außerdem ist eine Erweiterung des Wertebereichs bei Einschränkung des Definitionsbe-
+reichs nicht durch den Begriff der Relation wie oben erklärbar; eine wichtige Analogie zur
+Realität, die durch Typen zwecks semantischer Prüfung nachgebildet werden soll, ginge da-
+mit verloren.
+Nun ergibt sich aber bei der Typeinschränkung auch ohne Löschen das
+Problem, dass sie die Zuweisungskompatibilität, d ie ja für die Typerweite-
+rung noch per Typkonformität geregelt werden konnte, aushebelt: Wenn
+man bei den obigen Typdefinitionen und den Deklarationen
+900 | d <Dokument> z <Zeichnung> l <Zeilendrucker> |
+zunächst
+901 d := z
+zuweist und dann weiter
+902 d druckenAuf: l
+aufruft, dann wäre, Typkonformität von Zeichnung und Dokument bzw.
+Zeilendrucker und Drucker vorausgesetzt, die Typprüfung zwar erfolgreich (denn
+druckenAuf: verlangt für Dokument Drucker als Argumenttyp), aber zur Laufzeit soll
+nun eine Zeichnung auf einem Zeilendrucker gedruckt werden, was gemäß der obigen De-
+finition von Zeichnung nicht vorgesehen ist. Eine der beiden Zuweisungen, die explizite in Redefinition
+Verhältnis von
+Typei nschränkung
+und Typerweiterung
+Typeinschränkung
+und Zuweisungs -
+kompatibilität
+Zeile 901 oder die implizite (die Parameterübergabe) in Zeile 902, ist also nicht zulässig. Da
+gegen di e Typkonformität von Zeilendrucker und Drucker nichts spricht (für beide Ty-
+pen sind im Beispiel ja gar keine Definitionen angegeben), bleibt nur, dass Zeichnung nicht
+typkonform zu Dokument ist, wobei der Grund hierfür in der Einschränkung des Parame-
+tertyp s von druckenAuf: bei der Redefinition zu suchen ist.
+Wesentlich für diese Betrachtungsweise, und damit das geschilderte
+Problem, ist übrigens, dass nach der Zuweisung von Zeile 901 d und z
+auf dasselbe Objekt, nämlich eine Zeichnung, verweisen. d ist also ein Alias für z (s. Kurs-
+einheit 1, Abschnitt 1.8). Unter Wertsemantik , bei der bei der Zuweisung eine Kopie erstellt
+wird, hätte man hingegen überlegen müssen, wie man ein Objekt vom Typ Zeichnung in
+einer Variable vom Typ Dokument speichern kann; je nach interner Repräsentation der Ob-
+jekte (die ja durch den Typ nicht festgelegt ist), ist dafür nämlich gar nicht genug Platz.
+Gleichzeitig mit der Kopie könnte dann eine Typkonvertierung erfolgen, bei der aus der
+Zeichnung ein Dokument gemacht würde (was auch immer das heißen mag). Dieses Doku-
+ment müsste dann, per obiger Typdefinition, auch auf einem Zeilendrucker druckbar sein.
+Es ist allerdings schwer vorstellbar, wie dies umzusetzen ist, wenn das entsprechende Objekt
+nicht einmal mehr weiß, dass es eine Zeichnung ist, geschweige denn, wie se ine interne
+Repräsentation aussieht. In der Praxis der objektorientierten Programmierung ist daher auch
+nur die Referenzsemantik in Fragen der Zuweisungskompatibilität interessant.
+Man beachte übrigens, dass sich bei der Ausgabe a us Methoden (der
+Rückgabe von Werten) unter Typeinschränkungen kein analoges Problem
+ergibt: Wenn beispielsweise einem Dokument ein Drucker dauerhaft zugeordnet wird und
+dieser Drucker mittels einer Methode drucker abgefragt werden kann, dann hat die Ein-
+schränkung des Rückgabetyps von drucker von Dokument auf Plotter keine negativen
+Auswirkungen auf die Zuweisungskompatibilität:
+903 | dr <Drucker> |
+904 d := z.
+905 dr := d drucker
+ist völlig in Ordnung, solange nur Plotter zuweisungskompatibel mit Drucker ist. Die
+unterschiedliche Zulässigkeit von Typeinschränkungen bei Ein - und Ausgabe wird in Ab-
+schnitt 26.3 noch genauer beleuchtet.
+Was die Freiheit von Typfehlern angeht, kann man das Löschen von Ei-
+genschaften (Methoden) übrigens auch als einen Spezialfall der Typein-
+schränkung der obigen, zweiten Form auffassen, nämlich einer, in der der Wertebereich auf
+die leere Menge eingeschränkt wird. So wäre beispi elsweise druckenAuf: mit einem Pa-
+rametertyp ohne Elemente gar nicht mehr aufrufbar (da es kein typkorrektes Parameterob-
+jekt gäbe), was einer Löschung gleichkäme. Aliasing und
+Typeinschränkung
+kein Problem bei
+Rückgabe
+Löschen als
+Spezialfall

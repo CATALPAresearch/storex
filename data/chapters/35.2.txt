@@ -1,0 +1,11 @@
+35.2 Gleichheit und Identi tät
+In JAVA wird genau wie in SMALLTALK zwischen Gleichheit und Identität von Objekten unter-
+schieden. Die Gleichheit von Objekten wird mittels der Methode equals(.) (wobei (.)
+hier für einen nicht näher spezifizierten Parameter steht), die Identität mittel s == (bzw. !=
+für das Negat) geprüft. equals(.) wird von der Klasse Object (in JAVA genau wie in
+SMALLTALK die Superklasse aller Klassen) geerbt und sollte in den Subklassen der jeweiligen
+Bedeutung von Gleichheit entsprechend überschrieben werden. Die Ver wechselung von
+equals(.) und == ist auch in JAVA ein ziemlich häufiger Programmierfehler (vgl. Ab-
+schnitt 1.4 in Kurseinheit 1). Das Gleichheitszeichen = steht in JAVA übrigens (genau wie in
+C, C++ und C#) für die Wertzuweisung , was ich persönlich für eine der großen Tragödien
+der Informatik halte .

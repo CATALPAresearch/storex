@@ -1,0 +1,24 @@
+1 Objekte
+In rein objektorientierten Programmiersprachen sind sämtliche Daten, die ein Programm
+verarbeiten kann, in Form von Objekten im Speicher abgelegt. Der Reiz dieses Merkmals der
+objektorientierten Programmierung ist, dass unser Weltbild, zumindest in weiten Tei len, auf
+einem ähnlichen Modell basiert: Die Welt besteht aus Objekten , die miteinander in Bezie-
+hung stehen . Dabei ist der Objektbegriff nicht auf das rein Materielle beschränkt: Nach all-
+gemeinem Verständnis sind Personen ebenso Objekte wie Dokumente, Zahlen oder Zeichen. Statik vs. Dynamik
+Struktur vs.
+Verhalten
+Bei der Übertragung von realen (d. h., aus einer Anwendungsdomäne
+stammenden) Sachverhalten in ein objektorientiertes Programm ergibt
+sich das Problem, dass die Übertragung, aufgrund der Homogenität der Objektorientierung
+(alles ist ein Objekt) , gewisse fundamentale Unterschiedlichkeiten der Kategorien unserer
+Begriffswelt ignoriert: Zahlen beispielsweise sind im Gegensatz zu Dingen Objekte ohne
+Identität, Zustand oder Lebensdauer (sie werden daher auch h äufig als Werte bezeichnet) ;
+Mengen nicht weiter abgrenzbar er Elemente wie z. B. 1 Liter Was ser sind gar keine Objekte
+im eigentlichen Sinn (auch sie haben keine Identität) usw. Gleichwohl kommen sie alle in
+objektorientierten Programmen vor und werden dort — zumindest der reinen Lehre nach
+— durch Objekte repräsentiert. Der Ansatz , alles trotz evidenter ontologischer Untersch iede
+programmiersprachlich über einen Kamm zu scheren, führt hier und da zu gewissen Inkon-
+sistenzen im ansonsten klaren, ja puristischen objektorientierten Weltbild, mit denen wir
+leben müssen, wenn wir objektorientiert programmieren wollen (vgl. dazu auch Kapitel 60
+in Kurseinheit 6). Es ist dies der Preis des auch „Ockhams Rasiermesser “ genannten Spar-
+samkeitsprinzips , das auch für die objektorientierte Programmierung Leitlinie ist .

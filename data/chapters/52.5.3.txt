@@ -1,0 +1,53 @@
+52.5.3 Die dynamische Komponente
+Bei allen Bemühungen, für EIFFEL ein möglichst „wasserdichtes“ Typsystem vorzulegen und
+dabei so viel wie möglich zur Übersetzungszeit zu erledigen, bleibt e s natürlich auch in EIF-
+FEL-Programmen nicht aus, dass man in einen Container (eine Variable oder eine Collection)
+Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein
+Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man
+die dazu notwendige Fallunterscheidung dem dynamischen Binden (einem dynamisch ge-
+bundenen Methodenau fruf) überlassen wollen; manchmal ist es einfach einfacher (und bes-
+ser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode ent-
+sprechend verzweigt.
+Solche Typtests werden in EIFFEL von einem sog. Zuweisungsversuch (engl.
+assignment attempt ) übernommen, der bei mangelnder (dynamisch fest-
+gestellter) Zuweisungskompatibilität einfach void (das Äquivalent von nil in SMALL TALK
+und null in JAVA) zuweist:
+1492 a ?= b Typtests und
+Typumwandlungen
+ergibt nie einen Typfehler, sondern führt höchstens dazu, dass a void zugewiesen wird. Es
+bleibt dann die Aufgabe der Programmiererin , a nach der Zuweisung zu kontrollieren. Es
+entspricht dies direkt dem as aus C#, dem dynamic_cast<T>(x) aus C++ sowie dem
+JAVA-Konstrukt
+1493 if (b instanceof A) a = (A) b; else a = null;
+oder auch kryptischer
+1494 a = (b instanceof A) ? (A) b : null;
+wobei A der Typ von a sei (man beachte das ärgerliche, aber in C -artigen Sprachen notwen-
+dige Semikolon vor dem Else). Explizite Type casts gibt es in EIFFEL nicht; sie können also
+auch keine Laufzeitfehler verursachen. Der Zuweisungsversuch erfüllt aber weitgehend die
+Funktion einer Typumwandlung, denn er ist nur erfolgreich, wenn die rechte Seite zuwei-
+sungskompatibel mit der linken ist, was per Definition nur dann der Fall ist, wenn die rechte
+Seite ein Objekt eines Subtyps (einschließlich Gleichheit) der linken Seite ha t. Es wird hier
+allerdings die Typumwandlung immer mit einer Zuweisung verbunden; man braucht also
+u. U. eine temporäre Variable, die man sich sonst hätte sparen können. Dass der Zuwei-
+sungsversuch in EIFFEL anders als der Down cast in JAVA keinen Laufzeitf ehler verursachen
+kann, ist wenig tröstlich, denn der Wert void in einer Variable kann es natürlich schon; in
+Wirklichkeit wird hier lediglich ein Type cast error gegen eine Null pointer exception ge-
+tauscht.
+Die Typumwandlung w ird in EIFFEL aber auch noch für etwas anderes ge-
+braucht, nämlich für das Binden von Aufrufen kovariant redefinierter Me-
+thoden. Da EIFFEL ja, wie oben beschrieben, polymorphe CAT -Calls verbieten muss , diese
+aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bin-
+dung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche, wie fol-
+gendes Beispiel zeigt:
+1495 g : GIRL; b : BOY
+1496 g ?= s1;
+1497 if g /= Void then
+1498 g.share(…
+1499 end else
+1500 b ?= s1;
+1501 if b /= Void then
+1502  b.share(…
+1503 end
+1504 end
+Nun ja. emulierte
+dynamische Bindung

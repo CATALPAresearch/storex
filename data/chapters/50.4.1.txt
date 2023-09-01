@@ -1,0 +1,75 @@
+50.4.1 Die Typhierarchie von C#
+In C# sind genau wie in JAVA alle Variablen typisiert. Anders als in JAVA wird dabei jedoch
+zunächst nic ht zwischen Wert - (primitiven) und Referenztypen unterschieden: Alle Typen,
+auch die primitiven, gelten als von Object (genauer: System.Object ) abgeleitet. Da lohnt
+es sich, auf die Typhierarchie etwas genauer einzugehen.
+Genaugenommen i st die Typhierarchie von C# gar nicht die Typhierarchie
+von C#, sondern die von .NET: Sie ist nämlich für alle .NET -Sprachen die-
+selbe. Das liegt daran, dass .NET für alle seine Sprachen ein gemeinsames Typsystem vor-
+sieht, nämlich das Common Type System (CTS). Das CTS sorgt dafür, dass Typen, die in einer
+Sprache definiert wurden, auch in einer anderen Sprache verwendet werden können, und
+zwar ganz so, als seien sie in der anderen Sprache selbst definiert worden. Wie man sich
+leicht vorstellen kann, sind dafür einige Konventionen notwendig.
+Das erste Merkmal des CTS ist, dass alle Typen in einer Hierarchie unter-
+gebracht sind. Die aus JAVA bekannte Ausgrenzung der primitiven Typen
+gibt es also nicht. Tatsächlich sind die primitiven Typen als eine von mehreren Arten von Multicasting auf
+Sprachebene
+Common Type
+System
+Einordnung von
+Werttypen
+Werttypen in der Hierarchie angesiedelt. Eine weitere wichtige Form von Werttypen sind die
+(aus PASCAL bekannten und inzwis chen auch in JAVA, dort aber als Referenztypen angekom-
+menen) Aufzählungstypen, deren Elemente (Werte) von der Programmiererin selbst ange-
+geben werden können (im Gegensatz zu denen der primitiven Typen, deren Werte mit der
+Sprachdefinition vorgegeben sind):
+1333 enum Colour { Red, Blue, Green }
+Aus Werttypen können, genau wie in PASCAL oder C, mittels des Typkon-
+struktors struct (dem C -Äquivalent von PASCAL s record ) neue Wertty-
+pen erzeugt werden, die sogar Methoden und Konstruktoren haben können, die aber keine
+Klassen sind (und insbesondere keine Typerweiterung und somit auch keine Vererbung er-
+lauben):
+1334 struct Point {
+1335 int x, y;
+1336 void move(int x, int y) {…}
+1337 }
+Man erspart sich durch das Weglassen der Typerweiterung die Projektion bei Zuweisungen,
+also das Fallenlassen von Feldern, die ein erweiterter Typ hinzugefügt hat und für die im für
+die Zielvariable reservierten Speicher kein Platz ist (vgl. Kapitel 23 in Kurseinheit 2, insbe-
+sondere Fußnote 50). Der Typkonstruktor „Array von“ ( []) führt in C# jedoch, genau wie
+in JAVA, zu einem Referenztypen.
+Bei den Referenztypen wird dann das zweite wichtige Unterscheidungs-
+merkmal sichtbar: Neben Klassen, Interfaces und Arrays gibt es auch noch
+sog. Delegates , das sind im wesentlichen (Zeiger auf) an ein Objekt ge-
+bundene, einzelne Methoden. Delegates ersetzen die aus anderen Sprachen bekannten
+Funktionspointer; sie konnten in JAVA bis Version 8 nur recht umständlich über Interfaces
+und anonyme innere Klassen emuliert werden, an deren Stelle he ute freilich die Lambda -
+Ausdrücke JAVAs treten können (s. Kapitel 37 in Kurseinheit 4). Delegates sind für verschie-
+dene Problemstellungen (z. B. Listener -Mechanismen) sehr nützlich.
+Zuletzt gibt es in C# auch noch sog. Attribut -Typen ( Attributes ); sie ent-
+sprec hen im wesentlichen den Annotationen , die es seit der Version 5 auch in JAVA gibt.
+Annotationen haben aber mit objektorientierter Programmierung nicht unmittelbar etwas
+zu tun und sind daher nicht Gegenstand dieses Kurses (s. a. Abschnitt 47.4 in Kurseinheit 4).
+Es sei nur soviel erwähnt, dass in C# ein Attribut namens Serializable das gleichnamige
+Marker -Interface JAVAs ersetzt (vgl. Kapitel 45 in Kurseinheit 4).
+Es ergibt sich die folgende grobe Einteilung der Typen von C#: Werttypkonstruktion
+mit struct
+Delegates als weitere
+Art von
+Referenztypen
+Attributes
+Einteilung der Typen
+von C#
+Wohlgemerkt, dies ist keine Klassenhierarchie, sondern lediglich eine Ein-
+teilung der verschiedenen Arten von Typen in C#. Die Klassenhierarchie ist wesentlich kom-
+plexer und vereinheitlicht zudem, wie ja bereits gesagt, das Typsystem von C# (wie auch
+das CT S), indem alle Typen von System.Object ableiten. Die Klassenhierarchie im Name-
+space System fängt dann auch ungefähr so an (Subklassen sind eingerückt):
+Wie Ihnen sicher aufgefallen ist, sind einige der Arten von Typen aus der obigen Liste jeweils
+durch eine spezielle Klasse ( Array , Delegate , Attribute ) vertreten. Man kann dies als
+Hinweis darauf verstehen, dass tatsächlich alle Arten von Typen integriert sind und es keine
+grundsätzlichen Barrieren zwischen ihnen gibt. In C# haben übrigens alle Klas sen außer
+System.Object ganz wie in JAVA genau eine Superklasse; sie können aber (auch wie in
+JAVA) beliebig viele Interfac es implementieren. Die Tatsache , dass Werttypen als Subtypen
+eines Referenztypen (nämlich Object ) deklariert sind, verrät außerdem, dass C# über Auto
+boxing und unboxing verfügt.

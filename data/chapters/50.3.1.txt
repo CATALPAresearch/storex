@@ -1,0 +1,72 @@
+50.3.1 Properties
+Properties sind gewissermaßen die Umkehrung von Zugriffsmethoden ( Settern und Get-
+tern; s. Abschnitt 4.3.4 in Kurseinheit 1): Anstatt auf ein Feld eines Objektes über Methoden
+(lesend und schreibend) zuzugreifen, ruft man Methoden über das auf, was syntaktisch wie
+ein Feldzugriff aussieht. Dies erlaubt einer , (lesende und schreibende) Feldzugriffe mit Ne-
+beneffekten zu versehen (wie z. B. einer dynamischen Typprüfung bei schreibendem Zugriff,
+wenn man kovariante Redefinition imitieren will). Konkret: Anstatt des (auch in JAVA übli-
+chen)
+1267 class Punkt {
+1268 private float x, y;
+1269 void SetXY(float x, float y) {
+1270  this.x = x;
+1271  this.y = y;
+1272 }
+1273 float GetX() {
+1274  return x;
+1275 }
+1276 float GetY() {
+1277  return y;
+1278 }
+1279 void SetRadiusWinkel( float r, float w) {
+1280  x = Math.Cos(w) * r;
+1281  y = Math.Sin(w) * r;
+1282 }
+1283 float GetRadius() {
+1284  return Math.Sqrt(x * x + y * y);
+1285 }
+Unterschiede bei den
+Anweisungen
+1286 float GetWinkel() {
+1287  return Math.Acos(x / r);
+1288 }
+1289 }
+kann man in C# alternativ
+1290 class Punkt {
+1291 private float x, y;
+1292 float X {
+1293  get {return x;}
+1294  set {x = value;}
+1295 }
+1296 float Y {
+1297  get {return y;}
+1298  set {y = value;}
+1299 }
+1300 float Radius {
+1301  get {return Math.Sqrt(X * X + Y * Y);}
+1302  set {
+1303  float w = Winkel;
+1304  x = Math.Cos(w) * value;
+1305  y = Math.Sin(w) * value;
+1306  }
+1307 }
+1308 float Winkel {
+1309  get {return Math.Acos(X / Radius);}
+1310  set {
+1311  float r = Radius;
+1312  x = Math.Cos(value) * r;
+1313  y = Math.Sin( value) * r;
+1314  }
+1315 }
+1316 }
+schreiben. Dabei sind get und set Schlüsselwörter von C# und value ist eine spezielle
+Variable (vergleichbar mit this ), die den Eingabewert eines Setters hält. Um einem Punkt
+seine Koordinaten zuzuweisen bzw. darauf zuzugreifen, kann man dann die Properties X,
+Y, Winkel und Radius wie Felder verwenden:
+1317 Punkt p = new Punkt();
+1318 p.X = 1;
+1319 p.Y = 1;
+1320 if (p.Radius == Math.Sqrt(2) && p.Winkel == Math.PI/4) …
+Keine große Sache, aber es macht den Code auf Aufruferinnenseite knapper und besser
+lesbar. Den Getter oder den Setter kann m an wahlweise auch weglassen; auf diese Weise
+lassen sich Felder mit Nur -lese- bzw. Nur -schreib -Zugriff simulieren.

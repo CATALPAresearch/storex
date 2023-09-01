@@ -1,0 +1,63 @@
+3.1 Eingrenzung
+Eine etwas eingeschränktere Sicht vom Zustand eines Objektes bezieht
+nur seine Attributwerte ein. Dies setzt jedoch voraus , dass überhaupt for-
+mal zwischen Attributen und Beziehungen unterschieden werden kann. In Ermangelung
+spezieller Schlüsselwörter könnte dies, wie bereits oben diskutiert, allenfalls über die Unter-
+scheidung von Variablen mit Wert - und solchen mit Referenzse mantik erfolgen. Dies ist
+14 Wenn sie einen hätten, dann immer denselben. Da der Begriff des Zustandes jedoch ohne die
+Möglichkeit der Veränderung kaum einen Sinn hat, sprechen wir auch ni cht vom Zustand unverän-
+derlicher Objekte wie z. B. „1“. Manche SMALLTALK -Dialekte sehen jedoch eine Instanzvariable
+immutable vor, die die Veränderlichkeit von Objekten festlegt und die, so ihr Wert denn geändert
+werden kann, die (Un -)Veränderlichkeit selbst zu einem Teil des Zustandes von Objekten macht. Attribute mit
+Wertsemantik
+Änderung des
+Zustands eines
+Objektes
+Attribute und
+Zustand
+jedoch schon in Sprachen, die der Programmiererin eine entsprechende Entscheidung an-
+bieten, nicht automatisch der Fall (z. B. JAVA, da hier Strings zwar unveränderlich sind und
+somit eigentlich zu den Werten zählen, aber dennoch Referenzsemantik haben); in SMALL-
+TALK schließlich ist, da alle Instanzvariablen Referenzen enthalten können, diese Einschrän-
+kung überhaupt nicht anwendbar.
+Man könnte nun die obige Aussage, dass Zustandsänderungen eines Ob-
+jekts ausschließlich über Zuweisungen an seine Instanzvariablen erfolgen
+können, anzweifeln und fragen, ob sich der Zustand eines Objektes auch dann ändert, wenn
+sich der Zustand eines Objektes, auf das es (per Instanzvariable) verweist, ändert? Zunächst
+würde man diese Frage mit nein beantworten, denn sonst würde ja, da Objekte in der Regel
+stark miteinander verflochten sind, die Änderung des Zustandes eines Objektes fast immer
+zu einer wahren Kettenreaktion führen: Der Zustand aller Objekte, die direkt oder indirekt
+— also über dritte — darauf verweisen, würde sich mit ändern. Diese Definition von Zustand
+würde jedoch kaum unserem Weltbild entsprechen: Die Än derung Ihres Familienstandes
+beispielsweise würde kaum etwas an meinem Zustand ändern, obwohl Sie meine Kurstexte
+geschickt bekommen, ich also in einer (direkten oder indirekten) Beziehung zu Ihnen stehe.
+Wie aber ist es, wenn ich meinen Namen ändere? Ände rt sich dann mein Zustand?
+Während man diese Frage sicher mit ja beantworten wird, ist doch mein
+Name als String ein eigenständiges Objekt, das seinen Zustand wechselt, wenn ich, wie im
+Beispiel von Abschnitt 1.8 geschehen, einzelne Buchstaben in ihm austausche oder ergänze.
+Nach obiger Auffassung ändert sich mein Zustand (als Besitzer des Namens) dadurch nicht,
+denn es bleibt ja dasselbe (per Ide ntität) String -Objekt, das meinen Namen hält — es hat
+lediglich seinen Zustand gewechselt. Etwas anderes wäre es hingegen, wenn ich das String -
+Objekt, das meinen Namen repräsentiert, gegen ein anderes austausche: Dann verweist die
+entsprechende Instanzvari able auf ein anderes Objekt und mein Zustand hat sich sicher ge-
+ändert. Gleichwohl würde man dasselbe auch von der Namensänderung per String -Mani-
+pulation erwarten, nur technisch lässt sich dieser Sonderfall nicht begründen! Wie Sie sehen,
+ist das objektorie ntierte Denkmodell nicht ganz ohne Tücken, und Programmierfehler schlei-
+chen sich an Stellen ein, die so simpel aussehen, dass man dort nie einen Fehler vermuten
+würde. Vielleicht auch deswegen ist es sinnvoll, wenn Strings, wie von einigen SMALLTALK -
+Dialek ten (und übrigens auch von JAVA) vorgesehen, immer unveränderlich ( immutable )
+sind.
+Auch wenn es nicht sinnvoll ist, für ein allgemeines Objektgeflecht den
+Zustandsbegriff auf mehrere Objekte auszudehnen, so ist dies für Kom-
+position en, also aus Teilen zusammengesetzten Ganzen (vgl. Abschnitt 2.3), durchaus an-
+gemessen: Wenn z. B. ein Dokument aus mehreren Seiten besteht, die wiederum jeweils
+aus Zeilen und Spalten bestehen, dann ändert die Änderung einer Zeile auch den Zustand
+des gesamten Dokuments. Dies wird weiter unten noch eine Rolle spielen, vor allem im
+Zusammenhang mit Aliasing: Wenn man nämlich davon ausgeht, dass Zustandsänderunge n
+eines Objekts stets Sache des Objekts selbst sind, dann dürfen keine externen Aliase auf
+seine Teile existieren, denn sonst könnte ihm eine Zustandsänderung von außen quasi un-
+tergejubelt werden . Man sollte den Zustand also k apseln. Reichweite von
+Zustandsänderungen
+Sonderfall Strings
+Zustand und
+Komponenten

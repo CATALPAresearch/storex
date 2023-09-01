@@ -1,0 +1,16 @@
+4.1.1 Zuweisungsausdrücke
+Zuweisungsausdrücke hatten Sie schon in Abschnitt 1.6 kennengelernt. Sie verlangen auf
+der linken Seite eine Variable und auf der rechten einen Ausdruck:
+36 x := 1
+etwa ist ein Zuweisungsausdruck. Wie bereits erwähnt, bewirken Zuwei-
+sungen als einzige Ausdrücke den Zustandswechsel von Objekten. So be-
+wirkt etwa
+37 name := 'Hänschen'
+wobei name eine Instanzvariable sein soll, die Änderung des Zustandes des Objektes, zu
+dem die Instanzvariable gehört.
+Da eine Zuweisung selbst ein Ausdruck ist, kann sie auf der rechten Seite einer anderen
+Zuweisung erscheinen:
+38 y := x := 1
+ist also ein legaler Ausdruck (zu seiner Auswertung kommen wir später, wenn wir — in
+Abschnitt 4.1.4 — über die Reihenfolge der Auswertung geschachtelter Ausdrücke spre-
+chen).

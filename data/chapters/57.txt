@@ -1,0 +1,36 @@
+57 Das Problem der eindimensionalen Strukturierung
+Klassen sind die Module der objektorie ntierten Programmierung. Die Menge der Module
+und damit das Programm werden durch die Vererbungshierarchie weiter strukturiert. Dazu
+parallel (und weitgehend, bis auf die Vererbung von Beziehungen unabhängig) gibt es noch
+eine Struktur, die durch das Beste hen von Beziehungen zwischen Klassen (genauer: das
+Bestehen der Möglichkeit von Beziehungen zwischen Objekten der Klassen ; s. Kapitel 2 in
+Kurseinheit 1) geprägt ist — diese ist aber nicht hierarchisch und insgesamt eher unorgani-
+siert, weswegen sie nicht zur systematischen Programmorganisation taugt. Außerdem be-
+steht ein gewisser Konflikt zwischen der Hierarchie der Subklassenbeziehung und den Be-
+ziehungen zwischen Objekten: Wenn man einen Teilbaum der Vererbungshierarchie her-
+auslöst, trennt man damit praktisch immer Beziehungen zwischen Mitgliedern des Teil-
+baums und anderen auf. Die Klassen hierarchie stellt also insbesondere keine Form der hie-
+rarchischen Modularisierung dar. Fazit
+Insbesondere bei größ eren Programmen kann leicht das Verlangen auf-
+kommen, ein Programm nach mehreren Kriterien gleichzeitig zu struktu-
+rieren. Dies kann beispielsweise verschiedene Vererbungshierarchien betreffen — so, wie
+man in der Biologie eine Taxonomie der Arten nach Herku nft (Genetik) und nach Merkma-
+len erstellen kann und, da beide ihren Nutzen haben, man weder auf die eine noch auf die
+andere ohne Not verzichten möchte, so kann man ein Programm beispielsweise unter dem
+Gesichtspunkt der Vererbung von Funktionalität und vo n Daten alternativ strukturieren wol-
+len. Voraussetzung hierfür ist allerdings, dass die verschiedenen Darstellungen getrennt von-
+einander gepflegt werden und dass durch sie weder Inkonsistenzen im Code noch unge-
+wollte Interferenzen entstehen können.
+Ein Nachteil der objektorientierten Programmierung (wie auch aller ande-
+ren heute bekannten Programmierparadigmen) ist sicherlich, dass die
+sog. Trennung der Belange , besser bekannt als die Separation of concerns , nur unzu-
+reichend unterstützt wird. Ansätze wie das Subject - oder Aspect -oriented programming
+wurden zwar hoch gehandelt, sind aber dennoch nicht im Mainstream angekommen. Die
+Gründe dafür mögen vielfältig sein aber letztlich ist es wohl immer illusorisch, zu verspre-
+chen, man könne die essentielle Komplexität, die einem Problem innewohn t, durch pro-
+grammiersprachliche Mittel beseitigen. Insbesondere die getrennte Spezifikation eines Sys-
+tems aus verschiedenen Sichten verlagert die Komplexität nur in das Zusammenführen der
+Sichten: Wie so oft muss das Ganze mehr sein als die Summe seiner Te ile, um seinen Zweck
+zu erfüllen . Unsere heutigen Softwaresysteme sind die kompliziertesten technischen Arte-
+fakte, die die Menschheit jemals hervorgebracht hat, und wer hier Einfachheit verspricht,
+soll sich schämen.

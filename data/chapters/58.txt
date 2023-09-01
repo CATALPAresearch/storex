@@ -1,0 +1,171 @@
+58 Das Problem der mangelnden Kapselung
+Als man mit der objektorientierten Programmierung begann, war man glücklich, weil man
+glaubte, mit dem Klassenbegriff eine natürliche Art der Kapselung (engl. encapsulation )
+gefunden zu haben, die zudem noch mit der hochangesehenen Theorie der abstrakten Da-
+tentypen in Einklang steht (zumindest einigermaßen): Klassen ergeben sich auf natürliche
+Weise aus der Anwendung sdomäne (als Repräsentanten von Allgemeinbegriffen ; s. Kurs-
+einheit 1, Kapitel 7) und Daten sowie Implementierungsdetails lassen sich hinter der Klas-
+senschnittstelle (dem Protokoll der Objekte) verbergen.
+Die erste große Enttäuschung kam, als man merkte, dass die ebenfalls
+gefeierte Vererb ung die Kapselung von Klassen auf unangenehme Weise
+aufbrach: Wie in Kapitel 55 bemerkt, erzeugt die Vererbung starke Ab-
+hängigkeiten (auch zwischen den Implementie rungsdetails!) von Klassen und ihren Subklas-
+sen. Diese Abhängigkeiten explizit zu machen vermag zwar vor Programmierfehlern zu Strukturierung nach
+mehreren Kriterien
+viele A nsätze —
+(noch) keine Lösung
+starke
+Abhängigkeiten
+durch Vererbung
+Everything should be made as simple as possible — but no simpler .
+schützen, sie kann aber die Abhängigkeiten nicht beseitigen — sie dokumentiert sie ledig-
+lich. Die Abhängigkeiten zu beschränken b edeutet wiederum, einen Teil der Ausdrucks-
+stärke und Flexibilität der objektorientierten Programmierung aufzugeben, aber so ist das
+nun einmal : Alles hat seinen Preis.
+Sehr viel dramatischer (und sehr viel weniger in all er Munde ) ist jedoch
+ein ganz anderes Problem, das das gesamte bisherige Bemühen der Ob-
+jektorientierung um Kapselung auszuhebeln in der Lage ist: das Aliasing -
+Problem . Wenn nämlich ein Objekt, das durch ein anderes Objekt gekapselt wird, indem
+das andere es in einer seiner Instanzvariablen hält, einen (weiteren) Alias besitzt, der nicht
+selbst dem kapselnden Objekt gehört , dann nützt es nichts, wenn diese Instanzvariable von
+außen unzugreifbar ist91 — sie wird nämlich gar nicht gebraucht, um auf das gekapselte
+Objekt zuzugreifen. Man bedient sich einfach des Aliases.
+In SMALLTALK wird das Problem in folgendem einfachen Codefragment klar:
+1532 jetzt := Time now.
+1533 a := A new erzeugungszeit: jetzt. "neues Objekt mit Erzeugungs zeit"
+1534 jetzt setTime: Time now "Erzeugungs zeit von a ändert sich!"
+Hier soll ein neues Objekt der Klasse A erzeugt werden und die Erzeugungszeit in einer
+entsprechenden Instanzvariable des Objekts fes tgehalten werden. Die Variable jetzt hält
+aber einen Alias auf das Objekt, das diese Zeit repräsentiert; ändert man dieses Zeitobjekt
+(wie in Zeile 1534 ), dann betrifft dies auch die Erzeugungszeit des Objekts a.92 Nun könnte
+man meinen, es genügte, man ersparte sich einfach den (offensichtlichen) Alias jetzt und
+schrie be statt dessen
+1535 a := A new erzeugungszeit : Time now
+Woher weiß man aber, dass die Methode now in der Klasse Time nicht einen Alias auf jedes
+neu erzeugte Objekt anlegt (beispielsweise weil Time Buch darüber führt, welche Instanzen
+es von ihr gibt) und diesen Alias nicht herausgibt oder selbst verwendet, um die Objekte zu
+manipulieren? Auch die alt ernative scheinbare Lösung,
+1536 a := A new erzeugungszeit: jetzt copy "neues Objekt mit
+Erzeugungsdatum"
+funktioniert aus gleichem Grunde nicht zuverlässig, denn auch copy kann sich (heimlich)
+Aliase anlegen.
+Ein anderes Beispiel, bei dem Aliase fehlerhaft ein gesetzt werden, ist das folgende. Ange-
+nommen, Sie wollten eine Ampelsimulation an einem Fußgängerüberweg programmieren.
+91 z. B. durch eine Deklaration mit private oder per Sprachdefinition wie in SMALLTALK und EIFFEL
+92 Man könnte hier argumentieren, dass Zeit ein Wert und kein Objekt und insofer n auch nicht
+änderbar sein soll. Das ist hier aber gar nicht der Punkt. Umgehung der
+Kapselung durch
+Aliase
+Sie haben zwei Klassen, Ampel und Leuchte , und bauen Ihre Objekte durch folgenden
+Code zusammen:
+1537 leuchteRot := Leuchte new farbe: "rot".
+1538 leuchteGelb := Leuchte new farbe: "gelb".
+1539 leuchteGruen := Leuchte new farbe: "grün".
+1540 ampel1 := Ampel new
+1541 autoRot: leuchteRot
+1542 autoGelb: leuchteGelb
+1543 autoGruen: leuchteGruen
+1544 fussgaengerRot : leuchteRot
+1545 fussgaengerGruen : leuchteGruen.
+1546 ampel2 := ampel1
+Wenn Sie nun einem Fußgänger per
+1547 ampel1 fussgaengerGruen an
+grünes Licht geben wollen, gehen leider mit der einen gleich alle vier grünen Leuchten an.
+War das in Ihrem Sinn?
+Man nennt Objekte, die die Implementieru ng eines Objektes ausmachen
+und die hinter der Schnittstelle des Objektes verborgen werden sollen,
+Repräsentationsobjekte . Die Leuchten des obigen Beispiels sind a llesamt Repräsentati-
+onsobjekte; sie kommen lediglich als „Innereien“ der Objekte vor, deren Repräsentation sie
+ausmachen. Insbesondere gibt es in obigem Beispiel keine Verwendung einer Leuchte los-
+gelöst von einer Ampel. Dies muss aber nicht für alle Leucht en der Fall sein — es ist durchaus
+denkbar, dass Leuchtenobjekte in anderen oder sogar im selben Programm auch ein unab-
+hängiges Leben (außerhalb von Ampeln) führen. Aber selbst das ist gar nicht notwendig —
+im gegebenen Beispiel wäre es auch denkbar, dass mit Leuchten noch einiges gemacht wird,
+bevor sie in eine Ampel eingebaut werden, so dass man das Aliasing -Problem weder an die
+Klasse Leuchte pauschal noch an deren Verwendung als Lieferant für Repräsentationsob-
+jekte knüpfen kann.
+Wenn Aliase also schlecht sind, dann könnte man sie ja auch einfach ver-
+bieten. Tatsächlich bieten ja Programmiersprachen wie C#, C++ und EIF-
+FEL die Möglichkeit an, Klassen als Werttypen zu definieren, so dass bei Zuweisungen nicht
+automatisch Aliase ent stehen. Aber durch eine derart einfache Lösung beschneidet man
+sich selbst nur wieder zahlreicher Möglichkeiten, wie das folgende Beispiel zeigt:
+1548 merkEsDir := Dictionary new.
+1549 a := A new.
+1550 merkEsDir at: "mein A Objekt a" put: a.
+1551 a == (merkEsDir at: "mein A Objekt a")
+1552 ifFalse: ["Oh je, du bist nicht mehr dasselbe! "].
+1553 a aendereDeinenZustand .
+1554 a = (merkEsDir at: "mein A Objekt a")
+1555 ifFalse: ["Oh je, du bist nicht mehr das gleiche! "] Repräsentations -
+objekte
+Folgen eines Alias -
+Verbo ts
+Es ist gerade der Sinn eines Dictionaries (bzw. allgemeiner eines Containers wi e einer Coll-
+ection), dass keine Kopie, sondern das originale Objekt — also ein Zeiger darauf — gespei-
+chert wird! In einer Sprache ohne Referenzsemantik wäre das jedoch nicht möglich. Man
+braucht also die Möglichkeit, fallweise zu unterscheid en, ob ein Obje kt Aliase haben darf.
+Das obige Beispiel stellt insofern kein großes Problem dar, als der fehler-
+hafte Umgang mit dem Aliasing durch unerw artetes Programmverhalten
+auffä llt. Ein viel größeres Problem entsteht, wenn die Kapselung von Objekten ( das Geheim-
+nisprinzip ) Gegenstand der Spezifikation eines Programms ist, die Existenz von Aliasen also
+mit der Spezifikation nicht vereinbar wäre. Dies ist bei allen sicherheitskritischen Anwen-
+dungen der Fall, bei denen Daten g eschützt werden müssen oder Funktionen nur durch
+autorisierte Benutzerinnen ausgeführt werden dürfen. Gibt es dann Aliase von außen auf
+diese Objekte als geheime Daten - oder Funktionsträger, dann ist die Spezifikation nicht er-
+füllt. Am Programmverhalten ist dies jedoch nicht zu erkennen.
+Nachdem das Problem nun hinreichend klar geworden sein sollte, was
+kann man dagegen tun? Zunächst einmal muss noch einmal klargestellt
+werden, dass die Deklaration von Instanzvariablen als von außen un zu-
+greifbar (private ) lediglich Namen verbirgt — man kan n über die
+Schnittstelle des Objekts nicht herausfinden, wie es intern aufgebaut ist.
+Dieser Namensschutz (engl. name protection ) ist das, was man landläufig (mit dem Wissen
+vom Aliasing -Problem) mit Geheimnisprinzip (engl. information hiding ) verbindet: Es
+verhindert, dass andere Klassen von der Existenz bestimmter Instanzvariablen abhängen, so
+dass diese problemlos geändert (z. B. umbenannt oder entfernt) werden können.
+Das Geheimnisprinzip vermag jedoch nicht zu verhindern, dass die Reprä-
+sentationsobjekte, deren Namen verborgen werden, noch andere Namen besitzen. Dies
+kann z. B. immer dann der Fall sein (und ist vom Objekt, das sein Implementationsgeheimnis
+wahren will, kaum zu verhindern), wenn ein Objekt seine Repräsentationsob jekte bei seiner
+Erzeugung von außen geliefert bekommt (genau so, wie das in den obigen Beispielen in
+den Zeilen 1533 , 1535 und 1540 der Fall war). Eine weitere Möglichkeit, die Kapselung zu
+durchbrechen, ist, selbst eine Referenz auf ein Repräsentationsobjekt herauszugeben, bei-
+spielsweise durch einen Getter, aber das wäre dann vom „verbergenden“ Objekt selbst zu
+verantworten (und zu verhindern gewesen).
+Sobald also die Möglichkeit des Aliasing besteht, ist eine echte Kapse lung über das Geheim-
+nisprinzip allein nicht mehr zur gewährleisten. Man muss also das Aliasing irgendwie kon-
+trollieren. Die Frage ist nur: Wie?
+Eine Möglichkeit hatten wir bereits mehrfach angesprochen. Man kann
+das Bestreben nach Kapselu ng als Ausdruck des Bestehens einer Teil-Ganzes -Beziehung
+zwischen den Repräsentationsobjekten und dem Objekt, dessen Repräsentation sie ausma-
+chen, verstehen. Die T eile sollen dabei dem Ganzen gehören in dem Sinne, dass sie nicht
+zugleich auch Teile anderer Objekte sein können, und darüber hinaus auch nicht von ande-Geheimnisprinzip als
+Teil der Spezifikation
+Umsetzung des
+Geheimnisprinzips
+mittels nic ht
+zugreifbarer
+Variablen
+Lücken
+ein Lösungsansatz
+ren Objekten referenziert werden können. Letzteres kann man auf einfache Weise verhin-
+dern, wenn man aus den Objekten Wertobjekte macht und die verwendete Programmier-
+sprache keine Zeiger auf Wertobjekte erlaubt. Von den in Kurseinheit 4 und Kurseinheit 5
+genannten Programmiersprachen ist das jedoch nur in C#, und da auch nur im Safe mode,
+möglich, nämlich wenn die „Klasse“ der Teil -Objekte per struct definiert wurde. Abgese-
+hen von diese r Einschränkung ist eine solche Vorgehensweise nur selten ohne uner-
+wünschte Nebenwirkungen — sie bedeutet nämlich immer auch, dass alle Objekte dieser
+„Klasse“ nur Wertobjekte sein und keine Referenzen haben dürfen, was aber die Anwen-
+dungsdomäne in der Reg el nicht korrekt abbildet.
+Vor diesem Hintergrund scheint der in Abschnitt 52.5.2 dargelegte Um-
+gang EIFFELs mit Referenz - und Wertvariablen z iemlich schlau ausgedacht zu sein. Zwar er-
+laubt EIFFEL, auf Wertobjekte Referenzen zu haben (und somit zumindest theoretisch, dass
+ein Repräsentationsobjekt einen Alias besitzt), aber bei der Zuweisung einer Referenzvari-
+able an eine Wertvariable wird immer eine (aliasfreie) Kopie des referenzierten Objekts er-
+zeugt und zugewiesen, so dass kein Alias in die Repräsentation hinein entstehen kann. Um-
+gekehrt wird bei der Zuweisung eines Wertobjekts an eine Referenzvariable immer eine
+Kopie des Wertobjekts erzeugt und die Referenz darauf angelegt. Es entsteht also faktisch
+kein Alias auf ein Wertobjekt, und als Wertobjekte angelegte Repräsentationsobjekte sind
+aliasfrei. Dumm ist nur, wenn man innerhalb der Kapsel Aliase auf Wertobjekte braucht.
+Weitergehende Mecha nismen zur Aliaskontrolle in objektorientierten Programmiersprachen
+befinden sich derzeit alle noch in der Vorschlags - und Erprobungsphase und sollen hier des-
+wegen nicht weiter behandelt werden.

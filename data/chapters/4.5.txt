@@ -1,0 +1,11 @@
+4.5 Kontrollstrukturen
+Kontrollstrukturen regeln den Ablauf des Programms, also die Reihenfolge der Schritte, aus
+denen seine Ausführung besteht. Anders als in anderen Programmiersprachen gibt es in
+SMALLTALK nur zwei Kontrollstrukturen, nämlich die Sequenz und den dynamisch gebunde-
+nen Methodenaufruf; alle anderen, inklusive der Verzweigung und der W iederholung
+(Schleife) , müssen durch diese simuliert werden. Dies ist möglich, weil SMALLTALK Blöcke hat
+und weil in SMALLTALK (so wie in allen anderen objektorientierten Programmiersprachen) der
+Methodenaufruf variabler ausfällt als der gewöhnliche Prozedur - oder Funktionsaufruf, wie
+Sie ihn vielleicht von Sprachen wie PASCAL oder C her kennen: Er enthält, wie bereits in
+Abschni tt 4.3.2 angedeutet, eine versteckte Fallunterscheidung in Form des dynamischen
+Bindens .

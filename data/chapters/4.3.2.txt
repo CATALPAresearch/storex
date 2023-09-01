@@ -1,0 +1,138 @@
+4.3.2 Methodenaufruf und dynamisches Binden
+Wenn das Versenden von Nachrichten bislang als die Übergabe eines entsprechenden Nach-
+richtenobjekts an den Empfänger dargestellt wurde, so ist das nicht ganz richtig: Vielmehr
+wird ein Nachrichtenausdruck auch in SMALLTALK aus Effizienzgründen vom Compiler in ei-
+nen schnöden Methodenaufruf übersetzt, der mit dem Funktionsaufruf aus der proze-
+duralen Programmierung (also z. B. PASCAL oder C) vergleichbar ist. So führt beispielsweise
+der Ausdruck
+103 1 + 2
+zum Aufruf der Methode +, wie sie für das Objekt „1“ (und alle Zahlen) definiert wurde.
+Dennoch wird, wohl aus didaktischen Gründen, das Mysterium vom N achrichtenversand in
+der objektorientierten Literatur weiter gepflegt. Es gibt aber auch einen kleinen, feinen Un-
+terschied zum gewöhnlichen Prozeduraufruf.
+Die Entscheidung, welche Methode in Reaktion auf einen Nachrichten-
+versand aufgerufen und abgearbeitet wird, hängt nicht von dem Nach-
+richtenselektor allein ab, sondern auch von dem Objekt, an das die Nachricht geschickt wird.
+Es ist nämlich durchaus üblich, dass verschiedene Objekte mit gleichen Methodensignaturen
+untersc hiedliche Methodenimplementierungen verbinden; so implementieren beispiels-
+weise Zahlen und Symbole die Methode printString jeweils anders und selbst
+104 1.0 + 2
+führt zum Aufruf einer anderen Methode als 1 + 2 ,
+105 1 + 2.0
+dagegen nicht.
+Aus der Abhängigkeit des Methodenaufrufs vom Empfängerobjekt folgt,
+dass nicht immer schon zur Übersetzungszeit entschieden werden kann, welche Methoden-
+implementierung bei einem Methodenaufruf ausgewählt werden muss . Wenn nämlich das
+Empfängerobjekt dur ch eine Variable benannt oder von einem Ausdruck geliefert wird,
+kann die Zuordnung einer Methodendefinition zu einem Nachrichtenausdruck erst zum Zeit-
+punkt der Auswertung des Nachrichtenausdrucks und damit erst zur Laufzeit erfolgen. Man
+nennt diesen Vorg ang dynamisches Binden (im Gegensatz zum statischen Binden , bei
+dem ein Aufruf schon zur Übersetzungszeit an eine Implementierung gebunden wird); es
+handelt sich dabei um eine von den nur zwei primitiven Kontrollstrukturen SMALLTALK s (s.
+Abschnitt 4.5.2 ).
+Das dynamische Binden ist eine der charakteristischen Eigenschaften der
+objektorientierten Programmi erung. Sie wird auch als Polymorphismus Abhängigkeit vom
+Empfängerobjekt
+dynamisches Binden
+zentrale Bedeutung
+des dynamischen
+Bindens
+oder Polymorphie22 bezeichnet. Auf die Details des dynamischen Bindens können wir erst
+in der nächsten Kurseinheit (Kapitel 12) zu sprechen kommen und auf Polymorphie erst in
+Kapit el 26, da uns hier noch zu viel fehlt. Wir vermerken aber schon jetzt, dass es sich dabei
+um eine versteckte Fallunterscheidung handelt: Ein und derselbe Methodenaufruf kann fall-
+weise unterschiedliche Methoden aufrufen (bzw. deren Ausführung veranlassen). Auf diese
+Eigenschaft kommen wir schon in den Abschnit ten 4.5 und 4.6 zurück.
+Steht einmal fest, welche (Implementierung einer) Methode aufgerufen
+wird, erfolgt als nächstes die Versorgung der formalen Parameter mit Ob-
+jekten . Zu diesem Zweck findet mit dem Aufruf eine implizite Zuwei-
+sung (also eine ohne Vorkommen des Zuweisungsoperators im Pro-
+grammtext) der tatsächlich en Parameter des Aufrufs an die formalen Parameter der Me-
+thode statt. Tatsächlich e Parameter sind dabei die Objekte, die an der Methodenaufrufstelle
+als Argumente an den Positionen der formalen Parameter der aufgerufenen Methode ste-
+hen. M anchmal werden auch die Variablen, die an den entsprechenden Stellen beim Me-
+thodenaufruf stehen, als tatsächlich e Parameter bezeichnet, aber erstens müssen dort nicht
+unbedingt Variablen, sondern können beliebige Ausdrücke stehen und zweitens können
+diese Variablen selbst formale Parameter sein, nämlich die der Methode, die den Metho-
+denaufruf enthält. So ist in der Methodendefinition
+106 m: a
+107 self n: a
+a der formale Parameter von m:. Der tatsächlich e Parameter von m: ist ein Objekt, das beim
+Aufruf von m: gena nnt wird (hier nicht zu sehen). Dieses Objekt ist dann auch tatsächlich er
+Parameter des Aufrufs von n:, da dieser von a, dem formalen Parameter von m:, geliefert
+wird.
+Je nach Sichtweise erfolgt bei Ausführung der Return -Anweisung eine
+weitere implizite Zuweisung, nämlich die des Objekts, zu dem der Aus-
+druck der Return -Anweisung auswertet, an die „Variable“ Methodenname (der ja an der
+Stelle des Methodenaufrufs ähnlich w ie eine Variable für ein Objekt steht). Dies ist vor allem
+im Zusammenhang mit der Typprüfung, die es jedoch in SMALLTALK nicht gibt (s. Kursein-
+heit 3), eine wichtige Vorstellung. An der Aufrufstelle selbst steht dann häufig noch eine
+explizite Zuweisung , nämlich wenn das Ergebnis des Aufrufs (das Rückgabeobjekt) einer
+Variable zugewiesen werden soll.
+Selbsttestaufgabe 4.1
+Benennen Sie die expliziten und impliziten Zuweisungen für
+22 Es ist mir bis heute nicht klar, wann man von Polymorphie und wann von Polymorphismus spricht.
+Im Gebrauch scheint sich anzudeuten, dass man von Inklusionspolymorphie und von parametrischem
+Polymorphismus spricht, aber einen Grund dafür kann ich nicht erkennen. implizite
+Zuweisungen der
+tatsächlich en an die
+formalen Parameter
+implizite Zuweisung
+des Rückgabewertes
+108 a := self f: e
+mit der Methode
+109 f: g
+110 ^ 2
+In Abschnitt 1.5 waren wir auf den Unterschied zwischen Wertsemantik
+und Verweissemantik eingegangen. Damit verwandt (und ähnlich be-
+nannt) ist die Unterscheidung von Call by reference und Call by value beim Methoden-
+aufruf: Beim Call by value wird dem formalen Parameter der tatsächlich e Parameter als Wert
+zugewiesen, beim Call by reference hingegen nur eine Referenz. Diese Referenz ist jedoch
+nicht, wie man vielleicht glauben könnte, eine auf den tatsächlich en Parameter als Objekt,
+sondern eine auf den tatsächlich en Parameter als Variable (s. o.), der dazu aber eben auch
+eine Variable sein muss . Dies hat zur Folge, dass Zuweisungen zum formalen Parameter in
+der Methode unter Call by reference auch die Variable, die den tatsächlich en Parameter
+darstellt, betreffen — die beiden sind gewissermaßen eins. Mit Call by reference ist es also
+möglich, dass eine Methode auch übe r ihre tatsächlich en Parameter, wenn sie denn Variab-
+len sind, Objekte zurückgibt — sie werden damit zu Ein - und Ausgabeparametern der Me-
+thode. Bei Call by value bleibt die Zuweisung an die formalen Parameter jedoch ohne Be-
+deutung für die tatsächlich en — sie sind also reine Eingabeparameter.
+Nun werden Sie vielleicht einwenden, dass in SMALLTALK formale Parame-
+ter Pseudovariablen sind und deswegen gar keine Zuweisung an sie er-
+laubt i st (außer der impliziten Zuweisung beim Aufruf). Das ist richtig.
+Tatsächlich gibt es in SMALLTALK ein Call by reference auch gar nicht (in
+JAVA übrigens auch nicht). Gleichzeitig haben aber in SMALLTALK Variablen
+grundsätzlich Referenzsemantik, so dass bei der Zuweisung der tatsächlich en an die forma-
+len Parameter keine Objekte, sondern lediglich Verweise an diese übergeben werden. Wenn
+man da nn innerhalb der Methode etwas an diesen Objekten ändert (ihren Zustand), dann
+betrifft das immer die tatsächlich en Parameterobjekte und somit auch den „Inhalt“ der tat-
+sächlich en Parametervariablen (wenn es denn Variablen und keine anderen Ausdrücke sind
+und wenn sie wirklich ein Objekt zum Inhalt hätten; vgl. Abschnitt 1.5): Es sind schließlich
+dieselben Objekte. Insbesondere erhalten die Methoden also keine Kopien dieser Objekte,
+sondern lediglich Kopien der Referenzen. Um den Inhalt von tatsächlich en Parametervariab-
+len zu ändern (also sie auf andere Objekte zeigen zu lassen), bräuchte man auch in SMALL-
+TALK (und JAVA) Call by reference , was es dort aber nicht gibt. Es stellt dies eine echte Be-
+schränkung der Programmierung dar; sie wurde denn auch in C# aufgehoben.
+Bleibt noch die Frage, was passiert, wenn ein Methodenaufruf ins Leere
+läuft. Da in SMALLTALK Ausdrücke beliebige Objekt e liefern können, kann
+der Compiler für einen Nachrichtenausdruck nicht garantieren, dass das
+Empfängerobjekt auch über eine entsprechende Methode verfügt. Da der Nachrichtenaus-
+druck in einen dynamisch gebundenen Methodenaufruf übersetzt wird, dessen Ausfü hrung
+direkt von der virtuellen Maschine SMALLTALK s Call by reference und
+Call by value
+Unterschied zu
+Referenz - und
+Wertsemantik;
+SMALLTALK kennt nur
+Call by value
+Aufruf nicht
+vorhandener
+Methoden
+vorgenommen wird, ist die Frage, wie das Programm sinnvoll mit einem solchen Laufzeit-
+fehler umgehen soll. Tatsächlich passiert in etwa folgendes: Die virtuelle Maschine macht
+aus dem Methodenaufruf einen Nachrichtenselektor (und zwar den, aus dem er bei der
+Übersetzung hervorgegangen ist) und sendet diesen als Parameter an eine vorgegebene
+Methode doesNotUnderstand: des ursprünglichen Empfängers. Diese reagiert typischer-
+weise mit einer der Ausgabe einer Fe hlermeldung <Objekt> does not understand:
+<Nachrichtenselektor> ; sie kann aber geändert werden, um anders als standardmäßig
+vorgesehen auf den Fehler zu reagieren.

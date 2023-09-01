@@ -1,0 +1,27 @@
+40.2 Interfaces als abstr akte Klassen
+Wenn ich im vorangegangenen Absatz das Präteritum bemüht habe, dann liegt das daran,
+dass Interfaces in JAVA seit Version 8 einen Bedeutungswandel erfahren haben. Der ur-
+sprüngliche Anlass hierfür ergibt sich aus der Evolution von Software, gen auer aus der Er-
+weiterung von Interfaces im Laufe der Zeit um zusätzliche Methoden und der Tatsache, dass
+solche Erweiterungen ein Nachführen der Klassen, die die Interfaces implementieren, zwin-
+gend erfordern. Insbesondere bei sog. Black -box-Frameworks, der en Interfaces dazu ge-
+dacht sind, von Anwendungsklassen implementiert zu werden, deren Entwicklung in den
+Händen Dritter liegt, ist dies ein erhebliches Problem. Dasselbe Problem hätte man nicht,
+wenn man statt der Interfaces abstrakte Klassen nehmen würde — dann könnte man näm-
+lich die zusätzlichen Methoden mit einer Default -Implementierung versehen, die von den
+„implementierenden“ Klassen geerbt würde, sofern diese Klassen keine eigenen Implemen-
+tierungen angeben. Interfaces in Varia -
+blendeklarationen
+„Interfacevererbung“
+ist keine Vererbung
+Genau das wurde in JAVA 8 auch für Interfaces eingeführt: Ein Interface
+kann die Implementierung einer Methode vorgeben, die dann an implementierende Klassen
+(oder per extends abgeleitete Interfaces) vererbt wird. Dafür hat JAVA ein neues Schlüssel-
+wort spendiert bekommen: default . Allerdings haben Interfaces immer noch keine In-
+stanzvariablen und entsprechend können Default -Methoden allenfalls auf abstrakte Get-
+ter und Setter zugreifen.
+Mit JAVA 9 schließlich wurde — letztlich nur konsequent — erlaubt, in
+Interfaces auch private Methoden zu definieren. Da diese ausschließlich aus dem Interface
+selbst heraus zugreifbar sind, dienen sie ausschließlich der Verbesserung der Lesbarkeit von
+Default -Methoden, indem man zusammenhängende Teile aus ihnen he rauslöst und in pri-
+vate Methoden verlegt.

@@ -1,0 +1,75 @@
+26.1 Der Begriff des Subtyps
+Ein Subtyp ist als ein Typ definiert, dessen Werte oder Objekte überall da auftauchen dür-
+fen, wo ein Wert des Typs, von dem er ein Subtyp ist, verlangt wird. Subtyp steht dabei
+nicht für eine besond ere Art von Typ, sondern vielmehr für eine Rolle in einer Beziehung
+zwischen zwei Typen, nämlich der Subtypenbeziehung . Die Gegenrolle heißt Supertyp .
+Man beachte, dass diese Definition von Subtypen Zuweisungskompatibi-
+lität impliziert: Wenn die Objekte eines Subtypen überall da auftauchen
+dürfen, wo Objekte seines Supertypen erwartet werden, dann dürfen sie auch Werte von
+51 Stattdessen würde man eher vermuten, dass es sich um einen Programmierfehler handelt, wenn
+jemand bei einer Zeichnung auf ihre Zeilen zugreifen will. Außerdem müsste bei erster Annahme der
+allgemeinste Typ, von dem alle anderen abgeleitet sind ( Object in STRONGTALK ), immer alle Attribute
+deklarieren, die einem jemals in den Sinn kämen, und das wäre nun wirklich unpraktisch. Problemquelle
+implizite
+Allquantifizierung
+Dependent types
+Zuweisungs kompa ti-
+bilität von Subtypen
+Variablen sein, die mit dem Supertypen annotiert (auf Werte des Supertypen beschränkt)
+sind. Ein Subtyp ist also mit seinem Supertyp per Definition zuweisungskompatibel. Es steckt
+in dieser Defini tion aber eine gewisse Zirkularität (Subtyp als Voraussetzung und Ergebnis
+der Zuweisungskompatibilität), die eine Einfachheit der Zusammenhänge vortäuscht, die es
+in Wirklichkeit nicht gibt; die eigentliche Frage, was nämlich erfüllt sein muss , damit ein
+Objekt eines Typen tatsächlich da erscheinen darf, wo ein Objekt eines anderen Typen er-
+wartet wird, bleibt unberücksichtigt. Eine Befassung mit dieser Frage erfolgt hier aber nur
+insoweit, wie dies heutige Typsysteme auch tatsächlich tun; eine genauere Bet rachtung er-
+folgt dann erst in Kurseinheit 6, Kapitel 54.
+Ein Subtyp kann selbst wieder Subtypen haben usw.; man spricht dann
+auch von einer Subtypen - oder einfach nur von einer Typhierarchie . In einer solchen Hie-
+rarchie kann man direkte von indirekten Subtypen unterscheiden: Zwischen einem Typ
+und seinem direkten Subtyp liegt kein weiterer Typ in der Typhierarchie, bei einem indirek-
+ten Subtyp hingegen schon. Die Subtypenbeziehung ist transit iv und reflexiv; insbesondere
+ist also jeder Typ ein Subtyp von sich selbst (das folgt schon aus obiger Definition des Begriffs
+Subtyp). Die Frage der Symmetrieeigenschaft muss noch bis zum nächsten Abschnitt zu-
+rückgestellt werden.
+Je nach verwendetem Typsystem kann ein Typ auch mehrere direkte Su-
+pertypen haben. Die sich daraus ergebende Struktur ist dann aber keine
+Hierarchie mehr (im strengen Sinne; man spricht aber dennoch häufig von einer solchen,
+manchmal auch von einer Mehrfachhierarchie ), sondern nur noch ein gerichteter azykli-
+scher Graph (engl. directed acyclic graph , kurz DAG). Alle obengenannten Eigenschaften
+der Subtypenbeziehung best ehen jedoch weiter fort.
+Wenn Subtypen, ähnlich wie bei der Typerweiterung oder -einschrän -
+kung, auf Basis von bereits bestehenden definiert werden, spricht man
+auch vom (nominalen) Subtyping (s. u.). Eine solche Subtypendefinition erfolgt dann im-
+mer unter Angabe des oder der direkten Supertypen, und relativ dazu. Dabei verlangt die
+obige Definition von einem Subtypen einen bestimmten Zusammenhang zwischen den De-
+finitionen (Intensionen) von Sub - und Supertyp: Die Ergänzungen oder Änderungen, die
+eine Subtypendefinition relativ zu der ihres oder ihrer Supertypen vornimmt, müssen ge-
+währleisten, dass die Werte (Objekte) des Subtyps überall da auftauchen dürfen, wo ein
+Wert des Supertyps verlangt wird . Dies lässt sich durch folgende einfache Regel ausdrücken:
+Es darf also insbesondere keine Bedingung, die ein Supertyp an seine Obje kte stellt, durch
+einen Subtyp aufgehoben oder relativiert werden. Logisch gesprochen heißt das, dass die
+Bedingungen ( die Intension) des Subtyps die des Supertyps impliziert. Daraus folgt, dass die Subtyphierarchie
+mehrere direkte
+Supertyp en
+Begriff des
+Subtyping
+WWeennnn eeiinn TTyypp YY eeiinn SSuubbttyypp eeiinneess TTyyppss XX iisstt,, ddaannnn mmüüsssseenn aallllee BBeeddiinngguunnggeenn,, ddiiee ffüürr OObb--
+jjeekkttee ddeess TTyyppss XX eerrffüülllltt ssiinndd,, aauucchh ffüürr OObbjjeekkttee ddeess TTyyppss YY eerrffüülllltt sseeiinn..
+Typerweiterung als Basis einer Subtypendefinition infrage kommt (da die Intension des Su-
+pertypen unverändert übernommen und lediglich ergänzt wird), die Typeinschränkung hin-
+gegen zunächst einmal nicht. Dennoch wäre die Typeinschränkung vom Subtyping auszu-
+schließen eine unnötige Einschränkung, wie Sie gleich noch sehen werden.
+Wenn man die eingangs dieses Kapitel s gemachten Bemerkungen zur
+Typkorrektheit auf das Subtyping und die damit implizierte Zuweisungs-
+kompatibilität überträgt, dann ergibt sich für die Extensionen von Supertypen und Subty-
+pen, dass die Subtypenbeziehung als eine Teilmengenbeziehung gedeutet we rden muss :
+Die Extension eines Subtyps ist in den Extensionen all seiner (direkten und indirekten) Su-
+pertypen enthalten. Umgekehrt umfasst die Extension eines Supertyps die Extensionen all
+seiner Subtypen. Es ergibt sich, dass nur wenn die Extensionen alle r direkten Subtypen eines
+Typs paarweise disjunkt sind, man es mit einer echten Typhierarchie zu tun hat, in der jeder
+Typ nur genau einen direkten Supertyp hat. Ist die Extension eines Supertyps genau gleich
+der Vereinigung der Extensionen seiner Subtypen , hat der Supertyp keine eigenen Werte,
+also keine Werte, die nicht zugleich Wert eines seiner Subtypen sind. Diese Bedingung ent-
+spricht der Idee von der Generalisierung aus Abschnitt 9.1 und im übrigen gute objektori-
+entierter Praxis (s. Kapitel 69).

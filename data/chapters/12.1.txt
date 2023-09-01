@@ -1,0 +1,55 @@
+12.1 Nachrichten an self
+In SMALLTALK muss das Empfängerobjekt eines Nachrichtenversands immer explizit gemacht
+werden, selbst wenn sich die dazu passende Methode in derselben Klasse befindet. So kann
+also insbesondere self nicht (wie beispielsweise this in JAVA) weggelassen werden, wenn
+ein Objek t eine Nachricht an sich selbst schicken möchte. Wie bereits in Abschnitt 4.3.1
+erwähnt, bezeichnet die Pseudovariable self immer den Empfänger der Nachricht, also
+dasjenige Objekt, auf dem die Methode, in deren Definition die Variable self vorkommt,
+gerade ausgeführt wird, und dessen Instanzvariablen zugreifbar sind. (Die einzige Aus-
+nahme hiervon bilden Blöcke, in denen self sich auf den Empfänger des Home context
+bezieht; s. Abschnitt 4.4.1 in Kurseinheit 1).
+Dabei ist allerdings zu beachten, dass die Klasse des durch self bezeich-
+neten Objekts nicht unbedingt dieselbe sein muss , in der die gerade aus-
+geführte Methode (in der auch das self steht) definiert ist, denn das kann ja, aufgrund
+von Vererbung, durchaus eine Superklasse sein. Das hat eine fundamentale Auswirkung:
+Die zu einer an self geschickten Nachricht passende Metho de ist nicht automatisch die,
+die in derselben Klasse definiert ist, sondern kann durchaus in einer ihrer Subklassen gefun-
+den werden, nämlich dann, wenn die aufrufende Methode selbst erst im Rahmen der Suche
+in der Kette der Superklassen gefunden wurde. Ko nkret bedeutet diese (bereits in Abschnitt
+10.3 im Kontext abstrakter Klassen beschriebene) sog. offene Rekursion , dass das Ergebnis
+des Ausdrucks
+41 Nicht ums onst ist das heute unter dem Namen JUNIT am besten bekannte Unit-test-Frame work
+zuerst für SMALLTALK entwickelt worden — in SMALLTALK ist Testen die einzige Möglichkeit, Fehler in
+einem Programm vor seiner Auslieferung zu finden. offene Rekursion
+zum Zweiten
+455 fremder sagMirWasDuBist
+bei vorliegenden Klassendefinitionen
+Klasse  Super
+Instanzmethoden
+456 sagMirWasDuBist
+457  ^ self selbstauskunft
+458 selbstauskunft
+459  ^ 'ich bin Super'
+sowie
+Klasse  Sub
+Superklasse Super
+Instanzmethoden
+460 selbstauskunft
+461  ^ 'ich bin leider nur Sub'
+davon abhängt, von welcher Klasse das Empfängerobjekt fremder eine Instanz ist. So lie-
+fert
+462 fremder := Super new.
+463 fremder sagMirWasDuBist
+„ich bin super“,
+464 fremder := Sub new.
+465 fremder sagMirWasDuBist
+hingegen „ich bin leider nur sub“. Man beachte, dass Vererbung tatsächlich eine Kopieren -
+und-einfügen -Semantik hat, wie in Abschnitt 11.2 bereits nahegelegt: Wenn man die Im-
+plementierung von sagMirWasDuBist aus Super in Sub wiederholt hätte, hätte man das-
+selbe Ergebnis erzielt.
+Während offene Rekursion im gegebenen Beispiel durchaus erwünscht
+ist und ihr Effekt wohl auch den Erwartungen der Programmiererin ent-
+spricht, ergeben sich doch immer wieder Konstellationen, in denen man unangenehm über-
+rascht wird. Das Problem ist unter dem Namen Fragile -base-class-Problem bekann tgewor-
+den; es wird in Kapitel 55 (Kurseinheit 6) ausführlicher behandelt. Fragile -base -class -
+Problem

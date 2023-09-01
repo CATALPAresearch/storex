@@ -1,0 +1,17 @@
+1.5 Variablen
+Weil Literale immer die gleichen Objekte repräsentieren, reichen sie zum Programmieren
+nicht aus. Was man vielmehr auch noch benötigt, sind Namen , die zu verschiedenen Zeit-
+punkten verschiedene Objekte bezeichnen können6, die sog. Variablen .
+Genau wie ein Literal steht eine Variable in einem Programm für ein Ob-
+jekt. Anders als bei Literalen wird aus einer Variable jedoch kein Objekt e rzeugt: Sie ist le-
+diglich ein Name für ein bereits existierendes Objekt. Dazu kommt, dass eine Variable zu
+unterschiedlichen Zeitpunkten für unterschiedliche Objekte stehen kann (deswegen der
+Name „Variable“!). Es können zudem Variablen mit unterschiedlich en Namen für dasselbe
+Objekt stehen, das damit gewissermaßen verschiedene Namen hat (die sog. Aliase ; s. Ab-
+schnitt 1.8). Wir werden daher im folgenden davon sprechen, dass Variablen Objekte be-
+nennen oder bezeichnen .
+6 Achtung: In der funktionalen Programmierung , in der der Begriff des Namens gebräuchlicher ist als
+in der objektorientierten, steht ein Name immer für dasselbe Objekt. Quintessenz
+Variable vs. Literal ZZwweeii OObbjjeekkttee kköönnnneenn zzwwaarr gglleeiicchh,, aabbeerr nniiee ddaasssseellbbee sseeiinn,, ooddeerr eess ssiinndd nniicchhtt zzwweeii OObb--
+jjeekkttee,, ssoonnddeerrnn eeiinnss!! „„DDaass gglleeiicchhee““ uunndd „„ddaasssseellbbee““ ssiinndd aauucchh iinn ddeerr oobbjjeekkttoorriieennttiieerrtteenn PPrrooggrraammmmiieerruunngg nniicchhtt
+ddaass gglleeiicchhee ((uunndd sscchhoonn ggaarr nniicchhtt ddaasssseellbbee))!!

@@ -1,0 +1,30 @@
+51.3 Friends
+Ein interessantes Konzept von C++, das einen direkten Bezug zur objektorientierten Pro-
+grammierung hat, ist das Friends -Konzept. In der Praxis kommt es häufig vor, dass ein be-
+stimmtes Teilproblem nicht von einer Klasse allein, sondern nur durch das Zusammen spiel
+mehrerer Klassen gelöst werden kann. Während diese Klassen untereinander eng kooperie-
+ren müssen und deswegen (relativ) intime Kenntnis voneinander benötigen (will sagen, auf
+Elemente zugreifen können müssen, die anderen Klassen verborgen bleiben soll ten), gilt das
+für andere Klassen nicht unbedingt. Die Schnittstelle solcher kooperierenden Klassen sollte
+also nicht absolut, sondern relativ zu anderen Klassen definierbar sein.
+In JAVA hatte man dazu bis zur Version 8 nur die Möglichk eit, die besag-
+ten Klassen in ein Paket zu verfrachten und die fraglichen Elemente mit paketweitem Zugriff
+(also ohne Zugriffsmodifizierer) zu deklarieren (Abschnitt 39.1 in Kurseinheit 4). Das hat
+jedoch den Nachteil, dass alle Klassen desselben Pakets dieselbe Schnittstelle jeder einzelnen
+enthaltenen Klasse haben; wenn es eine Klasse gibt , die eine ansonsten unsichtbare Eigen-
+schaft x einer Klasse A sehen und eine andere, die eine Eigenschaft y derselben Klasse sehen
+soll, dann gibt es keine Aufteilung der Klassen auf Pakete, die genau dieses gestattet. Was
+man stattdessen gern hätte, ist e in dedizierter Export von Elementen einer Klasse, also ein dedizierter Export
+zur Verfügung Stellen von Elementen an genau benannte Klassen. Dies bietet, in etwas
+gröberer Form, das Friends -Konzept von C++: Die Definition
+1380 class A {
+1381 friend class B;
+1382 friend class C;
+1383 …
+1384 }
+bewirkt, dass (Instanzen von) B und (von) C auf alle private deklarierten Elemente von
+(Instanzen von) A zugreifen können (jedoch weder umgekehrt von A auf B und C noch B
+und C gegenseitig ). Ein spezifischer, dedizierter Export von einzelnen Membern an be-
+stimmte Klassen ist in C++ nicht möglich; diesen gibt es dafür in EIFFEL (s. Abschnitt 52.2).
+Mit JAVAs Modulen und dem dedizierten ( qualifiziert genannten) Export wird das Friend -
+Konzept auf Ebene der Pakete zumindest angenähert.
