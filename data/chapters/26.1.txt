@@ -6,15 +6,9 @@ zwischen zwei Typen, nämlich der Subtypenbeziehung . Die Gegenrolle heißt Supe
 Man beachte, dass diese Definition von Subtypen Zuweisungskompatibi-
 lität impliziert: Wenn die Objekte eines Subtypen überall da auftauchen
 dürfen, wo Objekte seines Supertypen erwartet werden, dann dürfen sie auch Werte von
-51 Stattdessen würde man eher vermuten, dass es sich um einen Programmierfehler handelt, wenn
 jemand bei einer Zeichnung auf ihre Zeilen zugreifen will. Außerdem müsste bei erster Annahme der
 allgemeinste Typ, von dem alle anderen abgeleitet sind ( Object in STRONGTALK ), immer alle Attribute
 deklarieren, die einem jemals in den Sinn kämen, und das wäre nun wirklich unpraktisch. Problemquelle
-implizite
-Allquantifizierung
-Dependent types
-Zuweisungs kompa ti-
-bilität von Subtypen
 Variablen sein, die mit dem Supertypen annotiert (auf Werte des Supertypen beschränkt)
 sind. Ein Subtyp ist also mit seinem Supertyp per Definition zuweisungskompatibel. Es steckt
 in dieser Defini tion aber eine gewisse Zirkularität (Subtyp als Voraussetzung und Ergebnis

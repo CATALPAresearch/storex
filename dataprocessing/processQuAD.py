@@ -17,9 +17,9 @@ from typing import Dict
 SPLITTER = spacy.load('de_core_news_sm')
 HIGHLIGHT_TOKEN = '<hl>'
 
-INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/raw/TestQuestions2.jsonl'
+INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/raw/QuA_Einsendeaufgaben.jsonl'
 OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/processed/'
-OUTPUT_FILE = 'test'
+OUTPUT_FILE = 'train'
 
 
 def get_sentence(document: str):

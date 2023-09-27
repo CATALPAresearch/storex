@@ -19,17 +19,8 @@ ergibt sich auf natürliche Weise, wenn man sich den Zusamm enhang von Extension
 definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht.
 Das Ganze soll an einem Beispiel verdeutlicht werden. Man denke sich einen Typ Dokument
 wie folgt definiert: Konformität bei
-Funktionsaufrufen
-Typeinschränkung
-durch Löschen von
-Methoden
-Typeinschränkung
-durch Spezialisierung
 Typ Dokument
 Protokoll
-896 name ^ <String>
-897 name: einString <String> ^ <Self>
-898 druckenAuf: einemDrucker <Drucker> ^ <Self>
 Für die Dauer eines Ausdrucks wird durch die Methode druckenAuf: ein konkretes Doku-
 ment einem konkreten Drucker zugeordnet. Mengentheoretisch betrachtet ist diese Zuord-
 nung eine Relation zwischen zwei Mengen:
@@ -48,11 +39,9 @@ die Menge der anderen Stelle auf eine Teilmenge ein:
 Empf änger Parameter
 Die andere Menge kann auch gleich bleiben; größer wird sie jedoch nie.
 Es ergibt sich daraus die folgende Definition eines Typs Zeichnung als Typeinschränkung
-von Dokument :
 Typ Zeichnung
 eingeschränkter Typ Dokument
 Protokoll
-899 druckenAuf: einemDrucker <Plotter> ^ <Self>
 Man beachte, dass die Methode druckenAuf: nicht hinzugefügt wurde
 — sie ersetzt vielmehr die von Dokument übernommene. So unterscheidet sich die Methode
 von der ursprünglichen auch nur in der Typannotation des formalen Parameters. Man
@@ -75,22 +64,13 @@ Nun ergibt sich aber bei der Typeinschränkung auch ohne Löschen das
 Problem, dass sie die Zuweisungskompatibilität, d ie ja für die Typerweite-
 rung noch per Typkonformität geregelt werden konnte, aushebelt: Wenn
 man bei den obigen Typdefinitionen und den Deklarationen
-900 | d <Dokument> z <Zeichnung> l <Zeilendrucker> |
 zunächst
-901 d := z
 zuweist und dann weiter
-902 d druckenAuf: l
 aufruft, dann wäre, Typkonformität von Zeichnung und Dokument bzw.
 Zeilendrucker und Drucker vorausgesetzt, die Typprüfung zwar erfolgreich (denn
 druckenAuf: verlangt für Dokument Drucker als Argumenttyp), aber zur Laufzeit soll
 nun eine Zeichnung auf einem Zeilendrucker gedruckt werden, was gemäß der obigen De-
 finition von Zeichnung nicht vorgesehen ist. Eine der beiden Zuweisungen, die explizite in Redefinition
-Verhältnis von
-Typei nschränkung
-und Typerweiterung
-Typeinschränkung
-und Zuweisungs -
-kompatibilität
 Zeile 901 oder die implizite (die Parameterübergabe) in Zeile 902, ist also nicht zulässig. Da
 gegen di e Typkonformität von Zeilendrucker und Drucker nichts spricht (für beide Ty-
 pen sind im Beispiel ja gar keine Definitionen angegeben), bleibt nur, dass Zeichnung nicht
@@ -116,9 +96,6 @@ ergibt: Wenn beispielsweise einem Dokument ein Drucker dauerhaft zugeordnet wird
 dieser Drucker mittels einer Methode drucker abgefragt werden kann, dann hat die Ein-
 schränkung des Rückgabetyps von drucker von Dokument auf Plotter keine negativen
 Auswirkungen auf die Zuweisungskompatibilität:
-903 | dr <Drucker> |
-904 d := z.
-905 dr := d drucker
 ist völlig in Ordnung, solange nur Plotter zuweisungskompatibel mit Drucker ist. Die
 unterschiedliche Zulässigkeit von Typeinschränkungen bei Ein - und Ausgabe wird in Ab-
 schnitt 26.3 noch genauer beleuchtet.
@@ -128,8 +105,3 @@ schränkung der obigen, zweiten Form auffassen, nämlich einer, in der der Werte
 die leere Menge eingeschränkt wird. So wäre beispi elsweise druckenAuf: mit einem Pa-
 rametertyp ohne Elemente gar nicht mehr aufrufbar (da es kein typkorrektes Parameterob-
 jekt gäbe), was einer Löschung gleichkäme. Aliasing und
-Typeinschränkung
-kein Problem bei
-Rückgabe
-Löschen als
-Spezialfall

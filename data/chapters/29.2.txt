@@ -1,5 +1,4 @@
-29.2 Collections als Standardanwendungsfall für parametrischen Po-
-lymorphismus
+29.2 Collections als Standardanwendungsfall für parametrischen Polymorphismus
 Eine wichtige Gruppe von Klassen, die Sie in den letzten beiden Kurseinheiten kennenge-
 lernt haben, sind die sog. Collection -Klassen. Auch diese bilden jeweils einen Typ, so dass
 Variablen, die auf eine Collection verweisen, mit diesem Typ deklariert werden können.
@@ -17,39 +16,24 @@ rere. Was man vielmehr gern hätte, wäre etwas, das dem Array -Typkonstruktor a
 [<Bereich>] of <Elementtyp> (spitze Klammern hier wieder als Begrenzer von meta-
 syntaktischen V ariablen) von PASCAL gleicht: Im gegebenen Beispiel würde man gern dekla-
 rieren, dass kinder den Typ Collection of Person haben soll. Genau das tut
-Klasse  Person
-benannte Instanzvariablen  kinder <Collection[Person]>
+Klasse Person
+benannte Instanzvariablen kinder <Collection[Person]>
 Instanzmethoden
-933 …
 Passend dazu ist es möglich, Collection in STRONGTALK als parametri-
 schen Typ wie folgt zu definieren:
 Typ Collection
-Typvariablen  E
+Typvariablen E
 Protokoll
-934 at: einIndex <Integer> ^ <E> Problemstellung
-Angabe des
-Elementtypen einer
-Collection
-parametrisch
-typisierte Collection
-935 at: einIndex <Integer> put: einElement <E> ^ <Self>
 Das Programmfragment
-936 | p <Person> |
-937 p := Person new.
-938 p kinder at: 1 put: Person new.
-939 p kinder at: 2 put: Person new.
-940 (p kinder at: 1) kinder at: 1 put: Person new
 ist demnach typkorrekt (und weist p zwei Kinder und ein Enkelkind zu).
 Ein anderes Beispiel für eine parametrische Definition einer Collection ist Dictionary : Hier
 sollte nicht nur der Element -, sondern auch der Schlüsseltyp variabel gehalten werden. Eine
 entsprechende parametrische Typdefinition, diesmal mit zwei Typparametern, kann wi e
 folgt aussehen:
 Typ Dictionary
-Typvariablen  S E
+Typvariablen S E
 Supertyp Collection[E]
 Protokoll
-941 at: einSchlüssel <S> ^ <E>
-942 at: einSchlüssel <S> put: einElement <E> ^ <Self>
 Dabei ist der parametrische Typ Dictionary ein Subtyp des ebenfalls parametrischen Typs
 Collection . Man beachte, dass der Typparameter E hier bereits in der Supertypdeklara-
 tion verwendet wird. Ein Dictionary, in dem Integer auf beliebige Objekte abgebildet wer-

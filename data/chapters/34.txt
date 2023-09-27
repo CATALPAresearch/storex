@@ -6,11 +6,8 @@ werden .57 Das Ergebnis der Übersetzung ist jedoch kein direkt ausführbarer Ma
 code, sondern ein sog. Bytecode , der von einer virtuellen Maschine, der Java Virtual Machine
 (JVM), interpretiert we rden muss . Das sonst übliche Linken der einzelnen Klassen (genauer:
 des zu den Klassen gehörenden Bytecodes, die sog. Class files ) wird dabei durch das Class
-57 Die Entwicklungsumgebung VISUALAGE FOR JAVA, die Vorgänger in von ECLIPSE , machte hier eine
 Ausnahme und sah — wie Smalltalk — die Speicherung von Klassen in einem Image vor. Eclipse hat
 übrigens bis heute eine Java Browsing Perspective, die d em System Browser von Smalltalk ähnelt.
-JAVA als Kind von
-SMALLTALK und C++
 loading der JVM ersetzt. Vorteile des ganzen sind eine größere Flexibilität bei der Entwick-
 lung und Verteilung von Anwendungen sowie eine weitgehende Plattformunabhängigkeit:
 JAVA-Programme können, soweit sie nicht von bestimmten Eigenheiten der Betriebssysteme
@@ -42,18 +39,10 @@ Um ein JAVA-Programm, bestehend aus einer Menge von Class files, aus-
 zuführen, muss man eine Klasse ange ben, die eine Startmethode besitzt.
 Diese Startmethode heißt immer gleich; ihre Signatur hat die leicht zu merkende und immer
 wieder gern eingetippte Form
-982 public static void main(String[] args)
 Dabei ist main der Name der Methode; was die anderen Elemente bedeuten, werden Sie
 im Laufe dieser Kurseinheit noch lernen. Auf Betriebssystemebene übergibt man dann ein-
 fach der JVM bei ihrem Aufruf den Namen der Klasse als Parameter, beispielsweise mit
-983 java MeineTollsteKlasseBisher
 Klassen werden in JAVA wie in SMALLTALK per Konvention immer großgeschrieben. rückwärtskompatible
-Weiterentwicklung
-wichtige Werkzeuge
-der JAVA-
-Programmierung
-Ausführung eines
-JAVA-Programms
 Ein letztes, wichtiges Merkmal des Programmiermodells von JAVA ist die
 Art des Deployment, also wie in JAVA programmierte Anwendungen in die Anwendung
 gehen. Während früher alle namhaften Web -Browser ( per Plug -in) den Start von in Websei-

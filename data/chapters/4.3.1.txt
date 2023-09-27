@@ -21,8 +21,3 @@ Objekt, dessen Instanzvariablen ger ade zugreifbar sind. Sie wird immer dann ben
 wenn eine Nachricht aus einer Methode heraus (also per darin enthaltener Anweisung) an
 das Objekt geschickt werden soll, dem die Methode zugeordnet ist, also an sich selbst. self
 ist also gewissermaßen der implizite erste Parameter einer Methode. Methoden als
-Programmbausteine
-Zugriff auf
-Instanzvariablen
-die Pseudovariable
-self

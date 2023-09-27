@@ -9,8 +9,6 @@ schlüsseln kann und sie sich somit schneller zurechtfindet. Allerdings ist es d
 dass die Namenskonventionen genau festgeschrieben sind und dass sich alle darauf einigen
 — wenn nämlich jede ihre individuelle Auslegung der Regel hat, dann kann eine (vermeint-
 liche) Namenskonventionen mehr Verwirrung stiften als nutzen. Abkürzungen bei
-Namensgleichheit
-von Variable und Typ
 It would be a mistake to protest against the rules … on the grounds that they
 limit developer creativity. A consistent style favors rather than hampers creativ-
 ity by channeling it to where it matters. A large part of the effort of producing

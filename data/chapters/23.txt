@@ -14,8 +14,6 @@ zeichen sieht dann beispielsweise wie folgt aus:
 Typ InternationalesBür o
 erweiterter Typ Büro
 Protokoll
-884 länderkennzeichen ^ <String>
-885 länderkennzeichen: einLänderkennzeichen <String> ^ <Self>
 Der erweiternde Typ, hier InternationalesBüro , wird also relativ zu einem bereits be-
 stehenden, dem erweiterten Typ (hier Büro ), definiert. Die Methodendeklarationen des er-
 weiterten Typs werden dabei gewissermaßen an den erweiternden Typ vererbt ; dieser
@@ -27,7 +25,6 @@ gesehen sind, auch in InternationalesBüro vorkommen.50 Das Umgekehrte ist jedoc
 nicht der Fall: Wenn man einer Variable vom Typ InternationalesBüro ein Objekt vom
 Typ Büro zuweisen könnte, dann hätte man immer dann ein Problem, wenn man über
 diese Variable auf dessen Methoden zu Länderkennzeichen zugreifen wollte, weil diese
-50 Bei Variablen mit Referenzsemantik geht das ohne Einschrä nkungen, denn die Größe des durch
 einen Pointer belegten Speicherplatzes ist immer gleich. Bei Variablen mit Wertsemantik hingegen
 muss der Wert eines erweiterten Typen erst auf einen des Basistypen projiziert werden, d. h., die
 Inhalte eventueller zusätzl icher Felder müssen unter den Tisch fallen, da für sie im für die Variable
@@ -36,10 +33,5 @@ ist der Typ einer Variable auch nicht für die Berechnung des zur Aufnahme eines
 benötigten Speichers geeignet. Das ist z. B. in STRONGTALK der Fall — und auch gut so, denn Felder
 zählen nach vorherrschender Meinung zur Implementation und sind, genau wie bei abstrakten Da-
 tentypen, nicht Bestandteil einer Typdefinition . Vererbung der
-Methoden -
-deklaration
-Zuweisungskompa -
-tibilität bei
-Typerweiterung
 schlichtweg für das Objekt nicht definiert sind. Die Zuweisungskompatibilität unter Typer-
 weiterung regelt der Begriff der Typkonformität.

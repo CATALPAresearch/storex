@@ -11,11 +11,6 @@ ausführbarem Code;
 2. Typen dienen der Formulierung von Invarianten, die für Variablenbelegungen gelten
 müssen und deren Verletzung auf einen (logischen oder semantischen) Program-
 mierfehler hinweist. absolute
-Schnittstellen als
-Typen
-Wahrung des
-Implementations ge-
-heim nisses
 Da beide im wesentlichen über die gleichen Elemente verfüg en, lässt sich die Definition
 beider in einem Sprachkonstrukt zusammenfassen.
 Der Unterschied der beiden Konzepte Klasse und Typ manifestiert sich

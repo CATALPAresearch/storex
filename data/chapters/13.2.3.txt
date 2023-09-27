@@ -3,7 +3,6 @@ Nicht zuletzt werden auch ganz banale Arrays häufig verwendet, insbesondere weg
 (bereits in Abschnitt 1.2 vorgestellten) Möglichkeit der einfachen literalen Definition . So
 kann man ohne viel Aufwand über die Elemente einer beliebigen, ad hoc spezifizierten Auf-
 zählung iterieren:
-541 #(1 'abc' true) collect : [ :element | … ]
 beispielsweise weist dem Laufparameter des Blocks, element , nacheinander die Elemente
 des literalen Arrays zu.
 Der wesentliche Nachteil von Arrays ist, dass ihre Größe beschränkt ist.

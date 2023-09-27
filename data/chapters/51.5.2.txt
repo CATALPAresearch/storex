@@ -11,16 +11,11 @@ Konkret kann die RTTI folgendermaßen ausgenutzt werden. Es gibt zu-
 nächst eine Funktion typeid , die man auf einer Referenz aufrufen kann.
 Da die Funktion auf Klassennamen überladen ist und zudem eine Struktur zurückliefert, auf
 der == als Gleichheitstest definiert ist, lässt sich der Typ eines Objekts z. B. durch
-80 Aber leider eben nur für solche Objekte. Man kann freilich argumentieren, dass diese Information
 für andere Objekte auch nicht sonderlich interessant ist. Typumwandlungen
-Runtime Type
-Information
-1387 typeid(x) == typeid(T)
 prüfen (wobe i x für eine Variable und T für eine Klasse stehen soll). Eine andere nützliche
 Funktion, die die RTTI ausnutzt, ist dynamic_cast<T>(x) ; sie nimmt zwei Parameter, ei-
 nen Typ (T) und ein Objekt ( x), und liefert das Objekt mit dem Typ zurück, wenn die RTTI
 dies als typkorrekt erkennt, oder 0 sonst. In JAVA übersetzt hieße das:
-1388 (x instanceof T) ? (T) x : null
 wobei der Ausdruck <A> ? <B> : <C> je nachdem, ob <A> zu wahr oder falsch auswertet,
 entweder das Ergebnis der Auswertung von <B> oder von <C> zurückliefe rt (s. Kapitel 37
 in Kurseinheit 4). dynamic_cast<T>(x) entspricht im wesentlichen x as T in C# (Ab-

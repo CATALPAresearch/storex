@@ -13,26 +13,16 @@ leicht vorstellen kann, sind dafür einige Konventionen notwendig.
 Das erste Merkmal des CTS ist, dass alle Typen in einer Hierarchie unter-
 gebracht sind. Die aus JAVA bekannte Ausgrenzung der primitiven Typen
 gibt es also nicht. Tatsächlich sind die primitiven Typen als eine von mehreren Arten von Multicasting auf
-Sprachebene
-Common Type
-System
-Einordnung von
-Werttypen
 Werttypen in der Hierarchie angesiedelt. Eine weitere wichtige Form von Werttypen sind die
 (aus PASCAL bekannten und inzwis chen auch in JAVA, dort aber als Referenztypen angekom-
 menen) Aufzählungstypen, deren Elemente (Werte) von der Programmiererin selbst ange-
 geben werden können (im Gegensatz zu denen der primitiven Typen, deren Werte mit der
 Sprachdefinition vorgegeben sind):
-1333 enum Colour { Red, Blue, Green }
 Aus Werttypen können, genau wie in PASCAL oder C, mittels des Typkon-
 struktors struct (dem C -Äquivalent von PASCAL s record ) neue Wertty-
 pen erzeugt werden, die sogar Methoden und Konstruktoren haben können, die aber keine
 Klassen sind (und insbesondere keine Typerweiterung und somit auch keine Vererbung er-
 lauben):
-1334 struct Point {
-1335 int x, y;
-1336 void move(int x, int y) {…}
-1337 }
 Man erspart sich durch das Weglassen der Typerweiterung die Projektion bei Zuweisungen,
 also das Fallenlassen von Feldern, die ein erweiterter Typ hinzugefügt hat und für die im für
 die Zielvariable reservierten Speicher kein Platz ist (vgl. Kapitel 23 in Kurseinheit 2, insbe-
@@ -53,13 +43,6 @@ zu tun und sind daher nicht Gegenstand dieses Kurses (s. a. Abschnitt 47.4 in Ku
 Es sei nur soviel erwähnt, dass in C# ein Attribut namens Serializable das gleichnamige
 Marker -Interface JAVAs ersetzt (vgl. Kapitel 45 in Kurseinheit 4).
 Es ergibt sich die folgende grobe Einteilung der Typen von C#: Werttypkonstruktion
-mit struct
-Delegates als weitere
-Art von
-Referenztypen
-Attributes
-Einteilung der Typen
-von C#
 Wohlgemerkt, dies ist keine Klassenhierarchie, sondern lediglich eine Ein-
 teilung der verschiedenen Arten von Typen in C#. Die Klassenhierarchie ist wesentlich kom-
 plexer und vereinheitlicht zudem, wie ja bereits gesagt, das Typsystem von C# (wie auch

@@ -3,8 +3,6 @@ SMALLTALK stammt aus einer Zeit, in der man mit der objektorientierten Programmi
 noch relativ wenig praktische Erfahrung gesammelt hatte. Damals war man der Ansicht,
 einer der Hauptvorteile der objektorientierten Programmierung sei die Wiederverwendung
 von Code durch Vererbung. Nun hat die Vererbung, wie in Abschnitt 10.1 dargelegt, durch-Konflikt mit
-mengentheoretischer
-Interpretation
 aus etwas mit der auf Generalisieru ng bzw. Spezialisierung beruhenden Abstraktionshierar-
 chie zu tun: Der allgemeinere Begriff (die Superklasse) überträgt (vererbt) alle seine Eigen-
 schaften auf die spezielleren Begriffe (Subklassen), der speziellere erbt sie von den allgemei-

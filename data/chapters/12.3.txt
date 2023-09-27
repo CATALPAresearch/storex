@@ -7,14 +7,6 @@ Typische Fälle, in denen auch die tatsächlich en Parameter eine Rolle bei
 der Methodenauswahl spielen, sind arithmetische Operatoren wie +, –, *
 und /. Diese sind nämlich sowohl für Ganzzahlen als auch für Brüche und
 Gleitkommazahlen definiert, wobei die Implementierung einer Operation Bedeutung von
-super ist
-unabhängig von der
-Klasse des
-Empf ängers
-wenn Parameter -
-objekte über
-Methodenauswahl
-entscheiden sollen
 davon abhängt, welcher Art die Operanden sind. Nehmen wir beispielsweise an, es gäbe
 zwei primitive Methoden für die Ad dition, und zwar eine effiziente für die Integer -Addition
 (IAdd ) und eine weniger effiziente für die Float -Addition (FAdd ), und man möchte Additi-
@@ -32,28 +24,17 @@ auf und vertauscht dabei Empfänger ( self ) und Parameter. Damit es dabei nicht
 lichen Rekursionen kommt, kodiert man die Klasse des Empfängers im Nachrichtenselektor
 der neu aufgerufenen Methode42, also z. B. plusFloat: anstelle von nur plus: . Das Er-
 gebnis sieht dann wie folgt aus:
-Klasse  Integer
+Klasse Integer
 Instanzmethoden
-468 plus: aNumber
-469  ^ aNumber plusInteger: self
-470 plusInteger: anInteger
-471  <primitive: IAdd>
-Klasse  Float
+Klasse Float
 Instanzmethoden
-472 plus: aNumber
-473  ^ <primitive: FAdd>
-474 plusInteger: anInteger
-475  ^ self plus : anInteger
-42 In Sprach en wie JAVA, in denen das Double dispatch auch gebräuchlich ist, ist das nicht notwendig,
 da es in ihnen zur Differenzierung von gleichnamigen Methoden da s sog. Überladen gibt. Umsetzung durch
 erneuten
 Methodenaufruf mit
 vertauschten
 Empfänger - und
-Parameterobjekten  Parameter
+Parameterobjekten Parameter
 + Integer Float Empfänger
-Integer IAdd FAdd
-Float FAdd FAdd
 Diese Technik, nämlich eine Methode gleicher Bedeutung unter Vertauschung von Sender
 und Empfänger aufzurufen, nennt man Double dispatch , und zwar, weil die dynamische
 Bindung (auch Method oder Message dispatching genannt) zweimal, und zwar unmittelbar

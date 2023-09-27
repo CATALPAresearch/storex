@@ -30,13 +30,8 @@ von Subtypen von T bzw. S. Damit ist die Definition nicht auf abstrakte Typen un
 Interfaces ausdehnbar.
 2. Damit zusammenhängend ist die Aussage losgelöst von jedem konkreten Gebrauch
 der Objekte. Wie in Abschnitt 54.5 noch genauer dargestellt werden wird, kann
-88 Man beachte den Zirkel in der Definition: Für das Subtyping reicht aus, dass Zuweisungskompati-
 bilität besteht; der Compiler leitet die Zuweisungskompatibilität aus dem Bestehen einer Subtypen-
 beziehung (z. B. extends oder implements in JAVA) ab.
-Motivation
-verhaltensbezogenes
-Subtyping
-kritische Betrachtung
 eine Substituierbarkeit in einem gegebenen Kontext sehr wohl bestehen, auch wenn
 die Typen nach obiger Definition nicht substituierbar sind. Man würde die Anforde-
 rungen in einem solchen Fall in einem Interfacetypen festhalten, der nur die im Kon-
@@ -73,9 +68,6 @@ weise würde man die entsprechenden Anforderungen an die Parameterobjekte mittel
 und Nachbedingungen formulieren und die Menge der geworfenen Exceptions wäre Teil
 der Nachbedingungen.
 Man kann sich die Wirksamkeit der Bedingungen wie folgt erklären: Subtypenrelation
-nach Liskov und
-Wing
-Veranschaulichung
 Aus den obigen Regeln der Subtyp relation und aus der Korrektheit der überschreibenden
 Methode in S folgt die gewünschte Substituierbarkeit.
 Es bleibt jedoch noch das eingangs beschriebene, mit dem Aliasing und

@@ -21,5 +21,3 @@ super verwendet wird, beginnt und nicht etwa mit der Superklasse der Klasse, von
 (durch super bezeichnete) Empfängerobjekt eine direkte Instanz ist.
 Selbstt estaufgabe 12.2
 Probieren Sie aus, was passiert, wenn Sie in der Klasse Sub von oben folgende Methode hinzufügen:
-466 sagMirWerDuBist
-467 ^ super selbstauskunft

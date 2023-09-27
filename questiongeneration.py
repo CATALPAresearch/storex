@@ -2,7 +2,7 @@ from pprint import pprint
 from lmqg import TransformersQG
 
 # initialize model
-model = TransformersQG(language='de', model='lmqg/mt5-base-dequad-qg')
+model = TransformersQG(language='de', model='lmqg/mt5-small-dequad-qg')
 # paragraph to generate pairs of question and answer
 context = "Wie bereits erwähnt sind Objekte im Speicher abgelegte Daten. Dabei ist jedes Objekt an " \
           "genau einer Stelle im Speicher abgelegt: Es wird damit durch seine Speicherstelle eindeutig " \

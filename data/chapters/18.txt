@@ -26,11 +26,6 @@ Warum aber typisiert man Variablen und andere Programmelemente?
 Dafür gibt es mindestens vier gute Gründe:
 1. Typisierung regelt das Speicher -Layout.
 2. Typisierung erlaubt die effizientere Ausführung eines Programms. Typ
-Zusammenhang von
-Typ und Klasse
-Typsystem
-Gründe für die
-Typisierung
 3. Typisierung erhöht die Lesbarkeit eines Programms.
 4. Typisierung ermöglicht das automatische Finden von logischen Fehlern in einem Pro-
 gramm.
@@ -69,9 +64,6 @@ fert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, 
 Implementation nicht kennt, schon über ihren Zweck spekulieren. Dem mag man freilich
 entgegenhalten, dass man stattdessen ja auch selbsterklärende Namen für Variablen und
 Methoden vergeben könnte (mehr dazu in Kurseinheit 7, Kapitel 62). Speicher -Layout
-effizientere
-Ausführung
-erhöhte Lesbarkeit
 Es bleibt aber in jedem Fall Punkt 4, das Aufdecken von logischen Fehlern
 in einem Programm. Ohne externes Wissen, was ein Programm tun soll,
 verlangt das Finden von Fehlern jedoch ein gewisses Maß an Redundanz ,
@@ -111,16 +103,6 @@ lässigen Werte beschränken, und dann darüber wacht, dass diese Invarianten im
 halten werden. Eine besonders einfache Möglichkeit, solche Invarianten zu spezifizieren,
 erlauben sog. Typannotationen , also die Verbindung einer Variable mit einem Typ, wobei
 der Typ eine Menge von Werten festlegt, die die Variable ausschließlich haben darf. In typi-automatisches
-Finden von logischen
-Fehlern mittels
-Redundanz
-Typen als
-Schnittstellen
-Typfehler
-Variablenfehlbele-
-gung ohne Typfehler
-Typinvarianten und
-Typannotationen
 sierten Programmiersprachen erfolgt die Typannotation explizit und zwingend bei der Vari-
 ablendeklaration ; in nicht oder nur optional typisierten Sprachen kann sie auch (für einzelne
 oder alle Variablen) hergeleitet (i nferiert ; die Typinferenz ) werden und ist dann implizit.
@@ -145,9 +127,6 @@ Nun kann man sich vorstellen, dass es für einen Compiler selbst in einfa-
 chen Fällen nicht leicht ist, festzustellen, ob eine Wertzuweisung eine In-
 variante verletzt und somit zu einem typinkorrekten Programm führt. So ist das folgende
 STRONGTALK -Programmfra gment
-833 | i <Integer> |
-834 i := 0.
-835 i = 0 ifTrue: [i := 1] ifFalse: [i := 'dumm gelaufen']
 das zunächst eine temporäre Variable i mit dem Typ Integer (in STRONGTALK wird die
 Typannotation hinter der Variable in spitzen Klammern angeführt) deklariert und ihr dann,
 in einer Folge von Anweisungen, zunächst 0 und dann 1 (beides Werte vom Typ Integer )
@@ -156,12 +135,6 @@ schon wissen, dass die Bedingung in Zeile 835 immer erfüllt ist, der False -Zwe
 Verletzung der Invariante von i (nämlich dass die Werte immer vom Typ Integer sein
 müssen und somit nicht vom Typ String sein dürfen) führen würde, also nie ausgeführt
 wird. Im gegebenen Fall ist das zwar offensichtlich (und bereits von einer recht einfachen Typkorrektheit ;
-semantische Fehler
-Zulässigkeit von Zu-
-weisungen und Me-
-thodenaufrufen
-Schwierigkeit der
-Feststellung
 Programmanalyse feststellbar), aber es lassen sich auch Fälle konstruieren, in denen eine
 automatische Programmanalyse streiken muss .47
 Was man jedoch immer tun kann, um Typkorrektheit zu gewährleisten,
@@ -182,28 +155,16 @@ durchführt, da Typfehler erst im letztmöglichen Moment offenbar werden, nämli
 auf einer Variable eine Methode aufgerufen werden soll, d ie für das Objekt, auf das die
 Variable verweist, gar nicht definiert ist.49 Um das zu verhindern, findet man in SMALLTALK -
 Code gelegentlich Figuren wie
-836 methodDictionaries: anArray
-837     "Private - Change the receiver's array of
-838     method dictionari es to anArray."
-839   (anArray isKindOf: Array)
-840     ifFalse: [^ self error: 'must be an Array'].
-841   dictionaryArray := anArray
 (SMALLTALK EXPRESS entnommen). Dies entspricht natürlich genau einer dynamischen Typprü-
 fung, nur dass hier Typ durch Klasse er setzt wurde und die Prüfung eben nicht automatisch
 durch ein Laufzeittypsystem erfolgt, sondern ausprogrammiert werden muss .
-47 Aus theoretischer Sicht ist das Problem sogar unentscheidbar, auch wenn solche Aussagen in der
 Regel auf pathologischen Programmkonstruktionen, die man in der Praxis kaum vorfinden wird, b a-
 sieren.
-48 Man denke etwa an die sog. Null pointer exceptions in JAVA, die erst dann auftreten, wenn mit
 einem Variablenwert null tatsächlich etwas gemacht werden soll, was unter Umständen erst a m
 Ende einer langen Zuweisungskette der Fall ist.
-49 SMALLTALK und andere Programmiersprachen werden gelegentlich als dynamisch typisiert ( dyna-
 mically typed ) bezeichnet. Das aber ist Unsinn, denn eine Typisierung findet in SMALLTALK gar nicht,
 auch nicht zur Laufzeit, statt. Außerdem ist mit dynamischer Typisierung in der Regel dynamische
 Typprüfung gemeint. Was ein dynamischer Typ sein soll, ist auch gar nicht klar. dynamische
-Typprüfung
-Typprüfung in
-SMALLTALK
 Sehr viel nützlicher als die dynamische Typprüfung ist die statische
 Typprüfung, bei der, trotz aller theoreti schen Hindernisse, die Typkorrektheit zur Überset-
 zungszeit gewährleistet werden soll. Die Typprüfung ist damit Aufgabe des Compilers und
@@ -212,7 +173,6 @@ Programmiererin . Wie wir schon gesehen haben, bedeutet dies nicht weniger, als 
 Beweis zu führen, dass bei keiner Ausführung eines Programms eine Typinvariante verletzt
 wird. In der Praxis bedeute t dies aber, dass eine rein statische Typprüfung immer auch Pro-
 gramme zurückweist, die nützlich, sinnvoll und typkorrekt sind (s. obiges Beispiel der Zeilen
-833 – 835, das zumindest typkorrekt ist: i erhält niemals einen Wert vom Typ String ).
 Zwar kann man versuchen, möglichst wenige typkorrekte Programme durch die sta tische
 Typprüfung zurückzuweisen, aber wie man sich leicht vorstellen kann, wird mit steigender
 Genauigkeit das dazu notwendige Typsystem immer aufwendiger und schwieriger zu be-

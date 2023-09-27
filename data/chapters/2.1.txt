@@ -10,15 +10,10 @@ Instanzvariablen bestimmen den Aufbau, oder die Struktur , zusammen-
 gesetzter Objekt e (die manchmal deswegen auch strukturierte Objekte
 genannt werden) — atomare Objekte haben keine Instanzvariablen. Jede
 Instanzvariable eines Objekts belegt dabei einen Teil des Speichers aus seiner Repräsentation
-9 Während das in SMALLTALK Gesetz ist, weichen andere Sprachen (wie z. B. JAVA) diese Regel auf,
 indem sie öffentlich zugängliche Instanzvariablen erlauben und selbst für private nicht verhindern,
 dass ein anderes Objekt der gleichen Klasse darauf zugreift. Etwas anderes ist es jed och auch in
 SMALLTALK mit den Objekten, auf die die Variablen verweisen: Aufgrund möglicher Aliase kann der
 Zugriff nicht so leicht einem einzigen Objekt vorbehalten werden. Richtung von
-Beziehungen
-Instanzvariablen und
-die Zusammenset-
-zung von Objekten
 (s. Abschnitte 1.1 und 1.5). Da Instanzvariablen in der Regel Verweise enthalten und Ver-
 weise immer den gleiche n Platz belegen , ist die Größe eines Objekts (der zu seiner Speiche-
 rung benötigte Platz) mit der Anzahl seiner Instanzvariablen festgelegt.
@@ -34,34 +29,21 @@ mit ist der Index gewiss ermaßen der Name der Instanzvariable. Der Index muss e
 liche Zahl größer 0 sein. Um den Inhalt der indizierten Instanzvariable an der Indexposition
 i (genauer: an der Indexposition, die durch das Zahlobjekt bestimmt wird, auf das i ver-
 weist) zu erh alten, schreibt man
-33 at: i
 Wer bei indizierten Instanzvariablen an Arrays denkt, liegt richtig: Tatsächlich speichern Ar-
 ray-Objekt e ihre Elemente in indizierten Instanzvariablen. So liefert beispielsweise
-34 #($a $b $c) at: 2
 das Zeichenobjekt „b“. Um den Wer t einer indizierten Instanzvariable an derselben Index-
 position zu setzen, schreibt man z. B.
-35 #($a $b $c) at: 2 put: 'toll!'
 (aber nur, wenn Ihr SMALLTALK die Änderung der Zusammensetzung für literale Arrays zu-
 lässt). Das resultierende Array -Objekt hat die literale Repräsentation #($a 'toll!' $c) .
-10
 Indizierte Instanzvariablen sind kein Unikat von SMALLTALK : So bieten bei-
 spielsweise C# und VISUAL BASIC sog. Indexer , die im wesentlichen indi-
 zierten Instanzvariablen entsprechen (s. Abschnitt 50.3.2 in Kursein-
 heit 5). Auch verfügen manche Objekte in VISUAL BASIC FOR APPLICATIONS (VBA) über eine
 Variable Item , deren Elem ente über Indizierung des Objekts, dem sie zugeordnet ist, ange-
 sprochen werden können.
-10 C# und VISUAL BASIC bieten sog. Indexer , die im wesentlichen indizierten Instanzvariablen entspre-
 chen (s. Abschnitt 50.3.2 in Kurseinheit 5). Manche Objekte in VISUAL BASIC FOR APPLICATIONS (VBA)
 verfügen über eine Variable Item , deren Elemente über <objekt>.Item(n) , aber auch direkt
 über <objekt>(n) angesprochen werden können. Unterscheidung von
-benannten und
-indizierten
-Instanzvariablen
-indizierte
-Instanzvariablen
-indizierte
-Instanzvariablen in
-anderen Sprachen
 Die Anzahl der indizierten Instanzvariablen eines Objekts ist fix. Damit ist
 auch die Größe eines Objekts mit indizier ten Instanzvariablen fest; insbe-
 sondere können Array -Objekt e nicht wachsen (und wenn doch, dann nur

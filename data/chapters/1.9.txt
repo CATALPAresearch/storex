@@ -11,7 +11,6 @@ einer Variable zugewiesen werden. Bei der Implementierung von Garbage -collectio
 rithmen besteht denn auch erhebliche Freiheit.
 Wenn Peter und Michaela heiraten, dann schlägt sich dies u. a. in der
 Zuweisung
-32 petersNachname := michaelas Nachname
 nieder. Wenn 'Müller' keine Aliase (wie beispielsweise paulasNachname ) hatte, kann
 es nach der Zuweisung aus dem Speicher entfernt werden — es wäre selbst bei Bedarf nicht
 mehr auffindbar.
@@ -20,8 +19,6 @@ stimmte Objekte mit eindeutiger literaler Repräsentation (wie z. B. kleine
 Zahlen, Zeichen und Symbole). Im Falle von Zahlen und Zeichen liegt das jedoch weniger an
 der Natur dieser Objekte selbs t als vielmehr an der Tatsache, dass diese in der Regel nicht
 als Objekte im Speicher angelegt werden (so dass Variablen darauf verweisen könnten), Beispiel
-Sonderbehandlung
-bestimmter Objekte
 sondern dass sie selbst, als Werte (und anstelle von Zeigern), in Variablen gespeichert wer-
 den ( Abschnitt 1.5.1 ). Sie werden „entfernt “, indem einer Variable ein neuer Wert zuge-
 wiesen wird. Symbole werden schon deswegen nicht aus dem Speicher entfernt, weil sie in
@@ -57,8 +54,3 @@ benszyklu s („life cycle “) eines Objekts. Genaugenommen ist dies aber
 irreführend, denn das Wort „Zyklus“ verspricht, dass das Leben nach seinem Ende wieder
 neu beginnt. Gerade dies ist aber, wie eben erläutert, nicht der Fall: Objekte werden nicht
 recycelt, sondern höchstens der Speicherplatz, den sie belegen. warum automatische
-Speicherbereinigung
-richtig und wichtig
-ist
-„Lebenszyklus “ ist
-irreführend

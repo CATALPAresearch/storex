@@ -14,12 +14,6 @@ reich für darin enthaltene Variablendeklarationen darstellen . Blöcke wie in S
 JAVA erst seit Version 8, als Lambda -Ausdrücke .
 Es sind also Variablendeklarationen, Methodenaufrufe (inkl. der Kon -
 struk toraufrufe) und Zuweisungen Anweisungen. Alle anderen Anwei-
-61 Ausnahmen sind Felddeklarationen sowie Anweisungen in Initializern und Finalizern. Closures
-wesentliche
-Unterschiede zu
-SMALLTALK
-Schlüsselwörter für
-Kontrollstrukturen
 sungen werden durch Schlüsselwörter eingeleitet und realisieren allesamt Kontrollstruktu-
 ren, die den Kontroll fluss eines Programms dazu bringen, von der normalen, sequentiellen
 Ausführung abzuweichen. Im einzelnen sind dies
@@ -54,7 +48,6 @@ Statement) ;
  die For -Anweisung in der Form
 for (<Initialisierungsausdruck>; <Boolescher Ausdruck>;
 <Veränderungsausdruck>) <Statement>62
-62 Man beachte, dass das Semikolon hier ein Trennzeichen ist und keine Anweisung abschließt.
 Gleichwohl k önnen in einem der drei Segmente innerhalb der Klammern auch mehrere Ausdrücke
 erscheinen, die dann aber durch Kommata getrennt werden. All diese syntaktischen Inkonsequenzen
 sind Erbe von C.
@@ -95,7 +88,6 @@ catch (<formaler Parameter 1>) <Catch -Block 1>
 catch (<formaler Parameter 2>) <Catch -Block 2>
 …
 finally <Finally -Block>
-63 Wird die Laufvariable erst im For -Statement deklariert, dann i st ihre Sichtbarkeit auf das For -State-
 ment, einschließlich des enthaltenen Statements <Statement> , beschränkt.
 wobei <Try-Block> für einen Block steht, von dessen Ausführung man weiß, dass
 sie durch einen Laufzeitfehler abgebrochen werden kann, wobei mit den Sequenzen

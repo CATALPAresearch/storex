@@ -3,57 +3,19 @@ MEYERs klassisches Beispiel für die Motivation kovarianter Redefinition und ver
 pen à la EIFFEL soll Ihnen hier nicht vorenthalten werden — es wird immer wieder zitiert und
 ist, abgesehen davon, dass es zu Bemerkungen abseits der Informatik einlädt, i ntuitiv gut
 verständlich. Das Beispiel beginnt wie folgt:
-1391 class SKIER feature
-1392 roommate: SKIER;
-1393   -- This skier’s roommate
-1394 share (other: SKIER) is
-1395   -- Choose other as roommate.
-1396  …
-1397  do
-1398  roommate := other
-1399  end
-1400 …
-1401 end -- class SKIER
 Die Idee ist, dass jugendliche Skifahrerinnen sich zu zweit ein Zimmer teilen. Wie Sie viel-
 leicht schon selbst bemerkt haben, ist der durch die Klasse Skier definierte Typ rekursiv:
 Seine Instanzvariable roommate ist selbst vom Typ Skier . Somit wird z. B. der folgende
 Aufruf von share möglich (typkorrekt):
-1402 s1, s2 : SKIER
-1403 s1.share(s2)
 Nun ist das Beispiel so noch unvollständig. Es ergibt sich nämlich aus der Sache, dass die
 jungen Skifahrerinnen nach Geschlechtern getrennt untergebracht werden sollen. Dazu
 kann man in EIFFEL (dank erlaubter kovarianter Redefinition) einfach schreiben:
-1404 class GIRL inherit
-1405 SKIER
-1406  redefine roommate, share end
-1407 feature
-1408 roommate : GIRL;
-1409 share (other : GIRL) is
-1410  …
-1411  do
-1412  roommate := other
-1413  end
-1414 end -- class GIRL
 sowie entsprechend für Jungen
-1415 class BOY inherit
-1416 SKIER
-1417  redefine roommate, share end
-1418 feature
-1419 roommate : BOY;
-1420 share (other : B OY) is
-1421  …
-1422  do
-1423  roommate := other
-1424  end
-1425 end -- class BOY
 Zwei Dinge fallen auf: Zum einen unterscheiden sich die beiden Subklassen lediglich darin,
 dass sie roommate einen anderen Typ zuordnen und dies in der Folge auch für den Para-
 meter von share tun (müssen), zum anderen sind, wie bei Kovarianz üblich, bei den Vari-
 ablendeklarationen
-1426 s1: SKIER; b1: BOY; g1: GIRL
 die nachfolgenden Anweisungen nach den Regeln der Zuweisungskompatibilität zulässig:
-1427 s1 := b1;
-1428 s1.share(g1)
 Beim Funktionsaufruf von share wird nun aber, dank dynamischer Bindung, g1 (und damit
 ein Objekt vom Typ GIRL ) an roommate in BOY und damit an eine Variable vom Typ BOY
 zugewiesen. Schon ist das Programm nicht mehr typkorrekt.
@@ -70,4 +32,3 @@ spielsweise (vorüb ergehend) ansteckend erkrankt ist, kann sie höchstens mit a
 ken das Zimmer teilen. Eine Klassifikation nach Kranken und Gesunden entzieht sich aber,
 da sie nicht dauerhaft ist, den Möglichkeiten d er statischen Typisierung (zumindest den of-
 fensichtlichen). Ursache des Verlusts
-der Typkorrektheit

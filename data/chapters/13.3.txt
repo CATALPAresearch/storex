@@ -6,32 +6,21 @@ tische Folgen, also um beschränkte Folgen von Zahlen, die alle denselben
 Abstand zueinander haben. Die Elemente einer solchen Collection müssen deswegen nicht
 gespeichert, sondern können berechnet werden. Die Spezifikati on eines Intervalls umfasst
 seinen Anfangs - und seinen Endwert sowie die Schrittweite, die auch negativ sein darf.
-542 (Interval from: 5 to: 1 by: -2)
 erzeugt ein Intervall, das die Zahlen 5, 3 und 1 enthält. Intervalle dienen vor allem dem
 Zweck, sog. For -Schleifen zu emulieren (s. Abschnitt 4.6.3 in Kurseinheit 1):
-543 (Interval from: 5 to: 1 by: -2) do: [ :i | … ]
 etwa bewirkt, dass dem Laufparameter i nacheinander die Werte 5, 3 und 1 zugewiesen
 werden. Die zweiparametrige Form
-544 (Interval from: 1 to: 10) do: [ :i | … ] beschränkte Größe
-von Arrays
-Intervalle als
-Collections
 nimmt hingegen eine Standardschrittweite von 1 an. Für noch mehr Komfort ist in der Klasse
 Number eine Methode to:by: vorgesehen, die ein entsprechendes Intervall zurückliefert:
-545 to: eNumber by: iNumber
-546 ^ Interval from: self to: eNumber by: iNumber
 erlaubt, statt Zeile 544
-547 (5 to: 1 by: -2) do: [ :i | … ]
 zu schreiben. Um der geschätzten Programmiererin auch noch die Klammern zu ersparen,
 wurde gleich noch die Methode to:by:do: hinzugefügt, die daraus
-548 5 to: 1 by: -2 do: [ :i | … ]
 zu machen erlaubt. (Man beachte, dass hier der Iterator in der Klasse Number und nicht in
 einer Collection wie Interval definiert wurde.) Wie man sieht, ist es in SMALLTALK möglich,
 ohne großen Aufwand neue Ausdrucksformen hinzuzufügen, ohne dazu (wie in den meis-
 ten anderen Sprachen notwendig) die Syntax ändern zu müssen.
 Selbsttestaufgabe 13.1
 Sie finden folgendes Codefragment vor:
-549 1 to: a size do: [ :i | (a at: i) doSomething ]
 Kritisieren Sie es!
 Zu guter Letzt sind auch die Klassen String und Symbol Collections,
 und zwar genauer geordnete Collections fester Größe (wie Arrays), deren
@@ -45,5 +34,3 @@ einheit 1, Abschnitt 1.2, eingegangen.
 Selbsttestaufgabe 13.2
 Überlegen Sie sich, wie Sie das Case - (oder Switch -)Statement in SMALLTALK simulieren würden, und
 gehen Sie auf die Einschränkungen ein, die Sie dazu machen müssen.
-String und Symbol
-als Collections

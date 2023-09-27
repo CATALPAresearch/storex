@@ -3,13 +3,6 @@ Das Beispiel von Aktion und Speichern legte bereits nahe, dass die Substituierba
 immer dann fraglich ist, wenn keine Typerweiterung vorliegt, wenn man es sogar insbeson-
 dere mit einer Typeinschränkung zu tun hat. Dies soll nun etwas genauer beleuchtet wer-
 den. Substituierbarkeit bei
-funktional nicht
-äquivalentem
-Verhalten
-hinreichende
-Ausschluss kriterien
-für die
-Substituierbarkeit
 In JAVA ist die Klasse Stack als Subklasse der Klasse Vector (die keinen
 Vektor im mathematischen Sinne, sondern eher ein dynamisches, also in
 seiner Größe wachsen könnendes Array repräsentiert) definiert. Das führt jedoch dazu, dass
@@ -50,9 +43,6 @@ rakteristische Eigenschaft, nämlich dass nach dem Entfernen eines Elements dies
 mehr darin enthalten ist, verletzt. Programme, die darauf bauen, dass diese Eigenschaft
 garantiert wird und die anstelle einer Menge eine Multimenge bekommen, funktionieren
 nicht mehr korrekt. Je nach eingenommenem Standpunkt st ellt dies einen Typfehler dar. Stack als Subklasse
-von Vector ?
-nichtkonforme
-Verhaltensänderung
 Wenn man versucht, der Ursache des Fehlers auf den Grund zu gehen, kommt man schnell
 zu der Einsicht, dass die charakteristischen Eigenschaften keiner der beiden Typen die des
 jeweils anderen implizieren, dass sie genauer im Widerspruch zueinander stehen. Deswegen

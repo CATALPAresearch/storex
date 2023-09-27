@@ -4,24 +4,15 @@ Kontrollstrukturen angeht, nicht großartig von JAVA. Es ist in C# allerdings m�
 toren (also z. B. +, –, == etc., abe r nicht new, ( ), ||, &&, =) zu überladen. C# besitzt dafür
 das Schlüsselwort operator , das in einer Operatordefinition (die ansonsten so aussieht wie
 eine Methodendefinition) vorangestellt wird:
-1258 static Matrix operator +(Matrix m1, Matrix m2) {…}
 Außerdem ist es in C# Konvention, Methodennamen mit einem Groß-
 buchstaben beginnen zu lassen, aber das ist wie gesagt nur Konvention. Wichtiger (und für
 viele Programmierprobleme von unschätzbarem Wert) ist da schon die Möglichkeit von C#,
 Call by reference nach dem Vorbild PASCAL s (also ohne explizite Pointer; s. o.) zu erlauben
 und damit Funktionen wie das Vertauschen von Va riableninhalten (die Meth ode swap ) si-
 cher zu programmieren:
-1259 public static void Swap(ref int x, ref int y) {
-1260 int temp = x;
-1261 x = y;
-1262 y = temp;
-1263 }
 Allerdings muss ref — anders als in PASCAL var — auch an der Aufrufstelle verwendet
 werden. Formale Parameter können auch mit out modifiz iert werden (wobei für die Auf-
 rufstelle dasselbe gilt wie für ref):
-1264 public static void Aenderbar( out String s) {
-1265 s = "auch der tatsächlich e Parameter ist geändert!"
-1266 }
 Der Unterschied ist der, dass bei Verwendung von ref die Variable, die den tatsächlich en
 Parameter liefert, vor dem Aufruf initialisiert worden sein (einen Wert zugewiesen bekom-
 men haben) muss , während dies bei out nicht der Fall ist. Dafür muss bei out der formale
@@ -69,12 +60,6 @@ new bekanntzugeben. Anders als landläufig angenommen hat dies nicht nur Perform
 gründe (es vermindert die Zahl der dynamischen Bindungen in einem Programm), sondern
 auch gewichtige programmiertechnische : Man markiert alle Stellen im Programm, an dene n
 das sog. Fragile -base-class-Problem (Thema von Kapitel 55 in Kurseinheit 6) auftreten kann. keine Deklaration
-von Exceptions als
-Ergebnis eines
-Methodenaufrufs
-Deklaration von
-Überschreibung und
-dynamischem Binden
 Einige Sprachkonstrukte verwenden in C# andere Schlüsselwörter als
 JAVA, so lock anstatt synchronized sowie foreach anstatt for für
 die zweite Form von For -Schleifen (s. Kapitel 38 in Kurseinheit 4). Andere weichen in ihrer

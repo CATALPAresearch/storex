@@ -22,16 +22,11 @@ Typ die Eigenschaften des Supertyps (s. Kapitel 26).
 Ein solchermaßen durch einen Supertyp beschränkte parametrische
 Typdefinition ist die folgende:
 Typ MyCollection
-Typvariablen  E < Number
+Typvariablen E < Number
 Der Rest der Definition geht wie oben. Der Ausdruck E < Number im Abschnitt „Typvari-
 ablen“ ist Deklaration und Beschränkung zugleich; die Beschränkung ist aber wie gesagt
 keine Typisierung wie in normalen Variablendeklarationen. Sie drückt vielmehr aus, dass die
 Typen, die als Werte für E eingesetzt werden dürfen, Su btypen von Number sein müssen.
 Die Deklaration aus Zeile 951 wird damit unzulässig und führt zu einem entsprechenden
 Typfehler während der statischen Typprüfung ; die Deklaration
-962 | liste <MyCollection[Integer]> | wertbeschränkte
-Typvariablen
-Supertypen als
-Schranken
-Beispiel
 ist hingegen OK.

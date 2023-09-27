@@ -5,7 +5,6 @@ wird ein Nachrichtenausdruck auch in SMALLTALK aus Effizienzgründen vom Compile
 nen schnöden Methodenaufruf übersetzt, der mit dem Funktionsaufruf aus der proze-
 duralen Programmierung (also z. B. PASCAL oder C) vergleichbar ist. So führt beispielsweise
 der Ausdruck
-103 1 + 2
 zum Aufruf der Methode +, wie sie für das Objekt „1“ (und alle Zahlen) definiert wurde.
 Dennoch wird, wohl aus didaktischen Gründen, das Mysterium vom N achrichtenversand in
 der objektorientierten Literatur weiter gepflegt. Es gibt aber auch einen kleinen, feinen Un-
@@ -16,9 +15,7 @@ richtenselektor allein ab, sondern auch von dem Objekt, an das die Nachricht ges
 Es ist nämlich durchaus üblich, dass verschiedene Objekte mit gleichen Methodensignaturen
 untersc hiedliche Methodenimplementierungen verbinden; so implementieren beispiels-
 weise Zahlen und Symbole die Methode printString jeweils anders und selbst
-104 1.0 + 2
 führt zum Aufruf einer anderen Methode als 1 + 2 ,
-105 1 + 2.0
 dagegen nicht.
 Aus der Abhängigkeit des Methodenaufrufs vom Empfängerobjekt folgt,
 dass nicht immer schon zur Übersetzungszeit entschieden werden kann, welche Methoden-
@@ -32,11 +29,6 @@ handelt sich dabei um eine von den nur zwei primitiven Kontrollstrukturen SMALLT
 Abschnitt 4.5.2 ).
 Das dynamische Binden ist eine der charakteristischen Eigenschaften der
 objektorientierten Programmi erung. Sie wird auch als Polymorphismus Abhängigkeit vom
-Empfängerobjekt
-dynamisches Binden
-zentrale Bedeutung
-des dynamischen
-Bindens
 oder Polymorphie22 bezeichnet. Auf die Details des dynamischen Bindens können wir erst
 in der nächsten Kurseinheit (Kapitel 12) zu sprechen kommen und auf Polymorphie erst in
 Kapit el 26, da uns hier noch zu viel fehlt. Wir vermerken aber schon jetzt, dass es sich dabei
@@ -55,8 +47,6 @@ thodenaufruf stehen, als tatsächlich e Parameter bezeichnet, aber erstens müss
 unbedingt Variablen, sondern können beliebige Ausdrücke stehen und zweitens können
 diese Variablen selbst formale Parameter sein, nämlich die der Methode, die den Metho-
 denaufruf enthält. So ist in der Methodendefinition
-106 m: a
-107 self n: a
 a der formale Parameter von m:. Der tatsächlich e Parameter von m: ist ein Objekt, das beim
 Aufruf von m: gena nnt wird (hier nicht zu sehen). Dieses Objekt ist dann auch tatsächlich er
 Parameter des Aufrufs von n:, da dieser von a, dem formalen Parameter von m:, geliefert
@@ -71,18 +61,9 @@ explizite Zuweisung , nämlich wenn das Ergebnis des Aufrufs (das Rückgabeobjek
 Variable zugewiesen werden soll.
 Selbsttestaufgabe 4.1
 Benennen Sie die expliziten und impliziten Zuweisungen für
-22 Es ist mir bis heute nicht klar, wann man von Polymorphie und wann von Polymorphismus spricht.
 Im Gebrauch scheint sich anzudeuten, dass man von Inklusionspolymorphie und von parametrischem
 Polymorphismus spricht, aber einen Grund dafür kann ich nicht erkennen. implizite
-Zuweisungen der
-tatsächlich en an die
-formalen Parameter
-implizite Zuweisung
-des Rückgabewertes
-108 a := self f: e
 mit der Methode
-109 f: g
-110 ^ 2
 In Abschnitt 1.5 waren wir auf den Unterschied zwischen Wertsemantik
 und Verweissemantik eingegangen. Damit verwandt (und ähnlich be-
 nannt) ist die Unterscheidung von Call by reference und Call by value beim Methoden-
@@ -119,15 +100,6 @@ der Compiler für einen Nachrichtenausdruck nicht garantieren, dass das
 Empfängerobjekt auch über eine entsprechende Methode verfügt. Da der Nachrichtenaus-
 druck in einen dynamisch gebundenen Methodenaufruf übersetzt wird, dessen Ausfü hrung
 direkt von der virtuellen Maschine SMALLTALK s Call by reference und
-Call by value
-Unterschied zu
-Referenz - und
-Wertsemantik;
-SMALLTALK kennt nur
-Call by value
-Aufruf nicht
-vorhandener
-Methoden
 vorgenommen wird, ist die Frage, wie das Programm sinnvoll mit einem solchen Laufzeit-
 fehler umgehen soll. Tatsächlich passiert in etwa folgendes: Die virtuelle Maschine macht
 aus dem Methodenaufruf einen Nachrichtenselektor (und zwar den, aus dem er bei der

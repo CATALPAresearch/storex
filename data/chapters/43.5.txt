@@ -7,7 +7,6 @@ kreten Typen als Werten erfolgt dann bei der Bindung ein es Methodenaufrufs zur 
 zungszeit. Der tatsächlich e Typparameter muss dabei nicht angegeben werden, wenn er
 sich aus dem Kontext eindeutig ergibt (sog. Typinferenz ).
 So hande lt es sich beispielsweise bei der Deklaration
-1101 public static <T> List<T> toList(T[] array);
 wobei T nicht zugleich Typparameter der die Methodendefinition enthaltenden Klasse sein
 darf, um die Deklaration einer Methode, die ein Array eines beliebigen Typs, hier durch T
 repräsentiert, in eine Liste mit Elementen desselben Typs konvertiert.
@@ -15,19 +14,13 @@ Beim Aufruf e iner parametrischen Methode muss der tatsächlich e Typparameter a
 werden. Allerdings erlaubt der Java -Compiler, diesen wegzulassen, wenn er sich aus dem
 Aufruf erschließen lässt (die oben erwähnte Typinferenz). Bei obiger Methodendeklaration
 ist das z. B. beim Aufruf
-1102 Lists.toList( new Integer[] {1, 2, 3});
 oder
-1103 Lists.toList( new String[] {"abc", "def"});
 der Fall: Hier wird der Typ Integer beziehungsweise String aus dem Typ des tatsächli-
 chen Parameters abgeleitet. Dies ist jedoch nicht immer möglich; e in Aufruf wie
-1104 Lists.<Integer>toList( new Integer[] {1, 2, 3});
 macht den tatsächlich en Typparameter dann explizit.
 Selbsttestaufgabe 43.5
 Erläutern Sie, welchen Nachteil die konventionelle Definition von toList(.) mit der Signatur
-1105 public static List toList(Object[] array);
-72 Man bedenke, dass in JAVA durch eine parametrische Methodendefinition anders als durch Klas-
 sendefinitionen kein e neuen Typen erzeugt werden.
-73 Man beachte, dass diese Variabilität nichts mit Ko - und Kontravarianz zu tun hat; vgl. hierzu auch
 Kurseinheit 3, Kapitel 30.
 hat.
 Der (formale) Typparameter einer generischen Methode kann zu nächst

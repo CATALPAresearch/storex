@@ -11,21 +11,16 @@ schnitt 10.1 und Kapitel 11). Eine Typprüfung soll aber ohne Ansehen der Implem
 stattfinden; sie baut daher auf abstrakte Spezifikationen, eben auf Typen.
 Es sind also Typen abstrakte Spezifikationen, die zum einen den Wertebereich von Variablen
 einschränken und zum anderen das Protokoll (den Funktionsumfang) von Objekten ange-Arten von
-Typumwandlungen
-Verwendungs -
-empfeh lungen
 ben. Im Gegensatz dazu sind Klassen Konstrukte, die Objekte als Instanzen zu bilden erlau-
 ben und mit Implementierung versehen. Da Objekte aber auch den Wertebereich von Typen
 ausmachen, stellt sich natürlich die Frage, welcher Art der Zusammenhang zwischen Typen
 und Klassen ist.
 Diese Frage soll anhand der schematischen Klassendefinitionen aus Kurseinheit 2, Abschnitt
 7.2 beantwortet werden. In SMALLTALK ist diese ja stets von der Form53
-Klasse  <Klasse 1>
-Superklasse  <Klasse 2>
-benannte Instanzvariablen  <Instanzvariable 1>, …
+Klasse <Klasse 1>
+Superklasse <Klasse 2>
+benannte Instanzvariablen <Instanzvariable 1>, …
 Instanzmethoden
-919 <Instanzmethode 1>: <formaler Parameter 1> …
-920 …
 Es fällt zunächst auf, dass bestimmte Elemente einer Klassendefinit ion
 auch in einer Typdefinition auftauchen. Im einzelnen sind dies
  ein (eindeutiger) Name,
@@ -47,10 +42,7 @@ handen sind. Dies ist aber immer dann der Fall, wenn sich die Elemente der Typde
 der Klassendefinition des Objekts wiederfinden, die Klassendefinition also mit der Typdefi-
 nition gewissermaßen strukturell konform ist, so dass die Zuweisung einer Instanz der Klasse
 an eine Variable des Typs die Anforderungen der Zuweisungskompatibilität erfüllt. Um einen
-53 Klassenvariablen und -methoden können hier unter den Tisch fallen, da diese ja nicht Objekte,
 sondern Klassen (als Instanzen ihrer Metaklassen) charakterisieren. Vergleich von
-Klassen - und
-Typdefinition
 Compiler diese Zuweisungskompatibilität auf einfachere Weise als die Prüfung der Struktur-
 konformität, die ja eine rekursive Expansion der Typdefinitionen erfordert, feststellen zu las-
 sen, gibt es zwei Möglichkeiten (bei beiden handelt es sich gewissermaßen um Varianten

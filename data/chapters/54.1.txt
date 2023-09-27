@@ -45,7 +45,6 @@ GUI-Program mierung. So basiert beispielsweise die GUI -Programmierung von und m
 CLIPSE auf einer Reihe von Typen, deren Objekte für die Elemente eines GUI stehen, also
 Fenster , Buttons etc. Nun hat jedes Betriebssystem seine eigenen, den jeweiligen Eigenhei-
 ten angepassten Implementierungen dieser GUI -Elemente. Es ist also sinnvoll, für jeden Typ
-85 Solange Typdefinitionen nur Syntax beschreiben, ist das Verhalten der Objekte durch ihren Typ
 nicht festgelegt. Selbst bei einer abstrakten Spezifikatio n des Verhaltens (z. B. durch einen abstrakten
 Datentyp) wird aber in der Regel nur funktionales Verhalten beschrieben und keine nichtfunktionalen
 Aspekte wie beispielsweise Zeitverhalten. Auch aus nichtfunktionalen Anforderungen kann sich aber
@@ -55,11 +54,6 @@ Substituierbarkeit
 Loslösung vom
 Zustand der Objek te
 Substituierbarkeit be i
-funktional
-äquivalentem
-Verhalten
-Beispiel GUI -
-Programmierung
 von GUI -Element eine Reihe von Subtypen, einen pro Betriebssystem, anzubieten, die die
 Elemente auf die jeweiligen Implementierungen des Betriebssystems abbilden. Objekte die-
 ser Typen sind innerhalb derselben Gruppe (also als Objekte von Subtypen desselben Typs)

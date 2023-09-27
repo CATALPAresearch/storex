@@ -10,11 +10,6 @@ Wenn man beispielsweise die parametrische Definition sortierter Listen, SortedLi
 auf Elementtypen einschränken will, die Subtypen von Comparable sind (damit die in
 Comparable definierte Methode compareTo(.) zur Verfügung steht), dann schreibt man
 in JAVA
-1086 interface SortedList<E extends Comparable> {
-1087 void insert(E element);
-1088 void remove(E element);
-1089 …
-1090 }
 Die möglichen Werte der Typvariable E werden dadurch auf Typen eingeschränkt, die
 Comparable (direkt oder indirekt) erweitern. Die Implementierung der Methode zum Ein-
 fügen und Entfernen von Elementen in sortierten Listen kann also davon ausgehen, dass
@@ -23,9 +18,7 @@ stehen, die vom Interface Comparable vorgeschrieben wird. Man beachte, dass dadu
 keine neue Subtypenrelation zwischen irgendwelchen Typen hergestellt wird — es werden
 lediglich die Möglichkeiten, konkrete Typ en (z. B. in Variablendeklarationen) zu bilden, ein-
 geschränkt. Eine Variablendeklaration
-1091 SortedList<String> liste;
 wobei String ein Subtyp von Comparable ist, ist also möglich, eine wie
-1092 SortedList<Point> liste;
 hingegen nicht. Dennoch ist SortedList<Strin g>, wie bereits in Abschnitt 29.3 be-
 merkt , kein Subtyp von SortedList<Comparable> .
 Selbsttestaufgabe 43.4 (nur für JAVA-Programmiererinnen )

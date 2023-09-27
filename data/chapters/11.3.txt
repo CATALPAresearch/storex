@@ -8,9 +8,6 @@ in einer Subklasse implementiert werden sollte. Dummerweise bekommt die Programm
 rerin diesen Hinweis erst zur Laufzeit des Programms zu Gesicht, also dann, wenn es schon
 zu spät ist (es sei denn, man testet gerade). Man erkennt hieran sehr schön den interaktiven
 Geist des SMALLTALK -Systems, insbesondere die Philosophie, nach der Programmieren nichts die Klasse Object
-Vererbung als Teilen
-der
-Klassendefinitionen
 weiter ist als das iterative Zurechtbiegen und Erweitern eines bereits bestehenden, funktio-
 nierenden Systems. Man muss eine Weile damit gespielt haben, um diesem Charme zu er-
 liegen.
@@ -26,7 +23,6 @@ weitere SMALLTALK -Konvention geradezu als elegant, nämlich die, geerbte Method
 Klasse Object mit Name n „shouldNotImplement“ vorgesehen, die zu einer entsprechen-
 den Fehlermeldung führt. Eine Klasse, die also eine geerbte Methode löschen möchte, über-
 schreibt diese einfach mit
-448 self shouldNotImplement
 im Rumpf. Bevor Sie jetzt als disziplinierte Programmiererin den Stab über SMALLTALK bre-
 chen, erlauben Sie noch den Hinweis, dass der Wunsch, geerbte Methoden zu löschen,
 direkte Folge der vorrangigen Orienti erung an Vererbung ist, die bereits oben kritisiert

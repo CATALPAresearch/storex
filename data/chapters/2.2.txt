@@ -15,17 +15,10 @@ mit gar keinem anderen in der Beziehung stehen kann, muss da her nicht erwähnt 
 Im Fall von [0..1] sprechen wir also von Zu-eins-Beziehungen (im folgenden mit :1-Bezie-
 hung notiert), im Fall von [0..) von Zu-n-Beziehungen (:n-Beziehungen ), wobei n hier
 andeuten soll, dass es sich um eine nicht näher spezifizierte Zahl größer als 1 handelt.12
-11 Eine Beziehung zu keinem Objekt, wird, im Fall von [0..1], in der Regel durch eine Beziehung zum
 Objekt nil (null in anderen Sprachen) ausgedrückt. Nach und nach kommen in verschiedenen
 objektorientierten Programmiersprachen die sog. Not -null-Annotationen auf, die sicherstellen sollen,
 dass eine Variable nie den Wert null hat.
-12 Aus der relationalen Datenmodellierung sind 1:1 -, 1:n- und m:n-Beziehungen bekannt, die Kardi-
 nalitäten auch für die Gegenrichtung angeben. Da wir es in der objektorientierten Programmierung Begrenzung der
-Anzahl indizierter
-Instanzvariablen
-Zuordnung von
-Instanzvariablen zu
-Objekten
 Die Beziehung eines Objekts zu einem anderen wird auf natürliche Weise
 durch eine benannte Instanzvariable ausgedrückt, wobei die Instanzvariable den Namen der
 Beziehung oder, besser noch, den Namen der Rolle des von der Variablen referenzierten
@@ -56,11 +49,7 @@ steht dann stattdessen in einer von einer benannten Instanzvariable hergestellte
 hung zu dem Zwischenobjekt, das die : n-Beziehung herstellt.
 aber nicht mit (ungerichteten, d. h. bidirektionalen) Relationen, sondern mit Verweisen (Zeigern) zu
 tun haben, entfällt die Rückrichtung.
-13 Diese Konvention wurde vom Turing -Preisträger SIR CHARLES ANTONY RICHARD HOARE eingeführt, der
 sie heute selbst als einen (seinen) „ billion dollar mistake “ bezeichnet. :1-Beziehungen
-:n-Beziehungen
-Umsetzung mit
-Zwischenobjekten
 Objekt 1 Objekt 2:1-Beziehung
 Objekt 1 ZwischenobjektObjekt 2.1
 Objekt 2. n…:n-Beziehungbenannte Instanzvariable

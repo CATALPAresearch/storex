@@ -6,20 +6,9 @@ rungen hervorgegangen sind, haben selbst keine Instanzen, sind also insbesondere
 instanziierbar .
 In der objektorientierten Programmierung nennt man nicht instanziier-
 bare Klassen abstrakt . Der Grund für die mangelnde Instanziierbarkeit
-36 So ist zwar die Definition einer Art als diejenige biologische Kategorie, deren Exemplare (Indivi-
 duen) untereinander fortpflanzungsfähige Nachkommen zeugen können, sinnvoll, doch unterliegen
 derart angelegte Artendefinitionen dem erdgeschichtlichen Wandel, wie sich schon daraus ableiten
 lässt, dass alles Leben aus den ersten Einzellern entstanden ist. Natürlichkeit der
-Vererbung zwischen
-Instanzen
-Klassen als
-Geschöpfe der
-Programmierung
-Chaos durch
-individuenbasierte
-Vererb ung
-abstrakte und
-konkrete Klassen
 ist jedoch häufig kein konzeptueller (wie beispielsweise, dass es sich bei einer Klasse um
 eine Generalisierung handelt und sie daher nicht instanziierbar sein sollte), sondern ein rein
 technischer: Abstrakten Klassen fehlen in der Regel Angaben, die das Verhalten ihrer In-
@@ -31,19 +20,10 @@ Eigenschaften von Klasse zu Klasse unterscheiden. Klassen, die nicht abstrakt si
 eigene Instanzen haben können, nennt man konkret .
 Ein typisches Beispiel für eine abstrakte Klasse in SMALLTALK ist die Klasse
 Collection . Sie ist (in Auszügen) wie folgt definiert:
-Klasse  Collection
+Klasse Collection
 benannte Instanzvariablen
-indizierte Instanzvariablen  nein
+indizierte Instanzvariablen nein
 Instanzmethoden
-423 add: anObject
-424  "Answer anObject. Add anObject
-425   to the receiver collection."
-426  ^ self implementedBySubclass
-427 addAll: aCollection
-428  "Answer aCollection. Add each element of
-429   aCollection to the elements of the receiver."
-430  aCollection do: [ :element | self add: element].
-431  ^ aCollection
 Man erkennt schon am Fehlen von Instanzvariablen, dass es mit der Implementierung von
 Collection nicht weit her sein kann — Instanzen wären schlicht zustandslos, weswegen
 sie kaum zu gebrauchen wären. Besonders deutlich wird die Abstraktheit jedoch an der
@@ -56,11 +36,6 @@ einmal ein) darauf aufrufen wollte, würde enttäuscht.
 Allerdings erst zur Laufzeit. Viele andere Sprachen verlangen daher, dass
 man abstrakte Klassen mit einem Schlüsselwort, z. B. abstract , mar-
 kiert, und verbieten dann (per Compiler), die Klasse zu instanziieren. Das geht in SMALLTALK
-37 In anderen SMALLTALK -Dialekten heißt die Nachricht subclassResponsibility . Beispiel einer
-abstrakten Klasse:
-Collection
-Verbot der
-Instanziierung
 jedoch nicht, da Klassen auch Objekte sind und daher in Variablen gespeichert werden kön-
 nen, den en man dann einfach new schicken kann, ohne dass der Compiler wissen könnte,
 welches Objekt die Variable nun gerade bezeichnet .
@@ -91,16 +66,8 @@ sen implementiert ist — das erlaubt dann die Fehlermeldung nicht zu unterschei
 schon sinnvoll. Die Laufzeitfehlermeldung von SMALLTALK ersetzten also gewissermaßen die
 Compiler -Fehlermeldungen anderer Sprachen. Die entspreche nden Grundlagen werden
 Ihnen in Kurseinheit 3 begegnen.
-38 new und new: werden geerbt — wie und von wo, das ist Gegenstand von Abschnitt 11.4.
-39 Dies ist möglich, weil der Compiler bei Methodenaufrufen überhaupt nicht prüft, ob die Methode
 auch vorhanden ist, selbst wenn sie auf self aufgerufen wird (und damit schon klar ist, welche
 Klassen die Methode eigentlich haben müssten). In anderen Sprachen ist das anders. Verhinderung der
-Instanziierung
-abstrakte Klassen
-faktorisieren
-gemeinsame
-Implementierungen
-heraus
 Man mag sich fragen, warum es eine abstrakte Klasse wie Collection überhaupt gibt,
 wenn sie doch keine Instanzen haben soll.40 Bereits das obige Beispiel gibt eine erste Ant-
 wort: Weil es auch in abstrakte n Klassen Methoden gibt, die voll ausimplementiert sind
@@ -121,38 +88,21 @@ rekursiv ist), aber an der aufrufenden Stelle noch nicht klar (offen) ist, welch
 Klasse die Implementierung liefert. Dieses Muster, auf das wi r in Abschnitt 12.1 im Rahmen
 des dynamischen Bindens noch einmal zurückkommen werden, lässt sich auch einsetzen,
 um das oben beschriebene Dilemma von Quadrat und Rechteck aufzulösen:
-Klasse  Rechteck
+Klasse Rechteck
 benannte Instanzvariablen
 Instanzmethoden
-432 laenge
-433  ^ self implementedBySubclass
-434 breite
-435  ^ self implementedBySubclass
-436 flaeche
-437  ^ self laenge * self breite
-438 umfang
-439  ^ self laenge + self breite * 2
 Die Definitionen von Quadrat und Rechteck fallen dann knapp aus und kommen ohne
 inhaltliche Veränderungen daher (lediglich die noch nicht implementierten Methoden müs-
 sen nachgeliefert werden):
-Klasse  Quadrat
-40 Konzeptuelle Gründe wie etwa die Existenz einer sinnvollen Generalisierung lassen wir hier einmal
+Klasse Quadrat
 außen vor. offene Rekursion
 beerbte Klasse Rechteck
-benannte Instanzvariablen  laenge
+benannte Instanzvariablen laenge
 Instanzmethoden
-440 laenge
-441  ^ laenge
-442 breite
-443  ^ laenge
-Klasse  NichtQuadratischesRechteck
+Klasse NichtQuadratischesRechteck
 beerbte Klasse Rechteck
-benannte Instanzvariablen  laenge breite
+benannte Instanzvariablen laenge breite
 Instanzmethoden
-444 laenge
-445  ^ laenge
-446 breite
-447  ^ breite
 Es sollte klar sein, dass alle Methoden nur für Quadrate und Rechtecke definiert sind.
 Man beachte, dass dieses Beispiel auch die Kriterien von Generalisierung und Spezialisierung
 erfüllt: Die Menge der Quadrate und die der nicht quadratischen Rechtecke is t in der Menge

@@ -45,12 +45,6 @@ nen Zustand haben und bei Operationen (Funktionen) die Objekte, auf denen die
 Operationen ausgeführt werden, nich t ihren Zustand wechseln. Statt dessen geben
 Operationen neue Objekte zurück. Die Objekte der abstrakten Datentypen sind also
 gewissermaßen alle unveränderlich (vgl. Kurseinheit 1, Abschnitt 4.3.5 ). denotationale
-Semantik
-operationale
-Semantik
-Zusammenhang mit
-abstrakten
-Datentypen
 2. Entsprechend haben die den Methoden eines Protokolls entsprechenden Funktionen
 in den Spezifikationen abstrakter Datentypen immer ein Argument mehr, und zwar
 vom T yp des Datentyps selbst. Dieses Argument entspricht in der objektorientierten

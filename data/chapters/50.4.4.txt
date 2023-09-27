@@ -4,7 +4,6 @@ Typprüfung durchführen. Da aber (ebenfalls genau wie in JAVA) nicht alles zur 
 zeit geschehen kann, hat auch das Typsystem von C# eine Laufzeitkomponente.
 Um einen Ausdruck einer Typumwandlung zu unterziehen, bietet C# ge-
 nau wie JAVA und C++ Casts an. Auch die Syntax unterscheidet sich nicht:
-1354 (T) a
 bewirkt, dass der Ausdruck a den Typ T aufgedrückt bekommt. Ist dies nicht möglich, weil
 der tatsächliche Typ des Objektes, auf das a verweist, kein Subtyp von T ist oder weil keine
 entsprechende Typumwandlung definiert ist (einschl. Boxing/Unboxing), wird dies mit ei-
@@ -14,26 +13,13 @@ mesituationen und, im Falle einer Nichtbehandlung, zu Programmabbrüchen führen
 Um Casts sicher zu machen, bietet C# den Operator is an. Er entspri cht
 im wesentlichen dem instanceof von JAVA und gibt für einen Ausdruck
 der Art
-1355 a is T
 wobei a für einen beliebigen Ausdruck und T für einen Typ steht, zurück, ob das Ergebnis
 der Auswertung von a mit einer Variable vom Typ T zuweisungskompatibel ist. Dabe i wird
 sowohl das Subtyping als auch das implizite (Auto -)Boxing berücksichtigt. Programmfrag-
 mente der Art
-1356 T x;
-1357 if (a is T) {
-1358 x = (T) a;
-1359 …
 sind also sicher. Parallel zum Operator is gibt es noch einen weiteren as, der die typsichere
 Zuweisung erlaubt:
-76 weswegen man die Form der Varianz auch declaration -site variance nennt. Typumwandlung
-sichere
-Typumwandlung
-1360 T x = a as T
 wobei a wieder für einen beliebigen Ausdruck und T für einen Typ steht, verursacht nie
 einen Laufzeitfehler, weil bei mangelnder Zuweisungskompatibilität einfach null (das mit
 allen Variablen zuweisungskompatibel ist) eingesetzt wird. Das obige Programmfragment
 (Zeilen 1356 –1359 ) ist demnach mit dem folgen den fast äquivalent:
-1361 T x;
-1362 x = a as T;
-1363 if (x != null) {
-1364 …

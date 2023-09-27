@@ -9,15 +9,10 @@ che zu tun?), sondern durch Eintragungen in eine dafür vorgesehene Datenstruktu
 nauer: durch Erzeugung eines die Klasse beschreibenden Objekts). Es gibt also auch insbe-
 sondere keine Syntax für eine Klassendefinition, sondern nur ein Schema. Ein solches , wenn
 auch noch unvollständiges, Schema ist das folgende: Allgemeinbegriff vs.
-Familienähnlich keit
-Zweckmäßigkeit des
-Klassenbegriffs
-Schema einer
-Klassendefinition
-Klasse  <Klassenname>
-benannte Instanzvariablen  <Liste von Instanzvariablennamen>
-indizierte Instanzvariablen  <ja/nein>
-atomar  <ja/nein>
+Klasse <Klassenname>
+benannte Instanzvariablen <Liste von Instanzvariablennamen>
+indizierte Instanzvariablen <ja/nein>
+atomar <ja/nein>
 Instanzmethoden
 <Liste von Methodendefinitionen>
 Alle Instanzen einer Klasse verfügen somit über den gleichen Satz von Instanzvariablen, aber
@@ -51,7 +46,6 @@ insbesondere absolut global sind und nicht nur in Bezug auf irgendeine Programme
 jede neue Klasse in eine Art Systemwörterbuch namens „ Smalltalk “ (repräsentiert von der
 globalen Variable Smalltalk ; s. Selbsttestaufgabe 1.2) eingetragen und ihr Name (als Sym-
 bol) in die Symboltabelle SymbolTable . Repräsentation von
-Klassen im System
 Selbsttestaufgabe 7.1
 Vergewissern Sie sich, dass die Klasse Class in Smalltalk enthalten ist und das Symbol #Class
 in SymbolTable (nur SMALLTALK EXPRESS ). Enthält Smalltalk auch andere Objekte als Klassen?
@@ -61,20 +55,10 @@ solche neue Klasse gibt die folgende (wie gesagt noch unvollständige)
 Klassendefinition, die auf einfache Weise einen Stapelspeicher ( Stack ) implementiert, der
 seine Elemente in indizierten Instanzvariablen und den Stapelzeiger ( Stack pointer ) in einer
 benannten hält:
-Klasse  Stack
-benannte Instanzvariablen  stackpointer
-indizierte Instanzvariablen  ja
+Klasse Stack
+benannte Instanzvariablen stackpointer
+indizierte Instanzvariablen ja
 Instanzmethoden
-279 push: anElement
-280  "legt neues Element auf Stapel"
-281  stackpointer := stackpointer + 1.
-282  self at: stackpointer put: anElement
-283 pop
-284  "entfernt oberstes Element vom Stapel"
-285  stackpointer := stackpointer – 1
-286 top
-287  "liefert oberstes Element des Stapels"
-288  ^ self at: stackpointer
 Nur zur Wiederholung: Die Pseudovariable self in den Zeilen 282 und 288 steht jeweils
 für das Objekt, das die die Methode auslösende Nachricht erhalten hat (da s Empfängerob-
 jekt): Sie ist notwendig, da der Zugriff auf die indizierten Instanzvariablen in SMALLTALK im-
@@ -89,31 +73,16 @@ Methoden von Stack aktualisiert wird, durch andere Objekte noch verhindert werde
 kann, ist dies für di e indizierten Instanzvariablen eines Stack -Objekts nicht der Fall. Eine
 Benutzerin eines solchen Objekts kann stattdessen mittels at: und at:put: jederzeit auf
 jedes beliebige Element des Stacks zugreifen, und zwar unabhängig davon, ob dies gerade Erweiterung von
-SMALLTALK um eine
-Beispielklasse
-Repräsentation des
-Stack -Inhalts
-verbergen
 oben auf dem Stack liegt. Eine Instanz der Klasse Stack verbirgt also nicht wie in Kursein-
 heit 1, Abschnitt 4.3.4 gefordert die Repräsentation ihres Zustands, der Stack -Elemente. Um
 dies zu bewirken, muss man anstelle d er indizierten Instanzvariablen eine benannte verwen-
 den, die selbst ein Objekt mit indizierten Instanzvariablen hält (ein Zwischenobjekt ; s. Ab-
 schnitt 2.2), und die Speicherung der Elemente des Stacks diesem zweiten Objekt übertra-
 gen. Die Implementierung sähe dann wie folgt aus:
-Klasse  Stack
-benannte Instanzvariablen  stackcontent stackpointer
-indizierte Instanzvariablen  nein
+Klasse Stack
+benannte Instanzvariablen stackcontent stackpointer
+indizierte Instanzvariablen nein
 Instanzmethoden
-289 push: anElement
-290  "legt neues Element auf Stapel"
-291  stackpointer := stackpointer + 1.
-292  stackcontent at: stackpointer put: anElement
-293 pop
-294  "entfernt oberstes Element vom Stapel"
-295  stackpointer := stackpointer – 1
-296 top
-297  "liefert oberstes Element des Stapels"
-298  ^ stackcontent at: stackpointer
 Auf die Variable stackcontent kann von anderen Objekten nicht direkt zugegriffen wer-
 den — sie ist verborgen (und nur noch indirekt, über push: , pop und top manipulier - bzw.
 lesbar). Das bedeutet jedoch nicht, dass auf das von stackcontent benannte (Zwischen -

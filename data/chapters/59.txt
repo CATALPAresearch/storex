@@ -13,8 +13,6 @@ schreiben, aber dies gilt nicht nur als schlechter Stil, es spiegelt auch die An
 mäne in aller Regel nicht angemessen wieder. Dort sind nämlich alle großen (komplexen)
 Dinge aus einfacheren zusammengesetzt , die, wenn sie selbst eine gewisse Komplexität
 haben, selbst wieder aus kleineren zusammengesetzt sind usw. Dasselbe gilt auch für die die Lösung in EIFFEL
-Granularität von
-Klassen
 Artefakte anderer Ingenieursdisziplinen: Baupläne sind in Komponenten und Unterkompo-
 nenten bzw. Systeme und Untersysteme strukturiert. Da wünscht man sich natürlich ana-
 loge Möglichkeiten in der objektorientierten Programmierung.

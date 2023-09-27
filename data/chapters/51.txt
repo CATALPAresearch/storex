@@ -5,7 +5,6 @@ better be reusable, because no one will ever want to reverse -engineer it. The
 programming language’s “ feature ” — being a superset of C — is a fundamental
 bug. With numerous large projects being written in already obsolete dialects,
 C++ is arguably an “instant legacy ” language.
-James Hopper
 Über C++ ist viel geschrieben worden , nicht alles davon positiv im Tenor. Dabei wird jedoch
 häufig vergessen, dass eine der harten Nebenbedingungen des Entwurfs von C++, die voll-
 ständige Rückwärtskompatibilität mit C, ein derart schweres Handicap darstellt, dass nahezu

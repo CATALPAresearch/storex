@@ -5,8 +5,6 @@ phie (Subtyping). So würde es zunächst ausreichen, wenn Collection wie folgt d
 wäre:
 Typ Collection
 Protokoll
-943 at: einIndex <Integer> ^ <Object>
-944 at: einIndex <Integer> put: einObjekt <Object> ^ <Self>
 An die Stelle der Typvariable E tritt also der (konkrete) Typ Object . Da in
 STRONGTALK alle Typen Subtypen von Object sind, kann man jedes belie-
 bige Objekt in einer solchen Collection speichern. In der Klasse Person , die Collection
@@ -36,34 +34,20 @@ sein sollen, deren Elemente sortiert und summiert werden können. Dieser Typ sei
 von Collection und verfüge weiterhin über entsprechende Metho den sortieren und
 summieren :
 Typ MyCollection
-Typvariablen  E
-Supertyp  Collection[E]
+Typvariablen E
+Supertyp Collection[E]
 Protokoll
-945 sortieren ^ <Self>
-946 summieren ^ <Number>
 Intuitiv verlangt die Sortierbarkeit der Objekte vom Typ MyCollection , dass auf den Ele-
 menten eine Vergleichsfunktion definiert ist. Dies ist aber nicht für alle Typen und somit
 auch nicht für alle möglichen Belegungen der Typvariable E der Fall. Auch verlangt die Me-
 thode summieren , dass sich aus den Elementen einer solchen Colle ction ein Wert aggre-
 gieren lässt, der vom Typ Number oder einem Subtyp davon ist. Man kann daraus schließen, Notwendigkeit von
-Down casts
-Unzulänglichkeit des
-einfachen
-param etrischen
-Polymorphismus
 dass die Elemente ebenfalls vom Typ Number sein oder zumindest Methoden besitzen müs-
 sen, die einen solchen Wert zurückliefern. Und so würde auch ei ne Implementierung der
 Methode summieren in etwa wie folgt aussehen:
-947 summieren ^ <Number>
-948 ^ elements
-949  inject: 0
-950  into: [ :summe <Number> :element <Number> | summe + element].
 Das aber verlangt, dass der Elementtyp von MyCollection Number oder ein Subtyp davon
 sein muss , da sonst die Zuweisung an den formalen Blockparameter element nicht zulässig
 wäre. Insbesondere würde das Codefragment
-951 | liste <MyCollection[String]> |
-952 …
-953 liste summiere
 zu einem Typfehler führen, weil in Zeile 950 einer Variable vom Typ Number ein Objekt vom
 Typ String zugewiesen wird. Nun kann aber die Definition des parametrischen Typs
 MyCollection nicht wissen, wie sie hinterher verwendet wird, und wenn eine Addition
@@ -80,33 +64,17 @@ in der Deklaration von Zeile 951. Genau das erlaubt der beschränkte parametrisc
 morphismus, der im n ächsten Abschnitt behandelt wird. Zunächst jedoch noch zu einem
 anderen wichtigen Aspekt von parametrischem Polymorphismus und Subtyping.
 Unter den Typdefinitionen
-Typ A
-Typ B
-Supertyp  A
-sowie
-Typ G
-Typvariablen  T mehr
-Ausdrucksstärke
-benötigt
 Protokoll
-954 x: <T> ^ <Self>
-955 x ^ <T>
 und den Variablendeklarationen
-956 | a <A> b <B> ga <G[A]> gb <G[B]> |
 ist die Zuweisung
-957 a := b
 sicher zulässig. Nun könnte man annehmen, dasselbe sei auch für
-958 ga := gb
 der Fall. Dahinter verbirgt sich aber die Frage, ob G[B] ein Subtyp von G[A] ist, ob sich also
 die Subtypenbeziehung von B zu A auf entsprechende Typinstanzen vom selben parametri-
 schen Typ überträgt. Intuitiv scheint dies der Fall, zumal beispielsweise
-959 ga x: b
 oder
-960 ga x: gb x
 aufgrund der Subtypenbeziehung von B zu A kein Probl em darstellen sollte (aus Sicht der
 Typprüfung entspricht dies ja den Verhältnissen der Zuweisung aus Zeile 957). Nun ist aber
 nach den Regeln der statischen T ypprüfung auch
-961 ga x: a
 erlaubt. Da ga aber nach der Zuweisung aus Zeile 958 lediglich ein Alias
 für das von gb bezeichnete Objekt ist, ga also auf ein Objekt vom Typ
 G[B] verweist und dieser als Parametertyp von x: nur B zulässt, handelt
@@ -119,12 +87,6 @@ Selbsttestaufgabe 29.1
 Prüfen Sie nach demselben Schema wie oben, ob G[A] ein Subtyp von G[B] sein darf.
 Merken Sie sich also unbedingt, dass parametrischer Polymorphismus die Subtypenbezie-
 hung seiner tatsächlich en Typparameter nicht auf die durch Instanziierung erzeugten Typen Subtypenbeziehung
-von tatsächlich en
-Typparametern
-überträgt sich nicht
-auf Instanzen
-parametrischer
-Typen
 überträgt. Dies wird auch in Abschnitt 29.5 noch eine besondere Rolle spielen. Vor diesem
 Hintergrund beinahe paradox erscheint, dass sich Subtyping jedoch dazu einsetzen lässt,
 das oben beschriebene Problem mit der „inneren Typsic herheit“ von parametrisch definier-

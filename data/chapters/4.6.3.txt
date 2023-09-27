@@ -3,9 +3,6 @@ Wenn Sie If und While schon kennen, kennen Sie sicher auch For. Die klassische F
 For-Schleife verwendet eine Zählvariable, einen Anfangswert, ein Inkrement (das auch ne-
 gativ, also ein Dekrement sein kann) sowie einen Endwert. Solche For -Schleifen gibt es in
 SMALLTALK auch:
-219 5 to: 1 by: -2 do: [ :i | Transcript show: i printString] Simulation der
-Schleife durch
-Endrekursion
 beispielsweise gibt auf dem Transcript die Folge „531“ aus.
 Wir schauen uns den Ausdruck aus Zeile 219 einmal genauer an. Dem
 Objekt 5 wird offenbar eine Nachricht to:by:do: gesendet, wobei 5 der Startwert, der
@@ -14,32 +11,15 @@ ist. Der Block stellt offenbar, ähnlich wie bei der Realisierung der While -Sch
 TALK, den Schleifenrumpf dar; er hat einen Parameter i, der anscheinend als Zählvariable
 fungiert. Tatsächlich wird die Methode to:by:do: in SMALLTALK EXPRESS wie folgt imple-
 mentiert:
-220 to: stop by: step do: aBlock
-221 | nextValue |
-222 nextValue := self.
-223 step = 0 ifTrue: [self error: 'step must be non -zero'].
-224 step < 0
-225  ifTrue: [[stop <= nextValue]
-226   whileTrue:
-227   [aBlock value: nextValue.
-228   nextValue := nextValue + step]]
-229  ifFalse: [[stop >= nextValue]
-230   whileTrue:
-231   [aBlock value: nextValue.
-232   nextValue := nextValue + step]]
 Hier interessiert uns aber vor allem eine Form der Iteration, die nicht einer einfachen Zähl-
 schleife e ntspricht, sondern über eine Menge von beliebigen Objekten geht. Solche Mengen
 sind uns ja schon begegnet, wenn auch nur in Gestalt von literalen Arrays.
 Anders als in vielen anderen Sprachen kann man in SMALLTALK über die
 Elemente eines Arrays direkt, also ohne die Verwendung einer Zählschleife, deren Laufvari-
 able als Index in das Array dient, iterieren. So hat die Auswertung des Ausdrucks
-233 #(5 3 1) do: [ :i | Transcript show: i printString]
 exakt das gleiche Ergeb nis wie die des Ausdrucks aus Zeile 219, nämlich die Ausgabe von
 „531“ auf dem Transcript. i ist aber diesmal keine Zählvariable, da hier nichts gezählt wird;
 es ist vielmehr eine Laufvariable, der der Reihe nach die Elemente des literalen Arrays #(5
-3 1) zugewiesen werden. Dies müssen keine Zahlen sein:
-234 #('Smalltalk' 'ist' 1.0 'klasse')
-235 do: [ :i | Transcript show: i printString]
 funktioniert genauso. do: ersetzt also ganz offensichtlich das aus man-
 chen anderen Sprachen (seit der Version 5.0 auch aus JAVA) bekannte For -each-Konstrukt.
 Wie wir gleich sehen werden, ist die Iteration, also das Fortschalten der Elemente und die
@@ -47,13 +27,8 @@ Wie wir gleich sehen werden, ist die Iteration, also das Fortschalten der Elemen
 weswegen man das Verfahren auch interne Iteration nennt (in Abgrenzung von der her-
 kömm lichen, externen Iteration , bei der die Laufvariable selbst gesetzt und abgefragt
 werden muss ). Zählschleife
-For-each -Schleife
-interne Iteration
 Die Implementier ung der Kontrollstruktur erfolgt wiederum selbst in
 SMALLTALK und ist ziemlich einfach:
-236 do: aBlock
-237 1 to: self size do:
-238  [:index | aBlock value: (self at: index)]
 Dabei ist to:do: für Ganzahlen analog zu obigem to:by:do implementiert. Die Zählvari-
 able index des Blocks von Zeile 238 läuft so von 1 bis zur Anzahl der indizierten Instanzva-
 riablen des Empfängers von do: (im obigen Beispiel ein Array) , die über den Auf ruf von

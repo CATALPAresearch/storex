@@ -27,16 +27,6 @@ Programmierung (und bei Aufrufen in das hauseigene Betriebssystem) nicht darauf 
 ten konnte. Allerdings sind beide Rückschritte — explizite Speicherverwaltung und das Han-
 tieren mit Pointern — in sog. unsichere Bereiche verbannt. Dazu gibt es in C# einen Modi-
 fizierer unsafe , der solche Bereiche einleitet:
-1253 public static unsafe void Swap(int* x, int* y) {
-1254 int temp = *x;
-1255 *x = *y;
-1256 *y = temp;
-1257 }
-keine Interpretation
-von CIL -Code
-programmgesteuerte
-Speicherverwaltung
-explizite Pointer
 Dabei bedeutet der Stern hinter einem Typ, dass es sich um einen Zeiger -auf-Typ handelt ;
 vor einer Variable bedeutet er, dass die Variable dereferenziert wird, also nicht auf den
 Pointer, sondern auf die Speicherstelle, auf die der Pointer zeigt, zugegriffen wird. Nebenbei

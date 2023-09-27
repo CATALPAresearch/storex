@@ -15,7 +15,6 @@ tierten Sprachen Mehrfachvererbung. Es kann also eine Klasse von mehreren andere
 geleitet werden. Die S yntax von C++ sieht (analog zur mehrfachen Interface -Implementie-
 rung bei C#) dazu vor, die Namen der Basisklassen, von denen abgeleitet wird, durch einen
 Doppelpunkt getrennt hinter dem Namen der zu definierenden Klasse aufzulisten, wie in
-1385 class <Derived> : <Base1>, <Base2> … {…} Problem der
 Mehrfachvererbung
 Klassenhierarchie More computing sins are committed in the name of efficiency (without
 necessarily achieving it) than for any ot her single reaso n —
@@ -57,12 +56,9 @@ wie eine Textverarbeitung vorstellen, die das Template kopiert, alle Vorkommen d
 rameter darin durch tatsächlich e Typen ersetzt, das ganze dann mit einem n euen Namen
 versieht und kompiliert. Tatsächlich wird die Generizität in C++ als ein Makro -Mechanismus
 angesehen; ihn umzusetzen ist die Aufgabe des Präprozessors.
-79 Alternativ (und mit geringem Unterschied in der Bedeutung) kann auch dynamic verwendet
 werden. dynamisches Binden
-Generizität
 Das Typsystem von C++ ist zwar rein statisch, aber nicht strikt: Es erlaubt
 nämlich Typumwandlungen (Type casts ; s. Kapitel 27). Ausdrücke der Form
-1386 (<Typ>) <Ausdruck>
 überzeugen den Compiler davon, dass das Objekt, für das <Ausdruck> steht, vom Typ
 <Typ> ist und entsprechend verwendet werden kann. Dabei wird nur leid er vollkommen
 ignoriert, welchen Typs das Objekt tatsächlich ist, und ob dieser Typ zuweisungskompatibel

@@ -18,10 +18,6 @@ schnitt 29.4 in Kurseinheit 3),
 Methoden; s. dazu auch Abschnitt 11.3 in Kurseinheit 1) sowie
  kovariante Redefinition, unterstützt durch sog. verankerte Typen (engl . anchored
 types ; so gut wie ein Alleinstellungsmerkmal EIFFELs). Überladen und
-Umbenennung von
-geerbten Features
-wichtige
-Eigenschaften
 In gewisser Weise kann man das Unterdrücken von Methoden eines Typs in seinen Subtypen
 in EIFFEL als ein Spezialfall der kovarianten Redefinition ansehen, nämlich einen, in dem die
 Menge der möglichen Parameterobjekte auf die leere Menge eingeschränkt wird, so dass

@@ -10,4 +10,3 @@ len Konstrukte vor, die der Programmiererin erlauben, zwischen performanten und 
 performanten Implementierungen auszuwählen — mögliche Performanzgewinne werden
 ganz einem optimierenden Compile r überlassen. EIFFEL verwendet Garbage collection zur
 Speicherfreigabe. akademische
-Lehrsprache

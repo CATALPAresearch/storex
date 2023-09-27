@@ -13,16 +13,10 @@ tenselektor handelt: Es wird hier nämlich keine Nachricht an ein Objekt geschic
 der Inhalt einer Variable manipuliert. Die Zuweisung ist tatsächlich eines der wenigen Primi-
 tive SMALLTALK s, also eine der Operationen, die nicht in sich selbst programmiert, sondern
 fest „verdrahteter“ Teil der Sprache sind (vgl. Abschnitt 1.6).
-19 Über das Wort Seiteneffekt wird viel gestritten. Manche meinen, es müsste Nebeneffekt heißen,
 aber dieses Wort ist genauso unnötig, wenn Nebenwirkung das ist, was gemeint ist. Als strittig würde
 ich schon eher ansehen, ob man hier überhaupt von einer Nebenwirkung sprechen sollte, denn der
 sich einstellende Effekt ist ja das vornehmliche Ziel ein er Zuweisung, so dass man eher von Wirkung
 (oder Effekt) sprechen sollte. Für mich ist Seiteneffekt Jargon, bei dem jede weiß, was gemeint ist. Kaskadierung
-anstelle temporärer
-Variablen
-Auswertung von
-Zuweisungs -
-ausdrücken
 Nachrichtenausdr ücke werden ausgewertet, in dem die Nachricht (das
 Prädikat des Satzes) an das Empfängerobjekt (das Subjekt) mit den Para-
 metern (den Prädikatsergänzungen) gesendet wird und das Empfänge-
@@ -35,12 +29,9 @@ tionswert steht.
 Eine häufig gebrauchte, von allen Objekten verstandene unäre Nachricht
 ist printString , in Reaktion auf die das Empfängerobjekt eine textuelle Repräsentation
 von sich zurückgibt:
-68 12 printString
 liefert den String '12' , die Auswertung von Zeile 45 den String 'abc' . Der bereits in
 Zeile 53 angeführte binäre Nachrichtena usdruck
-69 1 + 2
 liefert wie erhofft das Objekt „3“. Bei der Auswertung des Schlüsselwortau sdrucks
-70 12 printOn: Trans cript
 bei dem als Seiteneffekt die Zahl „12“ in ihrer textuellen Repräsentation, also als String
 '12' auf dem Ausgabestrom, auf den die Variable Transcript verweist, ausgegeben
 wird, wird das Empfängerobjekt „12“ zurückgeliefert.
@@ -58,13 +49,6 @@ nur eine Referenz auf das Objekt ist, bleibt die Existenz des Objektes davon zun
 rührt. Nur wenn es sonst keine anderen Referenzen auf das Objekt gibt, etwa weil es extra
 für die Rückgabe erzeugt wurde, wird das Objekt bei der nächsten Speicherbereinigung
 entfernt. Auswertung von
-Nachrichten -
-ausdrücken
-Beispiele
-Nachrichten -
-ausdrücke als
-Funktions -
-anwendungen
 Da die Auswertung eines Nachrichtenausdrucks zur Abarbeitung der An-
 weisungen des Rumpfs einer Methode führt, nennt man ihn auch Metho-
 denaufruf . Warum dies e Bezeichnung legitim ist, wird jedoch erst in Ab-

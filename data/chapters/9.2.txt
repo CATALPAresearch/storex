@@ -32,10 +32,6 @@ fällt einer jedoch auf, dass Pinguine gar nicht fliegen können, also die Inten
 die Methode fliegeNach: gar nicht enthalten dürfte, wenn Vogel eine Generalisierung
 von Pinguin sein sollte. Dieses Problem, das in der Praxis ständig vorkommt, lässt sich auf
 elegante Weise dadurch lösen, dass man eine Klasse NichtPinguin parallel zu Pinguin Spezialisierung von
-Generalisierungen
-Spezialisierung von
-Nicht -
-Generalisierungen
 spezialisiert und alle Eigenschaften, die andere Vögel von Pinguinen unterscheidet (wie z. B.
 fliegeAn: ), dort hineinpackt.
 Universum

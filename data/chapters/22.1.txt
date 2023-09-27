@@ -5,30 +5,12 @@ anderer Typen durch ihre Struktur ersetzt werden. Nimmt man beispielsweise die T
 nitionen
 Typ Person
 Protokoll
-870 sitz ^ <Wohnung>
-871 sitz: einWohnsitz <Wohnung> ^ <Self>
 Typ Wohnung
 Protokoll
-872 straße ^ <String>
-873 straße: einStraße <String> ^ <Self>
-874 ort ^ <String>
-875 ort: einOrt <String> ^ <Self>
 Typ Firma
 Protokoll
-876 sitz ^ <Büro>
-877 sitz: einFirmensitz <Büro> ^ <Self>
 Typ Büro Unterscheidung von
-nominaler und
-struktureller
-Typäquivalenz
-formale
-Eigenschaften der
-Typäquivalenz
 Protokoll
-878 straße ^ <String>
-879 straße: einStraße <String> ^ <Self>
-880 ort ^ <String>
-881 ort: einOrt <String> ^ <Self>
 dann sind die Typen Person und Firma sowie Wohnung und Büro jeweils strukturäquiva-
 lent, aber nicht namensäquivalent. Bei der Strukturäquivalenz haben Namen also lediglich
 die Funktion der abkü rzenden Schreibweise, bei der Namensäquivalenz hingegen auch eine
@@ -42,9 +24,7 @@ gerobjekten mit den geforderten Parameterobjekten auch durchgeführt werden kön
 So kann z. B. bei erf olgreicher Typprüfung (und daher vorliegender Typkorrektheit) ohne
 Kenntnis der konkreten Inhalte der Variablen sichergestellt werden, dass bei Vorliegen der
 Deklaration p <Person> der Ausdruck
-882 p sitz straße: 'Heimatstraße'
 keine Typfehler produziert, und gleichzeitig der Ausdruck
-883 p sitz: 'zuhause'
 schon zur Übersetzungszeit als fehlerhaft zurückgewiesen wird, da er zu einer Variablen-
 fehlbelegung (die in SMALLTALK noch problemlos möglich gewesen wäre) führt. Man be-
 achte, das letztere sogar zu einer Speicher schutzverletzung führen könnte, wenn die Vari-
@@ -59,5 +39,3 @@ Typgrenzen hinweg zugewiesen werden. Semantische Fehler sind also im mer noch m�
 Man trifft daher in Sprachen mit Strukturäquivalenz gelegentlich die Praxis an, jedem Typ
 eine für ihn charakteristische Methode exklusiv zuzuordnen, so dass er mit keinem anderen
 mehr strukturäquivalent ist. Diese Technik nennt man Type branding . Bedeutung der
-Strukturäquivalen z
-Type branding

@@ -8,7 +8,6 @@ Zusicherungen
 anstelle von
 Kommentaren We should forget about small inefficiencies, say about 97% of the time:
 premature optimi zation is the root of all evil.
-Tony Hoare/Don Knuth
 die Verwendung bestimmter Bibliotheksklassen aus — man denke nur an die allgegenwär-
 tige Verwendung des Collection -Frameworks, ohne das Programmiererinnen zur ständigen
 Abfassung ewig gleichen Codes verdammt wären.

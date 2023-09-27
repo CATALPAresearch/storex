@@ -17,11 +17,6 @@ soll, dann gibt es keine Aufteilung der Klassen auf Pakete, die genau dieses ges
 man stattdessen gern hätte, ist e in dedizierter Export von Elementen einer Klasse, also ein dedizierter Export
 zur Verfügung Stellen von Elementen an genau benannte Klassen. Dies bietet, in etwas
 gröberer Form, das Friends -Konzept von C++: Die Definition
-1380 class A {
-1381 friend class B;
-1382 friend class C;
-1383 …
-1384 }
 bewirkt, dass (Instanzen von) B und (von) C auf alle private deklarierten Elemente von
 (Instanzen von) A zugreifen können (jedoch weder umgekehrt von A auf B und C noch B
 und C gegenseitig ). Ein spezifischer, dedizierter Export von einzelnen Membern an be-

@@ -8,21 +8,11 @@ Nun sollen nicht immer alle Instanzen einer Klasse gleich initialisiert werden. 
 möglich, für eine Klasse mehrere alternative Konstruktoren (als Klassenmethoden) zu defi-
 nieren, die die neuen Objekte jeweils unterschiedlich initialisieren. Zwei Beispiele für die
 Klasse Time sind mit
-310 midnight
-311 ^ self seconds: 0
-312 noon
-313 ^ self seconds: (SecondsInDay / 2)
 gegeben, die jeweils die Klassenmethode (den Konstruktor) seconds: auf Time (vertreten
 durch self ) aufrufen, die wiederum mittels basicNew eine Instanz von Time erzeugt und
 anschließend initialisiert:
-314 seconds: seconds
-315 ^ self basicNew ticks: (Duration seconds: seconds) ticks
 Dabei ist ticks: eine Instanzmethode der Klasse Time , die auf der (mit basicNew ) frisch
 erzeugten Instanz aufgerufen wird und diese initialisiert:
-316 ticks: anArray
-317  "ticks is an Array: { days. seconds. nanoSeconds }"
-318 seconds := anArray at: 2.
-319 nanos := anArray at: 3
 Parameter der Initialisierung ist hierbei (Duration seconds: seconds) ticks , wobei
 Duration eine Klasse und seconds: ein Konstruktor dieser Klasse ist.
 Da die Instanzvariablen eines Objekts nur für die Instanzen des Objekts selbst zugreifbar
@@ -45,36 +35,11 @@ ticks: nicht zu erkennen.
 Vor diesem Hintergrund können wir das Beispiel der zweiten Implemen-
 tierung von Stack aus Abschnitt 7.2 wieder aufgreifen und die noch fe h-
 lende Initialisierung der Variablen stackcontent und stackcounter nachliefern:
-Klasse  Stack
+Klasse Stack
 Klassenmethoden
-320 new
-321   "liefert neue, gebrauchsfertige Instanz von Stack"
-322  ^ self basicNew initialize
-benannte Instanzvariablen  stackcontent stackpointer
-indizierte Instanzvariablen  nein
+benannte Instanzvariablen stackcontent stackpointer
+indizierte Instanzvariablen nein
 Instanzmethoden
-323 initialize
-324  "setzt Anfangswerte"
-325  stackcontent := Array new: 100.
-326  stackpointer := 0 Initialisierung von
-Stacks
-327  ^ self "kann entfallen"
-328 push: anElement
-329  "legt neues Element auf Stapel"
-330  stackpointer = stackcontent size
-331  ifTrue: [self error: 'Stack leider voll']
-332  ifFalse: [ stackpointer := stackpointer + 1.
-333    stackcontent at: stackpointer put: anElement]
-334 pop
-335  "entfernt oberstes Element vom Stapel"
-336  stackpointer = 0
-337  ifTrue: [self error: 'Stack leider leer']
-338  ifFalse: [ stackpointer := stackpointer – 1]
-339 top
-340  "liefert oberstes Element des Stapels"
-341  stackpointer = 0
-342  ifTrue: [self error: 'Stack leider leer']
-343  ifFalse: [^ stackcontent at: stackpointer]
 Man beachte, dass das Zwischenobjekt eine Instanz der Kla sse Array ist, die hier (in Zeile
 325) nicht wie noch in Kurseinheit 1 notwendig durch ein Literal, sondern durch eine expli-
 zite, programmatische Instanziierung (mittels new: ) erzeugt wurde.
@@ -89,43 +54,7 @@ den Zugriff auf die Variable im Programm mit einer entsprechenden Abfrage verseh
 müssen, empfiehlt es sich bei Verwendung von Lazy initialization , alle, also auch klassenin-
 terne, Zugriffe auf Instanzvariablen über einen entsprechenden Getter durchzuführen, der
 den Inhalt der Variable vor seiner Preisgabe prüft und ggf. erst setzt. Statt
-344 push: anElement
-345  "legt neues Element auf Stapel"
-346 stackpointer isNil ifTrue: [stackpointer := 0].
-347 stackcontent isNil ifTrue: [stackcontent := Array new: 100].
-348 stackpointer = stackcontent size
-349  ifTrue: …
-350 pop
-351  "entfernt oberstes Element vom Stapel"
-352 stackpointer isNil ifTrue: [stackpointer := 0].
-353 stackpointer = 0
-354  ifTrue: …
-355 top
-356  "liefert oberstes Element des Stapels" Lazy initialization
-357 stackpointer isNil ifTrue: [stackpointer := 0].
-358 stackpointer = 0
-359  ifTrue: …
 wo bei jeder Verwendung ggf. faul initialisiert wird, würde man also
-360 stackpointer
-361  "lazy: liefert den ggf. zuvor initialisierten Stack pointer "
-362 stackpointer isNil ifTrue: [stackpointer := 0].
-363 ^ stackpointer
-364 stackcontent
-365  "lazy: liefert den ggf. zuvor initialisierten Stack content"
-366 stackcontent isNil ifTrue: [stackcontent := Array new: 100].
-367 ^ stackcontent
-368 push: anElement
-369  "legt neues Element auf Stapel"
-370 self stackpointer = self stackcontent size
-371  ifTrue: …
-372 pop
-373  "entfernt oberstes Element vom Stapel"
-374 self stackpointer = 0
-375  ifTrue: …
-376 top
-377  "liefert oberstes Element des Stapels"
-378 self stackpointer = 0
-379  ifTrue: …
 schreiben (man beachte das self vor stackpointer und stackcontent — hier wird
 jeweils ein Getter aufgerufen).
 Wie man sieht, ist die Programmiererin bei der Lazy initialization über-
@@ -145,8 +74,6 @@ hindern, indem sie die Initialisierungsme thode selbst aufrufen; manchmal kann d
 struktor doch nur schlecht geändert werden (s. z. B. Abschnitt 10.3) und man wird auch
 nicht verhindern können, dass, anstelle von new, basicNew direkt und ohne initialize
 aufgerufen wird. Vor- und Nachteile
-einer Lazy
-initialization
 Selbsttestaufgabe 8.1
 Begründen Sie, warum eine Kapselung der Lazy initialization durch eine Zugriffsmethode dem Sinn
 der Standardinitialisierung per initialize möglicherweise entgegensteht.

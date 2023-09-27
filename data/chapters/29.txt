@@ -23,11 +23,6 @@ wichtig.
 Die Idee des parametrischen Polymorphismus ist, aus einer Typdefini-
 tion durch Parametrisierung viele zu machen. Eine parametrische Typdefinition steht also
 nicht für einen Typ, sondern für (theoretisch) beliebig viele — sie erlaubt es gewissermaßen, Unterschiede zur
-Laufzeit
-parametrische
-Typdefinition ;
-Instanziierung
-generische Typen
 Typen nach Bedarf zu generieren.54 Wohl deswegen bezeichnet man parametrische Typen
 (Typdefinitionen) auch als generische Typen (Typdefinitionen) oder kurz als Generics . Wie
 eben schon erwähnt, wird der Wertebereich bei einer solchen Typgeneration jeweils mitge-

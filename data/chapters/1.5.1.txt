@@ -36,18 +36,6 @@ EIFFEL).
 Nun ist besonders für unveränderliche Objekte, deren interne Repräsen-
 tation klein ist (die also wenig Speicherplatz belegt), die Forderung nach
 der Speicherung eines Objektes an genau einem Ort und Speicherung von Wert - und
-Verweissemantik von
-Variablen
-Variableninhalt auf
-Speicherebene
-Bedeutung der
-Unterscheidung von
-Verweis - und
-Wertsemantik
-wechselnde
-Semantik von
-Variablen in
-SMALLTALK
 Verweisen in Variablen (also die Speicherung in Variablen mit Verweissemantik) ineffizient.
 Welchen Sinn hätte es beispielsweise, allen Zeichen eine Identität zu geben, an der mit der
 jeweiligen Identität verbundenen Stelle im Speicher die internen Re präsentationen zu hin-

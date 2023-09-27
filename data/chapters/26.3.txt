@@ -7,19 +7,15 @@ ob und falls ja in welchem Umfang Typeinschränkung im Rahmen des Subtyping erla
 Diese Frage soll an einem Beispiel beantwortet werden.
 Angenommen, es ist ein Typ A wie folgt definiert:
 Typ A
-Protokoll  Subtypen - als Teil -
-mengenbeziehung
-914 m: y <Y> ^ <Y>
+Protokoll Subtypen - als Teil -
 Zuweisungen der Art
-915 x := a m: z
 wobei a eine Variable vom Typ A sei (für ein Objekt vom Typ A steht), sind nach den Regeln
 des Subtyping dann zulässig, wenn die Variable x mit einem Supertyp und z mit einem
 Subtyp von Y (jeweils einschließlich des Typs Y selbst) deklariert ist.
 Nun sei weiterhin der Typ B wie folgt als Subtyp von A abgeleitet:
 Typ B
-Supertyp  A
+Supertyp A
 Protokoll
-916 m: y <Z> ^ <X>
 Die Methode m: wird also in B redefiniert . Die Frage ist nun, in welchem Verhältnis die dabei
 verwendeten Typen X und Z zu Y stehen müssen, damit die Zuweisung aus Zeile 915 wei-
 terhin zulässig ist, selbst wenn die Variable a auf ein Objekt vom Typ B verweist. Mit anderen
@@ -28,7 +24,6 @@ damit eine Zuweisung eines Objekts vom Typ B an eine Variable vom Typ A in der F
 keiner Verletzung einer (anderen) Typinvariante führt? Solche Folgefehler waren ja bereits
 in Kapitel 25 thematisiert worden.
 Die Antwort lässt sich systematisch herleiten, indem man sich die zu Zeile
-915 gehörenden impliziten Zuweisungen genau anschaut. Zuerst wird ja
 z dem formalen Parameter von m:, y, zugewiesen. Wenn y nun in B einen anderen Typ als
 Y bekommen soll, dann darf es sich dabei nur um einen handeln, der mehr Werte zu lässt
 — würde er weniger Werte zulas sen, könnte es sein, dass er die Zuweisung von z aus-
@@ -43,7 +38,6 @@ von dem in A, Y, infrage. Es ergibt sich also, dass sich bei einer Redefinition 
 die Eingabeparametertypen einer Funktion nur „nach oben“ (also zu einem Supertypen hin),
 die Ausgabeparameter hingegen nur „na ch unten“ (hin zu einem Subtyp ) verändern dürfen,
 wenn die Typkorrektheit eines Programms nicht verletzt werden soll. analytische
-Betrachtung
 Nun ändern sich aber bei der Redefinition nicht nur die Parametertypen
 (Ein- und Aus - bzw. Rückgabe), sondern auch der Typ des Empfängers.
 Dieser ändert sich bei der Redefinition aber immer nach unten (da der
@@ -62,8 +56,6 @@ Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden, denn der Subt
 verlangt ja mehr Eigensc haften, als der Supertyp garantiert. Wenn also z. B. ein Typ A wie
 Typ A
 Protokoll
-917 x ^ <X>
-918 x: <X> ^ <Self>
 definiert ist und x das Objekt zurückgeben soll, das mit x: geliefert wurde, dann kann ein
 Subtyp B die beiden Methoden schlecht so redefinieren, dass x: Objekte eines Supertypen
 von X entgegennimmt, während gleichzeitig x Objekte eines Subtyp s zurückliefert. Da das

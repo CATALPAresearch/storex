@@ -6,15 +6,10 @@ dere auf Variablen und auf Methodenausdrücke angewendet, und zwar immer dann, w
 man diese einer Variable zuweisen will, zu der keine Zuw eisungskompatibilität besteht, oder
 wenn man darauf eine Methode aufrufen (oder ein Feld zugreifen) will, das der deklarierte
 Typ nicht anbietet. So führt z. B.
-1107 Object o = new String("abc");
-1108 o.substring(2, 3);
-1109 String s = o;
 zu zwei Typfehlern: einem, weil o vom Typ Object ist, der keine Methode substring
 kennt, obwohl das Objekt, auf das o verweist, diese Methode sehr wohl kennt, und einem,
 weil Object nicht zuweisungskompatibel mit String ist. Zwei Type casts lösen das Prob-
 lem:
-1110 ((String) o).substring(2, 3 );
-1111 String s = (String) o;
 Wie schon in Kapitel 27, so unterscheiden wir auch hier in Abhängigkeit
 davon, wie die beteiligten Typen, der Ausgangstyp und der Zieltyp eines
 Type casts , miteinander in Beziehung stehen, drei Arten von Typumwandlu ngen :
@@ -34,23 +29,7 @@ Mit der Einführung von Generics ergeben sich ein paar Probleme mit im-
 pliziten Typumwandlungen. Das nachfolgende Beispiel ist jedoch nur für Interessierte; ins-
 besondere auf sog. Raw types und das damit zusammenhängende Konzept der Type era-
 sure wird in diesem Kurs nämlich nicht eingegangen. drei Arten von Type
-casts
-Type erasure
 Bei Vorliegen der folgenden parametrisierten Klassendefinition
-1112 class Kiste<T> {
-1113 T inhalt;
-1114 void reintun (T x) { inhalt = x; }
-1115 T rausnehmen () { return inhalt; }
-1116 }
 und folgender Variablendeklarationen und Initialisierungen
-1117 Kiste kiste = new Kiste(); // sog. Raw type
-1118 Kiste<Tier> tierkiste = new Kiste<Tier>();
 ergeben die Zuweisungen
-1119 kiste = tierkiste; // geht ohne Warnung
-1120 kiste.reintun( new Object()); // Warning:
-1121  // Type safety: The method reintun(Object)
-1122  // belongs to the raw type Kiste. References to generic
-1123  // type Kiste<T> should be parameterized
-1124 Tier tier = tierkiste.r ausnehmen(); // geht ohne Warnung,
-1125  // aber ClassCastException!!!
 bei der letzten einen Laufzeitfehler vom Typ Class cast exception .

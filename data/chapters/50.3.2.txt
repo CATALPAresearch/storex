@@ -7,22 +7,10 @@ nannte Instanzvariable (Feld) repräsentiert werden; Indexer ähneln Properties 
 der Zugriff über einen Index mittels entsprechender Get - und Set -Abbildungen auf einen
 Zugriff auf eine benannte Instanzvariable über setzt wird. Das folgende Beispiel illustriert den
 Vorgang:
-1321 class HatScheinbarEineIndizierteInstanzvariable {
-1322 private Object[] iivar;
-1323 HatScheinbarEineIndizierteInstanzvariable( int anzahl) {
-1324  iivar = new Object[anzahl];
-1325 }
-1326 Object this[int index] {
-1327  get {return iivar[index];}
-1328  set {iivar[index] = value;}
-1329 }
-1330 }
 Dabei wird this als Schlüsselwort missbraucht , um anzudeuten, dass bei Zugriffen auf die
 indizierte Instanzvariable kein Name einer Instanzvariable (eines Feldes), sondern lediglich
 der Name des Objekts, zu dem sie gehört, steht:
-1331 HatScheinbarEineIndizierteInstanzvariable einObject = new
 HatScheinbarEineIndizierteInstanzv ariable(2);
-1332 einObject[0] = einObject[1];
 Nun darf der Indexer in C# überladen werden, so dass ein Objekt mehrere indizierte In-
 stanzvariablen haben kann, wobei der Zugriff (aufgrund des fehlenden Namens) einzig über
 den Typ des Indexes differenziert erfolge n kann. Durch das Überladen ist es wiederum mög-

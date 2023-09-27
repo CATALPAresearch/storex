@@ -7,7 +7,6 @@ sprachen meines Wissens bislang auch noch nie gelungen wäre), sondern vielmehr 
 Umstand geschuldet, dass JAVA keine volle Kontrolle über Rechner und Betriebssystem bie-
 tet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist. Zwar war auch A language that doesn't affect the w ay you think about programming,
 is not worth knowing.
-Alan Perlis
 SUN bemüht, bekannte Schwächen zu beheben, aber man gibt sich dabei doch recht
 schwerfällig. Und so war, bei dem nicht zu übersehenden Erfolg JAVAs in der Softwareent-
 wicklerinnengemeinde , die Abspaltung einer eigenen, JAVA-artigen, aber eben doch in

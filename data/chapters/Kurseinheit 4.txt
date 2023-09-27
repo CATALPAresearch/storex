@@ -1,0 +1,20 @@
+Kurseinheit 4: JAVA
+Da die meisten unter Ihnen vermutlich nie in die Verlegenheit kommen werden, beruflich in
+SMALLTALK zu programmieren, wenden wir uns in dieser und der nächsten Kurseinheit an-
+deren objektorientierten Programmiersprachen zu. Am meisten Raum nimmt dabei JAVA
+ein, zum ein en, weil es immer noch die am weitesten verbreitete objektorientierte Program-
+miersprache ist, zum anderen, weil es in der Darstellung viele Parallelen zu SMALLTALK zu
+ziehen erlaubt und damit eine gute Brücke zu weiteren Programmiersprachen schlägt. Unter
+theoretischen (und damit auch akademischen) Gesichtspunkten nimmt JAVA allerdings keine
+besondere Stellung ein und für seinen Erfolg war vermutlich eher das Internet (JAVA spielte
+vormals die Rolle, die heute JAVASCRIPT spielt) als ein besonders genialer Sprachentwurf ver-
+antwortlich.
+Aus der Distanz betrachtet ist JAVA eine Mischung aus SMALLTALK und
+C++. Von C++ wurden weite Teile der Syntax und der statischen Typprü-
+fung übernommen sowie der eher klassisch prozedurale Charakter (Methodenaufrufe an-
+stelle von Nachrichtenversand), von SMALLTALK die weitgehende Objektorientierung (es gibt
+keinen Code außerhalb von Klassen), die Einfachvererbung sowie die Garbage collection
+(um nur die wichtigsten zu nennen). Wenn man allerdings genauer wissen will, was JAVA ist
+und warum es so ist, wie es ist, dann muss man einen Blick in seine Geschichte werfen.
+Interessierten empfehle ich unbedingt, „The Long Strange Trip to Java “ von PATRICK NAUG-
+HTON zu lesen; danach wird Ihnen vermutlich so einiges klar.

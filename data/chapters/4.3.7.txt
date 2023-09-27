@@ -5,30 +5,6 @@ grammiererin nicht nur sichtbar, sondern auch änderbar ist), aber für einige p
 rationen greift es doch auf native Implementierungen zurück. Dazu zählt z.B. die Addition
 (+) für kleine Integer oder auch der Zugriff auf indizierte Variablen mittels at: und
 at:put: . Die entsprechenden Methoden sind in SQUEAK wie folgt implementiert:
-152 + aNumber
-153 <primitive: 1>
-154 ^ super + aNumber
-155 at: index
-156 <primitive: 60>
-157 index isInteger ifTrue:
-158  [self class isVariable
-159  ifTrue: [self errorSubscriptBounds: index]
-160  ifFalse: [self errorNotIndexable]].
-161 index isNumber
-162  ifTrue: [^self at: index asInteger]
-163  ifFalse: [self errorNonIntegerIndex]
-164 at: index put: value
-165 <primitive: 61>
-166 index isInteger ifTrue:
-167  [self class isVariable
-168  ifTrue: [(index >= 1 and: [index <= self size])
-169   ifTrue: [self errorImproperStore]
-170   ifFalse: [self errorSubscriptBounds: index]]
-171  ifFalse: [self errorNotIndexable]].
-172 index isNumber
-173  ifTrue: [^self at: index asInteger put: value]
-174  ifFalse: [self errorNonIntegerIndex]
-26 In JAVA sind Array -Literale übrigens nur in New -Ausdrücken erlaubt; die dadurch beschriebenen
 Array -Objekte werden erst zur Laufzeit und dann immer wieder neu erzeugt, so dass sich keine Aliase
 ergeben.
 Dabei stehen die in spitzen Klammern stehenden Ausdrücke jeweils für Aufrufe von primi-

@@ -7,7 +7,6 @@ anonymen Typvariablen, also Wildcards. Man beachte jedoch, dass eine solche Vari
 deklaration, genau wie eine generische Methodendefinition, keinen neuen Typ einführt (s.
 Fußnote 72); vielmehr handelt es sich mit dem durch ein Typ -Wildcard als tatsächlich em
 Parameter eingesetzten Typ selbst um einen konkreten Typ. Der per
-1106 List<?> liste;
 deklarierten Variable liste können also Listen beliebigen Elementtyps zugewiesen werden,
 einfach weil List<?> (unter den in Abschnitt 43.2 genannten Einschränkungen) Supertyp
 aller Instanziierungen von List<T> ist.

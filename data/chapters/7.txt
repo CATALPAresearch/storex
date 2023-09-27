@@ -7,14 +7,10 @@ fällt. Diese Sprachregelung wird auch in der objektorientierten Programmierung 
 (obwohl sie natürlich nicht, da Computer unsere Sprache nicht kennen, überprüft werden
 kann und deswegen Abweichungen immer wieder vorkommen): Alle Klassennamen sind
 Singulare.
-28 Interessanterweise war der prototypenbasierten Sprache SELF bei SUN MICROSYSTEMS ursprünglich
 der Platz zugedacht, den dann später JAVA einnehmen sollte. SELF war zwar für die Entwicklung der
 Java Virtual Machine ein wichtiger Ideenlieferant, ist jedoch außerhalb dieser Kreise kein Erfolg be-
 schieden gewesen. Der Erfolg von JAVASCRIPT zeigt aber, dass das Konzept der prototypenbasierten
 Programmierung zumindest kein Irrweg war. klassen - vs.
-prototypenbasierte
-Form der
-Objekterzeugung
 Mit jedem Allgemeinbegriff verbinden wir eine ganze Reihe von Eigen-
 schaften , die für ihn charakteristisch sind, die wir aber nicht dem Begriff
 selbst, s ondern den Objekten, die darunter fallen, zuordnen. Mit Person

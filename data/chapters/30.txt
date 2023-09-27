@@ -16,19 +16,14 @@ den mittels parametrischen Polymorphismus nicht irgendwie lösen lässt. Die Ant
 befriedigend: nur zum Teil.
 So kann man, um das Beispiel von Dokumenten und Druckern aus Abschnitt 26.3 wieder
 aufzugreifen, einen parametrischen Typ Dokument wie folgt definieren: ein paar Worte zum
-Trost
 Typ Dokument
-Typvariablen  T < Drucker
+Typvariablen T < Drucker
 Protokoll
-970 druckenAuf: einDrucker <T> ^ <Self>
 Die Deklaration von Zeichnung mit Typparameter T als Subtyp von Dokument vorausge-
 setzt, lassen sich die folgenden Variablendeklarationen bilden:
-971 | z <Zeichnung[Plotter]> p <Plotter> l <Zeilendrucker> |
 Weiterhin die Deklarationen von Plotter und Zeilendrucker als Subtypen von
 Drucker vorausgesetzt wäre ein Methodenaufruf
-972 z druckenAuf: p
 typkorrekt,
-973 z druckenAuf: l
 hingegen nicht. Allerdings ist die Ass oziation von Zeichnung mit Plotter , die Kovarianz,
 in keiner Typdefinition festgehalten, sondern lediglich in der Deklaration von z. Es hindert
 einen insbesondere nichts daran, dieselbe oder eine andere Variable als vom Typ

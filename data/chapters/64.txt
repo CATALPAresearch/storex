@@ -21,7 +21,3 @@ die hohe Dichte an Bezeichnern in objektorientierten Programmen: Da jede Teilfun
 in eine Methode ausgelagert wird, einen eigenen, eindeutigen (bis auf Überladen/Über-
 schreib en) Namen haben muss , wird die Programmiererin dazu gezwungen, sich ständig (in
 Form der Namenwahl für Bezeichner) dazu zu äußern, was sie gerade macht. automatische
-Codeformatierer
-mehr Methoden
-bringen bessere
-Dokumentation

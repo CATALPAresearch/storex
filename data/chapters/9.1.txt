@@ -30,37 +30,20 @@ der Generalisierung , ebenfalls Generalisieru ng genannt, eine Klasse ist,
 die nur diejenigen Elemente der Definitionen der generalisierten Klassen enthält, die allen
 gemeinsam sind. So lässt sich beispielsweise aus den beiden ähnlichen, aber nicht gleichen
 Klassen Mensch
-Klasse  Mensch
-benannte Instanzvariablen  linkesBein rechtesBein aufenthaltsort verstand
-indizierte Instanzvariablen  nein
+Klasse Mensch
+benannte Instanzvariablen linkesBein rechtesBein aufenthaltsort verstand
+indizierte Instanzvariablen nein
 Instanzmethoden
-396 laufeNach: neuerOrt
-397  "bewegt Empfänger per pedes an neuen Ort"
-398  …
-399 rechne: eineAufgabe
-400  "löse die Aufgabe mittels Verstand"
-401  …
 und Vogel
-Klasse  Vogel
-benannte Instanzvariablen  linkesBein rechtesBein aufenthaltsort flügel
-indizierte Instanzvariablen  nein
+Klasse Vogel
+benannte Instanzvariablen linkesBein rechtesBein aufenthaltsort flügel
+indizierte Instanzvariablen nein
 Instanzmethoden
-402 laufeNach: neuerOrt
-403  "bewegt Empfänger per pedes an neuen Ort"
-404  …
-405 fliegeAn: neuenOrt
-406  "bewegt Empfänger durch Flügel an neuen Ort"
-407  …
 per Vorgang Generalisierung die Klasse Zweibeiner
-Klasse  Zweibeiner
-benannte Instanzvariablen  linkesBein rechtesBein aufenthaltsort
-indizierte Instanzvariablen  nein Vorgang und
-Ergebnis der
-Generalisierung
+Klasse Zweibeiner
+benannte Instanzvariablen linkesBein rechtesBein aufenthaltsort
+indizierte Instanzvariablen nein Vorgang und
 Instanzmethoden
-408 laufeNach: neuerOrt
-409  "bewegt Empfänger per pedes an neuen Ort"
-410  …
 herausfaktorisieren, deren Definition, als Ergebnis der Generalisierung der Klassen Mensch
 und Vogel , genau die gemeinsamen Eigenschaften (Instanzvariablen und Methoden) ent-
 hält.
@@ -70,21 +53,17 @@ neralisierung abstrahiert, gelten (denn das war ja die Bedingung für die Konstr
 Generalisierung), brauch en diese die Eigenschaften nicht zu wiederholen, sondern stattdes-
 sen nur noch ihre Generalisierung anzugeben. Diese Klassen müssen dann nur noch die
 Unterschiede, die sie von Zweibeiner sowie von einander unterscheiden, definieren:
-Klasse  Mensch
+Klasse Mensch
 Generali sierung Zweibeiner
-benannte Instanzvariablen  verstand
-indizierte Instanzvariablen  nein
+benannte Instanzvariablen verstand
+indizierte Instanzvariablen nein
 Instanzmethoden
-411 rechne: eineAufgabe
-412  …
 bzw.
-Klasse  Vogel
+Klasse Vogel
 Generalisierung Zweibeiner
-benannte Instanzvariablen  flügel
-indizierte Instanzvariablen  nein
+benannte Instanzvariablen flügel
+indizierte Instanzvariablen nein
 Instanzmethoden
-413 fliegeAn: neuenOrt
-414  …
 Diese zweite Form der Abstraktion, die Generalisierung, ist also genau wie die Klassifikation
 Bestandteil der klassenbasierten objektorientierten Programmierung. Anders als bei der
 Klassifikation ist bei der Generalisierung aber die Höhe der Abstraktionshi erarchie nicht
@@ -93,7 +72,6 @@ Belieben angelegt werden. Sprachphilosophisch sind Generalisierungen näm lich g
 Klassen Allgemeinbegriffe ; sie sind nur noch allgemeiner. Generalisierungen können somit
 selbst Generalisierungen haben un d so weiter; wie sich das für eine Abstraktionshierarchie
 gehört, werden die Definitionen, die Intensionen , dabei immer knapper. Gleichzeitig wä chst Ökonomie der
-Generalisierung
 jedoch die Extension (das bereits in Abschnitt 7.1 erwähnte Prinzip vom inversen Zusam-
 menhang der beiden).
 Abgeschaut ist das Prinzip der Generalisierung übrigens von Aristoteles ’
@@ -125,10 +103,6 @@ Gute Praxis (und hier angedeutet) ist, wenn Generalisierungen keine eigenen, dir
 stanzen haben, also Genera im obigen Sinne sind. Dies ist in der objektorientierten Praxis
 aber (leider) längst nicht immer selbstverständlich, wie sich im nächsten Kapitel noch zeigen
 wird (vgl. dazu auch Kapitel 69 in Kurseinheit 7).
-35 Biologinnen möchten vielleicht Mensch durch Primatin ersetzen. philosophischer
-Vorläufer
-mengentheoretische
-Inter pretation
 Universum
 Zweibeiner
 Mensch Vogel
@@ -164,8 +138,3 @@ verliert man dadurch jedoch die strikte Hierarchieform der Generalisierung (da s
 Hierarchien überlagern), es sei denn, man erlaubt, verschiedene Arten der Genera lisierung
 voneinander zu unterscheiden. Beides bringt jedoch einiges an Komplikationen mit sich, so
 dass wir hier auf „Mehrfachgeneralisierungen“ nicht eingehen werden. Generalisierung ohne
-Weglassen von
-Eigen schaften
-mehrere
-Dimensionen der
-Generalisierung

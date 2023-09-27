@@ -1,0 +1,5 @@
+Kurseinheit 6: Probleme der objektorientierten
+Programmierung
+In den vorangegangenen Kurseinheiten wurde bereits an verschiedenen Stellen auf Prob-
+leme der objektorientierten Programmierung hingewiesen. Diese sollen nun in dieser Kurs-
+einheit z usammen gefasst dargestellt werden.

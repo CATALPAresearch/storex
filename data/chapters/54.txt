@@ -4,9 +4,6 @@ Das Subtyping sollte Zuweisungskompatibilität zwischen verschiedenen Typen gest
 also erlauben, dass Objekte eines Typs Variablen eines anderen Typs, nämlich eines Super-
 typs, zugewiesen werden. Das führt nun zu dem Problem, dass man — aufgrund des dyna-
 mischen Bindens von Methodenaufrufen — bei Vorliegen des Programmfragments
-1507 | e <T> |
-1508 e := <ein Ausdruck>.
-1509 e m
 selbst bei Kenntnis des Typs T nicht sagen kann, welchen Effekt der Aufruf von Methode m
 in Zeile 1509 hat.82 Nach den Regeln gängiger objektorientierter Programmiersprachen zur
 Zuweisungskom patibilität weiß man lediglich, dass es sich beim Typ des Empfängerobjekts
@@ -18,10 +15,7 @@ schaften der objektorientierten Programmierung ist, hat man es dabei mit einem e
 Problem zu tun.
 Das Problem lässt sich als ein Problem der formalen Programmverifikation ausdrücken: Wie
 lässt sich
-82 Die Parameter des Methodenaufrufs si nd hier unwichtig, da wir davon ausgehen, dass Metho-
 denaufrufe nur unter Berücksichtigung des Empfängerobjekts gebunden werden.
-83 In typlosen Programmiersprachen wie SMALLTALK weiß man nicht einmal das.
-84 Zur Wichtigkeit von lokaler Betrachtung s. a. Absch nitt 56.
 P {e m} Q (54.1)
 also dass bei Vorliegen der Bedingung P vor Ausführung des Methodenaufrufs e m nach
 dessen Ausführung die Bedingung Q eingehalten wird, beweisen? Ein solcher Beweis ver-

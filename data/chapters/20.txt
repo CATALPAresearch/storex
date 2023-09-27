@@ -19,10 +19,6 @@ jekt liefert) und deswegen selbst, genau wie Variablen, typisiert werden sollte.
 definieren also nicht nur Typen , sie verwenden auch selbst welche, nämlich indem sie die
 Typen der Ein- und Ausgabe objekte spezifizieren. Ein einfaches Beispiel für eine Typdefini-
 tion, die selbst Typen verwendet, ist die folgende:
-844 name ^ <String>
-845 name: einName <String> ^ <Self>
-846 alter ^ <Integer>
-847 alter: einAlter <Integer> ^ <Self>
 Wie schon bei einer temporären Variable, stehen die Typannotationen von formalen Para-
 metern in STRONGT ALK in spitzen Klammern dahinter. Diese Schreibweise sollten Sie nicht
 allzu sehr verinnerlichen, da andere Programmiersprachen die spitzen Klammern zur Kenn-
@@ -37,9 +33,6 @@ Falls Sie sich wundern, dass obige Zeilen kein Schlüsselwort zur Einleitung
 der Typdefinition beinhalten: STRONGTALK ist, genau wie SMALLTALK , ein
 interaktives, browser -gestütztes System, in dem Typen in Formulare eingetragen und nicht
 in Textdateien spezifiziert werden. Gleichwohl f ällt auf, dass innerhalb der Typdefinition in Typen als Teile von
-Typdefinitionen
-Schema für
-Typdefinitionen
 den spitzen Klammern (also da, wo Typen stehen sollen) keine Typdefinition auftauchen,
 sondern Namen. Und tatsächlich wird in STRONGTALK jeder Typ benannt (in seiner Typdefi-
 nition mit einem Namen versehen). Im folgenden werden Typen, ähnlich wie Klassen, in
@@ -47,10 +40,6 @@ tabellarischer Form notiert. Der Typ Person etwa mit obigem Protokoll liest sich
 folgt:
 Typ Person
 Protokoll
-848 name ^ <String>
-849 name: einName <String> ^ <Self>
-850 alter ^ <Integer>
-851 alter: einAlter <Integer> ^ <Self>
 Selbsttestaufgabe 20.1
 Definieren Sie den Typ Boolean gemäß obigem Schema!
 In STRONGTALK ist die Protokollbildung der einzige sog. Typkonstruktor ,

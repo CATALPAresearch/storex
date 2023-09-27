@@ -1,5 +1,4 @@
-52.6 Zusicherungen in EIFFEL: Vorbedingungen, Nachbedingungen
-und Klasseninvarianten
+52.6 Zusicherungen in EIFFEL: Vorbedingungen, Nachbedingungen und Klasseninvarianten
 Praktisch ein Alleinstellungsmerkmal EIFFELs ist die Integration von Zusicherungen in Form
 von Vor - und Nachbedingungen bei Methodenaufrufen. Bei der Behandlung JAVAs war uns
 ja schon die Assert -Anweisung begegnet, die es erlaubte, Zusicherungen zur Laufzeit aus-
@@ -38,13 +37,6 @@ menhang mit Zusicherungen schafft, wollen wir an dieser Stelle nicht eingehen; K
 befasst sich ausführlicher damit.
 Zusicherungen werden i n EIFFEL von Klassen auf ihre Subklassen vererbt.
 Wenn dabei eine Methode redefiniert wird, dann dürfen auch Vor - und Vor- und
-Nachbedingungen:
-requires und
-ensures
-Klasseninvarianten:
-invariant
-Zusicherungen und
-Vererbung
 Nachbedingung angepasst werden. Allerdings gilt hier, dass die Vorbedingung nur aufge-
 weicht, die Nachbedingung nur verschärft werden darf. Die Sprachdefinition EIFFELs stellt
 die Einhaltung dieser Bedingung automatisch sicher, indem die Vorbedingung einer redefi-

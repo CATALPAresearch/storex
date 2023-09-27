@@ -22,8 +22,6 @@ nicht mehr ausdrückt, spezifiziert gewissermaßen eine Rolle, die die Objekte i
 Verwendung zu spielen haben. In der Regel wird dieser Typ nur einen Teil der Eigenschaften
 umfassen, die allgemeine Typen wie Set oder Bag spezifizieren; im Gegenzug ist damit
 aber auch die Auswahl der Typen, deren Objekte für ihre Zwecke infrage kommen, größer. LSP ist zu restriktiv
-Perspektivwechsel
-Typen als Rollen
 Die einzige Voraussetzung dafür, dass Objekte die ihnen durch ihren Typ aus Klientinnen-
 sicht zugewiesene Rolle auch spielen können, ist, dass sie dazu typkonform sind.
 Diese zweiseitige Sicht auf Typen, nämlich die der Nutzerin und die der Anbieterin , beginnt
