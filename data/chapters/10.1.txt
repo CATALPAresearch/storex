@@ -20,29 +20,18 @@ Beispiel von Pinguinen und Vögeln hatte schon gezeigt, zu welchen Komplikatione
 unbedachte Spezialisierung führen kann; nachfolgendes soll zeigen, zu was eine Fixi erung
 auf Ausnutzung der Vererbung führt.
 Ein Klasse Quadrat sei etwa wie folgt definiert:
-Klasse  Quadrat
-benannte Instanzvariablen  laenge
+Klasse Quadrat
+benannte Instanzvariablen laenge
 Instanzmethoden
-415 flaeche
-416  ^ laenge * laenge
-Vererbung bei
-Generalisierung und
-Spezialisierung
-417 umfang
-418  ^ laenge * 4
 Nun möchte man eine zweite Klasse Rechteck definieren und dabei aus-
 nutzen, dass man so eine ähnliche Klasse, nämlich Quadrat , schon hat.
 Aus Quadrat übernehmen lässt sich nämlich die Instanzvariable laenge .
 (Das Beispiel wurde absichtlich einfach gewählt, auch wenn es dadurch wenig überzeugend
 wirkt; das Pr oblem sollte aber trotzdem klar werden.)
-Klasse  Rechteck
+Klasse Rechteck
 beerbte Klasse Quadrat
-benannte Instanzvariablen  breite
+benannte Instanzvariablen breite
 Instanzmethoden
-419 flaeche
-420  ^ laenge * breite
-421 umfang
-422  ^ laenge + breite * 2
 Was die Instanzvariablen angeht, so braucht Rechteck die Instanzvari-
 able laenge nicht neu zu definieren, sondern muss lediglich breite hin-
 zufügen. Allerdings können die Methoden zur Berechnungen von F läche und Umfang nicht
@@ -73,7 +62,6 @@ Vererbung ohne
 Generalisierung/
 Spezialisierung
 Oberflächlic hkeit der
-Vererbung
 ist. Sie lässt dabei insbesondere den Zusammenhang der Extensionen der beteiligten Klas-
 sen, der f ür Generalisierung/Spezialisierung wesentlich ist, außer acht. Diese Ignoranz hat
 aber weitreichende Konsequenzen, die wir in Kapitel 26 von Kurseinheit 3 noch kennenler-

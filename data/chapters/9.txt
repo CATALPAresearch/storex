@@ -8,7 +8,6 @@ zepte auf Ebene 2 hin zur Fassung von Definitionen allgemein auf Ebene 3. Mit je
 mit Ausnahme der mittleren wird die Zahl der Objekte, die unter die darin angesiedelten
 Konzepte fallen, drastisch reduziert: von Ebene 0 auf Ebene 1 von theoretisch unendlich
 vielen Objekten einer Anwendung zur Zahl der Anwendungsklassen, von Ebene 2 auf Ebene
-3 von der Zahl der Anwendungsklassen zu einer Klasse Metaclass . Als Programmiererin
 bewegen Sie sich jedoch vor allem auf Ebene 1: Sie definieren Anwendungsklassen, von
 denen zur Laufzeit des Programms die Anwendungsobjekte erzeugt werden. Dire kt nutzen
 Sie also nur eine Abstraktionsstufe für die Programmierung.

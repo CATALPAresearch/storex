@@ -4,9 +4,6 @@ schnitt 1.2). Da verschiedene Vorkommen gleicher Literale aber (außer bei Symbo
 schiedene Objekte erzeugen, sind Literale nicht für alle Zwecke ausreichend. Es gibt dafür
 einen Trick, mit dem man dasselbe Literal mehrfach verwenden kann, nämlich durch eine
 sog. konstante Methode .
-144 pi
-145  "na ja, so ungefähr …"
-146 ^ 3.142
 ist eine solche konstante Methode. An ihr ist nichts wei ter konstant, als dass sie immer
 dasselbe Objekt zurückgibt. Der Trick besteht nämlich darin, dass das zum Literal 3.142
 gehörende Zahlobjekt nur einmal, nämlich zur Übersetzungszeit der Methode, erzeugt wird
@@ -18,28 +15,19 @@ kannten Ausnahmen abgesehen) . Das ist immer dann ein Problem, wenn das früher 
 gegebene Objekt in Variablen gespeichert wurde und nun mit dem neuen auf Identität ver-
 glichen werden soll.25 Das sollte man also tunlichst unterlassen.
 Das zweite Problem ist noch etwas subtiler: Bei der konstanten Methode
-147 einsZweiDrei
-148 ^ #(1 2 3)
 eines Objekts o und nach Auswertung der Anweisungen
-149 a := o einsZweiDrei
-150 a at: 1 put: 0
-151 b := o einsZweiDrei
 enthält b an erster Stelle ebenfalls eine 0! Die vermeintlich konstante Methode ist also alles
 andere als konstant!! Interessanterweise ist das Ergebni s dieses Experiments genau konvers
-24 Für gewöhnlich sind Konstanten Namen für (unveränderliche Werte); man kann Sie also als Vari-
 ablen auffassen, denen nu r einmal (bei der Initialisierung) ein Wert zugewiesen wird. Die Definition
 von Konstanten erfordert dann aber ein Schlüsselwort, um sie von anderen Variablen zu unterschei-
 den.
-25 Man bedenke, dass in SMALLTALK das (neu) Kompilieren einer Methode nicht bedeutet, dass das
 Programm danach neu gestartet werden muss — das Programm läuft vielmehr weiter und alle Ob-
 jekte mit ihren Variablenbelegungen bleiben erhalten. Probleme konstanter
-Methoden
 zum ersten Problem: Die Identität der von der konstanten Methode zurückgegebenen Ob-
 jekte bleibt erhalten, ihre Erscheinung ändert sich aber (beim ersten Problem blieb die Er-
 scheinung gleich, aber die Identität änderte sic h).
 Zumindest das zweite Problem lässt sich eindämmen, indem man auf Sprachebene durch
 Literale erzeugte Objekte als unveränderlich annimmt und Änderungen der Art von Zeile
-150 entsprechend verbietet. Dies machen einige SMALLTALK -Dialekte auch tatsächlich.26 Die
 eigentliche Erkenntnis ist aber, dass die Referenzsemantik von Variablen und das damit ver-
 bundene Aliasing von Objekten zu höchst subtilen Problemen führe n kann, derer man sich
 immer gewahr sein sollte.

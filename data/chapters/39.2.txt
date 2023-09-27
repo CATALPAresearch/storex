@@ -10,15 +10,8 @@ nicht ein Programm entwickelt, sondern mehrere — wo keine Abhängigkeiten best
 da gibt es auch kein Zusammenspiel.
 Abhängigkeit ist eine gerichtete Beziehung: Dass A von B abhängt heißt
 nicht, dass auch B von A abhängt. Und so manifestieren sich auch in den
-65 Benötigt wird der f reiere Zugriff auch bei der Realisierung sog. Multi -Methoden (Methoden, deren
 Aufruf auf mehr als nur dem Empfängerobjekt gedispatcht wird; vgl. dazu auch Abschnitt 12.3 in
 Kurseinheit 1). Vor- und Nachteile
-der Verquickung von
-Typ und Zugriffs -
-beschränkung
-Manifestation der
-Abhängigkeit
-zwischen Modulen
 Klassen als Modulen der JAVA-Programmierung die zwei Richtungen von Abhängigkeit in
 zwei verschiedenen Formen:
 1. Dass eine Klasse von (der Schnittstelle) einer anderen abhängt, erkennt man an der

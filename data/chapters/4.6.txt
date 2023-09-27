@@ -18,5 +18,3 @@ turen müssen mit den Mitteln der Sprache simuliert werden. Was zunächst wie ei
 liche Einschränkung aussehen mag, erweist sich in der Praxi s als gewichtiger Vorteil: Die
 Programmiererin kann nämlich selbst, wenn ihr danach ist, neue Kontrollstrukturen einfüh-
 ren.
-SMALLTALK s zwei
-Kontrollstrukturen

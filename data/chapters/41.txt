@@ -3,22 +3,16 @@ In JAVA ist es möglich, sowohl von primitiven (Wert -)Typen als auch von Refere
 rays zu bilden. Anders als z. B. in PASCAL können aber über den Array -Typkonstruktor keine
 neuen Typen benannt werden; die Typkonstruktion erfolgt immer implizit in einer Variab-
 lendeklaration.
-1035 float[] f;
-1036 Object[] o;
 vereinbart in JAVA zwei Variablen, wovon die erste ein Array von Fließkommazahlen zum
 Typ hat und die zweite ein Array von Objekten. Die alternative Schreibweise
-1037 float f[];
-1038 Object o[];
 ist auch gebräuchlich. Anders als z. B. in PASCAL wird die Größe des Arrays in der Deklaration
 nicht festgelegt — dies geschieht erst bei der Initialisie rung.
 In JAVA ist es möglich, Arrays bei ihrer Deklaration zu initialisieren:
-1039 float f[] = {1.0, 3.142};
 Man beachte die Ähnlichkeit zu literalen Arrays SMALLTALK s (Abschnitt 1.2); allerdings müs-
 sen die Elemente der Arrays in JAVA nicht selbst Literale sein, sondern dürfen auch andere
 Ausdrücke sein. Die Größe des Arrays (in diesem Fall 2) wird bei der Initialisierung automa-
 tisch mit festgelegt; ansonsten muss dies bei der Erzeugung des Arrays mittels eines Kon-
 struktors explizit geschehen:
-1040 Object[] o = new Object[2]; Default -Methoden
 private Methoden
 Array -Initialisierung
 Alle Elemente des Arrays enthalten danach jedoch null (JAVAs äquivalent von SMALLTALK s
@@ -26,7 +20,6 @@ nil). JAVA-Arrays sind übrigens 0 -basiert, was soviel heißt wie dass das erst
 Index 0 hat. (Zur Erinnerung: In SMALLTALK hat es den Index 1.)
 Array -Initialisierer können auch geschachtelt werden und somit mehrere Dimensionen um-
 fassen:
-1041 int integers[][] = { {1, 2}, null, {238} }
 beispielsweise liefert einen möglichen Anfangswert für ein zweidimensionales Array mit der
 Deklaration int integers[][] (also ein Array mit Elementtyp int und mit zwei Dimen-
 sionen). Wie man sieht, müssen die Größen der zweiten und aller weiteren Dimensionen
@@ -58,24 +51,14 @@ sich analog auf Arrays übertragen lässt. Die Überraschung folgt hier auf den 
 weisung ist in JAVA zulässig.
 Am besten lässt sich dies an einem Beispiel erläutern. Man kann tatsächlich in JAVA bei
 Vorliegen der Deklarationen
-1042 class Hund extends Tier {}
-1043 Tier[] tiere; Referenzsemantik
-von Array -Variablen
-Typkonformität und
-Subtyping von
-Arrays in JAVA
-1044 Hund[] hunde;
 die Zuweisung
-1045 tiere = hunde
 durchführen. Die anschließende Zuweisung
-1046 tiere[1] = new Tier()
 führt dann in JAVA allerdings prompt zu einem Laufzeit typfehler (eine sog.
 Array store exception ), denn tiere ist ja lediglich ein Alias auf ein Array
 mit Hunden, so dass die Zuweisung ein Tier anstelle eines Hundes an Arrayposition 1 setzt
 und das A rray hunde , das ja per Deklaration nur Hunde zu enthalten verspricht, damit nicht
 mehr typkorrekt ist. Würde man die Zuweisung aus Zeile 1046 zulassen, dann wü rde in der
 Folge die scheinbar korrekte Zuweisung
-1047 Hund hund = hunde[1]
 bei der hund ein Tier (das aus Zeile 1046 ) zugewiesen wird, die Typinvariante von hund
 verletzen, was ein Compiler aber beim besten Willen nicht mehr erkennen kann (und eine
 Programmiererin übrigens auch kaum).
@@ -99,15 +82,6 @@ haben? Die Antwort ist einfach: weil es Pro zeduren gibt, die den (stati-
 schen) Typ der Array -Elemente nicht genau festlegen, sondern lediglich nach oben be-
 schränken wollen. So gibt es beispielsweise in JAVA den Interfacetyp Comparable , der wie
 folgt definiert ist:
-1048 interface Comparable {
-1049 int compareTo(Object o); Laufzeit typfehler bei
-Arrays
-Typprüfung als
-Kompromiss
-Grund für das
-Subtyping bei Arrays
-in JAVA
-1050 }
 Die Methode compareTo soll dabei einen Wert zurückgeben, der angibt, wie der Vergleich
 des Empfänger - mit dem Parameterobjekt ausgegangen ist. Eine Methode mit der Signatur
 sort(Comparable[] ) kann dann Arrays beliebiger Elementtypen zum Sortieren anneh-

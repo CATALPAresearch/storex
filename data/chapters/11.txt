@@ -11,7 +11,6 @@ dass die Subklassenbeziehung eine Klassenhierarchie aufbaut, in der die Superkla
 über den Subklassen stehen. Außerdem ist die Subklassenbeziehung transitiv: Wenn A eine
 Subklasse von B ist und B eine von C, dann ist A auch eine Subklas se von C. Analoges gilt
 natürlich auch für Superklassen. Man spricht übrigens von einer direkten Subklasse bzw. Eigenschaften der
-Subklassenbeziehung
 von einer direkten Superklasse , wenn es keine weitere Klasse gibt, die in der Subklassen-
 beziehung dazwischen steht. Die Subklassenbeziehung ist (anders als die Subtypenbezie-
 hung; vgl. Kapitel 26) nicht reflexiv (irreflexiv) — eine Klasse kann also keine Subklasse von

@@ -10,55 +10,9 @@ ständig in SMALLTALK implementiert und sollte Ihnen inzwischen kein Problem meh
 ten. Beachten Sie, dass Object keine Lazy initialization seiner Klassenvariable Dependents
 vorsieht; die Methode initDependents muss daher bei Erzeugung einer neuen Klasse
 jeweils einm al aufgerufen werden. wachsende Objekte
-Rollback mittels
-become:
-Klasse  Object
-Klassenvariablen  Dependents …
+Klasse Object
+Klassenvariablen Dependents …
 Klassenmethoden
-594 initDependents
-595  "Initialize the Dependents dictionary to empty."
-596  Dependents := IdentityDictionary new
 benannte Instanzvariablen
-indizierte Instanzvariablen  nein
+indizierte Instanzvariablen nein
 Instanzmethoden
-597 addDependent: anObject
-598  "Add anObject to the class variable
-599   Dependents of class Object."
-600  (Dependents at: self ifAbsent: [
-601  Dependents at: self put: OrderedCollection new])
-602   add: anObject
-603 dependsOn: anObject
-604  "Add the rece iver to anObject's
-605   collection of dependents."
-606  anObject addDependent: self
-607 dependents
-608  "Answer a collection of all
-609   dependents of the receiver."
-610  ^ Dependents at: self
-611  ifAbsent: [^ OrderedCollection new]
-612 broadcast: aSymbol
-613  "Send the argument aSymbol as a unary
-614   message to all of the receiver's dependents."
-615  self dependents do: [ :dependent | dependent perform: aSymbol]
-616 changed
-617  "The receiver changed in some general way. Inform all
-618   dependents by sending each dependent an update messag e."
-619  self changed: self
-620 changed: aParameter
-621  "Something has changed related to the dependents
-622   of the receiver. Send the 'update: aParameter'
-623   message to all the dependents."
-624  (Dependents at: self ifAbsent: [#()]) do: [ :dependent |
-625  dependent up date: aParameter]
-626 update: aParameter
-627  "An object on whom the receiver is dependent
-628   has changed. The receiver updates its status
-629   accordingly (the default behavior is to do nothing).
-630   The argument aParameter usually identifies the
-631   kind of u pdate.“
-632  "default do nothing"
-633 release
-634  "Discard all dependents of
-635   the receiver, if any."
-636  Dependents removeKey: self ifAbsent: []
-637 …

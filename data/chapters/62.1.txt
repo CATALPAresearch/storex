@@ -8,13 +8,10 @@ Bei der Programmierung mit JAVA und anderen typisierten objektorien-
 tierten Programmiersprachen begegnet man häufig dem Phänomen, dass
 Typen und Variablen gleich heißen, s ich nur in der Groß - bzw. Kleinschrei-
 bung ihres Anfangsbuchstabens unterscheiden. Ein typisches Beispiel dafür ist das folgende:
-1625 Iterator iterator = list.iterator();
 In diesen Fällen, wenn es keinen besseren Namen für die Variable gibt, ist es vollkommen
 legitim, eine Abkürzung für den Variablennamen zu wählen, insbesondere dann, wenn die
 Sichtbarkeit der Variable auf die unmittelbare Umgebung der Deklaration beschränkt ist:
-1626 Iterator iter = list.iterator();
 oder
-1627 Iterator i = list.iterator();
 sind also leg itim. Sobald dies jedoch nicht der Fall ist (typischerweise schon bei der Deklara-
 tion von Instanzvariablen), sollte der lange Name bevorzugt werden. Dies gilt auch für den
 Fall, dass der Typ der Variable aus dem Kontext abgeleitet werden kann und deswegen nicht

@@ -52,20 +52,13 @@ terfaces haben, der allerdings nicht direkt angegeben, sondern inferiert wird , 
 Funktionen, die die Lambda -Ausdrücke darstellen, über das Interface einen Namen erhalten .
 „Anonyme“ Funktionen oder Blöcke wie in SMALLTALK können in JAVA über v ordefinierte
 Interfaces erstellt werden: So liefert
-1010 Function<Integer, Integer> f = x -> x * x;
 ein Objekt vom (Interface -)Typ Function , der wie folgt deklariert ist (zur Bedeutung von
 <T, R> s. Kapitel 43):
-1011 public interface Function<T,R> { R apply(T t); }
 Demnach heißt die Funktion des Funktionsobjekts „apply“; der Ausdruck f.apply(2) lie-
 fert entsprechend 4. Hierbei entspricht apply(.) dem aus SMALLTALK bekannten value:
 (s. Abschnitt 4.4 in Kurseinheit 1).
-60 Dies gilt auch für formale Parameter, die aufgrund des in ihrer Deklaration angegebenen Typs
 Referenzsemantik hab en: Auch sie können nicht so deklariert werden, dass ihnen anstelle der Refe-
 renz eine Referenz auf eine Referenz übergeben wird (s. dazu auch Abschnitt 4.3.2 ). Parameterübergabe
-beim
-Methodenaufruf
-Typ von Lambda -
-Ausdrücken
 Ähnlich wie i n SMALLTALK Blöcke können Lambda -Ausdrücke in JAVA Kon-
 text einfangen und mitnehmen (vgl. Abschnitt 4.4.1 in Kurseinheit 1). Allerdings müssen
 die freien (lokalen) Variablen, die aus dem Kontext eingefangen werden können, final

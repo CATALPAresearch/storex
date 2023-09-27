@@ -10,7 +10,6 @@ Betriebssystems geregelt. (Bei den Prozessen SMALLTALK s handelt es sich also au
 Threads als um Prozesse im eben beschriebenen Sinn.)
 In JAVA wird ein neuer Thread gestartet, indem man eine neue Insta nz der
 Klasse Thread erzeugt und auf ihr die Methode start() aufruft.
-1176 (new Thread()).start()
 startet also einen neuen Thread. Bleibt die Frage, was dieser Thread tut.
 Die Klasse Thread besitzt dafür eine Methode run() , die von start() aufgerufen wird.
 Diese Methode ist jedoch leer , so dass der Thread gleich wieder beendet wird. Damit ein
@@ -35,10 +34,6 @@ Die Threads JAVAs benötigen also eine explizite Synchronisation. Ähnlich
 wie die Prozesse SMALLTALK s funktioniert dies mit Semaphoren, die hier
 allerdings Monitore genannt werden. Jeder Monitor ist mit einem Objekt verbunden (und
 jedes Objekt mit einem Monitor); wenn ein Thread einen Monitor eines Objektes sperrt
-Thread erzeugen und
-starten
-Synchronisation über
-Locking: Monitore
 („lockt“), dann kann kein anderer Thread den Monitor sperren, bevor die Sperre durch den
 ersten Thread wieder aufgehoben wird.
 Es gibt zwei Möglichkeiten, die Synchronisation von Threads zu erzwin-

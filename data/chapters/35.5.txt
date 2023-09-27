@@ -21,8 +21,3 @@ nämlich bei einer Wertzuweisung (bei der ja die Verletzung einer Typinvariante 
 abgefangen werden. In einem Fall kann man jedoch der Meinung sein, dass die Typinvari-
 anten JAVAs zu lax gefasst sind, also Zuweisungen gestattet werden, von denen man nicht
 ausschließen kann, dass sie in der Folge zu einem Typfehler führen. Mehr dazu in Kapitel 41. Void -Methoden als
-Prozeduren
-Typtestoperator
-instanceof
-Auftreten von
-Typfehlern

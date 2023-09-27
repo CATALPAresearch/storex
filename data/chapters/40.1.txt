@@ -4,10 +4,6 @@ und -methoden (in JAVA zusammen auch Member genannt ), die public deklariert sin
 Nun gibt es in JAVA die Möglichkeit, eine öffentliche Schnittstelle als eigenständiges Kon-
 strukt zu de klarieren, das von dem der Klasse unabhängig ist, das aber genauso wie eine
 Klasse einen Typ definiert. Es geschieht dies mit Hilfe des Schlüsselwortes interface :
-1029 interface <Interfacename> {
-1030 <Rückgabetyp 1> <methode>(<Parametertyp 1> <parameter 1>, …);
-1031 …
-1032 }
 Anders als bei Klassen entspricht hier das Fehlen eines Zugriffsmodifikators der Zugreifbar-
 keit public — alles andere scheint für eine Schnittstelle auch unsinnig. Folgende weitere
 syntaktischen Unterschiede der Interfacedeklaration in den Zeilen 1029 –1032 zur Klas-
@@ -28,21 +24,16 @@ ein Feldzugriff in einem Interface durch Zugriffsmethoden (Accessoren, also durc
 und Setter) ersetzt werden kann.
 Eine Klasse kann nun angeben, dass sie ein Interface implementiert. Sie
 tut das unter Verwendung des Schlüsselwortes implements :
-1033 class <Klassenname> implements <Interfacename> {…}
 Damit verpflichtet sich die Klasse, alle im Interface angekündigten Methoden zu implemen-
 tieren und öffentlich anzubieten.67 Dabei kann eine Klasse mehrere Interfaces gleichzeitig
 implementieren (die entsprechenden Namen werden einfach, durch Kommata getrenn t,
-67 Sie muss sie nicht unbedingt selbst implementieren, sondern kann das auch ihren Subklassen
 überlassen; in diesem Fall muss die Methode aber zumindest als abstrakt deklariert werden. Interface -
-implementation und
-Typkonformität
 aneinandergehängt); zugleich ist die Angabe der implementierten Interfaces eine nominale
 Typkonformitätsdeklaration , d. h., Instanzen d er Klasse sind mit allen Variablen jedes der
 genannten Interfaces zuweisungskompatibel.
 Es definieren also die Interfaces von JAVA genau wie Klassen Typen und
 können daher genauso wie Klassen in Variablendeklarationen verwendet
 werden:
-1034 <Interfacename> <Variablenname>
 ist eine solche Deklaration. Der Type checker garantiert dann, dass auf der Variable mit
 Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface
 mit Namen „Interfacename“ deklarier t sind, selbst wenn das Objekt, das die Variable be-

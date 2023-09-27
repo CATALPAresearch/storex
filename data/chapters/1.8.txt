@@ -11,16 +11,12 @@ der linken Seite Verweissemantik hat. Da in SMALLTALK die Semantik von Variablen
 der Variablendeklaration (s. Kapitel 19) festgelegt wird, sondern von der Art eines Objekts
 abhängt, ist nicht immer klar, bei welcher Zuweisung ein Alias entsteht. Dabei kann beides,
 die fälschliche Annahme von Verweissemantik bei tatsächlicher Wertsemantik und die
-8 Die Pseudovariablen true , false und nil benennen spezielle, unveränderliche Objekte, auf de-
 ren Bedeutung wir noch ausführlich ein gehen werden. Bis dahin kann die Leserin davon ausgehen,
 dass true und false für die Booleschen Werte „wahr“ und „falsch“ stehen und nil für ein spe-
 zielles Objekt, das meistens „kein Objekt“ repräsentieren soll. Entstehung von
-Aliasing
 fälschliche Annahm e von Wertsemantik bei tatsächlicher Verweissemantik, zu erheblichen
 (und schwer zu findenden) Programmierfehlern führen.
 Nach den beiden Zuweisungen
-25 x := #Smalltalk
-26 y := #Smalltalk
 hat das eine Objekt, das der Compiler für #Smalltalk erzeugt, zwei Namen, nämlich x
 und y.
 Das Aliasing ist zunächst erwünscht: Da jedes Objekt nur einmal im Spei-
@@ -33,8 +29,6 @@ Dass die Veränderung des durch eine Variable bezeichneten Objekts zu-
 gleich die Veränderung der durch all seine Aliase bezeichneten Objekte
 (die ja alle dieselben sind) bewirkt, kann nämlich unerwünscht, ja ein Programmierfehler
 sein. So könnte man beispielswei se bei den beiden Zuweisungen
-27 petersNachname := 'Müller'
-28 paulasNachname := petersNachname
 lediglich bezwecken wollen, dass Peter und Paul a zunächst gleich heißen, z. B. weil sie Ge-
 schwister sind. Bei einer späteren Promotion Paulas fügt sie die Zeichen $D, $r und $. in
 den ihren Nachnamen repräsentierenden String ein, ändert also das entsprechende Objekt.
@@ -48,19 +42,12 @@ Basis literaler Repräsentationen erzeugten Objekte als unveränderlich markiert
 nicht schon, wie beispielsweise Zahlen, von Haus aus sind), so dass Programmierfehler dieser
 Art vermieden werden. Sollte wie im obigen Beispiel eine Zuweisung mit Wertsemantik be-
 nötigt werden, so schreibt man statt Zeile 28 in SMALLTALK einfach
-29 paulasNachname := petersNachname copy
 Dabei sorgt das hintangestellte copy dafür, dass von dem Objekt, das durch
 petersNachname bezeichnet wird, eine Kopie angefertigt wird, also ein neues Objekt, das
 dem alten gleicht (mehr zur Syntax und dazu, wofür copy steht, folgt unten). Nicht nötig
 wird das Kopieren, wenn ich die Änderung durch die Zuweisung eines neuen Objekts be-
 werkstellige, wie das beispielsweise in Beispiel
-Effizienz durch
-Aliasing
-mögliche Probleme
-durch Aliasing
-30 paulasNachname := 'Dr. Müller'
 oder gar
-31 paulasNachname := 'Dr. ' , paulasNachname
 der Fall ist (wobei das Komma hier für die String -Konkatenation steht) .
 Fehler dieser Art sind häufig die Folge dessen, dass sich eine Programmiererin der aliasbil-
 denden Wirkung der Zuweisung nicht bewusst war. Das ist insbesondere bei den Program-

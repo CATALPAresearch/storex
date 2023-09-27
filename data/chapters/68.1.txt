@@ -12,9 +12,6 @@ gewiesen). Temporäre (lokale) Variablen werden beim Gesetz Demeters nicht mitge
 Das Gesetz Demeters wird typischerweise verletzt, wenn Nachrichten an
 Objekte gesendet (Methoden auf Objekten aufgerufen) werden, die
 selbst nur als Ergebnis eines Nachrichtena usdrucks (Methodenaufrufs)
-typische Ursache der
-Verletzung des
-Gesetzes
 vorliegen. Dies ist in der Regel bei Kettenaufrufen der Fall (s. u.), kann aber auch über eine
 zwischenzeitliche Zuweisung zu einer temporären Variable erfolgen.
 Sinn und Zweck des Gesetzes Demeters ist, die Kopplung und damit die
@@ -25,15 +22,9 @@ passt werden m üssen, die selbst in keiner unmittelbaren Beziehung zu der Klass
 Das Gesetz Demeters wird oft (und leicht verkürzt) in folgender Phrase zusammen gefasst :
 Bezogen auf SMALLTALK heißt das, dass Methodenaufrufe zwar geschachtelt, aber nicht ver-
 kettet erfolgen dürfen:
-1662 a doX
 ist also erlaubt, wenn a eine Ins tanzvariable oder ein formaler Parameter ist, ebenso
-1663 a doX: b doY
 wenn für b dasselbe gilt, nicht jedoch
-1664 a doX doY
 oder
-1665 | b |
-1666 b := a doX.
-1667 b doY
 Man beachte, dass Demeters Gesetz faktisch eine neue, kontextabhängige Zugreif barkeits-
 regel einführt: Eigenschaften von Objekten, die ein Objekt nicht selbst kennt, sind für das
 Objekt gleichgestellt mit denen von Objekten, die es zwar selbst kennt , auf die es aber nicht

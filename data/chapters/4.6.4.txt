@@ -1,7 +1,6 @@
 4.6.4 Iterieren über : n-Beziehungen
 Bei :1 -Beziehungen schickt man häufig dem von der betreffenden Variable referenzierten
 Objekt eine Nachricht. Der Ausdruck
-239 freund einladen
 beispielsweise besagt, dass das Objekt, mit dem der Besitzer der Variable freund über diese
 Variable in :1-Beziehung steht, die Nachricht einladen erhalten soll. Wenn man dasselbe
 mit :n-Beziehungen machen möchte, so erreicht die Nachricht — bei gleicher Vorgehens-
@@ -13,7 +12,6 @@ richt do: aBlock , wobei aBlock ein mit einem Parameter parametrisierter Block i
 für jedes Element des Arrays genau einmal (mit dem Element als tatsächlich em Parameter)
 aufgerufen wird. Wenn also z. B. die Instanzvariable freunde heißt und eine : n-Beziehung
 ausdrückt, dann schreibt man statt Zeile 239
-240 freunde do: [ :freund | freund einladen]
 Man kann sich fragen, warum die SMALLTALK -Syntax nicht erlaubt, die Nachricht doch direkt
 an das Zwischenobjekt zu schicken, das die : n-Beziehung repräsentiert (also im gegebenen
 Beispiel freunde einladen ), und di es dann intern so umsetzt, dass die Nachricht an alle
@@ -24,23 +22,11 @@ wonnen wäre.
 Auf Basis von do: lassen sich nun zahlreiche weitere natürliche und äu-
 ßerst praktische Kontrollstrukturen erzeugen. So ist wie im obigen Bei-
 spiel recht häufig eine Nachricht gar nicht an alle Elemente einer : n-Beziehung zu senden, Implementierung der
-internen Iteration am
-Beispiel von do:
-Iterationen mit
-zusätzlicher Funktion
 sondern nur an solche, die bestimmte Kriterien erfüllen. Dazu ist es möglich, die Beziehung
 quasi im Vorübergehen einzuschränken und den Block dann nur auf der Einschrän kung
 auszuführen:
-241 (freunde select: [ :freund | freund eng == true])
 do: [ :freund | freund einladen]
 Dabei ist die Methode select: wie folgt implementiert:
-242 select: aBlock
-243 | answer |
-244 answer := self species new.
-245 self do: [ :element |
-246  (aBlock value: element)
-247  ifTrue: [answer add: element]].
-248 ^ answer
 Zeile 244 müssen Sie hier noch nicht verstehen; der Rest sollte Ihnen aber inzwischen klar
 sein. answer ist eine temporäre Variable , die nur innerhalb der Methode Gültigkeit hat; ihr
 werden in der Do -Schleife mittels add: (einer Methode mit offensichtlicher Funktion) alle
@@ -49,26 +35,16 @@ auswertet.
 Auf ähnlich einfache Weise lassen sich nahezu beliebig weitere Kontrollstrukturen realisie-
 ren. Zu select: komplementär ist beispielsweise die Methode reject: , die aus einer : n-
 Beziehung alle die Elemente entfernt, die eine genannte Bedingung nicht erfüllen:
-249 reject: aBlock
-250 ^ self select: [ :element |
-251  (aBlock value: element) not]
 Kaum zu glauben, dass mit so we nig Aufwand der Verwendung eine neue Kontrollstruktur
 hinzugefügt werden kann.
 Eine weitere praktische Methode , die eine Sammlung von Objekten zurückgibt, über die
 dann (mittels do:) iteriert werden kann, ist collect: ; sie sammelt all die Elemente, die die
 Auswertung des ihr als Parameter übergebenen Blocks auf den Elementen der ursprüngli-
 chen Sammlung zurückliefe rt, und ist wie folgt implementiert:
-252 collect: aBlock
-253 | answer |
-254 answer := self species new.
-255 self do: [ :element |
-256  answer add: (aBlock value: element)].
-257 ^ answer
 Aber auch einzelne Elemente einer Beziehung lassen sich bestimmen: detect: mit einem
 Block aBlock als Parameter aufgerufen liefert z. B. aus einer Sammlung von Elementen das
 erste Element zurück, auf dem aBlock ausgewertet den Wahrheitswert true ergibt (wobei
 bei Fehlen eines solchen Elements ein Fehler geliefert wird). Das erlaubt z. B. den A usdruck
-258 (freunde detect: [ :freund | freund eng]) treffen
 zu formulieren, der besagt, dass man sich mit dem ersten engen Freund, und nur mit dem,
 trifft. Für die Praxis wichtiger ist die Variante detect: aBlock ifNone:
 exceptionBlock , die detect: aBlock um einen (parameterlosen) Block ergänzt, des-
@@ -81,9 +57,6 @@ von do: darum, das Ergebnis der Auswertung eines Blocks in einem Iterationsschri
 ersten Parameter in die Auswertung des nächsten Schritts einzuspeisen. So lässt sich bei-
 spielsweise das öde Akkumulieren von Eigenschaften (inkl. der gern vergessenen Initialis ie-
 rung des Akkumulators) elegant wie folgt ausdrücken:
-259 freunde
-260 inject: true
-261 into: [ :einsam :freund | einsam and: [freund eng not]]
 So einfach kann Programmieren sein!
 Für Interessierte: Methoden wie do:, collect: , select: und inject: sind allesamt (al s
 Funktionen höherer Ordnung) aus der funktionalen Programmierung bekannt . In die ob-

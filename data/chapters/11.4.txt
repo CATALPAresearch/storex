@@ -5,7 +5,6 @@ Metaklassen aber bei der Erzeugung von Klassen automatisch angelegt werden (und 
 keine eigenen Namen haben), hat die Programmiererin auch keinen direkten Einfluss auf
 die Vererbungshierarchie der Metaklassen. Vielmehr wird diese automatis ch parallel zur Ver-
 erbungshierarchie der Klassen, die Instanzen der Metaklassen sind, angelegt. Dies hat zur Löschen durch
-Überschreiben
 Folge, dass in SMALLTALK neben den Instanzvariablen und -methoden auch die Klassenvari-
 ablen und -methoden von einer Klasse auf ihre Subklassen vere rbt werden.
 Da in SMALLTALK jede Klasse direkte oder indirekte Subklasse von Object
@@ -45,10 +44,6 @@ SMALLTALK -80 und direkten Derivaten indirekt, über die Klasse ClassDescription
 endlich, neben vielen anderen Methoden, new und new: definiert sind. Man beachte, dass
 diese Methoden als Instanzmethoden deklariert sind; da sie aber in der Vererbungshierar-
 chie SMALLTALK s von den Metaklassen der Klassen geerbt werden (z. B. Object class ), Ursprung von
-Klassenmethoden
-aller Klassen
-Einordnung in die
-Klassenhierarchie
 stehen sie in den Klassen als Klassenmethoden zur Verfügung. new und new: werden also
 in der Praxis immer an Klassen geschickt.
 ObjectObject class ClassMetaclass

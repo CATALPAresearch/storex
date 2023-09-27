@@ -3,7 +3,6 @@ Genau wie in JAVA entspricht in C# zunächst jeder Klasse und jedem Interface ei
 der Version 2.0 ist C# aber ebenfalls generisch geworden. Genauer gesagt erlaubt C# so-
 wohl beschränkten als auch unbeschränkten parametrischen Polymorphismus, sowohl von
 Klassen als auch von Methoden. Die Syntax für beschränkte Typparameter sieht so aus:
-1353 class SortedList<E> where E : IComparable …
 die für unbeschränkte untersc heidet sich nicht von der JAVAs. Parametrisch definierte Klas-
 sen und Interfaces spezifizieren jeweils eine (potentiell unendliche) Menge von Typen, die
 durch Einsetzen konkreter ( tatsächlich er) Typparameter in die Typvariablen entstehen. C#
@@ -27,10 +26,6 @@ kompatibel, wen A ein Subtyp von B ist (vgl. Abschnitt 43.2 in Kurseinheit 4). U
 Zuweisungskompatibilität herzustellen, sieht C# keine spezielle Annotation der Benutzung mangelnde
 Überschreibbarkeit
 expliziter Interface -
-implementierungen
-Unterschiede der
-Generizität zwischen
-C# und JAVA
 eines Typs wie in JAVA vor, sondern eine Annotation der Definition des Typs76: Dem ko - bzw.
 kontravarianten Typparameter wird dazu das Schlüsselwort out bzw. in vorangestellt. Die
 Beschränkungen (nur lesen bzw. nur schreiben) sind dann bei allen V erwe ndungen des Typs

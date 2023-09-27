@@ -5,12 +5,6 @@ hungen bestimmen ganz wesentlich unsere Weltsicht: A lles, was wir anfassen oder
 ten können, ist aus kleineren Teilen zusammengesetzt, die selbst wieder Zusammensetzun-
 gen (Aggregate, Komposita) sind bis hinunter zu den Elementar -, d. h., unteilbaren Baustei-
 nen. Vorteile von
-Zwischenobjekten
-effiziente
-Bearbeitung von : n-
-Beziehungen
-entsc heidend für die
-Produktivität
 Nun ist der Begriff der Teil -Ganzes -Beziehung leider nicht so klar definiert,
 wie es auf den ersten Blick scheint. Tatsächlich bestehen, je nach Art der
 Zusammensetzung, zum Teil völlig unterschiedliche Wechselwirkungen

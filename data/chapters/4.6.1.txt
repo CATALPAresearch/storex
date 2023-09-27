@@ -2,7 +2,6 @@
 Die einfache Verzweigung wird in SMALLTALK durch das Versenden eine Nachricht, die die
 bedingt auszuführenden Anweisungen in Form eines Blocks als Parameter enthält, an einen
 Wahrheitswert realisiert:
-195 x > 5 ifTrue: [Transcript show: "x > 5"]
 beispielsweise gibt genau dann die Meldung „x > 5“ auf der Konsole aus, wenn x > 5 zu
 true auswertet.
 Um zu verstehen, wie das funktioniert, sehen wir uns zunächst die Implementierung der
@@ -12,32 +11,20 @@ deutung von If entsprechend, entweder ausführt oder eben nicht ausführt. Diese
 ist für die beiden Objekte true und false (genauer: für die beiden Objekte, die die Pseu-
 dovariablen true und false benennen; siehe Abschnitt 1.7) jeweils unterschiedlich imple-
 mentiert:
-196 ifTrue: aBlock
-197 ^ aBlock value
 für true und
-198 ifTrue: aBlock
-199 ^ nil
 für false . Wenn also der Empfänger der Nachricht ifTrue: aBlock das Objekt true
 ist, dann bewirkt die Auswertung, dass der Block aBlock ausgeführt wird; ist das Objekt
 hingegen false , wird aBlock nicht ausgef ührt, was genau der Bedeutung der Nachricht
 entspricht. So hat
-200 1 = 1 ifTrue: [Transcript show: 'Eins bleibt Eins!!!'; cr]
 genau den erwarteten Effekt. Aufgrund der Continuation bei Blöcken (s. Abschnitt 4.4.2 )
 ist es möglich, aus einer Methode mittels ifTrue: bedingt zurückzukehren:
-201 returnEarly
-202 1 = 1 ifTrue: [^ true].
-203 ^ false
 liefert true zurück, da durch die Auswertung des Blocks [^ true] per value in Zeile 197
 nicht der Block, sondern die Methode returnEarly , beendet wird. W ie man sieht, hat das
 zunächst etwas eigenwillig anmutende Konzept der Continuation in Kombination mit Re-
 turn eine erhebliche programmierpraktische Relevanz.
 Aus Symmetriegründen wird auch die Methode ifFalse: aBlock angeboten, die wie
 folgt implementiert ist:
-204 ifFalse: aBlock
-205 ^ nil
 für true sowie
-206 ifFalse: aBlock
-207 ^ aBlock value
 für false . Eigentlich viel zu banal, um es hinzuschreiben, aber da es nur ein einziges Mal
 gemacht werden muss und dabei so etwas Fundamentales wie die Verzweigung realisiert,
 kann man sich auch daran freuen.
@@ -53,15 +40,8 @@ lisieren würden und schreiben Sie die entsprechenden Methodendefinitionen auf.
 Nach demselben Prinzip wie die einfache Fallunterscheidung vermeidet SMALLTALK übrigens
 auch solche, die das Auftreten von nil betreffen. So ist zum Beispiel die Methode isNil
 für nil als
-208 isNil
-209 ^ true
 und für alle anderen Objekte als
-210 isNil
-211 ^ false
 implementiert.
 Selbsttestaufgabe 4.4
 Überlegen Sie, wie Sie die logischen Operatoren and: , or: und not für true und false imple-
 mentieren würden!
-Fallunterscheidung
-durch dynamisches
-Binden

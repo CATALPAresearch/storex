@@ -19,12 +19,6 @@ gegenwärtigen Stelle abgebrochen und an der nächsten Stelle fortgesetzt wird, 
 den zum Typ (zur Klasse) der Exception -Instanz passenden Exception handler zu haben.
 Dazu ist es notwendig, die Codestrecke, in der die Exception auftreten kann, mit einer Try -
 catch -Klammer zu versehen, also mit einem Konstrukt der Form
-1160 try {
-1161 … anArray[anIndex] …
-1162 }
-1163 catch (ArrayIndexOutOfBoundsException e) {…}
-1164 catch (<andere Exceptionklasse> e) {…}
-1165 …
 wobei der Typ der geworfenen Exception idealerweise in einer de r Catch -Klauseln vor-
 kommt. Ist dies nicht der Fall, gilt die Exception als durch die Try -catch -Klammer nicht be-
 handelt und es wird die nächste umschließende Klammer gesucht (wobei mit nächste die
@@ -36,14 +30,6 @@ auch durch das Programm selbst entdeckt und gemeldet (entsprechende Exceptions g
 fen) werden. Dazu dient die schon erwähnte Throw -Anweisung, die mittels einer Instanzi-
 ierung der Exception -Klasse eine entsprechende Ausnahme wirft. So verlagert beispiels-
 weise
-1166 try {
-1167 …
-1168 if (anIndex < 0 || anIndex >= anArray.length)
-1169  throw new ArrayIndexOutOfBoundsException();
-1170 else {
-1171  … anArray[anIndex] …
-1172 }
-1173 }
 den Test von der virtuellen Maschine ins Programm.
 Try-catch -Anweisungen stehen wie fast alle Anweisungen in JAVA im
 Rumpf von Methoden. Wenn eine Methode eine bestimmte Exception wirft, ohne sie selbst
@@ -52,8 +38,6 @@ schlossen wird, die eine Catch -Klausel mit dem entsprechenden Typ enthält), da
 die JAVA-Sprachdefinition zunächst, dass die Methode dies deklariert, dass sie also bekannt-
 gibt, dass sie u. U. eine Exception des genannten Typs werfen wird. Dies geschieht mittels
 einer Throws -Klausel und sieht dann wie folgt aus:
-1174 … <Methodennam e> (<Parameterliste>) throws <Exceptionname> {…} Throw -Anweisung
-Checked exceptions
 Eine Methode, die diese Methode aufruft, muss also den Aufruf entweder mit einer Try -
 catch -Anweisung klammern, die die geforderte Catch -Klausel enthält, oder selbst deklarie-
 ren, die Exception zu werfen. Dies e Praxis führt zwar zu erheblicher Schreibarbeit, stellt aber
@@ -87,10 +71,7 @@ sen Elemente alle unchecked sind.
 Neben Exception ist auch Error Subklasse von Throwable . Errors je-
 doch nicht gefangen werden , sondern zu einem sofortigen Programmabbruch führen. Die
 Konstruktion
-1175 if (…) throw new Error("das ist schiefgegangen!");
 wobei die Auslassungszeichen für die Formulierung einer Invariante stehen, hat man früher
 zur Emulation der inzwischen vorhandenen Assert -Anweisung verwendet; auch heute sollte
 man Errors eigentlich nur während der Testphase eines Programms einsetzen. Gena u wie
 Exceptions der Sorte RuntimeException sind Errors unchecked . Unchecked
-exceptions
-Error s

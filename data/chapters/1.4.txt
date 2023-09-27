@@ -8,28 +8,15 @@ unterschieden werden können.
 Die Gleichheit von Objekten ist Definitionssache und orientiert sich in
 der Regel an ihrem Erscheinungsbild oder ihrer Bedeutung . Gleichheit
 wird in SMALLTALK durch den Gleichheitsoperator = getestet. So liefern
-10 $a = $a
-11 1 = 1
-12 1.0 = 1.0
-13 'Smalltalk' = 'Smalltalk'
-14 #Smalltalk = #Smalltalk
-15 #(1 2 3) = #(1 2 3)
 alle true . Aber auch
-16 1 = 1.0
 liefert true : Obwohl die beiden Zah lliterale verschieden sind (und für verschiedene, also
 zwei, Objekte stehen), bezeichnen sie doch (aus mathematischer Sicht) die gleiche Zahl, so
 dass man sie in SMALLTALK als gleich definiert hat.
 Die Identität zweier Objekte (alternativ: die gleiche Identität zweier
 Objekte) wird in SMALLTALK durch == getestet. So liefern
-17 #Smalltalk == #Smalltalk
-18 1 == 1
 erwartungsgemäß true ,
-19 'Smalltalk' == 'Smalltalk'
 kann hingegen zu false auswerten — zwei syntaktisch gleiche String -Literale können also
 zwei Objekte mit verschiedener Identität repräsentieren . Dies ist zumindest dann sinnvoll, Gleichheit von
-Objekten
-Identität von
-Objekten
 wenn die durch die String -Literale erzeugten Objekte unabhängig voneinander änderbar
 sein sollen und deswegen tatsächlich zwei Objekte sein müssen. Übrigens : Phrasen wie
 „zwei identische Objekte“ sind strenggenommen Unsinn , denn es handelt sich bei vorlie-
@@ -69,15 +56,6 @@ Aber warum sind dann gleiche Zahlen manc hmal identisch, manchmal nicht? Die Ant
 ist noch technischer : Sie hat etwas mit der Repräsentation von Objekten im Speicher zu tun
 und wird im nächsten Abschnitt gegeben. Und so werden in SMALLTALK bestimmte Objekte
 eben anders behandelt als der Rest: Ganze Zahlen (Integer) bis zu einer bestimmten Größe Ist es immer sinnvoll,
-von Identität zu
-sprechen?
-Gleichsetzung von
-Identität und
-Erscheinung
-warum auch
-unveränderliche
-Objekte verschiedene
-Identitäte n haben
 und Zeichen sind aus technischen Gründen immer auch identisch, wenn sie gleich sind —
 für den Rest (mit Ausnahme der Symbole!) gilt das nicht. Konzeptuelle Gründe für die Son-
 derbehandlung gibt es nicht.

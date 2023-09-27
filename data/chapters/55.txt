@@ -8,38 +8,21 @@ Wir nehmen an, wir hätten eine Klass e TapeArchive geschrieben, die Videobände
 viert. Da es sich nicht um eine Mickey -Maus -Anwendung auf dem heimischen Desktop han-
 delt, sondern um ein kommerzielles System, erfolgt die Datenhaltung in einer Datenbank.
 Die folgende SMALLTALK -Klassendefinition gibt einen kleinen Ausschnitt des Systems wieder.
-Klasse  TapeArchive
-benannte Instanzvariablen  database
+Klasse TapeArchive
+benannte Instanzvariablen database
 Klassenmethoden
-1510 new
-1511  ^ super new initialize
 Instanzmethoden
-1512 initialize
-1513  database := Database new: 'tape archive'
-1514 addTape: aTape
-1515  database beginTransaction.
-1516  database add: aTape.
-1517  database endTransaction
-1518 addAllTapes: aCollection
-1519  aCollection do: [ :aTape | self addTape: aTape ]
 Nun ist es in der objektorientierten Programmierung üblich, dass man solche Klassen wie-
 derverwend et, indem man davon neue Klassen ableitet. Wenn beispielsweise eine Kundin-
 nenanforderung kommt, nach der mit jeder Archivierung eine Nachricht verschickt werden
 muss , die das anzeigt, und wenn diese neue Anforderung nicht für alle Kundinnen der Soft-
 ware gleichermaßen interessant ist, dann schreibt man eine Subklasse, die das geänderte
 Verhalten bereitstellt:
-Klasse  NotifyingTapeArchive
-benannte Instanzvariablen  listener
-Superklasse  TapeArchive
+Klasse NotifyingTapeArchive
+benannte Instanzvariablen listener
+Superklasse TapeArchive
 Klassenmethoden
-1520 new: aListener
-1521  ^ super new initialize: aListener
 Instanzmethoden
-1522 initialize: aListener
-1523  listener := aListener
-1524 addTape: aTape
-1525  super addTape: aTape.
-1526  listener notify: aTape
 Das Schöne an der Objektorientierung ist dabei, dass man nu r die Unter-
 schiede (Differentia ) spezifizieren muss — der Rest wird einfach geerbt.
 So genügt es im gegebenen Fall, die Initialisierung (nicht so interessant) und die Methode
@@ -59,15 +42,8 @@ addTape: aus addAllTapes: und die dadurch bedingte wiederholte Ausführung von
 beginTrans action und endTransaction als Ursa che ausmacht und wenn man dann
 in Erwägung zieht, nicht nur die nörgelnde Kundin in ihrer Version, sondern alle Kundinnen
 mit der optimierten Implementierung
-Klasse  TapeArchive
+Klasse TapeArchive
 Instanzmethoden
-1527 …
-1528 addAllTapes: aCollection offene Rekursion
-zum Dritten
-Vorsicht Falle
-1529  database beginTransaction.
-1530  aCollection do: [ :aTape | database add: aTape ].
-1531  database endTransaction
 zu beglücken, was spräche dagegen?
 Selbsttestaufgabe 55.1
 Bevor Sie weiterlesen, antworten Sie: Was spräche dagegen?
@@ -101,7 +77,6 @@ pauschal berücksichtigen muss , aber dies würde die Möglichkeiten, in Superkl
 zu ändern, so stark einschränken, dass das ganze Konzept ad absurdum geführt würde. Es
 bleibt also nicht viel mehr, als beim Einsatz von Vererbung große Vorsicht walten zu lassen
 oder sie ganz zu verbieten.
-Schuldfrage
 Das folgende , im Kontext des Component Object Models (COM) getätigte Zitat aus dem
 Hause MICROSOFT fasst es schön zusammen:
 Implementation inheritance —the ability of one component to "subclass" or in-
@@ -140,7 +115,6 @@ Kapitel 50 (im Kontext von C#) erwähnten Vorbehalte gegenüber dem dynamischen 
 Nun liegt ja zunächst nahe, bei der Vererbung das zu tun, was man bei
 Abhängigkeiten immer macht : Schnittstellen einzuführen. Im Gegensatz zu der Schnitt-
 stelle, die einem Klient einer Klasse angeboten wird (der diese Schnittstelle nutzt, indem er
-Vererbungsinterface
 seine Variablen mit dem zur Klasse gehörenden Typ deklariert und somit auf Instanzen der
 Klasse zugreifen kann), handelt es sich bei der Schnittstelle zwischen einer Klasse und ihren
 Subklassen jedoch um eine etwas anders geartete: Hier gibt es lediglich zwei Variablen self
@@ -183,9 +157,6 @@ der Zugreifbar machung mit public oder friend bei nicht über Vererbung in Bezie
 stehenden Klassen kann die Zugreifbar keit also in beide Richtungen gehen, und zwar ab-
 hängig davon, ob die Methode überschrieben wird oder nicht: Wird sie überschrieben, kann
 die überschreibende (in der Subklas se) von der Superklasse aus aufgerufen werden und die protected , virtual
-und override
-Bidirektionalität des
-Protected -Interfaces
 überschriebene (in der Superklasse) von der Subklasse (über super ) — wird sie nicht über-
 schrieben, kann die Methode der Superklasse aus der Subklasse heraus aufgerufen werden.
 Es bleibt also ein höchs t verworrener Eindruck. Dies ist um so bedauerlicher, als BJARNE

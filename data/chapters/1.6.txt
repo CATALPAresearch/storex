@@ -5,17 +5,10 @@ wurde als Zuweisungsoperator das Symb ol „“ gewählt; wegen der mangelnde
 barkeit auf Tastaturen wurde es jedoch in den meisten SMALLTALK -Implementierungen durch
 das aus ALGOL und PASCAL bekannte := ( englisch als „ becomes “ gelesen) ersetzt.7 Die
 Variable lieblingszahl bezeichnet also i n Folge der Zuweisung
-20 lieblingszahl := 2
 ein Objekt „2“ (in der Zuweisung repräsentiert durch das Literal 2). Nach einer Zuweisung
-7 Dass in C und allen davon abgelei teten Sprachen (sowie in BASIC) das einfache Gleichheitszeichen
 = für die Zuweisung steht, darf als eine der Tragödien in der Geschichte der Programmiersprachen
 angesehen werden. Ich möchte nicht wissen, wie viele fatale Fehler auf die dadurch provozierte Ver-
 wechselung von Test auf Gleichheit und Zuweisung zurückzuführen sind. lokale und globale
-Variablen
-Benennungs -
-konvention in
-SMALLTALK
-21 x := y
 bezeichnen x und y das gleiche Objekt (genau welches ist hier nicht er-
 sichtlich); ob sie auch dasselbe bezeichnen, hängt von der Semantik der
 Variablen ab. Man beachte, dass in SMALLTALK (anders als in typisierten
@@ -29,9 +22,6 @@ selben Wert hatten. Zur besseren sprachlichen Unterscheidung der Seite, der zuge
 wird, und der, die zugewiesen wird, spricht man häufig von der linken und der rechten Seite
 einer Zuweisung .
 Nach den drei Zuweisungen
-22 x := 5
-23 y := 3
-24 x := y
 bezeichnen x und y beide die „3“. Wäre die letzte Z uweisung hingegen y := x gewesen,
 bezeichneten x und y beide „5“.
 Die Zuweisung ist ein elementares Konstrukt der objektorientierten Programmierung sowie
@@ -52,14 +42,6 @@ der rechten Seite unterschiedliche Sem antiken haben, dann liegt entweder eine u
 Zuweisung (s. Kapitel 18) vor oder es muss , je nach Art der Variable auf der linken Seite,
 eine Kopie eines Objektes oder ein Verweis auf ein Objekt angefertigt werden (s. dazu auch
 Abschnitt 52.5.2 in Kurseinheit 5). keine
-Einschränkungen bei
-der Zuweisung
-zwei Seiten einer
-Zuweisung
-Beispiel
-Wert - und
-Verweissemantik bei
-der Zuweisung
 Selbsttestaufgabe 1.3
 Finden Sie (durch Experimentieren) heraus, welche Objekte Ihres SMALLTALK -Systems per Wertseman-
 tik gespeichert werden. Nutzen Sie dabei aus, das SMALLTALK vor der Erzeugung eines Objekts mit

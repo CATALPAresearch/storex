@@ -1,0 +1,19 @@
+Kurseinheit 5: Andere objektorientierte
+Programmiersprachen
+Während der obige Leitspruch aus akademischer Sicht sicher richtig ist, können sich Prakti-
+kerinnen (und solche, die es werden wollen) diese Einstellung nicht leisten. Stattdessen muss
+man die Sprachen kennen, für die es einen Markt gibt. Und so zeichnen sich die in dieser
+Kurseinheit behandelten Sprachen mit Ausnahme von EIFFEL weniger durch revolutionäre
+Konzepte oder neuartige Sichtweisen aus, sondern vielmehr dadurch, dass sie in de r Praxis
+weite Verwendung finden. Gleichwohl mag die eine oder andere Eigenheit der einen oder
+anderen Sprache der Leserin Anlass geben, ihre bisherigen Denkweisen zu überprüfen.
+Ziel dieser Kurseinheit ist es übrigens nicht, Sie zu Programmiererinnen in einer der (oder
+gar allen) in dieser Kurseinheit behandelten Sprachen C#, C++ und EIFFEL zu machen. Ziel
+ist vielmehr, Ihnen eine erste Übersicht und ein Verständnis dieser Sprachen zu vermitteln.
+Sie sollen einen Eindruck davon bekommen, auf was Sie sich einlassen, wenn Sie sich ent-
+scheiden, in einer der genannten Sprachen Software zu entwickeln. Dazu gehört nicht, jedes
+Konstrukt jeder dieser Sprachen zu kennen oder auch nur einmal gesehen zu haben, son-
+dern vielmehr eine Vorstellung davon, was jeweils deren charakteristische Eigenschaften,
+was die Stärken und was d ie Schwächen jeder einzelnen Sprache sind. Je nachdem, wie sich
+die einzelnen Sprachen von bereits besprochenen unterscheiden, fällt die folgende Darstel-
+lung kürzer oder länger aus.

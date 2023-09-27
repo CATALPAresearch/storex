@@ -3,11 +3,6 @@ In der klassenbasierten Form der objektorientierte n Programmierung ist die Vere
 Klassen gebunden: Selbst wenn sich die Definitionen eigentlich auf die Instanzen der Klas-
 sen beziehen, so ist es doch die Klasse, die Teile ihrer Definition (Intension) von anderen
 erbt. Im Gegensatz dazu ist die Verer bung in prototypenbasierten objektorientierten Pro-Umkehrung der
-Vererbungsrichtung
-Löschen von
-Geerbtem
-Außen - und
-Innensicht
 grammiersprachen, in denen es ja keine Klassen gibt, vollständig zwischen Objekten defi-
 niert: Jedes Objekt gibt eines oder mehrere andere an, deren Eigenschaften und Verhalten
 es übernimmt. Dabei kann es ge erbte Teile der Definition überschreiben und auch löschen.

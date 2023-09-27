@@ -25,16 +25,9 @@ die für das Bestehen einer Zuweisungskompatibilität eingehalten werden müssen
 scheiden. Vor allem darum wird es in den nächsten Kapiteln gehen.
 Angenommen, zwei temporäre Variablen anzahl und erfolgre ich seien wie folgt de-
 klariert:
-862 | anzahl <Integer> erfolgreich <Boolean> |
 Dann sind, unter der Annahme, dass 12 vom Typ Integer ist und true vom Typ Boolean ,
 die Zuweisungen
-863 anzahl := 12
-864 erfolgreich := true
 zulässig (da sie keine Typinvariante verletzen),
-865 anzahl := false
-866 erfolgreich := 12 Feststellung der
-Zuweisungs kompati-
-bilität
 hingegen nicht. Ist eine Zuweisung zulässig, dann spricht man auch von einer Zuweisungs-
 kompatibilität der beteiligten Typen. Die für das Programmieren relevante Implikation ist
 allerdings die umgekehrte: Wenn zwei Typen zuweisungskompatibel sind, dann gilt, dass
@@ -59,8 +52,5 @@ sungskompatibilität Typkorrektheit. Außerdem kann eine Methode, wenn sie Werte
 gibt, ja selbst in rechten Seiten von Zuweisungen auftreten; der Typ dieser Werte muss dann
 mit der Variable auf der linken Seite zuweisungskompatibel se in. So sind bei Vorliegen der
 Deklarationen
-867 m: p <E> ^ <A>
-868 | e <E> a <A> |
 sowohl die explizite als auch die impliziten Zuweisungen in
-869 a := self m: e
 zulässig; den Methodenaufruf kann man im übertragenen Sinne als zulässig bezeichnen.

@@ -2,15 +2,12 @@
 Die Blöcke von SMALLTALK können auch als anonyme Funktionen aufgefasst werden, wobei
 alle bisherigen parameterlos waren: Der Bezug zu ihrer Umwelt wurde ausschließlich über
 den Home context hergestellt. Es aber auch möglich , Blöcke mit Parametern zu versehen, Laufzeitfehler bei
-Continuations
 die bei ihrer Auswertung an Objekte aus dem Kontext der Auswertung gebunden werden
 können. Den obige n Swap -Block könnte man also auch wie folgt definieren wollen :
-193 swap := [ :x :y | | temp | temp := x. x := y. y := temp]
 wobei die jeweils von einem Doppelpunkt eingeleiteten und vom Rest des Blocks durch
 einen senkrechten Strich abgetrennten Variablen x und y die formalen Pa rameter des Blocks
 sind und das — analog zu einer Methode — in Strichen eingeschlossene temp eine lokale
 Variable ist. Der Variable swap wie oben zugewiesen kann der Block mittels
-194 swap value: a value: b
 ausgewert et werden , wenn a und b Variablen aus dem Kontext der Auswertung sind.
 Selbsttestaufgabe 4.2
 (a) Versuchen Sie, durch Überlegen oder Ausprobieren herauszufinden, ob die Auswertung des

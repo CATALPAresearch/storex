@@ -1,7 +1,6 @@
 26.4 Inklusionspolymorphie
 Ein von Christopher Strachey, einem der Urväter der Programmierung als wissenschaftliche
 Disziplin, eingeführter Begriff ist der der Polymorphie . Polymorphie bedeutet allgemein
-52 Wer ein Beispiel weiß oder hat, möge es mir bitte schicken!
 Vielgestaltigkeit und wird vor allem in der Biologie verwendet. In der Programmierung steht
 er für verschiedene Dinge, die jedoch alle mit Typen zu tun haben.
 Unter Inklusionspolymorphie , auch Subtypp olymorphie genannt , vers teht man im we-

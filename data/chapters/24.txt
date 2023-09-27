@@ -19,23 +19,12 @@ mität reicht es aus, wenn der konforme Typ wie oben alle Elemente des Typs, zu 
 konform sein soll, enthält: Der Typ mit der Definition
 Typ InternationaleWohnung
 Protokoll
-886 straße ^ <String>
-887 straße: einStraße <String> ^ <Self>
-888 ort ^ <String>
-889 ort: einOrt <String> ^ <Self>
-890 länderkennzeichen ^ <String>
-891 länderkennzeichen: einLänderkennzeichen <String> ^ <Self>
 ist also zum Typ Büro strukturell konform. Für die nominale Konformität muss zusätzlich
 und explizit die Erweiterung eines (oder Ableitung von einem) anderen Typ angegeben wer-
 den: die Definition von InternationalesBüro aus Kapitel 23 ist also mit Büro nicht nur
 strukturell, sondern auch nominal konform. Da bei der Erweiterung alle Elemente des Typs,
 der erweitert wird, beim erweiternden erhalten bleiben, folgt die Konformität aus der Er-
 weiterung. formale
-Eigenschaften der
-Typkonformität
-strukturelle und
-nominale
-Typkonformität
 Nun ist die Teilmengenbeziehung reflexiv, was auf die Typerweiterung
 übertragen bedeutet, dass ein Typ eine Erweiterung eines anderen sein
 kann, ohne tatsächlich etwas hinzuzufügen. So ist beispielsweise gemäß
@@ -44,12 +33,9 @@ Typ NationalesBür o
 erweiterter Typ Büro
 Protokoll
 NationalesBüro eine Erweiterung von Büro und mit den Variablendeklarationen
-892 | b <Büro> nb <NationalesBüro> |
 die Zuweisung
-893 b := nb
 bei geforderter nominaler und struktureller Typkonformität zulässig. Die umgekehrte Zu-
 weisung ist
-894 nb := b
 ist jedoch bei geforderter nominaler Typkonformität nicht zulässig, da Büro eben nicht no-
 minal konform ist zu NationalesBüro ; strukturell ist es es hingegen schon.
 Typäquivalenz implizi ert übrigens, jeweils für die nominale und die struk-
@@ -70,15 +56,6 @@ Erweiterung abgeleitet wird, über den Vorgang der Erweiterung automa-
 tisch gegeben ist (und so keine aufwendigen, fallweisen Konformitäts-
 tests durchgeführt werden müssen), setzen die meisten gebräuchlichen, typisierten Pro-
 grammiersprachen auf nominale Typkonformität als Bedingung für die Zuweisungskompa-Spezialfall
-Erweiterung ohne
-Erweiter ung
-Typäquivalenz als
-Spezialfall der
-Typkonformität
-Filterfunktion
-Vorteile der
-nominalen
-Typkonformität
 tibilität. Interessanterweise wurde STRONGTALK , das ursprünglich ein auf struktureller Kon-
 formität beruhendes Typsystem (inkl. Type branding ) hatte, inzwischen auf nominale Typ-
 konformität umgestellt. Als Begründung wurde angeführt, dass ein strukturelles Typsystem,
@@ -90,6 +67,5 @@ Fehlerquelle beziehen und sehr schwer zu verstehen sind [ STRONGTALK 2.0].
 Fragen der Zuweisungskompatibilität unter Typerweiterung spielen übri-
 gens auch bei Funktionsaufrufen, bei denen ja implizite Zuweisungen auf-
 treten (s. Abschnitt 4.3.2 ), eine wichtige Rolle. So muss bei dem Au sdruck
-895 a := self m: e
 der Typ von e eine Erweiterung des in m für den Parameter geforderten Typ sein und der
 Rückgabetyp von m eine Erweiterung des Typs von a.

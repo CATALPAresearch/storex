@@ -7,7 +7,6 @@ grammelemente sichtbar.
 Dieser Ansatz funktioniert jedoch in dem Moment nicht mehr, in dem Programme auf meh-
 rere Pakete aufgeteilt werden. Wenn zwischen den Paketen nämlich Abhängigkeiten beste-
 hen (was, wenn die Pakete zusammen ein Programm repräsentieren, naturgemäß der Fall zirkuläre
-Abhängigkeiten
 ist), dann sind hierfür public Deklarationen erforderlich, die die so deklarierten Program-
 melemente jedoch für alle gleichermaßen sichtbar machen.66 Ein Programm kann also keine
 andere (eingeschränktere) öffentliche Schnittstelle haben als die Summe seiner Pakete.

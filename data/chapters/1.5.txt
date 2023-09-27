@@ -10,7 +10,6 @@ Name „Variable“!). Es können zudem Variablen mit unterschiedlich en Namen f
 Objekt stehen, das damit gewissermaßen verschiedene Namen hat (die sog. Aliase ; s. Ab-
 schnitt 1.8). Wir werden daher im folgenden davon sprechen, dass Variablen Objekte be-
 nennen oder bezeichnen .
-6 Achtung: In der funktionalen Programmierung , in der der Begriff des Namens gebräuchlicher ist als
 in der objektorientierten, steht ein Name immer für dasselbe Objekt. Quintessenz
 Variable vs. Literal ZZwweeii OObbjjeekkttee kköönnnneenn zzwwaarr gglleeiicchh,, aabbeerr nniiee ddaasssseellbbee sseeiinn,, ooddeerr eess ssiinndd nniicchhtt zzwweeii OObb--
 jjeekkttee,, ssoonnddeerrnn eeiinnss!! „„DDaass gglleeiicchhee““ uunndd „„ddaasssseellbbee““ ssiinndd aauucchh iinn ddeerr oobbjjeekkttoorriieennttiieerrtteenn PPrrooggrraammmmiieerruunngg nniicchhtt

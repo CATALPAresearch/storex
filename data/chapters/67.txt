@@ -11,10 +11,7 @@ gemeinbegriffen) zu und lässt dann die Methoden den Daten folgen.
 2. Die Klasse steht zwar für eine Abstraktion der Anwendungsdomäne, aber dies auf
 einem höheren Abstraktionsniveau als das der Implementierung, die Sie gerade b e-
 trachten. Dafür gibt es wiederum mindestens zwei mögliche Erklärungen:
-95 Ganz im Gegenteil: Ich würde es als Unterlassung ansehen, wenn sich jemand weigert, sich erst
 in Bibliotheken umzusehen, bevor sie mit der Entwicklung eigener Ideen beginnt. so wenig wie
-möglich selbst
-machen
 a. Die Abstraktion ist eine Generalisierung (s. Kurseinheit 1, Abschnitt 9.1) und
 Sie haben all deren Spezialisierungen in einer Klasse zusammen gefasst . In
 diesem Fall müssen Sie lediglich die unterschiedlichen Spezialisierungen

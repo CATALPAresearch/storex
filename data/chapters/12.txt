@@ -9,8 +9,6 @@ Wenn eine Methode auf einem Empfängerobjekt aufgerufen wird, wird
 zunächst geprüft, ob die Methode im zur Klasse des Empfängers gehö-
 renden Methodenwörterbuch enthalten ist. Dies kan n man auch selbst
 tun: Es gibt dafür in der Klasse Behavior eine Instanzmethode
-449 includesSelector: aSymbol
-450   ^ self methodDictionary includesKey: aSymbol
 oder so ähnlich (je nach System), die somit allen Klassen (als Klassenmethode) zur Verfügung
 steht. (Behavior ist ja eine Superklasse von Class , die wiederum Superklasse aller Me-
 taklassen ist, einer derer jede Klasse eine Instanz ist, so dass alle Klassen die Methode
@@ -22,9 +20,6 @@ sie ausgeführt. Wird die Methode auch in Object nicht gefunden, kommt es zum be
 (in den Abschnitten 4.3.2 und 11.3) erwähnten Versenden der Nachricht
 doesNotUnderstand: an den ursprünglichen Empfänger mit der ursprünglichen, proble-
 matischen Nachricht als Argument. Ablauf eines
-dynamisch
-gebundenen
-Methodenaufrufs
 Man beachte, dass selbst wenn auf den Empfang einer Nachricht die Me-
 thode einer Superklasse des Empfängerobjekts ausgeführt wird, das Ob-
 jekt, auf dem sie ausgeführt wird, das Empfängerobjekt bleibt. Da die
@@ -41,10 +36,6 @@ Der Suchalgorithmus ist, genau wie der Methodenaufruf selbst, a us Effizienzgrü
 in der virtuellen Maschine implementiert. Die Implementierung ist jedoch im wesentlichen
 äquivalent zu der der Methode canUnderstand: , die genau wie includesSelector:
 in der Klasse Behavior definiert ist:
-451 canUnderstand: a Selector
-452 (self includesSelector: selector) ifTrue: [^true].
-453 superclass == nil ifTrue: [^false].
-454 ^superclass canUnderstand: selector
 Man beachte übrigens, wie wenig Aufwand es ist, aus dem klassenba-
 sierten Methoden -Lookup einen objektbasierten zu machen: Man muss
 dazu lediglich jedem einzelnen Objekt sein eigenes Methodenwörterbuch
@@ -64,15 +55,6 @@ Eines der immer wieder vorgetragenen Hauptargumente gegen den Ein-
 satz von SMALLTALK in der kommerziellen Programmierung ist der Um-
 stand, dass das dynamische Binden wirklich vollkommen dynamisch ist: Dass einem Objekt
 eine Nachricht geschickt wird, die es nicht versteht, tritt immer erst zur Laufzeit zutage (s. Verhältnis von
-Empfänger und
-Methode
-Unterschied zu
-prototypenbasierter
-Form der
-objektorientierten
-Programmierung
-Kritik an SMALLTALK s
-dynamischer Prüfung
 Abschnitt 10.3 und 11.3).41 In den statisch typgeprüften Sprachen, die wir in den nächsten
 Kurseinheiten kennenler nen werden, ist das charakteristischerweise nicht so. Dem kann
 man entgegenhalten, dass die heutigen (auch) statisch typgeprüften Programmiersprachen

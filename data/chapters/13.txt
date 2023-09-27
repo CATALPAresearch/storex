@@ -25,8 +25,3 @@ kommt hinzu, dass die Standarditeratoren je nach Art der Beziehung unterschiedli
 genschaften haben. Außerdem ist es natürlich möglich, mit eigenen Arten von Beziehungen
 auch spezielle, nur für diese Beziehungen benötigte Kontrollstrukturen zu spezifizieren.
 Doch zunächst zur Pflege von solchen Beziehungen.
-:n-Beziehungen mit
-Verhalten
-spezielle
-Kontrollstrukturen
-für :n-Beziehungen

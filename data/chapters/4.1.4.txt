@@ -15,34 +15,19 @@ lich alle Ausdrücke von links nach rechts ausgewertet. Dabei habe n aller-
 dings unäre Ausdrücke Vorrang vor binären und diese wiederum Vorrang vor Schlüsselwort-
 nachrichten, so dass nur bei gleichrangigen Ausdrücken die Auswertung von links nach
 rechts erfolgt. So wird beispielsweise in
-71 x + 1 < y
 zunächst die Nachricht „ +“ an das Objekt, auf das x verweist, mit Argument 1 geschickt
 und an das Ergebnis die Nachricht „<“ mit y als Parameter. Umgekehrt wird bei
-72 x < y - 1 Auswertung eines
-Nachrichten -
-ausdrucks als
-Methodenaufruf
-Zusammenfassung
-Auswertung von
-links nach rechts
 zunächst der Vergleich angestellt und an das Ergebnis, eines der beiden Objekte „true“ und
 „false“, die Nachricht „ –“ mit Argument 1 geschickt. Jedoch wird der Wahrheitswert (das
 Wahrheitsobjekt) die Nachricht nicht verstehen und entsprechend mit einer Meldung wie
 „Nachricht nicht verstanden“ reagieren. Um die Präzedenz zu ändern, kann man einfach
 Klammern s etzen:
-73 x < (y - 1)
 hat das gewünschte Ergebnis. Individuelle Operatorpräzedenzen (wie z. B. Punktrechnung
 vor Strichrechnung) kennt SMALLTALK nicht.
 Bei mehrstelligen Nachrichten mit Schlüsselwörtern werden alle Sc hlüs-
 selwörter eines Ausdrucks als zu einer Nachricht gehörig interpretiert, es
 sei denn, es wurden Klammern gesetzt. Der Ausdruck
-74 einEmpfänger
-75 tueDiesMitDem: erstesArgument
-76 nachdemDuDasGetanHast: zweitesArgument
 wird also als eine Nachricht interpretie rt; falls
-77 einEmpfänger
-78 tueDiesMitDem: (erstesArgument
-79       nachdemDuDasGetanHast: zweitesArgument)
 gemeint gewesen sein sollte, müssen eben die Klammern entsprechend gesetzt werden.
 (Man beachte, dass im geklammerten Ausdruck erstesArgument Empfä nger der Nach-
 richt nachdemDuDasGetanHast: mit zweitesArgument als Parameter ist. Das Ergebnis

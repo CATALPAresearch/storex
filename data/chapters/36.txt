@@ -17,7 +17,6 @@ Klassendefinition abgeleitet werden kann. Genau so verhält es sich in JAVA: Jed
 definiert ihren eigenen Typ. Genauer: Jede Klasse spezifiziert einen Typ, der genauso heißt
 wie die Klasse und der als Eigenschaften die Felddefinitionen und die Methodendeklaratio-
 nen der Klasse enthält. Eine Deklaration
-985 <Klassenname> <variablenname>
 ist also eine gültige Variablendeklaration in JAVA. Man beachte, dass, anders als in STRONG-
 TALK, in JAVA der Typ bei Deklarationen ohne sp itze Klammern vorangestellt wird. Es folgt
 dies der Tradition von C und C++. Die spitzen Klammern in Zeile 985 kennzeichnen hier

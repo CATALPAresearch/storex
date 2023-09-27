@@ -21,32 +21,17 @@ immer temporär. In SMALLTALK sind formale Parameter zudem Pseudovariablen (s. A
 1.7), d. h., es kann ihnen innerhalb der Methode, für die sie sichtbar sind, nichts zugewiesen
 werden. Syntaktisch unters cheidet sich SMALLTALK von den meisten anderen Programmier-
 sprachen auch bei der Methodendefinition dadurch, dass die formalen Parameter nicht
-20 Der im Englischen gebrauchte Term „ actual parameter “ wird auch manchmal mit „ aktueller Pa-
 rameter “ ins Deutsche übersetzt, was oft als falsch verhöhnt wird, aber die Sache trotzdem trifft,
 zumindest, wenn man die zeitliche Dimension, die mit der Programmausführung einhergeht, in Be-
 tracht zieht: Es gibt nämlich in der Regel viele tatsächliche Parameter zu einem Methodenaufruf, von
 denen — zu jede m Zeitpunkt — höchstens einer der aktuelle ist. formal e und
-tatsächlich e
-Parameter
 durch Kommata getrennt in einer in Klammern eingeschlossenen Liste hinter dem Metho-
 dennamen stehen, sondern jeder für sich von einem Nachrichtenbestandteil eingeleitet
 wird.
 Eine Methodendefinition folgt also dem Schema
-80 <Methodensignatur>
-81  "<Kommentar>"
-82 | <Liste lokaler Variablen> |
-83 <Folge von Anweisungen>
 (in spitzen Klammern wieder metasyntaktische Variablen , also Platzhalter für entsprechende
 Programmelemente). Eine einfache Methode wäre etwa
-84 helloWorld
-85  "das berühmt -berüchtigte"
-86 | |
-87 Transcript show: 'Hello World!'; cr
 oder, wer es generischer mag,
-88 sag: einenText
-89  "nicht so unflexibel"
-90 | |
-91 Transcript show: einenText; cr
 Die Methodensignatur als Teil einer Methodendefinition wird im folgenden immer fett her-
 vorgehoben.
 Die Methoden signatur dient der Auswahl der zu einer Nachricht passenden Methode; sie
@@ -56,15 +41,10 @@ ein Nachrichtenausdruck nennt eine Methodensignatur aber kein Empfängerobjekt u
 offenen Stellen eines Nachrichtenselektors werden ausschli eßlich durch Variablen, eben die
 formalen Parameter , und nicht durch beliebige Ausdrücke besetzt. Typische Methodensig-
 naturen sind z. B.
-92 printString
 für Methoden ohne Parameter,
-93 + einInteger
 für binäre Methoden21 (mit einInteger als formalem Parameter) und
-21 Der Begriff der binären Methode bezeichnet hier zweistellige Methoden, die eine Sonderzeichen-
 folge als Name verwenden. In der Literatur wird er häufig anders gebraucht: Der Empfänger und der
 Parameter einer binären Methode haben denselben Typ (vgl. Fußnote 17 und Abschnitt 29.5). Schema der
-Methodendefinition
-94 printOn: einStrom
 für alle anderen Methoden mit einem oder mehreren Parametern (in diesem Fall mit nur
 einem formalen Parameter, einStrom ). Die Methodensignaturen „passen“ übrigens je-
 weils zu den entsprechenden Nachrichtenausdrücken aus den Zeilen 68, 69 und 70. Wenn
@@ -77,9 +57,6 @@ einer Methode nac h Abarbeitung der letzten Anweisung explizit mit der
 Rückgabe des Empfängerobjekts an den Sender der Nachricht beendet. Für explizite Been-
 digungen und Rückgabe eines anderen Objekts als des Empfängers ist die Return -Anwei-
 sung (Abschnitt 4.2) vorgesehen.
-95 helloWorld
-96 Transcript show: 'Hello World!'; cr
-97 ^ 'Hello Wo rld!'
 Eine Return -Anweisung darf an beliebigen Stellen innerhalb der Methode
 auftreten. Die Abarbeitung der Methode kann demnach auch vor Errei-
 chen der textuell letzten Anweisung beendet werden. Die Return -Anweisung beein flusst
@@ -95,19 +72,8 @@ werden insbesondere nach Abarbeitung der Methode vom System wieder en tfernt. Si
 nen sich also auch zwischen zwei Ausführungen einer Methode nichts merken.
 Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischener-
 gebnissen einen Namen geben :
-98 helloWorldX2
-99 | einmal zweimal |
-100 einmal := 'Hello World!'.
-101 zweimal := einmal , einmal .
-102 Transcript show: zweimal; cr
 Umgekehrt können temporäre Variablen, die nur einmal verwendet werden, eingespart
 werden, indem man kaskadierte Nachrichtenausdrücke (Abschnitt 4.1.2 ) verwendet . Rückkehr von eine r
-Methode und
-Rückgabe eines
-Wertes
-explizite Beendigung
-einer Methode
-temporäre Variablen
 Methoden sind die Einheiten des Programms, in denen Sie als Program-
 miererin Ihre Anwe isungen unterbringen. Sie werden nach der Eingabe
 (und bei jeder Änderung) mit dem „Speichern“ kompiliert („Speichern“ deswegen in An-

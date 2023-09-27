@@ -17,38 +17,29 @@ Objekt, das gleich sein soll, vom selben Typ sein muss wie das, mit dem man Glei
 feststellen möchte. Für den Typ Object schreibt man dazu einfach
 Typ Object
 Protokoll
-963 = einObjekt <Object> ^ <Boolean>
-964 …
 für den Typ Number
 Typ Number
 Protokoll
-965 = eineZahl <Number> ^ <Boolean>
-966 …
 usw. Nun ist aber Number ein Subtyp von Object , so dass man die Deklaration von =
 eigentlich aus Object übernehmen könnte — wenn der Typ des Parameter s automatisch
 so angepasst würde, dass er dem definierten Typ entspricht. In einem ersten Ansatz wäre
 man vielleicht versucht, den Gleichheitstest in Object einfach als = einObject <Self>
 ^ <Boolean> zu deklarieren, aber das würde, wenn die Pseudo -Typvariable Self beim
 Subtyping jeweils den Subtyp annehmen soll, zu einer kovarianten Redefinition mit den parametrische
-polymorphe
-Definition binärer
-Methoden
 bereits bekannten Problemen führen.55 Auch hier bietet parametrischer Polym orphismus
 eine Alternative, wenn auch nicht ganz so, wie vielleicht erwartet.
 Man ersetzt dazu zunächst den Typ des Parameters durch eine Typvari-
 able T. Nun kann man schlecht
 Typ T
-Typvariablen  T
+Typvariablen T
 Protokoll
-967 = einT <T> ^ <Boolean>
 schreiben, da der Typ dann keinen Namen hätte und somit auch nicht verwendbar (referen-
 zierbar) wäre. Was man aber sehr wohl machen kann, ist, einen allgemeinen parametrischen
 Typ zu definieren, der nur dem Zweck des Gleichheitstests dient und de r den Parametertyp
 des Tests variabel hält, wie in
 Typ Equatable
-Typvariablen  T
+Typvariablen T
 Protokoll
-968 = einT <T> ^ <Boolean>
 Man kann dann die gewünschte Rekursion indirekt, nämlich per Definition eines nicht pa-
 rametrischen Typs als Subtyp des parametrisierten Typs Equatable herstellen, wobei man
 den zu definierenden Typ gleichzeitig als tatsächlich en Typparameter einsetzt. So l iefert z. B.
@@ -65,12 +56,9 @@ bereiten wird (zumindest macht sie das mir immer wieder aufs neue): Man beschrä
 formalen Typparameter T von Equatable auf einen Subtyp von Equatable[T] , wobei
 das Vorkommen von T in Equatable[T] eine Verwendung der gerade erst eingeführten
 Typvariable T darstellt.
-55 Genau das macht übrigens auch EIFFELs like Current (s. Abschnitt 52.5.2 ). Lösung durch
-Rekursion
 Typ Equatable
-Typvariablen  T < Equatable[T]
+Typvariablen T < Equatable[T]
 Protokoll
-969 = einT <T> ^ <Boolean>
 verlangt also im obigen Beispiel der Typdefinition von Integer als Subtyp einer Instanziie-
 rung der parametrischen Definition von Equatable , dass der tatsächlich e Typparameter
 Integer ein Subtyp von Equatable[In teger] sein muss . Genau das sagt aber die obi ge

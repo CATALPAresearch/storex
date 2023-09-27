@@ -5,8 +5,6 @@ objektorientierten Programmierung ist, dass unser Weltbild, zumindest in weiten 
 einem ähnlichen Modell basiert: Die Welt besteht aus Objekten , die miteinander in Bezie-
 hung stehen . Dabei ist der Objektbegriff nicht auf das rein Materielle beschränkt: Nach all-
 gemeinem Verständnis sind Personen ebenso Objekte wie Dokumente, Zahlen oder Zeichen. Statik vs. Dynamik
-Struktur vs.
-Verhalten
 Bei der Übertragung von realen (d. h., aus einer Anwendungsdomäne
 stammenden) Sachverhalten in ein objektorientiertes Programm ergibt
 sich das Problem, dass die Übertragung, aufgrund der Homogenität der Objektorientierung
@@ -22,3 +20,23 @@ sistenzen im ansonsten klaren, ja puristischen objektorientierten Weltbild, mit 
 leben müssen, wenn wir objektorientiert programmieren wollen (vgl. dazu auch Kapitel 60
 in Kurseinheit 6). Es ist dies der Preis des auch „Ockhams Rasiermesser “ genannten Spar-
 samkeitsprinzips , das auch für die objektorientierte Programmierung Leitlinie ist .
+1.1 Was ist ein Objekt?
+Wie bereits erwähnt sind Objekte im Speicher abgelegte Daten. Dabei ist jedes Objekt an
+genau einer Stelle im Speicher abgelegt: Es wird damit durch seine Speicherstelle eindeutig
+identifiziert . Aufgrund dieser eindeuti gen Identifizierbar keit spricht man auch von der Iden-
+tität eines Objekts ; sie kann aus tech nischer Sicht mit der Speicherstelle, an der das Objekt
+abgelegt ist, gleichgesetzt werden. Da keine zwei Objekte an derselben Stelle abgelegt wer-
+den können, haben auch keine zwei Objekte dieselbe Identität.
+Objekte sind grundsätzlich von Werten zu unterscheiden. Werte werden
+auch im Speicher abgelegt, haben aber keine Identität. Es folgt, dass derselbe Wert an ver-
+schiedenen Stellen im Speicher vorkommen kann. Viele objektorientierte Programmierspra-
+chen (wie etwa JAVA oder C#) unters cheiden ganz offen zwischen Werten und Objekten;
+SMALLTALK tut dies nur hinter den Kulissen und folgt ansonsten seinem Motto „ alles ist ein
+Objekt “.
+Die Menge des Speichers, den ein Objekt belegt, ist aus technischen
+Gründen kon stant. Objekte können somit weder wachsen noch schrump-
+fen. Sollte dies trotzdem notwendig sein, bleibt nur, ein neues Objekt zu erzeugen, das an
+die Stelle (nicht die Speicherstelle!) des anderen tritt. Das neue Objekt hat jedoch eine an-
+dere Identität, so dass alle Stellen im Programm, die sich auf das alte Objekt beziehen, ent-
+sprechend angepasst werden müssen. Wie das geht, wird in Kurseinheit 2, Abschnitt 14.2
+erläutert. verschiedene Arten

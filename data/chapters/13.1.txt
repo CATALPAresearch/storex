@@ -7,14 +7,6 @@ die allesamt der Verwirklichung von : n-Beziehungen dienen. Unsere Zwischenobjek
 diese Beziehungen repräsentieren, sind also alle indir ekte Instanzen von Collection .
 Die Methoden add: und remove: bleiben zunächst (in Collection )
 abstrakt:
-476 add: anObject
-477 ^ self implementedBySubclass
-478 remove: anObject
-479 ^ self
-480  remove: anObject
-481  ifAbsent: [self errorAbsentObject]
-482 remove: anObject ifAbsent: anExceptionBlock
-483 ^ self implementedBySubclass
 Da sie von der tatsächlichen Realisierung einer Collection abhängen, können sie erst in den
 entsprechenden Subklassen (durch Überschreiben ) realisiert werden.
 Beim Entfernen eines Objektes aus einer Collection43 mittels remove:
@@ -32,61 +24,23 @@ den leeren Block [] für anExceptionBlock an. Sollen mehrere Objekte auf einmal 
 Beziehung hinzugefügt bzw. daraus entfernt werden, so stehen hierfür die Methoden
 addAll: aCollection bzw. removeAll: aCollection zur Verfügung, die jeweils
 eine Collection als Parameter er warten.
-43 Wir reden im folgenden von Collections anstelle von : n-Beziehungen und tun dies in dem Be-
 wusstsein, dass es sich bei den entsprechenden Instanzen p rinzipiell um eigenständige Objekte han-
 delt, die hier lediglich die Funktion eines Zwischenobjektes haben, also dem Zweck der Realisierung
 der Beziehungen dienen. Methoden add: und
-remove:
-Sonderfälle bei
-remove:
 Subklassen von Collection müssen also die Methoden add: und
 remove:ifAbsent: überschreiben. Dabei offenbart sich gleich ein Cha-
 rakterzug SMALLTALK s: Da seine Klassenhierarchie keine Generalisierungs-
 hierarchie ist, kommt es vor, dass Subklassen die Methoden add: ,
 remove: und remove:ifAbsent: löschen. Während beispielsweise in der Klasse
 OrderedCollection add: und remove:ifAbsent: mit
-484 add: anObject
-485 endPosition = contents size
-486  ifTrue: [self putSpaceAtEnd].
-487 endPosition := endPosition + 1.
-488 contents at: endPosition put: anObject.
-489 ^ anObject
-490 remove: anObject ifAbsent: aBlock
-491 | index |
-492 index := startPosition.
-493 [index <= endPosition]
-494  whileTrue: [
-495  anObject = (contents at: index)
-496   ifTrue: [
-497   self removeIndex: index - startPosition + 1.
-498   ^ anObject].
-499  index := index + 1].
-500 ^ aBlock value
 überschrieben werden, werden sie in der Klasse FixedSizeCollection , die ebenfalls
 eine Subklasse vo n Collection ist, gelöscht :
-501 add: anObject
-502 ^ self invalidMessage
-503 remove: anObject ifAbsent: aBlock
-504 ^ self invalidMessage
 Die Methoden add: und remove: werden durch die Methoden
 addAll: und removeAll: komplettiert; die Implementierung von
 addAll: können Sie den Zeilen 427–431 oben (Abschnitt 10.3) entnehmen, removeAll:
 verläuft im Prinzip analog (warum SMALLTALK EXPRESS hier eine Kopie zurückgibt, weiß ich
 nicht). Die Methode addAll: wird dazu benutzt, eine Collection in eine andere zu konver-
 tieren:
-505 asBag
-506 ^ (Bag new)
-507  addAll: self;
-508  yourself
-509 asOrderedCollection
-510 ^ (OrderedCollection new: self size)
-511  addAll: self;
-512  yourself Klassenhierarchie
-SMALLTALK s ist keine
-Generalisierungs -
-hierarchie
-Methoden addAll:
-und removeAll:
 Dabei ist addAll: nur einmal, nämlich in Collection , definiert. Man beachte, dass dabei
 ein Objekt nicht seine Klasse wechselt, sondern lediglich der Inhalt einer Collection in eine
 neue übertragen wird. Diese Übertragung ist immer dann sinnvoll, wenn die Klasse der

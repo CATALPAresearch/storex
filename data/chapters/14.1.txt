@@ -5,48 +5,22 @@ gibt, erzeugt werden. Wir hatten allerdings dort schon auf die Möglichkeit des 
 pierens hingewiesen. Darauf wollen wir nun wieder zurückkommen.
 Die einfachste Form des Kopierens eines Objekts erzeugt ein Objekt glei-
 cher Klasse mit gleichen Variablenbelegungen. Dazu gibt es in SMALLTALK die Methode
-550 shallowCopy
-551  "Answer a copy of the receiver which shares
-552  the receiver instance variables."
 Diese Meth ode liefert eine neue Instanz der Klasse des Empfängers, die in denselben Bezie-
 hungen zu denselben anderen Objekten steht wie das Original. Insbesondere werden die
 Objekte, die die Instanzvariablen des Originals benennen, nicht selbst kopiert. Deswegen
 nennt man die Kopie flach . Sie erfolgt einfach durch Zuweisung aller Instanzvariablen des
 Originals an die Instanzvariablen des neuen Objekts, das damit zur Kopie wird. Die Imple-
 mentierung in SMALLTALK EXPRESS ist die folgende:
-553  | answer aClass size |
-554 aClass := self class.
-555 aClass isVariable
-556  ifTrue: [
-557  size := self basicSize.
-558  answer := aClass basicNew: size]
-559  ifFalse: [
-560  size := 0.
-561  answer := aClass basicNew].
-562 aClass isPointers
-563  ifTrue: [
-564  1 to: size + aClass instSize do: [ :index |
-565   answer instVarAt: index
-566   put: (self instVarAt: index)]]
-567  ifFalse: [
-568  1 to: size do: [ :index |
-569   answer basicAt: index
-570   put: (self basicAt: index)]].
-571 ^ answer
 isVariable unterscheidet dabei zwischen Klassen mit indizierten Instanzvariablen und sol-
 chen ohne; isPointers unterscheidet zwischen Klassen mit zusammengesetzten Objek-
 ten und atomaren .
 Nun ist eine flache Kopie aber häufig nicht genug. Es gibt daher noch
 eine zweite Methode
-572 deepCopy
-573   "Answer a copy of the receiver with shallow
-574  copies of each instance variable."
 Wie der Name nahele gt, unterscheidet sich die Methode deepCopy von shallowCopy
 darin, dass auch die in Beziehung stehenden (durch die Instanzvariablen benannten) Objekte
 kopiert werden. Statt einzelner Objekte wird also ein Objektgeflecht kopiert — die Kopie ist
 tief. Es muss dazu an die beiden tatsächlich en Parameter von put: (Zeilen 566 und 570)
 lediglich eine Nachricht zum Kopieren der Parameter angehängt werden. Dabei ist jedoch flaches Kopieren
-tiefes Kopieren
 Vorsicht geboten: Wenn es sich dabei ebenfalls um ein tiefes Kopieren handelt, dann kann
 der Kopiervorgang leicht in eine Endlosrekursion geraten.
 Selbsttestaufgabe 14.1
@@ -62,18 +36,11 @@ niert, deren Klassen shallowCopy aufrufen lassen.
 Manchmal darf bei Kopier - oder Konvertiero perationen kein Objekt des
 gleichen Typs zurückgegeben werden. In diesen Fällen sollte statt self
 class (Zeile 554) self speci es aufgerufen werden:
-575 species
-576  "Answer a class which is similar to (or the same
-577  as) the receiver class which can be used for
-578  containing derived copies of the receiver."
 Die Methode species war uns schon einmal begegnet, und zwar in Kurseinheit 1, Ab-
 schnitt 4.6.4 , Zeile 244. Sie gibt standardmäßig die Klasse des Empfängerobjekts zurück
 und kann überschrieben werden, wenn eine andere Klasse angegeben werden soll. Dies ist
 z. B. bei der Methode collect: , ausgeführt auf einer Instanz von Interval , sinnvoll, da
 collect: hier kein Intervall zurückgeben kann. So kann beispielsweise die von
-579 (Interval from: 1 to: 5) collect: [ :n | n printString ]
 zurückgegebene Collection von Strings nicht als Intervall dargest ellt werden . Entsprechend
 ist in der Klasse Interval die Methode species als
-580 species
-581 ^ Array
 implementiert.

@@ -15,7 +15,6 @@ ventionen zur Ver-
 meidung unprodukti-
 ver Anpassungen White space contributes as much to the effect produced by a software text as
 silence to the effect of a musical piece.
-Bertrand Meyer
 dass wenn eine Programmiererin den Code einer anderen anfasst , sie zunächst einmal damit
 beginnt, diesen so zu formatieren, dass er ihren Lesegewohnheiten entspricht. Die ur-
 sprüngliche Autorin reagiert natürlich empört und wird nichts anderes tun, als dies bei

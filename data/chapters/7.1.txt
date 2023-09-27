@@ -22,11 +22,6 @@ verwunderlich: Je umfangreicher die Charakterisierung einer Menge von Objekten i
 je strenger die Bedingungen sind, die ein Objekt erfüllen muss , um dazuzugehören, desto
 weniger Objekte erfüllen diese Bedingung en und desto kleiner ist entsprechend die Menge.
 Wir werden in Kapitel 9 noch einmal darauf zurückkommen. Charakterisierung
-durch Eigenschaften
-und Verhalten
-Intension und
-Extension von
-Klassen
 Allgemeinbeg riffe sind die Vorbilder für Klassen in der objektorientierten
 Programmierung. Interessanterweise bildet eine wichtige philosophische
 Abweichung vom Glauben an die Adäquatheit von Allgemeinbegriffen, die Idee der Fami-

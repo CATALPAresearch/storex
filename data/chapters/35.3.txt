@@ -1,7 +1,6 @@
 35.3 Variablen und Zuweisungen
 JAVA ist eine stark typisierte Sprache: Alle Ausdrücke haben einen Typ. Das gilt auch für
 Variablen, deren Typ bei ihrer Deklaration an gegeben werden muss . Syntax
-Klassenliterale
 In JAVA gibt es Variablen mit Referenz - und mit Wertsemantik . Welche
 Semantik eine Variable hat, richtet sich nach ihrem Typ. Typen, die zu
 Variablen mit Wertsemantik führen, sind die oben genannten primitiven , namentlich byte ,

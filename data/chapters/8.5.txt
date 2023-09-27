@@ -15,14 +15,10 @@ SMALLTALK zu einem einfachen Trick gegriffen: Man betrachtet die Klasse von Meta
 also Metaclass class , selbst nur als einfache Metaklasse (obwohl sie ja eigentlich eine
 Meta -Meta -Metaklasse ist), die, genau wie alle anderen Metaklassen, Instanz von
 Metaclass sein muss . Es gilt also für Metaclass
-395 Metaclass class class == Metaclass
 Nachfolgendes Diagramm veranschaulicht die Zusammenhänge. Man beachte, dass alle Ob-
 jekte bis auf die der Ebene 0 gleichzeitig Klassen und Instanzen sind. Der gestrichelte Pfeil
 bezeichnet übrigens die Ist -eine-Instanz -von-Beziehung (in UML -Notation). Metaklasse der
-Metaklassen
 Metaclass
-1 nilInteger UndefinedObjectInteger class UndefinedObject class
-2 Ebene 0: AnwendungsobjekteEbene 1: AnwendungsklassenEbene 2: MetaklassenEbene 3: die Meta-MetaklasseMetaclass class Ebene 4: die Meta-Meta-Metaklasse
 Die theoretisch am bitionierte Leserin wird sofort bemerken, dass der
 Kunstgriff der Terminierung der Ist -eine-Instanz -von-Beziehung es verbie-
 tet, Klassen als Mengen von Objekten und deren Instanzen als Elemente
@@ -51,11 +47,6 @@ Anwendung beschreiben.
 Auf Ebene 3 bekommen alle Metaklassen eine gemeinsame Klasse spendiert, von der sie
 eine Instanz sind, nämlich die Klasse Metaclass . Man beachte, dass hier wieder eine 1: n-
 Beziehung vorliegt. Anders als auf Ebene 2, auf der man für die unterschiedlichen Konz epte Verlust der mengen-
-theoretischen Inter-
-pretation
-stufenweise Reduk-
-tion der Vielfalt
-durch Klassifikation
 einer Anwendung jeweils eine Klasse vorfindet, hat man hier, auf Ebene 3, die Vielfalt auf
 genau eine Klasse verdichtet. Diese hat dann wieder genau eine Metaklasse.
 Das nachfolgende Diagramm zeigt noch einmal die Reduktion durch die ersten vier Stu fen.

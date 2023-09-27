@@ -23,24 +23,12 @@ dessen erzeugter Typ typkonform zum Typ von <ein Ausdruck> ist. Dieser spielt be
 kovarianten Redefinition eine wichtige Rolle. Zu einem so erzeugten Typ ist jedoch nur der
 Basistyp konform, keiner seiner Subtyp en.
 Dazu zunächst ein paar Beispiele. Bei
-1429 class B inherit A …
-1430 a : A
-1431 b : B
 ist
-1432 a := b
 OK,
-1433 b := a
-81 Mit dem Typ einer Methode ist hier der Rückgabetyp gemeint. Bedingungen der
-Typkonformität
 hingegen nicht. Im Falle der Vererbung bei parametrischem Polymorphismus wie in
-1434 class GSub[B] inherit class GSuper[B]
-1435 x : GSub[integer]
-1436 y : GSuper[integer]
 ist wieder
-1437 y := x
 zuweisungskompatibel, die umgekehrte Zuweisung jedoch nicht. Beschränkter parametri-
 scher Polymorphismus wird in EIFFEL übrigens wie folgt notiert:
-1438 class SortedList[G -> Comparable]
 EIFFEL benutzt also eckige Klammern und -> anstelle von spitzen Klammern und extends
 in JAVA.
 In EIFFEL wird übrigens anders als in C# nicht pro Typkonstruktor zwischen
@@ -51,10 +39,8 @@ stelle einer Referenz auf ein Objekt zum Inhalt haben sollen (s. Kurseinheit 1, 
 Dies ist manchmal für alle Variablen eines Typs sinnvoll (z. B. bei Zahlen und Wahrheitswer-
 ten), manchmal aber auch nur für manche. Und so gibt es in EIFFEL einen Typkonstruktor
 expanded , der, in Variablendeklaration wie in
-1439 x : expanded C
 eingesetzt, einer einzelnen Variable eine Wertsemantik gibt, und der in Klassendefinitionen
 wie in
-1440 expanded class C …
 verwendet allen Variablen des entsprechenden Typs (der entsprechenden Typen im Falle
 einer generischen Typdefinition) automatisch Wertsemantik gibt. EIFFELs Typkonstruktor
 expanded entspricht also gewissermaßen einer Umkehrung des in PASCAL -artigen Sprachen
@@ -66,13 +52,6 @@ Abschnitt 2.3 diskutierte Komposition und ihre Abgrenzung a ls eine be-
 sondere Beziehung zwischen Objekten, nämlich der, die das Enthalten-
 sein von Objekten in anderen ausdrückt (vgl. dazu auch Kapitel 59 in
 Kurseinheit 6). Nun ist es in der Realität so, dass nicht alle Instanzen einer Klasse immer Typkonstruktoren für
-Referenz - und
-Wertsemantik
-Hintergrund des
-gleichzeitigen
-Angebots von Wert -
-und
-Referenzsemantik
 entweder Komponenten (also in anderen Objekten enthalten) oder freie Objekte (also nir-
 gends ent halten) sind. EIFFEL wird dem gerecht, indem es erlaubt, von einer Klasse fallweise
 Komponentenobjekte (über expanded Variablen) und freie Objekte (über normale Variab-
@@ -98,51 +77,12 @@ Kurseinheit 1) entspräche. Was stattdessen passiert, ist, dass ein Klon des Obj
 wird und eine Referenz auf diesen Klon übergeben wird. Dies ist eine äußerst sinnvolle Fest-
 legung.
 Verankerte Typdeklarationen haben in EIFFEL die Form
-1441 x : like y
 wobei y ein bereits typisiertes Programmelement (also z. B. eine Instanzvariable) ist. Eine
 solche Verankerung bewirkt, dass sich der Typ von x automatisch mit dem von y verändert.
 Dies hat zunächst noch nichts mit Kovarianz zu tun, wie das folgende Beispiel zeig t.
 Anstatt in EIFFEL
-1442 class A
-1443 feature
-1444  f : X
-1445  setF(v : X)
-1446  getF() : X
-1447 end
-1448 …
-1449 end
-1450 class B
-1451 inherit A
-1452 redefine f Zuweisungen
-zwischen Variablen
-unterschiedlicher
-Semantik
-verankerte Typen
-1453 feature
-1454  f : Y
-1455  setF(v : Y)
-1456  getF() : Y
-1457 end
-1458 …
-1459 end
 zu schreiben, d. h., bei Veränderung des Typs der Instanzvariable f von X zu Y alle Parame-
 tertypen, die davon berührt sind, mit zu verändern, reicht es aus,
-1460 class A
-1461 feature
-1462  f : X
-1463  setF(v : like f)
-1464  getF() : like f
-1465 end
-1466 …
-1467 end
-1468 class B
-1469 inherit A
-1470 redefine f
-1471 feature
-1472  f : Y
-1473 end
-1474 …
-1475 end
 zu schreiben. Da die Typen der Parameter von setF und getF alle per Deklaration dieselben
 sind wie der Typ von f, muss in der Definition von B textuell nichts anderes stehen. Da nun
 aber in EIFFEL die Redefinition von Instanzvariablen per Definition immer kovariant sein muss ,
@@ -155,34 +95,17 @@ able vom zu definierenden Typ like Current . Bei einem entsprechend deklarierten
 ändert sich der Typ bei der Vererbung also immer automatisch zum erbenden Typ hin ab,
 also immer mit dem Typ und damit kovariant. Für das Beispiel der zu trennenden Skifahre-
 rinnen (Zeilen 1391 –1425 ) ergibt sich damit
-1476 class SKIER feature
-1477 roommate: like Current;
-1478 share (other: like Current) is
-1479  …
-1480  do
-1481  roommate := other
-1482  end
-1483 …
-1484 end -- class SKIER Verankerung bei
-rekursiven Typen
 Die beiden erbenden Klassen GIRL und BOY müssen dann nichts mehr redefinieren.
 Wir können nun zur Lösung des Pro blems der Kovarianz in EIFFEL kom-
 men. Die obige Konstruktion
-1485 s1 : SKIER; b1 : BOY; g1 : GIRL
-1486 s1 := b1;
-1487 s1.share(g1)
 (hier unverändert wiederholt) wird dann vom Type checker zur Übersetzungszeit zurückge-
 wiesen, da g1 nicht vom Typ like s1 ist, was aber laut Typkonformitätsregeln von EIFFEL
 notwendig wäre . Leider ist das nur ein Teilerfolg.
 Es ist nämlich andersherum like s1 mit dem Typ von s1 konform . Und so wird es möglich,
 dass bei zusätzlicher Deklaration von
-1488 g2 : like s1
 (wobei der Typ von s1 ja SKIER ist)
-1489 s1 := g1; g2 := s1
 und anschließend
-1490 s1 := b1
 doch wieder
-1491 s1.share(g2)
 zulässig ist und damit ein Mädchen einem Jungen ins Zimmer gesteckt wird.
 Die erste und einfachste Möglichkeit, dies zu verhindern, w äre, die Zu-
 weisungskompatibilität für Variablen mit verankerten Typen und Typan-
@@ -197,9 +120,6 @@ Objekt hinaus und in die keines hinein käme (außer bei seiner Erzeugung). Auß
 es für die Programmiererin schwer, vorab zu entscheiden, ob ein Typ entweder als Anker
 zur kovarianten Redefinition verwendet oder ob er polymorph, also für Variablen, die Ob-
 jekte unterschiedlichen Typs haben dürfen, genutzt werden soll. Lösung des Problems
-der Kovarianz
-Lösungs -
-möglichkeiten
 Die zweite Möglichkeit wäre, eine Typinferenz für das gesamte Programm durchzuführen,
 um die möglichen Zuweisungen an Variablen zu sammeln. Dazu sind insbesondere alle Me-
 thodenaufrufe anzus ehen (Zuweisungen an Instanzvariablen sind in EIFFEL nur innerhalb ei-

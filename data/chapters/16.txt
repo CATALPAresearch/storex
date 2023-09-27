@@ -21,7 +21,6 @@ arbeitung möglich. Nur kommt sie (zumindest in SMALLTALK , aber auch z. B. in J
 in Form von aktiven Objekten daher, sondern in Form von parallelen Prozessen. Jeder dieser
 Prozess e führt zu einer Zeit eine Methode aus; er besucht zwar mit dem Methodenaufruf
 die Empfängerobjekte, diese bleiben jedoch selbst passiv (haben also kein Eigenleben). Streams auf Dateien
-parallele Prozesse
 Nun gibt es in SMALLTALK eine einfache Möglichkeit, einen neue n Prozess
 zu starten: Man schickt einfach einem Block die Nachricht fork . fork
 entspricht im wesentlichen value , nur dass der Block dadurch in einem eigenen, unabhän-
@@ -37,8 +36,6 @@ jekt, das diesen Prozess repräsentiert und dem man dann zu einem spä-
 teren Zeitpunkt die Nachricht resume schicken kann, die den Prozess startet. Ein solches
 Objekt erhält man, indem man dem Block newProcess schickt. Tatsäc hlich ist fork wie
 folgt implementiert:
-701 fork
-702 ^ self newProcess resume
 Um einen parametrisierten Block (also einen Block mit Parametern) als Prozess zu starten,
 verwendet man statt newProcess newProcessWith: mit einem Array als Parameter, das
 die tatsächlich en Parameter des Blocks enthält.
@@ -49,8 +46,6 @@ Die Synchronisation von parallelen Prozessen erfolgt in SMALLTALK zu-
 nächst mittels Semaphoren. Objekte der Klasse Semaphore verfügen
 dazu über zwei Methoden, wait und signal , und e ine Instanzvariable,
 die für jedes Empfangen von signal um 1 erhöht und für jedes Empfangen von wait um
-1 erniedrigt wird. Wenn ein Prozess wait an einen Semaphor schickt, dessen Zähler kleiner
-1 ist, wird der betreffende Prozess , der die Nachricht geschic kt hat (nicht zu verwechseln
 mit dem Objekt!) schlafen gelegt (mittels suspend ). Andernfalls läuft er weiter. Erhält der
 Semaphor die Nachricht signal und es gibt noch Prozesse, die schlafen (erkennbar an
 einem Zähler kleiner 1), dann kann ein Prozess , der an dem Semaphor wartet, aufgeweckt
@@ -60,27 +55,6 @@ tiven Objekten noch weit entfernt. Deutlich näher rückt man mit der
 Klasse SharedQueue , deren Instanzen anstelle von Signalen (die ja ein-
 fach nur gezählt werden) Objekte aufnehmen und die eine Synchronisa-
 tion über next und nextPut: erlauben. Das Protokoll sieht wie folgt aus:
-703 next Starten paralleler
-Prozesse
-Erzeugen paralleler
-Prozesse
-Anhalten und
-Beenden paralleler
-Prozesse
-Synchronisation von
-parallelen Prozessen
-mittels Semaphoren
-Synchronisation von
-parallelen Prozessen
-mittels geteilter
-Warteschlangen
-704 "Answer the object that was sent through the receiver first and
-705  has not yet been received by anyone. If no object has been sent,
-706  suspend the requesting process until one is."
-707 nextPut: value
-708 "Send value through the receiver. If a Process has been suspended
-709  waiting to receive a value through the receiver, allow it to
-710  proceed."
 Wenn man nun eine solche Shared queue einem Objekt zuordnet und von anderen Objek-
 ten verlangt, dass sie Nachrichten, anstatt sie dem Objekt zu schicken (und damit eine Me-
 thode des Objekts im eigenen Prozess aufzurufen), in diese Queue einstellen, und dann das

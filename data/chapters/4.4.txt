@@ -1,21 +1,17 @@
 4.4 Blöcke
 Wir kommen nun zu einer der wicht igsten Ausprägungen von SMALLTALK s Alles -ist-ein-Ob-
 jekt-Motto: den Blöcken . Genau wie eine Methode ist ein Einteilun g in
-Nachrichten -
-kategorien
 Block eine abgegrenzte Sequenz , oder Folge, von Anweisungen. Anders als eine Methode
 ist ein Block jedoch nicht benannt ; er kann aber benannt werden, indem er einer Variable
 zugewiesen wird.
 Um auszudrücken, dass eine Sequenz von Ausd rücken ein Block ist, wird
 die Sequenz mit eckigen Klammern markiert. So ist
-175 [ | temp | temp := x. x := y. y := temp ]
 die Definition eines Blocks , der aus der Deklaration der Variable temp und
 drei Zuweisungen besteht . Die Variablen x und y seien dabei a ußerhalb des Blocks , im Kon-
 text des Blocks , deklariert. Dabei ist der Kontext des Blocks die Methode, in der er definiert
 wurde.27
 Bei der Ausführung des obigen Blocks wird ein neues Blockobjekt er-
 zeugt. Mittels
-176 swap := [ | temp | temp := x. x := y. y := temp ]
 wird der Block einer Variable swap zugewiesen. Die Anweisungen, die den Block ausma-
 chen, werden dabei nicht ausgeführt, selb st dann nicht, wenn der Block (wie in Zeile 175)
 isoliert steht und ausgeführt wird (das dabei erzeugte Objekt bleibt namenlos und wird von
@@ -23,7 +19,6 @@ der Speicherbereini gung wieder entfernt).
 Um die Anweisungen, die einen Block ausmachen, zur Ausführung zu
 bringen, muss man ihn auswerten. Dazu schickt man ihm die Nachricht
 value . Der Ausdruck
-177 swap value
 bewirkt, dass die Variablen x und y aus dem Kontext des Blocks ihren Wert tauschen. Das
 Objekt, zu dem swap value auswertet, ist das Objekt, zu dem die letzte Anweisung aus-
 wertet (s. Abschnitt 4.2; im obigen Beispiel also der Inhalt von temp , der derselbe ist wie

@@ -18,31 +18,18 @@ den werden, nämlich dann, wenn die aufrufende Methode selbst erst im Rahmen der
 in der Kette der Superklassen gefunden wurde. Ko nkret bedeutet diese (bereits in Abschnitt
 10.3 im Kontext abstrakter Klassen beschriebene) sog. offene Rekursion , dass das Ergebnis
 des Ausdrucks
-41 Nicht ums onst ist das heute unter dem Namen JUNIT am besten bekannte Unit-test-Frame work
 zuerst für SMALLTALK entwickelt worden — in SMALLTALK ist Testen die einzige Möglichkeit, Fehler in
 einem Programm vor seiner Auslieferung zu finden. offene Rekursion
-zum Zweiten
-455 fremder sagMirWasDuBist
 bei vorliegenden Klassendefinitionen
-Klasse  Super
+Klasse Super
 Instanzmethoden
-456 sagMirWasDuBist
-457  ^ self selbstauskunft
-458 selbstauskunft
-459  ^ 'ich bin Super'
 sowie
-Klasse  Sub
+Klasse Sub
 Superklasse Super
 Instanzmethoden
-460 selbstauskunft
-461  ^ 'ich bin leider nur Sub'
 davon abhängt, von welcher Klasse das Empfängerobjekt fremder eine Instanz ist. So lie-
 fert
-462 fremder := Super new.
-463 fremder sagMirWasDuBist
 „ich bin super“,
-464 fremder := Sub new.
-465 fremder sagMirWasDuBist
 hingegen „ich bin leider nur sub“. Man beachte, dass Vererbung tatsächlich eine Kopieren -
 und-einfügen -Semantik hat, wie in Abschnitt 11.2 bereits nahegelegt: Wenn man die Im-
 plementierung von sagMirWasDuBist aus Super in Sub wiederholt hätte, hätte man das-
@@ -52,4 +39,3 @@ ist und ihr Effekt wohl auch den Erwartungen der Programmiererin ent-
 spricht, ergeben sich doch immer wieder Konstellationen, in denen man unangenehm über-
 rascht wird. Das Problem ist unter dem Namen Fragile -base-class-Problem bekann tgewor-
 den; es wird in Kapitel 55 (Kurseinheit 6) ausführlicher behandelt. Fragile -base -class -
-Problem

@@ -17,8 +17,4 @@ fen. Sollte dies trotzdem notwendig sein, bleibt nur, ein neues Objekt zu erzeug
 die Stelle (nicht die Speicherstelle!) des anderen tritt. Das neue Objekt hat jedoch eine an-
 dere Identität, so dass alle Stellen im Programm, die sich auf das alte Objekt beziehen, ent-
 sprechend angepasst werden müssen. Wie das geht, wird in Kurseinheit 2, Abschnitt 14.2
-erläutert.  verschiedene Arten
-von Objekten
-Objekte vs. Werte
-Speicherbedarf von
-Objekten
+erläutert. verschiedene Arten

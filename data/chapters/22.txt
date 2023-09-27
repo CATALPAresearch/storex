@@ -4,10 +4,6 @@ Offensichtlich ist dies der Fall, wenn die Typen dieselben (i dentisch) sind. Wi
 erwähnt, ist dies aber keine notwendige Voraussetzung für die Zuweisungskompatibilität.
 Es ist nämlich zumindest auch möglich, dass sich zwei verschiedene Typdefinitionen bis auf
 ihre Namen gleichen, dass also z. B. in STRONGTALK die die Typdefinitionen ausmachenden Sprachgebrauch ;
-Transitivität
-Zuweisungs kompa -
-tibilität bei
-Methodenaufrufen
 Mengen der Methodensignaturen gleich sind. Man spricht in diesen Fällen von einer
 Typäquivalenz .
 Von der Typäquivalenz gibt es zwei Arten: die nominale (sich auf den

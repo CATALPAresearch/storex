@@ -8,7 +8,6 @@ miersystem in der Tradition funktionaler und logischer Programmiersprachen wie L
 PROLOG . In der imperativen und objektorientierten Prog rammiersprachenlandschaft sucht
 diese Mächtigkeit bis heute ihresgleichen.
 Für Sie als Programmiererin , die nicht gleich eine neue Sprache erschaffen will, sind Ebene
-2 und 3 sind vor allem dann interessant, wenn Sie sich im Inneren von SMALLTALK umsehen
 oder es vielleicht sogar selbst verändern wollen. Wenn Sie z. B. erreichen wollen, dass beim
 Anlegen einer neuen Klasse für alle benannten Instanzvariablen dieser Klasse automatisch
 Zugriffsmethoden wie in Abschnitt 4.3.4 definiert werden, dann ist dies leicht möglich, in-
@@ -26,7 +25,3 @@ sich Ihre Tätigkeit da auf das Anlegen und Ändern einfacher Klassen, also solc
 Instanzen selbst keine Klassen sind. Die dazu notwendigen Metaklassen erzeugt SMALLTALK
 automatisch selbst — im Klassenbrowser erscheinen sie nur über die Unterscheidung zwi-
 schen Instanz - und Klassenvariablen bzw. -methoden.
-SMAL LTALK als
-Metaprogrammier -
-system
-Programmieralltag

@@ -1,0 +1,20 @@
+Kurseinheit 1: Grundkonzepte der objektorientierten
+Programmierung
+Ein laufendes objektorientiertes Programm muss man sich als eine Menge interagierender
+Objekte vorstellen. Damit die Objekte interagieren können, müssen sie verbunden sein ; sie
+bilden dazu ein Geflecht, das neben Objekten aus Beziehungen zwi schen diesen besteht.
+Das Geflecht verändert sich dynamisch infolge der Interaktion zwischen Objekten; es unter-
+liegt aber gewissen, durch das Programm vorgegebenen statischen Strukturen.
+Die Unterscheidung zwischen Statik und Dynamik ist eine klassische der
+Programmierung. Während Programme traditionell statische Gebilde sind, die auf Papier
+oder in einem Nur -lese-Speicher festgehalten werden können, ist ihre Ausführung immer
+etwas Dynamisches. Wenn aber Programme selbst als Daten auf gefasst werden, dann ver-
+wischt die Grenze zwischen Statik und Dynamik : Programme werden veränderlich. Insbe-
+sondere, wenn Programme sich selbst verändern können, ist die Unterscheidung zwischen
+Statik und Dynamik nur noch bedingt nützlich.
+Alternativ zu Statik und Dynamik kann man auch zwischen Struktur und
+Verhalten unterscheiden, wobei mit Struktur das oben erwähnte Objekt-
+geflecht und mit Verhalten die (Spezifikation der) Folge seiner Veränderungen gemeint ist.
+Diese Unterscheidun g liegt der Gliederung des Rests dieser Kurseinheit zugrunde: von Ob-
+jekten (Kapitel 1) und Beziehungen zwischen diesen (Kapitel 2) geht es über den Z ustand
+als Bindeglied ( Kapitel 3) zu den Elementen der Verhaltensbeschreibung (Kapitel 4).

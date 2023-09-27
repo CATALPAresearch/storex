@@ -4,17 +4,10 @@ nur seine Attributwerte ein. Dies setzt jedoch voraus , dass überhaupt for-
 mal zwischen Attributen und Beziehungen unterschieden werden kann. In Ermangelung
 spezieller Schlüsselwörter könnte dies, wie bereits oben diskutiert, allenfalls über die Unter-
 scheidung von Variablen mit Wert - und solchen mit Referenzse mantik erfolgen. Dies ist
-14 Wenn sie einen hätten, dann immer denselben. Da der Begriff des Zustandes jedoch ohne die
 Möglichkeit der Veränderung kaum einen Sinn hat, sprechen wir auch ni cht vom Zustand unverän-
 derlicher Objekte wie z. B. „1“. Manche SMALLTALK -Dialekte sehen jedoch eine Instanzvariable
 immutable vor, die die Veränderlichkeit von Objekten festlegt und die, so ihr Wert denn geändert
 werden kann, die (Un -)Veränderlichkeit selbst zu einem Teil des Zustandes von Objekten macht. Attribute mit
-Wertsemantik
-Änderung des
-Zustands eines
-Objektes
-Attribute und
-Zustand
 jedoch schon in Sprachen, die der Programmiererin eine entsprechende Entscheidung an-
 bieten, nicht automatisch der Fall (z. B. JAVA, da hier Strings zwar unveränderlich sind und
 somit eigentlich zu den Werten zählen, aber dennoch Referenzsemantik haben); in SMALL-
@@ -57,7 +50,3 @@ Zusammenhang mit Aliasing: Wenn man nämlich davon ausgeht, dass Zustandsänderu
 eines Objekts stets Sache des Objekts selbst sind, dann dürfen keine externen Aliase auf
 seine Teile existieren, denn sonst könnte ihm eine Zustandsänderung von außen quasi un-
 tergejubelt werden . Man sollte den Zustand also k apseln. Reichweite von
-Zustandsänderungen
-Sonderfall Strings
-Zustand und
-Komponenten

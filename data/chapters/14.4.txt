@@ -1,28 +1,17 @@
 14.4 Selbstdarstellung
 Wir hatten bereits ausgenutzt, dass alle Objekte SMALLTALK s eine (mehr oder weniger aus-
 sagekräftige) String -Repräsentation besitzen: Die Methode
-638 printString
-639  "Answer a String that is an ASCII representation
-640  of the receiver."
 gibt eine Darstellung des Objekts als String zurück. Dies ist für Ausgaben auf dem Transcript
 interessant, aber auch für die Inspektion von Objekten und für das Debugging, bei denen
 sich die Objekte unter Verwendung dieser Methode der Betrachterin präsentieren.
 Die Methode inspect
-641 inspect
-642  "Open an inspector window on the receiver."
 startet auf dem Empfänger einen Inspektor und gibt den Empfänger zurück. Dies ist nütz-
 lich, wenn man ein Zwischenergebnis eines Ausdrucks inspizieren möchte, ohne den Aus-
 druck dazu in zwei aufteilen zu wollen — man fügt einfach inspect an der Stelle des
 Ausdrucks, an der das zu inspizierende Objekt gewonnen wurde, ein.
 Die Methode
-643 storeOn: aStream
-644  "Append the ASCII representation of the
-645  receiver to aStream from which the
-646  receiver can be reinstantiated."
 erlaubt, ein Objekt so auf einen Ausgabestrom (s. u.) zu schreiben, dass es daraus rekon-
 struiert werden kann. Dabei wird keine binäre, sondern eine textuelle Repräsentation ver-
 wendet. So schreibt beispielsweise SQUEAK bei Auswertung von Time noon storeOn:
 aStream die Zeichenfolge '12:00 pm' asTime auf den durch aStream bezeichneten
 Ausgabestrom und (Interval from: 1 to: 5) die Zeichenfolge '(1 to: 5)' . Inspektion
-Ausgabe auf einem
-Strom

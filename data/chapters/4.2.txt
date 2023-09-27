@@ -10,11 +10,6 @@ einen Teil der A nweisung selbst. Der Punkt am Ende einer Anweisung darf also fe
 keine weitere Anweisung folgt. Ansonsten entspricht die Wahl des Punktes dem Vorsatz
 SMALLTALK s, der natürlichen Sprache möglichst ähnlich zu sein. So ist auch die Wahl des
 Semikolon s zur Kaskadierung von Nachrichtenausdrücken zu sehen. mehrstellige
-Schlüsselwort -
-nachrichten
-der P unkt als
-Trennzeichen
-Return -Anweisung
 Die einzige andere Form der Anweisung in SMALLTALK ist die Return -Anweisung . Auf sie
 werden wir im Zusammenhang mit Methoden im nächsten Kapitel noch ausführlicher zu
 sprechen kommen. Sie besteht in SMALLTALK aus dem Sonderzeichen ^ (ursprünglich , je-

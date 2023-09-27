@@ -31,45 +31,25 @@ selbst dem kapselnden Objekt gehört , dann nützt es nichts, wenn diese Instanz
 außen unzugreifbar ist91 — sie wird nämlich gar nicht gebraucht, um auf das gekapselte
 Objekt zuzugreifen. Man bedient sich einfach des Aliases.
 In SMALLTALK wird das Problem in folgendem einfachen Codefragment klar:
-1532 jetzt := Time now.
-1533 a := A new erzeugungszeit: jetzt. "neues Objekt mit Erzeugungs zeit"
-1534 jetzt setTime: Time now "Erzeugungs zeit von a ändert sich!"
 Hier soll ein neues Objekt der Klasse A erzeugt werden und die Erzeugungszeit in einer
 entsprechenden Instanzvariable des Objekts fes tgehalten werden. Die Variable jetzt hält
 aber einen Alias auf das Objekt, das diese Zeit repräsentiert; ändert man dieses Zeitobjekt
 (wie in Zeile 1534 ), dann betrifft dies auch die Erzeugungszeit des Objekts a.92 Nun könnte
 man meinen, es genügte, man ersparte sich einfach den (offensichtlichen) Alias jetzt und
 schrie be statt dessen
-1535 a := A new erzeugungszeit : Time now
 Woher weiß man aber, dass die Methode now in der Klasse Time nicht einen Alias auf jedes
 neu erzeugte Objekt anlegt (beispielsweise weil Time Buch darüber führt, welche Instanzen
 es von ihr gibt) und diesen Alias nicht herausgibt oder selbst verwendet, um die Objekte zu
 manipulieren? Auch die alt ernative scheinbare Lösung,
-1536 a := A new erzeugungszeit: jetzt copy "neues Objekt mit
 Erzeugungsdatum"
 funktioniert aus gleichem Grunde nicht zuverlässig, denn auch copy kann sich (heimlich)
 Aliase anlegen.
 Ein anderes Beispiel, bei dem Aliase fehlerhaft ein gesetzt werden, ist das folgende. Ange-
 nommen, Sie wollten eine Ampelsimulation an einem Fußgängerüberweg programmieren.
-91 z. B. durch eine Deklaration mit private oder per Sprachdefinition wie in SMALLTALK und EIFFEL
-92 Man könnte hier argumentieren, dass Zeit ein Wert und kein Objekt und insofer n auch nicht
 änderbar sein soll. Das ist hier aber gar nicht der Punkt. Umgehung der
-Kapselung durch
-Aliase
 Sie haben zwei Klassen, Ampel und Leuchte , und bauen Ihre Objekte durch folgenden
 Code zusammen:
-1537 leuchteRot := Leuchte new farbe: "rot".
-1538 leuchteGelb := Leuchte new farbe: "gelb".
-1539 leuchteGruen := Leuchte new farbe: "grün".
-1540 ampel1 := Ampel new
-1541 autoRot: leuchteRot
-1542 autoGelb: leuchteGelb
-1543 autoGruen: leuchteGruen
-1544 fussgaengerRot : leuchteRot
-1545 fussgaengerGruen : leuchteGruen.
-1546 ampel2 := ampel1
 Wenn Sie nun einem Fußgänger per
-1547 ampel1 fussgaengerGruen an
 grünes Licht geben wollen, gehen leider mit der einen gleich alle vier grünen Leuchten an.
 War das in Ihrem Sinn?
 Man nennt Objekte, die die Implementieru ng eines Objektes ausmachen
@@ -89,17 +69,6 @@ bieten. Tatsächlich bieten ja Programmiersprachen wie C#, C++ und EIF-
 FEL die Möglichkeit an, Klassen als Werttypen zu definieren, so dass bei Zuweisungen nicht
 automatisch Aliase ent stehen. Aber durch eine derart einfache Lösung beschneidet man
 sich selbst nur wieder zahlreicher Möglichkeiten, wie das folgende Beispiel zeigt:
-1548 merkEsDir := Dictionary new.
-1549 a := A new.
-1550 merkEsDir at: "mein A Objekt a" put: a.
-1551 a == (merkEsDir at: "mein A Objekt a")
-1552 ifFalse: ["Oh je, du bist nicht mehr dasselbe! "].
-1553 a aendereDeinenZustand .
-1554 a = (merkEsDir at: "mein A Objekt a")
-1555 ifFalse: ["Oh je, du bist nicht mehr das gleiche! "] Repräsentations -
-objekte
-Folgen eines Alias -
-Verbo ts
 Es ist gerade der Sinn eines Dictionaries (bzw. allgemeiner eines Containers wi e einer Coll-
 ection), dass keine Kopie, sondern das originale Objekt — also ein Zeiger darauf — gespei-
 chert wird! In einer Sprache ohne Referenzsemantik wäre das jedoch nicht möglich. Man
@@ -140,13 +109,6 @@ zwischen den Repräsentationsobjekten und dem Objekt, dessen Repräsentation sie
 chen, verstehen. Die T eile sollen dabei dem Ganzen gehören in dem Sinne, dass sie nicht
 zugleich auch Teile anderer Objekte sein können, und darüber hinaus auch nicht von ande-Geheimnisprinzip als
 Teil der Spezifikation
-Umsetzung des
-Geheimnisprinzips
-mittels nic ht
-zugreifbarer
-Variablen
-Lücken
-ein Lösungsansatz
 ren Objekten referenziert werden können. Letzteres kann man auf einfache Weise verhin-
 dern, wenn man aus den Objekten Wertobjekte macht und die verwendete Programmier-
 sprache keine Zeiger auf Wertobjekte erlaubt. Von den in Kurseinheit 4 und Kurseinheit 5

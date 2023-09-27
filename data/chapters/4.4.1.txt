@@ -1,15 +1,7 @@
 4.4.1 Home context und Closure
 Da Blöcke Objekte sind, die Variablen zugwiesen werden können, können sie auch an an-
 dere Methoden übergeben werden. Werden sie dort (mittels value) ausgewertet, dann
-27 In einem Workspace definierte und mittels doIt usw. ausgef ührte Blöcke werden zu diesem
 Zweck in (temporäre) Methoden übersetzt, die keinem Objekt (oder nil) zugeordnet sind. Definition von
-Blöcken
-Kontext eines Blocks
-Ausführung von
-Blockausdrücken
-Auswertung von
-Blöcken
-Wert eines Blocks
 findet die Auswertung in einem anderen Kontext statt. In diesem sind die „freien“ Variablen
 des Blocks (also die, die nicht selbst als lokale Variablen deklariert wurden; x und y in Zeile
 175) aber gar nicht zugreifbar. Der Block nimmt deswegen seinen Kontext mit (oder, richti-
@@ -18,12 +10,6 @@ wurde ( in dem das ihn repräs entierende Objekt erzeugt wurde) , nennt man sein
 context . Die Auswertung eines Blocks erfolgt stets in seinem Home context, insbesondere
 auch dann, wenn ihm value in einem anderen Kontext gesendet wurde.
 Das folgende Beispiel zweier Methoden soll den Sachverhalt erläutern:
-178 homeContext
-179 | x |
-180 x := 2.
-181 self otherContext: [Transcript show: x printString]
-182 otherContext: x
-183 x value
 gibt auf dem Transcript 2 aus, obwohl im Kontext von otherContext: die Variable x einen
 Block und nicht 2 zum Wert hat. Die (Werte der) Pseudovariablen self und super zählen
 übrigens auch zum Home context ; dies ist vor allem im Zusammenhang mit dem dynami-

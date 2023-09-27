@@ -9,18 +9,8 @@ Funktionen wie sin(.) als Klassenmethoden hinterlegt sind. Umgekehrt ist es den 
 sendefinitionen nicht erlaubt, Operatoren (wie die binären Methoden in SMALLTALK ; s. Ab-
 schnitt 4.1.2 in Kurseinheit 1) zu definieren. Die Trennung von primitiven und Referenztypen
 ist also konsequent durchgezogen58, was JAVAs Charakter als Programmiersprache anfangs
-58 Ausnahmen: Der Additionsoperator + ist auch für Strings definiert und bedeutet dort die Konka-
 tenation (Aneinanderfügung). Strings sind aber sowieso ein Sonderfall in JAVA. Außerdem sind Iden-
 titätstests ( == und !=) und Zuweisung ( =) Operatoren, die für alle Typen definiert sind. Wert - und
-Referenzsemantik
-Wertzuweisungen
-und Inhalt von
-Variablen
-Auto boxing und
-unboxing
-Trennung zwischen
-Operationen und
-Methoden
 wesentlich geprägt und was ihr bei manchen den Ruf einer hybriden Programmiersprache
 (halb objektorientiert, halb imperativ) eingebracht hat. Aus meiner Sicht ist die Unterschei-
 dung zwischen Objekten und Werten, w ie sie in JAVA vorgenommen wurde, aber sinnvoll :

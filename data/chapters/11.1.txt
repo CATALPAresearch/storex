@@ -32,13 +32,6 @@ perklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn d
 solche hat, sie auch die Subklasse haben muss . Methodendefinitionen hingegen, die die-
 selbe Methodensignatur verwenden, überschreiben einfach die geerb ten Methoden. Ent-
 sprechende Regeln sind in anderen Programmiersprachen zum Teil erheblich komplexer. Subklassenbeziehung
-in SMALLTALK
-Erzeugung von
-Klassen als
-Subklassen
-Bedingungen für die
-Zulässigkeit einer
-Subklassenbeziehung
 Da die Subklassenbeziehung auch in SMALLTALK nicht reflexiv ist, muss es
 mindestens eine Klasse geben, die keine Subklasse ist (und ents prechend keine Superklasse
 hat). Es ist die Klasse Object , die oberste aller Superklassen. In ihr sind die Definitionen

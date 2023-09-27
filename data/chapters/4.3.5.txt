@@ -12,5 +12,3 @@ tion dann eher einer Translation gleichkommen (weswegen die entsprechende Method
 auch so genannt werden sollte). Um jedoch zu zeigen, wie man neue Obje kte erzeugen und
 zurückgeben kann, fehlt uns hier noch einiges; wir kommen erst in Abschnitt 7.3 darauf
 zurück. Implementations -
-geheimnis und
-Interface

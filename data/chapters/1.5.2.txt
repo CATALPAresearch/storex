@@ -13,7 +13,6 @@ kann (und damit auch Zugriff auf das von diesem Namen bezeichnete Objekt hat). D
 bezieht sich die Sichtbarkeit immer auf einen Abs chnitt von Programmcode: Wenn eine
 Variable in einem Abschnitt sichtbar ist, dann entspricht jedes Vorkommen des Variablen-
 namens in diesem Abschnitt einer ihrer Verwendungen. Wertsemantik bei
-kleinen Objekten
 Die einzelnen Programmiersprachen unterscheiden sich zum Teil deutlich
 in der Definition ihrer Sichtbarkeitsregeln. Häufig wird jedoch zwischen
 sog. globalen und lokalen Variablen unterschieden. Dabei sind beide Begriffe relativ zu

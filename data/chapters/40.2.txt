@@ -11,9 +11,6 @@ wenn man statt der Interfaces abstrakte Klassen nehmen würde — dann könnte m
 lich die zusätzlichen Methoden mit einer Default -Implementierung versehen, die von den
 „implementierenden“ Klassen geerbt würde, sofern diese Klassen keine eigenen Implemen-
 tierungen angeben. Interfaces in Varia -
-blendeklarationen
-„Interfacevererbung“
-ist keine Vererbung
 Genau das wurde in JAVA 8 auch für Interfaces eingeführt: Ein Interface
 kann die Implementierung einer Methode vorgeben, die dann an implementierende Klassen
 (oder per extends abgeleitete Interfaces) vererbt wird. Dafür hat JAVA ein neues Schlüssel-

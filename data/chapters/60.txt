@@ -1,7 +1,6 @@
 60 Das Problem der mangelnden Eignung
 Wie alle Ingenieurinnen verfallen objektorientierte Programmiererinnen gern dem Hammer-
 prinzip: Wenn man einen Hammer in der Hand hat, sieht alles wie ein Nagel aus. Nicht alle
-93 Das gilt allerdings nicht für SCALA, die „ SCAlable LAnguage“ — hier werden Singleton -Klassen,
 Objekte genannt, zur hierarchischen Strukturierung eines Programms verwendet. mangelnde
 hierarchische (De -)
 Kom ponierbarkeit
@@ -78,11 +77,7 @@ verschiedene Buttons derselben Klasse verschiedene Implementierungen einer Metho
 zugeben. Hier kann man lediglich versuchen, eine Indirektion einzubauen, in SMALLTALK über
 einen Bloc k, der die auszuführende Methode beinhaltet, in JAVA über anonyme innere Klas-
 sen, die für eine bestimmte Methodensignatur eine Implementierung liefern, die nur den
-94 Dies ist strenggenommen nicht richtig: Schon der Standard SQL:1999 enthielt starke objektorien-
 tierte Anleihen. Ich bin mir jedoch nicht sicher, ob diese jemals in der Praxis angekommen sind. objekt -relationaler
-Übergang
-Einzigartigkeit von
-GUI-Elementen
 Instanzen dieser (unbenannten) Klasse gehört, und in C++ sowie C# über Funktionszeiger
 (Dele gates in C#). Von Haus aus besser geeignet scheint hier aber die prototypenbasierte
 Variante der objektorientierten Programmierung, wie in der Einleitung zu Kurseinheit 2 be-

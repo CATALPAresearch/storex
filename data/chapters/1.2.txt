@@ -12,15 +12,12 @@ Die einfachsten Literale repräsentieren Zeichen (gen auer: Zeichenob-
 jekte). Um die literale Repräsentation eine s Zeichens von anderen Vorkommen von Zeichen
 in einem Programm zu unterscheiden, wird ihnen in SMALLTALK ein $ -Zeichen vorangestellt.
 So bezeichnet das Literal
-2 $a
 das Zeicheno bjekt „a“ 4. Dieses Objekt ist atomar , d. h., es ist nicht aus anderen Objekten
 zusammengesetzt. Zeichen sind in anderen Programmiersprachen — auch objektorientier-
 ten — übrigens typische rweise Werte.
 Eine andere Art von Literalen, die atomare Objekte repräsentieren, sind
 die für Zahlen:
-3 1
 ist z. B. ein Literal, das das Objekt „1“ bezeichnet ;
-4 -12.7
 ist ebenfalls ein Zahlliteral. Zahlliterale bezeichnen ebenfalls atomare (nich t zusammenge-
 setzte) Objekte; sie sind in anderen Programmiersprachen typischerweise ebenfalls Werte
 (nicht jedoch sehr große Zahlen mit beliebiger Genauigkeit — die werden auch in anderen
@@ -28,13 +25,11 @@ objektorientierten Sprachen durch Objekte repräsentiert).
 Die in anderen Programmiersprachen vorzufindenden Literale (oder, je
 nach Sprache, Schlüsselwörter ) true , false und nil (oder null ), die
 genau wie Zeichen - und Zahl literale atomare Objekte repräsentieren, sind in SMALLTALK nicht
-4 Ich verwende hier doppelte Anführungsstriche, um Objekte metasprachlich (also im Kurstext, nicht
 in einem Programm) zu benennen. Gemeint ist damit immer die Repräsentation des Objekts im Spei-
 cher. Um ein Literal, also die Repräsentation eines Objekts in einem Programm, zu benennen, setze
 ich es in diesem Kurstext in der Schriftart für (Programm -)Code. Zeichenliterale
 Zahlliterale
 Literale v s. (Pseudo -)
-Variablen
 Literale, sondern Pseudo variablen (s. Abschnitt 1.7). Der Grund dafür scheint eher pragma-
 tischer Natur zu sein : SMALLTALK kennt keine Sch lüsselwörter und indem man true , false
 und nil als (Pseudo -) Variablen auffasst, müssen sie vom Compiler syntaktisch nicht von
@@ -44,7 +39,6 @@ Wenn es atomare Objekte gibt, dann muss es auch zusammengesetzte
 geben. So können beispielsweise Zeichen zu Zeichenketten , den s ogenannten Strings ,
 zusammengesetzt werden, die ebenfalls Objekte sind. Ein String kann aber selbst wieder
 durch ein Literal bezeichnet werden; so steht in SMALLTALK
-5 'Smalltalk'
 für ein String -Objekt „Smalltalk“. Dieses Objekt ist selbst aus Objekten, nämlich den von
 den Zeichenliteralen $S, $m, $a, $l, $l, $t, $a, $l und $k repräsentierten Zeichenobjek-
 ten, zusammengesetzt. Was Zusammensetzung von Objekten heißt und wie sie funktio-
@@ -55,7 +49,6 @@ nicht grundsätzlich so , wie wir noch sehen werden .
 Um durch syntakti sch gleiche Zeichenketten stets dasselbe Objekt zu be-
 zeichnen, bietet SMALLTALK sog. Symbole als weitere Art von Objekten mit literaler Reprä-
 sentation. So ist
-6 #Smalltalk
 die literale Repräsen tation eines Objekts . Es bezeichnet bei jedem Vorkommen im Programm
 dasselbe Symbolobjekt „Smalltalk“ (nicht zu verwechseln mit dem obigen String -Objekt).
 Symbole dürfen, anders als Strings, nicht alle Zeichen enthalten (so z. B. keine Leerzeichen).
@@ -67,11 +60,7 @@ erzeugt er kein neues Objekt, sondern verwendet statt dessen das bereits vorhand
 setzt natürlich eine entsprechende Verwaltung aller Symbolliterale und dazugehörig en Ob-
 jekte durch den Compiler voraus.5 Wie man sich leicht vorstellen kann, wäre diese Vorge-
 hensweise für die universell und in großer Anzahl verwendeten String s sehr zeit aufwendig.
-5 Die dafür verwendete Symboltabelle ist übrigens selbst ein SMALLTALK -Objekt mit Namen
 SymbolTable . String -Literale
-Symbolliterale
-Verwal tung von
-Symbolliteralen
 Gleichwohler versuchen manche SMALLTALK -Compiler, gleiche Literale, die zusammen kom-
 piliert werden, auf dasselbe Objekt abzubilden. Das führt manchmal, durch das sog. Aliasing
 (s. Abschnitt 1.8), zu unerwarteten Ergebnissen bei der Verwendung dieser Literale .
@@ -81,12 +70,9 @@ stehen aber im Gegensatz dazu nicht nur aus Zeichen, sondern aus einer Folge bel
 wieder durch Literale repräsenti erter Objekte. Ein Array -Literal wird in SMALLTALK vom # -
 Zeichen und einer öffnenden Klammer angeführt, der durch Leerzeichen getrennte Literale
 folgen; es wird durch eine schließende Klammer abgeschlossen.
-7 #(1 2 3)
 ist ein solches Array -Literal,
-8 #('Smalltalk' 'ist' 1.0 'Klasse')
 ein anderes. Array -Literale können ineinander geschachtelt sein; das # -Zeichen entfällt je-
 doch bei allen inneren Arrays . In
-9 #(($S $m $a $l $l $t $a $l $k) 'ist' 1.0 'Klasse')
 beispielsweise ist das String -Literal 'Smalltalk' in Zeile 8 durch ein gleichbedeutendes
 Array -Literal, das aus Zeichenliteralen besteht, ersetzt.
 Für Array -Literale gilt ansonsten das Gleiche wie für String -Literale: Dass zw ei syntaktisch

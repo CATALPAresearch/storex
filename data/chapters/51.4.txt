@@ -18,7 +18,6 @@ zusammenzuerben, was man benötigt.
 Da das Erben jedoch nicht se lektiv (in dem Sinne, dass man sich aussuchen könnte, was
 man von einer Klasse erbt) erfolgt und das Löschen von geerbten Membern in C++ nicht
 möglich ist, fühlt man sich häufig bemüßigt , die Klassen, von denen man erbt, in viele kleine
-78 Bei der Delegation, oder genauer beim Forwarding , ordnet man der Instanz der Hauptklasse In-
 stanzen der anderen Klassen bei und delegiert die Funktionen, die die Hauptklasse nicht erben kann,
 an die beigeordneten Instanzen. Das ist dann je doch jedes mal auszuprogrammieren und daher ziem-
 lich lästig.

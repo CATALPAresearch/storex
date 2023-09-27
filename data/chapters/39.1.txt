@@ -2,9 +2,6 @@
 Klassen haben in JAVA mehrere Fun ktionen: Neben der offensichtlichen, der Vorlage für die
 Erzeugung von Objekten, liefern sie auch noch Typen eines Programms und dienen der
 Modularisierung.
-öffentliche und
-private Teile eines
-Moduls
 Pakete hingegen dienen der Sammlung von Klassen und sind zugleich Namensräume für sie
 (keine zwei K lassen innerhalb eines Pakets dürfen gleich heißen). Außerdem gelten für Klas-
 sen innerhalb eine Pakets laxere gegenseitige Zugriffsbeschränkungen als für Klassen aus
@@ -28,30 +25,10 @@ stellenspezifikation eines Moduls , wobei das Modul die Klasse ist.
 Auf die Bedeutung von Klassen als Module gehen ich in Kapitel 59 von
 Kurseinheit 6 noch genauer ein. Hier schauen wir uns noch kurz die kon-
 kreten Auswirkungen der Zugreifbar keitsbeschränkungen an:
-1012 package a;
-1013 public class A {
-1014 public int i;
-1015 protected int j;
-1016 int k;
-1017 private int l;
-1018 public int m() {…}
-1019 protected int n() {…}
-1020 int o() {…}
-1021 private int p() {…}
-1022 }
-1023 package a;
-1024 public class B {}
-1025 package a.a;
-1026 public class C {}
-1027 package a.a;
-64 Die Zugreifbarkeit in JAVA wird oft, und dabei irrtümlich, auch als Sichtbarkeit (visibility ) bezeich-
 net. Sichtbarkeit bezieht sich in JAVA aber auf lexikalische Scopes; sie wird durch Hiding, Shadowing
 und Obscuring eingeschränkt (und kann dann bisweilen über Qualifizierer wiederhergestellt werden). Zugriffs -
 modifikatoren
 Beispiel für Zugriffs -
-modifikatoren und
-deren Auswirkungen
-1028 public class D extends A {}
 Auf einer per A a deklarierten Variable sind abhängig davon, innerhalb welcher Klasse die
 Deklaration steht, die folgenden Elemente zugreifbar (ergeben die folgenden Ausdrücke
 keine Typfehler):

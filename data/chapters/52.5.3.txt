@@ -12,15 +12,11 @@ Solche Typtests werden in EIFFEL von einem sog. Zuweisungsversuch (engl.
 assignment attempt ) übernommen, der bei mangelnder (dynamisch fest-
 gestellter) Zuweisungskompatibilität einfach void (das Äquivalent von nil in SMALL TALK
 und null in JAVA) zuweist:
-1492 a ?= b Typtests und
-Typumwandlungen
 ergibt nie einen Typfehler, sondern führt höchstens dazu, dass a void zugewiesen wird. Es
 bleibt dann die Aufgabe der Programmiererin , a nach der Zuweisung zu kontrollieren. Es
 entspricht dies direkt dem as aus C#, dem dynamic_cast<T>(x) aus C++ sowie dem
 JAVA-Konstrukt
-1493 if (b instanceof A) a = (A) b; else a = null;
 oder auch kryptischer
-1494 a = (b instanceof A) ? (A) b : null;
 wobei A der Typ von a sei (man beachte das ärgerliche, aber in C -artigen Sprachen notwen-
 dige Semikolon vor dem Else). Explizite Type casts gibt es in EIFFEL nicht; sie können also
 auch keine Laufzeitfehler verursachen. Der Zuweisungsversuch erfüllt aber weitgehend die
@@ -39,15 +35,4 @@ thoden. Da EIFFEL ja, wie oben beschrieben, polymorphe CAT -Calls verbieten muss
 aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bin-
 dung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche, wie fol-
 gendes Beispiel zeigt:
-1495 g : GIRL; b : BOY
-1496 g ?= s1;
-1497 if g /= Void then
-1498 g.share(…
-1499 end else
-1500 b ?= s1;
-1501 if b /= Void then
-1502  b.share(…
-1503 end
-1504 end
 Nun ja. emulierte
-dynamische Bindung

@@ -7,11 +7,6 @@ isoliert betrachtet seine Bedeutung verliert. So ist das Objekt rot allein nicht
 Farbe — erst als Attribut eines Objekts (wie z. B. „Apfel“) beko mmt es eine Bedeutung. Das
 gleiche gilt für „Schmidtchen“ oder „1“. Dazu kommt, dass Attributwerte wie die vorge-
 nannten in der Regel selbst keine Attribute haben oder Beziehungen mit anderen Objekten keine
-allgemeingültige
-Definition der Te il-
-Ganzes -Beziehung
-mangelnde
-Sprachunterstützung
 eingehen. Man beachte jedoch, dass dieses Unterscheidung skriterium nicht absolut, son-
 dern relativ zur jeweils betrachteten Domäne ist: Wenn es z. B. um Farben geht, ist „rot“
 ein Objekt, das für sich genommen schon eine Bedeutung hat und das mit anderen Objek-

@@ -21,72 +21,12 @@ Streams werden zunächst immer auf einer Collection erzeugt, deren In-
 halt Basis des Streams ist. Die Erzeugung erfolgt mittels der Klassenme-
 thode on:, die als Parameter eine Collection erhält. Das Basis protokoll auf Instanzebene
 enthält die folgenden Methoden:
-647 contents
-648  "Answer the collection over which
-649  the receiver is streaming."
-650 next
-651  "Answer the next object accessible by the receiver
-652  and advance the stream position. Report an error
-653  if the receiver stream is positioned at end."
-654 nextPut: anObject
-655  "Write anObject to the receiver stream.
-656  Answer anObject."
-657 next: anInteger
-658  "Answer the next anInteger number of items from
-659  the receiver, returned in a collection of the
-660  same species as the collection being streamed
-661  over."
-662 nextPutAll: aCollection Streams als
-Iteratoren mit
-besonderen
-Eigenschaften
-Implementierung der
-Klasse Stream
-663  "Write each of the objects in aCollection to the
-664  receiver stream. Answer aCollection."
-665 nextMatchFor: anObject
-666  "Access the next object in the receiver. Answer
-667  true if it equals anObject, else answer false."
-668 skip: anInteger
-669  "Increment the position of the
-670  receiver by anInteger."
-671 skipTo: anObject
-672  "Advance the receiver position beyond the next
-673  occurrence of anObject, or if none, to the end of
-674  stream. An swer true if anObject occurred, else
-675  answer false."
-676 atEnd
-677  "Answer true if the receiver is
-678  positioned at the end (beyond
-679  the last object), else answer
-680  false."
 Für frei positionierbare Streams kommt noch das Protokoll zur Änderung des Zeigers hinzu:
-681 position
-682  "Answer the current receiver stream position."
-683 position: anInteger
-684  "Set the receiver stream position to anInteger.
-685  Report an error if anInteger is outside the
-686  bounds of the receiver collection."
-687 reset
-688  "Position the receiver stream to the beginning."
-689 setToEnd
-690  "Set the position of the receiver stream to
-691  the end."
-692 peek
-693  "Answer the next object in the receiver stream
-694  without advancing the stream position. If the
-695  stream is positioned at the end, answer nil."
 Für peek ist die freie Positionierbarkeit notwendig, weil man dazu erst das nächste Element
 anspringen und dann wieder einen Schritt zurückgehen muss .
 Da ein Stream (wie eine Collection) eine Menge von Objekten repräsen-
 tiert, möchte man darüber (genau wie über eine Collection) iterieren kön-
 nen. Kein Problem:
-696 do: aBlock
-697  "Evaluate aBlock once for each element in the
-698  receiver, from the current position to the end."
-699 [self atEnd] Iteration über
-Streams
-700  whileFalse: [aBlock value: self next]
 Außerdem wird nat ürlich zwischen (nur) lesbaren und schreibbaren Streams unterschieden.
 Erst eine weitere Kategorie von Streams operiert nicht auf Collections,
 sondern auf externen Daten. Dazu gehören insbesondere die File streams . In SMALLTALK -80

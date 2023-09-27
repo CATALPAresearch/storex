@@ -11,12 +11,6 @@ Im Falle einer Varia ble ist das eine bestimmte Stelle im Speicher, die ge-
 nügend Platz bietet, um den Wert der Variable aufzunehmen. Im Falle einer Methode sind
 es die Anweisungen, die durch die Methode zusammen gefasst werden. Nicht selten (aber
 immer abhängig von der Programm iersprache) erfolgen Deklaration und Definition in einem statische Typprüfung
-statisch und
-dynamisch in der
-Praxis
-Deklaration
-Definition
-Signatur
 Ausdruck. In solchen Fällen spricht man von Deklaration beziehungsweise Definition des
 Programmelementes in Abhängigkeit davon, was man gerade meint. Bei Variablen ist die
 Definition in der Regel implizit und aus der Deklaration ableitbar (der Speicherplatz wird
@@ -40,8 +34,6 @@ selwort eingeleitet), selt ener auch für einen Zeiger auf die Implementierung.
 Variablendeklarationen haben Sie in SMALLTALK bislang an zwei Stellen
 gesehen: als forma le Parameter in Methodendeklarationen und als tem-
 poräre , lokale Variablen in Methodenrümpfen . Im Beispiel
-842 methodeM: a mit: b
-843 | c |
 stecken die Deklarationen von a und b als formaler Parameter und von c als temporäre
 Variable. Weitere Formen der Deklaration werden Sie im Verlauf dieses Kurstextes noch zu
 Gesicht bekommen.
@@ -53,11 +45,3 @@ den, was bei Schreibfehlern dazu führt, dass man plötzlich zwei Variablen anst
 wobei die eine mit der anderen nichts zu tun hat. Eine solche Einladung zu Programmier-
 fehlern sollten Sie als diejenige, die die Entscheidun g für die Auswahl einer Sprache zu tref-
 fen hat, stets ablehnen. Deklaration und
-Definition als Basis
-für die Verwendung
-Beispiel einer
-Variablendeklaration
-fehlende und
-untypisierte
-Variablendeklara -
-tionen

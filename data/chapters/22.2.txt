@@ -38,4 +38,3 @@ Rechnen mit Größen
 Nachteil der
 Namensäquivalenz
 strukturell vs .
-nominal

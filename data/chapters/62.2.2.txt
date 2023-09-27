@@ -2,7 +2,6 @@
 Überaus angemessen, wenn auch nicht immer in letzter Konsequenz ein-
 zuhalten, ist, die verschiedenen Wortarten einer natürlichen Sprache für v erschiedene Arten
 von Programmelementen zu verwenden. So legt beispielsweise der in Kurseinheit 1, Kapitel
-7 beschriebene Zusammenhang zwischen Klassen und Allgemeinbegriffen nahe, dass man
 für Klassennamen Substantive verwendet. Tatsächlich ist es eine vielzitierte objektorientierte
 Technik, in der Analysephase eines Projekts alle Substantive der Spezifikation zu extrahieren,
 um auf der Basis der so gewonnenen Liste die Menge der Klasse n eines Systems zu identi-
@@ -13,34 +12,23 @@ nennen, wobei es eine Stilfrage ist, ob ma n die Infinitiv - oder die Imperativf
 schen übrigens kein Unterschied in der Erscheinungsform) bevorzugt. Persönlich fühle ich
 mich hier an keine Regel gebunden außer an die, dass Ausdrücke durch meine Namenwahl
 möglichst lesbar werden. So kling t
-Klassen
-Methoden
-1628 problem loesen
 (Infinitivform) in meinen Ohren besser als
-1629 problem loese
 (Imperativform),
-1630 ausgabegeraet drucke: einenString
 (Imperativform) klingt dagegen besser als
-1631 ausgabegeraet drucken: einenString
 (Infinitivform). Man könnte natürlich der imperativen Form ein Reflexivpronomen hinzufü-
 gen wie etwa in
-1632 problem loeseDich
 aber das ist eher unüblich (obwohl nicht ohne Charme!). Verbergänzungen wie Präpositio-
 nen verwendet man in SMALLTALK dauernd (schon um mehrere Parameter voneinander ab-
 zusetzen); in Sprachen wie JAVA fügt man einem allgemeinen (und häufig überladenen)
 Verb dann gelegentlich noch ein Substantiv als Objekt des Prädikats hinzu, wie in
-1633 vector.addElement(anElement);
 Gerade dieses Beispiel ist jedoch nicht unumstritten, da „Element“ hier gewisserma ßen re-
 dundant ist — wenn es mehrere Methoden namens „add“ gibt, kann man sie auch mittels
 ihrer Parametertypen unterscheiden (also überladen ). So heißt die entsprechende Me thode
 im JDK heute auch nur noch add(.) .
 Keine Verben, sondern Adjektive (oder Kopula plus Prädikatsnomen) verwendet man hin-
 gegen für Methoden, die eine Abfrage darstellen (Queries; s. Abschnitt 52.2), wie etwa
-1634 stapel voll
 bzw.
-1635 stapel istVoll
 oder
-1636 menge hatElement: einElement
 Für Instanzvariablen verwendet man unterschiedliche Wortarten, und
 zwar abhängig davon, ob eine Instanzvariable ein Attribut oder eine Beziehung repräsen-
 tiert. Wenn es sich um ein Attribut handelt, das eine mehrwertige Qualität ausdrückt (wie

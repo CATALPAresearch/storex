@@ -1,15 +1,11 @@
 36.2 Subklassenbeziehung
 Es ist in JAVA wie in SMALLTALK vorgesehen , dass alle Klassen außer Object von bereits
 existierenden ab leiten. JAVA verwendet dazu das Schlüsselwor t extends :
-992 class B extends A {
-993 …
-994 } Instanzvariablen und
 Methoden
 innere Klassen
 Klassenvariablen und
 -methoden in JAVA
 „statisch“ heißt nicht
-„konstant“
 Es wird dadurch das Bestehen einer Subklassenbeziehung zwischen B und A deklariert. Die
 Verwendung von extends legt bereits nahe, dass es sich dabei zugleich um eine Typerwei-
 terung handelt, aus der (gemäß Kapitel 23) Zuweisungskompatibilität folgt; tatsächlich ist
@@ -22,7 +18,6 @@ Subtyp des Typs der Klasse, von der sie erbt.
 Genau wie in SMALLTALK gibt es in JAVA abstrakte Klassen . Anders als
 SMALLTALK spendiert JAVA jedoch ein Schlüsselwort abstract , mit dem man eine Klasse als
 abstrakt und damit als nicht instanziierbar deklarieren kann. Man schreibt dazu einfach
-995 abstract class A { … }
 Das bedeutet, dass von einer solchen Klasse keine Instanzen mehr gebildet werden dürfen
 (vgl. Abschnitt 10.3). Dabei ist dieses Verbot, dessen Beachtung vom Compiler überprüft
 wird, vollkommen unabhängig davon, ob von der Klasse Instanzen gebildet werden könnten
@@ -31,7 +26,6 @@ vorhanden is t (einschließlich Konstruktoren) , darf sie nicht instanziiert wer
 häufiger ist aber der Fall, dass der Klasse die Implementierung von einer oder mehreren (bis
 hin zu allen) benötigten Methoden fehlt; diese Methoden werden dann in der Klasse l edig-
 lich deklariert, und zwar ebenfalls mit dem Schlüsselwort abstract :
-996 abstract <Rückgabetyp> <methode>(<Parametertyp> <parameter>, …);
 Man gibt dann hinter der Methodensignatur (also dem Namen und den Parametern) keine
 Implementierung (in geschweiften Kl ammern) an, sondern lediglich ein abschließendes Se-
 mikolon. Im Gegensatz dazu muss te ja in SMALLTALK eine abstrakte Methode durch einen
@@ -48,10 +42,6 @@ Komplementär zur Abstract -Deklaration gibt es in JAVA auch die Möglich-
 keit, zu verhindern, dass von einer Klasse abgeleitet wird: Man schreibt
 dazu anstelle von abstract einfach final . Dasselbe gilt für einzelne Methoden, deren
 Übersch reiben in einer Subklasse man durch eine Final -Deklaration verhindern kann. Eine abstrakte Klassen
-Ableitung von
-abstrakten Klassen
-nicht erweiterbare
-Klassen
 einfache, goldene Regel der objektorientierten Programmierung ist übrigens, dass man alle
 Klassen entweder als abstrakt oder als final deklarieren sollte; dies setzt das Prinz ip der abs-
 trakten Generalisierungen durch und vermeidet die Probleme von nur von Vererbung ge-

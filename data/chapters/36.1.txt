@@ -1,16 +1,9 @@
 36.1 Klassendefinitionen
 Eine einfache Klassendefinition sieht in JAVA wie folgt aus:
-986 class <Klassenname> {
-987 <Typ 1> <feld1>;
-988 …
-989 <Rückgabetyp 1> <methode1>(<Parametertyp 1> <parameter 1>, …) {…}
-990 …
-991 }
 Die geschweiften Klammern sind in JAVA (wie auch in C und allen syntaktisch davon abge-
 leiteten Sprachen) Begrenzer für Definitionen und Blöcke; sie entsprechen den Schlüssel-
 wörtern begin und end von PASCAL. Die spitzen Klammern kennzeichnen auch hier wieder
 metasyntaktische Variablen (also Platzhalter für richtige Namen). Klassen und Dateien
-Klassen und Typen
 Die obige Klassendefinition teilt sich in die Angabe von Instanzvariablen ,
 die in JAVA Felder genannt werden, und Instanzm ethoden , die in JAVA
 Beide werden, der Tradition von C++ folgend, zusammenfassend auch als Member be-

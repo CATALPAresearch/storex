@@ -3,19 +3,13 @@ Mit Hilfe von Metaklassen lassen sich nun in SMALLTALK auf natürliche Art und W
 Konstruktoren definieren. Ein Konstruktor ist eine Methode, die, auf einer Klasse aufge-
 rufen, eine neue Instanz dieser Klasse zurückgibt (es handelt sich also aus Sicht der Instanz en
 der Klasse um eine Klassenmethode). Wir haben bereits zwei Konstruktoren von SMALLTALK
-33 Diejenigen unter Ihnen, die eben die Konstruktoren schon kannten, kennen vermutlich auch sta-
 tisch deklarierte Variablen und Method en aus JAVA etc.; diese entsprechen im wesentlichen den Klas-
 senvariablen und -methoden SMALLTALK s (auch wenn in JAVA et al. Klassen keine Instanzen von Me-
 taklassen sind). Beispiel
-Terminologisches
 kennengelernt: Sie werden über die Selektoren new (für Objekte ohne indizierte Instanzva-
 riablen) und new: (für Objekte mit indizierte n Instanzvariablen) aufgerufen.
 Da Klassen selbst Objekte sind, sind new und new: Instanzmethoden der Klassen. Sie sind
 in Squeak als
-306 new
-307 ^ self basicNew initialize
-308 new: sizeRequested
-309 ^ (self basicNew: sizeRequested) initialize
 implementiert. Dabei sind basicNew und basicNew: eben falls Instanzmethoden der
 Klasse, deren Implementierung allerdings primitiv ist (s. Abschnitt 4.3.7 in Kurseinheit 1).
 Sie geben eine neue Instanz (ein neues Objekt) der Klasse, auf der sie aufgerufen wurden,

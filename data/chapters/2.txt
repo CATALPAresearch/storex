@@ -19,8 +19,6 @@ modell , das ebenfalls ein navigierendes ist, das vor einigen Jahrzehnten einmal
 lage große r Datenbankmanagementsysteme war, das aber schnell vom relationalen Daten-
 modell verdrängt wurde und das erst heute, im Zuge der Einführung von objektorientie rten
 Datenbanken, wieder an (theoretischer) Bedeutung gewinnt. Information als
-Geflecht von
-Objekten
 Objekt 1
 Objekt 2Objekt 3
 Objekt 4

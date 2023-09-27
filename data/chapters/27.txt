@@ -7,10 +7,6 @@ manchmal das Problem, dass sie ein Objekt, auf das eine Variable eines Supertyps
 wie ein Objekt seines tatsächlichen Typs verwenden möchte, in der Regel, weil sie eine Me-
 thode darauf aufrufen möchte, die der Supertyp nicht hat. Genau diesen Methodenaufruf
 würde die Typprüfung aber zurückweisen. Attraktivität der
-Inklusions -
-polymorphie
-Unzulänglichkeit der
-einfachen Definition
 Für diesen Zweck gibt es die Möglichkeit der Typumwandlung (engl. type cast ). Eine Ty-
 pumwandlung ist ein Verfahren, bei dem der vorgefundene Typ eines Ausdrucks (einer Va-
 riable oder eines Methodenaufrufs) in einen vorgegebenen konvertiert wird. Mit dem Ob-

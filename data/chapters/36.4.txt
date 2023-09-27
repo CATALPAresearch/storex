@@ -22,8 +22,6 @@ dende Rolle.
 Um das dynamische Binden JAVAs genau zu verstehen (und damit das
 Verhalten eines Programms vorhersagen zu können), muss man sich den Bindealgorithmus
 vor Augen halten. Dieser geht wie folgt vor. Überschreiben
-Überladen
-dynamisches Binden
 Bereits zur Übersetzungszeit wird ein dynamischer Methodenaufruf lose an eine Methoden-
 deklaration gebunden, und zwar an genau die, die die folgenden Bedingungen erfüllt:
 1. Sie hat den gleichen Namen und die gleiche Anzahl Parameter59 wie die aufgeru-
@@ -58,8 +56,6 @@ deutig bestimmt ist. Man beachte, dass der Fehler durch Methodenaufrufe, nicht d
 Methodendeklarationen verursacht wird; wenn man den problematischen Aufruf entfernt,
 gibt es auch keinen Fehler mehr. Der einfachste Fall eines solchen Fehlers ergibt sich durch
 den Aufruf
-1009 System.out.println( null)
-59 Diese Bedingung ist bei Methoden mit variabler Parameterzahl aufgeweicht. Method ambiguous
 bei dem unklar ist, ob println(null) an die Implementierung von println(String) ,
 println( Object) oder von println(char[]) gebunden werden soll.
 Man beachte, dass in Sprachen, in denen das dynamische Binden neben dem Typ des Emp-

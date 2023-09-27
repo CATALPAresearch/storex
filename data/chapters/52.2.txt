@@ -5,9 +5,7 @@ wegen man für sie auch keine Zugriffsmodifikatoren angeben kann). Um dennoch vo
 ßen darauf zugreifen zu können, benötigt man in EIFFEL (wie in SMALLTALK ) zwingend Zu-
 griffsmethoden, d ie allerdings (wie die Properties in C#) an der Aufrufstelle syntaktisch die
 Form von Variablen annehmen:
-1389 a.x := y
 ruft also eine Funktion (einen Setter ) mit dem Parameter y auf,
-1390 y := a.x
 ruft eine auf, die einen (mit y zuweisungskompatiblen) Wert liefert (einen Getter ). Funktion
 der Zugriffsmethoden ist es üblicherweise, eine entsprechende Instanzvariable zu setzen
 bzw. zu lesen; sie können aber auch etwas ganz anderes tun (vgl. dazu auch das Beispiel in
