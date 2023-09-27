@@ -1,0 +1,2266 @@
+paragraph
+"52.2 Klassen als Module
+Klassen sind in EIFFEL vor allem ein Mittel zur Datenkapselung („Information hiding “); alle
+Instanzvariablen oder F elder, in EIFFEL Attribute (engl. attributes ) genannt, sind privat (wes-
+wegen man für sie auch keine Zugriffsmodifikatoren angeben kann). Um dennoch von au-
+ßen darauf zugreifen zu können, benötigt man in EIFFEL (wie in SMALLTALK ) zwingend Zu-
+griffsmethoden, d ie allerdings (wie die Properties in C#) an der Aufrufstelle syntaktisch die
+Form von Variablen annehmen:
+ruft also eine Funktion (einen Setter ) mit dem Parameter y auf,
+ruft eine auf, die einen (mit y zuweisungskompatiblen) Wert liefert (einen Getter ). Funktion
+der Zugriffsmethoden ist es üblicherweise, eine entsprechende Instanzvariable zu setzen
+bzw. zu lesen; sie können aber auch etwas ganz anderes tun (vgl. dazu auch das Beispiel in
+Abschnitt 50.3.1 ). Insbesondere wird es dadurch möglich, den Z ugriff auf Instanzvariablen
+mit Vor - und Nachbedingungen (s. Abschnitt 52.6) zu versehen. Auch bleibt der Program-
+miererin so die Freiheit, etwas, das wie eine Instanzvariable aussieht, n ach außen anzubie-
+ten, ohne sich (dauerhaft) darauf festzulegen, dass es sich dabei auch tatsächlich um eine
+Instanzvariable handelt (die sog. Repräsentationsunabhängigkeit ). Aber das hatten wir ja
+schon bei C# gesehen. Indexer gibt es in EIFFEL übrigens auch.
+Die Methoden einer Klasse heißen in EIFFEL Routinen (routines ) und wer-
+den logisch in zwei Gruppen unterteilt: Abfragen (queries ) und Befehle
+(commands ). Abfragen geben über den Zustand von Objekten Auskunft, Befehle verändern
+ihn. Es ist in EIFFEL schlechter Stil (aber wird durch die Sprachdefinition nicht verhindert),
+dass eine Abfrage Seiteneffekte hat, also den Zustand des abgefragten Objekts (des Em p-
+fängers) oder eines anderen verändert.
+Attribute (Instanzvariablen) und Routinen (Methoden) heißen in EIFFEL zusammen Features
+(entsprechend den Members in von C++ abgeleiteten Sprachen); sie sind in EIFFEL die einzi-
+gen Elemente einer Klassendefinition . Insbesondere ist es in EIFFEL nicht möglich, Klassende-
+finitionen zu schachteln (es gibt also keine inneren Klassen).
+In EIFFEL gibt es keine Zugriffsmodifikatoren wie in JAVA/C#/C++: Wenn
+nichts weiter vermerkt wird, ist jedes Featu re öffentlich zugänglich. Da Attribute jedoch nur
+über Zugriffsmethoden zugänglich sind, ist der Zustand (im Sinne der Belegung von In-
+stanzvariablen; s. Kurseinheit 1, Kapitel 3) eines Objekts automatisch gekapselt: Man
+braucht ja schließlich keine Zugriffsmethoden zu spezifizieren und wenn man es doch tut,
+dann doch sich er nur, weil die entsprechenden Abfragen und Befehle Teil der Schnittstelle
+und kein Geheimnis sind. Routinen, Abfragen
+und Befehle
+Zugreifbar keitsregeln
+Nun wäre die Definition einer Schnittstelle (der Export von Features) in EIFFEL so aber reichlich
+unspezifisch — alle Klienten einer Klasse hätten (übrigen s genau wie in SMALLTALK ) das glei-
+che Bild von ihr. Das ist für größere Projekte kaum sinnvoll. Anstatt aber Zugreifbar keit an
+Pakete zu binden (wie in JAVA und C#) oder an Freunde ( Friends , wie in C++), bietet EIFFEL
+die Möglichkeit, einzelne Features dediziert zu veröffentlichen (zu exportieren), also unter
+Nennung der Klassen, die sie sehen können solle n. (Dies schließt die Nennung der leeren
+Menge ein, was dann bedeutet, dass keine andere Klasse diese Features sehen kann, also
+private in anderen Sprachen entspricht). Diese Klassen müssen dann umgekehrt die Fea-
+tures, die ihnen angeboten werden, nicht exp lizit importieren — das Wissen ob und der
+explizite Ausdruck der Abhängigkeit ist also in EIFFEL genau invers zu dem der anderen Spra-
+chen. Dabei entspricht der dedizierte Export EIFFELs in etwa dem qualifizierten Export JAVAs,
+wir er dort allerdings nur für Module und nicht für Klassen definiert ist.
+"
+"23 Typerweiterung
+Wie bereits in Kapitel 21 angedeutet, verlangt die Zuweisungskompatibilität nicht unbe-
+dingt T ypäquivalenz. Tatsächlich reicht es ja, bei einer rein strukturellen (syntaktischen) Be-
+trachtung, voll aus, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge
+der Methoden) des Typs der linken Seite enthält, um in der Folge Typfehler z u vermeiden.
+Anders ausgedrückt: Der Typ auf der rechten Seite einer Zuweisung darf eine Erweiterung
+dessen auf der linken Seite um zusätzliche Methoden sein.
+Die sog. Typerweiterung (engl. type extension ; extension hier im Sinne
+von Erweiterung und nicht im Sinne der Ausdehnung als Gegenstück zur
+Intension; vgl. Abschnitt 7.1 in Kurseinheit 2), wie sie z. B. in den Pro-
+grammiersprachen MODULA -3 und OBERON (beides Nachfolger von PASCAL ) Verwendung fin-
+det, sieht genau dies vor. Eine Typerweiterung des obigen Typs Büro um ein Länderkenn-
+zeichen sieht dann beispielsweise wie folgt aus:
+Typ InternationalesBür o
+erweiterter Typ Büro
+Protokoll
+Der erweiternde Typ, hier InternationalesBüro , wird also relativ zu einem bereits be-
+stehenden, dem erweiterten Typ (hier Büro ), definiert. Die Methodendeklarationen des er-
+weiterten Typs werden dabei gewissermaßen an den erweiternden Typ vererbt ; dieser
+braucht sie also nicht noch einmal zu wiederholen.
+Wie man nun leicht einsieht, können Variablen, deren deklarierter Typ
+Büro ist, auch Objekte vom Typ InternationalesBüro enthalten,
+ohne dass dies zu Typfehlern führt, da alle Method en, die für Büro vor-
+gesehen sind, auch in InternationalesBüro vorkommen.50 Das Umgekehrte ist jedoch
+nicht der Fall: Wenn man einer Variable vom Typ InternationalesBüro ein Objekt vom
+Typ Büro zuweisen könnte, dann hätte man immer dann ein Problem, wenn man über
+diese Variable auf dessen Methoden zu Länderkennzeichen zugreifen wollte, weil diese
+einen Pointer belegten Speicherplatzes ist immer gleich. Bei Variablen mit Wertsemantik hingegen
+muss der Wert eines erweiterten Typen erst auf einen des Basistypen projiziert werden, d. h., die
+Inhalte eventueller zusätzl icher Felder müssen unter den Tisch fallen, da für sie im für die Variable
+reservierten Speicher kein Platz ist. Solange in den Typdefinitionen aber gar keine Felder vorkommen,
+ist der Typ einer Variable auch nicht für die Berechnung des zur Aufnahme eines Objekts des Typs
+benötigten Speichers geeignet. Das ist z. B. in STRONGTALK der Fall — und auch gut so, denn Felder
+zählen nach vorherrschender Meinung zur Implementation und sind, genau wie bei abstrakten Da-
+tentypen, nicht Bestandteil einer Typdefinition . Vererbung der
+schlichtweg für das Objekt nicht definiert sind. Die Zuweisungskompatibilität unter Typer-
+weiterung regelt der Begriff der Typkonformität.
+"
+"1.5.1 Inhalt
+Das bezeichnete Objekt wird manchmal auch „Wert“ oder „Inhalt“ der
+Variable genannt (und die Variable selbst Platzhalter des Objekts). Beson-
+ders die Verwendung von „Inhalt“ ist aber gefährlich , da sie nahelegt, ein
+Objekt könne zu einem Zeitpunkt nur von gen au einer Variable bezeichnet werden, so wie
+ein Gegenstand zu einer Zeit immer nur Inhalt eines Behälters sein kann. Tatsächlich können
+aber mehrere Variablen gleichzeitig ein und dasselbe Objekt bezeichnen — die Variablen
+haben nämlich nur Verweise (auch Referenzen oder Pointer genannt) auf Objekte (ge-
+nauer: a uf die Speicherstellen, an denen die Objekte abgelegt sind; s. o.) zum Inhalt. Man
+spricht deswegen auch von einer Verweis - oder Referenzsemantik von Variablen, im Ge-
+gensatz zur Wertsemantik , bei der das bezeichnete Obj ekt tatsächlich auch Inhalt der Va-
+riable ist.
+Aus technischer Sicht entspricht einer Variable eine Stelle im Speicher.
+Allerdings steht an dieser Stelle bei Variablen mit Verweissemantik nicht
+das Objekt, das sie bezeichne n, sondern lediglich ein Verweis auf die Speicherstelle, an der
+das Objekt gespeichert ist. Es handelt sich also bei Variablen mit Verweissemantik aus tech-
+nischer Sicht um Pointervariable n, wie man sie auch aus nicht objektorientierten Program-
+miersprachen wie PASCAL oder C kennt.
+Var 1 Var 2Var 3
+Objekt 1 Objekt 3
+ObjektspeicherVariablenspeicherVar 4
+Objekt 2
+Verweis - und Wertsemantik von Variablen unterscheiden sich fundamen-
+tal: Unter Wertsemant ik können, solange jedes Objekt seine eigene Iden-
+tität hat, zwei Variablen niemals dasselbe Objekt bezeichnen. Dies wird
+aber nur den wenigsten Programmierproblemen gerecht. Da zudem die
+Verweissemantik eine n wesentlich speicher - und recheneffizientere n Umgang mit Objekten
+erlaubt und da unterschiedliche Objekte wie oben beschrieben unterschiedlich viel Speicher-
+platz belegen, so dass man im Vorfeld nicht immer weiß, wie viel davon man für eine Vari-
+able vorsehen muss , ist sie in der objektorientierten Programmierung vorherrschend. In ma-
+chen Sprachen , die neben Objekten auch Werte kennen, haben Variablen, die Objekte auf-
+nehmen, stets Verweissemantik und Variablen, die Werte aufnehmen, stets Wertsemantik
+(z. B. JAVA); andere objektorientierte Sprachen erlauben der Programmiererin , für jede Vari-
+able getrennt festzulegen, ob sie Wert - oder Verweissemantik haben soll (so z. B. C++ und
+EIFFEL).
+Nun ist besonders für unveränderliche Objekte, deren interne Repräsen-
+tation klein ist (die also wenig Speicherplatz belegt), die Forderung nach
+der Speicherung eines Objektes an genau einem Ort und Speicherung von Wert - und
+Verweisen in Variablen (also die Speicherung in Variablen mit Verweissemantik) ineffizient.
+Welchen Sinn hätte es beispielsweise, allen Zeichen eine Identität zu geben, an der mit der
+jeweiligen Identität verbundenen Stelle im Speicher die internen Re präsentationen zu hin-
+terlegen und dann in Variablen die Speicherstelle (Identität) zu speichern, wenn der Verweis
+mehr Speicher belegt als das Zeichenobjekt, auf das verwiesen wird ? Das Gleiche gilt auch
+für Zahlen bis zu einer gewissen Größe.
+In den meisten SMALLTALK -Implementationen hat man dieses Problem so
+gelöst, dass Variablen, die Zeichen, kleine Zahlen und die Booleschen
+Werte true und false bezeichnen, Wertsemantik haben. Die Objekte können damit aber
+tatsächlich an mehrere n Stellen im Speicher gespeichert werden, was einen Widerspruch
+zur reinen Lehre darstellt. Zwar geht damit der Begriff der Identität für diese Objekte verlo-
+ren, aber für die Programmiererin ist die damit verbundene mehrfache Existenz identischer
+Objekte im Speicher insofern ohne größere Bedeutung, als hier Gleichheit problemlos an
+die Stelle der Identität treten kann. Der P reis für diese Flexibilität ist allerdings, dass man den
+Variablen nicht mehr fix Wert - oder Verweissemantik zuordnen kann — diese hängt viel-
+mehr jeweils von der Art der Objekte ab, die sie gerade bezeichnen. In diesem Fall würde
+man Wert - bzw. Verweissema ntik eher als eine Eigenschaft des Objekts denn der d er Vari-
+able ansehen; das ist jedoch ziemlich SMALLTALK -spezifisch.
+ObjektspeicherObjekt 1 Objekt 3VariablenspeicherVar 1
+Ob 2Var 2Var 3 Var 4
+"
+"8.1 Konstruktoren
+Mit Hilfe von Metaklassen lassen sich nun in SMALLTALK auf natürliche Art und Weise sog.
+Konstruktoren definieren. Ein Konstruktor ist eine Methode, die, auf einer Klasse aufge-
+rufen, eine neue Instanz dieser Klasse zurückgibt (es handelt sich also aus Sicht der Instanz en
+der Klasse um eine Klassenmethode). Wir haben bereits zwei Konstruktoren von SMALLTALK
+tisch deklarierte Variablen und Method en aus JAVA etc.; diese entsprechen im wesentlichen den Klas-
+senvariablen und -methoden SMALLTALK s (auch wenn in JAVA et al. Klassen keine Instanzen von Me-
+taklassen sind). Beispiel
+kennengelernt: Sie werden über die Selektoren new (für Objekte ohne indizierte Instanzva-
+riablen) und new: (für Objekte mit indizierte n Instanzvariablen) aufgerufen.
+Da Klassen selbst Objekte sind, sind new und new: Instanzmethoden der Klassen. Sie sind
+in Squeak als
+implementiert. Dabei sind basicNew und basicNew: eben falls Instanzmethoden der
+Klasse, deren Implementierung allerdings primitiv ist (s. Abschnitt 4.3.7 in Kurseinheit 1).
+Sie geben eine neue Instanz (ein neues Objekt) der Klasse, auf der sie aufgerufen wurden,
+zurück. Da durch basicNew und basicNew: alle Instanzvariablen der erzeugten Objekte
+den Wert nil zugewiesen bekommen, wird auf den neuen Objekten, bevor sie (mittels ^)
+zurückgegeben werden, noch die Methode initialize aufgerufen, die eine Instanzme-
+thode des neuen Objekts ist und die die Instanzvariablen je nach Klasse , in der die Methode
+definiert ist , anders belegt.
+"
+"8 Metaklassen
+Da in SMALLTALK auch eine Klasse ein Objekt ist, kann die Klasse selbst, genau wie alle an-
+deren Objekte, Instanzvariablen und -methoden haben. Aber wo werden diese definiert?
+Der Analogie der Objekte , die Instanzen der Klasse sind, folgend müsste das in der jeweili-
+gen Kl asse der Klasse, also der Klasse, von der die Klasse (als Objekt) eine Instanz ist, erfol-
+gen. Und so ist es tatsächlich auch. Beispiel
+Zunächst könnte man annehmen, dass alle Klassen Instanzen einer spezi-
+ellen Klasse, nennen wir s ie Class , sind. Jede Klasse hätte dann (als In-
+stanz dieser Klasse) die Instanzvariablen und Methoden, die in Class definiert sind. Insbe-
+sondere hätte jede Klasse dieselbe Menge von Instanzvariablen und Methoden. Dies scheint
+zunächst auch sinnvoll, denn be i den Klassen handelt es sich ja um Objekte derselben Art,
+nämlich einheitlich um Klassen.
+Es stellt s ich dann die Frage, welche die Instanzvariablen und Methoden, die alle Klassen
+gleichermaßen charakterisieren, sein könnten. Es könnte z. B. jede Klasse e ine Instanzvari-
+able haben, die alle von der Klasse instanziierten Objekte enthält, sowie eine weitere, die
+diese Objekte zählt.31 Eine typische Methode jeder Klasse wäre z. B. new, die eine neue
+Instanz dieser Klasse zurückgibt. Was aber, wenn man weitere E igenschaften (Instanzvari-
+ablen oder Methoden) für eine Klasse haben möchte, die diese nicht mit allen anderen teilt?
+Was, wenn man eine Methode wie z. B. new für eine Klasse anders definieren will als für
+andere? Im Fall von new z. B. ist es denkbar, dass man sie für bestimmte Klassen so um-
+schreiben möchte, dass die Instanzvariablen der neu erzeugten Instanzen bestimmte Start-
+werte zugewiesen bekommen (so wie die eine oder andere es vielleicht von den Kon-
+struktoren von C++, JAVA oder C# schon kennt und wie es beim Beispiel mit Stack oben
+natürlich gewesen wäre).
+Tatsächlich hat die Programmierpraxis gezeigt, dass es günstig ist, wenn
+jede Klasse (als Inst anz) ihre eigenen Instanzvariablen und Methoden be-
+sitzt und wenn die Programmiererin diese jeweils frei bestimmen kann,
+ohne dabei gleichzeitig an andere Klassen denken zu müssen. Um dies zu ermöglichen,
+muss aber jede Klasse Instanz einer eigenen Klasse sein, in der diese Variablen und Metho-
+den nur für sie angelegt werden können. Und gena u das ist in SMALLTALK der Fall.32
+Zu jeder Klasse des SMALLTALK -Systems gehört nämlich genau eine Klasse,
+von der erstere (und nur diese) eine Instanz ist. Diese zweite Klasse wird
+Metaklasse der ersten genannt. Da eine 1:1 -Beziehung zwischen Klas-
+sen und ihren Metaklassen besteht, ist es nicht sinnvoll, ihre Benennung den Progra mmie-
+rerinnen zu überlassen; sie wird in SMALLTALK stets durch den Ausdruck <Klassenname>
+class , also beispielsweise Stack class , bezeichnet. Daraus folgt bereits, dass die Pro-
+grammiererin die Metaklasse nicht selbst anlegen muss (denn dabei müsste sie ja auch einen
+Namen vergeben) — sie wird vielmehr automatisch mit angelegt, wenn die Programmiererin
+eine neue Klasse definiert.
+Im Prinzip ist die Definition einer Metaklasse genauso aufgebaut wie die
+einer normalen Klasse: Sie besteht aus der Angabe einer Menge von be-
+vor der Veröffentlichung von SMALLTALK -80 verlassen hatte, ist selbst einer der gr ößten Kritiker dieser
+Festlegung. Tatsächlich ist sie, wie Sie noch merken werden, nicht immer ganz leicht zu durchblicken. Klassen als Instanzen
+nannten Instanzvariablen und einer Menge von Instanzmethodendefinitionen. Lediglich in-
+dizierte Instanzvariablen sind nicht vorgesehen und der Klassenname kann wie gesagt nicht
+frei angegeben werden. Dem Schema aus Abschnitt 7.2 folgend sähe eine Metaklassende-
+finition wie folgt aus:
+Klasse <Klassenname> class
+benannte Instanzvariablen <Liste von Instanzvariablennamen>
+Instanzmethoden
+<Liste von Methodendefinitionen>
+Im konkreten Fall der zweiten Implementierung von Stack oben fände man beispielsweise
+die folgenden Einträge:
+Klasse Stack class
+benannte Instanzvariablen
+Instanzmethoden
+Für die Implementierung der Methode new fehlt uns noch etwas; sie wird im nächsten Ab-
+schnitt nachgeliefert. Hier ist wichtig, dass Sie verstehen, dass new eine Instanzmethode der
+Metaklasse Stack class ist und damit das Verhalten der Klasse Stack bestimmt und
+nicht ihrer Objekte.
+Aufgrund der bestehenden 1:1 -Beziehung zwischen Klassen und Me-
+taklassen werden diese in SMALLTALK nicht getrennt voneinander defi-
+niert, sondern in einem gemeinsamen Schema. Jede Klassendefinition
+verfügt demnach neben den Abschnitten zur Deklaration der Instanzvari-
+ablen und zur Definition der Methoden auch noch über zwei Abschnitte für die entspre-
+chenden Angabe n zur ihrer Metaklasse, die Angabe der sog. Klassenvariablen und -me-
+thoden : Es s ind dies die Variablen bzw. Methoden, die den Klassen als Instanzen ihrer Me-
+taklassen zugeordnet sind. Das Schema
+Klasse <Klassenname>
+Klassenvariablen <Liste von Klassenvariablennamen>
+Klassenmethoden
+<Liste von Methodendefinitionen>
+benannte Instanzvariablen <Liste von Instanzvariablennamen>
+indizierte Instanzvariablen <ja/nein>
+Instanzmethoden Schema einer
+<Liste von Methodendefinitionen>
+besorgt also nicht nur die Definition der genannten Klasse, sondern gleichzeitig auch die
+ihrer Metaklasse; es ersetzt damit die zwei zuvor präsentierten getrennten Schemata. Klas-
+senvariablen sind übrigens relativ zu den Instanzen der Klassen global; sie b eginnen deswe-
+gen mit einem Großbuchstaben. Klassenmethoden schreibt man jedoch wie Instanzmetho-
+den klein. Beachten Sie, dass Klassenvariablen nur einmal pro Klasse angelegt werden —
+sie sind also für alle Instanzen einer Klasse dieselben.33
+Ein Beispiel für eine Klassenvariable ist Dependents Fields in der Klasse
+Object (zu ihrer Verwendung s. Abschnitt 14.3), eins für eine Klassenmethode ist pi in der
+Klasse Float :
+Sie retourniert (den Inhalt der) Klassenvariable Pi und ist, da sie eine Klassenmethode ist,
+allen Instanzen der Klasse Float zugeordnet. Dazu, wie der Wert in Pi hineinkommt , s.
+Abschnitt 8.2.
+Wir sehen also, dass die Bezeichnungen Klassenvariable bzw. -methode
+und Instanzvariable bzw. -methode eigentlich nur relative Bedeutung haben, da es sich in
+beiden Fällen um Variablen und Methoden handelt, die Objekten zugeordnet sind. Da man
+von Instanzen einer Klasse a us aber auch häufiger auf die Variablen und Methoden ihrer
+Klassen zugreift, ist es guter Brauch (und vermeidet umständliche Formulierungen), stets die
+langen Bezeichnungen zu führen. Zudem gibt es neben Instanz - und Klassenvariablen ja
+auch noch andere Va riablentypen ( formale Parameter und temporäre Variablen ), so dass die
+Verwendung von „Variable“ allein meist mehrdeutig wäre. Lediglich bei Methoden hat es
+sich eingebürgert, anstelle von Instanzm ethoden nur von Methoden zu sprechen. Wenn der
+Kontext nichts anderes nahelegt, können Sie dann immer davon ausgehen, dass Instanzme-
+thoden gemeint sind.
+"
+"62.1 Verwendung von Abkürzungen
+Abkürzungen sind nicht grundsätzlich zu vermeiden — im Gegenteil, wenn sie etabliert sind
+und man davon ausgehen darf, dass eine Leserin des Programms sie kennt, ist ihre Verwen-
+dung (aus oben angeführten Gründen gegen zu lange Namen) sogar angezeigt. Auf haus-
+gemachte Abkürzungen, deren Bedeutung man nur selbst kennt, s ollte man hingegen ver-
+zichten.
+Bei der Programmierung mit JAVA und anderen typisierten objektorien-
+tierten Programmiersprachen begegnet man häufig dem Phänomen, dass
+Typen und Variablen gleich heißen, s ich nur in der Groß - bzw. Kleinschrei-
+bung ihres Anfangsbuchstabens unterscheiden. Ein typisches Beispiel dafür ist das folgende:
+In diesen Fällen, wenn es keinen besseren Namen für die Variable gibt, ist es vollkommen
+legitim, eine Abkürzung für den Variablennamen zu wählen, insbesondere dann, wenn die
+Sichtbarkeit der Variable auf die unmittelbare Umgebung der Deklaration beschränkt ist:
+oder
+sind also leg itim. Sobald dies jedoch nicht der Fall ist (typischerweise schon bei der Deklara-
+tion von Instanzvariablen), sollte der lange Name bevorzugt werden. Dies gilt auch für den
+Fall, dass der Typ der Variable aus dem Kontext abgeleitet werden kann und deswegen nicht
+mehr angegeben wird ( Typinferenz ).
+"
+"10 Vererbung und abstrakte Klassen
+Generalisierung und Spezialisierung wie oben dargestellt sind eher theoretisch motivierte
+Konzepte. In der Programmierung geht man jedoch häufig, wie im obigen Beispiel von Pin-
+guinen schon anged eutet, an praktischen Gesichtspunkten orientiert vor. So haben denn
+auch nicht Generalisierung und Spezialisierung die Entwicklung objektorientierter Program-
+miersprachen geprägt, sondern abstrakte Klassen und Vererbung . Diese pragmatische Ori-
+entierung ist jedoch nicht ohne Probleme und so werden uns die Überlegungen zu Genera-
+lisierung und Spezialisierung spätestens in Kurseinheit 3 wieder begegnen.
+"
+"40 Interfaces
+Modul und Interface sind eigentlich ein Begriffspaar — das eine lässt sich nur mithilfe des
+anderen definieren. Die Interfaces in JAVA sind jedoch durchaus eigenständige Konstrukte,
+die inzwischen weit über die eigentliche Bedeutung des Begriffs, nämlich eine Schnittstelle
+zu definieren, hinausgehen. Auch wenn JAVAs Interfaces Vorgänger haben , betrachte ich
+sie doch als einen von JAVAs wichtigsten Beiträgen für die Entwicklung objektorientierter
+Programmiersprachen.
+zwischen Klassen jenseits derer öffentlichen und privaten Schnittstellen (s. Abschnitt 51.3 in Kursein-
+heit 5).
+"
+"15 Ein- und Ausgabeströme
+Ein- und Ausgabeströme spielen in der konventionellen (objektorientierten) Programmie-
+rung eine wichtige Rolle, da über sie Eingaben in und Ausgaben aus dem System erfolgen,
+und zwar sowohl von/zu der Benutzerin als auch vom/zum Dateisystem. Nun ist SMALLTALK
+aber als fensterbasiertes, grafisches System konzipiert, das der zeilenorientierten und text-
+basierten Ein - und Ausgabe der damals vorherrschenden Programme eine Alternativ e ge-
+genüberstellen wollte. Zudem ist auch eine Speicherung permanenter Daten in Dateien
+nicht nötig, da mit dem Image alle Objekte dauerhaft gespeichert werden. Da ist es nur
+konsequent, dass die Ein - und Ausgabe über Streams wenig Gewicht hat.
+In SMALLTALK haben Streams somit zunächst auch eine andere Aufgabe:
+Sie erlauben eine Form des Zugriffs auf Collections , die das Collection -
+Protokoll nicht bieten kann, nämlich
+ den sequentiellen Zugriff auf einzelne Elemente in beliebigen zeitlichen Abständen
+(bei den Iteratoren wird immer in einem Schritt, oder in einer Anweisung, über die
+ganze C ollection iteriert) sowie
+ den gleichzeitigen bzw. zeitlich abwechselnden Zugriff auf (die Elemente einer) Col-
+lection durch mehrere andere Objekte.
+Um dies umzusetzen, braucht man Positionszeiger in eine Collection hinein, und genau die
+zu liefern ist die F unktion von Streams.
+Streams werden zunächst immer auf einer Collection erzeugt, deren In-
+halt Basis des Streams ist. Die Erzeugung erfolgt mittels der Klassenme-
+thode on:, die als Parameter eine Collection erhält. Das Basis protokoll auf Instanzebene
+enthält die folgenden Methoden:
+Für frei positionierbare Streams kommt noch das Protokoll zur Änderung des Zeigers hinzu:
+Für peek ist die freie Positionierbarkeit notwendig, weil man dazu erst das nächste Element
+anspringen und dann wieder einen Schritt zurückgehen muss .
+Da ein Stream (wie eine Collection) eine Menge von Objekten repräsen-
+tiert, möchte man darüber (genau wie über eine Collection) iterieren kön-
+nen. Kein Problem:
+Außerdem wird nat ürlich zwischen (nur) lesbaren und schreibbaren Streams unterschieden.
+Erst eine weitere Kategorie von Streams operiert nicht auf Collections,
+sondern auf externen Daten. Dazu gehören insbesondere die File streams . In SMALLTALK -80
+wurde mit den Klassen FileDirectory , File und FilePage (die selbst keine Streams
+sind) ein eigenes Dateisystem geschaffen; die meisten heute gebräuchlichen Implementie-
+rungen nehmen jedoch eine Abbildung auf das Betriebssystem vor, für das sie geschrieben
+wurden . Man erkennt hier noch sehr schön, welche Funktion SMALLTALK ursprünglich zuge-
+dacht war: die der einzigen Software auf einem Computer.
+Besonders in SQUEAK gibt es noch zahllose weitere Streams, so u. a. für Multimedia -Aufga-
+ben; insgesamt unterscheiden sic h die verschiedenen SMALLTALK -Dialekte bei der Handha-
+bung von Streams zum Teil erheblich, weswegen wir hier auch nicht weiter darauf einge-
+hen.
+"
+"20 Typdefinitionen und deren Verwendung
+Damit durch ein Typsystem Fehler ausgeschlossen werden können, die auf der Voraus set-
+zung von Eigenschaften von Objekten beruhen, die diese gar nicht haben (also beispiels-
+weise der Verwendung von Nicht -Zahlen in arithmetischen Ausdrücken), muss bekannt sein,
+welche Eigenschaften einem Typ und damit seinen Elementen zugeordnet sind. Im Fall von
+SMALLTALK sind die Eigenschaften, die mit einem Objekt verbunden w erden können, schnell
+gefasst : Es handelt sich einfach um die Menge der Methoden, die es versteht, also um sein
+Protokoll (s. Abschnitt 4.3.8 in Kurseinheit 1). Ein solches Protokoll definiert einen Typ: Er
+umfasst die Menge der Objekte, die über das Protokoll verfügen.
+Wenn man nun eine Variable mit einem solchen Protokoll als Typ typisiert und das Pro-
+gramm typkorrekt ist, dann ist garantiert, dass jede Methode, die im Protokoll enthalten ist
+und die auf der Variable aufgerufen wird, auc h für den Inhalt der Variable, das referenzierte
+Objekt, definiert ist. Typfehler, also Fehler der Sorte „ does not understand “ (s. Abschnitt
+4.3.2 in Kurseinheit 1), treten dann nicht mehr auf.
+Nun kommen in Protokollen aber selbst Variablen vor, nämlich die forma-
+len Parameter der Meth oden, die das Protokoll ausmachen. Außerdem ist
+eine Methode ein Programmelement, das für ein Objekt steht (mit der Ausführung ein Ob-
+jekt liefert) und deswegen selbst, genau wie Variablen, typisiert werden sollte. Protokolle
+definieren also nicht nur Typen , sie verwenden auch selbst welche, nämlich indem sie die
+Typen der Ein- und Ausgabe objekte spezifizieren. Ein einfaches Beispiel für eine Typdefini-
+tion, die selbst Typen verwendet, ist die folgende:
+Wie schon bei einer temporären Variable, stehen die Typannotationen von formalen Para-
+metern in STRONGT ALK in spitzen Klammern dahinter. Diese Schreibweise sollten Sie nicht
+allzu sehr verinnerlichen, da andere Programmiersprachen die spitzen Klammern zur Kenn-
+zeichnung von Typvariablen (in Kapitel 29 behandelt) verwenden. Der Rückgabetyp einer
+Methode wird durch ein vorangestelltes Dach ( ^) gekennzeichnet und folgt auf den letzten
+Parameter. Da es in SMALLTALK keine Methoden gibt, die nichts zurückgeben (eine Method e
+ohne explizite Rückgabeanweisung gibt in SMALLTALK ja immer das Empfängerobjekt zu-
+rück), muss auch immer ein Rückgabetyp angegeben werden. Ist dies der Typ selbst, kann
+der Name Self verwendet werden. Es handelt sich dabei gewissermaßen um eine Pseudo -
+Typvariable (entsprechend der Pseudovariable self , deren Typ sie darstellt).
+Falls Sie sich wundern, dass obige Zeilen kein Schlüsselwort zur Einleitung
+der Typdefinition beinhalten: STRONGTALK ist, genau wie SMALLTALK , ein
+interaktives, browser -gestütztes System, in dem Typen in Formulare eingetragen und nicht
+in Textdateien spezifiziert werden. Gleichwohl f ällt auf, dass innerhalb der Typdefinition in Typen als Teile von
+den spitzen Klammern (also da, wo Typen stehen sollen) keine Typdefinition auftauchen,
+sondern Namen. Und tatsächlich wird in STRONGTALK jeder Typ benannt (in seiner Typdefi-
+nition mit einem Namen versehen). Im folgenden werden Typen, ähnlich wie Klassen, in
+tabellarischer Form notiert. Der Typ Person etwa mit obigem Protokoll liest sich dann wie
+folgt:
+Typ Person
+Protokoll
+Selbsttestaufgabe 20.1
+Definieren Sie den Typ Boolean gemäß obigem Schema!
+In STRONGTALK ist die Protokollbildung der einzige sog. Typkonstruktor ,
+d. h., das einzige Sprachkonstrukt, mit dem man neue Typen definieren kann. Andere Pro-
+grammiersprachen sehen ein reichhaltigeres Angebot vor: In PASCAL beispiel sweise gibt es
+die Typkonstruktoren record , array of , set of , file of , Zeiger auf ( ^) sowie Aufzäh-
+lungen ( enumerations ) und Teilbereiche ( ranges ). In C++ gibt es u. a. class und struct
+(entsprechend record in PASCAL ), JAVA, C# und EIFFEL bieten auch jeweil s verschiedene
+Typkonstruktoren an. Für eine puristische Sprache wie SMALLTALK bzw. STRONGTALK reicht
+jedoch einer vollkommen aus.
+Wie man leicht einsieht, gibt es in STRONGTALK keine primitiven Typen, also keine Typen,
+deren Definitionen nicht selbst auf einen oder mehrere Typen zurückgeführt werden
+müsste . Daran rührt auch die Optionalität der Annotierung nichts: Selbst wenn man eine
+Typannotation weglässt (was immer erlaubt ist), hat die entsprechende Variable bzw. der
+Rückgabewert der Methode einen Typ, nur wird er an dieser Stelle nicht angegeben. Das
+wirft natürlich die Frage auf, wie man T ypen unter zwangsläufiger Selbstbezüglichkeit über-
+haupt eine Bedeutung beimessen kann.
+"
+"52.5.3 Die dynamische Komponente
+Bei allen Bemühungen, für EIFFEL ein möglichst „wasserdichtes“ Typsystem vorzulegen und
+dabei so viel wie möglich zur Übersetzungszeit zu erledigen, bleibt e s natürlich auch in EIF-
+FEL-Programmen nicht aus, dass man in einen Container (eine Variable oder eine Collection)
+Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein
+Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man
+die dazu notwendige Fallunterscheidung dem dynamischen Binden (einem dynamisch ge-
+bundenen Methodenau fruf) überlassen wollen; manchmal ist es einfach einfacher (und bes-
+ser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode ent-
+sprechend verzweigt.
+Solche Typtests werden in EIFFEL von einem sog. Zuweisungsversuch (engl.
+assignment attempt ) übernommen, der bei mangelnder (dynamisch fest-
+gestellter) Zuweisungskompatibilität einfach void (das Äquivalent von nil in SMALL TALK
+und null in JAVA) zuweist:
+ergibt nie einen Typfehler, sondern führt höchstens dazu, dass a void zugewiesen wird. Es
+bleibt dann die Aufgabe der Programmiererin , a nach der Zuweisung zu kontrollieren. Es
+entspricht dies direkt dem as aus C#, dem dynamic_cast<T>(x) aus C++ sowie dem
+JAVA-Konstrukt
+oder auch kryptischer
+wobei A der Typ von a sei (man beachte das ärgerliche, aber in C -artigen Sprachen notwen-
+dige Semikolon vor dem Else). Explizite Type casts gibt es in EIFFEL nicht; sie können also
+auch keine Laufzeitfehler verursachen. Der Zuweisungsversuch erfüllt aber weitgehend die
+Funktion einer Typumwandlung, denn er ist nur erfolgreich, wenn die rechte Seite zuwei-
+sungskompatibel mit der linken ist, was per Definition nur dann der Fall ist, wenn die rechte
+Seite ein Objekt eines Subtyps (einschließlich Gleichheit) der linken Seite ha t. Es wird hier
+allerdings die Typumwandlung immer mit einer Zuweisung verbunden; man braucht also
+u. U. eine temporäre Variable, die man sich sonst hätte sparen können. Dass der Zuwei-
+sungsversuch in EIFFEL anders als der Down cast in JAVA keinen Laufzeitf ehler verursachen
+kann, ist wenig tröstlich, denn der Wert void in einer Variable kann es natürlich schon; in
+Wirklichkeit wird hier lediglich ein Type cast error gegen eine Null pointer exception ge-
+tauscht.
+Die Typumwandlung w ird in EIFFEL aber auch noch für etwas anderes ge-
+braucht, nämlich für das Binden von Aufrufen kovariant redefinierter Me-
+thoden. Da EIFFEL ja, wie oben beschrieben, polymorphe CAT -Calls verbieten muss , diese
+aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bin-
+dung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche, wie fol-
+gendes Beispiel zeigt:
+Nun ja. emulierte
+"
+"60 Das Problem der mangelnden Eignung
+Wie alle Ingenieurinnen verfallen objektorientierte Programmiererinnen gern dem Hammer-
+prinzip: Wenn man einen Hammer in der Hand hat, sieht alles wie ein Nagel aus. Nicht alle
+Objekte genannt, zur hierarchischen Strukturierung eines Programms verwendet. mangelnde
+hierarchische (De -)
+Kom ponierbarkeit
+von Klassen
+Komponenten in
+objektorientierte n
+Programmier -
+sprachen
+To a woman with a hammer, everything looks like a nail.
+Aufgaben sind aber gleichermaßen zur Lösung per objektorientierter Programmierung ge-
+schaffen. Für viele logische und Suchprobleme sind beispielsweise funktionale oder logische
+Programmiersprachen weit besser geeignet; aber auch viele Batch - und Scripting -Probleme
+(in denen lediglich vorhandene Programme mit den richtigen Daten versorg t und angesto-
+ßen werden müssen) haben eher imperativ -prozeduralen den n objektorientierten Charak-
+ter.
+Auch wenn pauschale Aussagen riskant sind, so erscheinen doch Prob-
+leme, die einen hohen algorithmischen Anteil und vergleichsweise simple Datenstrukturen
+verlangen, weniger geeignet für die objektorientierte Programmierung. Wie schon in Kapi-
+tel 56 erwähnt, verlangt die „gute“ objektorientierte Programmierung, den Code (die Funk-
+tionalität) auf die Klassen aufzuteilen, die die Daten definieren, auf denen der Code arbeitet.
+Da größere Probleme in der Regel auf durch verschiedene Klassen definierte Daten zugreifen
+müssen, wird der Code durch seine Datenbindung regelrecht zerfleddert.
+Ein ähnlich gelagertes Problem hat man, wenn man Programme entwickelt, in denen es vor
+allem um Abläufe geht. Hier möchte man, dass die Reihenfolge der Schritte, die auszufüh-
+ren sind, in einem Stück festgehalten wird ( Lokalitätsprinzip !) und nicht auf zig Klassen auf-
+geteilt ist. In solchen Fällen steht das Interesse an der Struktur der Funktionen über dem an
+der Str uktur der Daten — dass hier die objektorientierte Programmierung nicht ideal ist,
+liegt eigentlich auf der Hand.
+So hat man es bei der Wahl einer geeigneten Programmiersprache in der Praxis fast immer
+mit einem Abwägungsproblem zu tun. Wenn man sich für di e objektorientierte Program-
+mierung entscheidet, bleibt die Organisation der Funktionen auf der Strecke, wenn man
+sich für die prozedurale Programmierung entscheidet, werden die Daten auf kaum nachzu-
+vollziehende Weise hin - und hergeschickt oder sind global, was auch kein Idealzustand ist.
+Sprachen, die eine Mischung mehrerer Paradigmen erlauben, scheinen die Lösung zu sein .
+Für die Didaktik eignen sie sich jedoch weniger, schon weil sie Anfängeri nnen mit ihrer
+großen Auswahl an Konstrukten und der unüberschaubaren Anzahl von Alternativen, wie
+man ein einzelnes Problem lösen kann , überfordern . C++ ist ein gutes Beispiel dafür. Funktion ü ber Daten
+Ein anderes Problem ist der Einsatz objektorientierter Programmierung in
+Verbindung mit relationalen Datenbanken. Zwar spiegelt ein gut entwor-
+fenes Datenbankschema, genau wie ein gut entworfen es Klassenmodell, eine Strukturie-
+rung der Anwendungsdomäne wider , doch tun es beide mit ganz untersc hiedlichen Mitteln:
+Während relationale Datenbanken wertbasiert sind (alle Daten werden als Tupel primitiver
+Datentypen wie Zahlen und Zeichenketten dargestellt), sind objektorientierte Programme
+zeigerbasiert. Beziehungen werden in relationalen Datenbanke n über die Verwendung glei-
+cher Werte in Schlüsseln und Fremdschlüsseln sowie über Join -Operationen hergestellt, in
+objektorientierten Programm über Referenzen und deren Dereferenzierung (Navigation ).
+Vererbung bzw. Subtyping, für die objektorientierte Programmierung charakteristisch, gibt
+es in relationalen Datenbanken gar nicht .94 Sollen also relationale Daten durch objektorien-
+tierte Programme verarbeitet werden, muss man sich an die Prinzipien der relationalen Welt
+anpassen und damit ein Gutteil dessen, was Objektorientierung ausmacht, aufgeben, wes-
+wegen man hier auch häufig von einem Impedance mismatch spricht (das entsprechende
+deutsche Wort „Fehlanpassung“ ist in diesem Zusammenhang ungebräuchlich).
+Etwas anders gelagert ist der Fall, dass man eine relationale Datenbank dazu einsetzt, eine
+objektorientierte zu simulieren. In diesem Fall werden die Daten zunächst (wie in der ge-
+wöhnlichen objektorientierten Programmierung) angelegt und nur zu Persistenz - und Syn-
+chronisationszwecken (bei Mehr benutzer innensystemen ) in der Datenbank abgelegt. Die
+Abbildung der objektorientierten Klassenstruktur auf das relationale Schema wird dabei
+heute meisten s durch ein sog. Persistenzlayer erreicht — das Programm selbst muss sich um
+die Datenhaltung nur auf sehr abstrakter Ebene kümmern. Dennoch muss man auch hier
+die Frage stel len, warum man einer relationalen Datenbank den Vorzug vor einer objektori-
+entierten gegeben hat — am Ende, weil im betrieblichen Umfeld häufig bereits relationale
+Datenbanken mit gutem Ergebnis verwendet werden und die Umstellung auf Objektorien-
+tierung in der Datenhaltung mit unwägbaren Risiken verbunden scheint — schließlich sind
+die Daten häufig der eigentliche Wert eines Softwaresystems .
+Zuletzt, und beinahe paradoxerweise, ist auch die GUI -Programmierung
+nicht unbedingt ein Heimspiel für die objektorientierte Programmierung.
+Zwar kann man für die verschiedenen Arten von GUI -Elementen noch ganz gut Klassen
+angeben, die die Gemeinsamkeiten im Aussehen der in einem konkreten GUI verwendeten
+Objekte herausfaktorisieren, aber spätestens beim gemeinsamen Verhalten ist Schluss : Zwei
+Buttons beispielsweise unterscheiden sich nicht nur bezüglich ihrer Position und des ange-
+zeigten Texts, sondern auch darin, welche Aktion ausgeführt wird, wenn sie gedrückt wer-
+den. Da sich die Instan zen einer Klasse aber alle Methoden teilen, ist es nicht möglich, für
+verschiedene Buttons derselben Klasse verschiedene Implementierungen einer Methode an-
+zugeben. Hier kann man lediglich versuchen, eine Indirektion einzubauen, in SMALLTALK über
+einen Bloc k, der die auszuführende Methode beinhaltet, in JAVA über anonyme innere Klas-
+sen, die für eine bestimmte Methodensignatur eine Implementierung liefern, die nur den
+tierte Anleihen. Ich bin mir jedoch nicht sicher, ob diese jemals in der Praxis angekommen sind. objekt -relationaler
+Instanzen dieser (unbenannten) Klasse gehört, und in C++ sowie C# über Funktionszeiger
+(Dele gates in C#). Von Haus aus besser geeignet scheint hier aber die prototypenbasierte
+Variante der objektorientierten Programmierung, wie in der Einleitung zu Kurseinheit 2 be-
+merkt (und wie sie ja auch in Form von JAVASCRIPT seit Jahren einen heimlichen Siegeszug
+feiert) .
+"
+"19 Deklaration, Definition und Verwendung von Pro-
+grammelementen
+Programme bestehen aus Schlüsselwörtern und -zeichen sowie aus Pro-
+grammelementen, deren Namen, die sogenannten Bezeichner, frei vergeben werden kön-
+nen. Viele Programmiersprachen verla ngen, dass man diese Programmelemente vor der ers-
+ten Verwendung vereinbart oder deklariert. Durch eine solche Deklaration gibt man dem
+Compiler den Bezeichner bekannt; er kann ihn in der Folge wiedererkennen und mit der
+Deklaration in Verbindung bringen.
+Bei der Definition wird dem Bezeichner das zugeordnet, wofür er steht.
+Im Falle einer Varia ble ist das eine bestimmte Stelle im Speicher, die ge-
+nügend Platz bietet, um den Wert der Variable aufzunehmen. Im Falle einer Methode sind
+es die Anweisungen, die durch die Methode zusammen gefasst werden. Nicht selten (aber
+immer abhängig von der Programm iersprache) erfolgen Deklaration und Definition in einem statische Typprüfung
+Ausdruck. In solchen Fällen spricht man von Deklaration beziehungsweise Definition des
+Programmelementes in Abhängigkeit davon, was man gerade meint. Bei Variablen ist die
+Definition in der Regel implizit und aus der Deklaration ableitbar (der Speicherplatz wird
+vom Compiler automatisch zugewiesen), so dass man hier häufig Deklaration meint, selbst
+wenn man Definition sagt. Bei Methoden hingegen ist die Unterscheidung essentiell: I n ihrer
+Deklaration wird ihre Signatur , das ist ihr Name (in SMALLTALK der Nachrichtenselektor) und
+die Lister der formalen Parameter , bekanntgegeben , in ihrer Definition wird der Signatur
+der Methodenrumpf, also die Folge der mit der Methode verbundenen und bei einem Auf-
+ruf auszuführenden Anweisungen, zugeordnet. Von der Definition einer Variable zu unter-
+scheiden ist übrigens ihre Initialisierung , bei der ihr (der dafür vorgesehenen Speicherstelle)
+ein Anfangswert zugewiesen wird; in manchen Kontexten (insbesondere im Kontext der
+Programmanalyse) ist mit Variablendefinition aber auch die Zuweisung eines Werts an eine
+Variable ganz all gemein gemeint.
+Deklaration und Definition dienen letztlich nur einem: der Verwendung.
+Die Verwendung eines Programmelements äußert sich darin, dass sein
+Name, der Bezeichner, im Programmtext angeführt oder referenziert
+wird. An der Stelle der Verwendung steht eine Variable für den Wert, den sie hat (bzw.,
+wenn sie auf der linken Seite einer Zuweisung auftaucht, haben soll). Der Bezeichner einer
+Methode steht hingegen meistens für ihren Aufruf (in manchen Sprachen durch ein Schlüs-
+selwort eingeleitet), selt ener auch für einen Zeiger auf die Implementierung.
+Variablendeklarationen haben Sie in SMALLTALK bislang an zwei Stellen
+gesehen: als forma le Parameter in Methodendeklarationen und als tem-
+poräre , lokale Variablen in Methodenrümpfen . Im Beispiel
+stecken die Deklarationen von a und b als formaler Parameter und von c als temporäre
+Variable. Weitere Formen der Deklaration werden Sie im Verlauf dieses Kurstextes noch zu
+Gesicht bekommen.
+In untypisier ten Sprachen werden Variablen ohne Angabe eines Typs (wie
+z. B. in SMALLTALK ) oder gar nicht (etliche Skriptsprachen und z. B. BASIC)
+deklariert. Letzteres hat den erheblichen Nachteil, dass Variablen durch
+ihre erste Verwendung quasi implizit deklariert ( und damit angelegt) wer-
+den, was bei Schreibfehlern dazu führt, dass man plötzlich zwei Variablen anstatt einer hat,
+wobei die eine mit der anderen nichts zu tun hat. Eine solche Einladung zu Programmier-
+fehlern sollten Sie als diejenige, die die Entscheidun g für die Auswahl einer Sprache zu tref-
+fen hat, stets ablehnen. Deklaration und
+"
+"44.2 Typtests
+Laufzeitfehler der obigen Art vermeidet man in JAVA mit Hilfe sogenannter Typtests, die
+man vor einer Typumwand lung durchführt. Das dazugehörige Schlüsselwort heißt
+instanceof :
+bilden die typsichere Variante der Typumwandlung. Es bleibt allerdings an der Programmie-
+rerin hängen, zu sagen, was passieren soll, wenn der Wert von o nicht den geforderten Typ
+(hier String ) hat.
+"
+"20.2 Verwendung definierter Typen
+Definierte Typen können in Programmen verwendet werden, in STRONGTALK bei der Dekla-
+ration von (anderen) Typen, von Variablen, von Blöcken und von Methoden. Man spricht
+dann von einer Typisierung der deklarierten Programmelemente. Die Verwendung in
+Typdefinitionen haben Sie ja oben bereits kennengelernt, die Verwendung in Methoden
+verläuft analog. Variablen (Instanzvariablen, tem poräre Variablen etc.) werden in STRONG-
+TALK genau wie formale Parameter (die ja auch Variablen sind) typannotiert, nämlich durch
+Hintanstellung eines in spitzen Klammern eingeschlossenen Typnamens. Bei Blöcken taucht
+der Rückgabetyp im selben Segment wie die formalen Parameter auf, also vor dem Sep ara-
+tor |. Die vollständig typannotierte Klasse Stack aus Abschnitt 8.2 sieht in STRONGTALK
+beispielsweise so aus:
+Klasse Stack
+benannte Instanzvariablen stackcontent <Array>
+stackpointer <Integer>
+indizierte Instanzvariablen nein
+Instanzmethoden
+Ein Beispiel für einen typisierten Block finden Sie in Abschnitt 29.3, Codezeile 950.
+"
+"29.3 Parametrischer Polymorphismus und Inklusionspolymorphie
+Nun war di e Speicherung von Personen in Collections, wie sie oben benötigt wurde, auch
+schon ohne den parametrischen Polymorphismus möglich, nämlich per Inklusionspolymor-
+phie (Subtyping). So würde es zunächst ausreichen, wenn Collection wie folgt definiert
+wäre:
+Typ Collection
+Protokoll
+An die Stelle der Typvariable E tritt also der (konkrete) Typ Object . Da in
+STRONGTALK alle Typen Subtypen von Object sind, kann man jedes belie-
+bige Objekt in einer solchen Collection speichern. In der Klasse Person , die Collection
+verwendet, würde dann kinder schlicht als vom Typ Collection (ohne Typparameter)
+deklariert. Das obige Prog rammfragment (Zeilen 936–940) könnte dann auch beinahe so
+bleiben, bis auf eine kleine Ausnahme: Zeile 940 enthält jetzt ein en Typfehler, da das Er-
+gebnis von p kinder at: 1 vom Typ Object ist und das Protokoll von Object keine
+Methode kinder unterstützt. Es wäre also erst noch eine Typumwandlung von Object
+nach Person , ein Down cast (s. Kapitel 27), vonnöten. Deren Zulässigkeit ist aber davon
+abhängig, was wirklich in der Collection drinsteckt, und das ka nn der Compiler nicht (oder
+nur sehr aufwendig) feststellen. Die Lösung, die Inklusionspolymorphie bietet, beinhaltet
+also eine Sicherheitslücke in der statischen Typprüfung, die der parametrische Polymorphis-
+mus behebt.
+Nun ist aber auch der parametrische Polymorphismus nicht ohne Makel.
+Zum einen wäre es ohne Inklusionspolymorphie nicht möglich, in einer
+Collection mit Elementtyp XYZ auch Objekte eines Subtyps von XYZ zu
+speichern. Solche heterogenen Collections kommen aber in der Praxis im-
+mer wieder vor, so dass man selbst bei Verwendung einer parametrischen Definition von
+Collections nicht auf Inklusionspolymorphie verzichten wird. Zum anderen wird die erhöhte
+Typsicherheit bei der Verwendung von parametrisch definierten Typen (wo man ja zumin-
+dest bei homogener, also ohne Ausnutzung der Inklusionspolymorphie, Belegung der mit
+einem Typparameter typisierten Variablen ohne Typumwandlungen auskommt) mit einer
+geringeren Typsicherheit innerhalb der Typdefinition (bzw. Klassendefinition) selbst erkauft.
+Dies verlangt nach Erklärung.
+Stellen Sie sich einen Collection -Typ MyCollection vor, dessen Werte solche Collections
+sein sollen, deren Elemente sortiert und summiert werden können. Dieser Typ sei ein Subtyp
+von Collection und verfüge weiterhin über entsprechende Metho den sortieren und
+summieren :
+Typ MyCollection
+Typvariablen E
+Supertyp Collection[E]
+Protokoll
+Intuitiv verlangt die Sortierbarkeit der Objekte vom Typ MyCollection , dass auf den Ele-
+menten eine Vergleichsfunktion definiert ist. Dies ist aber nicht für alle Typen und somit
+auch nicht für alle möglichen Belegungen der Typvariable E der Fall. Auch verlangt die Me-
+thode summieren , dass sich aus den Elementen einer solchen Colle ction ein Wert aggre-
+gieren lässt, der vom Typ Number oder einem Subtyp davon ist. Man kann daraus schließen, Notwendigkeit von
+dass die Elemente ebenfalls vom Typ Number sein oder zumindest Methoden besitzen müs-
+sen, die einen solchen Wert zurückliefern. Und so würde auch ei ne Implementierung der
+Methode summieren in etwa wie folgt aussehen:
+Das aber verlangt, dass der Elementtyp von MyCollection Number oder ein Subtyp davon
+sein muss , da sonst die Zuweisung an den formalen Blockparameter element nicht zulässig
+wäre. Insbesondere würde das Codefragment
+zu einem Typfehler führen, weil in Zeile 950 einer Variable vom Typ Number ein Objekt vom
+Typ String zugewiesen wird. Nun kann aber die Definition des parametrischen Typs
+MyCollection nicht wissen, wie sie hinterher verwendet wird, und wenn eine Addition
+durchgeführt werden soll, ist sie darauf angewiesen, dass sie nur mit Typen von addierbaren
+Objekten instanziiert wird. Es wird also die erhöhte Typsicherheit außerhalb der Typdefini-
+tion, nämlich bei ihrer Verwendung, durch eine verminderte Typsicherheit innerhalb erkauft.
+Was man gerne hätte, um diesen Mangel zu beheben, wäre die Sicher-
+heit, dass alle Typen, die für E eingesetzt werden können, bestimmte Ei-
+genschaften haben, im gegebenen Beispiel, dass sie sortierbar und ad-
+dierbar sind. Entsprechend sollte ein Typfehler nicht erst in Zeile 950 moniert werden, son-
+dern bereits an der Stelle, an der die unzulässige Wertzuweisung an die Typvariable statt-
+findet, nämlich bei der Verwendung (der Instanziierung ) der parametrischen Typdefinition
+in der Deklaration von Zeile 951. Genau das erlaubt der beschränkte parametrische Poly-
+morphismus, der im n ächsten Abschnitt behandelt wird. Zunächst jedoch noch zu einem
+anderen wichtigen Aspekt von parametrischem Polymorphismus und Subtyping.
+Unter den Typdefinitionen
+Protokoll
+und den Variablendeklarationen
+ist die Zuweisung
+sicher zulässig. Nun könnte man annehmen, dasselbe sei auch für
+der Fall. Dahinter verbirgt sich aber die Frage, ob G[B] ein Subtyp von G[A] ist, ob sich also
+die Subtypenbeziehung von B zu A auf entsprechende Typinstanzen vom selben parametri-
+schen Typ überträgt. Intuitiv scheint dies der Fall, zumal beispielsweise
+oder
+aufgrund der Subtypenbeziehung von B zu A kein Probl em darstellen sollte (aus Sicht der
+Typprüfung entspricht dies ja den Verhältnissen der Zuweisung aus Zeile 957). Nun ist aber
+nach den Regeln der statischen T ypprüfung auch
+erlaubt. Da ga aber nach der Zuweisung aus Zeile 958 lediglich ein Alias
+für das von gb bezeichnete Objekt ist, ga also auf ein Objekt vom Typ
+G[B] verweist und dieser als Parametertyp von x: nur B zulässt, handelt
+es sich bei obigem Methodenaufruf um eine Typverletzung . Der Fehler
+liegt jedoch nicht im Methodenaufruf, der in der Tat typkorrekt ist, son-
+dern vielmehr in der Zuweisung aus Zeile 958: G[B] ist eben kein Subtyp
+von G[A] , nur weil B ein Subtyp von A ist (man beachte die Parallelität zu dem in Kapitel 25
+beschrieb enen Problem). Dieser Trugschluss ist einer der häufigsten Anfängerinnenfehler .
+Selbsttestaufgabe 29.1
+Prüfen Sie nach demselben Schema wie oben, ob G[A] ein Subtyp von G[B] sein darf.
+Merken Sie sich also unbedingt, dass parametrischer Polymorphismus die Subtypenbezie-
+hung seiner tatsächlich en Typparameter nicht auf die durch Instanziierung erzeugten Typen Subtypenbeziehung
+überträgt. Dies wird auch in Abschnitt 29.5 noch eine besondere Rolle spielen. Vor diesem
+Hintergrund beinahe paradox erscheint, dass sich Subtyping jedoch dazu einsetzen lässt,
+das oben beschriebene Problem mit der „inneren Typsic herheit“ von parametrisch definier-
+ten Typen zu lösen.
+"
+"2 Beziehungen
+Kein Objekt ist eine Insel. Ganz im Gegenteil: Damit Objekte eine Bedeutun g haben, müssen
+sie mit anderen in Beziehung stehen. Das Objekt „1“ beispielsweise ist ohne Bedeutung,
+solange es nicht eine bestimmte Eigenschaft eines anderen Objekts beschreibt, wie z. B. die
+Hausnummer eines Hauses oder die Anzahl der Elemente eines Ar rays. Tatsächlich werden
+die meisten Objekte eines Systems erst durch ihre Beziehungen zu anderen zu etwas Nütz-
+lichem . Ein Objekt, das beispielsweise eine Person repräsentiert, macht den String „Hans
+Mustermann“ zum Namen der Person, sobald er mit der Pers on in entsprechender Bezie-
+hung steht; umgekehrt wird für die Benutzerin des Systems die Person erst über den Namen
+identifizierbar.
+Tatsächlich wir d, wie bereits eingangs dieser Kurseinheit erwähnt, in der
+objektorientierten Programmierung sämtliche Information als ein Ge-
+flecht von Objekten dargestellt. Dieses Geflecht ka nn
+1. navigiert werden, um von einem Datum (Stück Information) zu einem anderen zu
+kommen, oder auch
+2. manipuliert werden, um die repräsentierte Information zu verändern.
+Das Datenmodell der objektorientierten Programmierung ähnelt damit stark dem Netzwerk-
+modell , das ebenfalls ein navigierendes ist, das vor einigen Jahrzehnten einmal die Grund-
+lage große r Datenbankmanagementsysteme war, das aber schnell vom relationalen Daten-
+modell verdrängt wurde und das erst heute, im Zuge der Einführung von objektorientie rten
+Datenbanken, wieder an (theoretischer) Bedeutung gewinnt. Information als
+Objekt 1
+Objekt 2Objekt 3
+Objekt 4
+In der objektorientierten Programmierung werden Beziehungen zwischen
+Objekten über Verweise hergestellt, durch deren Verfolgung man von ei-
+nem Objekt zum nächsten gelangen, eben „navigieren“ kann. Das Besondere dieser Ver-
+knüpfung ist, dass sie stets gericht et ist: Dass man von einem Objekt zum nächsten navigie-
+ren kann, heißt nicht, dass man auch wieder zurückkommt. Dazu ist dann ein Zeiger in
+Gegenrichtung nötig.
+Nun enthalten ja Variablen ebenfalls Verweise. Wer also Zugriff auf die Variable hat, hat
+damit auch Zugriff auf das referenzierte Objekt — und ist somit mit dem Objekt verknüpft.
+Was noch fehlt, ist, dass Variablen Objekten so zugeordnet werden, dass nur noch die Ob-
+jekte Zugriff darauf haben, und schon kann man auf einfache Weise Beziehungen ausdrü-
+cken.
+"
+"39.2 Abhängigkeiten zwischen Modulen
+Die Aufteilung eines Programms auf Module dient vor allem dem Zweck der unabhängigen
+Entwicklung der Programmteile. Damit dies erreicht wird, muss die Abhängigkeit der Mo-
+dule möglichst gering ausfallen. Dabei bedeutet Abhängigkeit in der Regel Änderungsab-
+hängigkeit : Wenn sich in einem Teil etwas ändert, muss sich auch im davon abhängigen
+Teil etwas ändern . Sie ergibt sich regelmäßig aus einer Benutzt -Beziehung; in der objektori-
+entierten Programmierung kommt jedoch noch die Vererbungsabhängigkeit hinzu . Mo-
+dule, die vollkommen unabhängig voneinander sind, sind ein Indikator dafür, dass man
+nicht ein Programm entwickelt, sondern mehrere — wo keine Abhängigkeiten bestehen,
+da gibt es auch kein Zusammenspiel.
+Abhängigkeit ist eine gerichtete Beziehung: Dass A von B abhängt heißt
+nicht, dass auch B von A abhängt. Und so manifestieren sich auch in den
+Aufruf auf mehr als nur dem Empfängerobjekt gedispatcht wird; vgl. dazu auch Abschnitt 12.3 in
+Kurseinheit 1). Vor- und Nachteile
+Klassen als Modulen der JAVA-Programmierung die zwei Richtungen von Abhängigkeit in
+zwei verschiedenen Formen:
+1. Dass eine Klasse von (der Schnittstelle) einer anderen abhängt, erkennt man an der
+Tatsache, dass auf Objekte der anderen Klasse zugegriffen wird, was man wiede-
+rum daran erkennt, dass Variablen des dazugehörigen Typs deklariert werden so-
+wie, soweit sich die an dere Klasse in einem anderen Paket befindet, die Klasse oder
+gleich das ganze Paket importiert wird.
+2. Dass eine Klasse manche Teile ihrer Member anderen zur Benutzung anbietet und
+diese damit von ihr abhängig werden können, erkennt man an der Verwendung
+von anderen Zugriffsmodifikatoren als private sowie an der Implementierung von
+Interfaces.
+In JAVA sind zirkuläre Abhängigkeiten zunächst erlaubt. Insbesondere
+dürfen sich zwei Klassen (genauer: Compilation units ) wechselseitig im-
+portieren. In der Softwareentwicklung ist dies jedoch ve rpönt, schon weil durch eine wech-
+selseitige Abhängigkeit eine enge Kopplung dokumentiert wird, die zwischen Modulen
+grundsätzlich nicht bestehen sollte. Für JAVA-Module (s. u.) sind zirkuläre Abhängigkeiten
+denn auch verboten. Wenn Sie einmal in die Verlegenheit kommen sollten, selbst JAVA-
+Module zu definieren, werden Sie feststellen, dass dieses Verbot eine sehr sorgfältige Pla-
+nung der Modularisierung erzwingt (was für sich genommen schon einen Wert darstellt).
+Vererbungsabhängigkeiten zwischen Klassen, die in JAVA durch Verwendung des Zug riffs-
+modifikators protected und der Annotation @Override zumindest angedeutet werden
+(mehr dazu in Kurseinheit 6, Kapitel 55), sind naturgemäß nicht zirkulär; bei der Aufweitung
+der Abhängigkeit von Klassen auf Pakete können jedoch auch zirkuläre Abhängigkeiten
+entstehen .
+"
+"44.1 Type casts
+Wie bereits in Kapitel 27 von Kurseinheit 3 erläutert, versteht man unter einem Type cast
+(einer Typumwandlung ) den Vorgang, bei dem einem Pr ogramme lement ein anderer Typ
+aufgezwungen wird als der, mit dem es deklariert wurde. Type casts werden also insbeson-
+dere auf Variablen und auf Methodenausdrücke angewendet, und zwar immer dann, wenn
+man diese einer Variable zuweisen will, zu der keine Zuw eisungskompatibilität besteht, oder
+wenn man darauf eine Methode aufrufen (oder ein Feld zugreifen) will, das der deklarierte
+Typ nicht anbietet. So führt z. B.
+zu zwei Typfehlern: einem, weil o vom Typ Object ist, der keine Methode substring
+kennt, obwohl das Objekt, auf das o verweist, diese Methode sehr wohl kennt, und einem,
+weil Object nicht zuweisungskompatibel mit String ist. Zwei Type casts lösen das Prob-
+lem:
+Wie schon in Kapitel 27, so unterscheiden wir auch hier in Abhängigkeit
+davon, wie die beteiligten Typen, der Ausgangstyp und der Zieltyp eines
+Type casts , miteinander in Beziehung stehen, drei Arten von Typumwandlu ngen :
+ Up casts : der Zieltyp ist ein Supertyp des Ausgangstyps
+ Down casts : der Zieltyp ist ei n Subtyp des Ausgangstyps
+ Cross casts : Zieltyp und Ausgangstyp stehen in keiner Subtypenbeziehung zueinan-
+der, stehen also gewissermaßen nebeneinander.
+Bei obigem Beispi el handelt es sich um (die bei weitem häufigsten) Down casts .
+Wie man sich leicht vor Augen hält, ist ein Up cast auch in JAVA immer sicher , da jedes
+Objekt neben seinem Typ zugleich auch den Typ all seiner Supertypen hat (weswegen der
+Up cast auch immer w eggelassen werden kann); Down und Cross casts sind jedoch nur
+erfolgreich , wenn das Objekt , zu dem der typumgewandelte Ausdruck auswertet, tatsäch-
+lich den Zieltyp (oder einen Subtyp davon) hat. Dies kann jedoch zur Übersetzungszeit nicht
+garantiert werden; Down und Cross casts können daher zu Laufzeittypfehlern (der in JAVA
+sog. Class cast exception ) führen.
+Mit der Einführung von Generics ergeben sich ein paar Probleme mit im-
+pliziten Typumwandlungen. Das nachfolgende Beispiel ist jedoch nur für Interessierte; ins-
+besondere auf sog. Raw types und das damit zusammenhängende Konzept der Type era-
+sure wird in diesem Kurs nämlich nicht eingegangen. drei Arten von Type
+Bei Vorliegen der folgenden parametrisierten Klassendefinition
+und folgender Variablendeklarationen und Initialisierungen
+ergeben die Zuweisungen
+bei der letzten einen Laufzeitfehler vom Typ Class cast exception .
+"
+"30 Parametrischer Polymorphismus und das Kovari-
+anzproblem
+In gewisser Weise hat man es beim rekursiv beschränkten parametrischen Polymorphismus
+wie oben vorgestellt mit einem Fall von kovarianter Redefinition zu tun: Der Parametertyp
+der Methode = ändert sich mit dem Empfängertyp. Allerdings ergibt sich daraus, anders als
+bei der Verwendung von Self als Typvariable , kein Widerspruch zur Kontravarianzregel des
+Subtyping, denn Integer wird dadurch unmittelbar ja lediglich zu einem Sub typ von
+Equatable[In teger] und nicht etwa von Equatable[Object] . Tatsächlich sind
+Equatable[Integer] und Equatable[Object] ja zwei vollkommen verschiedene Ty-
+pen (mit disjunkten Wertebereichen) und Equatable[T] ist gar kein Typ (so dass man
+auch keine Va riable mit ihm deklarieren kann), so dass keinerlei Zuweisungskompatibilität
+und damit auch kein Problem mit Typkorrektheit besteht.
+Trotzdem stellt sich die Frage, ob sich das in Abschnitt 26.3 angesprochene allgemeine
+Problem der wünschenswerten kovarianten Redefinition von Eingabeparametern in Metho-
+den mittels parametrischen Polymorphismus nicht irgendwie lösen lässt. Die Antwort ist un-
+befriedigend: nur zum Teil.
+So kann man, um das Beispiel von Dokumenten und Druckern aus Abschnitt 26.3 wieder
+aufzugreifen, einen parametrischen Typ Dokument wie folgt definieren: ein paar Worte zum
+Typ Dokument
+Typvariablen T < Drucker
+Protokoll
+Die Deklaration von Zeichnung mit Typparameter T als Subtyp von Dokument vorausge-
+setzt, lassen sich die folgenden Variablendeklarationen bilden:
+Weiterhin die Deklarationen von Plotter und Zeilendrucker als Subtypen von
+Drucker vorausgesetzt wäre ein Methodenaufruf
+typkorrekt,
+hingegen nicht. Allerdings ist die Ass oziation von Zeichnung mit Plotter , die Kovarianz,
+in keiner Typdefinition festgehalten, sondern lediglich in der Deklaration von z. Es hindert
+einen insbesondere nichts daran, dieselbe oder eine andere Variable als vom Typ
+Zeichnung[Zeilendrucker] zu dekl arieren. Man beachte, dass es anders als im obigen
+Beispiel von Equatable , wo ja der Typparameter auf den definierten Typ selbst einge-
+schränkt wurde, hier keine Möglichkeit gibt, einen bestimmten Wert für einen Typparame-
+ter vorzuschreiben.
+Was man allerdin gs tun könnte, ist, Zeichnung als Subtyp von Dokument[Plotter] zu
+definieren. Dies hat jedoch den Nachteil, dass Zeichnung damit kein Subtyp mehr von
+Dokument und, wie auch zuvor schon Zeichnung [Plotter] kein Subtyp von
+Dokument[Drucker] ist (s. Abschnitt 29.3), wodurch die Zuweisungskompatibilität mit
+entsprechend deklarierten Variablen verlorengeht. Kovariante Redefinition bei gleichzeitiger
+Inklusionspolymorphie lässt sich auch mittels parametrischer Typen nicht hinbekommen.
+"
+"26.4 Inklusionspolymorphie
+Ein von Christopher Strachey, einem der Urväter der Programmierung als wissenschaftliche
+Disziplin, eingeführter Begriff ist der der Polymorphie . Polymorphie bedeutet allgemein
+Vielgestaltigkeit und wird vor allem in der Biologie verwendet. In der Programmierung steht
+er für verschiedene Dinge, die jedoch alle mit Typen zu tun haben.
+Unter Inklusionspolymorphie , auch Subtypp olymorphie genannt , vers teht man im we-
+sentlichen dasselbe wie unter Subtyping: Wo Objekte eines Typs erwartet werden, können
+Objekte anderer Typen erscheinen, weil der erste Typ die anderen subsumiert (inkludiert).
+Der Begriff ist vor allem in Abgrenzung zum parametrischen Polymorphismus (engl. para-
+metric polymorphism , s. Kapitel 29) gebräuchlich; sonst redet man eher von Subtyping.
+Das Interessante an der Inklusionspolymorphie ist, dass sich der Wertebe-
+reich von Typen dadurch auf unvorhergesehene Umfänge aufweiten
+lässt. Dies ist insbesondere für die Weiterentwicklung und Wiederverwen-
+dung von Programmen interessant, bei der einfach neue Typen hinzugefügt, die anstelle
+bereits existierend er eingesetzt werden können, ohne dass dazu am Programm sonst etwas
+geändert werden müsste . Die Regeln einer strengen Typprüfung werden durch Inklusions-
+polymorphie aufgelockert, ohne an Typsicherheit zu verlieren.
+Insgesamt krankt die Definition des Subtyping und der Inklusionspolymor-
+phie in der objektorientierten Programmierung jedoch daran, dass nicht
+klar definiert ist, was alles zu verlangen ist, damit ein Objekt eines Typs tatsächlich auch da
+auftauchen kann, w o ein Objekt eines anderen Typen erwartet wird. Zwar gibt die Regel
+von Ko - und Kontravarianz eine klare Bedingung vor, aber wie Sie schon gesehen haben,
+ist diese Bedingung aus praktischen Gründen nicht unumstritten. Dazu kommt, dass die
+Regel einerseits gar nicht ausreicht, um Ersetzbarkeit zu garantieren, und andererseits zu
+streng ist (s. Kurseinheit 6, Kapitel 54). Da Ersetzbarkeit aber der Definition des Subtypen-
+begriffs zugrunde liegt , bleibt das ganze schwammig. In dieser Kurseinheit habe ich mich,
+den meisten gängigen objektorientierten Programmiersprachen folgend, darauf zurückge-
+zogen, zu garantieren, dass keine Typfehler, also Fehler der Art, dass eine bestimmte, ge-
+forderte Eigenschaft (Methode) bei einem Objekt nicht vorhanden ist, auftreten können;
+alles weitere wird dann in Kapitel 54 behandelt.
+"
+"28.3 Gründe für die Trennung von Typen und Klassen
+Nun mögen S ie sich vielleicht fragen, warum Typen und Klassen über so viele Seiten als
+getrennte Begriffe dargestellt wurden, nur um am Ende zum Schluss zu kommen, dass eine
+Klassendefinition in der Regel auch als Typdefinition herhält. Nun, erstens ist das nicht in
+allen Sprachen der Fall und zweitens ist es selbst in den Sprachen, in denen es der Fall zu
+sein scheint, nicht immer so (s. Fußnote 54). So handelt es sich eher u m die Symbiose zweier
+verschiedener Konzepte, die unterschiedlichen Zwecken dienen, deren strukturelle Ähnlich-
+keit sich aber durch eine syntaktische Zusammenlegung ausnutzen lässt:
+1. Klassen dienen der Angabe von Implementierungen und damit als Container von
+ausführbarem Code;
+2. Typen dienen der Formulierung von Invarianten, die für Variablenbelegungen gelten
+müssen und deren Verletzung auf einen (logischen oder semantischen) Program-
+mierfehler hinweist. absolute
+Da beide im wesentlichen über die gleichen Elemente verfüg en, lässt sich die Definition
+beider in einem Sprachkonstrukt zusammenfassen.
+Der Unterschied der beiden Konzepte Klasse und Typ manifestiert sich
+auch darin, welche Rolle sie zur Laufzeit eines Programms spielen: Typin-
+formation beeinflusst die Ausführung eines laufenden Programms insofern, als sie ein Pro-
+gramm bei Verletzung einer Invariante abbrechen lässt (durch einen dynamischen Typtest)
+und damit einem anderen, schwieriger zuordenbaren Fehler zuvorkommt. Klasseninforma-
+tion beeinflusst die Ausführung des laufenden Programms insofern, als sie Grundlage des
+dynamischen Bindens ist und in einem Programm als Eigenschaft von Objekten abgefragt
+werden kann. In Sprachen, in denen jede Klasse einen Typ definiert, ist diese Unterschei-
+dung jedoch nicht immer klar getroffen und wird deswegen von Programmiererinnen auch
+nicht unbedingt wahrgenommen.
+"
+"26.1 Der Begriff des Subtyps
+Ein Subtyp ist als ein Typ definiert, dessen Werte oder Objekte überall da auftauchen dür-
+fen, wo ein Wert des Typs, von dem er ein Subtyp ist, verlangt wird. Subtyp steht dabei
+nicht für eine besond ere Art von Typ, sondern vielmehr für eine Rolle in einer Beziehung
+zwischen zwei Typen, nämlich der Subtypenbeziehung . Die Gegenrolle heißt Supertyp .
+Man beachte, dass diese Definition von Subtypen Zuweisungskompatibi-
+lität impliziert: Wenn die Objekte eines Subtypen überall da auftauchen
+dürfen, wo Objekte seines Supertypen erwartet werden, dann dürfen sie auch Werte von
+jemand bei einer Zeichnung auf ihre Zeilen zugreifen will. Außerdem müsste bei erster Annahme der
+allgemeinste Typ, von dem alle anderen abgeleitet sind ( Object in STRONGTALK ), immer alle Attribute
+deklarieren, die einem jemals in den Sinn kämen, und das wäre nun wirklich unpraktisch. Problemquelle
+Variablen sein, die mit dem Supertypen annotiert (auf Werte des Supertypen beschränkt)
+sind. Ein Subtyp ist also mit seinem Supertyp per Definition zuweisungskompatibel. Es steckt
+in dieser Defini tion aber eine gewisse Zirkularität (Subtyp als Voraussetzung und Ergebnis
+der Zuweisungskompatibilität), die eine Einfachheit der Zusammenhänge vortäuscht, die es
+in Wirklichkeit nicht gibt; die eigentliche Frage, was nämlich erfüllt sein muss , damit ein
+Objekt eines Typen tatsächlich da erscheinen darf, wo ein Objekt eines anderen Typen er-
+wartet wird, bleibt unberücksichtigt. Eine Befassung mit dieser Frage erfolgt hier aber nur
+insoweit, wie dies heutige Typsysteme auch tatsächlich tun; eine genauere Bet rachtung er-
+folgt dann erst in Kurseinheit 6, Kapitel 54.
+Ein Subtyp kann selbst wieder Subtypen haben usw.; man spricht dann
+auch von einer Subtypen - oder einfach nur von einer Typhierarchie . In einer solchen Hie-
+rarchie kann man direkte von indirekten Subtypen unterscheiden: Zwischen einem Typ
+und seinem direkten Subtyp liegt kein weiterer Typ in der Typhierarchie, bei einem indirek-
+ten Subtyp hingegen schon. Die Subtypenbeziehung ist transit iv und reflexiv; insbesondere
+ist also jeder Typ ein Subtyp von sich selbst (das folgt schon aus obiger Definition des Begriffs
+Subtyp). Die Frage der Symmetrieeigenschaft muss noch bis zum nächsten Abschnitt zu-
+rückgestellt werden.
+Je nach verwendetem Typsystem kann ein Typ auch mehrere direkte Su-
+pertypen haben. Die sich daraus ergebende Struktur ist dann aber keine
+Hierarchie mehr (im strengen Sinne; man spricht aber dennoch häufig von einer solchen,
+manchmal auch von einer Mehrfachhierarchie ), sondern nur noch ein gerichteter azykli-
+scher Graph (engl. directed acyclic graph , kurz DAG). Alle obengenannten Eigenschaften
+der Subtypenbeziehung best ehen jedoch weiter fort.
+Wenn Subtypen, ähnlich wie bei der Typerweiterung oder -einschrän -
+kung, auf Basis von bereits bestehenden definiert werden, spricht man
+auch vom (nominalen) Subtyping (s. u.). Eine solche Subtypendefinition erfolgt dann im-
+mer unter Angabe des oder der direkten Supertypen, und relativ dazu. Dabei verlangt die
+obige Definition von einem Subtypen einen bestimmten Zusammenhang zwischen den De-
+finitionen (Intensionen) von Sub - und Supertyp: Die Ergänzungen oder Änderungen, die
+eine Subtypendefinition relativ zu der ihres oder ihrer Supertypen vornimmt, müssen ge-
+währleisten, dass die Werte (Objekte) des Subtyps überall da auftauchen dürfen, wo ein
+Wert des Supertyps verlangt wird . Dies lässt sich durch folgende einfache Regel ausdrücken:
+Es darf also insbesondere keine Bedingung, die ein Supertyp an seine Obje kte stellt, durch
+einen Subtyp aufgehoben oder relativiert werden. Logisch gesprochen heißt das, dass die
+Bedingungen ( die Intension) des Subtyps die des Supertyps impliziert. Daraus folgt, dass die Subtyphierarchie
+mehrere direkte
+Supertyp en
+Begriff des
+Subtyping
+WWeennnn eeiinn TTyypp YY eeiinn SSuubbttyypp eeiinneess TTyyppss XX iisstt,, ddaannnn mmüüsssseenn aallllee BBeeddiinngguunnggeenn,, ddiiee ffüürr OObb--
+jjeekkttee ddeess TTyyppss XX eerrffüülllltt ssiinndd,, aauucchh ffüürr OObbjjeekkttee ddeess TTyyppss YY eerrffüülllltt sseeiinn..
+Typerweiterung als Basis einer Subtypendefinition infrage kommt (da die Intension des Su-
+pertypen unverändert übernommen und lediglich ergänzt wird), die Typeinschränkung hin-
+gegen zunächst einmal nicht. Dennoch wäre die Typeinschränkung vom Subtyping auszu-
+schließen eine unnötige Einschränkung, wie Sie gleich noch sehen werden.
+Wenn man die eingangs dieses Kapitel s gemachten Bemerkungen zur
+Typkorrektheit auf das Subtyping und die damit implizierte Zuweisungs-
+kompatibilität überträgt, dann ergibt sich für die Extensionen von Supertypen und Subty-
+pen, dass die Subtypenbeziehung als eine Teilmengenbeziehung gedeutet we rden muss :
+Die Extension eines Subtyps ist in den Extensionen all seiner (direkten und indirekten) Su-
+pertypen enthalten. Umgekehrt umfasst die Extension eines Supertyps die Extensionen all
+seiner Subtypen. Es ergibt sich, dass nur wenn die Extensionen alle r direkten Subtypen eines
+Typs paarweise disjunkt sind, man es mit einer echten Typhierarchie zu tun hat, in der jeder
+Typ nur genau einen direkten Supertyp hat. Ist die Extension eines Supertyps genau gleich
+der Vereinigung der Extensionen seiner Subtypen , hat der Supertyp keine eigenen Werte,
+also keine Werte, die nicht zugleich Wert eines seiner Subtypen sind. Diese Bedingung ent-
+spricht der Idee von der Generalisierung aus Abschnitt 9.1 und im übrigen gute objektori-
+entierter Praxis (s. Kapitel 69).
+"
+"26.2 Strukturelles und nominales Subtyping
+Beim Subtyping unterscheidet man wie bei der Typäquivalenz und -konformität zwischen
+nominalem und strukturellem Subtyping. Nominales Subtyping liegt v or, wenn ein Subtyp
+aus einem namentlich erwähnten Supertyp abgeleitet sein muss , um als sein Subtyp zu gel-
+ten. Strukturelles Subtyping liegt vor, wenn ein Typ lediglich die obige Definition von Subtyp
+erfüllen muss , um als solcher zu gelten. Nominales Sub typing impliziert strukturelles; analog
+zur Typkonformität macht das nominale Subtyping die Subtypenbeziehung antisymmet-
+risch, das strukturelle hingegen nicht.
+"
+"31 Grenzen der Typisierung
+Wie Sie sehen, ist das Problem der kovarianten Redefinition ziemlich hartnäckig. Man muss
+aber gar nicht so weit gehen, um an die praktischen Grenzen der Typisierung zu gelangen:
+Bereits der Ausdruck
+beinhaltet einen Typfehler, wenn nicht sichergestellt ist, dass x nicht 0 enthält. Nun könnte
+man einen Typ NotZero definieren und x als von diesem Typ deklarieren, womit der obige
+Ausdruck kein Problem mehr wäre; mit den hier vorgestellten Mitteln der statischen Typprü-
+fung wäre dann aber schon die einfache Zuweisung
+nicht mehr auf Zulässigkeit prüfbar. Selbst wenn es Typsy steme gibt, die das können56, so
+sind diese kaum praxistauglich.
+"
+"4.1.4 Reihenfolge der Auswertung von geschachtelten Ausdrücken
+Da Ausdrücke andere Ausdrücke enthalten können, stellt sich die Frage nach der Reihen-
+folge der Auswertung von geschachtelten Ausdrücken. Diese wird, wie in anderen Sprachen
+auch, implizit über Präzedenzen und explizit über Klammern geregelt.
+Bei der doppelten Zuweisung in Zeile 38 oben ist zunächst vielleicht nicht klar, welche der
+beiden Zuweisungen zuerst ausgewertet (ausgeführt) werden soll: y := x oder x := 1.
+Wenn man jedoch weiß, dass es sich bei y := x := 1 um einen geschachtelten Ausdruck
+handelt und jeder (Teil-)Ausdruck für ein Objekt steht, dann muss der zweite Ausdruck zu-
+erst ausgewertet und durch das Ergebnis, „1“, ersetzt werden, denn andernfalls wäre die
+„1“ dem Ergebnis von y := x zuzuweisen, was aber nach Abschnitt 4.1.3 keine Variable,
+sondern ein Objekt ist. Zeile 38 weist also zuerst x und dann y das Objekt „1“ zu — die
+Auswertung erfolgt von rechts nach links.
+Das ist allerdings ein Sonderfall. Grundsätzlich werden in SMALLTALK näm-
+lich alle Ausdrücke von links nach rechts ausgewertet. Dabei habe n aller-
+dings unäre Ausdrücke Vorrang vor binären und diese wiederum Vorrang vor Schlüsselwort-
+nachrichten, so dass nur bei gleichrangigen Ausdrücken die Auswertung von links nach
+rechts erfolgt. So wird beispielsweise in
+zunächst die Nachricht „ +“ an das Objekt, auf das x verweist, mit Argument 1 geschickt
+und an das Ergebnis die Nachricht „<“ mit y als Parameter. Umgekehrt wird bei
+zunächst der Vergleich angestellt und an das Ergebnis, eines der beiden Objekte „true“ und
+„false“, die Nachricht „ –“ mit Argument 1 geschickt. Jedoch wird der Wahrheitswert (das
+Wahrheitsobjekt) die Nachricht nicht verstehen und entsprechend mit einer Meldung wie
+„Nachricht nicht verstanden“ reagieren. Um die Präzedenz zu ändern, kann man einfach
+Klammern s etzen:
+hat das gewünschte Ergebnis. Individuelle Operatorpräzedenzen (wie z. B. Punktrechnung
+vor Strichrechnung) kennt SMALLTALK nicht.
+Bei mehrstelligen Nachrichten mit Schlüsselwörtern werden alle Sc hlüs-
+selwörter eines Ausdrucks als zu einer Nachricht gehörig interpretiert, es
+sei denn, es wurden Klammern gesetzt. Der Ausdruck
+wird also als eine Nachricht interpretie rt; falls
+gemeint gewesen sein sollte, müssen eben die Klammern entsprechend gesetzt werden.
+(Man beachte, dass im geklammerten Ausdruck erstesArgument Empfä nger der Nach-
+richt nachdemDuDasGetanHast: mit zweitesArgument als Parameter ist. Das Ergebnis
+der Auswertung dieses Ausdrucks ist dann Parameter der Nachricht tueDiesMitDem: an
+einEmpfänger .)
+"
+"4.1.1 Zuweisungsausdrücke
+Zuweisungsausdrücke hatten Sie schon in Abschnitt 1.6 kennengelernt. Sie verlangen auf
+der linken Seite eine Variable und auf der rechten einen Ausdruck:
+etwa ist ein Zuweisungsausdruck. Wie bereits erwähnt, bewirken Zuwei-
+sungen als einzige Ausdrücke den Zustandswechsel von Objekten. So be-
+wirkt etwa
+wobei name eine Instanzvariable sein soll, die Änderung des Zustandes des Objektes, zu
+dem die Instanzvariable gehört.
+Da eine Zuweisung selbst ein Ausdruck ist, kann sie auf der rechten Seite einer anderen
+Zuweisung erscheinen:
+ist also ein legaler Ausdruck (zu seiner Auswertung kommen wir später, wenn wir — in
+Abschnitt 4.1.4 — über die Reihenfolge der Auswertung geschachtelter Ausdrücke spre-
+chen).
+"
+"40.1 Interfaces als Schnittstellen
+Die öffentliche Schnittstelle einer Klasse in JAVA ist die Menge ihrer Instanzvariablen
+und -methoden (in JAVA zusammen auch Member genannt ), die public deklariert sind.
+Nun gibt es in JAVA die Möglichkeit, eine öffentliche Schnittstelle als eigenständiges Kon-
+strukt zu de klarieren, das von dem der Klasse unabhängig ist, das aber genauso wie eine
+Klasse einen Typ definiert. Es geschieht dies mit Hilfe des Schlüsselwortes interface :
+Anders als bei Klassen entspricht hier das Fehlen eines Zugriffsmodifikators der Zugreifbar-
+keit public — alles andere scheint für eine Schnittstelle auch unsinnig. Folgende weitere
+syntaktischen Unterschiede der Interfacedeklaration in den Zeilen 1029 –1032 zur Klas-
+sendefinition der Zeilen 986–991 fallen auf:
+ die Verwendung des Schlüsselwortes interface anstelle von class (klar),
+ das Fehlen von Felddeklara tionen und
+ der Umstand, dass der Methodendeklaration keine Implementierung mehr folgt,
+sondern lediglich das abschließende Semikolon.
+Das Schlüsselwort abstract , das eine Klasse für eine solche Methodendeklaration anfüh-
+ren müsste , wird in Interfaces automa tisch angenommen; Interfaces liefern zunächst erwar-
+tungsgemäß weder Implementierungen noch Objekte (Instanzen). Mit derselben Begrün-
+dung kann auch das Fehlen von Feldern erklärt werden: Da bei Feldern nicht zwischen De-
+klaration und Implementierung (Definition ; s. Kapitel 19 in Kurseinheit 3) unterschieden
+werden kann (die Deklaration ist, da sie Namen und Typ vorgibt und mehr auch fü r eine
+Implementierung nicht angegeben werden kann, zugleich Implementierung des Feldes),
+wurden sie aus den Interfaces verbannt. Diese Einschränkung ist aber keine wirkliche, da
+ein Feldzugriff in einem Interface durch Zugriffsmethoden (Accessoren, also durch Getter
+und Setter) ersetzt werden kann.
+Eine Klasse kann nun angeben, dass sie ein Interface implementiert. Sie
+tut das unter Verwendung des Schlüsselwortes implements :
+Damit verpflichtet sich die Klasse, alle im Interface angekündigten Methoden zu implemen-
+tieren und öffentlich anzubieten.67 Dabei kann eine Klasse mehrere Interfaces gleichzeitig
+implementieren (die entsprechenden Namen werden einfach, durch Kommata getrenn t,
+überlassen; in diesem Fall muss die Methode aber zumindest als abstrakt deklariert werden. Interface -
+aneinandergehängt); zugleich ist die Angabe der implementierten Interfaces eine nominale
+Typkonformitätsdeklaration , d. h., Instanzen d er Klasse sind mit allen Variablen jedes der
+genannten Interfaces zuweisungskompatibel.
+Es definieren also die Interfaces von JAVA genau wie Klassen Typen und
+können daher genauso wie Klassen in Variablendeklarationen verwendet
+werden:
+ist eine solche Deklaration. Der Type checker garantiert dann, dass auf der Variable mit
+Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface
+mit Namen „Interfacename“ deklarier t sind, selbst wenn das Objekt, das die Variable be-
+nennt, mehr anbietet. S o ist es möglich, dass Methoden und Felder einer Instanz vor ande-
+ren Instanzen anderer oder derselben Klasse verborgen werden können: Man deklariert ein-
+fach die Variablen , die auf di e Instanz verweisen , mit dem Interface als Typ. Eine genauere
+Betrachtung der Bedeutung der Verwendung von Interfaces erfolgt in Kapitel 45.
+Es kann also eine Klasse in JAVA zwar nur direkte Subklasse genau einer
+anderen Klasse sein, dafür aber mehrere Interfaces gleichzeitig implemen-
+tieren. Diese mögliche „Mehrfachimplementierung“ von Interfaces wurde häufig als Ersatz
+für d ie in JAVA fehlende Möglichkeit der Mehrfachvererbung angepriesen — das aber war
+Unsinn, denn bei der Implementierung eines Interfaces wurde nichts vererbt (sieht man mal
+von der sog. Interfacevererbung ab, die aber auch keine wirkliche Vererbung ist, denn auch
+die Deklarationen werden nicht automatisch von einem Interface auf seine implementieren-
+den Klassen übertragen, sondern müssen dort wiederholt werden ). Vielmehr hat man es mit
+einer Art Mehrfach -Subtyping zu tun, das aber auch ganz nett ist, wie die Überlegungen in
+Kapitel 45 zeigen werden.
+"
+"11.3 Löschen von Methoden
+Wie be reits in Abschnitt 10.3 erwähnt, wird die Programmiererin, die eine abst rakte, weil
+unvollständige, Klasse instanziiert, irgendwann damit bestraft, dass das Versenden einer
+Nachricht an die entsprechende Instanz zu einer Fehlermeldung führt, die ihr (per
+subclassResponsibility oder implementedBySubclass , die, genau wie
+doesNotUnderstand: , in der Klasse Object definiert ist) anzeigt, dass die Methode (erst)
+in einer Subklasse implementiert werden sollte. Dummerweise bekommt die Programmie-
+rerin diesen Hinweis erst zur Laufzeit des Programms zu Gesicht, also dann, wenn es schon
+zu spät ist (es sei denn, man testet gerade). Man erkennt hieran sehr schön den interaktiven
+Geist des SMALLTALK -Systems, insbesondere die Philosophie, nach der Programmieren nichts die Klasse Object
+weiter ist als das iterative Zurechtbiegen und Erweitern eines bereits bestehenden, funktio-
+nierenden Systems. Man muss eine Weile damit gespielt haben, um diesem Charme zu er-
+liegen.
+Selbsttestaufgabe 11.1 (für JAVA-Fans)
+Überschreiben Sie die Methode doesNotUnderstand: so, dass man beim Versenden einer Nach-
+richt an nil eine Meldung „ Null pointer exception “ erhält. Achtu ng: Speichern Sie vorher unbedingt
+Ihr Image und stellen Sie es nach der Bearbeitung der Aufgabe wieder her!
+Wenn man sich erst einmal damit abgefunden hat, dass man als Program-
+miererin Methoden schreibt, die ausschließlich dem Zweck dienen, sich
+selbst oder eine Kollegin auf Programmierfehler hinzuweisen, dann erscheint einem eine
+weitere SMALLTALK -Konvention geradezu als elegant, nämlich die, geerbte Methoden durch
+überschreiben auszulöschen . Tatsächlich ist genau hierfür eine weitere Methode in der
+Klasse Object mit Name n „shouldNotImplement“ vorgesehen, die zu einer entsprechen-
+den Fehlermeldung führt. Eine Klasse, die also eine geerbte Methode löschen möchte, über-
+schreibt diese einfach mit
+im Rumpf. Bevor Sie jetzt als disziplinierte Programmiererin den Stab über SMALLTALK bre-
+chen, erlauben Sie noch den Hinweis, dass der Wunsch, geerbte Methoden zu löschen,
+direkte Folge der vorrangigen Orienti erung an Vererbung ist, die bereits oben kritisiert
+wurde: Wäre die Superklasse auf Grundlage des Prinzips der Generalisierung ausgewählt
+worden, käme man gar nicht in die Verlegenheit, Methoden löschen zu wollen, denn alles,
+was für die Generalisierung si nnvoll ist, ist grundsätzlich auch für ihre Spezialisierungen
+sinnvoll, oder die Generalisierung ist keine Generalisierung. Außerdem haben Sie auch in
+Sprachen mit starker Typprüfung, in denen das Löschen von Methoden nicht möglich ist,
+als Programmiererin immer die Freiheit, eine Methode so zu überschreiben, dass sie garan-
+tiert nichts tut, was mit der Idee der Klasse, von der sie ererbt ist, in Einklang zu bringen
+wäre. Auch hier wäre n Laufzeitfehler die unvermeidbare Folge. Mehr dazu im Kurseinheit 3;
+hier sei nur soviel bemerkt wie, dass wenn man sich bei der Organisation seiner Klassenhie-
+rarchie auf das P rinzip der Generalisierung stützt, dass man dann auch nicht in die Verle-
+genheit kommt, Methoden löschen zu wollen.
+"
+"26 Subtyping und Inklusionspolymorphie
+Die Einführung von Typäquivalenz und Typkonformität bezog sich bislang lediglich auf das
+Verhältnis der Typdefinitionen, also der Intensionen der Typen. Die Frage des Zusammen-
+hangs der Wertebereiche der Typen, also der Extensionen, ist dabei unberücksichti gt geblie-
+ben. Wenn aber die obige Definition von Typkorrektheit weiter Bestand haben soll, dann
+müssen die Werte zuweisungskompatibler Typen zum Wertebereich des Typen, an den zu-
+gewiesen werden soll, gehören.
+Zur Erinnerung: Typannotationen stellen Invarianten dar, die die möglichen Werte einer Va-
+riable beschr änken. Diese Invarianten dürfen durch Zuweisungen nicht verletzt werden.
+Wenn man aber nun Zuweisungen von einem anderen Typen zu lässt, dann wird die Typ-
+korrektheit nur dann nicht verletzt, wenn der Wertebereich des anderen Typen (seine Ex-
+tension) in dem d essen, dem zugewiesen wird, enthalten (inkludiert) ist. Mit anderen Wor-
+ten: Damit eine Zuweisung a := b , bei der sich die Typen von a und b unterscheiden,
+zulässig ist, muss die Extension des Typs von b eine Teilmenge der Extension des Typs von
+a sein.
+Im Fall der Typerweiterung ist dies nicht automatisch der Fall. So handelt
+es beispielsweise bei der Extension des Typs
+Typ DreiDPunkt
+erweiterter Typ ZweiDPunkt
+Protokoll
+als Erweiterung von
+Typ ZweiDPunkt
+Protokoll
+nicht unbedingt um eine Teilmenge der Extension von ZweiDPunkt , denn es ist z. B. nicht
+klar, was das Ergebnis der Addition eines dreidimensionalen zu einem zweidimensionalen
+Punkt sein könnte — geometrisch ist die Addition zweier Punkte unterschiedlicher Dimen-
+sionen jedenfalls nicht definiert. mangelnde Teilmen-
+Selbsttestaufgabe 26.1
+Versuchen Sie, das Beispiel mit ZweiDPunkt und DreiDPunkt so zu retten, dass sowohl Typer-
+weiterung als auch Inklusion von Extensionen darin vorkommt. Evtl. finden Sie in Kapitel 9 von Kurs-
+einheit 2 nützliche Hinweise.
+Das Phänomen der mangelnden Extensionsinklusion bei Typerweiterung
+lässt sich darauf zurückführen, dass dem erweiterten Typ ( im Beispiel
+Dokument ) eigene, d. h. nicht einer seiner Erweiterungen entstammende
+Werte (Objekte) zuges tanden werden. Wäre die Extension eines erweiterten Typs als die
+Vereinigung der Extensionen seiner Subtypen (hier Text und Zeichnung ) definiert, gäbe
+es dieses Problem nicht. Dies ist ein sehr guter Grund dafür, dass Supertypen — genau wie
+Generalisierungen ( Kurseinheit 2, Kapitel 9) — keine eigenen Objekte haben sollten (vgl. a.
+Abschnitt 26.1 und Kurseinheit 7, Kapitel 69).
+Auch nicht selbstverständlich ist die Teilmengenbeziehung bei der Typein-
+schränkung: Durch das Weglassen von Eigensch aften (Methoden) wird
+die Extension, also die Menge de r Werte (Objekte), die darunter fallen,
+eher größer denn kleiner — je weniger spezifisch die Menge der geforderten Eigenschaften
+ist, desto mehr Objekte fallen darunter. Die sich daraus ergebende Teilmen genbeziehung
+wäre also eher die umgekehrte (die Extension des einschränkenden Typen enthält die des
+eingeschränkten). Etwas anders sieht es aus, wenn durch Typeinschränkung ( Redefinition )
+die Ein - oder Rückgabetypen von Methoden beschränkt werden: Die Menge der Zeichnun-
+gen ist eine Teilmenge der Menge der Dokumente, auch weil sich Zeichnungen eben nur
+auf Plottern ausgeben lassen. Die Zuweisungskompatibilität von Zeichnung mit Dokument
+wäre also, was die Inklusion der Extensionen angeht, kein Problem.
+Man könnte nun die Typerweiterung unter oben gemachter Einschrän-
+kung und die zweite Form der Typeinschränk ung als in dieselbe Richtung
+zielende Maßnahmen ansehen: Beide schränken Extensionen ein. Das
+lässt sich wie folgt erklären: Wenn man einer Menge von Objekten, die
+durch eine Anzahl Attribute alle gleichermaßen charakterisiert werden, weitere Attribute
+beimisst, dann schränkt man diese Menge ein, wenn die hinzugefügten Attribute nicht alle
+Objekte der Menge charakterisieren. Wenn man beispielsweise wie oben geschehen die
+Attributmenge des Typs Dokument um die Methode zeilen ^ <Collection> erweitert,
+dann fa llen die Zeichnungen aus der durch Dokument beschriebenen Menge von Objekten
+heraus, weil sie keine Zeilen haben. Alternativ könnte man auch sagen, dass Dokumente
+grundsätzlich über Zeilen verfügen können, diese aber bei Zeichnungen immer in der Anzahl
+erscheint das weniger natürlich.51 Man beachte die Parallelität zum Begriff der Spezialisie-
+rung (Abschnitt 9.2 in Kurseinheit 2): Der durch Typerweiterung oder -einschränkung aus
+Dokument hervorgegangene Typ Zeichnung ist spezieller als seine Vorlage.
+Nun ergibt sich aber gemäß obigem Beispiel (Zeilen 900–902) ein Sach-
+verhalt, der trotz aller Harmonie von Typerweiterung und -einschränkung
+nicht weniger als den Verlust der Zuweisungskompatibilität bedeutet.
+Dieser resultiert jedoch bei genauerer Be trachtung nicht daraus, dass Zeichnungen keine
+Dokumente wären, sondern aus der mit der Typkorrektheit verbundenen, impliziten All-
+quantifiziertheit von Typinvarianten: Eine Methodendeklaration
+im Protokoll eines Ty ps Dokument wird nämlich interpretiert als „ druckenAuf: ist definiert
+für alle Empfängerobjekte vom Typ Dokument und Parameterobjekte vom Typ Drucker “,
+was aber in dieser Allgemeinheit sachlich falsch ist.
+Typsysteme mit Typinvarianten der hier vorgestellten Art sind nicht in der
+Lage, andere als implizit allquantifizierte Aussagen über Wertebereiche zu treffen. Dies ist
+gewissermaßen der Preis der Einfachheit. Abhilfe schaffen neuere Typsysteme wie die Idee
+von den Dependent types , wie sie beispielsweise in SCALA zum Einsatz kommen : Hier man
+sich die Parametertypen von Methoden als Funktionen des Typs, zu dem die Methode ge-
+hört, vorstellen. Der Parametertyp von druckenAuf: aus obigem Beispiel wäre dann, in
+Abhängigkeit davon, ob die Methode auf einem Objekt vom Typ Dokument oder
+Zeichnung aufgerufen wird, Drucker oder Plotter . Wie man sich leicht vorstellen kann,
+ist die statische Prüfung solcher Bedingungen (Invar ianten) aber nicht so einfach.
+Die Vereinigung von Typerweiterung und Typeinschränkung mit Zuweisungskompatibilität
+und der daraus folgenden Typkorrektheit bietet der Begriff des Subtyps.
+"
+"52.5.2 Statische Komponente
+Wie auch in JAVA definiert in EIFFEL jede unparametrisierte Klasse einen Typ und jede para-
+metrisierte Klasse eine (generische) Menge von Typen. Alle Variablen (inkl. Methoden81 und
+deren Parameter) müssen einen Typ haben. Zuweisungskompatibilität ist an nominale Typ-
+konformität gebunden, die wiederum mit der Typerweiterung (in EIFFEL einfach Vererbung
+genannt) einhergeht — ganz wie in JAVA. Anders als in JAVA ist es jedoch zulässig, Instanzva-
+riablen und Funktionsparameter wie im obigen Beispiel kovariant zu rede finieren — von
+kontravarianter Redefinition will MEYER nichts wissen (eine Begründung sollten Sie mittler-
+weile selbst zur Verfügung haben). Das bedeutet allerdings mangelnde Substituierbarkeit
+und bereitet EIFFEL erwartungsgemäß einige nichttriviale Probleme.
+Zunächst einmal wollen wir uns das Typs ystem EIFFELs noch etwas ge-
+nauer ansehen. Es basiert, wie in der objek torientierten Programmierung
+üblich, auf dem Begriff der Typkonformität ( Kapitel 23 in Kurseinheit 3). In EIFFEL ist ein Typ
+U typkonform zu einem Typ T
+ wenn U und T gleich sind,
+ wenn U eine direkte Erweiterung von T ist (direkt von T erbt) und wenn zusätzlich,
+im Falle von parametrischer Erzeugung von U und T, jeder tatsächlich e Typparameter
+von U konform ist zum entsprechenden tatsächlich en Typparameter von T oder
+ wenn es einen Typ V gibt, so dass U typkonform mit V und V typkonform mit T ist
+(U ist eine indirekte Erweiterung von T).
+Außerdem gibt es in EIFFEL noch einen Typkon struktor like <ein Ausdruck> (s. u.),
+dessen erzeugter Typ typkonform zum Typ von <ein Ausdruck> ist. Dieser spielt bei der
+kovarianten Redefinition eine wichtige Rolle. Zu einem so erzeugten Typ ist jedoch nur der
+Basistyp konform, keiner seiner Subtyp en.
+Dazu zunächst ein paar Beispiele. Bei
+ist
+OK,
+hingegen nicht. Im Falle der Vererbung bei parametrischem Polymorphismus wie in
+ist wieder
+zuweisungskompatibel, die umgekehrte Zuweisung jedoch nicht. Beschränkter parametri-
+scher Polymorphismus wird in EIFFEL übrigens wie folgt notiert:
+EIFFEL benutzt also eckige Klammern und -> anstelle von spitzen Klammern und extends
+in JAVA.
+In EIFFEL wird übrigens anders als in C# nicht pro Typkonstruktor zwischen
+Wert - und Referenztyp unterschieden — zu jedem kann es (ähnlich wie
+in C++) beid e Formen geben. Dazu gibt es in EIFFEL die Möglichkeit, bei
+einer Deklaration anzugeben, dass Variablen eines Typs Wertsemantik, also ein Objekt an-
+stelle einer Referenz auf ein Objekt zum Inhalt haben sollen (s. Kurseinheit 1, Abschnitt 1.5).
+Dies ist manchmal für alle Variablen eines Typs sinnvoll (z. B. bei Zahlen und Wahrheitswer-
+ten), manchmal aber auch nur für manche. Und so gibt es in EIFFEL einen Typkonstruktor
+expanded , der, in Variablendeklaration wie in
+eingesetzt, einer einzelnen Variable eine Wertsemantik gibt, und der in Klassendefinitionen
+wie in
+verwendet allen Variablen des entsprechenden Typs (der entsprechenden Typen im Falle
+einer generischen Typdefinition) automatisch Wertsemantik gibt. EIFFELs Typkonstruktor
+expanded entspricht also gewissermaßen einer Umkehrung des in PASCAL -artigen Sprachen
+verwendeten Typkonstruktors ^ (Zeiger auf): Wenn expanded nicht verwendet wird, han-
+delt es sich um einen Zeigertypen.
+Die Unterscheidung von Wert - und Referenzty pen einer Klasse hat in EIF-
+FEL einen starken konzeptuellen Hintergrund: Sie unterstützt die bereits in
+Abschnitt 2.3 diskutierte Komposition und ihre Abgrenzung a ls eine be-
+sondere Beziehung zwischen Objekten, nämlich der, die das Enthalten-
+sein von Objekten in anderen ausdrückt (vgl. dazu auch Kapitel 59 in
+Kurseinheit 6). Nun ist es in der Realität so, dass nicht alle Instanzen einer Klasse immer Typkonstruktoren für
+entweder Komponenten (also in anderen Objekten enthalten) oder freie Objekte (also nir-
+gends ent halten) sind. EIFFEL wird dem gerecht, indem es erlaubt, von einer Klasse fallweise
+Komponentenobjekte (über expanded Variablen) und freie Objekte (über normale Variab-
+len) zu haben. Dieses Feature ist nicht in C# (zumindest nicht im Safe mode) zu haben, de nn
+dort definieren Structs ausschließlich Werttypen und Klassen ausschließlich Referenztypen,
+und schon gar nicht in SMALLTALK oder JAVA — in C++ (und im Unsafe mode von C#) kann
+man es simulieren, zahlt dafür aber den Preis, mit expliziten Pointern hantie ren zu müssen,
+was nach landläufiger Auffassung ein ziemlich hoher ist.
+Nun stand bereits in Kurseinheit 1, Abschnitt 1.6 zu lesen, dass bei der
+Zuweisung zwischen zwei Variablen mit Wertsemantik der W ert der einen
+Variable in die andere Variable kopiert wird, während bei der Zuweisung
+zwischen zwei Variablen mit Referenzsemantik lediglich der Zeiger ko-
+piert wird. Dies ist auch in EIFFEL so. Bei der Zuweisung einer Variable mit Referenzsemantik
+an eine Variable mit Wertsemantik reicht es jedoch nicht, einen Zeiger zu kopieren, denn
+die Zielvariable hat keinen Platz für einen Zeiger, sondern für die Attributwerte — stattdes-
+sen wird hier das Objekt, auf das der Zeiger verweist, kopiert (genauer: es werden die Attri-
+bute des Objekts in den für die Attribute des Werts reservierten Speicher der Variable ko-
+piert). Im umgekehrten Fall, also wenn eine Variable mit Wertsemantik an eine Variable mit
+Referenzsemantik zugewiesen wird, könnte man annehmen, dass ein Zei ger auf den Wert
+erzeugt und zugewiesen wird; dies würde aber bedeuten, dass dadurch ein Alias auf einen
+Wert entstünde, was nicht der Semantik der Komposition ( Aggregation ; s. Abschnitt 2.3 in
+Kurseinheit 1) entspräche. Was stattdessen passiert, ist, dass ein Klon des Objekts erzeugt
+wird und eine Referenz auf diesen Klon übergeben wird. Dies ist eine äußerst sinnvolle Fest-
+legung.
+Verankerte Typdeklarationen haben in EIFFEL die Form
+wobei y ein bereits typisiertes Programmelement (also z. B. eine Instanzvariable) ist. Eine
+solche Verankerung bewirkt, dass sich der Typ von x automatisch mit dem von y verändert.
+Dies hat zunächst noch nichts mit Kovarianz zu tun, wie das folgende Beispiel zeig t.
+Anstatt in EIFFEL
+zu schreiben, d. h., bei Veränderung des Typs der Instanzvariable f von X zu Y alle Parame-
+tertypen, die davon berührt sind, mit zu verändern, reicht es aus,
+zu schreiben. Da die Typen der Parameter von setF und getF alle per Deklaration dieselben
+sind wie der Typ von f, muss in der Definition von B textuell nichts anderes stehen. Da nun
+aber in EIFFEL die Redefinition von Instanzvariablen per Definition immer kovariant sein muss ,
+muss Y ein Subtyp von X sein. Der Rückgabetyp von getF und der Parametertyp von setF
+ändern sich damit automatisch ebenfalls kovariant.
+Ein besonderer Fall von verankerten Typen ergibt sich bei rekursiv en Ty-
+pen, also Typen, deren Definition den definierten Typ selbst referenziert:
+In diesem Fall schreibt man in EIFFEL anstelle der Typreferenz bei der Deklaration einer Vari-
+able vom zu definierenden Typ like Current . Bei einem entsprechend deklarierten Fel d
+ändert sich der Typ bei der Vererbung also immer automatisch zum erbenden Typ hin ab,
+also immer mit dem Typ und damit kovariant. Für das Beispiel der zu trennenden Skifahre-
+rinnen (Zeilen 1391 –1425 ) ergibt sich damit
+Die beiden erbenden Klassen GIRL und BOY müssen dann nichts mehr redefinieren.
+Wir können nun zur Lösung des Pro blems der Kovarianz in EIFFEL kom-
+men. Die obige Konstruktion
+(hier unverändert wiederholt) wird dann vom Type checker zur Übersetzungszeit zurückge-
+wiesen, da g1 nicht vom Typ like s1 ist, was aber laut Typkonformitätsregeln von EIFFEL
+notwendig wäre . Leider ist das nur ein Teilerfolg.
+Es ist nämlich andersherum like s1 mit dem Typ von s1 konform . Und so wird es möglich,
+dass bei zusätzlicher Deklaration von
+(wobei der Typ von s1 ja SKIER ist)
+und anschließend
+doch wieder
+zulässig ist und damit ein Mädchen einem Jungen ins Zimmer gesteckt wird.
+Die erste und einfachste Möglichkeit, dies zu verhindern, w äre, die Zu-
+weisungskompatibilität für Variablen mit verankerten Typen und Typan-
+kern einzuschränken und unter ihnen nur noch Typäquivalenz zu akzeptieren. Es wären
+dann nur noch Zuweisungen zwischen Variablen eines als Typanker verwendeten Typs mit
+solchen, die ihn als Anker benutzen, erlaubt; insbesondere wäre eine Zuweisung wie s1 :=
+g1 (die ja notwendig war, um ein Objekt vom Typ GIRL so zu „verpacken“, dass es an g2
+mit seinem verankerten Typ like s1 zugewiesen werden kann) damit nicht mehr möglich.
+Alle anderen Zuweisungen wären natürlich weiter zugelassen; dies hätte jedoch zur Konse-
+quenz, dass bei verankert genutzten Typen geschlossene Zirkel entstünden, aus denen kein
+Objekt hinaus und in die keines hinein käme (außer bei seiner Erzeugung). Außerdem w äre
+es für die Programmiererin schwer, vorab zu entscheiden, ob ein Typ entweder als Anker
+zur kovarianten Redefinition verwendet oder ob er polymorph, also für Variablen, die Ob-
+jekte unterschiedlichen Typs haben dürfen, genutzt werden soll. Lösung des Problems
+Die zweite Möglichkeit wäre, eine Typinferenz für das gesamte Programm durchzuführen,
+um die möglichen Zuweisungen an Variablen zu sammeln. Dazu sind insbesondere alle Me-
+thodenaufrufe anzus ehen (Zuweisungen an Instanzvariablen sind in EIFFEL nur innerhalb ei-
+ner Klasse erlaubt) und diese können je nach Konfiguration des endgültigen Systems sehr
+unterschiedlich ausfallen. Eine solche Typinferenz ist aber in den meisten Fällen unrealistisch.
+Die dritte Möglichkeit ist die, alle dynamisch gebundenen Aufrufe von Methoden, deren
+Verfügbarkeit oder Parametertypen sich in überschriebenen Versionen („Redefinitionen“)
+ändern (die von MEYER so genannten CAT -Calls, wobei CAT für „ Change Availability or
+Type“ steht), zu verbieten. Ein Aufruf von share auf s1 wie oben ist damit verboten, weil
+share in BOY und GIRL kovariant redefiniert wird. Auf einer Variable vom Typ GIRL oder
+BOY wäre er hingegen zulässig, solange sichergestellt ist, dass diese Variable k einen Wert
+von einem Subtyp von GIRL bzw. BOY zugewiesen bekommen kann. Das ist möglich, wenn
+kein solcher Subtyp existiert oder wenn keine Zuweisung an die Variable existiert, bei der
+die rechte Seite ein Subtyp der Variable ist. Das erste ist lokal nicht nachzuweisen, das zweite
+hingegen schon, jedoch nur für explizite Zuweisungen (inkl. der Instanziierung, die in EIFFEL
+auf einer Variable durchgeführt wird und ihr au tomatisch einen Wert gibt). Für die Zuwei-
+sung an formale Parameter kann dies jedoch nicht lokal nachgewiesen werden, weil im
+Gegensatz zu expliziten Zuweisungen an Variablen die Methodenaufrufe von überall her
+erfolgen können.
+Wie Sie sehen, sind die Bedin gungen ziemlich restriktiv, und man kommt nicht umhin, das
+Typsystem von EIFFEL als etwas eigenartig zu empfinden. Wie es sich in der Praxis auswirkt,
+ist mir leider nicht bekannt; MEYER behauptet, dass die Probleme praktisch keine Rolle spie-
+len. Ich möcht e hinzufügen, dass falls doch, die durchschnittliche Programmiererin kaum
+verstehen wird, was denn nun genau das Problem ist und was sie tun kann, es zu umgehen.
+"
+"4.1.2 Nachrichtenausdrücke
+Neben der Zuweisung ist der Nachrichtenversand die zweite wichtige Ausdrucksform
+der objektorientierten Programmierung. SMALLTALK verwendet hierfür eine Syntax, die stark
+an die der engl ischen Sprache angelehnt ist: Sie verlangt ein Subjekt (den Empfänger der
+Nachricht), ein Prädikat (die Nachricht ) sowie eine optionale Liste von Objekten als Prädi-
+katsergänzungen (die P arameter der Nachricht). Dabei wird auf die in anderen Sprachen
+übliche Verwendung des Punkts als Trennzeichen zwischen Empfänger und Nachricht und
+Klammern zum Umschließen der Parameterliste verzichtet; stattdessen verwendet man bei Zustandswechsel von
+zwei oder mehr Paramet ern Partikeln (Präpositionen oder Konjunktionen) ähnelnde Nach-
+richtenteile, die den Parametern vorangestellt werden. Die allgemeine Syntax lautet also
+für parameterlose Nachrichten,
+für Nachrichten mit einem Parameter,
+für Nachrichten mit zwei Parametern usw., wobei hier die in spitzen Klammern stehenden
+Namen metasyntaktische Variablen , also Platzhalter für Namen in einem konkreten Pro-
+gramm, sind und die Nachrichten(teile), die Parameter nach sich ziehen, immer mit einem
+Doppelpunkt enden müssen.
+drückt beispielsweise den Versand einer parameterlosen Nachricht tueEtwas an das Ob-
+jekt, auf das die Variable einObjekt verweist, aus.16 Ein etwas konkreteres Beispiel hierfür
+ist der Ausdruck
+mit dem dem Objekt #abc die Nachricht printStri ng gesendet wird.
+Soll einer Nachricht ein Parameter angehängt werden, so tut das
+wobei einemParameter hier auch eine Variable ist (es könnte auch ein anderer Ausdruck
+dort stehen; s. u.). Ein konkretes Beispiel hierfü r ist
+Ein zweiter Parameter wird durch einen weiteren Nachrichtenbestandteil wie in
+hinzugefügt und alle weiteren entsprechend, also etwa
+men durch sog. Binnenmajuskeln (eingefüg te Großbuchstaben) und nicht durch den Unterstrich
+kenntlich zu machen.
+wobei sich die Nachrichtenteile wie oben ruhig wiederholen dürfen. Es ist
+also insbesondere nicht so, dass die Reihenfolge der Nachrichtenteile beliebig umgestellt
+werden dürfte, oh ne dass sich dadurch die Bedeutung der Nachricht änderte. Tatsächlich
+ist die an das Objekt geschickte Nachricht, der sog. Nachrichtenselektor (engl. message
+selector ), immer ein Symbol, das aus der Konkatenation (Aneinanderfügung) aller seiner
+Teile, also im Beispiel der Zeile 48 oben #tueEtwasMit:und: besteht. Die Namen der
+Nachrichtenteile sind frei wählbar, beginnen jedoch per Konvention mit einem Kleinbuch-
+staben.
+Parameterlose Nachrichten w ie beispielsweise tueEtwas in Zeile 44
+nennt man in SMALLTALK übrigens unär (unary messages ): Obwohl sie
+keine expliziten Argumente haben, heißen sie trotzdem unär, weil der Empfänger das erste,
+implizite Argument ist. So nehmen denn auch sog. binäre Nachrichten17 nur einen Para-
+meter, was aber zwei Argumenten, nämlich dem Empfänger und einem weiteren Argu-
+ment, entspricht:
+beispielsweise drückt aus, dass die Nachricht „+“ mit Argument „2“ an das Objekt „1“
+gesendet werden soll.
+In SMALLTALK sind binä re Nachrichten eine syntaktische Besonderheit: Sie bestehen nämlich
+aus einem oder mehreren nicht alphanumerischen, nicht reservierten Zeichen (die Liste der
+reservierten Zeichen finden Sie in Kapitel 5 am Ende diese r Kurseinheit ). Alle anderen Nach-
+richten, die neben dem Empfänger noch mindestens ein Argument erfordern, werden in
+SMALLTALK dagegen Schlüsselwortnachrichten (keyword messages ) genannt, so z. B.
+tueEtwasMit: in Zeile 46 und tueEtwasMit:und: in Zeile 48. Dies ist jedoch etwas ver-
+wirrend, da sie keine Schlüsselwörter im landläufigen Sinne (von denen SMALLTALK ja gar
+keine hat) enthalten und da natürlich auch die unären Nachrichten „Schlüsselwörter“ ver-
+wenden.
+Ein Nachrichtenausdruck besteht also aus einem Empfängerobjekt, einem
+Nachrichtenselektor sowie einer Anzahl von Argumentausdrücken, die
+die Teile des Nachrichtenselekt ors sperren (dazwischen stehen).18 Der Ausdruck als ganzes
+gleichen Typ haben
+Parameter zu übergeben; in den allermeisten Fällen handelt es sich dabei um einen Anfängerinnen-Nachrichtenselektor
+steht für ein Objekt, nämlich das Ergebnis der Auswertung der Nachricht durch den Emp-
+fänger. Der Nachrichtensender wird dem Empfänger übrigens nicht mitgeteilt (es sei denn,
+er wird explizit als Par ameter übergeben) — das System weiß automatisch, wohin die Ant-
+wort auf die Nachricht zurückgeliefert werden soll (nämlich genau an die Stelle, an der der
+Nachrichtenversand steht). Mehr dazu gleich, wenn es um die Auswertung von Nachrich-
+tenausdrücken geht (Abschnitt 4.1.3 ).
+Da ein Nachrichtenausdruck für ein Objekt steht, kann er selbst Teil eines
+Nachrichtenausdrucks sein, also f ür den Empfänger der Nachricht oder
+einen ihrer Parameter stehen. Es ist dann allerdings u. U. notwendig, den so geschachtelten
+Nachrichtenausdruck zu klammern, da er sonst nicht richtig erkannt werden kann:
+beispielsweise schiebt das Objekt auf den Stack, das Resultat der Nachricht arg:arg: ge-
+sandt an das oberste Objekt des Stacks mit seinem zweiten und dritten als Parameter ist.
+(Zu den genauen Regeln zur Reihenfolg e der Auswertungen siehe Abschnitt 4.1.4 .)
+Nicht selten möchte man eine Serie von Ausdrücken an dasselbe Empfän-
+gerobjekt senden. SMALLTALK sieht dafür mit der Kaskadierung eine nette
+syntaktische Abkürzung vor, die es erlaubt, bei einer Sequenz von Nach-
+richten an dasselbe Objekt dieses nicht immer wiederholen zu müssen. So sorgt beispiels-
+weise
+anstelle des wesentlich wortreicheren
+dafür, dass die Objekte „1“, „+“ und „2“ nacheinander als Parameter der Nachricht show:
+an das von der globalen Variable Transcript benannte Objekt, eine Art Systemkonsole,
+gesendet werden. (Auf die Bedeutung des „.“ kommen wir in Kapitel 4.2 zu sprechen.) Das
+Beispiel ist übrigens nicht b esonders zwingend, da man in SMALLTALK genauso gut auch
+hätte
+fehler , bei dem durchscheint, dass die Programmiererin (die vermutlich noch in Kategorien der pro-
+zeduralen Programmierung denkt) nicht verstanden hat, dass jede Nachricht einen Empfänger hat,
+ein Nachrichtenausdruck diesen also schon beinhaltet. geschachtelte Nach-
+schreiben können (wobei , ein binärer Nachrichtenselektor ist, der für die Konkatenation
+steht). cr ist übrigens eine (unäre) Nachricht, die für einen Wagenrücklauf ( carriage return )
+auf dem Transcript sorgt.
+Man kann sich aber durch Verwendung der Kaskadierung häufig die Ein-
+führung einer temporären Variablen (s. Abschnitt 4.3) ersparen, und zwar
+immer dann, wenn anstelle einer Variabl e als Empfänger ( Transcript
+in obigem Beispiel) ein Ausdruck steht, der das Empfängerobjekt liefert und der nur einmal
+ausgewertet werden soll. Anstelle von
+kann man also
+schreiben, wenn man eineVariable hernach nicht mehr benötigt. SMALLTALK unterstützt
+also von Haus aus sog. Fluent APIs .
+"
+"51.3 Friends
+Ein interessantes Konzept von C++, das einen direkten Bezug zur objektorientierten Pro-
+grammierung hat, ist das Friends -Konzept. In der Praxis kommt es häufig vor, dass ein be-
+stimmtes Teilproblem nicht von einer Klasse allein, sondern nur durch das Zusammen spiel
+mehrerer Klassen gelöst werden kann. Während diese Klassen untereinander eng kooperie-
+ren müssen und deswegen (relativ) intime Kenntnis voneinander benötigen (will sagen, auf
+Elemente zugreifen können müssen, die anderen Klassen verborgen bleiben soll ten), gilt das
+für andere Klassen nicht unbedingt. Die Schnittstelle solcher kooperierenden Klassen sollte
+also nicht absolut, sondern relativ zu anderen Klassen definierbar sein.
+In JAVA hatte man dazu bis zur Version 8 nur die Möglichk eit, die besag-
+ten Klassen in ein Paket zu verfrachten und die fraglichen Elemente mit paketweitem Zugriff
+(also ohne Zugriffsmodifizierer) zu deklarieren (Abschnitt 39.1 in Kurseinheit 4). Das hat
+jedoch den Nachteil, dass alle Klassen desselben Pakets dieselbe Schnittstelle jeder einzelnen
+enthaltenen Klasse haben; wenn es eine Klasse gibt , die eine ansonsten unsichtbare Eigen-
+schaft x einer Klasse A sehen und eine andere, die eine Eigenschaft y derselben Klasse sehen
+soll, dann gibt es keine Aufteilung der Klassen auf Pakete, die genau dieses gestattet. Was
+man stattdessen gern hätte, ist e in dedizierter Export von Elementen einer Klasse, also ein dedizierter Export
+zur Verfügung Stellen von Elementen an genau benannte Klassen. Dies bietet, in etwas
+gröberer Form, das Friends -Konzept von C++: Die Definition
+bewirkt, dass (Instanzen von) B und (von) C auf alle private deklarierten Elemente von
+(Instanzen von) A zugreifen können (jedoch weder umgekehrt von A auf B und C noch B
+und C gegenseitig ). Ein spezifischer, dedizierter Export von einzelnen Membern an be-
+stimmte Klassen ist in C++ nicht möglich; diesen gibt es dafür in EIFFEL (s. Abschnitt 52.2).
+Mit JAVAs Modulen und dem dedizierten ( qualifiziert genannten) Export wird das Friend -
+Konzept auf Ebene der Pakete zumindest angenähert.
+"
+"8.4 Erzeugung von Klassen in SMALLTALK
+Da Instanz en, für die es keine literale Repräsentation gibt, in SMALLTALK grundsätzlich über
+Konstruktoren erzeugt werden und jede Klasse Instanz ihrer Metaklasse ist, kann man sich
+fragen, wie in SMALLTALK eigentlich Klassen erzeugt werden. Die Tatsache, dass es einen
+Browser mit einer entsprechenden Funktion gibt, reicht als Erklärung hierfür nicht aus. An-
+dererseits kann es auch keine Lösung sein, einfach new o. ä. an die Metaklasse der Klasse
+zu senden, da diese ja zunächst noch gar nicht existiert. Es stellt sich hier tatsächlich die
+sprichwörtliche Frage nach der Henne und dem Ei, genauer, wer von beiden zuerst existie-
+ren muss .
+Dieses Dilemma wird von SMALLTALK intern gelöst. Eine Klasse wird i n
+SMALLTALK nämlich erzeugt, indem man einer anderen Klasse eine ent-
+sprechende Nachricht schickt. Der Protokolleintrag der dazugehörigen
+Methode (je nach System in der Klasse Class oder Behavior zu finden)
+für Klassen ohne indizierte Instanzvariablen sieht in SQUEAK wie folgt aus:
+poolDictionaries: s category: cat
+ist. Verwendung der
+Durch Ausführung dieser Methode wird eine neue Klasse und zugleich ihre Metaklasse an-
+gelegt. Dabei kann man dem Kommentar entnehmen , dass die neue Klasse Subklasse des
+Empfängers (einer Klasse) werden soll. Was das heißt, wird Gegenstand von Kapitel 11 sein.
+Hier wenden wir uns lieber der Frage zu, von welchen Klassen die miterzeugten Metaklassen
+Instanzen sind.
+"
+"35.1 Literale
+In JAVA gibt es Literale für Zahlen, Zeichen und S trings. Für Arrays gibt es, da sie nicht aus
+Literalen zusammengesetzt sein müssen, etwas ähnliches, nämlich die sog. Array -Initialisie-
+rer; sie werden in Kapitel 41 behandelt. Ob true und false bzw. null in JAVA Literale Deployment
+oder Schlüsselwörter sind, hängt vom Standpunkt ab: Die meisten Syntaxeditoren behan-
+deln sie wie Schlüs selwörter, gemäß Sprachdefinition handelt es sich aber um Literale, die
+die beiden Booleschen Wahrheitswerte „wahr“ und „falsch“ bzw. den Wert des Nulltypen
+(UndefinedObject in SMALLTALK , in JAVA unbenannt) repräsentieren.
+Zahlenliterale in JAVA können eine Vielzahl von Formen annehmen. Für
+drei besondere Werte im Fließkommabereich stehen allerdings keine Literale, sondern nur
+Konstanten zur Verfügung: Es sind dies NaN (für das englische Not a Number ) sowie
+POSITIVE_INFINITY und NEGATIVE_INFINITY . Zeichenliterale werden in JAVA durch
+einfache Anführungsstriche eingeschlossen, String -Literale durch doppelte. Beide können
+Escape -Sequenzen zur Darstellung von Sonderzeichen enthalten.
+Anders als in SMALLTALK sind in JAVA Klassen keine Objekte. Dennoch
+muss man in Programmen gelegentlich Klassen als Werte angeben. Das geht dann nicht
+(wie in SMALLTALK ) per Angabe des Klassennamens (der dort ja zugleich als Pseudovariable
+definiert war), sondern mittels eines sog. Klassenliterals . Dies besteht aus dem Namen der
+Klasse, gefolgt von .class , also beispielsweise
+Der Typ eines solchen Klassenliterals ist Class<T> , also im obigen Beispiel
+Class<Object> . Da in JAVA-Programmen Klassennamen auch direkt vorkommen dürfen,
+so z. B. als Empfänger beim Aufruf von Klassenmethoden oder in Typtests wie instanceof
+(s. Abschnitt 35.4), sind Klassenliterale eher selten anzutreffen (die ganze Unterscheidung
+von Klassennamen und Klassenliteralen in JAVA ist m. E. alles andere als glücklich).
+"
+"35.4 Operationen und Methoden
+Einhergehend mit der T rennung zwischen primitiven und Referenztypen
+gibt es in JAVA auch eine Trennung zwischen Operationen und Methoden:
+Auf den primitiven Typen sind mit der Sprachdefinition bestimmte Ope-
+rationen (wie die mathematischen und die Booleschen) fest vorgegeben; alle anderen Ope-
+rationen müssen als Methoden in Klassen definiert werden. Da primitive Typen aber keine
+Klassen sind, gibt es z. B. für mathematische Funktionen eine spezielle Klasse Math , in der
+Funktionen wie sin(.) als Klassenmethoden hinterlegt sind. Umgekehrt ist es den Klas-
+sendefinitionen nicht erlaubt, Operatoren (wie die binären Methoden in SMALLTALK ; s. Ab-
+schnitt 4.1.2 in Kurseinheit 1) zu definieren. Die Trennung von primitiven und Referenztypen
+ist also konsequent durchgezogen58, was JAVAs Charakter als Programmiersprache anfangs
+tenation (Aneinanderfügung). Strings sind aber sowieso ein Sonderfall in JAVA. Außerdem sind Iden-
+titätstests ( == und !=) und Zuweisung ( =) Operatoren, die für alle Typen definiert sind. Wert - und
+wesentlich geprägt und was ihr bei manchen den Ruf einer hybriden Programmiersprache
+(halb objektorientiert, halb imperativ) eingebracht hat. Aus meiner Sicht ist die Unterschei-
+dung zwischen Objekten und Werten, w ie sie in JAVA vorgenommen wurde, aber sinnvoll :
+Werte haben weder Identität noch Zustand, was also macht sie zu Objekten?
+Die Methoden JAVAs kann man in Prozeduren und Funktionen aufteilen ,
+wobei der einzige Unterschied ist, dass Prozeduren nichts zurückgeben
+und deswegen void anstelle des Rückgabetyp s deklarieren. Es ist d ies eine der vielen Erb-
+schaften von der Programmiersprache C.
+Ein Operator, der speziell für Referenztypen zur Verfügung steht, is t der
+Typtest instanceof : Er erlaubt es zu prüfen, ob ein Objekt Element (In-
+stanz) eines Typs ist. Dabei wird nicht zwischen direkten und indirekten Instanzen unter-
+schieden: x instanceof Object wertet also immer zu true aus, egal, für welches Objekt
+x steht. Mehr zur Bedeutung des Typtests in Kapitel 44.
+"
+"4.3.1 Zuordnung von Methoden zu Objekten
+Methoden sind immer Objekten, den sogenannten Empfängerobjekten, zugeordnet. Wir
+wollen uns in dieser Kurseinheit noch nicht darauf festlegen, wie diese Zuordnung erfolgt;
+Sie dürfen jedoch davon ausgehen, dass jedes Objekt über einen Katalog von Methoden
+verfügt und damit auf die entsprechenden Nachrichten reagieren kann. Diesen Katalog
+nennt man auch das Protokoll eines Objekts (s. Abschnitt 4.3.8 ).
+Die Zuordnung von Methoden zu Objekten erlaubt, dass die Methoden
+auf die Instanzvariablen des jeweiligen Objekts zugreifen können. Da der
+Zustand eines Objekts durch die Belegung seiner Instanzvariablen repräsentiert wird (s. Ka-
+pitel 3) und weil in den Methoden das Verhalten eines Objektes spezifiziert ist, ergibt sich,
+dass das Verhalten vom Zustand des Objekts abhängen (durch Berücksichtigung seiner In-
+stanzvariablen) und es ihn gleichzeiti g beeinflussen (durch Zuweisungen an die Instanzvari-
+ablen) kann. Da Instanzvariablen lokale Variablen sind (lokal zum besitzenden Objekt), sind
+Methoden sogar die einzige Stelle, an der der Zustand von Objekten geändert werden kann.
+Mehr dazu in Abschnitt 4.3.4 .
+Neben den formalen Parametern der Methode und den Instanzvariablen
+des Empfängerobjekts ist im Rumpf jeder Methode eine weitere Variable
+zugreifbar, die den Namen „ self“ trägt. Diese Variable, di e wie die formalen Parameter eine
+Pseudovariable ist, verweist immer auf das Empfängerobjekt der Nachricht, also auf das
+Objekt, dessen Instanzvariablen ger ade zugreifbar sind. Sie wird immer dann benötigt,
+wenn eine Nachricht aus einer Methode heraus (also per darin enthaltener Anweisung) an
+das Objekt geschickt werden soll, dem die Methode zugeordnet ist, also an sich selbst. self
+ist also gewissermaßen der implizite erste Parameter einer Methode. Methoden als
+"
+"9.2 Spezialisierung
+Ähnlich wie bei der Klassifikation kann man das Prinzip der Generalisie rung umkehren. Man
+redet dann von der Spezialisierung . Während die Generalisierung Eigenschaften weg lässt
+oder generalisiert (Abstraktion), fügt die Spezialisierung Eigenscha ften hinzu oder speziali-
+siert bereits vorhandene. Man kann also von jeder Klasse sagen, dass sie eine Spezialisierung
+ihrer Generalisierungen ist (so sie denn welche hat).
+Dass eine Generalisierung bereits über Spezial isierungen verfügt, hindert
+eine nicht daran, neue hinzuzufügen. So ist es beispielsweise im obigen
+Beispiel von Zweibeiner denkbar, dass man im Nachhinein noch Menschenaffe als Spe-
+zialisierung ergänzt. Als Differentia käme z. B. eine Methode hangeln in Frage, die Mensch
+und Vogel fehlt. Sie zu ergänzen stellt überhaupt kein Problem dar — ja es ist sogar eine
+der größten Errungenschaften der objektorientierte n Programmierung, dass solche Pro-
+grammerweiter ungen modular, also ohne andere Teile des Programms zu betreffen, immer
+möglich sind. Mehr dazu in Kapitel 26 in Kurseinheit 3.
+Leider ist es in der Programmierpraxis nicht immer ganz so einfach. Viel-
+mehr findet man häufig Klassen (bzw. Instanzen) vor, die ungefähr das
+tun, was man möchte, und denen man nur noch ein wenig hinzufügen
+möchte. Man möchte dann von einer Klasse speziali sieren, die selbst keine Generalisierung
+im obigen Sinne ist. Um beim obigen Beispiel mit Menschen und Vögeln zu bleiben, könnte
+man beispielsweise auf den Gedanken kommen, Pinguine als Spezialisierung von Vögeln
+einzuführen:
+Universum
+Zweibeiner
+MenschVogel
+Pinguin
+Es ist nun fraglich, ob dam it auch Vogel zu einer Generalisierung von Pinguin wird. Die
+Tatsache, dass Vogel eigene, direkte Instanzen hat, spricht schon einmal dagegen (auch
+wenn der Begri ff der Generalisierung landläufig nicht so streng gefasst wird). Weiterhin
+kann man sich fragen, was man von der Intension von Pinguin weglassen müsste , um zur
+Intension von Vogel zu gelangen. Dies könnte z. B. schwimmeNach: sein. Spätestens dann
+fällt einer jedoch auf, dass Pinguine gar nicht fliegen können, also die Intension von Vogel
+die Methode fliegeNach: gar nicht enthalten dürfte, wenn Vogel eine Generalisierung
+von Pinguin sein sollte. Dieses Problem, das in der Praxis ständig vorkommt, lässt sich auf
+elegante Weise dadurch lösen, dass man eine Klasse NichtPinguin parallel zu Pinguin Spezialisierung von
+spezialisiert und alle Eigenschaften, die andere Vögel von Pinguinen unterscheidet (wie z. B.
+fliegeAn: ), dort hineinpackt.
+Universum
+Zweibeiner
+MenschVogel
+Pinguin
+Nicht -
+Pinguin
+Ähnlich wie bei der Generalisierung ist es bei der Spezialisierung auch
+möglich, dies ohne das Hinzufügen von Eigenschaften zu bewerkstelli-
+gen, nämlich durch das Einschrän ken von Eigenschaften. So kann man
+z. B. bei der Spezialisierung von Säugetier zu Zweibeiner den Wertebereich der In-
+stanzvariable anzahlBeine von {2, 4} (also entweder zwei oder vier) auf { 2} (also nur noch
+zwei) eingeschränkt werden. Die sprachlichen Mög lichkeiten, dies auf Klassendefinitionse-
+bene auszudrücken, sind allerdings in SMALLTALK (wie bereits im Zusammenhang mit der
+Generalisierung erwähnt) nicht gegeben; sie kommen erst mit der Typisierung von Variablen
+(Kapitel 18 in Kurseinheit 3). Die Einschränkung des Wertebereichs per Spezialisierung ist
+aber in jedem Fall zu unterscheiden von der Instanziierung, im Zuge derer (ggf. über eine
+Initialisierung ) einer Instanzvariable eines Objekts ein Element aus dem Wertebereich (wie
+z. B. 2) zugewiesen wird. Dass im Fall von Zweibeiner dafür dann nur noch ein Element
+als Wert in Frage ko mmt, spielt dabei keine Rolle.
+Vollkommen unvereinbar mit der Spezialisierung ist übrigens, Instanzva-
+riablen oder Methoden wegzunehmen. Dies folgt schon daraus, dass die
+Umkehrung der Spezialisierung, die Generalisierung, dann nicht aus dem bloßen Weglassen
+entstanden sein könnte. Die Richtung von Spezialisierung und Generalisierung würde zu-
+dem, wenn nach Belieben in beide Richtungen hinzugefügt und wegegenommen werde n
+dürfte, ebenfalls beliebig. Spezialisierung ohne
+Hinzufügen von
+Eigenschaften
+Spezialisierung darf
+nichts wegnehmen IInn ddeerr oobbjjeekkttoorriieennttiieerrtteenn PPrrooggrraammmmiieerruunngg IInnssttaannzziiiieerruunngg mmiitt SSppeezziiaalliissiieerruunngg zzuu vveerr--
+wweecchhsseellnn iisstt ggeennaauu ssoo ssttrrääfflliicchh wwiiee iinn ddeerr MMaatthheemmaattiikk EElleemmeennttsseeiinn (()) mmiitt EEnntthhaalltteennsseeiinn
+(())..
+"
+"35.5 Zuweisungskompatibilität
+In JAVA ist die Typkonformität und damit die Zuweisungskompatibilität unter Referenztypen
+an Subtyping gebunden: Damit Ausdrücke von einem Typ Variablen eines anderen zuge-
+wiesen werden können, müssen die Typen entweder gleich sein oder es muss eine Subtyp-
+beziehung zwischen den beiden bestehen. In den meisten Fällen muss die Subtyp beziehung
+explizit deklariert werden; JAVA setzt also auf nominale Typkonformität . Dies hat den in
+Abschnitt 22.2 von Kurseinheit 3 beschriebenen Vorteil der Filterfunktion, aber auch den
+Nachteil, dass Subtypen ihre Supertypen namentlich kennen müssen, was insbesondere bei
+verteilten Anwendungen, deren Teile nicht von vornherein füreinander entworfen waren
+(Web Services beispielsweise), von Nachteil ist. Weiterhin verlangt das Subtyping JAVAs, dass
+die Typen geerbter Variablen (Felder und Parametertypen von Methoden) nicht abgeändert
+werden — JAVA verlangt also Novarianz . Damit wird zumindest eine statisch -semantische
+Substituierbarkeit von Objekten der Subtypen gegen die ihrer Supertypen sichergestellt (vgl.
+Abschnitt 26.3 und Kapitel 54 in Kurseinheit 6). Allerdings kann der Rückgabetyp von Me-
+thoden kovariant redefiniert werden; mehr dazu in Abschnitt 36.4.
+Im Gegensatz zu ihren Vorläufern SMALLTALK und C++ ist JAVA eine Spra-
+che mit einem strengen Typsystem. Das heißt insbesondere, dass in JAVA
+alle Typfehler entweder schon während der Übersetzung vom Compiler oder aber während
+der Ausführung vom Laufzeitsyst em, dann aber schon zum frühest möglichen Zeitpunkt,
+nämlich bei einer Wertzuweisung (bei der ja die Verletzung einer Typinvariante entsteht),
+abgefangen werden. In einem Fall kann man jedoch der Meinung sein, dass die Typinvari-
+anten JAVAs zu lax gefasst sind, also Zuweisungen gestattet werden, von denen man nicht
+ausschließen kann, dass sie in der Folge zu einem Typfehler führen. Mehr dazu in Kapitel 41. Void -Methoden als
+"
+"4.3.2 Methodenaufruf und dynamisches Binden
+Wenn das Versenden von Nachrichten bislang als die Übergabe eines entsprechenden Nach-
+richtenobjekts an den Empfänger dargestellt wurde, so ist das nicht ganz richtig: Vielmehr
+wird ein Nachrichtenausdruck auch in SMALLTALK aus Effizienzgründen vom Compiler in ei-
+nen schnöden Methodenaufruf übersetzt, der mit dem Funktionsaufruf aus der proze-
+duralen Programmierung (also z. B. PASCAL oder C) vergleichbar ist. So führt beispielsweise
+der Ausdruck
+zum Aufruf der Methode +, wie sie für das Objekt „1“ (und alle Zahlen) definiert wurde.
+Dennoch wird, wohl aus didaktischen Gründen, das Mysterium vom N achrichtenversand in
+der objektorientierten Literatur weiter gepflegt. Es gibt aber auch einen kleinen, feinen Un-
+terschied zum gewöhnlichen Prozeduraufruf.
+Die Entscheidung, welche Methode in Reaktion auf einen Nachrichten-
+versand aufgerufen und abgearbeitet wird, hängt nicht von dem Nach-
+richtenselektor allein ab, sondern auch von dem Objekt, an das die Nachricht geschickt wird.
+Es ist nämlich durchaus üblich, dass verschiedene Objekte mit gleichen Methodensignaturen
+untersc hiedliche Methodenimplementierungen verbinden; so implementieren beispiels-
+weise Zahlen und Symbole die Methode printString jeweils anders und selbst
+führt zum Aufruf einer anderen Methode als 1 + 2 ,
+dagegen nicht.
+Aus der Abhängigkeit des Methodenaufrufs vom Empfängerobjekt folgt,
+dass nicht immer schon zur Übersetzungszeit entschieden werden kann, welche Methoden-
+implementierung bei einem Methodenaufruf ausgewählt werden muss . Wenn nämlich das
+Empfängerobjekt dur ch eine Variable benannt oder von einem Ausdruck geliefert wird,
+kann die Zuordnung einer Methodendefinition zu einem Nachrichtenausdruck erst zum Zeit-
+punkt der Auswertung des Nachrichtenausdrucks und damit erst zur Laufzeit erfolgen. Man
+nennt diesen Vorg ang dynamisches Binden (im Gegensatz zum statischen Binden , bei
+dem ein Aufruf schon zur Übersetzungszeit an eine Implementierung gebunden wird); es
+handelt sich dabei um eine von den nur zwei primitiven Kontrollstrukturen SMALLTALK s (s.
+Abschnitt 4.5.2 ).
+Das dynamische Binden ist eine der charakteristischen Eigenschaften der
+objektorientierten Programmi erung. Sie wird auch als Polymorphismus Abhängigkeit vom
+oder Polymorphie22 bezeichnet. Auf die Details des dynamischen Bindens können wir erst
+in der nächsten Kurseinheit (Kapitel 12) zu sprechen kommen und auf Polymorphie erst in
+Kapit el 26, da uns hier noch zu viel fehlt. Wir vermerken aber schon jetzt, dass es sich dabei
+um eine versteckte Fallunterscheidung handelt: Ein und derselbe Methodenaufruf kann fall-
+weise unterschiedliche Methoden aufrufen (bzw. deren Ausführung veranlassen). Auf diese
+Eigenschaft kommen wir schon in den Abschnit ten 4.5 und 4.6 zurück.
+Steht einmal fest, welche (Implementierung einer) Methode aufgerufen
+wird, erfolgt als nächstes die Versorgung der formalen Parameter mit Ob-
+jekten . Zu diesem Zweck findet mit dem Aufruf eine implizite Zuwei-
+sung (also eine ohne Vorkommen des Zuweisungsoperators im Pro-
+grammtext) der tatsächlich en Parameter des Aufrufs an die formalen Parameter der Me-
+thode statt. Tatsächlich e Parameter sind dabei die Objekte, die an der Methodenaufrufstelle
+als Argumente an den Positionen der formalen Parameter der aufgerufenen Methode ste-
+hen. M anchmal werden auch die Variablen, die an den entsprechenden Stellen beim Me-
+thodenaufruf stehen, als tatsächlich e Parameter bezeichnet, aber erstens müssen dort nicht
+unbedingt Variablen, sondern können beliebige Ausdrücke stehen und zweitens können
+diese Variablen selbst formale Parameter sein, nämlich die der Methode, die den Metho-
+denaufruf enthält. So ist in der Methodendefinition
+a der formale Parameter von m:. Der tatsächlich e Parameter von m: ist ein Objekt, das beim
+Aufruf von m: gena nnt wird (hier nicht zu sehen). Dieses Objekt ist dann auch tatsächlich er
+Parameter des Aufrufs von n:, da dieser von a, dem formalen Parameter von m:, geliefert
+wird.
+Je nach Sichtweise erfolgt bei Ausführung der Return -Anweisung eine
+weitere implizite Zuweisung, nämlich die des Objekts, zu dem der Aus-
+druck der Return -Anweisung auswertet, an die „Variable“ Methodenname (der ja an der
+Stelle des Methodenaufrufs ähnlich w ie eine Variable für ein Objekt steht). Dies ist vor allem
+im Zusammenhang mit der Typprüfung, die es jedoch in SMALLTALK nicht gibt (s. Kursein-
+heit 3), eine wichtige Vorstellung. An der Aufrufstelle selbst steht dann häufig noch eine
+explizite Zuweisung , nämlich wenn das Ergebnis des Aufrufs (das Rückgabeobjekt) einer
+Variable zugewiesen werden soll.
+Selbsttestaufgabe 4.1
+Benennen Sie die expliziten und impliziten Zuweisungen für
+Im Gebrauch scheint sich anzudeuten, dass man von Inklusionspolymorphie und von parametrischem
+Polymorphismus spricht, aber einen Grund dafür kann ich nicht erkennen. implizite
+mit der Methode
+In Abschnitt 1.5 waren wir auf den Unterschied zwischen Wertsemantik
+und Verweissemantik eingegangen. Damit verwandt (und ähnlich be-
+nannt) ist die Unterscheidung von Call by reference und Call by value beim Methoden-
+aufruf: Beim Call by value wird dem formalen Parameter der tatsächlich e Parameter als Wert
+zugewiesen, beim Call by reference hingegen nur eine Referenz. Diese Referenz ist jedoch
+nicht, wie man vielleicht glauben könnte, eine auf den tatsächlich en Parameter als Objekt,
+sondern eine auf den tatsächlich en Parameter als Variable (s. o.), der dazu aber eben auch
+eine Variable sein muss . Dies hat zur Folge, dass Zuweisungen zum formalen Parameter in
+der Methode unter Call by reference auch die Variable, die den tatsächlich en Parameter
+darstellt, betreffen — die beiden sind gewissermaßen eins. Mit Call by reference ist es also
+möglich, dass eine Methode auch übe r ihre tatsächlich en Parameter, wenn sie denn Variab-
+len sind, Objekte zurückgibt — sie werden damit zu Ein - und Ausgabeparametern der Me-
+thode. Bei Call by value bleibt die Zuweisung an die formalen Parameter jedoch ohne Be-
+deutung für die tatsächlich en — sie sind also reine Eingabeparameter.
+Nun werden Sie vielleicht einwenden, dass in SMALLTALK formale Parame-
+ter Pseudovariablen sind und deswegen gar keine Zuweisung an sie er-
+laubt i st (außer der impliziten Zuweisung beim Aufruf). Das ist richtig.
+Tatsächlich gibt es in SMALLTALK ein Call by reference auch gar nicht (in
+JAVA übrigens auch nicht). Gleichzeitig haben aber in SMALLTALK Variablen
+grundsätzlich Referenzsemantik, so dass bei der Zuweisung der tatsächlich en an die forma-
+len Parameter keine Objekte, sondern lediglich Verweise an diese übergeben werden. Wenn
+man da nn innerhalb der Methode etwas an diesen Objekten ändert (ihren Zustand), dann
+betrifft das immer die tatsächlich en Parameterobjekte und somit auch den „Inhalt“ der tat-
+sächlich en Parametervariablen (wenn es denn Variablen und keine anderen Ausdrücke sind
+und wenn sie wirklich ein Objekt zum Inhalt hätten; vgl. Abschnitt 1.5): Es sind schließlich
+dieselben Objekte. Insbesondere erhalten die Methoden also keine Kopien dieser Objekte,
+sondern lediglich Kopien der Referenzen. Um den Inhalt von tatsächlich en Parametervariab-
+len zu ändern (also sie auf andere Objekte zeigen zu lassen), bräuchte man auch in SMALL-
+TALK (und JAVA) Call by reference , was es dort aber nicht gibt. Es stellt dies eine echte Be-
+schränkung der Programmierung dar; sie wurde denn auch in C# aufgehoben.
+Bleibt noch die Frage, was passiert, wenn ein Methodenaufruf ins Leere
+läuft. Da in SMALLTALK Ausdrücke beliebige Objekt e liefern können, kann
+der Compiler für einen Nachrichtenausdruck nicht garantieren, dass das
+Empfängerobjekt auch über eine entsprechende Methode verfügt. Da der Nachrichtenaus-
+druck in einen dynamisch gebundenen Methodenaufruf übersetzt wird, dessen Ausfü hrung
+direkt von der virtuellen Maschine SMALLTALK s Call by reference und
+vorgenommen wird, ist die Frage, wie das Programm sinnvoll mit einem solchen Laufzeit-
+fehler umgehen soll. Tatsächlich passiert in etwa folgendes: Die virtuelle Maschine macht
+aus dem Methodenaufruf einen Nachrichtenselektor (und zwar den, aus dem er bei der
+Übersetzung hervorgegangen ist) und sendet diesen als Parameter an eine vorgegebene
+Methode doesNotUnderstand: des ursprünglichen Empfängers. Diese reagiert typischer-
+weise mit einer der Ausgabe einer Fe hlermeldung <Objekt> does not understand:
+<Nachrichtenselektor> ; sie kann aber geändert werden, um anders als standardmäßig
+vorgesehen auf den Fehler zu reagieren.
+"
+"55 Das Fragile -base -class -Problem
+Unter dem Fragile -base -class -Problem versteht man eine ganze Familie von Problemen,
+die in unmittelbarem Zusammenhang mit der Vererbung stehen. Dabei ist der Name inso-
+fern etwas irreführend, als nicht unbedingt die Basisklassen , also die Superklassen (vgl. Ab-
+schnitt 11.1), die „anfälligen “ oder „zerbrechlichen “ sind, sondern eher die Klassen, die
+von ihnen erben. Ein einfaches Beispiel soll erläutern, worum es geht.
+Wir nehmen an, wir hätten eine Klass e TapeArchive geschrieben, die Videobänder archi-
+viert. Da es sich nicht um eine Mickey -Maus -Anwendung auf dem heimischen Desktop han-
+delt, sondern um ein kommerzielles System, erfolgt die Datenhaltung in einer Datenbank.
+Die folgende SMALLTALK -Klassendefinition gibt einen kleinen Ausschnitt des Systems wieder.
+Klasse TapeArchive
+benannte Instanzvariablen database
+Klassenmethoden
+Instanzmethoden
+Nun ist es in der objektorientierten Programmierung üblich, dass man solche Klassen wie-
+derverwend et, indem man davon neue Klassen ableitet. Wenn beispielsweise eine Kundin-
+nenanforderung kommt, nach der mit jeder Archivierung eine Nachricht verschickt werden
+muss , die das anzeigt, und wenn diese neue Anforderung nicht für alle Kundinnen der Soft-
+ware gleichermaßen interessant ist, dann schreibt man eine Subklasse, die das geänderte
+Verhalten bereitstellt:
+Klasse NotifyingTapeArchive
+benannte Instanzvariablen listener
+Superklasse TapeArchive
+Klassenmethoden
+Instanzmethoden
+Das Schöne an der Objektorientierung ist dabei, dass man nu r die Unter-
+schiede (Differentia ) spezifizieren muss — der Rest wird einfach geerbt.
+So genügt es im gegebenen Fall, die Initialisierung (nicht so interessant) und die Methode
+addTape: anzupassen. Das Verhalten von addAllTapes: kann unverändert bleiben, da
+dies die (dynamisch gebundene) Methode addTape: aufruft und somit auch das von
+NotifyingTapeArchive geforderte Verhalten, nämlich die Notifikation aller archivierten
+Bänder, garantiert. Ein ganz ähnliches Beispiel (anhand der Klasse Collection ) war Ihnen
+in Kurseinheit 2, Abschnitt 10.3 schon einmal begegnet; es handelt sich auch hier um einen
+Fall von offener Rekursion , die erst durch dynamisches Binden (Kapitel 12) aufgelöst wird.
+Aufrufe dieser Art sind das Herz vieler objektorientierter (Anwendungs -)Frameworks und
+auch diverser Entwurfsmuster.
+Oder auch nicht. Das Problem ist nämlich, dass man der Klasse
+TapeArchive weder ansieht, was sie garantiert, noch, wovon die Korrektheit ihrer Sub-
+klassen abhängt. Wenn in der Folge z. B. eine anderere Kundin nörgelt, das Hinzufügen von
+großen Mengen von Bändern dauere zu lange, wenn man das wiederholte Aufrufen von
+addTape: aus addAllTapes: und die dadurch bedingte wiederholte Ausführung von
+beginTrans action und endTransaction als Ursa che ausmacht und wenn man dann
+in Erwägung zieht, nicht nur die nörgelnde Kundin in ihrer Version, sondern alle Kundinnen
+mit der optimierten Implementierung
+Klasse TapeArchive
+Instanzmethoden
+zu beglücken, was spräche dagegen?
+Selbsttestaufgabe 55.1
+Bevor Sie weiterlesen, antworten Sie: Was spräche dagegen?
+Vermutlich nur die wenigsten unter Ihnen werden sofort sagen können, was dagegen
+spricht, denn in der Klasse TapeArchive scheint nach wie vor alles in bester Ordnung zu
+sein. Was man nämlich nicht sehen kann, ist, dass die Korrektheit der Methode
+addAllTapes: davon abhängt, dass sie addTape: aufruft — zwar nicht für die Klasse
+TapeArch ive selbst, dafür aber für ihre Subklasse NotifyingTapeArchive . Hier werden
+jetzt nämlich nur noch für einzeln archivierte Bänder Benachrichtigungen verschickt.
+Hand aufs Herz: Hätten Sie den Fehler vorhergesagt? Wenn nicht, dann liegt das vermutlich
+daran, dass Sie der Täuschung erlegen sind, addAllTapes: in TapeArchive würde die
+benachbarte Methode addTape: aufrufen, und wenn man nur den Beitrag von addTape:
+in addAllTapes: verlagert und dafür addTape: nicht mehr aufruft, dann wäre das eine
+semantikerhaltende Umstrukturierung (ein sog. Refactoring ; s. Kurs 01853). Tatsächlich be-
+raubt aber genau dies die Subklassen der Möglichkeit, eigenes Verhalten an genau dieser
+Stelle — dem Aufruf von addTape: — einzubringen, und wenn eine solche Beraubung im
+Nachhinein erfolgt, kann sie eben den Code „zerbrechen“.
+Das Schlimme an diesem Problem ist, dass man noch nicht einmal genau
+weiß, wem man die Schuld geben soll — TapeArchive , weil es einen Vertrag bricht, den
+es gar nicht paraphiert hat (oder weil es keine Rück sicht auf Subklassen nimmt, die es gar
+nicht kennt), oder NotifyingTapeArchive , weil es sich grundlos darauf ver lässt, dass die
+geerbten Methoden dauerhaft die eigenen (in diesem Fall das geerbte addAllTapes: das
+eigene addTape: ) aufrufen? Wenn noch nicht einmal die Schuld feststeht — wie kann man
+das Problem verhindern?
+Es gibt zahlreiche Varianten des Fragile -base-class-Problems, die hier nicht alle aufgeführt
+werden sollen. Zugrunde liegt ihnen immer dasselbe: Zwischen einer Klasse und ihren Sub-
+klassen bestehen durch die Vererbung von Eigenschaften starke Abhängigkeiten, die —
+wenn überhaupt — nur unvollständig dokumentiert sind. Zwar könnte man annehmen,
+dass von allem, was vererbt wird, eine Abhängig keit ausgeht, die man bei Änderungen
+pauschal berücksichtigen muss , aber dies würde die Möglichkeiten, in Superklassen etwas
+zu ändern, so stark einschränken, dass das ganze Konzept ad absurdum geführt würde. Es
+bleibt also nicht viel mehr, als beim Einsatz von Vererbung große Vorsicht walten zu lassen
+oder sie ganz zu verbieten.
+Das folgende , im Kontext des Component Object Models (COM) getätigte Zitat aus dem
+Hause MICROSOFT fasst es schön zusammen:
+Implementation inheritance —the ability of one component to ""subclass"" or in-
+herit some of its functionality from another component —is a very useful tech-
+nology for building applications. Implementation inheritance, however, can c re-
+ate many problems in a distributed, evolving object system.
+The problem with implementation inheritance is that the “contract” or relation-
+ship between components in an implementation hierarchy is not clearly defined;
+it is implicit and ambiguous. When th e parent or child component changes its
+behavior unexpectedly, the behavior of related components may become un-
+defined. This is not a problem when the implementation hierarchy is under the
+control of a defined group of programmers who can make updates to a ll com-
+ponents simultaneously. But it is precisely this ability to control and change a
+set of related components simultaneously that differentiates an application,
+even a complex application, from a true distributed object system. So while im-
+plementation i nheritance can be a very good thing for building applications, it
+is not appropriate for a system object model that defines an architecture for
+component software.
+In a system built of components provided by a variety of vendors, it is critical
+that a given component provider be able to revise, update, and distribute (or
+redistribute) his product without breaking existing code in the field that is using
+the previous revision or revisions of his component. In order to achieve this,
+it is necessary that the actual interface on the component used by such
+clients be crystal clear to both parties. Otherwise, how can the component
+provider be sure to maintain that interface and thus not break the existing cli-
+ents?
+Auf die objektorientierte Programmierung übertragen ist das Problem also, dass der Vertrag
+zwischen den Klassen einer Vererbungshierarchie nicht klar definiert ist. Wenn die Super -
+oder Subklasse ihr Verhalten uner wartet verändert, kann daraus undefiniertes Verhalten
+verwandter Klassen resultieren. Tatsächlich war die Vererbung von Implementierung aus der
+Spezifikation von MICROSOFT s Component Object Model (COM) verbannt; stattdessen setzte
+man voll auf die Vererbung von Interfaces (was wir als Subtyping bezeichnen würden). In-
+zwischen (mit dem .NET -Framework) ist diese harte Haltung wieder aufgegeben worden,
+was wohl auch da ran liegt, dass hier Komponenten Klassen sind; es bleiben jedoch die in
+Kapitel 50 (im Kontext von C#) erwähnten Vorbehalte gegenüber dem dynamischen Binden.
+Nun liegt ja zunächst nahe, bei der Vererbung das zu tun, was man bei
+Abhängigkeiten immer macht : Schnittstellen einzuführen. Im Gegensatz zu der Schnitt-
+stelle, die einem Klient einer Klasse angeboten wird (der diese Schnittstelle nutzt, indem er
+seine Variablen mit dem zur Klasse gehörenden Typ deklariert und somit auf Instanzen der
+Klasse zugreifen kann), handelt es sich bei der Schnittstelle zwischen einer Klasse und ihren
+Subklassen jedoch um eine etwas anders geartete: Hier gibt es lediglich zwei Variablen self
+(bzw. this ) und super , die allerdings keine Abhängigkeit von anderen Objekten ausdrü-
+cken und die zudem nicht explizit typisiert sind. Die damit verbundene Schnittstelle, also die
+Menge der Eigenschaften, auf die man über diese Variable zugreifen kann, und wo man
+diese Eigenschaften dann findet (also wo sie definiert sind), muss man sich sel bst zusam-
+mensuchen. Mit Information hiding und dem Verbergen von Implementationsgeheimnissen
+hat das freilich nichts zu tun. Was man vielmehr bräuchte, wäre ein explizites Vererbungs-
+interface .
+Einige erste, zarte Ansätze zur Einführung von expliziten Vererbungsin-
+terfaces hatten Sie bereits gesehen: Die Verwendung des Zugriffsmodifi-
+zierers protected in JAVA, C# und C++ sowie die explizite Deklaration von Überschreib-
+barkeit und Überschreibung mittels virtual und override in C# (und C++). Im obigen
+Beispiel würde die Deklaration von addTape: als nicht überschreibbar (und somit als nicht
+dynamisch, sondern statisch gebunden) verhindern, dass NotifyingTap eArchive diese
+Methode abändert und sich zugleich darauf ver lässt, dass die geerbte Methode
+addAllTapes: die überschreibende Version von addTape: aufruft (sie könnte sie aber
+immerhin noch neu einführen, aber diese neue Version würde beim Binden in
+addAllTapes: nicht berücksichtigt). NotifyingTapeArchive müsste dann wohl oder
+übel beide Methoden neu implementieren und könnte bei der Gelegenheit selbst dafür
+Sorge tragen, dass addAllTapes: den Fehler nicht macht. Allerdings würde dadurch auch
+bei eine m direkten Aufruf von addTape: von außerhalb auf einer Variable vom Typ
+TapeArchive , die eine Instanz vom Typ NotifyingTapeArchive hält, die überschrei-
+bende Implementierung unberücksichtigt bleiben (da ja keine dynamische Bindung mehr
+stattfindet). Im Gege nsatz dazu würde die Verwendung von virtual bei addTape: in
+TapeArchive der Programmiererin einen Hinweis darauf geben, dass die Methode in Sub-
+klassen für diese relevante Modi fikationen enthalten kann, so dass man Aufrufe dieser Me-
+thode nicht einfach, wie im obigen Beispiel geschehen, kürzen kann .
+Wenn es um die Sicht - und Zugreifbarkeit von Elementen geht, scheint
+der Zugriffsmodif izierer protected zunächst auf gleicher Ebene mit
+public und friend zwischen zwei (nicht über Vererbung in Beziehung stehenden) Klassen
+zu stehen: die protected deklarierten Elemente einer Klasse sind wie bei einem dedizierten
+Export (s. Abschnitt 52.2) auch in ihren Subklassen sicht - und verwendbar. Was allerdings
+nicht so klar ist, ist, dass überschreibende, als protected deklarierte Methoden auch für
+den Code der Superklasse zugreifbar s ind: eine protected Methode einer Subklasse kann
+— über das dynamische Binden auf self bzw. this — aus der Superklasse heraus aufge-
+rufen werden, ohne dass die Subklasse irgendeinen Hinweis darauf enthält. Anders als bei
+der Zugreifbar machung mit public oder friend bei nicht über Vererbung in Beziehung
+stehenden Klassen kann die Zugreifbar keit also in beide Richtungen gehen, und zwar ab-
+hängig davon, ob die Methode überschrieben wird oder nicht: Wird sie überschrieben, kann
+die überschreibende (in der Subklas se) von der Superklasse aus aufgerufen werden und die protected , virtual
+überschriebene (in der Superklasse) von der Subklasse (über super ) — wird sie nicht über-
+schrieben, kann die Methode der Superklasse aus der Subklasse heraus aufgerufen werden.
+Es bleibt also ein höchs t verworrener Eindruck. Dies ist um so bedauerlicher, als BJARNE
+STROUSTRUP selbst kommentierte:
+One of my concerns about protected is exactly that it makes it too easy to use
+a common base the wa y one might sloppily have used global data. … In retro-
+spect, I think that protected is a case where “good arguments” and fashion
+overcame my better judgement and my rules of thumb for accepting new fea-
+tures.
+Bei der Definition von JAVA fand das offenbar kein Gehör. Und so bleiben die Schlüsselwör-
+ter protected , virtual und override nicht viel mehr als Zeichen des Bewusst seins,
+dass es das Fragile -base-class-Problem gibt.
+"
+"68.3 Ein Beispiel
+Ein konkretes Beispiel für die Verletzung des Law of Demeter ist die folgende alternative
+Implementierung der Methode auswerten in der Klasse Klausel (Zeilen 1650 –1652 ):
+Hier wird (in Zeilen 1672 und 1673 ) zunächst atom an l (ein Literal, das dem Empfänger
+der Methode, einer Klausel, bekannt ist) geschickt und dann an das Ergebnis, ein Atom, die
+Nachricht wert . Diese Verkettung ist ein Verstoß gegen das Gesetz Demeters. Di e Muster-
+lösung
+enthält diesen Verstoß nicht. Dafür aber andere.
+Selbsttestaufgabe 68.1
+Versuchen Sie, bevor Sie wei terlesen, weitere Verstöße gegen das Gesetz Demeters in dem Beispiel
+zu finden.
+Der erste Verstoß ergibt sich aus der Umsetzung der : n-Beziehung zwischen Klausel und
+Literalen über Zwischenobjekte. Eine Klausel kennt genaugenommen nicht ihre Literale di-
+rekt, sondern das Zwischenobjekt, in diesem Fall eine Instanz der Klasse Set. So stellt bereits
+der Aufruf von atom bzw. auswerten auf der Variable l eine Verletzung des Law of De-
+meter dar. Etwas deutlicher sieht man das, wenn man anstelle einer Menge und de s Itera-
+tors detect: ein Array und eine Zählschleife verwendet:
+Bei der Verwendung von Collections als Zwischenobjekte muss man also immer eine Aus-
+nahme von Demeters Gesetz machen.
+Der zweite Verstoß findet sich in Zeile 1672 : atom wert not ist ein verketteter Ausdruck
+derselben Qualität wie l atom wert (selbe Zeile). Die Lösung wäre hier, der Klasse Atom
+eine Methode not zu spendieren, die den negierten Wert zurückliefert, aber warum das
+besserer Stil sein soll, ist kaum noch zu begründen. Auch wenn dieses Problem in JAVA und
+Co. nicht existiert (da hier die logische Negation keine Nachric ht/Methode, sondern ein pri-
+mitiver Operator eines primitiven Datentyps ist), so zeigt es doch die Grenzen des Law of
+Demeter auf. So ist das Gesetz auch nicht allgemein anerkannt, sondern umstritten; den-
+noch sollte man es verinnerlichen und sich bei Ketten ausdrücken stets fragen, ob nicht eine
+Verlagerung einer hinteren Methode in eines der Objekte auf der Strecke sinnvoll wäre.
+"
+"54.1 Der Begriff der Substituierbarkeit
+Zuweisungskompatibilität zwischen verschiedenen Typen bedeutet, dass Objekte eines Typs
+da auftreten dürfen, wo Objekte eines anderen Typs erwartet werden. Wenn das gutgeht,
+also wenn durch eine entsprechende Zuweisungskompatibilität keine Fehler entstehen ,
+spricht man von der Substituierbarkeit der Objekte des Typen auf der linken Seite der
+Zuweisung durch die des Typen auf der rechten.
+Nun ist die Frage, ob eine Zuweis ung gutgeht, eine, die man gern automatisch, am besten
+durch den Compiler, beantwortet hätte. Der Begriff der Substituierbarkeit ist daher in der
+Programmierung zu einem eigenständigen geworden, der zunächst unabhängig von der
+(an Typkonformität gebundenen) Zuweisungskompatibilität betrachtet werden kann. Der
+Begriff der Substituierbarkeit soll daher zunächst einmal genauer untersucht werden.
+In der strengsten Auslegung des Begriffs der Substituierbarkeit kann ein
+Objekt ein anderes nur dann substituieren, wenn sich das auf den Pro-
+grammablauf in keiner Weise auswirkt. Dazu müsste das ersetzende Ob-
+jekt aber nicht nur gleich implementiert sein wie das ersetzte (also Instanz derselben
+Klasse85 sein), sondern sich auch noch (zum Zeitpunkt der Substituierung) im selben Zustand
+wie das substituierte befinden. Wenn nämlich beispielsweise eine Instanz der Klasse Stack
+gerade leer ist , ist sie nicht grundsätzlich gegen eine, die gerade nicht leer ist, austauschbar:
+Eine Operation pop, die das oberste Element des Stacks liefern soll, würde im einen Fall
+scheitern, im anderen Fall nicht. Da sich Objekte aber nicht abnutzen (so dass sie aus War-
+tungsgründen substituiert werden müsste n), gibt es wohl kaum einen Grund für eine Sub-
+stituierung sich identisch verhaltender Objekte und damit auch nicht für einen entsprechend
+eng gefasst en Substituierbarkeitsbegriff.
+Der Substituierbarkeitsbegriff muss also zumindest vom konkreten Zu-
+stand der Objekte unabhängig sein. Das hat den Vorteil, dass man die
+Betrachtung von Substituierbarkeit von der Laufzeit auf die Übersetzungs - (oder Entwurfs -
+)Zeit verlagern kann. Auf di eser Ebene ist aber zumindest das Verhalten aller Objekte einer
+Klasse gleich (nämlich durch dieselbe Klassendefinition) spezifiziert, so dass eine gegensei-
+tige Substituierbarkeit von Objekten derselben Klasse automatisch gegeben ist.
+Interessant wird die Frage der Substituierbarkeit erst, wenn die Objekte
+nicht derselben Klasse angehören und wenn man eine gewisse Abwei-
+chung im Verhalten von zu substituierenden Objekten zu lässt. So könnte
+man sich bei spielsweise vorstellen, dass ein substituierendes Objekt funk-
+tional äquivalent ist (also das Gleiche tut), aber auf eine andere Art. Es könnte z. B. seinen
+Dienst schneller verrichten als das substituierte oder mit weniger Speicheranforderungen.
+Diese sog. nichtfunktionalen Anforderungen , die normalerweise von den funktionalen ge-
+trennt dargestellt werden, sind aber in Wirklichkeit gar nicht immer hundertprozentig davon
+zu trennen und es ist durchaus vorstellbar, dass ein Programm, das von einem funktionie-
+renden nur in nicht -funktionalen Eigenschaften abweich t, nicht funktioniert (beispielsweise
+weil bestimmte angenommene Echtzeitbedingungen nicht eingehalten werden und dies zu
+Abbrüchen durch Time outs o. ä. führt).
+Ein klassisches Beispiel für die gegenseitige Austauschbarkeit fun ktional
+äquivalenter, aber verschiedener Typen ist die plattformunabhängige
+GUI-Program mierung. So basiert beispielsweise die GUI -Programmierung von und mit E-
+CLIPSE auf einer Reihe von Typen, deren Objekte für die Elemente eines GUI stehen, also
+Fenster , Buttons etc. Nun hat jedes Betriebssystem seine eigenen, den jeweiligen Eigenhei-
+ten angepassten Implementierungen dieser GUI -Elemente. Es ist also sinnvoll, für jeden Typ
+nicht festgelegt. Selbst bei einer abstrakten Spezifikatio n des Verhaltens (z. B. durch einen abstrakten
+Datentyp) wird aber in der Regel nur funktionales Verhalten beschrieben und keine nichtfunktionalen
+Aspekte wie beispielsweise Zeitverhalten. Auch aus nichtfunktionalen Anforderungen kann sich aber
+eine mangel nde Substituierbarkeit ergeben (s. u.). strengste Auslegung
+des Begriffs de r
+Substituierbarkeit
+Loslösung vom
+Zustand der Objek te
+Substituierbarkeit be i
+von GUI -Element eine Reihe von Subtypen, einen pro Betriebssystem, anzubieten, die die
+Elemente auf die jeweiligen Implementierungen des Betriebssystems abbilden. Objekte die-
+ser Typen sind innerhalb derselben Gruppe (also als Objekte von Subtypen desselben Typs)
+funktional äquivalent, können sich aber in Aussehen und ggf. auch Detailverh alten (gegen-
+über dem Bediener) unterscheiden. Diese Unterschiede sind jedoch gewollt und die Substi-
+tuierbarkeit bleibt davon unberührt.
+Aber auch damit ist noch nicht Schluss mit der Auslegung des Begriffs
+von der Substituierbarkeit. Es ist z. B. denkbar, dass unterschiedliches Ver-
+halten nicht nur toleriert, sondern sogar gewünscht wird. Denken Sie bei-
+spielsweise an einen Editor, der eine Funktion „rückgängig machen“ hat,
+die es erlaubt, den Effekt der letzten Aktion, die Sie ausgeführt haben, zurückzunehmen,
+und zwar unabhängig davon, welche Aktion dies war. Die Aktionen, die möglich sind, sind
+in der Regel höchst unterschiedlich, so dass es keinen einheitlichen Mechanismus gi bt, der
+erlauben würde, jeden Effekt auf die gleiche Weise rückgängig zu machen. Es ist also sinn-
+voll, Aktionen als Objekte zu repräsentieren, die neben einer Funktion „ausführen“ auch
+noch eine „Rückgängigmachen“ haben, die, für jeden Typ von Aktion versc hieden, das je-
+weils Notwendige verrichtet. Objekte all dieser Aktionstypen wären dann, was den Tatbe-
+stand der Ausführ - und Rückgängigmachbarkeit angeht, gegeneinander austauschbar und
+die Aktionstypen wären alle Subtypen eines allgemeinen (abstrakten) Type n Aktion , ob-
+wohl ihr konkretes Verhalten, also das, was jeweils mit „ausführen“ und „rückgängig ma-
+chen“ verbunden ist, jeweils höchst unterschiedlich ausfällt. Die Anforderungen an die Sub-
+stituierbarkeit sind in diesem Fall also eher gering.
+Im allgemeinen als nicht gegeneinander austauschbar angesehen wird je-
+doch Verhalten, bei dem eine Funktion, die in dem auszutauschenden
+Typen definiert ist, in dem austauschenden Typ schlicht fehlt. So wäre
+beispielsweise eine Aktion, für die „rückgängig machen“ nicht definiert
+ist (z. B. Speichern ), kein Subtyp von Aktion , da Objekte dieses Typs nicht überall da
+auftauchen können, wo allgemein Aktionen erwartet werden. Es ist diskutierbar, ob es aus-
+reicht, die Funktion „rückgängig machen“ in Speichern leer zu implementieren, also bei-
+spielsweise nichts passieren zu lassen oder eine Meldung „rückgängig Machen leider nicht
+möglich“ auszugeben; die Benutzerin ist vermutlich zerknittert, aber das Programm würde
+immerhin weiterlaufen. Die formale Spezifikation, nämlich die Aktion (das Speichern) rück-
+gängig zu machen, würde freilich nicht erfüllt; Objekte vom Typ Speichern sind damit
+strenggenommen n icht gegen andere Objekte vom Typ Aktion austauschbar.
+"
+"46.2 Interne Iteration
+Von SMALLTALK kennen Sie ja schon die Möglichkeit, Iterationen als Methoden der Collec-
+tion-Klassen zu definieren (die interne Iteration ; s. Abschnitt 4.6.4 in Kurseinheit 1 und Ka-
+pitel 13 in Kurseinheit 2). Mit Version 8 wurden nun auch in JAVA (anonyme) Funktionen
+(die sog. Lambda -Ausdrücke ) eingeführt, die interne Iterationen à la SMALLTALK erlauben .
+Allerdings wurden für die Implementierung der Methoden forEach , filter , map und
+reduce (entsprechend SMALLTALK s do, select , collect und inject ) ein eigenes Frame-
+work geschaffen: die sog. Streams . For-each -Schleife
+Streams sind ein mit JAVA 8 neu einge führtes Konstrukt, da s eine Daten-
+verarbeitung in Pipelines ganz ähnlich wie die Collections in SMALLTALK erlaubt: Das Ergebnis
+einer Operation wie filter oder map, auf einem Stream ausgeführt, ist wieder ein Stream,
+auf dem weitere Operationen dieser Art ausgeführt werden können (das Pipelining ). Das
+besondere an Streams ist, dass sie keine Datenspeicher wie Collections sind, sondern interne
+Iteratoren : Jeder Stream für sich hält zu einem Zeitpunkt immer genau ein Element einer
+potentiell unendlichen Folge vo n Elementen. Dabei dienen Streams entweder abgeschlos-
+sene Datenspeicher wie Collections und Files oder offene Datenlieferanten wie die Tastatur
+oder Datengeneratoren (wie beispielsweise ein Zufallszahlengenerator oder eine Vorschrift
+zur Berechnung einer Fibonacci -Folge) als Quelle. Ein Ergebnis liefert eine Stream -Pipeline
+(die auch aus nur einem Element bestehen kann) immer erst durch einen sog. Abschluss,
+also eine Methode wie reduce oder collect , die ein anderes Ergebnis als einen Stream
+liefert (eine C ollection im Falle von collect ).
+Das Stream -Framework von JAVA ermöglicht für viele Pipelines eine besonders effiziente
+Ausführung. So muss jedes Element einer Datenquelle in der Regel nur einmal angefragt
+werden und die interne Speicherung von Zwischene rgebnissen wird automatisch gering ge-
+halten. Insbesondere wird gegenüber einer naiven Implementierung von Pipelines, die eine
+Iteration je Element der Pipeline benötigt, in vielen Fällen nur eine Iteration gebraucht (die
+sog. Stream fusion) . Zudem kann durch Wahl des Streams (und nicht der Operationen) be-
+stimmt werden, ob die Verarbeitung der Pipeline parallel oder sequentiell erfolgt. Gleich-
+wohl ist die Performanz von JAVA-Pipelines nicht leicht vorh erzusagen und eine gewinnbrin-
+gende Verwendung setzt sicherlich einiges an Erfahrung und Kenntnis der Implementierung
+voraus.
+"
+"8.6 Praktische Bedeutung der Metaklassen für die Programmierung
+Dadurch, dass i n SMALLTALK Klassen Instanzen von Metaklassen sind, die
+selbst Instanzen einer weiteren Klasse und diese alle zusammen Objekte
+sind, ist jedes SMALLTALK -Programm, ja das ganze SMALLTALK -System,
+nichts weiter als ein Objektgeflecht (sieht man einmal von den primitiven Methoden ab).
+SMALLTALK ist damit nicht nur ein Programmiersystem, sondern auch ein Metaprogram-
+miersystem in der Tradition funktionaler und logischer Programmiersprachen wie LISP und
+PROLOG . In der imperativen und objektorientierten Prog rammiersprachenlandschaft sucht
+diese Mächtigkeit bis heute ihresgleichen.
+Für Sie als Programmiererin , die nicht gleich eine neue Sprache erschaffen will, sind Ebene
+oder es vielleicht sogar selbst verändern wollen. Wenn Sie z. B. erreichen wollen, dass beim
+Anlegen einer neuen Klasse für alle benannten Instanzvariablen dieser Klasse automatisch
+Zugriffsmethoden wie in Abschnitt 4.3.4 definiert werden, dann ist dies leicht möglich, in-
+dem Sie an entsprechender Stelle (z. B. in der Klasse Class bzw. Behavior , die auf der
+Ebene der Metaklassen steht und die für das Anlegen ne uer Klassen zuständig ist) eine neue
+Methode zur Klassendefinition einfügen, die die bereits existierenden um die automatische
+Erzeugung der Zugriffsmethoden ergänzt.
+Selbsttestaufgabe 8.3
+Ergänze n Sie die Klasse Class um eine Methode zur Anlage neuer Klassen, die für ausgewählte
+Instanzvariablen automatisch Zugriffsmethoden (Accessoren; einen Setter und einen Getter) zum
+Methodenkatalog hinzufügt. Teilen sie dazu die bei einer Klassendefinition an gegebene Liste der
+Instanzvariablen in zwei auf, von denen die eine ohne, die andere mit Accessoren angelegt wird.
+Im Programmieralltag werden Sie das aber nicht tun. Vielmehr beschränkt
+sich Ihre Tätigkeit da auf das Anlegen und Ändern einfacher Klassen, also solcher, deren
+Instanzen selbst keine Klassen sind. Die dazu notwendigen Metaklassen erzeugt SMALLTALK
+automatisch selbst — im Klassenbrowser erscheinen sie nur über die Unterscheidung zwi-
+schen Instanz - und Klassenvariablen bzw. -methoden.
+"
+"50.3.2 Indexer
+Indexer übertragen gewissermaßen das Konzept der indizierten Instan zvariablen von
+SMALLTALK auf C#: Jede Instanz einer Klasse, für die ein Indexer definiert ist, hat eine Menge
+von (scheinbar unbenannten) Instanzvariablen, die über einen Index zugegriffen werden
+können. Allerdings muss die indizierte Instanzvariable klass enintern durch eine normale, be-
+nannte Instanzvariable (Feld) repräsentiert werden; Indexer ähneln Properties insofern, als
+der Zugriff über einen Index mittels entsprechender Get - und Set -Abbildungen auf einen
+Zugriff auf eine benannte Instanzvariable über setzt wird. Das folgende Beispiel illustriert den
+Vorgang:
+Dabei wird this als Schlüsselwort missbraucht , um anzudeuten, dass bei Zugriffen auf die
+indizierte Instanzvariable kein Name einer Instanzvariable (eines Feldes), sondern lediglich
+der Name des Objekts, zu dem sie gehört, steht:
+HatScheinbarEineIndizierteInstanzv ariable(2);
+Nun darf der Indexer in C# überladen werden, so dass ein Objekt mehrere indizierte In-
+stanzvariablen haben kann, wobei der Zugriff (aufgrund des fehlenden Namens) einzig über
+den Typ des Indexes differenziert erfolge n kann. Durch das Überladen ist es wiederum mög-
+lich, nicht eine, sondern mehrere indizierte Instanzvariablen zu simulieren, was jedoch der
+Beschränkung unterliegt, dass der Elementtyp (der Rückgabetyp beim Überladen) gleich
+bleiben muss . Und schließlich muss ein Indexer auf keine interne (benannte) Instanzvariable
+zugreifen — alle Inhalte können, genau wie bei Properties, auch berechnet werden.
+"
+"35.2 Gleichheit und Identi tät
+In JAVA wird genau wie in SMALLTALK zwischen Gleichheit und Identität von Objekten unter-
+schieden. Die Gleichheit von Objekten wird mittels der Methode equals(.) (wobei (.)
+hier für einen nicht näher spezifizierten Parameter steht), die Identität mittel s == (bzw. !=
+für das Negat) geprüft. equals(.) wird von der Klasse Object (in JAVA genau wie in
+SMALLTALK die Superklasse aller Klassen) geerbt und sollte in den Subklassen der jeweiligen
+Bedeutung von Gleichheit entsprechend überschrieben werden. Die Ver wechselung von
+equals(.) und == ist auch in JAVA ein ziemlich häufiger Programmierfehler (vgl. Ab-
+schnitt 1.4 in Kurseinheit 1). Das Gleichheitszeichen = steht in JAVA übrigens (genau wie in
+C, C++ und C#) für die Wertzuweisung , was ich persönlich für eine der großen Tragödien
+der Informatik halte .
+"
+"21 Zuweisungskompatibilität
+Die Typisierung von Variablen (und anderen Programmelementen — wenn im nachfolgen-
+den nur von Variablen die Rede ist, dann sind letztere meistens mit gemeint) soll also be-
+wirken, dass in einem Programm jede Variable nur die Werte haben kann, für die sie (di e
+Variable) vorgesehen ist (die Einhaltung der Typinvariante ). Voraussetzung dafür ist zum
+einen, dass jeder Variable ein Typ zugeordnet ist, zum anderen, dass auch jedes Objekt
+sowie jeder Ausdruck, der für einen Wert oder ein Objekt steht, einen Typ hat. Ersteres
+geschieht in sogenannten Variablendeklarationen, letzteres ergibt sich aus den zu einem
+Typsystem gehörenden Regeln zur Zuordnung eines Typs zu Ausdrücken , nämlich
+ bei Literalen aus de r Art des Literals, dessen Typ dem Compiler bekannt ist,
+ bei der Instanziierung aus dem noch zu klärenden Zusammenhang von der instan-
+ziierten Klasse mit den Typen eines Programms sowie
+ bei Nachrichtenausdrücken aus der Deklaration der dazugehörigen Methode , die ja
+(genau wie eine Variablendeklaration) angeben muss , welchen Typs die Objekte
+sind, die sie liefert.
+Es bleibt die Frage nach den ebenfalls zu einem Typsystem gehörenden
+Typregeln, die von Ausdrücken einzuhalten sind , nämlich wie die Typkor-
+rektheit bzw. andernfalls die Verletzung einer Typinvariante genau fest-
+gestellt wird. Es ist ja bereits klar, dass es dazu ausreicht, die Wertzuweisungen in einem
+Programm zu überprüfen. Diese Überprüfung findet in der Regel in Form der Feststellung
+der sog. Zuweisungskompatibilität statt. Die Sprachregelung ist hier leider nicht ganz ein-
+heitlich, aber im folgenden gehen wir davon aus, dass alle typisierten Sprachen den Begriff
+der Zuweisungskompatibilität kennen und sich lediglich in ihren Definitionen der Regeln,
+die für das Bestehen einer Zuweisungskompatibilität eingehalten werden müssen, unter-
+scheiden. Vor allem darum wird es in den nächsten Kapiteln gehen.
+Angenommen, zwei temporäre Variablen anzahl und erfolgre ich seien wie folgt de-
+klariert:
+Dann sind, unter der Annahme, dass 12 vom Typ Integer ist und true vom Typ Boolean ,
+die Zuweisungen
+zulässig (da sie keine Typinvariante verletzen),
+hingegen nicht. Ist eine Zuweisung zulässig, dann spricht man auch von einer Zuweisungs-
+kompatibilität der beteiligten Typen. Die für das Programmieren relevante Implikation ist
+allerdings die umgekehrte: Wenn zwei Typen zuweisungskompatibel sind, dann gilt, dass
+eine entsprechende Zuweisung zulässig ist, also zu keiner Verletzung einer Typinvariante
+führt. Wie Sie noch sehen werden, verlangt Zuweisungskompatibilität keineswegs identi-
+sche Typen; daraus ergibt sich aber eine sprachliche Uneindeutigkeit, d ie zunächst behoben
+werden muss .
+Dem Satz „ a ist zuweisungskompatibel mit b“ kann man nicht eindeutig
+entnehmen, ob nun a b zugewiesen werden kann oder b a. Dass beides
+geht, ist nur dann der Fall, wenn die beteiligten Typen ä quivalent in einem noch zu bestim-
+menden Sinne sind, was aber, wie schon gesagt, nicht unbedingt der Fall sein muss . Im
+folgenden soll daher die Richtung der erlaubten Zuweisung so gelesen werden, dass beim
+Satz „a ist zuweisungskompatibel mit b“ die Zuweis ung b := a zulässig ist. Die umge-
+kehrte Richtung, a := b , kann ebenfalls zulässig sein; dies wird durch den Satz jedoch
+nicht ausgesagt. Zuweisungskompatibilität ist übrigens (in der Regel) eine transitive Eigen-
+schaft: Wenn a zuweisungskompatibel mit b ist und b zuweisungskompatibel mit c, dann
+ist auch a zuweisungskompatibel mit c.
+Auch bei impliziten Zuweisungen wie der Parameterübergabe von Me-
+thodenaufrufen (den dabei stattfindenden Zuweisungen der tatsäch li-
+chen an die formalen Parameter; s. Abschnitt 4.3.2 ) impliziert Zuwei-
+sungskompatibilität Typkorrektheit. Außerdem kann eine Methode, wenn sie Werte zurück-
+gibt, ja selbst in rechten Seiten von Zuweisungen auftreten; der Typ dieser Werte muss dann
+mit der Variable auf der linken Seite zuweisungskompatibel se in. So sind bei Vorliegen der
+Deklarationen
+sowohl die explizite als auch die impliziten Zuweisungen in
+zulässig; den Methodenaufruf kann man im übertragenen Sinne als zulässig bezeichnen.
+"
+"7 Klassen
+Sprachphilosophisch gesehen ist eine Klasse ein Allgemeinbegriff wie etwa Person , Haus
+oder Dokument . Diese Allgemeinbegriffe stehen in der Rege l für eine ganze Menge von
+Objekten, also etwa alle Personen, Häuser oder Dokumente. Gleichwohl ist die Klasse selbst
+immer ein Singular — sie ist nämlich selbst ein Objekt, das unter den Allgemeinbegriff Klasse
+fällt. Diese Sprachregelung wird auch in der objektorientierten Programmierung eingehalten
+(obwohl sie natürlich nicht, da Computer unsere Sprache nicht kennen, überprüft werden
+kann und deswegen Abweichungen immer wieder vorkommen): Alle Klassennamen sind
+Singulare.
+der Platz zugedacht, den dann später JAVA einnehmen sollte. SELF war zwar für die Entwicklung der
+Java Virtual Machine ein wichtiger Ideenlieferant, ist jedoch außerhalb dieser Kreise kein Erfolg be-
+schieden gewesen. Der Erfolg von JAVASCRIPT zeigt aber, dass das Konzept der prototypenbasierten
+Programmierung zumindest kein Irrweg war. klassen - vs.
+Mit jedem Allgemeinbegriff verbinden wir eine ganze Reihe von Eigen-
+schaften , die für ihn charakteristisch sind, die wir aber nicht dem Begriff
+selbst, s ondern den Objekten, die darunter fallen, zuordnen. Mit Person
+etwa ist Name verbunden sowie Geburtstag und ggf. weitere Attribute, aber auch bestimm-
+tes, für Personen charakteristisches Verhalten . Das gleiche gilt für Haus , Dokument und alle
+anderen Allgemeinbegriffe. Existenz und Adäquatheit von Allgemeinbegriffen sind Thema
+großer philosophischer Diskurse wie etwa dem sog. Universalienstreit und stehen hier nicht
+zur Debatte. Wichtig ist, dass mit ihnen stets Sätze wie „<ein Individuum> ist ein <ein All-
+gemeinbegriff>“ gebildet werden können, also etwa „Peter ist eine Person“. Mit solchen
+Sätzen verbindet sich nämlich die Übertragung aller Eigenschaften, die mit einem Allge-
+meinbegriff verbunden sind (s. o.), auf das Individuum. So hat Peter, wenn er eine Person
+ist und Person wie oben definiert wurde, eben auch einen Namen und einen Geburtstag .
+"
