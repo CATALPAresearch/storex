@@ -8,6 +8,7 @@ logger.disabled = False
 
 INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf/Kurstext_OOP.pdf'
 OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/'
+CSV_PATH = '/home/luna/workspace/Dialogsteuerung/data/processed/chapters.csv'
 code_number = 1679
 footnote_number = 95
 
@@ -122,7 +123,6 @@ def format_paragraph(paragraph):
 
 
 def output_chapters(text, content_table):
-    num = 0
     for i in reversed(range(len(text))):
         # Save Kurseinheit introduction chapters
         if content_table and re.search("Kurseinheit", content_table[-1]):
@@ -134,7 +134,7 @@ def output_chapters(text, content_table):
                 with open(outpath, 'w') as outfile:
                     for lines in paragraph:
                         outfile.write("%s\n" % lines)
-                num += 1
+                output_csv()
                 text = text[:i]
 
         elif content_table and re.search(content_table[-1][:5], text[i]):
@@ -155,12 +155,14 @@ def output_chapters(text, content_table):
                 with open(outpath, 'w') as outfile:
                     for lines in paragraph:
                         outfile.write("%s\n" % lines)
-                num += 1
-
+                output_csv()
             text = text[:i]
 
     logger.debug("Left lines of text (should be 0): " + str(len(text)))
-    logger.debug("Amount of paragraphs: " + str(num))
+
+
+def output_csv():  # TODO?
+    pass
 
 
 text_lines = extract_text_from_pdf(INPUT_PATH)
