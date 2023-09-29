@@ -1,0 +1,17 @@
+4.3.1 Zuordnung von Methoden zu Objekten
+
+Methoden sind immer Objekten, den sogenannten Empfängerobjekten, zugeordnet. In dieser Kurseinheit werden wir uns nicht darauf festlegen, wie diese Zuordnung erfolgt. Sie dürfen jedoch davon ausgehen, dass jedes Objekt über einen Katalog von Methoden verfügt und somit auf die entsprechenden Nachrichten reagieren kann. Diesen Katalog nennt man auch das Protokoll eines Objekts (siehe Abschnitt 4.3.8).
+Die Zuordnung von Methoden zu Objekten ermöglicht es den Methoden, auf die Instanzvariablen des jeweiligen Objekts zuzugreifen. Da der Zustand eines Objekts durch die Belegung seiner Instanzvariablen repräsentiert wird (siehe Kapitel 3) und weil in den Methoden das Verhalten eines Objekts spezifiziert ist, ergibt sich, dass das Verhalten vom Zustand des Objekts abhängt (durch Berücksichtigung seiner Instanzvariablen) und es gleichzeitig beeinflussen kann (durch Zuweisungen an die Instanzvariablen). Da Instanzvariablen lokale Variablen sind (lokal zum besitzenden Objekt), sind Methoden sogar die einzige Stelle, an der der Zustand von Objekten geändert werden kann. Mehr dazu in Abschnitt 4.3.4.
+Neben den formalen Parametern der Methode und den Instanzvariablen des Empfängerobjekts ist im Rumpf jeder Methode eine weitere Variable zugreifbar, die den Namen "self" trägt. Diese Variable, die wie die formalen Parameter eine Pseudovariable ist, verweist immer auf das Empfängerobjekt der Nachricht, also auf das Objekt, dessen Instanzvariablen gerade zugreifbar sind. Sie wird immer dann benötigt, wenn eine Nachricht aus einer Methode heraus (also per darin enthaltener Anweisung) an das Objekt geschickt werden soll, dem die Methode zugeordnet ist, also an sich selbst. "self" ist somit gewissermaßen der implizite erste Parameter einer Methode.
+
+Frage: Wie werden Methoden in SMALLTALK den Objekten zugeordnet?
+Antwort: Methoden sind immer Objekten, den sogenannten Empfängerobjekten, zugeordnet.
+
+Frage: Was ist das Protokoll eines Objekts?
+Antwort: Das Protokoll eines Objekts ist der Katalog von Methoden, über den ein Objekt verfügt und auf den es entsprechend reagieren kann.
+
+Frage: Warum ist die Zuordnung von Methoden zu Objekten wichtig?
+Antwort: Die Zuordnung von Methoden zu Objekten ermöglicht es den Methoden, auf die Instanzvariablen des jeweiligen Objekts zuzugreifen und somit das Verhalten des Objekts zu spezifizieren und zu beeinflussen.
+
+Frage: Welche Rolle spielt die Variable "self" in Methoden?
+Antwort: Die Variable "self" verweist immer auf das Empfängerobjekt der Nachricht, also auf das Objekt, dessen Instanzvariablen gerade zugreifbar sind. Sie wird benötigt, wenn eine Nachricht aus einer Methode heraus an das Objekt geschickt werden soll, dem die Methode zugeordnet ist, also an sich selbst. "self" ist somit der implizite erste Parameter einer Methode.

@@ -1,0 +1,15 @@
+4.1 Ausdrücke
+
+In einem objektorientierten Programm repräsentieren Objekte nicht nur Literale (Abschnitt 1.2) und Variablen (Abschnitt 1.5), sondern auch Ausdrücke. Tatsächlich sind Literale und Variablen primitive Ausdrücke, die nicht aus anderen Ausdrücken zusammengesetzt sind. Um mit den Objekten jedoch Aktionen auszuführen und damit ein Programm tatsächlich auszuführen, benötigen wir weitere Arten von Ausdrücken, nämlich Zuweisungsausdrücke und Nachrichtenausdrücke. Auch diese repräsentieren jeweils ein Objekt und können daher an allen Stellen verwendet werden, an denen Objekte erforderlich sind. Es ist sogar möglich, sie geschachtelt anzuordnen.
+
+Frage: Welche Arten von Ausdrücken gibt es in einem objektorientierten Programm?
+Antwort: Es gibt Literale, Variablen, Zuweisungsausdrücke und Nachrichtenausdrücke.
+
+Frage: Was sind primitive Ausdrücke, die nicht aus anderen Ausdrücken zusammengesetzt sind?
+Antwort: Primitive Ausdrücke, die nicht aus anderen Ausdrücken zusammengesetzt sind, sind Literale und Variablen.
+
+Frage: Warum sind Zuweisungsausdrücke und Nachrichtenausdrücke wichtig?
+Antwort: Zuweisungsausdrücke und Nachrichtenausdrücke ermöglichen es, Aktionen mit den repräsentierten Objekten auszuführen und damit ein Programm tatsächlich auszuführen.
+
+Frage: Können Zuweisungsausdrücke und Nachrichtenausdrücke geschachtelt angeordnet werden?
+Antwort: Ja, es ist möglich, Zuweisungsausdrücke und Nachrichtenausdrücke geschachtelt anzuordnen.
