@@ -8,7 +8,6 @@ logger.disabled = False
 
 INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf/Kurstext_OOP.pdf'
 OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/'
-CSV_PATH = '/home/luna/workspace/Dialogsteuerung/data/processed/chapters.csv'
 code_number = 1679
 footnote_number = 95
 
@@ -128,13 +127,12 @@ def output_chapters(text, content_table):
         if content_table and re.search("Kurseinheit", content_table[-1]):
             if re.search(content_table[-1][:14], text[i]):
                 chapter = content_table.pop()
-                paragraph = text[i:]
+                paragraph = text[i:]  # TODO: Function from here (also called in elif clause)
                 chapter_no = chapter.split(':', 1)[0]
                 outpath = OUTPUT_PATH + chapter_no + '.txt'
                 with open(outpath, 'w') as outfile:
                     for lines in paragraph:
                         outfile.write("%s\n" % lines)
-                output_csv()
                 text = text[:i]
 
         elif content_table and re.search(content_table[-1][:5], text[i]):
@@ -155,14 +153,9 @@ def output_chapters(text, content_table):
                 with open(outpath, 'w') as outfile:
                     for lines in paragraph:
                         outfile.write("%s\n" % lines)
-                output_csv()
             text = text[:i]
 
     logger.debug("Left lines of text (should be 0): " + str(len(text)))
-
-
-def output_csv():  # TODO?
-    pass
 
 
 text_lines = extract_text_from_pdf(INPUT_PATH)
