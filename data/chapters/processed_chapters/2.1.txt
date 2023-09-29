@@ -1,0 +1,30 @@
+2.1 Instanzvariablen
+
+Jedem Objekt können eine Menge von lokalen Variablen zugeordnet werden. Aus Gründen, auf die wir noch zu sprechen kommen, heißen diese Variablen Instanzvariablen; sie werden aber manchmal auch als Felder oder Attribute (zu Attributen siehe Abschnitt 2.4) bezeichnet. Die Instanzvariablen eines Objekts sind in gewisser Weise in seinem Besitz: Sie sind für andere Objekte nicht sichtbar und damit auch nicht zugreifbar. Die Sichtbarkeit ist also auf das jeweils besitzende Objekt eingeschränkt. Außerdem ist die Existenz dieser Variablen an die Existenz (oder Lebensdauer; siehe Abschnitt 1.9) des besitzenden Objekts gebunden.
+Instanzvariablen bestimmen die Struktur zusammengesetzter Objekte (die manchmal deswegen auch strukturierte Objekte genannt werden) — atomare Objekte haben keine Instanzvariablen. Jede Instanzvariable eines Objekts belegt dabei einen Teil des Speichers aus seiner Repräsentation, indem sie öffentlich zugängliche Instanzvariablen erlauben und selbst nicht verhindern, dass ein anderes Objekt der gleichen Klasse darauf zugreift. Etwas anderes ist es jedoch auch in SMALLTALK mit den Objekten, auf die die Variablen verweisen: Aufgrund möglicher Aliase kann der Zugriff nicht so leicht einem einzigen Objekt vorbehalten werden.
+In SMALLTALK werden zwei Arten von Instanzvariablen unterschieden: benannte und indizierte. Jede benannte Instanzvariable benennt (oder verweist auf) jeweils ein Objekt; der Name der Variable wird somit für die Dauer, in der die Variable auf das Objekt verweist, auch zum Namen des Objekts. Da es sich bei Instanzvariablen um lokale Variablen handelt, muss der Name einer benannten Instanzvariablen in SMALLTALK mit einem Kleinbuchstaben beginnen.
+Indizierte Instanzvariablen haben keine Namen, sondern werden über einen Index relativ zu dem Objekt, zu dem sie gehören, angesprochen. Damit ist der Index gewissermaßen der Name der Instanzvariable. Der Index muss eine natürliche Zahl größer 0 sein. Um den Inhalt der indizierten Instanzvariable an der Indexposition i (genauer: an der Indexposition, die durch das Zahlobjekt bestimmt wird, auf das i verweist) zu erhalten, schreibt man: <objekt> at: i.
+Wer bei indizierten Instanzvariablen an Arrays denkt, liegt richtig: Tatsächlich speichern Array-Objekte ihre Elemente in indizierten Instanzvariablen. Indizierte Instanzvariablen sind kein Unikat von SMALLTALK: So bieten beispielsweise C# und VISUAL BASIC sog. Indexer, die im Wesentlichen indizierten Instanzvariablen entsprechen (siehe Abschnitt 50.3.2 in Kurseinheit 5). Auch verfügen manche Objekte in VISUAL BASIC FOR APPLICATIONS (VBA) über eine Variable Item, deren Elemente über Indizierung des Objekts, dem sie zugeordnet ist, angesprochen werden können.
+Die Anzahl der indizierten Instanzvariablen eines Objekts ist fix. Damit ist auch die Größe eines Objekts mit indizierten Instanzvariablen fest; insbesondere können Array-Objekte nicht wachsen (und wenn doch, dann nur über den in Abschnitt 1.1 erwähnten Trick mit dem Wechsel der Identität). Es müssen aber nicht alle indizierten Instanzvariablen belegt sein; die „leeren“ enthalten dann nil (siehe unten).
+Es bleibt noch die Frage, wie Objekte in SMALLTALK in den Besitz von Instanzvariablen gelangen. Um das zu erklären, müsste an dieser Stelle auf das Konzept der Klasse vorgegriffen werden, was aber aus didaktischen Gründen unterbleiben soll. Gelernte PASCAL-Programmierer können sich die Instanzvariablen jedoch wie die Felder eines Records vorstellen (oder C-Programmierer wie die eines Structs), die in der Record-Definition festgelegt werden und die für jede Variable vom Typ dieses Records zur Verfügung stehen. Für alle anderen mag es reichen, sich vorzustellen, dass jedes Objekt automatisch über zwei spezielle Variablen verfügt, die die Namen und die zugewiesenen Objekte aller seiner Instanzvariablen verwalten. Wie so etwas gehen kann, wird in der nächsten Kurseinheit klarwerden.
+
+Frage: Was sind Instanzvariablen in der objektorientierten Programmierung?
+Antwort: Instanzvariablen sind lokale Variablen, die einem Objekt zugeordnet sind und dazu verwendet werden, Informationen zu speichern, die spezifisch für dieses Objekt sind. Sie bestimmen die Struktur zusammengesetzter Objekte.
+
+Frage: Wie ist die Sichtbarkeit von Instanzvariablen in SMALLTALK?
+Antwort: Instanzvariablen sind nur für das jeweilige besitzende Objekt sichtbar und können von anderen Objekten nicht direkt zugegriffen werden. Die Sichtbarkeit ist auf das besitzende Objekt beschränkt.
+
+Frage: Was sind benannte Instanzvariablen in SMALLTALK?
+Antwort: Benannte Instanzvariablen sind Instanzvariablen, die jeweils auf ein bestimmtes Objekt verweisen oder es benennen. Der Name der Variablen wird zum Namen des Objekts, auf das sie verweisen.
+
+Frage: Was sind indizierte Instanzvariablen in SMALLTALK?
+Antwort: Indizierte Instanzvariablen haben keine Namen, sondern werden über einen Index relativ zum Objekt angesprochen, dem sie gehören. Der Index fungiert gewissermaßen als Name für die Instanzvariable.
+
+Frage: Welche Programmiersprachen außer SMALLTALK verwenden auch indizierte Instanzvariablen?
+Antwort: C# und VISUAL BASIC sind Beispiele für Programmiersprachen, die sog. Indexer verwenden, die indizierten Instanzvariablen ähnlich sind.
+
+Frage: Können Objekte in SMALLTALK ihre indizierten Instanzvariablen vergrößern?
+Antwort: Nein, die Anzahl der indizierten Instanzvariablen eines Objekts ist fest, und die Größe eines Objekts mit indizierten Instanzvariablen ist ebenfalls fest. Die Größe kann nicht geändert werden.
+
+Frage: Wie gelangen Objekte in SMALLTALK in den Besitz von Instanzvariablen?
+Antwort: Dies erfordert das Konzept der Klasse, das in diesem Absatz nicht näher erläutert wird. Man kann sich jedoch vorstellen, dass jedes Objekt über spezielle Variablen verfügt, die die Namen und zugewiesenen Objekte seiner Instanzvariablen verwalten.
