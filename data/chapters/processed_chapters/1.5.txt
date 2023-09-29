@@ -1,0 +1,13 @@
+1.5 Variablen
+
+Weil Literale immer die gleichen Objekte repräsentieren, reichen sie zum Programmieren nicht aus. Was man vielmehr auch noch benötigt, sind Namen, die zu verschiedenen Zeitpunkten verschiedene Objekte bezeichnen können, die sogenannten Variablen.
+Genau wie ein Literal steht eine Variable in einem Programm für ein Objekt. Anders als bei Literalen wird aus einer Variable jedoch kein Objekt erzeugt: Sie ist lediglich ein Name für ein bereits existierendes Objekt. Dazu kommt, dass eine Variable zu unterschiedlichen Zeitpunkten für unterschiedliche Objekte stehen kann (deshalb der Name „Variable“!). Es können zudem Variablen mit unterschiedlichen Namen für dasselbe Objekt stehen, das damit gewissermaßen verschiedene Namen hat (die sogenannten Aliase; siehe Abschnitt 1.8). Im Folgenden werden wir daher davon sprechen, dass Variablen Objekte benennen oder bezeichnen.
+
+Frage: Warum reichen Literale allein zum Programmieren nicht aus?
+Antwort: Weil Literale immer die gleichen Objekte repräsentieren.
+
+Frage: Was sind Variablen und warum sind sie notwendig beim Programmieren?
+Antwort: Variablen sind Namen, die zu verschiedenen Zeitpunkten verschiedene Objekte bezeichnen können und sind notwendig, weil Literale nicht ausreichen.
+
+Frage: Wie unterscheiden sich Variablen von Literalen in Bezug auf die Objektrepräsentation?
+Antwort: Anders als bei Literalen wird aus einer Variable kein Objekt erzeugt; sie ist lediglich ein Name für ein bereits existierendes Objekt.

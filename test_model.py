@@ -13,9 +13,9 @@ Objekten mit literaler Repräsentation vorlieb nehmen. Wohlgemerkt: Literale rep
 Objekte, es sind nicht selbst welche."""
 
 
-template = """Question: {question}
+template = """Question: {context}
 Answer: Let's think step by step."""
-prompt = PromptTemplate(template=template, input_variables=["question"])
+prompt = PromptTemplate(template=template, input_variables=["context"])
 
 llm = HuggingFacePipeline.from_model_id(
          model_id=MODEL_PATH,

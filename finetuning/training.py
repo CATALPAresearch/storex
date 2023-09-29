@@ -19,7 +19,7 @@ train_file_path = '/home/luna/workspace/Dialogsteuerung/data/processed/train.csv
 validation_file_path = train_file_path
 save_model_path = '/home/luna/workspace/Dialogsteuerung/models/'
 save_tokenizer_path = '/home/luna/workspace/Dialogsteuerung/tokenizer/'
-pretrained_model = 't5-small'  # 'lmqg/mt5-small-dequad-qg'
+pretrained_model = 't5-small'  # 'lmqg/mt5-small-dequad-qg'  # TODO: Test with mt5
 
 args = argparse.Namespace()
 args.num_workers = 0
@@ -182,7 +182,7 @@ if __name__ == "__main__":
         callbacks=[EarlyStopping(monitor="val_loss")]
     )
     print('Run learning rate finder...')
-    tuner = L.pytorch.tuner.Tuner(trainer)
+    tuner = L.pytorch.tuner.Tuner(trainer)  # TODO: With tuner possible?
     lr_finder = tuner.lr_find(model)
     args.learning_rate = lr_finder.suggestion()
     print('Suggested lr: ', lr_finder.suggestion())
