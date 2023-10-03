@@ -1,0 +1,19 @@
+4.6 Abgeleitete Kontrollstrukturen
+
+Wenn Sie bereits in anderen Programmiersprachen wie z. B. PASCAL, C oder JAVA programmiert haben, kennen Sie sicherlich Schlüsselwörter wie if, else, for und while. Diese Schlüsselwörter repräsentieren Kontrollstrukturen, feste Bestandteile der Sprache, die dazu dienen, den Ablauf eines Programms durch die Programmiererin zu steuern. Es wurde bereits vor langer Zeit (im Rahmen der Diskussion zur sogenannten strukturierten Programmierung) festgelegt, dass jede Programmiersprache über die Kontrollstrukturen Sequenz, Verzweigung, Wiederholung (Iteration) und Aufruf verfügen sollte. Während die einfache Sequenz von Anweisungen während der Ausführung durch die lineare Reihenfolge der Anweisungen im Programmtext festgelegt ist, wurden für Abweichungen vom linearen Kontrollfluss, wie Verzweigungen, Wiederholungen und Aufrufe, spezielle Flusssteuerungskonstrukte entwickelt. Das Goto gehört übrigens nicht dazu; es wird seit dem Aufkommen der strukturierten Programmierung als unerwünscht angesehen.
+In SMALLTALK wurden die durch die Syntax der Sprache vorgegebenen Kontrollstrukturen auf Sequenz und Aufruf, letzteres ausgedrückt durch das Versenden einer Nachricht an ein Objekt, beschränkt. Alle anderen Kontrollstrukturen müssen mithilfe der Sprache simuliert werden. Was anfangs wie eine erhebliche Einschränkung erscheinen mag, erweist sich in der Praxis als bedeutender Vorteil: Die Programmiererin kann nämlich selbst, wenn sie es wünscht, neue Kontrollstrukturen einführen.
+
+Frage: Welche Schlüsselwörter repräsentieren in anderen Programmiersprachen Kontrollstrukturen, und welche sind in diesem Abschnitt gemeint?
+Antwort: In anderen Programmiersprachen wie PASCAL, C oder JAVA repräsentieren Schlüsselwörter wie if, else, for und while Kontrollstrukturen. In diesem Abschnitt in SMALLTALK wird auf diese Schlüsselwörter und die damit verbundenen Kontrollstrukturen Bezug genommen.
+
+Frage: Welche vier grundlegenden Kontrollstrukturen sollten in einer Programmiersprache vorhanden sein, gemäß den Prinzipien der strukturierten Programmierung?
+Antwort: Gemäß den Prinzipien der strukturierten Programmierung sollten in einer Programmiersprache die vier grundlegenden Kontrollstrukturen vorhanden sein: Sequenz, Verzweigung, Wiederholung (Iteration) und Aufruf.
+
+Frage: Warum wird das Goto in der strukturierten Programmierung als unerwünscht angesehen?
+Antwort: Das Goto wird in der strukturierten Programmierung als unerwünscht angesehen, weil es dazu neigt, den Programmfluss unübersichtlich und schwer nachvollziehbar zu machen. Es ermöglicht Sprünge im Code, die schwer zu verfolgen sind und zu fehleranfälligem Code führen können. Strukturierte Programmierung fördert klarere, besser verständliche und wartbarere Programme, indem sie auf Kontrollstrukturen setzt, die den Programmfluss auf eine geordnete und nachvollziehbare Weise steuern.
+
+Frage: Welche Kontrollstrukturen sind in SMALLTALK von der Syntax her vorgegeben, und welche müssen mithilfe der Sprache simuliert werden?
+Antwort: In SMALLTALK sind von der Syntax her nur Sequenz und Aufruf als Kontrollstrukturen vorgegeben. Alle anderen Kontrollstrukturen, einschließlich Verzweigung und Wiederholung, müssen mithilfe der Sprache simuliert werden.
+
+Frage: Warum wird es in SMALLTALK als bedeutender Vorteil angesehen, dass Programmierer neue Kontrollstrukturen einführen können?
+Antwort: In SMALLTALK wird es als bedeutender Vorteil angesehen, dass Programmierer neue Kontrollstrukturen einführen können, weil dies die Sprache extrem flexibel macht. Programmierer haben die Freiheit, Kontrollstrukturen zu erstellen, die speziell auf ihre Anforderungen zugeschnitten sind, und auf diese Weise den Code besser organisieren und lesbarer gestalten können. Dies ermöglicht es, abstrakte Konzepte und spezifische Anwendungsfälle auf eine natürlichere Weise auszudrücken.

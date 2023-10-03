@@ -1,0 +1,17 @@
+14.2 Reinkarnation von Objekten
+
+Eine der vielleicht interessantesten Methoden in SMALLTALK ist die Methode become:. Sie bewirkt, dass das Empfängerobjekt die Identität des Parameterobjekts annimmt bzw. mit ihm tauscht (je nach Dialekt). Das hat unter anderem zur Folge, dass alle Variablen, die vor der Ausführung der Methode den Empfänger benannten (genauer: auf das Empfängerobjekt verwiesen), danach den Parameter benennen (auf ihn verweisen).
+Eine mögliche Anwendung ist das Vergrößern von Objekten: Wenn einem Objekt der ihm zur Verfügung gestellte Speicherplatz nicht mehr ausreicht, muss es "umziehen", d.h., seine Repräsentation im Speicher muss an eine andere Stelle kopiert werden. Da aber alle Referenzen auf das Objekt noch auf die alte Stelle verweisen, legt man am besten die neue Stelle als entsprechend groß dimensioniertes Objekt an (beispielsweise mittels new:) und lässt dann das alte Objekt zum neuen werden. So könnte man beispielsweise eine Methode grow in der Klasse ArrayedCollection wie folgt definieren:
+Eine andere mögliche Anwendung von become: ist die Durchführung eines sogenannten Rollbacks. Wenn also, nachdem an einem Objekt (oder Objektgeflecht) eine Menge von Änderungen durchgeführt worden sind, der ursprüngliche Zustand wiederhergestellt werden soll, legt man einfach vor den Änderungen eine (tiefe) Kopie des Objekts (der Wurzel des Objektgeflechts) an und ersetzt beim Rollback das ursprüngliche (und inzwischen geänderte) Objekt(geflecht) mittels become: durch die Kopie.
+
+Frage: Was ist die Methode become: in SMALLTALK?
+Antwort: Die Methode become: in SMALLTALK bewirkt, dass das Empfängerobjekt die Identität des Parameterobjekts annimmt oder mit ihm tauscht.
+
+Frage: Welche Auswirkungen hat die Methode become: auf Variablen?
+Antwort: Die Methode become: bewirkt, dass Variablen, die vor der Ausführung der Methode auf das Empfängerobjekt verwiesen haben, danach auf das Parameterobjekt verweisen.
+
+Frage: Wie kann die Methode grow in der Klasse ArrayedCollection verwendet werden?
+Antwort: Die Methode grow in der Klasse ArrayedCollection kann verwendet werden, um ein Objekt zu vergrößern, indem man eine neue Stelle als entsprechend groß dimensioniertes Objekt anlegt und dann das alte Objekt durch die neue Stelle mittels become: ersetzt.
+
+Frage: Was ist eine weitere Anwendung von become:?
+Antwort: Eine weitere Anwendung von become: ist die Durchführung eines Rollbacks, um den ursprünglichen Zustand eines Objekts oder Objektgeflechts nach einer Menge von Änderungen wiederherzustellen. Dies geschieht durch Erzeugen einer Kopie des ursprünglichen Objekts und anschließendem Ersetzen des geänderten Objekts durch die Kopie mittels become:.

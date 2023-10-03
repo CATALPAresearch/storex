@@ -1,0 +1,19 @@
+29.1 Einfacher parametrischer Polymorphismus
+
+T sei eine Typvariable. Beim Vorkommen von T im Abschnitt „Typvariablen“ handelt es sich um ihre Deklaration (Vereinbarung); beim Vorkommen im Abschnitt „Protokoll“ um ihre Verwendung.
+Das für den Tatbestand der Parametrisierung wichtige an dieser Typdefinition ist, dass x: anstelle des Parameters und x anstelle des Rückgabetyps T nennt, wobei T eben kein Typ, sondern eine Typvariable ist. Für Typvariablen verwendet man traditionell einzelne Großbuchstaben; dies hat den nützlichen Nebeneffekt, dass man durch eine Typvariable keinen tatsächlichen Typen verdeckt, wie es sonst versehentlich passieren könnte: Man könnte die Typvariable nämlich auch beispielsweise „Integer“ nennen, aber sie wäre deswegen immer schreibend vorausgesetzt, zu einer parametrischen Klassendefinition beliebig viele Typen.
+Wenn man nun den Typ A verwenden möchte, also z. B. eine temporäre Variable vom Typ A deklarieren möchte, muss man sich festlegen, welchen Wert die Typvariable T in der Typdefinition und damit welchen Typ die Rückgabe von x und die Eingabe von x: haben sollen.
+Diese Typdefinition wird jedoch nirgends hingeschrieben — sie ergibt sich immer neu aus der Instanziierung der parametrischen Typdefinition mit einem konkreten Typen.
+Ein und dieselbe parametrische Typdefinition kann in einem Programm beliebig oft verwendet werden.
+
+Frage: Wo wird die Typvariable T deklariert, und wo wird sie verwendet?
+Antwort: T wird im Abschnitt "Typvariablen" deklariert und im Abschnitt "Protokoll" verwendet.
+
+Frage: Warum verwendet man traditionell einzelne Großbuchstaben für Typvariablen?
+Antwort: Typvariablen werden traditionell mit einzelnen Großbuchstaben bezeichnet, um zu vermeiden, dass sie tatsächliche Typen verdecken. Dies ermöglicht die Verwendung beliebig vieler Typen in einer parametrischen Klassendefinition.
+
+Frage: Wie instanziiert man den Typ A mit einem konkreten Typparameter?
+Antwort: Um den Typ A zu instanziiert, verwendet man eckige Klammern, um den tatsächlichen Typparameter anzugeben. Zum Beispiel: a := A[Integer] new.
+
+Frage: Was passiert bei der Instanziierung eines parametrischen Typs mit einem konkreten Typen?
+Antwort: Der konkrete Typ wird in die formale Typvariable eingesetzt, und der resultierende Typ wird zur Verwendung im Programm definiert.

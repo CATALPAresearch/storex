@@ -1,0 +1,19 @@
+29.2 Collections als Standardanwendungsfall für parametrischen Polymorphismus
+
+Eine wichtige Gruppe von Klassen, die Sie in den letzten beiden Kurseinheiten kennengelernt haben, sind die sog. Collection-Klassen. Auch diese bilden jeweils einen Typ, so dass Variablen, die auf eine Collection verweisen, mit diesem Typ deklariert werden können.
+Nun dienen Collections ja u. a. dem Zweck, n-Beziehungen zwischen einem Objekt und mehreren anderen zu ermöglichen, indem sie dafür Zwischenobjekte zur Verfügung stellen (s. Kurseinheit 2, Kapitel 13). Und so bilden die mit den Collection-Klassen assoziierten Typen auch nur die Typen für die Zwischenobjekte. Was man jedoch eigentlich bei der Deklaration von n-wertigen Attributen angeben (deklarieren) möchte, ist der Typ der in Beziehung stehenden Objekte.
+Wenn das Attribut beispielsweise kinder heißt und man damit eine Person mit einer Menge anderer Objekte vom Typ Person, den Kindern, in Beziehung setzen möchte, dann nutzt es nichts, wenn man kinder vom Typ Person deklariert — es könnte dann höchstens eine Person enthalten und nicht mehrere. Was man vielmehr gern hätte, wäre etwas, das dem Array-Typkonstruktor array [<Bereich>] of <Elementtyp> (spitze Klammern hier wieder als Begrenzer von metasyntaktischen Variablen) von PASCAL gleicht: Im gegebenen Beispiel würde man gern deklarieren, dass kinder den Typ Collection of Person haben soll.
+Ein anderes Beispiel für eine parametrische Definition einer Collection ist Dictionary: Hier sollte nicht nur der Element-, sondern auch der Schlüsseltyp variabel gehalten werden.
+Dabei ist der parametrische Typ Dictionary ein Subtyp des ebenfalls parametrischen Typs Collection. Man beachte, dass der Typparameter E hier bereits in der Supertypdeklaration verwendet wird. Ein Dictionary, in dem Integer auf beliebige Objekte abgebildet werden, erhält man dann durch die Instanziierung Dictionary[Integer, Object]. Es ist mit einer Variable vom Typ Collection[Object] zuweisungskompatibel. Auf die Einzelheiten des Subtypings bei parametrischen Typen wird in Kapitel 30 eingegangen.
+
+Frage: Welchen Zweck dienen Collections in der Programmierung?
+Antwort: Collections dienen u. a. dem Zweck, n-Beziehungen zwischen einem Objekt und mehreren anderen zu ermöglichen, indem sie dafür Zwischenobjekte zur Verfügung stellen.
+
+Frage: Welchen Typ repräsentieren die mit Collection-Klassen assoziierten Typen?
+Antwort: Die mit Collection-Klassen assoziierten Typen repräsentieren die Typen für die Zwischenobjekte in den Collections.
+
+Frage: Was möchte man bei der Deklaration von n-wertigen Attributen angeben?
+Antwort: Bei der Deklaration von n-wertigen Attributen möchte man den Typ der in Beziehung stehenden Objekte angeben.
+
+Frage: Was ist ein Beispiel für eine parametrische Definition einer Collection?
+Antwort: Ein Beispiel für eine parametrische Definition einer Collection ist Dictionary, bei dem nicht nur der Elementtyp, sondern auch der Schlüsseltyp variabel gehalten werden sollte.

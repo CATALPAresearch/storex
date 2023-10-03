@@ -1,0 +1,15 @@
+20.2 Verwendung definierter Typen
+
+Definierte Typen können in Programmen verwendet werden, in STRONGTALK bei der Deklaration von (anderen) Typen, von Variablen, von Blöcken und von Methoden. Man spricht dann von einer Typisierung der deklarierten Programmelemente. Die Verwendung in Typdefinitionen haben Sie bereits oben kennengelernt, die Verwendung in Methoden verläuft analog. Variablen (Instanzvariablen, temporäre Variablen, etc.) werden in STRONGTALK genauso wie formale Parameter (die ebenfalls Variablen sind) typisiert, nämlich durch die Anfügung eines Typnamens in spitzen Klammern. Bei Blöcken taucht der Rückgabetyp im selben Segment wie die formalen Parameter auf, also vor dem Seperator.
+
+Frage: Wie können definierte Typen in STRONGTALK-Programmen verwendet werden?
+Antwort: Definierte Typen können in STRONGTALK-Programmen bei der Deklaration von (anderen) Typen, von Variablen, von Blöcken und von Methoden verwendet werden. Dies führt zu einer Typisierung der deklarierten Programmelemente.
+
+Frage: Wie erfolgt die Verwendung definierter Typen in Typdefinitionen und Methoden in STRONGTALK?
+Antwort: Die Verwendung von definierten Typen in Typdefinitionen und Methoden erfolgt analog. In Methoden werden Variablen (einschließlich formaler Parameter) durch die Anfügung eines Typnamens in spitzen Klammern typisiert. Der Rückgabetyp eines Blocks wird im selben Segment wie die formalen Parameter angegeben, also vor dem Trennzeichen.
+
+Frage: Wie werden Variablen in STRONGTALK typisiert?
+Antwort: Variablen (einschließlich Instanzvariablen und temporäre Variablen) werden in STRONGTALK typisiert, indem ein Typname in spitzen Klammern an die Variable angehängt wird.
+
+Frage: Wo wird der Rückgabetyp für Blöcke in STRONGTALK angegeben?
+Antwort: Der Rückgabetyp für Blöcke in STRONGTALK wird im selben Segment wie die formalen Parameter angegeben, und zwar vor dem Trennzeichen.

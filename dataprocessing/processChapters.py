@@ -6,6 +6,7 @@ from langchain import PromptTemplate, LLMChain
 
 CONTEXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters'
 OUTPUT_FILE = '/home/luna/workspace/Dialogsteuerung/data/chapters/processed_chapters/chapters.csv'
+
 TEST_CONTEXT = """1.6 Zuweisung
 Damit eine Variable ein Objekt bezeichnet, muss ihr dieses durch eine sog. Zuweisung , in
 anderen Kontexten auch Wertzuweisung genannt, zugeordnet werden. Ursprünglich
@@ -26,13 +27,11 @@ wiesen werden.
 """
 repo_id = 'tiiuae/falcon-40b'
 
-# llm = OpenAI(temperature=.7)
 llm = HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperatur": 0, "max_length": 1000})
 
 template = """Proofread and edit this text for errors: {context}
 
 Here's the corrected and edited text:"""
-
 prompt = PromptTemplate(template=template, input_variables=["context"])
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 
@@ -47,3 +46,7 @@ for file in glob.glob(CONTEXT_PATH + '/*.txt'):
         with open(OUTPUT_FILE, 'a', newline='') as csv_file:
             csv_writer = csv.writer(csv_file)
             csv_writer.writerow(edited_context)
+
+question_template = """What are questions and answers for this paragraph: {context}
+
+Here's are some questions and answers based on the provided paragraph:"""

@@ -1,0 +1,18 @@
+22.1 Strukturäquivalenz
+
+Um strukturelle Typäquivalenz festzustellen, werden die Definitionen der beteiligten Typen rekursiv expandiert, was so viel heißt wie, dass in einer Typdefinition vorkommende Namen anderer Typen durch ihre Struktur ersetzt werden.
+Dann sind die Typen Person und Firma sowie Wohnung und Büro jeweils strukturäquivalent, aber nicht namensäquivalent. Bei der Strukturäquivalenz haben Namen also lediglich die Funktion der abkürzenden Schreibweise, bei der Namensäquivalenz hingegen auch eine von der Struktur unabhängige Bedeutung. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt; Namensäquivalenz ist somit das stärkere Konzept.
+Strukturäquivalenz als Bedingung der Zuweisungskompatibilität reicht aus, um Typfehler, also logische und Laufzeitfehler, die auf der Annahme einer nicht vorliegenden Eigenschaft (Methode) bei einem Wert einer Variable basieren, zu verhindern. Sie garantiert, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten auch durchgeführt werden können.
+Strukturäquivalenz ist eine rein syntaktische Bedingung. Insbesondere können bei geforderter Strukturäquivalenz Typen zufällig zuweisungskompatibel sein, die inhaltlich überhaupt nichts miteinander zu tun haben. Dadurch können Objekte, die eigentlich getrennten Typen (disjunkten Wertebereichen) angehören, über Kreuz und über die Typgrenzen hinweg zugewiesen werden. Semantische Fehler sind also immer noch möglich. Man trifft daher in Sprachen mit Strukturäquivalenz gelegentlich die Praxis an, jedem Typ eine für ihn charakteristische Methode exklusiv zuzuordnen, so dass er mit keinem anderen mehr strukturäquivalent ist. Diese Technik nennt man Type branding.
+
+Frage: Wie wird die Strukturäquivalenz bei der Feststellung von Typäquivalenz verwendet?
+Antwort: Bei der Feststellung von Strukturäquivalenz werden die Definitionen der beteiligten Typen rekursiv expandiert, wobei Namen anderer Typen durch ihre Struktur ersetzt werden. Diese Strukturäquivalenz ermöglicht es, Typen zu vergleichen, indem ihre Strukturen miteinander verglichen werden.
+
+Frage: Was ist der Unterschied zwischen Namensäquivalenz und Strukturäquivalenz?
+Antwort: Bei der Namensäquivalenz spielen die Namen der Typen eine eigenständige Rolle und haben unabhängig von ihrer Struktur Bedeutung. Bei der Strukturäquivalenz dienen Namen lediglich als abkürzende Schreibweise für die Typstrukturen. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt.
+
+Frage: Warum reicht Strukturäquivalenz als Bedingung für Zuweisungskompatibilität aus?
+Antwort: Strukturäquivalenz reicht als Bedingung für Zuweisungskompatibilität aus, um Typfehler zu verhindern, die auf der Annahme einer nicht vorhandenen Methode bei einem Wert einer Variable basieren. Sie gewährleistet, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten auch durchgeführt werden können.
+
+Frage: Was sind mögliche Nachteile der Strukturäquivalenz?
+Antwort: Bei Verwendung der Strukturäquivalenz können Typen, die inhaltlich nichts miteinander zu tun haben, fälschlicherweise als äquivalent betrachtet werden. Dies kann dazu führen, dass Objekte, die eigentlich unterschiedlichen Typen angehören, fälschlicherweise zugewiesen werden können, was zu semantischen Fehlern führen kann. Dieses Problem kann durch die Technik des "Type Branding" gelöst werden, bei der jedem Typ eine charakteristische Methode exklusiv zugeordnet wird, um die Strukturäquivalenz einzuschränken.

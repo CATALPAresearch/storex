@@ -1,0 +1,29 @@
+13 Programmieren mit Collections
+
+In Kapitel 2 von Kurseinheit 1 waren wir bereits auf :n-Beziehungen eingegangen, die logisch gleichberechtigt neben :1-Beziehungen stehen, die aber in der Umsetzung besonderer Mechanismen bedürfen. Als Basis der Umsetzung hatten Sie bereits Zwischenobjekte kennengelernt, die über ihre indizierten Instanzvariablen solche Beziehungen — wenn auch nur indirekt — herstellen können. Tatsächlich könnte man, wenn man sich der Häufigkeit des Vorkommens von :n-Beziehungen in der Programmierung bewusst ist, vermuten, dass indizierte Instanzvariablen speziell für diesen Zweck eingeführt wurden. Auf den ersten Blick bedauerlich ist nur, dass dafür eben diese Zwischenobjekte notwendig sind.
+Es ergibt sich aus diesem Umstand aber auch ein entscheidender Vorteil. Da auch diese Zwischenobjekte Instanzen von Klassen sein müssen, ist es möglich, verschiedene Arten von :n-Beziehungen zu definieren und diese jeweils mit Verhalten zu versehen, das speziell auf die Art der Beziehung bezogen ist. So ist es beispielsweise möglich, :n-Beziehungen zu definieren, deren Elemente (die in Beziehung stehenden Objekte) jeweils nur einmal darin vorkommen dürfen (mengenwertige Beziehungen) oder nach einem bestimmten Kriterium sortiert sind. Auch können Operationen wie das Hinzufügen oder Entfernen von Objekten zu einer Beziehung, die bei :1-Beziehungen über die Zuweisung zu einer Instanzvariable erfolgen (das Entfernen durch Zuweisung von nil), beliebig ausgestaltet werden, um beispielsweise die Mengenwertigkeit oder die Sortierung zu erhalten.
+Besonders attraktiv ist jedoch die in SMALLTALK bestehende Möglichkeit, eigene Kontrollstrukturen für :n-Beziehungen zu spezifizieren. Die bereits vorhandenen durften Sie ja schon in Abschnitt 4.6.4 kennenlernen; hier kommt hinzu, dass die Standarditeratoren je nach Art der Beziehung unterschiedliche Eigenschaften haben. Außerdem ist es natürlich möglich, mit eigenen Arten von Beziehungen auch spezielle, nur für diese Beziehungen benötigte Kontrollstrukturen zu spezifizieren.
+
+Frage: Was sind :n-Beziehungen und wie stehen sie zu :1-Beziehungen?
+Antwort: :n-Beziehungen sind Beziehungen, bei denen ein Objekt mit mehreren anderen Objekten in Beziehung stehen kann. Sie stehen logisch gleichberechtigt neben :1-Beziehungen, bei denen ein Objekt nur mit einem anderen Objekt in Beziehung steht. Die Umsetzung von :n-Beziehungen erfordert jedoch besondere Mechanismen.
+
+Frage: Welche Rolle spielen Zwischenobjekte in der Umsetzung von :n-Beziehungen?
+Antwort: Zwischenobjekte spielen eine Rolle in der Umsetzung von :n-Beziehungen. Sie ermöglichen es, solche Beziehungen indirekt über ihre indizierten Instanzvariablen herzustellen.
+
+Frage: Warum könnte die Einführung von indizierten Instanzvariablen den Anschein erwecken, dass sie speziell für :n-Beziehungen eingeführt wurden?
+Antwort: Indizierten Instanzvariablen könnten den Anschein erwecken, speziell für :n-Beziehungen eingeführt worden zu sein, da sie es ermöglichen, Elemente in Beziehung zu setzen, selbst wenn sie nur indirekt über Zwischenobjekte erreicht werden. Dies erleichtert die Arbeit mit :n-Beziehungen.
+
+Frage: Welcher Vorteil ergibt sich aus der Verwendung von Zwischenobjekten in Bezug auf :n-Beziehungen?
+Antwort: Ein entscheidender Vorteil der Verwendung von Zwischenobjekten in Bezug auf :n-Beziehungen ist die Möglichkeit, verschiedene Arten von solchen Beziehungen zu definieren und diesen jeweils spezifisches Verhalten zuzuweisen, das auf die Art der Beziehung abgestimmt ist. Dies ermöglicht es, mengenwertige Beziehungen oder sortierte Beziehungen zu erstellen und Operationen wie das Hinzufügen oder Entfernen von Objekten individuell anzupassen.
+
+Frage: Was sind einige Beispiele für spezielle Arten von :n-Beziehungen?
+Antwort: Ein Beispiel für eine spezielle Art von "n-Beziehung" ist eine mengenwertige Beziehung, bei der die Elemente jeweils nur einmal darin vorkommen dürfen. Eine weitere Art ist eine sortierte Beziehung, bei der die Elemente nach einem bestimmten Kriterium sortiert sind.
+
+Frage: Warum ist es besonders attraktiv, eigene Kontrollstrukturen für :n-Beziehungen in SMALLTALK zu spezifizieren?
+Antwort: Es ist besonders attraktiv, eigene Kontrollstrukturen für :n-Beziehungen in SMALLTALK zu spezifizieren, weil es die Möglichkeit bietet, maßgeschneiderte und auf die spezifische Art der Beziehung zugeschnittene Kontrollstrukturen zu erstellen. Dies ermöglicht eine flexible und effiziente Programmierung für unterschiedliche Arten von Beziehungen.
+
+Frage: Welche Rolle spielen Standarditeratoren in Bezug auf :n-Beziehungen?
+Antwort: Standarditeratoren spielen eine Rolle in Bezug auf :n-Beziehungen, und je nach Art der Beziehung haben sie unterschiedliche Eigenschaften. Diese Standarditeratoren wurden bereits in Abschnitt 4.6.4 vorgestellt.
+
+Frage: Was ermöglicht die Verwendung eigener Arten von Beziehungen in SMALLTALK?
+Antwort: Die Verwendung eigener Arten von Beziehungen in SMALLTALK ermöglicht es, spezielle, nur für diese Beziehungen benötigte Kontrollstrukturen zu spezifizieren, um die Programmierung für diese Beziehungen effizienter zu gestalten.

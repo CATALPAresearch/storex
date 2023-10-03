@@ -1,0 +1,11 @@
+4.5.1 Sequenz
+
+Die Sequenz als Kontrollstruktur besagt lediglich, dass textuell aufeinanderfolgende Anweisungen eines Programms (einer Methode) auch zeitlich nacheinander ausgeführt werden. Die zeitliche Sequenz aufeinanderfolgender Anweisungen kann lediglich durch andere Kontrollstrukturen (in SMALLTALK nur durch den Methodenaufruf; siehe unten) unterbrochen werden. Dies gilt auch für parallele Ausführung, die man sich wie die gleichzeitige Abarbeitung zweier sequentieller Programme auf denselben Objekten vorstellen kann (siehe Kapitel 16).
+
+ChatGPT
+
+Frage: Was besagt die Sequenz als Kontrollstruktur in SMALLTALK?
+Antwort: Die Sequenz als Kontrollstruktur besagt lediglich, dass textuell aufeinanderfolgende Anweisungen eines Programms (einer Methode) auch zeitlich nacheinander ausgeführt werden. Die zeitliche Sequenz aufeinanderfolgender Anweisungen kann lediglich durch andere Kontrollstrukturen unterbrochen werden.
+
+Frage: Welche Kontrollstrukturen können die zeitliche Sequenz von aufeinanderfolgenden Anweisungen unterbrechen?
+Antwort: In SMALLTALK kann die zeitliche Sequenz von aufeinanderfolgenden Anweisungen nur durch den Methodenaufruf unterbrochen werden.
