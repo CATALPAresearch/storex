@@ -1,0 +1,27 @@
+15 Ein- und Ausgabeströme
+
+Ein- und Ausgabeströme spielen in der konventionellen (objektorientierten) Programmierung eine wichtige Rolle, da über sie Eingaben in und Ausgaben aus dem System erfolgen, und zwar sowohl von/zu der Benutzerin als auch vom/zum Dateisystem. Nun ist SMALLTALK aber als fensterbasiertes, grafisches System konzipiert, das der zeilenorientierten und textbasierten Ein- und Ausgabe der damals vorherrschenden Programme eine Alternative gegenüberstellen wollte. Zudem ist auch eine Speicherung permanenter Daten in Dateien nicht nötig, da mit dem Image alle Objekte dauerhaft gespeichert werden. Da ist es nur konsequent, dass die Ein- und Ausgabe über Streams wenig Gewicht hat.
+In SMALLTALK haben Streams somit zunächst auch eine andere Aufgabe: Sie erlauben eine Form des Zugriffs auf Collections, die das Collection-Protokoll nicht bieten kann, nämlich: den sequentiellen Zugriff auf einzelne Elemente in beliebigen zeitlichen Abständen (bei den Iteratoren wird immer in einem Schritt, oder in einer Anweisung, über die ganze Collection iteriert) sowie den gleichzeitigen bzw. zeitlich abwechselnden Zugriff auf (die Elemente einer) Collection durch mehrere andere Objekte.
+Um dies umzusetzen, braucht man Positionszeiger in eine Collection hinein, und genau die zu liefern ist die Funktion von Streams.
+Streams werden zunächst immer auf einer Collection erzeugt, deren Inhalt Basis des Streams ist. Die Erzeugung erfolgt mittels der Klassenmethode on:, die als Parameter eine Collection erhält. Das Basisprotokoll auf Instanzebene enthält die folgenden Methoden:
+Für frei positionierbare Streams kommt noch das Protokoll zur Änderung des Zeigers hinzu:
+Für peek ist die freie Positionierbarkeit notwendig, weil man dazu erst das nächste Element anspringen und dann wieder einen Schritt zurückgehen muss.
+Da ein Stream (wie eine Collection) eine Menge von Objekten repräsentiert, möchte man darüber (genau wie über eine Collection) iterieren können. Kein Problem:
+Außerdem wird natürlich zwischen (nur) lesbaren und schreibbaren Streams unterschieden.
+Erst eine weitere Kategorie von Streams operiert nicht auf Collections, sondern auf externen Daten. Dazu gehören insbesondere die File streams. In SMALLTALK-80 wurde mit den Klassen FileDirectory, File und FilePage (die selbst keine Streams sind) ein eigenes Dateisystem geschaffen; die meisten heute gebräuchlichen Implementierungen nehmen jedoch eine Abbildung auf das Betriebssystem vor, für das sie geschrieben wurden. Man erkennt hier noch sehr schön, welche Funktion SMALLTALK ursprünglich zugedacht war: die der einzigen Software auf einem Computer.
+Besonders in SQUEAK gibt es noch zahllose weitere Streams, so u. a. für Multimedia-Aufgaben; insgesamt unterscheiden sich die verschiedenen SMALLTALK-Dialekte bei der Handhabung von Streams zum Teil erheblich, weswegen wir hier auch nicht weiter darauf eingehen.
+
+Frage: Welche Rolle spielen Ein- und Ausgabeströme in der objektorientierten Programmierung?
+Antwort: Ein- und Ausgabeströme spielen in der objektorientierten Programmierung eine wichtige Rolle, da sie den Zugriff auf Eingabe- und Ausgabedaten im System ermöglichen. Sie dienen dazu, Daten sowohl von/zu Benutzern als auch von/zu Dateisystemen zu lesen und zu schreiben.
+
+Frage: Warum hat die Ein- und Ausgabe über Streams in SMALLTALK eine besondere Bedeutung?
+Antwort: In SMALLTALK wurde die Ein- und Ausgabe über Streams anders konzipiert als in konventionellen textbasierten Programmen. SMALLTALK ist ein fensterbasiertes, grafisches System, das eine Alternative zur zeilenorientierten Ein- und Ausgabe bieten wollte. Zudem sind in SMALLTALK permanente Datenspeicherung in Dateien nicht notwendig, da alle Objekte im Image dauerhaft gespeichert werden. Daher haben Streams in SMALLTALK eine andere Aufgabe, nämlich den sequentiellen Zugriff auf einzelne Elemente in Collections und den gleichzeitigen Zugriff durch mehrere Objekte auf Collections zu ermöglichen.
+
+Frage: Welche Funktion haben Streams in Bezug auf Collections?
+Antwort: Streams ermöglichen einen sequentiellen Zugriff auf einzelne Elemente in Collections zu beliebigen Zeitpunkten. Dies unterscheidet sich von Iteratoren, die die gesamte Collection in einem Schritt durchlaufen. Streams ermöglichen auch den gleichzeitigen oder zeitlich abwechselnden Zugriff auf die Elemente einer Collection durch mehrere andere Objekte. Streams stellen Positionszeiger in eine Collection bereit, um diese Funktionen umzusetzen.
+
+Frage: Wie werden Streams in SMALLTALK normalerweise erzeugt?
+Antwort: Streams werden normalerweise durch die Klassenmethode on: auf einer Collection erzeugt. Diese Methode erhält eine Collection als Parameter und erstellt einen Stream, der auf dem Inhalt der Collection basiert.
+
+Frage: Was sind die Unterschiede zwischen lesbarbaren und schreibbaren Streams?
+Antwort: Lesbare Streams ermöglichen das Lesen von Daten aus einer Quelle, während schreibbare Streams das Schreiben von Daten in eine Zielquelle ermöglichen. Lesbare Streams bieten Methoden zum Lesen von Daten, während schreibbare Streams Methoden zum Schreiben von Daten bereitstellen.

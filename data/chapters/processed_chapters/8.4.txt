@@ -1,0 +1,14 @@
+8.4 Erzeugung von Klassen in SMALLTALK
+
+In SMALLTALK werden Klassen erzeugt, indem man einer anderen Klasse eine entsprechende Nachricht sendet. Dies ist notwendig, da Instanzen, für die es keine literale Repräsentation gibt, in SMALLTALK grundsätzlich über Konstruktoren erstellt werden, und jede Klasse ist eine Instanz ihrer Metaklasse. Dies wirft die Frage auf, wie Klassen in SMALLTALK tatsächlich erzeugt werden können. Allein die Existenz eines Browsers mit entsprechender Funktion erklärt dies nicht ausreichend. Andererseits kann man auch nicht einfach "new" oder ähnliches an die Metaklasse einer Klasse senden, da diese zu diesem Zeitpunkt noch nicht existiert. Dies führt uns in gewisser Weise zur sprichwörtlichen Frage nach dem Huhn und dem Ei – genauer gesagt, wer von beiden zuerst existieren muss.
+Dieses Dilemma wird intern von SMALLTALK gelöst. Eine Klasse wird in SMALLTALK erzeugt, indem man einer anderen Klasse eine entsprechende Nachricht sendet.
+Durch Ausführung dieser Methode wird eine neue Klasse und gleichzeitig ihre Metaklasse erstellt. Dem Kommentar kann entnommen werden, dass die neue Klasse eine Subklasse des Empfängers (einer Klasse) werden soll. Die Bedeutung dieses Vorgangs wird im Kapitel 11 näher erläutert. An dieser Stelle möchten wir uns eher der Frage widmen, welche Klassen die mit erzeugten Metaklassen als Instanzen haben.
+
+Frage: Wie werden Klassen in SMALLTALK erzeugt?
+Antwort: In SMALLTALK werden Klassen erzeugt, indem man einer anderen Klasse eine entsprechende Nachricht sendet. Dies ist notwendig, da Instanzen in SMALLTALK grundsätzlich über Konstruktoren erstellt werden, und jede Klasse ist eine Instanz ihrer Metaklasse.
+
+Frage: Warum kann man nicht einfach "new" an die Metaklasse einer Klasse senden, um eine neue Klasse zu erstellen?
+Antwort: Man kann nicht einfach "new" oder ähnliches an die Metaklasse einer Klasse senden, da die Metaklasse zu diesem Zeitpunkt noch nicht existiert. Dies führt zu einem Dilemma, da die Frage aufkommt, ob die Klasse zuerst oder die Metaklasse zuerst erstellt werden muss.
+
+Frage: Wie wird das Dilemma, welche Klasse zuerst erstellt werden muss, in SMALLTALK gelöst?
+Antwort: In SMALLTALK wird das Dilemma gelöst, indem eine Klasse in SMALLTALK erzeugt wird, indem man einer anderen Klasse eine entsprechende Nachricht sendet. Diese Nachricht führt zur Erzeugung einer neuen Klasse und gleichzeitig ihrer Metaklasse.

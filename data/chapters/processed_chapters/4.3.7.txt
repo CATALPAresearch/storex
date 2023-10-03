@@ -1,0 +1,13 @@
+4.3.7 Primitive Methoden
+
+Zwar ist SMALLTALK über weite Teile in sich selbst definiert, was sich darin äußert, dass praktisch die gesamte Sprachdefinition in Form von Methoden hinterlegt ist und somit für die Programmiererin nicht nur sichtbar, sondern auch änderbar ist. Dennoch greift SMALLTALK für einige grundlegende Operationen auf native Implementierungen zurück. Dazu zählt beispielsweise die Addition (+) für kleine Integer oder der Zugriff auf indizierte Variablen mittels at: und at:put:.
+Dabei stehen die in spitzen Klammern stehenden Ausdrücke jeweils für Aufrufe von primitiven Methoden, die, da sie von Programmierern nicht selbst verwendet werden sollen, nur durch Nummern identifiziert wurden. Die Anweisungen nach den Aufrufen der primitiven Methoden werden nur ausgeführt, wenn die primitive Methode nicht erfolgreich war. Dieses Verhalten ermöglicht es, aus einer primitiven Methode mittels Return direkt zurückzuspringen, und zwar zu dem Ort, an dem die Methode +, at: oder at:put: aufgerufen wurde. Dieses Verhalten, das auf den ersten Blick ungewöhnlich erscheinen mag, wird uns im Zusammenhang mit Blöcken (siehe Abschnitt 4.4) wieder begegnen.
+
+Frage: Was sind primitive Methoden in SMALLTALK?
+Antwort: Primitive Methoden in SMALLTALK sind grundlegende Operationen, die auf native Implementierungen zurückgreifen. Diese Methoden sind durch Nummern identifiziert und sollen normalerweise nicht direkt von Programmierern verwendet werden.
+
+Frage: Warum werden primitive Methoden in SMALLTALK verwendet?
+Antwort: Primitive Methoden werden verwendet, um grundlegende und oft hardwarenahe Operationen effizient auszuführen. Sie ermöglichen es, bestimmte Operationen schneller und effizienter durchzuführen, indem sie auf native Implementierungen zurückgreifen.
+
+Frage: Was passiert, wenn eine primitive Methode erfolgreich ist?
+Antwort: Wenn eine primitive Methode erfolgreich ist, wird der Rest des Codes nach dem Aufruf der primitiven Methode nicht ausgeführt. Dieses Verhalten ermöglicht es, direkt zu dem Ort zurückzuspringen, an dem die Methode aufgerufen wurde.

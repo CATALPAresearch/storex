@@ -1,0 +1,8 @@
+4.6.2 Wiederholung
+
+Für die Implementierung von Wiederholungen (Schleifen) müssen wir etwas weiter ausholen: Da das Abbruchkriterium von Schleifen immer wieder (bei jedem Schleifendurchlauf) ausgewertet werden muss, kann nicht einfach einmal eine Nachricht an eine Variable mit Inhalt true oder false gesendet werden. Vielmehr muss die Auswertung des Abbruchkriteriums selbst in einem Block stattfinden, der bei jedem Schleifendurchlauf erneut ausgewertet wird. Aber auch das ist kein Problem: Der Nachrichtenempfänger ist einfach ein Block, dessen Auswertung entweder true oder false zurückliefert; der Parameter der Nachricht ist dann der Block, der den Schleifenrumpf darstellt.
+Die Schleife wird durch eine sogenannte Endrekursion simuliert: whileTrue: ruft sich am Ende selbst wieder auf. Wegen der Performanz (oder möglicher Beschränkungen der Anzahl der Schleifendurchläufe durch die Größe des Aufrufstacks) brauchen Sie sich dabei keine Sorgen zu machen: Da hinter dem rekursiven Aufruf nichts mehr passiert (deshalb Endrekursion), kann dieser vom Compiler in eine echte Schleife übersetzt werden.
+Für die ebenfalls aus anderen Sprachen bekannten For-Schleifen hat SMALLTALK eine andere elegante Lösung parat, auf die wir im nächsten Abschnitt eingehen werden.
+
+Frage: Wie wird die Implementierung von Wiederholungen (Schleifen) in SMALLTALK realisiert?
+Antwort: In SMALLTALK wird die Implementierung von Wiederholungen (Schleifen) durch Endrekursion simuliert. Dabei wird eine Methode wie whileTrue: am Ende selbst wieder aufgerufen. Der Schleifenrumpf wird durch einen Block dargestellt, und das Abbruchkriterium wird ebenfalls in einem Block ausgewertet. Der rekursive Aufruf am Ende der Methode kann vom Compiler in eine echte Schleife übersetzt werden.

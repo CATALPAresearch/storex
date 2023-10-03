@@ -1,0 +1,14 @@
+14.4 Selbstdarstellung
+
+Wir hatten bereits ausgenutzt, dass alle Objekte in SMALLTALK eine (mehr oder weniger aussagekräftige) String-Repräsentation besitzen. Die Methode printString gibt eine Darstellung des Objekts als String zurück. Dies ist für Ausgaben auf dem Transcript interessant, aber auch für die Inspektion von Objekten und für das Debugging, bei denen sich die Objekte unter Verwendung dieser Methode der Betrachterin präsentieren.
+Die Methode inspect startet auf dem Empfänger einen Inspektor und gibt den Empfänger zurück. Dies ist nützlich, wenn man ein Zwischenergebnis eines Ausdrucks inspizieren möchte, ohne den Ausdruck dazu in zwei aufteilen zu wollen. Man fügt einfach inspect an der Stelle des Ausdrucks ein, an der das zu inspizierende Objekt gewonnen wurde.
+Die Methode storeOn: erlaubt, ein Objekt so auf einen Ausgabestrom zu schreiben, dass es daraus rekonstruiert werden kann. Dabei wird keine binäre, sondern eine textuelle Repräsentation verwendet. So schreibt beispielsweise SQUEAK bei Auswertung von Time noon storeOn: aStream die Zeichenfolge '12:00 pm' auf den durch aStream bezeichneten Ausgabestrom und (Interval from: 1 to: 5) die Zeichenfolge '(1 to: 5)'.
+
+Frage: Was ist die Funktion der Methode printString in SMALLTALK?
+Antwort: Die Methode printString gibt eine String-Repräsentation eines Objekts zurück. Diese Repräsentation kann für Ausgaben auf dem Transcript, zur Inspektion von Objekten und für das Debugging verwendet werden.
+
+Frage: Wie kann die Methode inspect in SMALLTALK genutzt werden und wofür ist sie nützlich?
+Antwort: Die Methode inspect startet einen Inspektor auf dem Empfängerobjekt und gibt das Empfängerobjekt zurück. Sie ist nützlich, wenn Sie ein Zwischenergebnis eines Ausdrucks inspizieren möchten, ohne den Ausdruck in zwei Teile aufteilen zu müssen. Sie fügen einfach inspect an der Stelle des Ausdrucks ein, an der das zu inspizierende Objekt gewonnen wurde.
+
+Frage: Was ist die Funktion der Methode storeOn: in SMALLTALK?
+Antwort: Die Methode storeOn: ermöglicht das Schreiben eines Objekts auf einen Ausgabestrom in einer textuellen Repräsentation, die später zur Rekonstruktion des Objekts verwendet werden kann. Es wird keine binäre Repräsentation verwendet. Dies ist nützlich, um Objekte in einer menschenlesbaren Form zu speichern und später wiederherzustellen.
