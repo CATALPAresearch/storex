@@ -1,0 +1,23 @@
+46.2 Interne Iteration
+
+Von SMALLTALK kennen Sie bereits die Möglichkeit, Iterationen als Methoden der Collection-Klassen zu definieren (die interne Iteration; siehe Abschnitt 4.6.4 in Kurseinheit 1 und Kapitel 13 in Kurseinheit 2). Mit Version 8 wurden nun auch in JAVA (anonyme) Funktionen (die sog. Lambda-Ausdrücke) eingeführt, die interne Iterationen à la SMALLTALK erlauben. Allerdings wurde für die Implementierung der Methoden forEach, filter, map und reduce (entsprechend SMALLTALKs do, select, collect und inject) ein eigenes Framework geschaffen: die sog. Streams.
+Streams sind ein mit JAVA 8 neu eingeführtes Konstrukt, das eine Datenverarbeitung in Pipelines ganz ähnlich wie die Collections in SMALLTALK ermöglicht: Das Ergebnis einer Operation wie filter oder map, auf einem Stream ausgeführt, ist wieder ein Stream, auf dem weitere Operationen dieser Art ausgeführt werden können (das Pipelining). Das Besondere an Streams ist, dass sie keine Datenspeicher wie Collections sind, sondern interne Iteratoren: Jeder Stream für sich hält zu einem Zeitpunkt immer genau ein Element einer potenziell unendlichen Folge von Elementen. Dabei dienen Streams entweder abgeschlossenen Datenspeichern wie Collections und Files oder offenen Datenlieferanten wie der Tastatur oder Datengeneratoren (wie beispielsweise ein Zufallszahlengenerator oder eine Vorschrift zur Berechnung einer Fibonacci-Folge) als Quelle. Ein Ergebnis liefert eine Stream-Pipeline (die auch aus nur einem Element bestehen kann) immer erst durch einen sog. Abschluss, also eine Methode wie reduce oder collect, die ein anderes Ergebnis als einen Stream liefert (eine Collection im Falle von collect).
+Das Stream-Framework von JAVA ermöglicht für viele Pipelines eine besonders effiziente Ausführung. So muss jedes Element einer Datenquelle in der Regel nur einmal angefragt werden, und die interne Speicherung von Zwischenergebnissen wird automatisch gering gehalten. Insbesondere wird gegenüber einer naiven Implementierung von Pipelines, die eine Iteration je Element der Pipeline benötigt, in vielen Fällen nur eine Iteration benötigt (die sog. Stream-Fusion). Zudem kann durch die Wahl des Streams (und nicht der Operationen) bestimmt werden, ob die Verarbeitung der Pipeline parallel oder sequenziell erfolgt. Gleichwohl ist die Performanz von JAVA-Pipelines nicht leicht vorherzusagen, und eine gewinnbringende Verwendung setzt sicherlich einiges an Erfahrung und Kenntnissen der Implementierung voraus.
+
+Frage: Welche Möglichkeit zur Iteration von Collection-Klassen kennen Sie aus SMALLTALK?
+Antwort: In SMALLTALK gibt es die Möglichkeit, Iterationen als Methoden der Collection-Klassen zu definieren, was als interne Iteration bezeichnet wird.
+
+Frage: Welche neuen Funktionen wurden in JAVA 8 eingeführt, um interne Iterationen zu ermöglichen?
+Antwort: In JAVA 8 wurden (anonyme) Funktionen, auch bekannt als Lambda-Ausdrücke, eingeführt, um interne Iterationen à la SMALLTALK zu ermöglichen.
+
+Frage: Welches Framework wurde für die Implementierung der Methoden forEach, filter, map und reduce in JAVA 8 geschaffen?
+Antwort: Für die Implementierung der Methoden forEach, filter, map und reduce in JAVA 8 wurde das Stream-Framework geschaffen.
+
+Frage: Wie unterscheiden sich Streams von Collections in JAVA?
+Antwort: Streams unterscheiden sich von Collections in JAVA dadurch, dass sie keine Datenspeicher sind, sondern interne Iteratoren. Jeder Stream hält zu einem Zeitpunkt immer genau ein Element einer potenziell unendlichen Folge von Elementen.
+
+Frage: Wann liefert eine Stream-Pipeline in JAVA ein Ergebnis?
+Antwort: Eine Stream-Pipeline in JAVA liefert ein Ergebnis immer erst durch einen sogenannten Abschluss, also eine Methode wie reduce oder collect, die ein anderes Ergebnis als einen Stream liefert, beispielsweise eine Collection im Falle von collect.
+
+Frage: Welche Vorteile bietet das Stream-Framework von JAVA im Vergleich zu naiven Implementierungen von Pipelines?
+Antwort: Das Stream-Framework von JAVA ermöglicht für viele Pipelines eine besonders effiziente Ausführung. Es minimiert die Anzahl der Iterationen, reduziert die interne Speicherung von Zwischenergebnissen und erlaubt die Auswahl zwischen paralleler und sequenzieller Verarbeitung der Pipeline. Dennoch ist die Performanz von JAVA-Pipelines nicht leicht vorherzusagen und erfordert Erfahrung und Kenntnisse der Implementierung.

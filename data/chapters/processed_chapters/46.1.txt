@@ -1,0 +1,24 @@
+46.1 Externe Iteration
+
+In Beziehungen mit :n-Verbindungen müssen häufig mehrere Elemente der gleichen Behandlung unterzogen werden oder es müssen Elemente aus der Menge gesucht werden.
+Wenn jedoch Collections verwendet werden, die nicht indiziert sind (JAVA bietet auch Collections wie Bäume oder verkettete Listen), ist die oben gezeigte Form der Iteration nicht anwendbar. Stattdessen gibt es in JAVA die beiden Interfaces Enumeration (total veraltet) und Iterator (etwas neuer), die eine einheitliche Iteration über Collections mittels sogenannter Iteratoren erlauben. Jede Collection-Klasse, die Iterator implementiert, bietet dazu eine Methode iterator() an, die ein solches Iteratorobjekt (vom Typ Iterator) zurückliefert.
+Mit der Methode next() erhält man von diesem Iterator-Objekt zunächst das erste und anschließend alle weiteren Objekte der Collection. Mit der Methode hasNext() fragt man ab, ob die Collection noch weitere Objekte enthält.
+Die Wahl der unnötig langen Bezeichner lässt vermuten, dass man die Häufigkeit solcher Konstruktionen in der Programmierpraxis unterschätzt hatte. Dieser Fehler wurde mit JAVA 5 korrigiert. Voraussetzung ist allerdings, dass die Klasse von "aCollection" das Interface "Iterable" implementiert, das wiederum verspricht, dass die Instanzen die Methode "Iterator iterator()" anbieten und damit einen Iterator zurückliefern, der dann von der "for"-Schleife zur Produktion der Elemente ausgenutzt werden kann. Es handelt sich bei dieser Version der "for"-Schleife also lediglich um "syntaktischen Zucker". Man beachte, dass dabei eine weitere Verquickung von Sprachdefinition und Klassenbibliothek (API; speziell des Interface "Iterator") stattgefunden hat, die nicht schön ist.
+
+Frage: Warum ist die oben gezeigte Form der Iteration in JAVA nicht anwendbar, wenn Collections verwendet werden, die nicht indiziert sind?
+Antwort: Die oben gezeigte Form der Iteration mittels Indizes ist nicht anwendbar, wenn Collections verwendet werden, die nicht indiziert sind, da diese Collections keine numerischen Indizes für den Zugriff auf ihre Elemente bereitstellen.
+
+Frage: Welche beiden Interfaces in JAVA ermöglichen eine einheitliche Iteration über Collections mittels Iteratoren?
+Antwort: In JAVA ermöglichen die beiden Interfaces Enumeration (total veraltet) und Iterator (etwas neuer) eine einheitliche Iteration über Collections mittels Iteratoren.
+
+Frage: Was tut die Methode next() eines Iterator-Objekts?
+Antwort: Die Methode next() eines Iterator-Objekts gibt das nächste Element der Collection zurück, über die iteriert wird.
+
+Frage: Wofür wird die Methode hasNext() bei der Verwendung von Iteratoren in JAVA eingesetzt?
+Antwort: Die Methode hasNext() wird bei der Verwendung von Iteratoren in JAVA eingesetzt, um abzufragen, ob die Collection noch weitere Elemente enthält, die iteriert werden können.
+
+Frage: Wie wurde der Fehler bezüglich unnötig langer Bezeichner in Iterationen mit JAVA 5 korrigiert?
+Antwort: Der Fehler bezüglich unnötig langer Bezeichner in Iterationen wurde mit JAVA 5 korrigiert, indem die "for"-Schleife um eine vereinfachte Schreibweise für die externe Iteration über Collections ergänzt wurde.
+
+Frage: Welches Interface muss eine Klasse implementieren, um die "syntaktische Zucker"-Version der "for"-Schleife in JAVA verwenden zu können?
+Antwort: Eine Klasse muss das Interface "Iterable" implementieren, um die "syntaktische Zucker"-Version der "for"-Schleife in JAVA verwenden zu können. Diese Version ermöglicht die externe Iteration über Collections.

@@ -1,0 +1,21 @@
+50.4.4 Die dynamische Komponente
+
+C# soll genau wie JAVA und anders als C++ eine typsichere Sprache sein, also eine strikte Typprüfung durchführen. Da aber (ebenfalls genau wie in JAVA) nicht alles zur Übersetzungszeit geschehen kann, hat auch das Typsystem von C# eine Laufzeitkomponente.
+Um einen Ausdruck einer Typumwandlung zu unterziehen, bietet C# genau wie JAVA und C++ Casts an. Auch die Syntax unterscheidet sich nicht.
+Dies bewirkt, dass der Ausdruck a den Typ T aufgedrückt bekommt. Ist dies nicht möglich, weil der tatsächliche Typ des Objekts, auf das a verweist, kein Subtyp von T ist oder weil keine entsprechende Typumwandlung definiert ist (einschließlich Boxing/Unboxing), wird dies mit einem Laufzeitfehler quittiert. Casts sind also typsicher (in dem Sinne, dass keiner Variable ein Wert zugewiesen wird, den sie nicht haben darf), aber nicht sicher (sie können zu Ausnahmesituationen und, im Falle einer Nichtbehandlung, zu Programmabbrüchen führen).
+Um Casts sicher zu machen, bietet C# den Operator is. Er entspricht im Wesentlichen dem instanceof von JAVA, wobei a für einen beliebigen Ausdruck und T für einen Typ steht, zurück, ob das Ergebnis der Auswertung von a mit einer Variable vom Typ T zuweisungskompatibel ist. Dabei wird sowohl das Subtyping als auch das implizite (Auto-)Boxing berücksichtigt.
+
+Frage: Welche Eigenschaften sollte eine typsichere Sprache haben?
+Antwort: Eine typsichere Sprache wie C# soll strikte Typprüfungen durchführen, um sicherzustellen, dass Variablen nur Werte akzeptieren, die ihrem deklarierten Typ entsprechen.
+
+Frage: Wie kann in C# eine Typumwandlung (Casting) durchgeführt werden?
+Antwort: In C# kann eine Typumwandlung mithilfe von Casts durchgeführt werden. Die Syntax dafür ist (T)a;, wobei T der Zieltyp ist und a der Ausdruck, der umgewandelt werden soll.
+
+Frage: Was passiert, wenn eine Typumwandlung in C# nicht möglich ist?
+Antwort: Wenn eine Typumwandlung in C# nicht möglich ist, weil der tatsächliche Typ des Ausdrucks a kein Subtyp von T ist oder keine entsprechende Typumwandlung definiert ist, führt dies zu einem Laufzeitfehler.
+
+Frage: Welcher Operator in C# entspricht dem instanceof-Operator in Java?
+Antwort: In C# entspricht der Operator is dem instanceof-Operator in Java. Er prüft, ob das Ergebnis der Auswertung eines Ausdrucks mit einem gegebenen Typ T zuweisungskompatibel ist.
+
+Frage: Wie wird in C# sichergestellt, dass ein Cast sicher ist?
+Antwort: In C# wird ein Cast sicher gemacht, indem der is-Operator verwendet wird, um zu prüfen, ob die Zuweisung kompatibel ist. Zusätzlich kann der as-Operator verwendet werden, der bei fehlschlagender Zuweisung null zurückgibt.

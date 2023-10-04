@@ -18,7 +18,7 @@ for file in glob.glob(INPUT_FILE + '/*.txt'):
         #                                                                        or line[0].isdigit()))
 
         for i, line in enumerate(lines):
-            if re.search("Frage:", line):
+            if re.search("Frage:", line): # TODO: Remove "Frage" und "Antwort" und D-Spalte
                 text_context = [paragraph.rstrip(), line.rstrip(), lines[i + 1].rstrip()]
 
                 with open(OUTPUT_FILE, 'a', newline='') as csv_file:

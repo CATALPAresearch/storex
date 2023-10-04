@@ -1,0 +1,18 @@
+52.1 Das Programmiermodell von EIFFEL
+
+EIFFEL ist, wie alle anderen hier behandelten Sprachen (mit Ausnahme von C++), eine rein objektorientierte Programmiersprache, bei der der gesamte Code innerhalb von Klassen organisiert ist. Klassen können (mit der in Abschnitt 52.5 gemachten Einschränkung) separat übersetzt werden. Die Ausführung von EIFFEL erfolgt nicht auf einer virtuellen Maschine, sondern direkt auf der Zielmaschine. Es gibt jedoch mittlerweile auch eine Version von EIFFEL für .NET, die wie alle .NET-Sprachen zunächst in CIL übersetzt wird und dann in Maschinencode. Die Sprache selbst sieht aufgrund ihrer Einfachheit keine speziellen Konstrukte vor, mit denen Programmierer zwischen leistungsstarken und weniger leistungsstarken Implementierungen wählen können. Eventuelle Performance-Verbesserungen werden ganz der Verantwortung eines optimierenden Compilers überlassen. EIFFEL verwendet Garbage Collection zur Speicherfreigabe. Es handelt sich um eine akademische Sprache.
+
+Frage: Was ist das Programmiermodell von EIFFEL?
+Antwort: Das Programmiermodell von EIFFEL ist rein objektorientiert, bei dem der gesamte Code in Klassen organisiert ist. Diese Klassen können separat übersetzt werden, und die Ausführung erfolgt direkt auf der Zielmaschine.
+
+Frage: Wie unterscheidet sich EIFFEL von C++ in Bezug auf die Ausführungsumgebung?
+Antwort: Im Gegensatz zu C++ führt EIFFEL den Code nicht auf einer virtuellen Maschine aus, sondern direkt auf der Zielmaschine. Es gibt jedoch auch eine Version von EIFFEL für .NET, die in CIL übersetzt und dann in Maschinencode ausgeführt wird.
+
+Frage: Bietet EIFFEL spezielle Konstrukte zur Leistungsoptimierung?
+Antwort: Nein, EIFFEL sieht keine speziellen Konstrukte vor, mit denen Programmierer zwischen leistungsstarken und weniger leistungsstarken Implementierungen wählen können. Die Performance-Verbesserungen werden vollständig einem optimierenden Compiler überlassen.
+
+Frage: Welche Methode verwendet EIFFEL zur Speicherfreigabe?
+Antwort: EIFFEL verwendet Garbage Collection zur Speicherfreigabe.
+
+Frage: Wie wird EIFFEL als Sprache häufig charakterisiert?
+Antwort: EIFFEL wird als eine akademische Sprache charakterisiert, was bedeutet, dass sie in erster Linie in der akademischen Welt verwendet wird und möglicherweise weniger in kommerziellen Anwendungen anzutreffen ist.

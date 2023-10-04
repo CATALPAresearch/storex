@@ -1,0 +1,24 @@
+50.4.2 Interfacetypen in C#
+
+Obwohl C# das Konzept der Interface-Implementierung aus JAVA übernommen hat, wurde seine Rolle hier deutlich gestärkt. In C# ist es möglich, dass eine Klasse dieselbe Methodendeklaration, die von verschiedenen Interfaces "geerbt" wurde, getrennt voneinander implementiert. Dies wird mithilfe von sogenannten expliziten Interfaceimplementierungen erreicht, wie im folgenden Beispiel dargestellt (beachten Sie, dass in C# der Doppelpunkt die Schlüsselwörter "extends" und "implements" aus JAVA ersetzt).
+Der Nutzen der expliziten Interfaceimplementierung liegt darin, dass die Methode gibTelefonnummer() je nach Aufruf unterschiedlich reagiert, abhängig davon, über welches Interface sie angesprochen wird. Der Typ der Variable (oder des Ausdrucks), die als Empfänger fungiert, gibt gewissermaßen die Rolle vor, in der das Objekt angesprochen wird (hier: Angestellte oder Privatperson). Es ist weder vorgesehen noch möglich, etwas wie x.Angestellte.gibTelefonnummer() an der Aufrufstelle zu schreiben (wobei x das Objekt bezeichnet); stattdessen steht einfach x.gibTelefonnummer(). Falls die Methodendeklaration Telefonnummer gibTelefonnummer() von einem gemeinsamen Superinterface von Angestellte und Privatperson, z. B. Erreichbar, geerbt würde, wäre das Programm ungültig. Es muss immer der tatsächlich deklarierende Typ als Qualifizierer angegeben werden.
+Falls im obigen Beispiel für die beiden expliziten Interfaceimplementierungen von gibTelefonnummer() nicht wie in JAVA der Zugriffsmodifikator "public" angegeben wurde, geschah dies nicht ohne Grund. In C# ist es nämlich möglich, Methoden nicht als "public" zu deklarieren und dennoch per Interfaceimplementierung von außen darauf zuzugreifen. Allerdings ist dies an die explizite Interfaceimplementierung gebunden. Die sogenannte implizite Interfaceimplementierung, bei der manchmal nicht klar ist, welcher der aufgelisteten Supertypen ein Interface und welcher eine Superklasse ist, wird durch eine Namenskonvention aufgelöst: Im Common Type System von .NET sollten alle Interfacenamen mit einem "I" beginnen. Dies steht in der Tradition der bei MICROSOFT weit verbreiteten und nach dem früheren Mitarbeiter CHARLES SIMONYI benannten ungarischen Notation.
+Explizite Interfaceimplementierungen können nicht überschrieben werden und dürfen nicht als "virtual" deklariert sein. Eine Klasse, die von einer Klasse mit expliziten Interfaceimplementierungen erbt, erbt diese ohne die Möglichkeit, sie zu überschreiben, es sei denn, sie implementiert das Interface erneut. Es ist jedoch wichtig zu beachten, dass diese erneute explizite Implementierung keine Überschreibung darstellt. Insbesondere findet bei Aufruf der explizit implementierten Methode kein dynamisches Binden statt.
+
+Frage: Was sind explizite Interfaceimplementierungen in C#?
+Antwort: Explizite Interfaceimplementierungen in C# ermöglichen es einer Klasse, die gleiche Methodendeklaration von verschiedenen Interfaces getrennt voneinander zu implementieren. Dies wird durch die Angabe des Interfacequalifikators vor der Methode erreicht.
+
+Frage: Welchen Nutzen haben explizite Interfaceimplementierungen in C#?
+Antwort: Der Nutzen von expliziten Interfaceimplementierungen liegt darin, dass die Methode je nach Aufruf unterschiedlich reagiert, abhängig davon, über welches Interface sie angesprochen wird. Dies ermöglicht es, verschiedene Verhaltensweisen für denselben Methodennamen in verschiedenen Kontexten zu definieren.
+
+Frage: Was passiert, wenn man versucht, eine explizite Interfaceimplementierung mit einem anderen Zugriffsmodifikator als "public" zu deklarieren?
+Antwort: In C# ist es möglich, Methoden von expliziten Interfaceimplementierungen mit Zugriffsmodifikatoren, die nicht "public" sind, von außen aufzurufen. Dies ist jedoch an die explizite Implementierung gebunden und erfordert die Verwendung des richtigen Interfacequalifikators.
+
+Frage: Wie wird in C# sichergestellt, dass explizite Interfaceimplementierungen von außen aufgerufen werden?
+Antwort: In C# muss der tatsächliche deklarierende Typ des Objekts als Qualifikator für den Methodenaufruf angegeben werden, um sicherzustellen, dass die richtige explizite Interfaceimplementierung aufgerufen wird.
+
+Frage: Können explizite Interfaceimplementierungen in C# überschrieben werden?
+Antwort: Nein, explizite Interfaceimplementierungen können nicht überschrieben werden. Eine Klasse, die von einer Klasse mit expliziten Interfaceimplementierungen erbt, erbt diese ohne die Möglichkeit, sie zu überschreiben, es sei denn, sie implementiert das Interface erneut.
+
+Frage: Gibt es eine Namenskonvention für Interfaces in C#?
+Antwort: Ja, im Common Type System von .NET sollten alle Interfacenamen mit einem "I" beginnen. Dies dient zur Unterscheidung von Interface- und Klassennamen und folgt der Tradition der ungarischen Notation bei Microsoft.

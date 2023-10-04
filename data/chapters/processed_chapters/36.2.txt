@@ -1,0 +1,24 @@
+36.2 Subklassenbeziehung
+
+In JAVA, wie auch in SMALLTALK, ist vorgesehen, dass alle Klassen außer Object von bereits existierenden Klassen ableiten können. JAVA verwendet dazu das Schlüsselwort "extends." Dadurch wird das Bestehen einer Subklassenbeziehung zwischen B und A deklariert. Die Verwendung von "extends" legt nahe, dass es sich dabei um eine Typerweiterung handelt, aus der (gemäß Kapitel 23) Zuweisungskompatibilität folgt, was tatsächlich der Fall ist.
+Durch die Angabe einer "extends"-Klausel gibt eine Klasse an, von welcher anderen Klasse sie die nicht als "static" deklarierten Member erbt. Da die erbende Klasse, auch in JAVA als Subklasse bezeichnet, die geerbten Methoden nur invariant überschreiben darf (und geerbte Felder in ihrer Sichtbarkeit nicht reduziert werden dürfen; s. Abschnitt 39.1), ist ihr Typ automatisch ein Subtyp des Typs der Klasse, von der sie erbt.
+Wie in SMALLTALK gibt es in JAVA abstrakte Klassen. Anders als in SMALLTALK verwendet JAVA jedoch das Schlüsselwort "abstract," mit dem man eine Klasse als abstrakt und damit als nicht instanziierbar deklarieren kann.
+Das bedeutet, dass von einer solchen Klasse keine Instanzen mehr gebildet werden dürfen (vgl. Abschnitt 10.3). Dieses Verbot, dessen Einhaltung vom Compiler überprüft wird, gilt unabhängig davon, ob von der Klasse Instanzen erstellt werden könnten. Selbst wenn alles, was für das Funktionieren der Instanzen benötigt wird, in der Klasse vorhanden ist (einschließlich Konstruktoren), darf sie nicht instanziiert werden. Häufiger fehlt jedoch in der Klasse die Implementierung von einer oder mehreren (bis hin zu allen) benötigten Methoden. Diese Methoden werden dann in der Klasse lediglich deklariert, und zwar ebenfalls mit dem Schlüsselwort "abstract."
+Man gibt dann hinter der Methodensignatur (also dem Namen und den Parametern) keine Implementierung (in geschweiften Klammern) an, sondern lediglich ein abschließendes Semikolon. Im Gegensatz dazu muss in SMALLTALK eine abstrakte Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet werden (s. Abschnitt 10.3 in Kurseinheit 2).
+Die Aufforderung, eine abstrakte Methode in einer Subklasse zu implementieren, gibt es in JAVA ebenfalls, jedoch nicht als Laufzeitfehler auf der Programmausführungsebene, sondern auf der Compiler-Ebene. Wenn man von einer abstrakten Klasse (per "extends") ableitet, dann muss die abgeleitete Klasse entweder selbst als abstrakt deklariert sein, oder man muss alle abstrakten Methoden der Klasse, von der sie ableitet, mit Implementierungen versehen. Tut man das nicht, erhält man vom Compiler eine entsprechende Aufforderung.
+Komplementär zur "abstract"-Deklaration gibt es in JAVA auch die Möglichkeit, zu verhindern, dass von einer Klasse abgeleitet wird. Man verwendet dafür einfach das Schlüsselwort "final." Das Gleiche gilt für einzelne Methoden, deren Überschreiben in einer Subklasse durch eine "final"-Deklaration verhindert werden kann. Eine einfache, goldene Regel der objektorientierten Programmierung besagt übrigens, dass man alle Klassen entweder als abstrakt oder als final deklarieren sollte. Dies fördert das Prinzip der abstrakten Generalisierung und vermeidet die Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien (Kapitel 9 in Kurseinheit 2 und 69 in Kurseinheit 6).
+
+Frage: Welches Schlüsselwort verwendet JAVA, um die Bestehen einer Subklassenbeziehung zwischen zwei Klassen zu deklarieren?
+Antwort: JAVA verwendet das Schlüsselwort "extends," um die Bestehen einer Subklassenbeziehung zwischen zwei Klassen zu deklarieren.
+
+Frage: Was bedeutet es, wenn eine Klasse in JAVA als abstrakt deklariert wird?
+Antwort: Wenn eine Klasse in JAVA als abstrakt deklariert wird, bedeutet dies, dass sie nicht instanziierbar ist. Es können keine Objekte dieser Klasse erstellt werden.
+
+Frage: Wie werden abstrakte Methoden in JAVA deklariert, und wie werden sie in Subklassen implementiert?
+Antwort: Abstrakte Methoden in JAVA werden deklariert, indem man hinter der Methodensignatur ein abschließendes Semikolon setzt, anstatt eine Implementierung anzugeben. In Subklassen müssen abstrakte Methoden mit Implementierungen versehen werden, andernfalls gibt der Compiler eine Fehlermeldung aus.
+
+Frage: Wie kann in JAVA verhindert werden, dass von einer Klasse abgeleitet wird?
+Antwort: In JAVA kann verhindert werden, dass von einer Klasse abgeleitet wird, indem man das Schlüsselwort "final" vor der Klassendefinition verwendet.
+
+Frage: Warum ist es eine gute Praxis, entweder alle Klassen als abstrakt oder als final zu deklarieren?
+Antwort: Es ist eine gute Praxis, entweder alle Klassen als abstrakt oder als final zu deklarieren, um das Prinzip der abstrakten Generalisierung zu fördern und Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien zu vermeiden.

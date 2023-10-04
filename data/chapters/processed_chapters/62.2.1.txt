@@ -1,0 +1,15 @@
+62.2.1 Mechanische (syntaktische) Namenskonventionen
+
+Eine gängige Namenskonvention ist beispielsweise, Namen von Interfacetypen mit einem großen "I" beginnen zu lassen. Andere Namenskonventionen verlangen, dass Bezeichner, die für ein Objekt oder einen Wert stehen (also Variablen und Funktionsnamen), den Typ dieses Objekts oder Werts widerspiegeln — die sog. ungarische Notation, von der es allerdings verschiedene Auslegungen gibt. Nach einer eher unklugen Auslegung müssen beispielsweise alle Variablen, die Strings bezeichnen, mit "str" beginnen (eine Information, die Compiler und IDE ohnehin bereithalten und die deswegen nicht noch den Namen belasten muss). Nach einer sinnvolleren Auslegung sollten Variablen um die Verwendung ihres so bezeichneten Inhalts ergänzt werden. Das bedeutet, die Funktion des durch sie bezeichneten Objekts oder Werts innerhalb des Kontextes, in dem die Variable gültig ist, anzugeben. Diese kontextbezogene Funktion kann in der objektorientierten Programmierung jedoch auch durch die Verwendung eines Interfaces anstelle einer Klasse als Typ bei der Deklaration der Variable ausgedrückt und somit auch vom Compiler überprüft werden.
+
+Frage: Was ist eine gängige Namenskonvention in Bezug auf Interfacetypen?
+Antwort: Eine gängige Namenskonvention ist, Namen von Interfacetypen mit einem großen "I" beginnen zu lassen. Zum Beispiel könnte ein Interface "Auto" als "IAuto" benannt werden.
+
+Frage: Was ist die ungarische Notation in Bezug auf Namenskonventionen?
+Antwort: Die ungarische Notation ist eine Namenskonvention, bei der Bezeichner, die für ein Objekt oder einen Wert stehen (wie Variablen und Funktionsnamen), den Typ dieses Objekts oder Werts widerspiegeln. Es gibt verschiedene Auslegungen der ungarischen Notation.
+
+Frage: Was ist eine mögliche Auslegung der ungarischen Notation?
+Antwort: Eine mögliche Auslegung der ungarischen Notation verlangt, dass Variablen, die Strings bezeichnen, mit "str" beginnen. Diese Auslegung kann jedoch als weniger sinnvoll angesehen werden, da Compiler und IDE bereits Informationen über den Typ der Variablen bereitstellen und diese Information den Namen der Variablen nicht zusätzlich belasten sollte.
+
+Frage: Welche sinnvollere Auslegung der ungarischen Notation wird vorgeschlagen?
+Antwort: Eine sinnvollere Auslegung der ungarischen Notation schlägt vor, Variablen um die Verwendung ihres Inhalts zu ergänzen. Das bedeutet, die Funktion des durch die Variable bezeichneten Objekts oder Werts innerhalb des Kontextes anzugeben, in dem die Variable gültig ist. Dies ermöglicht es, die Funktion kontextbezogen auszudrücken, ohne den Namen der Variable mit redundanten Informationen zu belasten. In der objektorientierten Programmierung kann diese kontextbezogene Funktion oft auch durch die Verwendung eines Interfaces anstelle einer Klasse als Typ bei der Deklaration der Variable ausgedrückt werden, was vom Compiler überprüft werden kann.

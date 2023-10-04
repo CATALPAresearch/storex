@@ -1,0 +1,13 @@
+62.2 Namenskonventionen
+
+Häufig findet man in einzelnen Projekten und nicht selten in ganzen Firmen Namenskonventionen vor, an die sich alle halten sollten. Namenskonventionen erleichtern nicht nur die Bezeichnerwahl. Indem die Programmiererin sich an bestimmte Regeln halten kann, wird ihre schöpferische Freiheit eingeschränkt, was man durchaus auch als Entlastung empfinden kann. Sie erleichtern auch das Lesen, weil die Leserin, die die Konventionen kennt, die Bedeutung des Bezeichners bzw. des dahinterstehenden Programmelements leichter entschlüsseln kann und sich somit schneller zurechtfindet. Allerdings ist es dazu notwendig, dass die Namenskonventionen genau festgeschrieben sind und dass sich alle darauf einigen. Wenn nämlich jede ihre individuelle Auslegung der Regel hat, dann kann eine (vermeintliche) Namenskonvention mehr Verwirrung stiften als nutzen.
+"It would be a mistake to protest against the rules … on the grounds that they limit developer creativity. A consistent style favors rather than hampers creativity by channeling it to where it matters. A large part of the effort of producing software is spent reading existing software and making others read what is being written. Individual vagaries benefit no one; common conventions help everyone." - Bertrand Meyer
+
+Frage: Welche Vorteile haben Namenskonventionen in der Programmierung?
+Antwort: Namenskonventionen in der Programmierung haben mehrere Vorteile. Sie erleichtern die Bezeichnerwahl, begrenzen die schöpferische Freiheit der Programmiererin, was als Entlastung empfunden werden kann, und machen das Lesen von Code einfacher, da Entwicklerinnen, die die Konventionen kennen, die Bedeutung der Bezeichner schneller entschlüsseln können und sich somit schneller zurechtfinden.
+
+Frage: Warum ist es wichtig, dass Namenskonventionen genau festgeschrieben sind und von allen akzeptiert werden?
+Antwort: Es ist wichtig, dass Namenskonventionen genau festgeschrieben sind und von allen akzeptiert werden, da andernfalls individuelle Auslegungen der Regeln Verwirrung stiften können. Wenn jede Person ihre eigene Auslegung hat, verliert die Namenskonvention ihren Nutzen und kann sogar zu mehr Verwirrung führen.
+
+Frage: Wie kann die Einhaltung von Namenskonventionen die Kreativität der Entwicklerinnen fördern?
+Antwort: Die Einhaltung von Namenskonventionen kann die Kreativität der Entwicklerinnen fördern, indem sie die schöpferische Energie auf die relevanten Aspekte lenkt. Durch die Festlegung bestimmter Regeln wird die Entwicklerin in ihrer kreativen Gestaltung eingeschränkt, was jedoch dazu führen kann, dass die Kreativität gezielter eingesetzt wird und besser zur Geltung kommt.

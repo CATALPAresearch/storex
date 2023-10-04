@@ -1,0 +1,15 @@
+40 Interfaces
+
+Modul und Interface sind eigentlich ein Begriffspaar — das eine lässt sich nur mithilfe des anderen definieren. Die Interfaces in JAVA sind jedoch durchaus eigenständige Konstrukte, die inzwischen weit über die eigentliche Bedeutung des Begriffs, nämlich eine Schnittstelle zu definieren, hinausgehen. Auch wenn JAVAs Interfaces Vorgänger haben, betrachte ich sie doch als einen von JAVAs wichtigsten Beiträgen für die Entwicklung objektorientierter Programmiersprachen.
+
+Frage: Welche Bedeutung haben Interfaces und Module in JAVA?
+Antwort: Interfaces und Module sind in JAVA eng miteinander verknüpft und dienen dazu, die Schnittstellen und die Modularisierung von Klassen und Programmen zu definieren.
+
+Frage: Welche Rolle spielen Interfaces in der objektorientierten Programmierung?
+Antwort: Interfaces spielen in der objektorientierten Programmierung eine wichtige Rolle, da sie dazu dienen, Schnittstellen zu definieren, über die Klassen miteinander kommunizieren können. Sie ermöglichen die Implementierung von Methoden in verschiedenen Klassen und erlauben die Implementierung von Polymorphismus.
+
+Frage: Was ist die Besonderheit von JAVAs Interfaces?
+Antwort: JAVAs Interfaces sind eigenständige Konstrukte, die über die ursprüngliche Bedeutung hinausgehen und weitreichende Möglichkeiten zur Definition von Schnittstellen und zur Entwicklung objektorientierter Programmiersprachen bieten.
+
+Frage: Warum werden Interfaces in JAVA als einer der wichtigsten Beiträge zur objektorientierten Programmierung angesehen?
+Antwort: Interfaces in JAVA sind einer der wichtigsten Beiträge zur objektorientierten Programmierung, da sie die Möglichkeit bieten, Schnittstellen und Polymorphismus zu implementieren, was die Flexibilität und Erweiterbarkeit von Programmen erheblich verbessert.

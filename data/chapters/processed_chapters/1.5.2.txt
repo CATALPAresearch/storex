@@ -21,4 +21,4 @@ Frage: Wie werden globale Variablen in SMALLTALK gekennzeichnet?
 Antwort: In SMALLTALK müssen globale Variablen mit einem Großbuchstaben beginnen.
 
 Frage: Gibt es in SMALLTALK eine relative Unterscheidung zwischen globalen und lokalen Variablen?
-Antwort: Nein. In SMALLTALK gibt es keinen relativen Unterschied zwischen globalen und lokalen Variablen; es gibt nur zwei verschiedene Programmabschnitte in Bezug auf die Sichtbarkeit von Variablen.
+Antwort: Nein. In SMALLTALK gibt es keinen relativen Unterschied zwischen globalen und lokalen Variablen, es gibt nur zwei verschiedene Programmabschnitte in Bezug auf die Sichtbarkeit von Variablen.
