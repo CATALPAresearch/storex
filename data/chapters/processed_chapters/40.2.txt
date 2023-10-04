@@ -1,0 +1,17 @@
+40.2 Interfaces als abstrakte Klassen
+
+Wenn ich im vorangegangenen Absatz das Präteritum bemüht habe, dann liegt das daran, dass Interfaces in JAVA seit Version 8 einen Bedeutungswandel erfahren haben. Der ursprüngliche Anlass hierfür ergibt sich aus der Evolution von Software, genauer aus der Erweiterung von Interfaces im Laufe der Zeit um zusätzliche Methoden und der Tatsache, dass solche Erweiterungen ein Nachführen der Klassen, die die Interfaces implementieren, zwingend erfordern. Insbesondere bei sog. Black-box-Frameworks, deren Interfaces dazu gedacht sind, von Anwendungsklassen implementiert zu werden, deren Entwicklung in den Händen Dritter liegt, ist dies ein erhebliches Problem. Dasselbe Problem hätte man nicht, wenn man stattdessen abstrakte Klassen verwenden würde — dann könnte man nämlich die zusätzlichen Methoden mit einer Default-Implementierung versehen, die von den „implementierenden“ Klassen geerbt würde, sofern diese Klassen keine eigenen Implementierungen angeben. Interfaces in Varia -
+Genau das wurde in JAVA 8 auch für Interfaces eingeführt: Ein Interface kann die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür hat JAVA ein neues Schlüsselwort spendiert bekommen: "default". Allerdings haben Interfaces immer noch keine Instanzvariablen, und entsprechend können Default-Methoden allenfalls auf abstrakte Getter und Setter zugreifen.
+Mit JAVA 9 schließlich wurde — letztlich nur konsequent — erlaubt, in Interfaces auch private Methoden zu definieren. Da diese ausschließlich aus dem Interface selbst heraus zugreifbar sind, dienen sie ausschließlich der Verbesserung der Lesbarkeit von Default-Methoden, indem man zusammenhängende Teile aus ihnen herauslöst und in private Methoden verlegt.
+
+Frage: Warum haben Interfaces in JAVA seit Version 8 einen Bedeutungswandel erfahren?
+Antwort: Interfaces in JAVA haben einen Bedeutungswandel erfahren, weil sie im Laufe der Zeit um zusätzliche Methoden erweitert wurden, was dazu führte, dass Klassen, die diese Interfaces implementieren, aktualisiert werden mussten. Insbesondere bei Black-Box-Frameworks, bei denen die Entwicklung von Anwendungsklassen in den Händen Dritter liegt, führte dies zu erheblichen Problemen.
+
+Frage: Welches Problem ergibt sich bei der Erweiterung von Interfaces, wenn man keine abstrakten Klassen verwendet?
+Antwort: Bei der Erweiterung von Interfaces, insbesondere wenn diese von Anwendungsklassen implementiert werden, entsteht das Problem, dass die Klassen, die diese Interfaces implementieren, aktualisiert werden müssen. Dies kann zu Schwierigkeiten führen, insbesondere wenn die Entwicklung dieser Klassen in den Händen Dritter liegt.
+
+Frage: Wie wurde das Problem der Erweiterung von Interfaces in JAVA 8 gelöst?
+Antwort: In JAVA 8 wurde das Problem der Erweiterung von Interfaces gelöst, indem Interfaces die Implementierung von Methoden durch das Schlüsselwort "default" vorgeben konnten. Dadurch konnten zusätzliche Methoden in Interfaces hinzugefügt werden, ohne die implementierenden Klassen zu zwingen, sie zu implementieren.
+
+Frage: Was erlaubte JAVA 9 in Bezug auf Interfaces?
+Antwort: In JAVA 9 wurde es erlaubt, in Interfaces auch private Methoden zu definieren. Diese privaten Methoden sind nur innerhalb des Interfaces selbst zugreifbar und dienen dazu, die Lesbarkeit von Default-Methoden zu verbessern, indem gemeinsame Teile in private Methoden ausgelagert werden können.

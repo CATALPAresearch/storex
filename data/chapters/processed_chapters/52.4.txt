@@ -1,0 +1,22 @@
+52.4 Vererbung und Überladen
+
+EIFFEL erlaubt Mehrfachvererbung und gestattet sowohl das Überschreiben (in EIFFEL als "Redefinition" bezeichnet) als auch das Löschen von Methoden. Auf der positiven Seite steht dabei, dass zu Beginn einer Klassendefinition deklariert werden muss, welche Methoden in der Klasse überschrieben werden ("welche 'Features redefiniert' werden"). Natürlich unterstützt EIFFEL auch abstrakte Klassen; das entsprechende Schlüsselwort lautet jedoch "deferred" anstelle von "abstract". Andernfalls ist alles ähnlich wie in JAVA (besser gesagt, in JAVA ist alles ähnlich wie in EIFFEL - EIFFEL ist etwa zehn Jahre älter als JAVA).
+BERTRAND MEYER ist ein entschiedener Gegner des Überladens. In EIFFEL ist es daher nicht erlaubt, dass eine Klasse zwei Methoden mit demselben Namen besitzt. Gleichwohl ist es erlaubt, dass verschiedene Klassen Methoden mit gleichem Namen haben - jedoch dürfen diese Klassen nicht in einer Vererbungsbeziehung zueinander stehen, es sei denn, die Methoden haben gleiche oder kovariant redefinierte Parameter. In diesem Fall handelt es sich nicht um Überladung, sondern um Überschreibung (was jedoch durch eine "Redefine"-Deklaration angezeigt werden muss). Es ist jedoch nicht immer möglich sicherzustellen, dass zwei Klassen, von denen Sie erben möchten, keine Methoden mit demselben Namen verwenden. Anstatt auf die Vererbung zu verzichten, ermöglicht es EIFFEL, geerbte Features umzubenennen. Hierzu gibt es eine "Rename"-Klausel, die es erlaubt, zwei geerbte Features mit demselben Namen unterschiedlich zu benennen. Es ist zu beachten, dass dies das dynamische Binden nicht beeinflusst: Wenn auf das Feature über den Typ der Klasse zugegriffen wird, von der das umbenannte Feature geerbt wurde, behält das Feature weiterhin seinen ursprünglichen Namen bei.
+
+Frage: Welche Arten von Vererbung erlaubt EIFFEL?
+Antwort: EIFFEL erlaubt Mehrfachvererbung, was bedeutet, dass eine Klasse von mehreren anderen Klassen erben kann.
+
+Frage: Wie werden in EIFFEL überschriebene Methoden bezeichnet?
+Antwort: In EIFFEL werden überschriebene Methoden als "Redefinition" bezeichnet.
+
+Frage: Welches Schlüsselwort wird in EIFFEL für abstrakte Klassen verwendet?
+Antwort: In EIFFEL wird das Schlüsselwort "deferred" anstelle von "abstract" für abstrakte Klassen verwendet.
+
+Frage: Was ist in EIFFEL nicht erlaubt, was das Überladen von Methoden betrifft?
+Antwort: In EIFFEL ist es nicht erlaubt, dass eine Klasse zwei Methoden mit demselben Namen besitzt.
+
+Frage: Wie können in EIFFEL Methoden mit demselben Namen in verschiedenen Klassen behandelt werden?
+Antwort: In EIFFEL ist es erlaubt, dass verschiedene Klassen Methoden mit gleichem Namen haben, solange diese Klassen nicht in einer Vererbungsbeziehung zueinander stehen. Wenn die Methoden gleiche oder kovariant redefinierte Parameter haben, handelt es sich nicht um Überladung, sondern um Überschreibung.
+
+Frage: Wie kann in EIFFEL sichergestellt werden, dass geerbte Features mit demselben Namen unterschiedlich benannt werden?
+Antwort: EIFFEL ermöglicht es, geerbte Features umzubenennen, indem eine "Rename"-Klausel verwendet wird. Diese Klausel erlaubt es, zwei geerbte Features mit demselben Namen unterschiedlich zu benennen, ohne das dynamische Binden zu beeinflussen.

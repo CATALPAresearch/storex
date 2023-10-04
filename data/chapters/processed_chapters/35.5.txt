@@ -1,0 +1,20 @@
+35.5 Zuweisungskompatibilität
+
+In JAVA ist die Typkonformität und damit die Zuweisungskompatibilität unter Referenztypen an Subtyping gebunden. Damit Ausdrücke von einem Typ Variablen eines anderen zugeordnet werden können, müssen die Typen entweder identisch sein oder es muss eine Subtypbeziehung zwischen den beiden bestehen. In den meisten Fällen muss die Subtypbeziehung explizit deklariert werden; JAVA setzt also auf nominale Typkonformität. Dies hat den Vorteil der Filterfunktion, wie in Abschnitt 22.2 von Kurseinheit 3 beschrieben, aber auch den Nachteil, dass Subtypen ihre Supertypen namentlich kennen müssen. Dies kann insbesondere bei verteilten Anwendungen problematisch sein, deren Teile nicht von vornherein für einander entworfen wurden (zum Beispiel Web Services).
+Weiterhin verlangt das Subtyping in JAVA, dass die Typen geerbter Variablen (Felder und Parametertypen von Methoden) nicht verändert werden dürfen. JAVA verlangt also Kovarianz. Dadurch wird zumindest eine statisch-semantische Substituierbarkeit von Objekten der Subtypen gegenüber ihren Supertypen sichergestellt (vergleiche Abschnitt 26.3 und Kapitel 54 in Kurseinheit 6). Allerdings kann der Rückgabetyp von Methoden kovariant redefiniert werden; mehr dazu in Abschnitt 36.4.
+Im Gegensatz zu ihren Vorläufern SMALLTALK und C++ ist JAVA eine Sprache mit einem strengen Typsystem. Das bedeutet insbesondere, dass in JAVA alle Typfehler entweder schon während der Übersetzung durch den Compiler oder während der Laufzeit, jedoch immer zum frühest möglichen Zeitpunkt, nämlich bei einer Wertzuweisung (bei der eine Typinvariante verletzt wird), erkannt werden. In einem Fall kann jedoch die Meinung vertreten werden, dass die Typinvarianten in JAVA zu lasch sind und Zuweisungen gestattet werden, bei denen nicht ausgeschlossen werden kann, dass sie später zu einem Typfehler führen. Hierzu mehr in Kapitel 41.
+
+Frage: An welches Konzept in JAVA ist die Typkonformität und die Zuweisungskompatibilität unter Referenztypen gebunden?
+Antwort: Die Typkonformität und die Zuweisungskompatibilität unter Referenztypen in JAVA sind an das Konzept des Subtypings gebunden.
+
+Frage: Welche Beziehung müssen die Typen in JAVA haben, damit Ausdrücke von einem Typ Variablen eines anderen Typs zugewiesen werden können?
+Antwort: Damit Ausdrücke von einem Typ Variablen eines anderen Typs zugewiesen werden können, müssen die Typen entweder identisch sein oder es muss eine Subtypbeziehung zwischen ihnen bestehen.
+
+Frage: Was ist nominale Typkonformität, und welche Vor- und Nachteile hat sie?
+Antwort: Nominale Typkonformität bedeutet, dass die Subtypbeziehung explizit deklariert werden muss. Dies hat den Vorteil der Filterfunktion, aber den Nachteil, dass Subtypen ihre Supertypen namentlich kennen müssen, was bei verteilten Anwendungen problematisch sein kann.
+
+Frage: Welche Anforderung stellt JAVA an geerbte Variablen (Felder und Parametertypen von Methoden)?
+Antwort: JAVA verlangt, dass die Typen geerbter Variablen nicht verändert werden dürfen. Dies wird als Kovarianz bezeichnet.
+
+Frage: Ist JAVA eine Sprache mit einem strengen Typsystem, und was bedeutet das?
+Antwort: Ja, JAVA ist eine Sprache mit einem strengen Typsystem, was bedeutet, dass alle Typfehler entweder während der Übersetzung durch den Compiler oder während der Laufzeit erkannt werden, jedoch immer zum frühest möglichen Zeitpunkt, nämlich bei einer Wertzuweisung, bei der eine Typinvariante verletzt wird.

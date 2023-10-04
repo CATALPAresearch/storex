@@ -1,0 +1,22 @@
+43.3 Beschränkter parametrischer Polymorphismus in JAVA
+
+Wie bereits in Kurseinheit 3, Abschnitt 29.4 erwähnt, erwirbt man mit einfachem parametrischem Polymorphismus außerhalb der Typdefinition Typsicherheit auf Kosten der fehlenden Typsicherheit innerhalb. Solange man keine Aussagen über den konkreten Typ machen kann, der für einen Typparameter eingesetzt wird, kann man bei der Implementierung einer Klasse, die den parametrischen Typ definiert, auch keine Eigenschaften der Objekte voraussetzen, die von dem (unbekannten) Typ sein sollen. Was man stattdessen benötigt, ist beschränkter parametrischer Polymorphismus. Natürlich gibt es diesen auch in JAVA.
+Die möglichen Werte der Typvariable "E" werden dadurch auf Typen eingeschränkt, die "Comparable" (direkt oder indirekt) erweitern. Die Implementierung der Methode zum Einfügen und Entfernen von Elementen in sortierten Listen kann also davon ausgehen, dass alle Objekte, die in einer solchen Liste gespeichert sind, die Methode "compareTo(.)" verstehen, die vom Interface "Comparable" vorgeschrieben wird. Beachten Sie, dass dadurch keine neue Subtypenrelation zwischen irgendwelchen Typen hergestellt wird. Es werden lediglich die Möglichkeiten eingeschränkt, konkrete Typen (z. B. in Variablendeklarationen) zu bilden. Wobei "String" ein Subtyp von "Comparable" ist, ist also möglich. Dennoch ist "SortedList<String>" kein Subtyp von "SortedList<Comparable>".
+
+Frage: Was ist beschränkter parametrischer Polymorphismus in Java?
+Antwort: Beschränkter parametrischer Polymorphismus in Java bezieht sich auf die Einschränkung der möglichen Typen, die für einen Typparameter einer generischen Klasse verwendet werden können. Dies geschieht durch das Festlegen von Beschränkungen oder Bedingungen für den Typparameter.
+
+Frage: Warum ist beschränkter parametrischer Polymorphismus wichtig?
+Antwort: Beschränkter parametrischer Polymorphismus ist wichtig, um sicherzustellen, dass die Objekte, die von einem generischen Typ erzeugt werden, bestimmte Eigenschaften oder Methoden haben. Dadurch wird die Typsicherheit erhöht und es können bestimmte Annahmen über die Objekte gemacht werden.
+
+Frage: Wie wird beschränkter parametrischer Polymorphismus in Java implementiert?
+Antwort: In Java wird beschränkter parametrischer Polymorphismus durch das Hinzufügen von Beschränkungen für den Typparameter einer generischen Klasse oder Methode erreicht. Dies geschieht durch die Verwendung des "extends" oder "super" Schlüsselworts gefolgt von einem bestimmten Typ oder einer bestimmten Schnittstelle.
+
+Frage: Was bedeutet die Einschränkung "<E extends Comparable<E>>" in der Klasse "SortedList"?
+Antwort: Die Einschränkung "<E extends Comparable<E>>" bedeutet, dass der Typparameter "E" auf Typen beschränkt ist, die das Interface "Comparable" implementieren oder davon erben. Dies stellt sicher, dass Objekte vom Typ "E" die Methode "compareTo(.)" implementieren können, die vom Interface "Comparable" vorgeschrieben wird.
+
+Frage: Warum wird "SortedList<String>" als gültige Deklaration betrachtet, aber "SortedList<Integer>" nicht?
+Antwort: "SortedList<String>" wird als gültige Deklaration betrachtet, weil "String" ein Subtyp von "Comparable" ist und daher die Bedingung "<E extends Comparable<E>>" erfüllt. "SortedList<Integer>" wird hingegen nicht als gültige Deklaration betrachtet, da "Integer" nicht "Comparable<Integer>" implementiert, was nicht der Einschränkung entspricht.
+
+Frage: Ist "SortedList<String>" ein Subtyp von "SortedList<Comparable>"?
+Antwort: Nein, "SortedList<String>" ist kein Subtyp von "SortedList<Comparable>". Die Einschränkung "<E extends Comparable<E>>" in "SortedList" sorgt dafür, dass der Typparameter "E" ein Subtyp von "Comparable<E>" sein muss, aber sie schafft keine Subtypenbeziehung zwischen den "SortedList"-Instanzen selbst.

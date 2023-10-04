@@ -1,0 +1,22 @@
+30 Parametrischer Polymorphismus und das Kovarianzproblem
+
+In gewisser Weise hat man es beim rekursiv beschränkten parametrischen Polymorphismus wie oben vorgestellt mit einem Fall von kovarianter Redefinition zu tun: Der Parametertyp der Methode = ändert sich mit dem Empfängertyp. Allerdings ergibt sich daraus, anders als bei der Verwendung von Self als Typvariable, kein Widerspruch zur Kontravarianzregel des Subtyping, denn Integer wird dadurch unmittelbar ja lediglich zu einem Subtyp von Equatable[Integer] und nicht etwa von Equatable[Object]. Tatsächlich sind Equatable[Integer] und Equatable[Object] ja zwei vollkommen verschiedene Typen (mit disjunkten Wertebereichen), und Equatable[T] ist gar kein Typ (so dass man auch keine Variable mit ihm deklarieren kann), sodass keinerlei Zuweisungskompatibilität und damit auch kein Problem mit Typkorrektheit besteht.
+Trotzdem stellt sich die Frage, ob sich das in Abschnitt 26.3 angesprochene allgemeine Problem der wünschenswerten kovarianten Redefinition von Eingabeparametern in Methoden mittels parametrischen Polymorphismus nicht irgendwie lösen lässt. Die Antwort ist unbefriedigend: nur zum Teil.
+Die Deklaration von Zeichnung mit Typparameter T als Subtyp von Dokument vorausgesetzt, lassen sich die folgenden Variablendeklarationen bilden:
+Weiterhin die Deklarationen von Plotter und Zeilendrucker als Subtypen von Drucker vorausgesetzt, wäre ein Methodenaufruf typkorrekt, hingegen nicht. Allerdings ist die Assoziation von Zeichnung mit Plotter, die Kovarianz, in keiner Typdefinition festgehalten, sondern lediglich in der Deklaration von z. Es hindert einen insbesondere nichts daran, dieselbe oder eine andere Variable als vom Typ Zeichnung[Zeilendrucker] zu deklarieren. Man beachte, dass es anders als im obigen Beispiel von Equatable, wo ja der Typparameter auf den definierten Typ selbst eingeschränkt wurde, hier keine Möglichkeit gibt, einen bestimmten Wert für einen Typparameter vorzuschreiben.
+Was man allerdings tun könnte, ist, Zeichnung als Subtyp von Dokument[Plotter] zu definieren. Dies hat jedoch den Nachteil, dass Zeichnung damit kein Subtyp mehr von Dokument ist und, wie auch zuvor schon Zeichnung[Plotter] kein Subtyp von Dokument[Drucker] ist (s. Abschnitt 29.3), wodurch die Zuweisungskompatibilität mit entsprechend deklarierten Variablen verlorengeht. Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie lässt sich auch mittels parametrischer Typen nicht hinbekommen.
+
+Frage: Was ist das Kovarianzproblem im Zusammenhang mit parametrischem Polymorphismus?
+Antwort: Das Kovarianzproblem im Zusammenhang mit parametrischem Polymorphismus bezieht sich darauf, wie Eingabeparameter in Methoden kovariant, also flexibel, in Bezug auf ihren Typ angepasst werden können.
+
+Frage: Warum ergibt sich beim rekursiv beschränkten parametrischen Polymorphismus kein Widerspruch zur Kontravarianzregel des Subtyping?
+Antwort: Beim rekursiv beschränkten parametrischen Polymorphismus ändert sich der Parametertyp der Methode = mit dem Empfängertyp, was kovariant wirkt. Es ergibt sich jedoch kein Widerspruch zur Kontravarianzregel des Subtyping, da der Empfängertyp (z. B. Integer) lediglich zu einem Subtyp von Equatable[Integer] wird und nicht von Equatable[Object].
+
+Frage: Gibt es eine Lösung für das Problem der kovarianten Redefinition von Eingabeparametern in Methoden mittels parametrischem Polymorphismus?
+Antwort: Es gibt keine zufriedenstellende Lösung für das Problem der kovarianten Redefinition von Eingabeparametern in Methoden mittels parametrischem Polymorphismus. Die Kovarianz kann zwar in bestimmten Fällen erreicht werden, aber sie ist nicht in allen Typdefinitionen festgehalten und bietet keine vollständige Kontrolle über die Typkorrektheit.
+
+Frage: Warum ist die Assoziation von Zeichnung mit Plotter in keiner Typdefinition festgehalten?
+Antwort: Die Assoziation von Zeichnung mit Plotter, die Kovarianz, ist in keiner Typdefinition festgehalten, da es keine Möglichkeit gibt, einen bestimmten Wert für einen Typparameter vorzuschreiben. Die Kovarianz ist nicht in allen Fällen durch parametrische Typen abbildbar.
+
+Frage: Kann das Kovarianzproblem durch parametrische Typen gelöst werden?
+Antwort: Das Kovarianzproblem kann in bestimmten Fällen durch parametrische Typen gelöst werden, aber es gibt keine allgemeine Lösung, die in allen Fällen die kovariante Redefinition von Eingabeparametern in Methoden ermöglicht. Die Flexibilität ist begrenzt, und es kann zu Einschränkungen bei der Verwendung von parametrischen Typen führen.

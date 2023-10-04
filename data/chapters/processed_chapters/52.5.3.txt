@@ -1,0 +1,22 @@
+52.5.3 Die dynamische Komponente
+
+Bei allen Bemühungen, für EIFFEL ein möglichst "wasserdichtes" Typsystem vorzulegen und dabei so viel wie möglich zur Übersetzungszeit zu erledigen, bleibt es natürlich auch in EIFFEL-Programmen nicht aus, dass man in einen Container (eine Variable oder eine Collection) Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man die dazu notwendige Fallunterscheidung dem dynamischen Binden (einem dynamisch gebundenen Methodenaufruf) überlassen wollen; manchmal ist es einfach einfacher (und besser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode entsprechend verzweigt.
+Solche Typtests werden in EIFFEL von einem sogenannten Zuweisungsversuch (engl. "assignment attempt") übernommen, der bei mangelnder (dynamisch festgestellter) Zuweisungskompatibilität einfach "void" (das Äquivalent von "nil" in SMALLTALK und "null" in JAVA) zuweist.
+Dies ergibt nie einen Typfehler, sondern führt höchstens dazu, dass "a" "void" zugewiesen wird. Es bleibt dann die Aufgabe der Programmiererin, "a" nach der Zuweisung zu kontrollieren. Es entspricht dies direkt dem "as" aus C#, dem "dynamic_cast<T>(x)" aus C++ sowie dem JAVA-Konstrukt.
+Explizite Typumwandlungen gibt es in EIFFEL nicht; sie können also auch keine Laufzeitfehler verursachen. Der Zuweisungsversuch erfüllt aber weitgehend die Funktion einer Typumwandlung, denn er ist nur erfolgreich, wenn die rechte Seite zuweisungskompatibel mit der linken ist, was per Definition nur dann der Fall ist, wenn die rechte Seite ein Objekt eines Subtyps (einschließlich Gleichheit) der linken Seite hat. Es wird hier allerdings die Typumwandlung immer mit einer Zuweisung verbunden; man braucht also unter Umständen eine temporäre Variable, die man sich sonst hätte sparen können. Dass der Zuweisungsversuch in EIFFEL anders als der Downcast in JAVA keinen Laufzeitfehler verursachen kann, ist wenig tröstlich, denn der Wert "void" in einer Variable kann es natürlich schon; in Wirklichkeit wird hier lediglich ein Typumwandlungsfehler gegen eine Nullzeiger-Ausnahme getauscht.
+Die Typumwandlung wird in EIFFEL aber auch noch für etwas anderes gebraucht, nämlich für das Binden von Aufrufen kovariant redefinierter Methoden. Da EIFFEL ja, wie oben beschrieben, polymorphe CAT-Calls verbieten muss, diese aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bindung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche.
+
+Frage: Warum sind Typtests in EIFFEL manchmal notwendig?
+Antwort: Typtests in EIFFEL sind manchmal notwendig, um festzustellen, welchen genauen Typ ein Element hat, das in einen Container (eine Variable oder eine Collection) ungleichen Typs gelegt wurde. Dadurch kann das Element entsprechend seines Typs verwendet werden.
+
+Frage: Wie wird in EIFFEL ein Typtest durchgeführt?
+Antwort: In EIFFEL wird ein Typtest mithilfe eines "Zuweisungsversuchs" (engl. "assignment attempt") durchgeführt. Wenn es keine Zuweisungskompatibilität zwischen den Typen gibt, wird "void" (entsprechend "nil" in SMALLTALK oder "null" in JAVA) zugewiesen. Die Programmiererin muss dann den Typ von "a" nach der Zuweisung überprüfen.
+
+Frage: Welche Rolle spielt der Zuweisungsversuch bei kovarianten Redefinitionen in EIFFEL?
+Antwort: Der Zuweisungsversuch spielt eine Rolle bei kovarianten Redefinitionen in EIFFEL, da er verwendet wird, um dynamische Bindungen programmatisch zu emulieren. Da EIFFEL polymorphe CAT-Calls verbietet, werden Zuweisungsversuche genutzt, um das dynamische Binden zu ermöglichen.
+
+Frage: Welche Unterschiede gibt es zwischen Zuweisungsversuchen in EIFFEL und Downcasts in JAVA?
+Antwort: Ein Unterschied besteht darin, dass Zuweisungsversuche in EIFFEL keinen Laufzeitfehler verursachen können, im Gegensatz zu Downcasts in JAVA. Allerdings kann "void" in einer Variable in EIFFEL zur Laufzeit eine Nullzeiger-Ausnahme auslösen.
+
+Frage: Gibt es in EIFFEL explizite Typumwandlungen wie in anderen Sprachen?
+Antwort: In EIFFEL gibt es keine expliziten Typumwandlungen wie in einigen anderen Sprachen. Die Typumwandlung erfolgt immer in Verbindung mit einer Zuweisung.

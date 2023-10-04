@@ -1,0 +1,22 @@
+43.4 Rekursiv beschränkter parametrischer Polymorphismus
+
+Wenn Ihnen das noch nicht kompliziert genug ist, geht es noch weiter: Tatsächlich würde auch "Comparable" selbst von einer Parametrisierung profitieren. In einem ersten Ansatz würde man verlangen, dass von zwei vergleichbaren Elementen beide vom gleichen Typ sein müssen.
+Bei genauerer Betrachtung des Beispiels stellt sich jedoch heraus, dass die Bedingung, dass die zu vergleichenden Elemente für eine Sortierung alle vom selben Typ sein müssen, zu restriktiv ist. Vielmehr würde es ausreichen, wenn die Objekte der sortierten Liste unter anderem mit Objekten desselben Typs vergleichbar wären – sie könnten auch mit Objekten von noch mehr Typen vergleichbar sein. Die Bedingung muss also lauten, dass der Parametertyp von "Comparable" mindestens "E" umfassen muss. Er kann jedoch auch allgemeiner sein, z. B. "Object" (für einen Vergleich beliebiger Objekte, wie auch immer dieser durchgeführt werden soll). Im gegebenen Fall muss es sich bei dem für das Wildcard einzusetzenden Typ um einen (direkten oder indirekten) Supertypen von "E" handeln (wobei "E" ja selbst eine Typvariable ist, die erst bei einer Variablendeklaration an einen konkreten Typ gebunden wird).
+
+Frage: Was ist rekursiv beschränkter parametrischer Polymorphismus in Java?
+Antwort: Rekursiv beschränkter parametrischer Polymorphismus in Java bezieht sich auf die Möglichkeit, Beschränkungen für Typparameter auf eine Weise zu definieren, die auf sich selbst oder andere Typparameter verweist.
+
+Frage: Warum könnte eine Parametrisierung von "Comparable" vorteilhaft sein?
+Antwort: Eine Parametrisierung von "Comparable" könnte vorteilhaft sein, um die Flexibilität bei der Verwendung von Vergleichen zu erhöhen. Es ermöglicht, dass Objekte mit verschiedenen, aber kompatiblen Typen miteinander verglichen werden können.
+
+Frage: Was würde die Deklaration "interface Comparable<T extends T>" bedeuten?
+Antwort: Die Deklaration "interface Comparable<T extends T>" würde bedeuten, dass der Typparameter "T" vom gleichen Typ sein muss wie der Typparameter "T" selbst, was in der Praxis keine sinnvolle Einschränkung ist.
+
+Frage: Warum ist die Bedingung, dass zu vergleichende Elemente vom gleichen Typ sein müssen, zu restriktiv?
+Antwort: Die Bedingung, dass zu vergleichende Elemente vom gleichen Typ sein müssen, ist zu restriktiv, weil es Fälle gibt, in denen Objekte unterschiedlicher, aber verwandter Typen miteinander verglichen werden sollen. Eine flexiblere Einschränkung ist erforderlich.
+
+Frage: Was bedeutet "Comparable<? super E>"?
+Antwort: "Comparable<? super E>" bedeutet, dass der Parametertyp von "Comparable" mindestens "E" umfassen muss, kann jedoch auch allgemeiner sein, z. B. "Object". Das "?" in der Typ-Wildcard steht für einen beliebigen Typen, der die Bedingung erfüllt, in diesem Fall ein Supertyp von "E".
+
+Frage: Warum ist "Comparable<? super E>" flexibler als "Comparable<T extends T>"?
+Antwort: "Comparable<? super E>" ist flexibler, weil es eine größere Bandbreite von Typen zulässt, die miteinander verglichen werden können. Es erlaubt, dass Objekte vom Typ "E" mit Objekten anderer, aber verwandter Typen verglichen werden, was die Verwendung von "Comparable" vielseitiger macht.

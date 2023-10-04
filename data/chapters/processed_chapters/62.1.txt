@@ -1,0 +1,17 @@
+62.1 Verwendung von Abkürzungen
+
+Abkürzungen sind nicht grundsätzlich zu vermeiden — im Gegenteil, wenn sie etabliert sind und man davon ausgehen darf, dass eine Leserin des Programms sie kennt, ist ihre Verwendung (aus den oben angeführten Gründen gegen zu lange Namen) sogar angezeigt. Auf hausgemachte Abkürzungen, deren Bedeutung nur von einem selbst bekannt ist, sollte man hingegen verzichten.
+Bei der Programmierung mit JAVA und anderen typisierten objektorientierten Programmiersprachen begegnet man häufig dem Phänomen, dass Typen und Variablen gleich heißen, sich nur in der Groß- bzw. Kleinschreibung ihres Anfangsbuchstabens unterscheiden. Ein typisches Beispiel dafür ist das folgende:
+In diesen Fällen, wenn es keinen besseren Namen für die Variable gibt, ist es vollkommen legitim, eine Abkürzung für den Variablennamen zu wählen, insbesondere dann, wenn die Sichtbarkeit der Variable auf die unmittelbare Umgebung der Deklaration beschränkt ist. Sobald dies jedoch nicht der Fall ist (typischerweise schon bei der Deklaration von Instanzvariablen), sollte der lange Name bevorzugt werden. Dies gilt auch für den Fall, dass der Typ der Variable aus dem Kontext abgeleitet werden kann und deswegen nicht mehr angegeben wird (Typinferenz).
+
+Frage: Warum sind Abkürzungen in der Programmierung nicht grundsätzlich zu vermeiden?
+Antwort: Abkürzungen in der Programmierung sind nicht grundsätzlich zu vermeiden, besonders wenn sie etabliert sind und die Leserin des Programms wahrscheinlich weiß, was sie bedeuten. Dies kann dazu beitragen, zu lange Namen zu vermeiden und den Code lesbarer zu machen.
+
+Frage: Warum sollte man auf selbst erstellte Abkürzungen verzichten?
+Antwort: Auf selbst erstellte Abkürzungen sollte man verzichten, da ihre Bedeutung oft nur von der Person bekannt ist, die sie erstellt hat. Dies kann die Lesbarkeit des Codes für andere Programmiererinnen beeinträchtigen und zu Missverständnissen führen.
+
+Frage: In welchen Fällen ist die Verwendung von Abkürzungen in JAVA und ähnlichen objektorientierten Programmiersprachen legitim?
+Antwort: In JAVA und ähnlichen objektorientierten Programmiersprachen ist die Verwendung von Abkürzungen legitim, wenn Typen und Variablen denselben Namen haben und sich nur in der Groß- bzw. Kleinschreibung ihres Anfangsbuchstabens unterscheiden. Dies kann in Fällen auftreten, in denen es keinen besseren Namen für die Variable gibt und die Sichtbarkeit der Variable auf die unmittelbare Umgebung der Deklaration beschränkt ist.
+
+Frage: Wann sollte der lange Name einer Variable bevorzugt werden?
+Antwort: Der lange Name einer Variable sollte bevorzugt werden, sobald dies nicht mehr der Fall ist, wenn die Sichtbarkeit der Variable über die unmittelbare Umgebung der Deklaration hinausgeht, wie es typischerweise bei der Deklaration von Instanzvariablen der Fall ist. Dies gilt auch, wenn der Typ der Variable aus dem Kontext abgeleitet werden kann (Typinferenz).

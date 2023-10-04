@@ -1,0 +1,13 @@
+51.1 Das Programmiermodell von C++
+
+Das Programmiermodell von C++ ist ein klassisches: Programme werden als eine Menge von Quellcode-Dateien geschrieben, die auf einer Zielmaschine direkt in ausführbaren Maschinencode übersetzt werden. Die getrennte Übersetzung von Programmteilen ist dank sogenannter Header-Dateien möglich, die die Schnittstellen der Teile enthalten. Getrennt übersetzte Programmteile müssen vor der Ausführung verknüpft werden; das dynamische (Nach-)Laden von Funktionen ist möglich, muss aber explizit (programmgesteuert) erfolgen.
+C++ ist als objektorientierter Nachfolger von C konzipiert und ermöglicht so einen stufenlosen Übergang von der prozeduralen zur objektorientierten Programmierung. Dies ist besonders nützlich für die Migration von Altsystemen zur Objektorientierung. Infolgedessen zielt C++ auf die gleiche Klasse von Anwendungen wie C ab: maschinennahe Programmierung wie bei Betriebs- oder eingebetteten Systemen. Extreme Speicher- und Recheneffizienz sind dabei oft oberste Kriterien.
+
+Frage: Welches Programmiermodell wird in C++ verwendet?
+Antwort: Das Programmiermodell von C++ ist ein klassisches Modell, bei dem Programme als eine Menge von Quellcode-Dateien geschrieben werden, die auf einer Zielmaschine direkt in ausführbaren Maschinencode übersetzt werden.
+
+Frage: Wie ermöglicht C++ die getrennte Übersetzung von Programmteilen?
+Antwort: C++ ermöglicht die getrennte Übersetzung von Programmteilen mithilfe von Header-Dateien, die die Schnittstellen der Teile enthalten.
+
+Frage: Was ist das Ziel von C++ in Bezug auf die Art von Anwendungen, die es unterstützt?
+Antwort: C++ zielt auf die gleiche Klasse von Anwendungen wie C ab, insbesondere maschinennahe Programmierung wie bei Betriebs- oder eingebetteten Systemen, wobei extreme Speicher- und Recheneffizienz oft oberste Kriterien sind.

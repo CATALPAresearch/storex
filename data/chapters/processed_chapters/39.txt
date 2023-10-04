@@ -1,0 +1,17 @@
+39 Module
+
+Ein Modul ist eine Einheit von Programmelementen, die (bzw. deren Funktion) von außen (also z. B. von anderen Modulen) nur über die Schnittstelle des Moduls zugänglich sind. Damit behält ein Modul einen Teil seiner Implementierung für sich — es hütet quasi ein Implementationsgeheimnis. Der Teil, den es (über seine Schnittstelle) nach außen trägt, gilt gemeinhin als öffentlich. Die „Öffentlichkeit“ kann dabei durchaus beschränkt sein (siehe dazu auch Abschnitt 52.2 in Kurseinheit 5).
+Ein wesentlicher Grund, zwischen öffentlichen und nicht öffentlichen — privaten — Teilen eines Moduls zu unterscheiden, ist, dass die Programmierer eines Moduls die Hoheit darüber behalten wollen, wie sie das Modul programmieren. Indem sie sich auf eine Schnittstelle festlegen und alles andere hinter der Schnittstelle verbergen, ist es ihnen möglich, jederzeit die verborgenen Teile zu ändern, ohne dass irgendjemand davon in Kenntnis gesetzt werden muss — weil die privaten Teile von außen unsichtbar sind, hängt auch niemand davon ab, und insofern ist auch niemand davon betroffen, wenn an einem Modul eine Änderung durchgeführt wird, die die Schnittstellen unberührt lässt.
+In JAVA wurden bis Version 8 Module durch Klassen und Pakete (engl. packages) mehr oder weniger gut simuliert. Mit JAVA 9 wurde schließlich — nach langer Vorbereitungszeit — ein Modulbegriff eingeführt, der diesen Namen auch verdient.
+
+Frage: Was ist ein Modul in der Programmierung und wie ist seine Schnittstelle definiert?
+Antwort: Ein Modul ist eine Einheit von Programmelementen, deren Funktion von außen, z. B. von anderen Modulen, nur über die Schnittstelle des Moduls zugänglich ist. Die Schnittstelle definiert, welche Teile des Moduls öffentlich sichtbar sind.
+
+Frage: Warum ist es wichtig, zwischen öffentlichen und nicht öffentlichen (privaten) Teilen eines Moduls zu unterscheiden?
+Antwort: Es ist wichtig, zwischen öffentlichen und privaten Teilen eines Moduls zu unterscheiden, damit die Programmierer die Kontrolle über die Implementierung des Moduls behalten können. Indem sie sich auf eine Schnittstelle festlegen und private Teile hinter der Schnittstelle verbergen, können sie Änderungen an den verborgenen Teilen vornehmen, ohne andere Benutzer des Moduls zu beeinträchtigen.
+
+Frage: Wie wurden Module in JAVA bis zur Version 8 simuliert?
+Antwort: In JAVA wurden Module bis zur Version 8 mehr oder weniger gut durch Klassen und Pakete simuliert.
+
+Frage: Ab welcher Version von JAVA wurde ein Modulbegriff eingeführt, der diesen Namen verdient?
+Antwort: Ein Modulbegriff, der den Namen verdient, wurde mit JAVA 9 eingeführt, nach langer Vorbereitungszeit.

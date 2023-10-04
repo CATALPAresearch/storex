@@ -1,7 +1,0 @@
-52.8 Fazit
-Zum Thema objektorie ntierte Programmiersprachen ist viel geschrieben worden. Eines der
-beeindruckendsten Werke ist sicher das Buch „Object -Oriented Software Construction “ von
-BERTRAND MEYER: Auch wenn er darin letzten Endes versucht, der Leserin EIFFEL zu verkaufen,
-und selbst wenn er in Sachen Typsystem einen gewissen Starrsinn an den Tag legt, so steckt
-das Buch doch voller zeitloser Weisheiten, die sich allesamt in der — seiner — Sprache EIFFEL
-widerfinden. Eine unbedingte Leseempfehlung!
