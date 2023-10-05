@@ -13,13 +13,11 @@ for file in glob.glob(INPUT_FILE + '/*.txt'):
         lines = lines[lines.index('\n') + 1:]
         paragraph = ''.join(lines[:lines.index('\n')])
 
-        # paragraph = ''.join(line for line in txt_file if line.strip() and not (re.search("Frage", line)
-        #                                                                        or re.search("Antwort", line)
-        #                                                                        or line[0].isdigit()))
-
         for i, line in enumerate(lines):
-            if re.search("Frage:", line): # TODO: Remove "Frage" und "Antwort" und D-Spalte
-                text_context = [paragraph.rstrip(), line.rstrip(), lines[i + 1].rstrip()]
+            if re.search("Frage:", line):
+                question = line.split(':', 1)[1].strip()  # TODO: Catch errors
+                answer = lines[i + 1].split(':', 1)[1].strip()
+                text_context = [paragraph.rstrip(), question, answer]
 
                 with open(OUTPUT_FILE, 'a', newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
