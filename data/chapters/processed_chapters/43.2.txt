@@ -34,7 +34,7 @@ Frage: Wie können Typ-Wildcards in Java zur Verbesserung der Typsicherheit verw
 Antwort: Typ-Wildcards können verwendet werden, um sicherzustellen, dass Zuweisungen und Zugriffe auf generische Typen zur Übersetzungszeit statisch typsicher sind, ohne dass es zu Laufzeitfehlern kommt. Dies erhöht die Typsicherheit von Java-Programmen.
 
 Frage: Warum sind "ArrayList<Integer>" und "ArrayList<String>" trotz "Integer" und "String" als Subtypen von "Comparable" nicht zuweisungskompatibel mit "ArrayList<Comparable>"?
-Antwort  "ArrayList<Integer>" und "ArrayList<String>" sind nicht zuweisungskompatibel mit "ArrayList<Comparable>", weil generische Typen in Java keine kovariante Zuweisung von Subtypen erlauben. Dies wurde durch die Einführung von Typ-Wildcards gelöst.
+Antwort:  "ArrayList<Integer>" und "ArrayList<String>" sind nicht zuweisungskompatibel mit "ArrayList<Comparable>", weil generische Typen in Java keine kovariante Zuweisung von Subtypen erlauben. Dies wurde durch die Einführung von Typ-Wildcards gelöst.
 
 Frage: Welche Art von Subtyping wird bei "extends" beschränkten Wildcard-Typen verwendet?
 Antwort: "extends" beschränkte Wildcard-Typen verwenden kovariantes Subtyping.
