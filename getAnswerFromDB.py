@@ -4,7 +4,7 @@ from langchain.vectorstores import FAISS
 from langchain.llms import CTransformers
 from langchain.chains import RetrievalQA
 
-DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxt'
+DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxtGerman'
 MODEL_PATH = '/home/luna/workspace/llama.cpp/models/OpenBuddy/openbuddy-13b-v7-q4_K.bin'
 REPO = 'TheBloke/Llama-2-13B-German-Assistant-v4-GPTQ'
 
@@ -50,7 +50,7 @@ def retrival_qa_chain(llm, prompt, db):
 
 
 def qa_bot():
-    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',
+    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
                                        model_kwargs={'device': 'cpu'})
     db = FAISS.load_local(DB_FAISS_PATH, embeddings)
     llm = load_llm()
