@@ -15,9 +15,9 @@ else:
 # TODO: Question-Answer-Generation
 qa_pair = {
     'question': 'Was ist der Unterschied zwischen Gleichheit und Identität von Objekten?',
-    'answer': 'Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten und wird'
-              'in SMALLTALK durch den Gleichheitsoperator = getestet. Identität wird in SMALLTALK durch == getestet und'
-              'bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren.'
+    'answer': """Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten und wird
+    in SMALLTALK durch den Gleichheitsoperator = getestet. Identität wird in SMALLTALK durch == getestet und
+    bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren."""
 }
 
 print(qa_pair['question'])

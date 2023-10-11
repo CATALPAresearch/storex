@@ -7,7 +7,7 @@ from langchain.vectorstores import FAISS
 PDF_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf'
 TXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/processed_chapters'
 PDF_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromPdf'
-TXT_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxt'
+TXT_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxtGerman'
 
 
 # Create vector database
@@ -17,7 +17,7 @@ def create_vector_db_pdf():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     texts = text_splitter.split_documents(documents)
 
-    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',
+    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',  # German version of 'sentence-transformers/all-MiniLM-L6-v2',
                                        model_kwargs={'device': 'cpu'})
 
     db = FAISS.from_documents(texts, embeddings)
@@ -35,7 +35,7 @@ def create_vector_db_txt():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20)
     texts = text_splitter.split_text(texts)
 
-    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2',
+    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',  # 'sentence-transformers/all-MiniLM-L6-v2',
                                        model_kwargs={'device': 'cpu'})
 
     db = FAISS.from_texts(texts, embeddings)

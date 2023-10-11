@@ -1,6 +1,7 @@
 import os
-from langchain.llms import HuggingFaceHub
 from langchain import PromptTemplate, LLMChain
+from langchain.llms import HuggingFaceHub
+from langchain.embeddings import HuggingFaceEmbeddings
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
@@ -11,45 +12,51 @@ def evaluate_free_answer(answer):
 
 
 def evaluate_answer(qa, answer):
-    repo = 'TheBloke/Llama-2-13B-German-Assistant-v4-GPTQ'
-    # Compare question-answer with given answer
-    input_texts = {'qa_answer': qa['answer'], 'answer': answer}
+    # Compare question-answer with given answer with t5 or 'tiiuae/falcon-40b'
+    answers = {'qa_answer': qa['answer'], 'answer': answer}
 
-    model = AutoModelForCausalLM.from_pretrained(repo,
-                                                 device_map="cpu",
-                                                 trust_remote_code=False)
+    llm = HuggingFaceHub(repo_id='google/flan-t5-large',
+                         model_kwargs={'temperature': 0,
+                                       'max_length': 1024})
+    template = """Compare the students answer to the corrected answer and highlight the differences.
+    students answer: {answer}
+    corrected answer: {qa_answer}
 
-    tokenizer = AutoTokenizer.from_pretrained(repo, use_fast=True)
+    Here are the differences:"""
 
-    qa_answer = qa['answer']
-    prompt_template = f'''### User: Compare {answer} to {qa_answer}. What are the differences?
-    ### Assistant:
+    # prompt_template = PromptTemplate.from_template(template)
+    # prompt_template.format(answer=answer, qa_answer=qa)
 
-    '''
+    prompt = PromptTemplate(template=template, input_variables=['answer', 'qa_answer'])
+    llm_chain = LLMChain(prompt=prompt, llm=llm)
 
-    print("\n\n*** Generate:")
+    differences = llm_chain.run(answers)
+    print(differences)
 
-    input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
-    output = model.generate(inputs=input_ids, temperature=0.7, do_sample=True, top_p=0.95, top_k=40, max_new_tokens=512)
-    print(tokenizer.decode(output[0]))
+    # Identify the mistakes (factual inaccuracy, missing information, structural issues) out off the differences
+    # Semantic textual similarity search (intfloat/multilingual-e5-small) or
 
-    # Inference can also be done using transformers' pipeline
+    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
+                                       model_kwargs={'device': 'cpu'})
 
-    print("*** Pipeline:")
-    pipe = pipeline(
-        "text-generation",
-        model=model,
-        tokenizer=tokenizer,
-        max_new_tokens=512,
-        do_sample=True,
-        temperature=0.7,
-        top_p=0.95,
-        top_k=40,
-        repetition_penalty=1.1
-    )
+    import requests
 
-    print(pipe(prompt_template)[0]['generated_text'])
+    API_URL = "https://api-inference.huggingface.co/models/LLukas22/all-MiniLM-L12-v2-embedding-all"
+    headers = {"Authorization": "Bearer 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"}
 
-    # Similarity search intfloat/multilingual-e5-small
-    # Semantic textual similarity
+    def query(payload):
+        response = requests.post(API_URL, headers=headers, json=payload)
+        return response.json()
+
+    output = query({
+        "inputs": {
+            "source_sentence": "That is a happy person",
+            "sentences": [
+                "That is a happy dog",
+                "That is a very happy person",
+                "Today is a sunny day"
+            ]
+        },
+    })
+
     return True
