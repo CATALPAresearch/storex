@@ -7,9 +7,10 @@ _NAME = "qg_oop"
 _DESCRIPTION = """
 German SQuAD-inspired dataset for questions regarding object-oriented programming.
 """
-_PATH = '/home/luna/workspace/Dialogsteuerung/data/processed'
+URL = 'https://huggingface.co/datasets/LunaticTanuki/qg_OOP/resolve/main/processed'
 _URLS = {
-    'train': ['{}/train.jsonl'.format(_PATH)],
+    'train': ['{}/train.jsonl'.format(_URL)],
+    'validation': ['{}/validation.jsonl'.format(_URL)]
 }
 
 
@@ -51,6 +52,9 @@ class QGSquad(datasets.GeneratorBasedBuilder):
         downloaded_file = dl_manager.download_and_extract(_URLS)
         return [
             datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"filepaths": downloaded_file["train"]}),
+            datasets.SplitGenerator(name=datasets.Split.VALIDATION,
+                                    gen_kwargs={"filepaths": downloaded_file["validation"]}),
+            # datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepaths": downloaded_file["test"]}),
         ]
 
     def _generate_examples(self, filepaths):

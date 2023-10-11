@@ -3,12 +3,12 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.llms import CTransformers
 from langchain.chains import RetrievalQA
-import chainlit as cl
 
-DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore'
+DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxt'
 MODEL_PATH = '/home/luna/workspace/llama.cpp/models/OpenBuddy/openbuddy-13b-v7-q4_K.bin'
+REPO = 'TheBloke/Llama-2-13B-German-Assistant-v4-GPTQ'
 
-custom_prompt_template = """Use the following pieces of information to answer the user's question.
+custom_prompt_template = """Use the following pieces of information to answer the user's question in German.
 If you don't know the answer, just say that you don't know the answer, don't try to make up an answer.
 
 Context: {context}
@@ -66,29 +66,16 @@ def final_result(query):
     return response
 
 
-# Chainlit #
-@cl.on_chat_start
-async def start():
-    chain = qa_bot()
-    msg = cl.Message(content="Starting the bot...")
-    await msg.send()
-    msg.content = "Hi, What is your query?"
-    await msg.update()
-    cl.user_session.set("chain", chain)
-
-
-@cl.on_message
-async def main(message):
-    chain = cl.user_session.get("chain")
-    cb = cl.AsyncLangchainCallbackHandler(stream_final_answer=True, answer_prefix_tokens=["FINAL", "ANSWER"])
-    cb.answer_reached = True
-    res = await chain.acall(message, callbacks=[cb])
+if __name__ == '__main__':
+    print('Hi, was willst du wissen?')
+    question = input()
+    res = final_result(question)
     answer = res["result"]
     sources = res["source_documents"]
 
     if sources:
-        answer += f"\nSources:" + str(sources)
+        answer += f"\nQuelle: " + str(sources)
     else:
-        answer += f"\nNo Sources Found"
+        answer += f"\nKeine Quellen gefunden!"
 
-    await cl.Message(content=answer).send()
+    print("Antwort:", answer)

@@ -7,19 +7,23 @@ import copy
 import argparse
 import torch
 import lightning as L
-import pytorch_lightning as pl
-import pandas as pd
+
+from datasets import load_dataset
 from torch.utils.data import Dataset, DataLoader
 from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from transformers import T5Tokenizer, T5ForConditionalGeneration, AdamW
 from tqdm import tqdm
 
 
-train_file_path = '/home/luna/workspace/Dialogsteuerung/data/processed/train.csv'
-validation_file_path = train_file_path
-save_model_path = '/home/luna/workspace/Dialogsteuerung/models/'
-save_tokenizer_path = '/home/luna/workspace/Dialogsteuerung/tokenizer/'
-pretrained_model = 't5-small'  # 'lmqg/mt5-small-dequad-qg'  # TODO: Test with mt5
+data_files = {"train": "train.csv", "validate": "validate.csv"}
+dataset = load_dataset('LunaticTanuki/qg_OOP', data_files=data_files)
+
+# train_file_path = load_dataset('LunaticTanuki/qg_OOP', data_files="train.csv")
+# validation_file_path = load_dataset('LunaticTanuki/qg_OOP', data_files="validate.csv")
+save_model_path = 'LunaticTanuki/german-qg-mT5-small-OOP'
+save_tokenizer_path = save_model_path
+pretrained_model = 't5-small'
+# pretrained_model = 'lmqg/mt5-small-dequad-qg'
 
 args = argparse.Namespace()
 args.num_workers = 0
@@ -31,13 +35,13 @@ args.weight_decay = 0.0
 
 class QGDataset(Dataset):
 
-    def __init__(self, tokenizer, file_path, max_len_input=512, max_len_output=128):
+    def __init__(self, tokenizer, data, max_len_input=512, max_len_output=128):
         self.tokenizer = tokenizer
-        self.data = pd.read_csv(file_path)
+        self.data = data.to_pandas()
         self.max_len_input = max_len_input
         self.max_len_output = max_len_output
         self.context_column = 'paragraph'
-        self.answer_column = 'sentence'
+        self.answer_column = 'answer'
         self.question_column = 'question'
         self.inputs = []
         self.targets = []
@@ -165,8 +169,8 @@ if __name__ == "__main__":
     )
 
     print('Preparing dataset...')
-    train_dataset = QGDataset(tokenizer, train_file_path)
-    validation_dataset = QGDataset(tokenizer, validation_file_path)
+    train_dataset = QGDataset(tokenizer, dataset['train'])
+    validation_dataset = QGDataset(tokenizer, dataset['validate'])
 
     print('train_dataset: ', len(train_dataset))
     print('validation_dataset: ', len(validation_dataset))
