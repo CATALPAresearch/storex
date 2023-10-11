@@ -1,7 +1,11 @@
-from langchain.llms import HuggingFacePipeline
+import os
+from langchain.llms import HuggingFacePipeline, HuggingFaceHub
 from langchain import PromptTemplate, LLMChain
 
-MODEL_PATH = '/home/luna/workspace/Dialogsteuerung/models/trainedT5'
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+
+REPO = 'LunaticTanuki/german-qg-mT5-small-OOP'
+MODEL_PATH = '/home/luna/workspace/german-qg-mT5-small-OOP/trained_model'
 CONTEXT = """Ein Literal (von lat. littera, der Buchstabe ) ist eine in der Syntax der Programmiersprache
 ausgedrückte Repräsentation eines Objektes. Literale sind somit textuelle Spezifikationen
 von Objekten: Wenn der Compiler ein Literal übersetzt, erzeugt er daraus — bei der Über-
@@ -12,18 +16,16 @@ aber erst in der nächsten Kurs einheit systematisch befassen, müssen wir hier 
 Objekten mit literaler Repräsentation vorlieb nehmen. Wohlgemerkt: Literale repräsentieren
 Objekte, es sind nicht selbst welche."""
 
-
 template = """Question: {context}
 Answer: Let's think step by step."""
 prompt = PromptTemplate(template=template, input_variables=["context"])
 
-llm = HuggingFacePipeline.from_model_id(
-         model_id=MODEL_PATH,
-         task="text2text-generation")
+# llm = HuggingFacePipeline.from_model_id(
+#          model_id=MODEL_PATH,
+#          task="text2text-generation")
+llm = HuggingFaceHub(repo_id=REPO)
 
 llm_chain = LLMChain(prompt=prompt,
-                      llm=llm)
+                     llm=llm)
 
-question = """Ein Literal (von lat. littera, der Buchstabe ) ist eine in der Syntax der Programmiersprache
-ausgedrückte Repräsentation eines Objektes."""
-print(llm_chain.run(question))
+print(llm_chain.run(CONTEXT))
