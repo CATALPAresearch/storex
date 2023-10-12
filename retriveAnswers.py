@@ -3,8 +3,6 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.llms import CTransformers
 from langchain.chains import RetrievalQA
-import chainlit as cl
-
 
 from langchain.agents import AgentExecutor, LLMSingleActionAgent, AgentOutputParser
 

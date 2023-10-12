@@ -1,0 +1,50 @@
+#! /usr/bin/env python3
+"""
+Script to start a training exam.
+"""
+import sys
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+import exam
+
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+logger.disabled = True
+
+
+# Parse command line arguments
+parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
+parser.add_argument("-n", "--name", help="Name to be used to address you during the training exam.")
+parser.add_argument("-t", "--time", default=25, help="Duration of the training exam in minutes between 10 and 60."
+                                                     "Default: 25.")
+parser.add_argument("-f", "--female", action='store_true',
+                    help="Form of address 'Frau' will be used during the training exam.")
+parser.add_argument("-m", "--male", action='store_true',
+                    help="Form of address 'Herr' will be used during the training exam.")
+parser.add_argument("-log", "--logging", action='store_true',
+                    help="If set, logging info is enabled as console output.")
+args = vars(parser.parse_args())
+
+# Check if a name was given
+if not args["name"]:
+    print("No name is given. Please provide your name after -n.", file=sys.stderr)
+    exit(1)
+
+# Check if a maximum of one form of address was give
+if args["female"] and args["male"]:
+    print("Two forms of address were given.", file=sys.stderr)
+    exit(1)
+
+# Check and exit if number of players is not between 2 and 5 and therefore not legal
+if args["time"] > 60 or args["time"] < 10:
+    raise ValueError("The training exam can last between 10 to 60 minutes. Please choose a duration in that timeframe.")
+
+if args["logging"]:
+    logger.disabled = False
+
+logging.info("Started...")
+
+# Run game with set arguments
+exam.start_exam(args)
+
+logging.info("Finished!")
