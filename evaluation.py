@@ -3,6 +3,7 @@ from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.embeddings import HuggingFaceEmbeddings
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+from sentence_transformers import SentenceTransformer, util
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
@@ -11,52 +12,59 @@ def evaluate_free_answer(answer):
     return True
 
 
-def evaluate_answer(qa, answer):
-    # Compare question-answer with given answer with t5 or 'tiiuae/falcon-40b'
-    answers = {'qa_answer': qa['answer'], 'answer': answer}
+def evaluate_answer(question_answer, student_answer):
+    """
+    Compare the students answer with the correct answer (with t5 or 'tiiuae/falcon-40b'?)
 
+    :param question_answer: Question-answer pair
+    :param student_answer: Answer given by the student
+    :return: Differences in the students answer
+    """
+    correct_answer = question_answer['answer']
+    if (compare_similarity(correct_answer, student_answer)) > 0.75:  # TODO: What similarity is similar??
+        print("Similar answers. Check if the facts are correct.")
+    else:
+        print("Something missing in the answer or the answer is not regarding the right topic.")
+
+    # Load a text-generation model on the hub
     llm = HuggingFaceHub(repo_id='google/flan-t5-large',
                          model_kwargs={'temperature': 0,
                                        'max_length': 1024})
-    template = """Compare the students answer to the corrected answer and highlight the differences.
-    students answer: {answer}
-    corrected answer: {qa_answer}
+    # TODO: Antworten aufbereiten, damit sie vergleichbar sind, z.B. keywords suchen? Summary?
+    template = """Compare the following texts:
+    "{c_answer}"
+    and
+    "{s_answer}"
 
     Here are the differences:"""
 
     # prompt_template = PromptTemplate.from_template(template)
-    # prompt_template.format(answer=answer, qa_answer=qa)
+    # prompt = prompt_template.format(c_answer=correct_answer, s_answer=student_answer)
 
-    prompt = PromptTemplate(template=template, input_variables=['answer', 'qa_answer'])
+    prompt = PromptTemplate(template=template, input_variables=['c_answer', 's_answer'])
+
     llm_chain = LLMChain(prompt=prompt, llm=llm)
 
-    differences = llm_chain.run(answers)
+    differences = llm_chain.run({'c_answer': correct_answer, 's_answer': student_answer})
     print(differences)
 
     # Identify the mistakes (factual inaccuracy, missing information, structural issues) out off the differences
-    # Semantic textual similarity search (intfloat/multilingual-e5-small) or
-
-    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
-                                       model_kwargs={'device': 'cpu'})
-
-    import requests
-
-    API_URL = "https://api-inference.huggingface.co/models/LLukas22/all-MiniLM-L12-v2-embedding-all"
-    headers = {"Authorization": "Bearer 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"}
-
-    def query(payload):
-        response = requests.post(API_URL, headers=headers, json=payload)
-        return response.json()
-
-    output = query({
-        "inputs": {
-            "source_sentence": "That is a happy person",
-            "sentences": [
-                "That is a happy dog",
-                "That is a very happy person",
-                "Today is a sunny day"
-            ]
-        },
-    })
-
     return True
+
+
+def compare_similarity(correct_answer, student_answer):
+    """
+    Semantic textual similarity search (also try: intfloat/multilingual-e5-small)
+
+    :param correct_answer: Correct answer
+    :param student_answer: Answer given by the student
+    :return: Similarity between both answers
+    """
+    # Load a sentence similarity model
+    model = SentenceTransformer('LLukas22/all-MiniLM-L12-v2-embedding-all')
+    # Compute embeddings for both answers
+    c_embedding = model.encode(correct_answer, convert_to_tensor=True)
+    s_embedding = model.encode(student_answer, convert_to_tensor=True)
+    # Calculate similarity
+    similarity = util.pytorch_cos_sim(c_embedding, s_embedding)
+    return similarity

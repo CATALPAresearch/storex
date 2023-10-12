@@ -6,7 +6,7 @@ from langchain.chains import RetrievalQA
 
 DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxtGerman'
 MODEL_PATH = '/home/luna/workspace/llama.cpp/models/OpenBuddy/openbuddy-13b-v7-q4_K.bin'
-REPO = 'TheBloke/Llama-2-13B-German-Assistant-v4-GPTQ'
+# REPO = 'TheBloke/Llama-2-13B-German-Assistant-v4-GPTQ'
 
 custom_prompt_template = """Use the following pieces of information to answer the user's question in German.
 If you don't know the answer, just say that you don't know the answer, don't try to make up an answer.
