@@ -1,11 +1,11 @@
 import os
 import re
 import numpy
-from nltk.corpus import stopwords
+import torch
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.embeddings import HuggingFaceEmbeddings
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+from transformers import AutoModelForSequenceClassification, AutoModelForCausalLM, AutoTokenizer, pipeline
 from sentence_transformers import SentenceTransformer, util
 from gensim import corpora, models, similarities
 from gensim.parsing.preprocessing import preprocess_string
@@ -13,13 +13,17 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
-stop_words = stopwords.words('german')
+stop_words = []
 
 
 def setup():
+    """
+    Set up the list of german stopwords from file.
+    """
     with open('/home/luna/workspace/Dialogsteuerung/data/german_stop_words.txt', 'r') as sw:
         global stop_words
         stop_words = sw.readlines()
+        stop_words = [word.strip('\n') for word in stop_words]
 
 
 def evaluate_free_answer(answer):
@@ -27,6 +31,13 @@ def evaluate_free_answer(answer):
 
 
 def preprocess_answer(text):
+    """
+    Preprocess the answer by removing non-alphanumeric characters, extra whitespaces, german umlauts and stopwords and
+    making all words lowercase.
+
+    :param text: Unprocessed answer.
+    :return: Preprocessed answer.
+    """
     # Remove non-alphanumeric characters (except for whitespaces)
     text = re.sub(r'[^ \w+]', '', text)
     custom_filters = [lambda x: x.lower(),                         # Make all words lowercase
@@ -38,7 +49,6 @@ def preprocess_answer(text):
     text = preprocess_string(text, custom_filters)
     # Remove stopwords
     text = [word for word in text if word not in stop_words]
-    print(text)
     return text
 
 
@@ -51,16 +61,26 @@ def evaluate_answer(question_answer, student_answer):
     :return: Differences in the students answer
     """
     correct_answer = question_answer['answer']
+
+    # Text classification with MNLI to check the congruity of the answer
+    congruity = check_congruity(correct_answer, student_answer)
+    if congruity['label'] == 'ENTAILMENT':
+        print(congruity)
+
+    # Preprocess answers for similarity search
     c_processed = preprocess_answer(correct_answer)
     s_processed = preprocess_answer(student_answer)
 
-    similarity_lsa(c_processed, s_processed)
+    # Similarity with similarity search LLM
     similarity = compare_similarity(' '.join(c_processed), ' '.join(s_processed))
     print(similarity)
-    if similarity > 0.5:  # TODO: What similarity is similar??
+    if similarity > 0.75:  # TODO: What similarity is similar??
         print("Similar answers. Check if the facts are correct.")
     else:
         print("Something missing in the answer or the answer is not regarding the right topic.")
+
+    # Similarity with LSA
+    similarity_lsa(c_processed, s_processed)
 
     # Load a text-generation model on the hub
     llm = HuggingFaceHub(repo_id='google/flan-t5-large',
@@ -154,3 +174,33 @@ def similarity_lsa(correct_tokens, student_tokens):
     #            differing_tokens.add(dictionary[term])
 #
     #print("Differing tokens:", differing_tokens)
+
+
+def check_congruity(correct_answer, student_answer):
+    """
+    Check if the concatenated answers contain a contradiction or entail each other.
+
+    Try morit/xlm-t-roberta-base-mnli-xnli?
+
+    :param correct_answer:
+    :param student_answer:
+    :return: Congruity
+    """
+    # Check entailment in concatenated answers
+    classifier = pipeline("text-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
+    congruity = classifier(correct_answer + student_answer)
+
+    return congruity
+
+    # Check score
+    classifier = pipeline("zero-shot-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
+    print(classifier(correct_answer, student_answer.replace(',', ''))['scores'])
+
+    # Check probs
+    model = AutoModelForSequenceClassification.from_pretrained("symanto/xlm-roberta-base-snli-mnli-anli-xnli")
+    tokenizer = AutoTokenizer.from_pretrained("symanto/xlm-roberta-base-snli-mnli-anli-xnli")
+    inputs = tokenizer([correct_answer, student_answer], return_tensors="pt", padding=True)  # truncate=True?
+    logits = model(**inputs).logits
+    probs = torch.softmax(logits, dim=1)
+    probs = probs[..., [0]].tolist()
+    print("probs", probs)
