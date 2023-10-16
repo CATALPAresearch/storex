@@ -1,6 +1,6 @@
 import glob
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain.document_loaders import PyPDFLoader, DirectoryLoader, TextLoader
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 
@@ -25,20 +25,23 @@ def create_vector_db_pdf():
 
 
 def create_vector_db_txt():
-    texts = []
-    for file in glob.glob(TXT_PATH + '/*.txt'):
-        with open(file, 'r') as txt_file:
-            text = ''.join(txt_file.readlines())
-            texts.append(text)
-    texts = ''.join(texts)
+    loader = DirectoryLoader(TXT_PATH, glob='*.txt', loader_cls=TextLoader)
+    documents = loader.load()
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=256, chunk_overlap=20)
-    texts = text_splitter.split_text(texts)
+    # texts = []
+    # for file in glob.glob(TXT_PATH + '/*.txt'):
+    #     with open(file, 'r') as txt_file:
+    #         text = ''.join(txt_file.readlines())
+    #         texts.append(text)
+    # texts = ''.join(texts)
+
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    texts = text_splitter.split_documents(documents)
 
     embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',  # 'sentence-transformers/all-MiniLM-L6-v2',
                                        model_kwargs={'device': 'cpu'})
 
-    db = FAISS.from_texts(texts, embeddings)
+    db = FAISS.from_documents(texts, embeddings)
     db.save_local(TXT_DB_FAISS_PATH)
 
 
