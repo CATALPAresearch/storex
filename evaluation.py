@@ -2,6 +2,7 @@ import os
 import re
 import numpy
 import torch
+import glob
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -10,17 +11,23 @@ from sentence_transformers import SentenceTransformer, util
 from gensim import corpora, models, similarities
 from gensim.parsing.preprocessing import preprocess_string
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
 
+
+import logging
+logger = logging.getLogger()
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 stop_words = []
 
 
-def setup():
+def setup_stopwords():
     """
     Set up the list of german stopwords from file.
     """
-    with open('/home/luna/workspace/Dialogsteuerung/data/german_stop_words.txt', 'r') as sw:
+    directory = os.path.dirname(__file__)
+    file_sw = (os.path.join(directory, 'data/german_stop_words.txt'))
+    with open(file_sw, 'r') as sw:
         global stop_words
         stop_words = sw.readlines()
         stop_words = [word.strip('\n') for word in stop_words]
@@ -40,16 +47,30 @@ def preprocess_answer(text):
     """
     # Remove non-alphanumeric characters (except for whitespaces)
     text = re.sub(r'[^ \w+]', '', text)
-    custom_filters = [lambda x: x.lower(),                         # Make all words lowercase
-                      lambda x: x.strip(),                         # Strip extra whitespace
-                      lambda x: x.replace("ä", "ae"),              # Replace german umlauts
+    custom_filters = [lambda x: x.lower(),             # Make all words lowercase
+                      lambda x: x.strip(),             # Strip extra whitespace
+                      lambda x: x.replace("ä", "ae"),  # Replace german umlauts
                       lambda x: x.replace("ö", "oe"),
                       lambda x: x.replace("ü", "ue"),
                       lambda x: x.replace("ß", "ss")]
     text = preprocess_string(text, custom_filters)
     # Remove stopwords
     text = [word for word in text if word not in stop_words]
+    # TODO: Stemming/ Lemmatization
     return text
+
+
+def evaluate_predefined_question(question_keyword, student_answer):
+    keywords = question_keyword['keywords']
+    missing_keys = []
+    for word in keywords:
+        if word not in student_answer:
+            missing_keys.append(word)
+
+    if missing_keys:
+        print(missing_keys)
+        logger.info("Non-mentioned keywords: " + str(missing_keys))
+        accuracy = check_accuracy(missing_keys, student_answer)
 
 
 def evaluate_answer(question_answer, student_answer):
@@ -64,8 +85,9 @@ def evaluate_answer(question_answer, student_answer):
 
     # Text classification with MNLI to check the congruity of the answer
     congruity = check_congruity(correct_answer, student_answer)
-    if congruity['label'] == 'ENTAILMENT':
-        print(congruity)
+    logger.debug("The answers contain: " + str(congruity[0]['label']))
+    if congruity[0]['label'] == 'ENTAILMENT':
+        pass
 
     # Preprocess answers for similarity search
     c_processed = preprocess_answer(correct_answer)
@@ -126,13 +148,28 @@ def compare_similarity(correct_answer, student_answer):
 
 
 def similarity_lsa(correct_tokens, student_tokens):
-    # Create a dictionary and a corpus
+    # Create a term dictionary of the corpus, where every unique term is assigned an index
     dictionary = corpora.Dictionary([student_tokens, correct_tokens])
+    # Converting corpus into Document Term Matrix
     corpus = [dictionary.doc2bow(tokens) for tokens in [student_tokens, correct_tokens]]
 
+    # coherence_values = []
+    # model_list = []
+    # for num_topics in range(2, 12):
+    #     # generate LSA model
+    #     model = LsiModel(corpus, num_topics=num_topics, id2word=dictionary)  # train model
+    #     model_list.append(model)
+    #     coherence_model = CoherenceModel(model=model, texts=[student_tokens, correct_tokens], dictionary=dictionary, coherence='c_v')
+    #     coherence_values.append(coherence_model.get_coherence())
+    # num_topics = coherence_values.index(max(coherence_values))
+    # if num_topics == 0:
+    #     num_topics = 2
+
+    num_topics = 5  # TODO: What is a good number of topics?
+
     # Create an LSA model
-    num_topics = 2  # You can adjust the number of topics based on your needs
-    lsa = models.LsiModel(corpus, id2word=dictionary, num_topics=num_topics)
+    lsa = models.LsiModel(corpus, id2word=dictionary, num_topics=num_topics)  # train model
+    print(lsa.print_topics(num_topics=num_topics, num_words=3))
 
     # Transform the student and correct answer into the LSA space
     student_lsa = lsa[corpus[0]]
@@ -176,6 +213,25 @@ def similarity_lsa(correct_tokens, student_tokens):
     #print("Differing tokens:", differing_tokens)
 
 
+def check_accuracy(keys, student_answer):
+    """
+    Check if the keywords are accurately represented in the students answer.
+
+    Try morit/xlm-t-roberta-base-mnli-xnli?
+
+    :param keys:
+    :param student_answer:
+    :return: Congruity
+    """
+    # Check entailment in concatenated answers
+    classifier = pipeline("zero-shot-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
+    accuracy = classifier(student_answer, keys)
+    print(accuracy)
+    exit(0)
+
+    return accuracy
+
+
 def check_congruity(correct_answer, student_answer):
     """
     Check if the concatenated answers contain a contradiction or entail each other.
@@ -191,10 +247,6 @@ def check_congruity(correct_answer, student_answer):
     congruity = classifier(correct_answer + student_answer)
 
     return congruity
-
-    # Check score
-    classifier = pipeline("zero-shot-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
-    print(classifier(correct_answer, student_answer.replace(',', ''))['scores'])
 
     # Check probs
     model = AutoModelForSequenceClassification.from_pretrained("symanto/xlm-roberta-base-snli-mnli-anli-xnli")

@@ -1,12 +1,12 @@
 import evaluation
-import questions
+import getQuestions
 import getAnswerFromDB
 
 import time
 
 
 def start_exam(exam_parameters):
-    evaluation.setup()
+    evaluation.setup_stopwords()
     student_name = exam_parameters["name"]
     address_form = ''
     if exam_parameters["female"]:
@@ -29,6 +29,15 @@ def start_exam(exam_parameters):
     # while time.time() < end_time:
     # TODO: While time not up
     # TODO: Question-Answer-Generation
+
+    # Get predefined question
+    question_keyword = getQuestions.question_ke6()
+    print(question_keyword['question'])
+
+    answer = input()
+    evaluation.evaluate_predefined_question(question_keyword, answer)
+
+    # Get specific question
     question = "Was ist das Fragile-Base-Class-Problem?"  # questions.question_ke6()
     print(question)
     # TODO: Find answer in database without LLM
@@ -49,4 +58,4 @@ def start_exam(exam_parameters):
 
 
 if __name__ == "__main__":
-    start_exam({"name": "Luna", "time": 10, "female": False, "male": False})
+    start_exam({"name": "Luna", "time": 10, "female": False, "male": False, "logging": True})

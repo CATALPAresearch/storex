@@ -1,5 +1,5 @@
 import os
-from langchain.llms import HuggingFacePipeline, HuggingFaceHub
+from langchain.llms import HuggingFaceHub
 from langchain import PromptTemplate, LLMChain
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
@@ -15,10 +15,17 @@ gramms ausgeführt. Da wir uns mit der programmgesteuerten Erzeugung von Objekte
 aber erst in der nächsten Kurs einheit systematisch befassen, müssen wir hier zunächst mit
 Objekten mit literaler Repräsentation vorlieb nehmen. Wohlgemerkt: Literale repräsentieren
 Objekte, es sind nicht selbst welche."""
+question = "Was ist ein Literal?"
 
-template = """Question: {context}
-Answer: Let's think step by step."""
-prompt = PromptTemplate(template=template, input_variables=["context"])
+template = """Use the following pieces of information to answer the user's question in German.
+If you don't know the answer, just say that you don't know the answer, don't try to make up an answer.
+
+Context: {context}
+Question: {question}
+
+Only returns the helpful answer below and nothing else.
+Helpful answer:"""
+prompt = PromptTemplate(template=template, input_variables=["context", "question"])
 
 # llm = HuggingFacePipeline.from_model_id(
 #          model_id=MODEL_PATH,
