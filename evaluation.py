@@ -85,7 +85,7 @@ def evaluate_answer(question_answer, student_answer):
 
     # Text classification with MNLI to check the congruity of the answer
     congruity = check_congruity(correct_answer, student_answer)
-    logger.debug("The answers contain: " + str(congruity[0]['label']))
+    logger.info("The answers contain: " + str(congruity[0]['label']))
     if congruity[0]['label'] == 'ENTAILMENT':
         pass
 
@@ -191,7 +191,7 @@ def similarity_lsa(correct_tokens, student_tokens):
     # Calculate the cosine similarity
     similarity = numpy.dot(student_lsa, correct_lsa) / (numpy.linalg.norm(student_lsa) * numpy.linalg.norm(correct_lsa))
     # Print the similarity score
-    print("Similarity Score (LSA):\n", similarity)
+    print(f"Similarity Score (LSA): {similarity}")
 
     term_loading = lsa.projection.u
     threshold = 0.5
@@ -226,8 +226,7 @@ def check_accuracy(keys, student_answer):
     # Check entailment in concatenated answers
     classifier = pipeline("zero-shot-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
     accuracy = classifier(student_answer, keys)
-    print(accuracy)
-    exit(0)
+    logger.info(f"Accuracy: {accuracy}")
 
     return accuracy
 

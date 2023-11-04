@@ -1,3 +1,5 @@
+import print_colors as pc
+import text_to_speech
 import evaluation
 import getQuestions
 import getAnswerFromDB
@@ -18,8 +20,11 @@ def start_exam(exam_parameters):
     start_time = time.time()
     end_time = start_time + duration
 
-    greeting = "Guten Tag " + address_form + " " + student_name + "! Erzählen Sie mir etwas zu OOP."
-    print(greeting.replace('  ', ' '))
+    greeting = (f"Guten Tag {address_form} {student_name}! Erzählen Sie mir etwas zu objektorientierter Programmierung."
+                .replace('  ', ' '))
+    text_to_speech.get_audio(greeting)
+    pc.print_blue(greeting)
+
     # TODO: Time answer
     # answer = input()
     # correct = evaluation.evaluate_free_answer(answer)
