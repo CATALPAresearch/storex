@@ -1,0 +1,11 @@
+transformers
+langchain
+torch  # torchvision torchaudio
+numpy
+
+
+# Optimization
+accelerate
+optimum
+
+simpleaudio

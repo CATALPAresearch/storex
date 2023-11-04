@@ -2,18 +2,24 @@ import torch
 import simpleaudio
 from transformers import AutoProcessor, BarkModel
 
+import logging
+logger = logging.getLogger()
+
+
 # TODO: Fix warning: "torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm."
 # TODO: The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior.
 #  Please pass your input's `attention_mask` to obtain reliable results.
 # Setting `pad_token_id` to `eos_token_id`:10000 for open-end generation.
 
+def get_audio(input_text):
+    """
+    Converts text into audio and plays it back.
 
-def text_to_audio(input_text):
+    :param input_text: Text to be converted into speech.
     """
-    Converts text into audio and plays it.
-    """
-    # TODO: Setup Cuda
+    # TODO: UserWarning: "Can't initialize NVML"
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    logger.info(f"Device: {device}")
 
     processor = AutoProcessor.from_pretrained("suno/bark-small")
     model = BarkModel.from_pretrained("suno/bark-small", ).to(device)  # Add torch_dtype=torch.float16 after model to load in fp16
@@ -38,5 +44,5 @@ def text_to_audio(input_text):
 
 
 if __name__ == "__main__":
-    text_input = """Hallo, wie geht es dir?"""
-    text_to_audio(text_input)
+    text_input = """Hallo, wie geht es dir? Dies ist ein Test-Text. Auf geht's!"""
+    get_audio(text_input)
