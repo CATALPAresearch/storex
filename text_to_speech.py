@@ -1,6 +1,7 @@
 import torch
 import simpleaudio
 from transformers import AutoProcessor, BarkModel
+from optimum.bettertransformer import BetterTransformer
 
 import logging
 logger = logging.getLogger()
@@ -17,24 +18,26 @@ def get_audio(input_text):
 
     :param input_text: Text to be converted into speech.
     """
-    # TODO: UserWarning: "Can't initialize NVML"
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logger.info(f"Device: {device}")
 
     processor = AutoProcessor.from_pretrained("suno/bark-small")
-    model = BarkModel.from_pretrained("suno/bark-small", ).to(device)  # Add torch_dtype=torch.float16 after model to load in fp16
+    model = BarkModel.from_pretrained("suno/bark-small").to(device)
+
     # Optimize the speed by converting the model into a BetterTransformer
-    model = model.to_bettertransformer()  # model = BetterTransformer.transform(model, keep_original_model=False)
-    # model.enable_cpu_offload(), when using a CUDA device
+    model = BetterTransformer.transform(model, keep_original_model=False)  # Same? model = model.to_bettertransformer()
+    if device == "cuda":
+        model.enable_cpu_offload()
 
     voice_preset = "v2/de_speaker_3"  # German speakers: v2/de_speaker_0 to 9 (speakers 3 and 8 are female)
     inputs = processor(input_text, voice_preset=voice_preset).to(device)  # , return_tensors="pt")
 
+    # TODO: Voice sometimes continues after sentence with some weird sounds
     audio_array = model.generate(**inputs)  # , do_sample=True)
     audio_array = audio_array.cpu().numpy().squeeze()
     sampling_rate = model.generation_config.sample_rate
 
-    # Play audio. To save audio to disk: write("bark_generation.wav", sampling_rate, audio_array)
+    # Play audio. To save audio to disk: scipy.io.wavfile.write("bark_generation.wav", sampling_rate, audio_array)
     num_channels = 1
     bytes_per_sample = 4  # float32
     play_obj = simpleaudio.play_buffer(audio_array, num_channels, bytes_per_sample, sampling_rate)

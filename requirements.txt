@@ -1,8 +1,9 @@
 transformers
+sentence_transformers
+datasets
 langchain
-torch  # torchvision torchaudio
+torch
 numpy
-
 
 # Optimization
 accelerate
