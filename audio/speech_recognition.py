@@ -3,7 +3,7 @@ import pyaudio
 import wave
 import threading
 import print_colors as pc
-from transformers import WhisperProcessor, WhisperForConditionalGeneration, pipeline, WhisperTokenizer
+from transformers import WhisperProcessor, WhisperTokenizer, pipeline
 from array import array
 from queue import Queue, Full
 
@@ -11,14 +11,13 @@ from queue import Queue, Full
 # Todo: Check for silence and stopp the recording.
 
 # Microphone stream configurations
-CHUNK_SIZE = 1024  # Arbitrary number of frames that signals are split into
-FORMAT = pyaudio.paInt16
-CHANNELS = 1  # Samples per frame
-RATE = 16000  # Or: 44100? Sampling rate (frames per second)
-MIN_VOLUME = 500
-SILENCE_LIMIT = 2
-# If the recording thread can't consume fast enough, the listener will start discarding
-BUF_MAX_SIZE = CHUNK_SIZE * 10
+CHUNK_SIZE = 1024               # Number of frames that signals are split into
+FORMAT = pyaudio.paInt16        # Sound is stored in a signed 16-bit binary string
+CHANNELS = 1                    # Samples per frame
+RATE = 16000                    # Or: 44100? Sampling rate (frames per second)
+MIN_VOLUME = 500                # Threshold intensity that defines silence and noise signal
+SILENCE_LIMIT = 2               # Max amount of seconds where only silence is recorded
+BUF_MAX_SIZE = CHUNK_SIZE * 10  # If the recording thread can't consume fast enough, the listener will start discarding
 
 
 def main_check():
@@ -76,7 +75,7 @@ def record_speech():
     """
     Records audio from microphone input.
 
-    :return frames: List of bytes representing audio.
+    :return frames: Array of bytes representing audio.
     :return sample_size: Size of each sample.
     """
     p = pyaudio.PyAudio()
@@ -112,7 +111,7 @@ def save_recording(frames, sampling_width, output_file):
     """
     Save audio frames to a file.
 
-    :param frames: List of bytes representing audio.
+    :param frames: Array of bytes representing audio.
     :param sampling_width: Size of each sample.
     :param output_file: Path to output file.
     """
