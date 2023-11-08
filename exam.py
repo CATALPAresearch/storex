@@ -19,15 +19,12 @@ def get_answer():
 
 def setup(exam_parameters):
     """
-    Set up a list of german stopwords, set the students parameters, greet the student and start the timer.
+    Set the students parameters, greet the student and start the timer.
 
     :param exam_parameters: Dictionary with parameters for the exam.
 
     :return end_time: Calculated time to end the exam.
     """
-    # Load german stopwords
-    evaluation.setup_stopwords()
-
     # Set student parameters
     student_name = exam_parameters["name"]
     address_form = ''
@@ -55,6 +52,7 @@ def predef_question():
 
     answer = get_answer()
     evaluation.evaluate_predefined_question(question_keywords, answer)
+    evaluation.evaluate_answer(correct_answer, answer)
 
     missing_keywords = []
 
