@@ -5,6 +5,8 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain import HuggingFaceHub
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore'
@@ -20,7 +22,7 @@ Helpful answer in German:
 """
 
 
-def retrieve_result(query):
+def text_generation(query):
     """
     Retrieve an answer to a given question from a FAISS database.
 
@@ -59,9 +61,33 @@ def retrieve_result(query):
     return result, source_documents
 
 
+def question_answering(query):
+    # Load embeddings
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
+                                       model_kwargs={'device': device})
+
+    # Load database and get context for query
+    db = FAISS.load_local(DB_FAISS_PATH, embeddings)
+    context_docs = db.similarity_search(query, k=4)
+    context = ' '.join([doc.page_content for doc in context_docs])
+
+    # Get predictions
+    model = "deepset/gelectra-large-germanquad"
+    electra = pipeline('question-answering', model=model, tokenizer=model)
+    question_context = {'question': query, 'context': context}
+    res = electra(question_context)
+
+    # Load model & tokenizer
+    # model = AutoModelForQuestionAnswering.from_pretrained(model)
+    # tokenizer = AutoTokenizer.from_pretrained(model)
+    print(res)
+
+
 if __name__ == '__main__':
     question = "Was ist das Problem der eindimensionalen Strukturierung?"
-    answer, sources = retrieve_result(question)
+    question_answering(question)
+    answer, sources = text_generation(question)
 
     if sources:
         answer += f"\nQuelle: " + str(sources)
