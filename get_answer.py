@@ -21,6 +21,14 @@ Helpful answer in German:
 
 
 def retrieve_result(query):
+    """
+    Retrieve an answer to a given question from a FAISS database.
+
+    :param query: Question to be answered.
+
+    :return result: Answer to the question.
+    :return source_documents: Source documents from the database.
+    """
     # Load embeddings
     device = "cuda" if torch.cuda.is_available() else "cpu"
     embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
@@ -37,7 +45,7 @@ def retrieve_result(query):
     # Load prompt
     prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'question'])
 
-    # Creat the chain to answer questions
+    # Create the chain for question answering
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",  # stuff, map_reduce or map_rerank with k=10
@@ -46,18 +54,18 @@ def retrieve_result(query):
         chain_type_kwargs={'prompt': prompt}
     )
     result = qa_chain({'query': query})
-    return result
+    source_documents = result["source_documents"]
+    result = result["result"]
+    return result, source_documents
 
 
 if __name__ == '__main__':
     question = "Was ist das Problem der eindimensionalen Strukturierung?"
-    res = retrieve_result(question)
-    answer = res["result"]
-    sources = res["source_documents"]
+    answer, sources = retrieve_result(question)
 
     if sources:
         answer += f"\nQuelle: " + str(sources)
     else:
         answer += f"\nKeine Quellen gefunden!"
 
-    print("Antwort:", answer)
+    print(f"Antwort: {answer}")
