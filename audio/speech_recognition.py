@@ -2,7 +2,7 @@ import torch
 import pyaudio
 import wave
 import threading
-import print_colors as pc
+from utils import colours
 from transformers import WhisperProcessor, WhisperTokenizer, pipeline
 from array import array
 from queue import Queue, Full
@@ -86,7 +86,7 @@ def record_speech():
                     input=True,
                     frames_per_buffer=CHUNK_SIZE)
 
-    pc.print_red("Recording started")
+    colours.print_red("*** Recording started ***")
 
     frames = []
 
@@ -97,7 +97,7 @@ def record_speech():
     except KeyboardInterrupt:
         pass
 
-    pc.print_red("Recording ended")
+    colours.print_red("*** Recording ended ***")
 
     stream.stop_stream()
     stream.close()
@@ -153,7 +153,7 @@ def get_text(audio_path):
     return prediction
 
 
-def speech_recognition():
+def get_audio_to_text():
     """
     Record and transcribe speech.
 
@@ -170,4 +170,4 @@ def speech_recognition():
 
 if __name__ == "__main__":
     main_check()
-    print(speech_recognition())
+    print(get_audio_to_text())

@@ -1,4 +1,4 @@
-
+# TODO: Bring keywords in preprocessed Form
 KE6_solutions = [
     {'question': "Was ist das Liskov-Substitutionsprinzip?",
      'keywords': ['verhaltensbezogenes Subtyping', 'Subtypenrelation', 'Kontravarianz der Argumenttypen',
