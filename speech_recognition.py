@@ -1,7 +1,6 @@
 import torch
 import pyaudio
 import wave
-import numpy
 import threading
 import print_colors as pc
 from transformers import WhisperProcessor, WhisperForConditionalGeneration, pipeline, WhisperTokenizer
@@ -9,18 +8,20 @@ from array import array
 from queue import Queue, Full
 
 
+# Todo: Check for silence and stopp the recording.
+
 # Microphone stream configurations
-CHUNK_SIZE = 1024
+CHUNK_SIZE = 1024  # Arbitrary number of frames that signals are split into
 FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 16000  # Or: 44100
+CHANNELS = 1  # Samples per frame
+RATE = 16000  # Or: 44100? Sampling rate (frames per second)
 MIN_VOLUME = 500
-SILENCE_LIMIT = 1
+SILENCE_LIMIT = 2
 # If the recording thread can't consume fast enough, the listener will start discarding
 BUF_MAX_SIZE = CHUNK_SIZE * 10
 
 
-def main():
+def main_check():
     stopped = threading.Event()
     q = Queue(maxsize=int(round(BUF_MAX_SIZE / CHUNK_SIZE)))
 
@@ -72,6 +73,12 @@ def listen(stopped, q):
 
 
 def record_speech():
+    """
+    Records audio from microphone input.
+
+    :return frames: List of bytes representing audio.
+    :return sample_size: Size of each sample.
+    """
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -87,26 +94,28 @@ def record_speech():
     try:
         while True:
             data = stream.read(CHUNK_SIZE)
-            numpy_data = numpy.frombuffer(data, dtype=numpy.int16)
-            frames.append(data)  # With numpy_data it'll be a list of numpy.ndarrays
+            frames.append(data)
     except KeyboardInterrupt:
         pass
 
     pc.print_red("Recording ended")
 
-    # Convert the list of numpy-arrays into a 1D array (column-wise)
-    # audio = numpy.hstack(frames)
-
     stream.stop_stream()
     stream.close()
     p.terminate()
 
-    save_recording(frames, p.get_sample_size(FORMAT))
+    sample_size = p.get_sample_size(FORMAT)
+    return frames, sample_size
 
 
-def save_recording(frames, sampling_width):
-    output_file = "output.wav"
+def save_recording(frames, sampling_width, output_file):
+    """
+    Save audio frames to a file.
 
+    :param frames: List of bytes representing audio.
+    :param sampling_width: Size of each sample.
+    :param output_file: Path to output file.
+    """
     wf = wave.open(output_file, 'wb')
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(sampling_width)
@@ -116,17 +125,25 @@ def save_recording(frames, sampling_width):
 
 
 def get_text(audio_path):
-    # Whisper Pipeline from Huggingface for Long-Form Transcription:
+    """
+    Transcribe audio into text.
+
+    :param audio_path: Path to audio file.
+
+    :return prediction: Prediction of transcribed audio file.
+    """
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # Load model and processor
-    processor = WhisperProcessor.from_pretrained("openai/whisper-base")
-    model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base")
-    tokenizer = WhisperTokenizer.from_pretrained("openai/whisper-base", language="german")
+    # Load processor and tokenizer
+    model = "openai/whisper-base"
+    processor = WhisperProcessor.from_pretrained(model)
+
+    tokenizer = WhisperTokenizer.from_pretrained(model, language="german")
     forced_decoder_ids = processor.get_decoder_prompt_ids(language="german", task="transcribe")
 
+    # Create pipeline for Long-Form Transcription
     whisper_pipeline = pipeline('automatic-speech-recognition',
-                                model="openai/whisper-base",
+                                model=model,
                                 tokenizer=tokenizer,
                                 chunk_length_s=30,
                                 device=device)
@@ -134,12 +151,24 @@ def get_text(audio_path):
     prediction = whisper_pipeline(audio_path,
                                   batch_size=8,
                                   generate_kwargs={"forced_decoder_ids": forced_decoder_ids})["text"]
-    print(prediction)
+    return prediction
+
+
+def speech_recognition():
+    """
+    Record and transcribe speech.
+
+    :return transcription: Transcribed recording.
+    """
+    audio_frames, sample_size = record_speech()
+
+    output_file = "/tmp/output.wav"
+    save_recording(audio_frames, sample_size, output_file)
+
+    transcription = get_text(output_file)
+    return transcription
 
 
 if __name__ == "__main__":
-    main()
-    record_speech()
-
-    audio = "/home/luna/workspace/Dialogsteuerung/output.wav"
-    get_text(audio)
+    main_check()
+    print(speech_recognition())
