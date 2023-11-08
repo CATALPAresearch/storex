@@ -43,6 +43,7 @@ def create_vector_db(documents):
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
     split_text = text_splitter.split_documents(documents)
+    # docs = [langchain.docstore.document.Document(page_content=t) for t in split_text[:len(split_text)]]
 
     embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
                                        model_kwargs={'device': device})
