@@ -9,43 +9,42 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
-DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore'
-
-prompt_template = """Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
-
-Context: {context}
-Question: {question}
-
-Only returns the helpful answer below and nothing else.
-Helpful answer in German:
-"""
 
 
-def text_generation(query):
+def text_generation(query, vectorstore):
     """
     Retrieve an answer to a given question from a FAISS database.
 
     :param query: Question to be answered.
+    :param vectorstore: FAISS vectorstore database.
 
     :return result: Answer to the question.
     :return source_documents: Source documents from the database.
     """
+    # Load prompt from template
+    prompt_template = """Use the following pieces of context to answer the question at the end.
+    If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+    Context: {context}
+    Question: {question}
+
+    Only returns the helpful answer below and nothing else.
+    Helpful answer in German:
+    """
+    prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'question'])
+
     # Load embeddings
     device = "cuda" if torch.cuda.is_available() else "cpu"
     embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
                                        model_kwargs={'device': device})
 
-    # Load database and set up as generic retriever
-    db = FAISS.load_local(DB_FAISS_PATH, embeddings)
+    # Load vectorstore database and set up as generic retriever
+    db = FAISS.load_local(vectorstore, embeddings)
     retriever = db.as_retriever(search_type="similarity", search_kwargs={'k': 4})
 
     # Load LLM
     # TODO: Question-Answering: llm = HuggingFaceHub(repo_id="deepset/gelectra-base-germanquad")
     llm = HuggingFaceHub(repo_id="google/flan-t5-large")
-
-    # Load prompt
-    prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'question'])
 
     # Create the chain for question answering
     qa_chain = RetrievalQA.from_chain_type(
@@ -61,14 +60,14 @@ def text_generation(query):
     return result, source_documents
 
 
-def question_answering(query):
+def question_answering(query, vectorstore):
     # Load embeddings
     device = "cuda" if torch.cuda.is_available() else "cpu"
     embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
                                        model_kwargs={'device': device})
 
     # Load database and get context for query
-    db = FAISS.load_local(DB_FAISS_PATH, embeddings)
+    db = FAISS.load_local(vectorstore, embeddings)
     context_docs = db.similarity_search(query, k=4)
     context = ' '.join([doc.page_content for doc in context_docs])
 
@@ -84,14 +83,21 @@ def question_answering(query):
     print(res)
 
 
-if __name__ == '__main__':
-    question = "Was ist das Problem der eindimensionalen Strukturierung?"
-    question_answering(question)
-    answer, sources = text_generation(question)
+def get_answer_from_db(query):
+    directory = os.path.dirname(__file__)
+    vectorstore_path = (os.path.join(directory, 'data/vectorStore'))
 
+    question_answering(query, vectorstore_path)
+
+    answer, sources = text_generation(question, vectorstore_path)
     if sources:
         answer += f"\nQuelle: " + str(sources)
     else:
         answer += f"\nKeine Quellen gefunden!"
 
     print(f"Antwort: {answer}")
+
+
+if __name__ == '__main__':
+    question = "Was ist das Problem der eindimensionalen Strukturierung?"
+    get_answer_from_db(question)
