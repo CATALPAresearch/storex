@@ -4,13 +4,11 @@ import datasets
 logger = datasets.logging.get_logger(__name__)
 _VERSION = "1.0"
 _NAME = "qg_oop"
-_DESCRIPTION = """
-German SQuAD-inspired dataset for questions regarding object-oriented programming.
-"""
+_DESCRIPTION = """German SQuAD-inspired dataset for questions regarding object-oriented programming."""
 URL = 'https://huggingface.co/datasets/LunaticTanuki/qg_OOP/resolve/main/processed'
 _URLS = {
-    'train': ['{}/train.jsonl'.format(_URL)],
-    'validation': ['{}/validation.jsonl'.format(_URL)]
+    'train': ['{}/train.jsonl'.format(URL)],
+    'validation': ['{}/validation.jsonl'.format(URL)]
 }
 
 

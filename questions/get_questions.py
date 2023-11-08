@@ -1,5 +1,5 @@
 import random
-import data.questions as questions
+import questions.questions as questions
 
 
 def question_ke6():
@@ -11,3 +11,7 @@ def question_ke6():
     # if question['follow-up']:
     #     pass
     return question
+
+
+if __name__ == "__main__":
+    print(question_ke6())
