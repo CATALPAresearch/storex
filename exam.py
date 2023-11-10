@@ -31,7 +31,7 @@ class ExamManager:
             self.address_form = "Frau"
         elif exam_parameters["male"]:
             self.address_form = "Herr"
-        logger.info(f"Parameters are4 set: {exam_parameters}")
+        logger.info(f"Parameters are set: {exam_parameters}")
 
         # Set duration of the exam
         duration = int(exam_parameters["time"]) * 60
@@ -126,6 +126,7 @@ class ExamManager:
 
                 case 1:  # Generate specific question
                     specific = "What is OOP?"
+                    self.next_question = QuestionType.PREDEFINED
 
                     # TODO: Find answer for target keyword in database
                     # TODO: Generate question for target keyword
@@ -136,7 +137,9 @@ class ExamManager:
 
                 case 2:  # Repeat question once due to silence or no entailment
                     if repeated is False:
-                        self.talk(self.last_question)
+                        self.talk(self.last_question["question"])
+                        answer = self.get_answer()
+                        self.get_feedback(self.last_question["answer"], answer)
                         repeated = True
                     else:
                         self.next_question = QuestionType.GENERATED
