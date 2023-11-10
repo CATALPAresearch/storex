@@ -1,3 +1,6 @@
+"""
+Training exam conversation manager.
+"""
 import time
 import evaluation
 from questions import get_questions
@@ -15,6 +18,7 @@ next_question = None
 
 def talk(text):
     # Output teacher text via speaker and terminal
+    # TODO: Supress output of text_to_speech (e.g. via helpers function)
     text_to_speech.get_audio(text)
     colours.print_blue(text)
 

@@ -1,10 +1,13 @@
 #! /usr/bin/env python3
 """
-Script to start a training exam.
+Script for starting a training exam.
+
+Command line arguments are parsed and the training exam is started with the correct parameters.
 """
-import sys
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 import exam
+import sys
+
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 import logging
 logging.basicConfig(level=logging.INFO)
