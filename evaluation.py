@@ -44,7 +44,7 @@ def evaluate_answer(correct_answer, student_answer):
     """
     feedback = None
     # Silence is turned into a short sentence by speech recognition LLMs
-    if len(student_answer) < 7:  # TODO: What is the minimum amount of words counting as an answer?
+    if len(student_answer) < 30:  # TODO: What is the minimum amount of words counting as an answer?
         feedback = FeedbackType.SILENCE
         return feedback
 
@@ -122,7 +122,7 @@ def check_accuracy(keys, student_answer):
     # Check entailment in concatenated answers
     classifier = pipeline("zero-shot-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
     accuracy = classifier(student_answer, keys)
-    logging.info(f"Accuracy: {accuracy}")
+    logger.info(f"Accuracy: {accuracy}")
     return accuracy
 
 
@@ -139,7 +139,7 @@ def check_congruity(correct_answer, student_answer):
     # Check entailment in concatenated answers
     classifier = pipeline("text-classification", model="symanto/xlm-roberta-base-snli-mnli-anli-xnli")
     congruity = classifier(correct_answer + student_answer)
-    logging.info(f"Congruity: {congruity}")
+    logger.info(f"Congruity: {congruity}")
     return congruity
 
     # Check probs
