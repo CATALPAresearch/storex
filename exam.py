@@ -3,7 +3,6 @@ Training exam conversation manager.
 """
 import time
 import evaluation
-from questions import question_manager
 from questions.question_manager import QuestionManager
 from utils import colours
 from utils.helpers import QuestionType, FeedbackType
@@ -55,6 +54,7 @@ def setup(exam_parameters):
     elif exam_parameters["male"]:
         address_form = "Herr"
 
+    logger.info("Parameters are set.")
     # Set up the QuestionManager
     # global qm
     # qm = QuestionManager()

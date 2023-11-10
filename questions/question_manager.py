@@ -4,8 +4,6 @@ File for managing predefined questions.
 import random
 import questions.questions as questions
 
-asked = [[], [], [], [], [], [], []]  # [[KE1], [KE2], [KE3], [KE4], [KE5], [KE6], [KE7]]
-
 
 class QuestionManager:
     def __init__(self):
