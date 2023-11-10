@@ -1,3 +1,9 @@
+"""
+Function to get speech from an input text.
+
+By using the 'suno/bark-small' transformer model from the huggingface hub, the input text is transformed into audio,
+which is then output over the speakers.
+"""
 import torch
 import simpleaudio
 from transformers import AutoProcessor, BarkModel
@@ -6,12 +12,13 @@ from optimum.bettertransformer import BetterTransformer
 import logging
 logger = logging.getLogger()
 
-# TODO: Remove warning: "The BetterTransformer implementation does not support padding during training, as the fused
+# TODO Remove: "The BetterTransformer implementation does not support padding during training, as the fused
 #  kernels do not support attention masks. Beware that passing padded batched data during training may result in
 #  unexpected outputs. Please refer to https://huggingface.co/docs/optimum/bettertransformer/overview for more details."
-# TODO: The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior.
-#  Please pass your input's `attention_mask` to obtain reliable results.
-# Setting `pad_token_id` to `eos_token_id`:10000 for open-end generation.
+# TODO Remove: The attention mask and the pad token id were not set. As a consequence, you may observe unexpected
+#  behavior. Please pass your input's `attention_mask` to obtain reliable results.
+#  Setting `pad_token_id` to `eos_token_id`:10000 for open-end generation.
+
 
 def get_audio(input_text):
     """
@@ -45,11 +52,3 @@ def get_audio(input_text):
 
     # Wait for playback to finish before exiting
     play_obj.wait_done()
-
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    logger.disabled = False
-
-    text_input = """Hallo, wie geht es dir? Dies ist ein Test-Text. Auf geht's!"""
-    get_audio(text_input)

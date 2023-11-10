@@ -1,3 +1,9 @@
+"""
+Functions to transcribe audio recorded from a microphone.
+
+Speech is recorded from the microphone until disrupted by KeyboardInterrupt or long period of silence.
+The audio is then transcribed into predicted text and returned.
+"""
 import torch
 import pyaudio
 import wave
@@ -128,7 +134,6 @@ def get_text(audio_path):
     Transcribe audio into text.
 
     :param audio_path: Path to audio file.
-
     :return prediction: Prediction of transcribed audio file.
     """
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -168,8 +173,3 @@ def get_audio_to_text():
     # TODO: Fix writing errors in transcription.
 
     return transcription
-
-
-if __name__ == "__main__":
-    main_check()
-    print(get_audio_to_text())
