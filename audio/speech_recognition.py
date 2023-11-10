@@ -165,6 +165,8 @@ def get_audio_to_text():
     save_recording(audio_frames, sample_size, output_file)
 
     transcription = get_text(output_file)
+    # TODO: Fix writing errors in transcription.
+
     return transcription
 
 
