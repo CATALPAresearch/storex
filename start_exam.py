@@ -36,7 +36,7 @@ if args["female"] and args["male"]:
     exit(1)
 
 # Check and exit if number of players is not between 2 and 5 and therefore not legal
-if args["time"] > 60 or args["time"] < 10:
+if args["time"] > '60' or args["time"] < '5':
     raise ValueError("The training exam can last between 10 to 60 minutes. Please choose a duration in that timeframe.")
 
 if args["logging"]:
