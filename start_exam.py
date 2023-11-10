@@ -26,6 +26,9 @@ parser.add_argument("-m", "--male", action='store_true',
                     help="Form of address 'Herr' will be used during the training exam.")
 parser.add_argument("-log", "--logging", action='store_true',
                     help="If set, logging info is enabled as console output.")
+parser.add_argument("-na", "--no-audio", action='store_true',
+                    help="If set, there will be no text-to-speech audio output. This can be set to increase the"
+                         " performance.")
 args = vars(parser.parse_args())
 
 # Check if a name was given

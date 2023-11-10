@@ -45,24 +45,24 @@ class ExamManager:
         self.next_question = None
 
         # Set audio models and evaluator
-        self.audio = TextToSpeech()
+        self.no_audio = True if exam_parameters["no-audio"] else False
+        if not self.no_audio:
+            self.audio = TextToSpeech()
         self.transcription = SpeechRecognition()
         self.evaluation = Evaluator()
 
-    def talk(self, text):
+    def speak(self, text):
         """Output text via speaker and terminal."""
-        self.audio.get_audio(text)
         colours.print_blue(text)
+        if not self.no_audio:
+            self.audio.get_audio(text)
 
     def ask_question(self, question):
-        """Output question via speaker and terminal and set last question."""
-        self.talk(question)
-        self.last_question = question
-
-    def get_answer(self):
-        """Get the students answer as text."""
+        """Output question and get the students answer."""
+        self.speak(question)
         answer = self.transcription.get_audio_to_text()
-        print(f"Deine Antwort lautet: {answer}")
+        print("Ihre Antwort lautet:")
+        colours.print_yellow(answer)
         return answer
 
     def get_feedback(self, correct_answer, student_answer):
@@ -73,19 +73,22 @@ class ExamManager:
         # Give feedback and set next question type
         match result.value:
             case 0:  # Correct answer
-                self.talk("Korrekt!")
+                correct = "Korrekt!"
+                if not self.no_audio:
+                    self.audio.get_audio(correct)
+                colours.print_green(correct)
                 self.next_question = QuestionType.PREDEFINED
 
             case 1:  # No or too short answer
-                self.talk("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
+                self.speak("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
                 self.next_question = QuestionType.REPEAT
 
             case 2:  # Off-topic answer
-                self.talk('Sie haben das Thema leider verfehlt.')
+                self.speak('Sie haben das Thema leider verfehlt.')
                 self.next_question = QuestionType.REPEAT
 
             case 3:  # Contradicting answer
-                self.talk('Mit dieser Antwort wiedersprechen Sie dem Kurstext.')
+                self.speak('Mit dieser Antwort wiedersprechen Sie dem Kurstext.')
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
@@ -99,14 +102,13 @@ class ExamManager:
         """Exam flow."""
         # Greet the student
         greeting = (f"Guten Tag {self.address_form} {self.student_name}!".replace('  ', ' '))
-        self.talk(greeting)
+        self.speak(greeting)
 
         # TODO: Ask first question
-        # first_question = "Erzählen Sie mir etwas zu objektorientierter Programmierung."
-        # first_correct_answer = "..."
-        # ask_question(first_question)
-        # first_student_answer = get_answer()
-        # get_feedback(first_correct_answer, first_student_answer)
+        question_and_answer = {"question": "Was ist objektorientierte Programmierung?",
+                               "answer": "..."}
+        # answer = self.ask_question(question_and_answer["question"])
+        # self.get_feedback(question_and_answer["answer"], answer)
 
         self.next_question = QuestionType.PREDEFINED
         targets = []
@@ -116,16 +118,18 @@ class ExamManager:
         while time.time() < self.end_time:
             logger.info(f"The next question should be: {self.next_question.name}")
             logger.info(f"Remaining time: {(self.end_time - time.time()) / 60} min")
+            self.last_question = question_and_answer
             match self.next_question.value:
 
                 case 0:  # Ask predefined question
-                    predefined = self.qm.get_question()
-                    self.ask_question(predefined["question"])
-                    answer = self.get_answer()
-                    self.get_feedback(predefined["answer"], answer)
+                    repeated = False
+                    question_and_answer = self.qm.get_question()
+                    answer = self.ask_question(question_and_answer["question"])
+                    self.get_feedback(question_and_answer["answer"], answer)
 
                 case 1:  # Generate specific question
-                    specific = "What is OOP?"
+                    repeated = False
+                    question_and_answer = "What is OOP?"
                     self.next_question = QuestionType.PREDEFINED
 
                     # TODO: Find answer for target keyword in database
@@ -137,13 +141,11 @@ class ExamManager:
 
                 case 2:  # Repeat question once due to silence or no entailment
                     if repeated is False:
-                        self.talk(self.last_question["question"])
-                        answer = self.get_answer()
+                        answer = self.ask_question(self.last_question["question"])
                         self.get_feedback(self.last_question["answer"], answer)
                         repeated = True
                     else:
                         self.next_question = QuestionType.GENERATED
-                        repeated = False
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
@@ -153,6 +155,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 5, "female": False, "male": False, "logging": True}
+    dev_parameters = {"name": "Luna", "time": 5, "female": False, "male": False, "no-audio": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

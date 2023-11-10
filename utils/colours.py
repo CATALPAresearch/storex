@@ -36,5 +36,17 @@ def print_blue(*args):
     print(RESET)
 
 
+def print_yellow(*args):
+    print(YELLOW, end='')
+    print(*args, end='')
+    print(RESET)
+
+
+def print_green(*args):
+    print(GREEN, end='')
+    print(*args, end='')
+    print(RESET)
+
+
 if __name__ == "__main__":
     print_rainbow("Hello World! Hello World! Hello World!")
