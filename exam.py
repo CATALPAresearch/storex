@@ -3,7 +3,8 @@ Training exam conversation manager.
 """
 import time
 import evaluation
-from questions import get_questions
+from questions import question_manager
+from questions.question_manager import QuestionManager
 from utils import colours
 from utils.helpers import QuestionType, FeedbackType
 from audio import text_to_speech, speech_recognition
@@ -12,6 +13,7 @@ import logging
 logger = logging.getLogger()
 
 # Global variables
+qm = QuestionManager()
 last_question = None
 next_question = None
 
@@ -39,7 +41,7 @@ def get_answer():
 
 def setup(exam_parameters):
     """
-    Set the students parameters, greet the student and start the timer.
+    Set the students parameters, set up the QuestionManager, greet the student and start the timer.
 
     :param exam_parameters: Dictionary with parameters for the exam.
 
@@ -52,6 +54,10 @@ def setup(exam_parameters):
         address_form = "Frau"
     elif exam_parameters["male"]:
         address_form = "Herr"
+
+    # Set up the QuestionManager
+    # global qm
+    # qm = QuestionManager()
 
     # Greet the student
     greeting = (f"Guten Tag {address_form} {student_name}!".replace('  ', ' '))
@@ -66,7 +72,8 @@ def setup(exam_parameters):
 
 def predef_question():
     # Get predefined question TODO: Probabilities, not same question twice
-    predefined = get_questions.question_ke6()
+    global qm
+    predefined = qm.get_question()
     ask_question(predefined["question"])
 
     answer = get_answer()
