@@ -9,4 +9,10 @@ numpy
 accelerate
 optimum
 
+# Audio Input and Output
 simpleaudio
+pyaudio
+
+# Data processing and vector store creation
+faiss-gpu  # Or: faiss-cpu
+# pypdf
