@@ -20,8 +20,9 @@ if not args["module"]:
 
 match args["module"]:
     case "get_questions":
-        from questions import get_questions
-        print(get_questions.question_ke6())
+        from questions.question_manager import QuestionManager
+        qm = QuestionManager()
+        print(qm.get_question())
 
     case "speech_recognition":
         from audio import speech_recognition

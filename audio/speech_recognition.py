@@ -16,6 +16,13 @@ from queue import Queue, Full
 
 # Todo: Check for silence and stopp the recording.
 
+# TODO Remove:
+#  ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+#  ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+#  ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+#  ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+#  ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+
 # Microphone stream configurations
 CHUNK_SIZE = 1024               # Number of frames that signals are split into
 FORMAT = pyaudio.paInt16        # Sound is stored in a signed 16-bit binary string

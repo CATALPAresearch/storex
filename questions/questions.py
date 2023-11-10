@@ -1,3 +1,26 @@
+"""
+Questions
+"""
+from enum import IntEnum
+
+
+class KE(IntEnum):
+    KE1 = 0
+    KE2 = 1
+    KE3 = 2
+    KE4 = 3
+    KE5 = 4
+    KE6 = 5
+    KE7 = 6
+
+
+KE1_questions = []
+KE2_questions = []
+KE3_questions = []
+KE4_questions = []
+KE5_questions = []
+KE7_questions = []
+
 # TODO: Bring keywords in preprocessed Form
 KE6_solutions = [
     {'question': "Was ist das Liskov-Substitutionsprinzip?",
@@ -10,7 +33,7 @@ KE6_solutions = [
      'keywords': ['Teil-Ganzes-Beziehung', 'kein Alias auf Wertobjekte']},
 ]
 
-KE6_problems = [
+KE6_questions = [
     # {'question': "Was ist das Problem der Substituierbarkeit?",
     #  'keywords': ['Zuweisungskompatibilität', 'nichtkonforme Verhaltensänderung', 'keine Prüfung der Substituierbarkeit'],
     #  'follow-up': [KE6_solutions[0]]},
