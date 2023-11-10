@@ -4,10 +4,10 @@ Script for starting a training exam.
 
 Command line arguments are parsed and the training exam is started with the correct parameters.
 """
-import exam
 import sys
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+from exam import ExamManager
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -45,9 +45,10 @@ if args["time"] > '60' or args["time"] < '5':
 if args["logging"]:
     logger.disabled = False
 
-logging.info("Started...")
+logging.info("Starting...")
 
 # Run game with set arguments
-exam.start_exam(args)
+exam = ExamManager(args)
+exam.start_exam()
 
 logging.info("Finished!")
