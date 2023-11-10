@@ -25,14 +25,15 @@ match args["module"]:
         print(qm.get_question())
 
     case "speech_recognition":
-        from audio import speech_recognition
-        speech_recognition.main_check()
-        print(speech_recognition.get_audio_to_text())
+        from audio.speech_recognition import SpeechRecognition
+        transcription = SpeechRecognition()
+        print(transcription.get_audio_to_text())
 
     case "text_to_speech":
-        from audio import text_to_speech
+        from audio.text_to_speech import TextToSpeech
         text_input = """Hallo, wie geht es dir? Dies ist ein Test-Text. Auf geht's!"""
-        text_to_speech.get_audio(text_input)
+        audio = TextToSpeech()
+        audio.get_audio(text_input)
 
     case _:
         raise ValueError("Given module does not exist.")

@@ -1,19 +1,21 @@
 """
-Functions to transcribe audio recorded from a microphone.
+Class to transcribe audio recorded from a microphone.
 
 Speech is recorded from the microphone until disrupted by KeyboardInterrupt or long period of silence.
 The audio is then transcribed into predicted text and returned.
 """
-import torch
 import pyaudio
-import wave
 import threading
-from utils import colours
-from transformers import WhisperProcessor, WhisperTokenizer, pipeline
+import torch
+import wave
+
 from array import array
 from queue import Queue, Full
+from transformers import WhisperProcessor, WhisperTokenizer, pipeline
+from utils import colours
 
-
+import logging
+logger = logging.getLogger()
 # Todo: Check for silence and stopp the recording.
 
 # TODO Remove:
@@ -24,16 +26,16 @@ from queue import Queue, Full
 #  ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
 
 # Microphone stream configurations
-CHUNK_SIZE = 1024               # Number of frames that signals are split into
-FORMAT = pyaudio.paInt16        # Sound is stored in a signed 16-bit binary string
-CHANNELS = 1                    # Samples per frame
-RATE = 16000                    # Or: 44100? Sampling rate (frames per second)
-MIN_VOLUME = 500                # Threshold intensity that defines silence and noise signal
-SILENCE_LIMIT = 2               # Max amount of seconds where only silence is recorded
+CHUNK_SIZE = 1024  # Number of frames that signals are split into
+FORMAT = pyaudio.paInt16  # Sound is stored in a signed 16-bit binary string
+CHANNELS = 1  # Samples per frame
+RATE = 16000  # Or: 44100? Sampling rate (frames per second)
+MIN_VOLUME = 500  # Threshold intensity that defines silence and noise signal
+SILENCE_LIMIT = 2  # Max amount of seconds where only silence is recorded
 BUF_MAX_SIZE = CHUNK_SIZE * 10  # If the recording thread can't consume fast enough, the listener will start discarding
 
 
-def main_check():
+def main_check(self):
     stopped = threading.Event()
     q = Queue(maxsize=int(round(BUF_MAX_SIZE / CHUNK_SIZE)))
 
@@ -88,9 +90,9 @@ def record_speech():
     """
     Records audio from microphone input.
 
-    :return frames: Array of bytes representing audio.
-    :return sample_size: Size of each sample.
-    """
+:return frames: Array of bytes representing audio.
+:return sample_size: Size of each sample.
+"""
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -136,47 +138,39 @@ def save_recording(frames, sampling_width, output_file):
     wf.close()
 
 
-def get_text(audio_path):
-    """
-    Transcribe audio into text.
+class SpeechRecognition:
+    def __init__(self):
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        logger.info(f"Speech recognition device: {device}")
 
-    :param audio_path: Path to audio file.
-    :return prediction: Prediction of transcribed audio file.
-    """
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+        # Load processor and tokenizer
+        model_name = "openai/whisper-base"
+        processor = WhisperProcessor.from_pretrained(model_name)
+        tokenizer = WhisperTokenizer.from_pretrained(model_name, language="german")
 
-    # Load processor and tokenizer
-    model = "openai/whisper-base"
-    processor = WhisperProcessor.from_pretrained(model)
+        self.forced_decoder_ids = processor.get_decoder_prompt_ids(language="german", task="transcribe")
 
-    tokenizer = WhisperTokenizer.from_pretrained(model, language="german")
-    forced_decoder_ids = processor.get_decoder_prompt_ids(language="german", task="transcribe")
+        # Create pipeline for Long-Form Transcription
+        self.pipeline = pipeline('automatic-speech-recognition',
+                                 model=model_name,
+                                 tokenizer=tokenizer,
+                                 chunk_length_s=30,
+                                 device=device)
 
-    # Create pipeline for Long-Form Transcription
-    whisper_pipeline = pipeline('automatic-speech-recognition',
-                                model=model,
-                                tokenizer=tokenizer,
-                                chunk_length_s=30,
-                                device=device)
+    def get_audio_to_text(self):
+        """
+        Record and transcribe audio into text.
 
-    prediction = whisper_pipeline(audio_path,
-                                  batch_size=8,
-                                  generate_kwargs={"forced_decoder_ids": forced_decoder_ids})["text"]
-    return prediction
+        :return transcription: Transcribed recording.
+        """
+        audio_frames, sample_size = record_speech()
 
+        output_file = "/tmp/output.wav"
+        save_recording(audio_frames, sample_size, output_file)
 
-def get_audio_to_text():
-    """
-    Record and transcribe speech.
+        transcription = self.pipeline(output_file,
+                                      batch_size=8,
+                                      generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids})["text"]
+        # TODO: Fix writing errors in transcription.
 
-    :return transcription: Transcribed recording.
-    """
-    audio_frames, sample_size = record_speech()
-
-    output_file = "/tmp/output.wav"
-    save_recording(audio_frames, sample_size, output_file)
-
-    transcription = get_text(output_file)
-    # TODO: Fix writing errors in transcription.
-
-    return transcription
+        return transcription
