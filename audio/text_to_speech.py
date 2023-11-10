@@ -48,5 +48,8 @@ def get_audio(input_text):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    logger.disabled = False
+
     text_input = """Hallo, wie geht es dir? Dies ist ein Test-Text. Auf geht's!"""
     get_audio(text_input)

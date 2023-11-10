@@ -1,4 +1,3 @@
-import logging
 import time
 import evaluation
 from questions import get_questions
@@ -62,7 +61,7 @@ def setup(exam_parameters):
 
 
 def predef_question():
-    # Get predefined question TODO: Probabilities
+    # Get predefined question TODO: Probabilities, not same question twice
     predefined = get_questions.question_ke6()
     ask_question(predefined["question"])
 
@@ -144,4 +143,7 @@ def start_exam(exam_parameters):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    logger.disabled = False
+
     start_exam({"name": "Luna", "time": 10, "female": False, "male": False, "logging": True})
