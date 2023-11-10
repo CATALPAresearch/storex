@@ -87,6 +87,8 @@ def get_answer_from_db(query):
     directory = os.path.dirname(__file__)
     vectorstore_path = (os.path.join(directory, 'data/vectorStore'))
 
+    # TODO: Topic extraction (maybe different database splitting, e.g. not at \n?)
+
     question_answering(query, vectorstore_path)
 
     answer, sources = text_generation(question, vectorstore_path)

@@ -177,7 +177,7 @@ def similarity(student_answer, correct_answer):
 
 if __name__ == '__main__':
     # Sample student answer and correct answer
-    student_answer = "Das Problem der schlechten Tracebarkeit ist eine neue Automarke"
+    student_answer = "Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Das Lokalitätsprinzip wird gebrochen und dies für zur Unerbersichtlichkeit."
     correct_answer = "Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das Verstehen und Debuggen von Programmen."
 
     similarity(student_answer, correct_answer)
