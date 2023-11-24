@@ -51,6 +51,9 @@ class ExamManager:
         self.transcription = SpeechRecognition()
         self.evaluation = Evaluator()
 
+        # Set specific topics to be targeted for questions
+        self.targets = []
+
     def speak(self, text):
         """Output text via speaker and terminal."""
         colours.print_blue(text)
@@ -79,7 +82,7 @@ class ExamManager:
                 colours.print_green(correct)
                 self.next_question = QuestionType.PREDEFINE
 
-            case 1:  # No or too short answer
+            case 1:  # No answer or really short answer
                 self.speak("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
                 self.next_question = QuestionType.REPEAT
 
@@ -112,7 +115,7 @@ class ExamManager:
         # self.get_feedback(question_and_answer["answer"], answer)
 
         self.next_question = QuestionType.PREDEFINE
-        targets = []
+
         repeated = False
 
         # Match next question type while the exam time is not up

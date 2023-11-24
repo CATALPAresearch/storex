@@ -37,24 +37,28 @@ match args["module"]:
 
     case "evaluation":
         from evaluation import Evaluator
-        # Sample student answer and correct answer
+
+        # Sample student answer, correct answer and keywords
         test_student = "Das Problem der schlechten Tracebarkeit entsteht durch das Brechen des Lokalitätsprinzips."
         test_correct = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die "
                         "Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und "
                         "bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im "
-                        "Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext "
-                        "und erschwerte das Verstehen und Debuggen von Programmen.")
+                        "Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im"
+                        "Programmtext und erschwerte das Verstehen und Debuggen von Programmen.")
         test_english = ("Supervised learning is the machine learning task of learning a function that maps an input to "
-                        "an output based on example input-output pairs. It infers a function from labeled training data "
-                        "consisting of a set of training examples. In supervised learning, each example is a pair "
-                        "consisting of an input object (typically a vector) and a desired output value (also called the "
-                        "supervisory signal). A supervised learning algorithm analyzes the training data and produces an "
-                        "inferred function, which can be used for mapping new examples. An optimal scenario will allow "
-                        "for the algorithm to correctly determine the class labels for unseen instances. This requires "
-                        "the learning algorithm to generalize from the training data to unseen situations in a "
-                        "'reasonable' way (see inductive bias).")
+                        "an output based on example input-output pairs. It infers a function from labeled training "
+                        "data consisting of a set of training examples. In supervised learning, each example is a pair "
+                        "consisting of an input object (typically a vector) and a desired output value (also called "
+                        "the supervisory signal). A supervised learning algorithm analyzes the training data and "
+                        "produces an inferred function, which can be used for mapping new examples. An optimal "
+                        "scenario will allow for the algorithm to correctly determine the class labels for unseen "
+                        "instances. This requires the learning algorithm to generalize from the training data to "
+                        "unseen situations in a 'reasonable' way (see inductive bias).")
+        test_keywords = ['dynamisch', 'Goto', 'Lokalitätsprinzip', 'Unterprogramm', 'Binden', 'Debuggen']
+
         evaluator = Evaluator()
-        evaluator.get_missing_keys(test_correct, test_student)
+        # evaluator.get_missing_keys(test_correct, test_student)
+        evaluator.evaluate_keywords(test_keywords, test_student)
 
     case _:
         raise ValueError("Given module does not exist.")
