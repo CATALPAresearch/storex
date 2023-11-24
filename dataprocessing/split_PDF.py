@@ -1,3 +1,4 @@
+import os
 import PyPDF2
 import re
 
@@ -6,8 +7,10 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.disabled = False
 
-INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf/Kurstext_OOP.pdf'
-OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_raw/'
+directory = os.path.dirname(os.path.dirname(__file__))
+INPUT_PATH = os.path.join(directory, 'data/pdf/Kurstext_OOP.pdf')
+OUTPUT_PATH = os.path.join(directory, 'data/chapters_raw/')
+
 code_number = 1679
 footnote_number = 95
 

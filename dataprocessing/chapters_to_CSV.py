@@ -1,9 +1,11 @@
-import glob
 import csv
+import glob
+import os
 import re
 
-INPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/chapters_processed"
-OUTPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/processed/chapters.csv"
+directory = os.path.dirname(os.path.dirname(__file__))
+INPUT_FILE = os.path.join(directory, 'data/chapters_processed')
+OUTPUT_FILE = os.path.join(directory, 'data/processed/chapters.csv')
 
 count = 0
 # Get text from txt files

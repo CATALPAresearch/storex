@@ -1,21 +1,23 @@
-import glob
 import csv
+import glob
+import os
 
 from langchain.llms import HuggingFaceHub
 from langchain import LLMChain
 from langchain.prompts.few_shot import FewShotPromptTemplate
 from langchain.prompts.prompt import PromptTemplate
 
-CONTEXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters'
-OUTPUT_FILE = '/home/luna/workspace/Dialogsteuerung/data/chapters_processed/chapters.csv'
+directory = os.path.dirname(os.path.dirname(__file__))
+CONTEXT_PATH = os.path.join(directory, 'data/chapters_raw')
+OUTPUT_FILE = os.path.join(directory, 'data/processed/chapters_automated.csv')
 
 repo_id = 'tiiuae/falcon-40b'
-
 llm = HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperatur": 0, "max_length": 1000})
 
 template = """Proofread and edit this text for errors: {context}
 
 Here's the corrected and edited text in German:"""
+
 prompt = PromptTemplate(template=template, input_variables=["context"])
 llm_chain = LLMChain(prompt=prompt, llm=llm)
 

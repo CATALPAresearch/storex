@@ -1,9 +1,11 @@
 """
-Script to process raw QuAD file for Question Generation format
-You need to run `python -m spacy download de_core_news_sm`.
-Split when uploading to dataset hub by
+Script to process raw QuAD file for Question Generation format.
 
-gsplit -l 1500 -d --additional-suffix=.jsonl train.jsonl train
+Run the following command beforehand, for downloading the german splitter:
+    python -m spacy download de_core_news_sm
+
+Split when uploading to dataset hub by:
+    gsplit -l 1500 -d --additional-suffix=.jsonl train.jsonl train
 """
 import json
 import os
@@ -13,12 +15,12 @@ from glob import glob
 from tqdm import tqdm
 from typing import Dict
 
-
 SPLITTER = spacy.load('de_core_news_sm')
 HIGHLIGHT_TOKEN = '<hl>'
 
-INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/raw/QuA_Einsendeaufgaben.jsonl'
-OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/processed/'
+directory = os.path.dirname(os.path.dirname(__file__))
+INPUT_PATH = os.path.join(directory, 'data/raw/QuA_Einsendeaufgaben.jsonl')
+OUTPUT_PATH = os.path.join(directory, 'data/processed/')
 OUTPUT_FILE = 'train'
 
 

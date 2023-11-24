@@ -1,17 +1,20 @@
+import os
 import torch
 from langchain.document_loaders import PyPDFLoader, DirectoryLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS  # Try CHROMA?
 
-PDF_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf'
-TXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_processed'
-PDF_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromPdf'
-TXT_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxtGerman'
-DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore'
+directory = os.path.dirname(os.path.dirname(__file__))
+PDF_PATH = os.path.join(directory, 'data/pdf')
+TXT_PATH = os.path.join(directory, 'data/chapters_processed')
+DB_FAISS_PATH = os.path.join(directory, 'data/vectorStore')
+
+# PDF_DB_FAISS_PATH = os.path.join(DB_FAISS_PATH, 'from_pdf')
+# TXT_DB_FAISS_PATH = os.path.join(DB_FAISS_PATH, 'from_txt')
 
 
-def get_doc_pdf():
+def get_doc_from_pdf():
     """
     Read pdf documents.
 
@@ -22,7 +25,7 @@ def get_doc_pdf():
     return documents
 
 
-def get_doc_txt():
+def get_doc_from_txt():
     """
     Read textfiles.
 
@@ -45,14 +48,16 @@ def create_vector_db(documents):
     split_text = text_splitter.split_documents(documents)
     # docs = [langchain.docstore.document.Document(page_content=t) for t in split_text[:len(split_text)]]
 
-    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
+    embeddings = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
+                                       # Or: model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
                                        model_kwargs={'device': device})
 
     db = FAISS.from_documents(split_text, embeddings)
     db.save_local(DB_FAISS_PATH)
+    print(f"Database saved to {DB_FAISS_PATH}")
 
 
 if __name__ == '__main__':
-    # texts = get_doc_pdf()
-    texts = get_doc_txt()
+    # texts = get_doc_from_pdf()
+    texts = get_doc_from_txt()
     create_vector_db(texts)
