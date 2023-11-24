@@ -93,6 +93,7 @@ class ExamManager:
 
             case 4:  # The answer is missing topics
                 # TODO: Get missing topics and give feedback
+                missing_topics = self.evaluation.get_missing_keys(correct_answer, student_answer)
                 self.next_question = QuestionType.GENERATED
 
             case _:
@@ -141,10 +142,12 @@ class ExamManager:
 
                 case 2:  # Repeat question once due to silence or no entailment
                     if repeated is False:
+                        # TODO: Frage mittels LLM umformulieren
                         answer = self.ask_question(self.last_question["question"])
                         self.get_feedback(self.last_question["answer"], answer)
                         repeated = True
                     else:
+                        # TODO: Hilfestellung geben
                         self.next_question = QuestionType.GENERATED
 
                 case _:

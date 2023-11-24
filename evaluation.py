@@ -16,10 +16,11 @@ logger = logging.getLogger()
 
 class Evaluator:
     def __init__(self):
-        # Load a sentence similarity model
+        # Load a sentence similarity model, try: "paraphrase-multilingual-MiniLM-L12-v2"
         self.similarity_model = SentenceTransformer('LLukas22/all-MiniLM-L12-v2-embedding-all')
 
-        classifier_model = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"  # Try morit/xlm-t-roberta-base-mnli-xnli?
+        # Load a classifier model, try morit/xlm-t-roberta-base-mnli-xnli?
+        classifier_model = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"
         self.congruity_pipeline = pipeline("text-classification", model=classifier_model)
         self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model)
 
@@ -37,7 +38,7 @@ class Evaluator:
 
     def evaluate_answer(self, correct_answer, student_answer):
         """
-        Compare the students answer with the correct answer (with t5 or 'tiiuae/falcon-40b'?)
+        Compare the students answer with the correct answer.
 
         :param correct_answer: Question-answer pair.
         :param student_answer: Answer given by the student.
@@ -68,8 +69,6 @@ class Evaluator:
             feedback = FeedbackType.MISSING_TOPIC
         return feedback
 
-        # get_key_phrases(correct_answer, student_answer)
-
         # TODO: Topic extraction and comparison or LDA
         # Load a text-generation model on the hub
         # llm = HuggingFaceHub(repo_id='google/flan-t5-large',
@@ -91,7 +90,7 @@ class Evaluator:
 
     def check_similarity(self, correct_answer, student_answer):
         """
-        Semantic textual similarity search (also try: intfloat/multilingual-e5-small)
+        Find the semantic similarity between two paragraphs.
 
         :param correct_answer: Correct answer.
         :param student_answer: Answer given by the student.
@@ -109,8 +108,8 @@ class Evaluator:
         """
         Check if the concatenated answers contain a contradiction or entail each other.
 
-        :param correct_answer:
-        :param student_answer:
+        :param correct_answer: Correct answer.
+        :param student_answer: Answer given by the student.
         :return: Congruity
         """
         # Check entailment in concatenated answers
@@ -139,6 +138,19 @@ class Evaluator:
         accuracy = self.accuracy_pipeline(student_answer, keys)
         logger.info(f"Accuracy: {accuracy}")
         return accuracy
+
+    def get_keys(self, paragraph):
+        from keybert import KeyBERT
+
+        sentence_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+        key_model = KeyBERT(sentence_model)
+        keyphrases = key_model.extract_keywords(paragraph, keyphrase_ngram_range=(1, 2))  #stop_words='german'
+        print(keyphrases)
+
+    def get_missing_keys(self, correct_answer, student_answer):
+        self.get_keys(student_answer)
+        self.get_keys(correct_answer)
+        # TODO: Compare
 
 
 def get_key_phrases(paragraph):
