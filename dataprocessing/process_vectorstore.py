@@ -1,9 +1,10 @@
 import os
 import torch
+
 from langchain.document_loaders import PyPDFLoader, DirectoryLoader, TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS  # Try CHROMA?
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.vectorstores import FAISS
 
 directory = os.path.dirname(os.path.dirname(__file__))
 PDF_PATH = os.path.join(directory, 'data/pdf')
