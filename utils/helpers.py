@@ -5,8 +5,8 @@ from enum import IntEnum
 
 
 class QuestionType(IntEnum):
-    PREDEFINED = 0
-    GENERATED = 1
+    PREDEFINE = 0
+    GENERATE = 1
     REPEAT = 2
 
 
