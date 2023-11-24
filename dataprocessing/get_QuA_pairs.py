@@ -1,7 +1,7 @@
 import glob
 import re
 
-INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/'
+INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_raw/'
 
 
 def read_txt(chapter_file):

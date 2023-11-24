@@ -7,7 +7,7 @@ logger = logging.getLogger()
 logger.disabled = False
 
 INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf/Kurstext_OOP.pdf'
-OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/'
+OUTPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_raw/'
 code_number = 1679
 footnote_number = 95
 

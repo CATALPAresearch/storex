@@ -2,7 +2,7 @@ import glob
 import csv
 import re
 
-INPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/chapters/processed_chapters"
+INPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/chapters_processed"
 OUTPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/processed/chapters.csv"
 
 count = 0

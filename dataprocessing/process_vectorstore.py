@@ -5,7 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS  # Try CHROMA?
 
 PDF_PATH = '/home/luna/workspace/Dialogsteuerung/data/pdf'
-TXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters/processed_chapters'
+TXT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_processed'
 PDF_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromPdf'
 TXT_DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore/fromTxtGerman'
 DB_FAISS_PATH = '/home/luna/workspace/Dialogsteuerung/data/vectorStore'
