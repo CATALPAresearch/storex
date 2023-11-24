@@ -2,10 +2,12 @@
 File for answer evaluation.
 """
 import torch
+import test_LSA
+import re
 
+from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer, util
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline, BertForMaskedLM, BertTokenizer, \
-    BertConfig, BertModel
+from transformers import pipeline, BertTokenizer, BertConfig, BertModel
 from utils.helpers import FeedbackType
 
 import logging
@@ -14,8 +16,35 @@ logger = logging.getLogger()
 # os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 
+def preprocess_text(text):
+    """
+    Preprocesses text by removing non-alphanumeric characters, extra whitespaces, german umlauts and stopwords and
+    making all words lowercase.
+
+    :param text: Unprocessed text.
+    :return text: Preprocessed text.
+    """
+    # Remove non-alphanumeric characters (except for whitespaces)
+    text = re.sub(r'[^ \w+]', '', text)
+    # Make all words lower case and strip extra whitespaces
+    text = text.lower().strip()
+    # Replace german umlauts
+    umlauts = {ord('ä'): 'ae', ord('ü'): 'ue', ord('ö'): 'oe', ord('ß'): 'ss'}
+    text = text.translate(umlauts)
+
+    # TODO: Do I need stopword removal, Stemming, Lemmatization?
+
+    return text
+
+
 class Evaluator:
+    """
+    Class which evaluates given answers by finding contradictions, checking the similarity, and finding missing topics.
+    """
     def __init__(self):
+        """
+        Initializes the similarity and classifier models used for answer evaluation.
+        """
         # Load a sentence similarity model, try: "paraphrase-multilingual-MiniLM-L12-v2"
         self.similarity_model = SentenceTransformer('LLukas22/all-MiniLM-L12-v2-embedding-all')
 
@@ -24,21 +53,43 @@ class Evaluator:
         self.congruity_pipeline = pipeline("text-classification", model=classifier_model)
         self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model)
 
-    def evaluate_predefined_question(self, question_keyword, student_answer):
-        keywords = question_keyword['keywords']
-        missing_keys = []
-        for word in keywords:
-            if word not in student_answer:
-                missing_keys.append(word)
+    def evaluate_keywords(self, keywords, student_answer):
+        """
+        Checks if the students answer contains the given keywords and returns the accuracy of the missing topics.
 
+        :param keywords: Main keywords from the correct answer.
+        :param student_answer: Answer given by the student.
+        :return missing_topics:
+        """
+        processed_answer = preprocess_text(student_answer)
+        missing_keys = []
+        missing_topics = []
+
+        # Check if keywords are directly mentioned in the students answer by searching in the preprocessed answer for
+        # the preprocessed keywords
+        for word in keywords:
+            processed_word = preprocess_text(word)
+            if not re.search(rf"{processed_word}", processed_answer):
+                missing_keys.append(word)
+            else:
+                logger.info(f"Keyword '{word}' found!")
+
+        # Check if keywords are indirectly mentioned in the students answer by checking the accuracy with which the
+        # students answer hits the topics represented by the keywords
         if missing_keys:
-            print(missing_keys)
-            logger.info("Non-mentioned keywords: " + str(missing_keys))
+            logger.info(f"Non-mentioned keywords: {missing_keys}")
             accuracy = self.check_accuracy(missing_keys, student_answer)
+            # Add missing topics starting from a threshold of accuracy
+            for topic in accuracy:
+                if topic[1] < 0.2:  # TODO: What is a good threshold for accuracy?
+                    missing_topics.append(topic[0])
+
+        logger.info(f"Missing topics: {missing_topics}")
+        return missing_topics
 
     def evaluate_answer(self, correct_answer, student_answer):
         """
-        Compare the students answer with the correct answer.
+        Compares the students answer with the correct answer.
 
         :param correct_answer: Question-answer pair.
         :param student_answer: Answer given by the student.
@@ -90,7 +141,7 @@ class Evaluator:
 
     def check_similarity(self, correct_answer, student_answer):
         """
-        Find the semantic similarity between two paragraphs.
+        Finds the semantic similarity between two paragraphs.
 
         :param correct_answer: Correct answer.
         :param student_answer: Answer given by the student.
@@ -106,7 +157,7 @@ class Evaluator:
 
     def check_congruity(self, correct_answer, student_answer):
         """
-        Check if the concatenated answers contain a contradiction or entail each other.
+        Checks if the concatenated answers contain a contradiction or entail each other.
 
         :param correct_answer: Correct answer.
         :param student_answer: Answer given by the student.
@@ -124,26 +175,27 @@ class Evaluator:
         # logits = model(**inputs).logits
         # probs = torch.softmax(logits, dim=1)
         # probs = probs[..., [0]].tolist()
-        # print("probs", probs)
+        # logger.info(f"Probs: {probs}")
 
     def check_accuracy(self, keys, student_answer):
         """
-        Check if the keywords are accurately represented in the students answer.
+        Checks if the missing keywords are accurately represented in the students answer.
 
-        :param keys:
-        :param student_answer:
-        :return: Congruity
+        :param keys: Keywords from the correct answer which are not mentioned in the students answer directly.
+        :param student_answer: Answer given by the student.
+        :return accuracy:
         """
-        # Check accuracy
-        accuracy = self.accuracy_pipeline(student_answer, keys)
-        logger.info(f"Accuracy: {accuracy}")
+        # Check the accuracy of the keys for the student answer
+        accuracy_scores = self.accuracy_pipeline(student_answer, keys)
+        accuracy = list(zip(accuracy_scores.get('labels'), accuracy_scores.get('scores')))
+        logger.info(f"Accuracy per keyword: {accuracy}")
+
         return accuracy
 
     def get_keys(self, paragraph):
-        from keybert import KeyBERT
-
+        """Gets the topic more than the actual keywords."""
         sentence_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
-        key_model = KeyBERT(sentence_model)
+        key_model = KeyBERT(self.similarity_model)
         keyphrases = key_model.extract_keywords(paragraph, keyphrase_ngram_range=(1, 2))  #stop_words='german'
         print(keyphrases)
 
@@ -154,6 +206,9 @@ class Evaluator:
 
 
 def get_key_phrases(paragraph):
+    """
+    Get the attention of each word in a paragraph.
+    """
     # Load a pre-trained BERT model and tokenizer with multi-head attention layer
     model_name = 'dbmdz/bert-base-german-uncased'  # 'bert-base-multilingual-uncased'
 
@@ -208,24 +263,3 @@ def get_key_phrases(paragraph):
     # Find the top-k words with the highest mean attention scores
     top_words = [tokens[i] for i in top_indices]
     print(f"Top {top_k} attended words in the input: {top_words}")
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    logger.disabled = False
-
-    # Sample student answer and correct answer
-    # paragraph = """Klassen sind die Module der objektorientierten Programmierung. Die Menge der Module und damit das Programm werden durch die Vererbungshierarchie weiter strukturiert. Parallel dazu (und weitgehend, bis auf die Vererbung von Beziehungen unabhängig) gibt es noch eine Struktur, die durch das Bestehen von Beziehungen zwischen Klassen (genauer: das Bestehen der Möglichkeit von Beziehungen zwischen Objekten der Klassen; s. Kapitel 2 in Kurseinheit 1) geprägt ist. Diese ist jedoch nicht hierarchisch und insgesamt eher unorganisiert, weshalb sie sich nicht zur systematischen Programmorganisation eignet. Außerdem besteht ein gewisser Konflikt zwischen der Hierarchie der Subklassenbeziehung und den Beziehungen zwischen Objekten: Wenn man einen Teilbaum der Vererbungshierarchie herauslöst, trennt man damit praktisch immer Beziehungen zwischen Mitgliedern des Teilbaums und anderen. Die Klassenhierarchie stellt also insbesondere keine Form der hierarchischen Modularisierung dar."""
-
-    # Sample student answer and correct answer
-    student = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Das"
-               "Lokalitätsprinzip wird gebrochen und dies für zur Unübersichtlichkeit.")
-    correct = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die"
-               "Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht"
-               "dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe"
-               "beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das"
-               "Verstehen und Debuggen von Programmen.")
-
-    evaluator = Evaluator()
-    evaluator.evaluate_answer(correct, student)
-    # get_key_phrases(correct)
