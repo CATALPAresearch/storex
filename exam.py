@@ -77,7 +77,7 @@ class ExamManager:
                 if not self.no_audio:
                     self.audio.get_audio(correct)
                 colours.print_green(correct)
-                self.next_question = QuestionType.PREDEFINED
+                self.next_question = QuestionType.PREDEFINE
 
             case 1:  # No or too short answer
                 self.speak("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
@@ -94,7 +94,7 @@ class ExamManager:
             case 4:  # The answer is missing topics
                 # TODO: Get missing topics and give feedback
                 missing_topics = self.evaluation.get_missing_keys(correct_answer, student_answer)
-                self.next_question = QuestionType.GENERATED
+                self.next_question = QuestionType.GENERATE
 
             case _:
                 raise ValueError(f"Cannot assign {result}.")
@@ -111,7 +111,7 @@ class ExamManager:
         # answer = self.ask_question(question_and_answer["question"])
         # self.get_feedback(question_and_answer["answer"], answer)
 
-        self.next_question = QuestionType.PREDEFINED
+        self.next_question = QuestionType.PREDEFINE
         targets = []
         repeated = False
 
@@ -131,7 +131,7 @@ class ExamManager:
                 case 1:  # Generate specific question
                     repeated = False
                     question_and_answer = "What is OOP?"
-                    self.next_question = QuestionType.PREDEFINED
+                    self.next_question = QuestionType.PREDEFINE
 
                     # TODO: Find answer for target keyword in database
                     # TODO: Generate question for target keyword
@@ -148,7 +148,7 @@ class ExamManager:
                         repeated = True
                     else:
                         # TODO: Hilfestellung geben
-                        self.next_question = QuestionType.GENERATED
+                        self.next_question = QuestionType.GENERATE
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
