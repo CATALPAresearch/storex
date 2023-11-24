@@ -1,8 +1,10 @@
-import json
 import csv
+import json
+import os
 
-INPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/processed/train.jsonl"
-OUTPUT_FILE = "/home/luna/workspace/Dialogsteuerung/data/processed/train.csv"
+directory = os.path.dirname(os.path.dirname(__file__))
+INPUT_FILE = os.path.join(directory, 'data/processed/train.jsonl')
+OUTPUT_FILE = os.path.join(directory, 'data/processed/train.csv')
 
 count = 0
 # Get JSON data from JSONL

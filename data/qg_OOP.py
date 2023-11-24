@@ -1,5 +1,5 @@
-import json
 import datasets
+import json
 
 logger = datasets.logging.get_logger(__name__)
 _VERSION = "1.0"
@@ -43,7 +43,7 @@ class QGSquad(datasets.GeneratorBasedBuilder):
                 }
             ),
             supervised_keys=None,
-            homepage="https://github.com/asahi417/lm-question-generation"
+            # homepage="https://github.com/asahi417/lm-question-generation"
         )
 
     def _split_generators(self, dl_manager):

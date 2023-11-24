@@ -1,7 +1,9 @@
 import glob
+import os
 import re
 
-INPUT_PATH = '/home/luna/workspace/Dialogsteuerung/data/chapters_raw/'
+directory = os.path.dirname(os.path.dirname(__file__))
+INPUT_PATH = os.path.join(directory, 'data/chapters_raw/')
 
 
 def read_txt(chapter_file):
