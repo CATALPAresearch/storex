@@ -6,7 +6,8 @@ import time
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
 from evaluation import Evaluator
-from questions.question_manager import QuestionManager
+from questions.question_generation import QuestionGenerator
+from questions.question_managing import QuestionManager
 from utils import colours
 from utils.helpers import QuestionType, FeedbackType
 
@@ -24,6 +25,7 @@ class ExamManager:
 
         :param exam_parameters: Dictionary with parameters for the exam.
         """
+        logger.info(f"Setting parameters: {exam_parameters}")
         # Set student parameters
         self.student_name = exam_parameters["name"]
         self.address_form = ''
@@ -31,7 +33,6 @@ class ExamManager:
             self.address_form = "Frau"
         elif exam_parameters["male"]:
             self.address_form = "Herr"
-        logger.info(f"Parameters are set: {exam_parameters}")
 
         # Set duration of the exam
         duration = int(exam_parameters["time"]) * 60
@@ -45,7 +46,7 @@ class ExamManager:
         self.next_question = None
 
         # Set audio models and evaluator
-        self.no_audio = True if exam_parameters["no-audio"] else False
+        self.no_audio = True if exam_parameters["no_audio"] else False
         if not self.no_audio:
             self.audio = TextToSpeech()
         self.transcription = SpeechRecognition()
@@ -68,8 +69,10 @@ class ExamManager:
         colours.print_yellow(answer)
         return answer
 
-    def get_feedback(self, correct_answer, student_answer):
-        """Get and give feedback to the student comparing their answer to the correct answer."""
+    def get_feedback(self, correct_answer, student_answer, keywords=None):
+        """
+        Get feedback by comparing the students answer to the correct answer.
+        """
         result = self.evaluation.evaluate_answer(correct_answer, student_answer)
         logger.info(f"Result: {result.name}")
 
@@ -95,8 +98,10 @@ class ExamManager:
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
-                # TODO: Get missing topics and give feedback
-                missing_topics = self.evaluation.get_missing_keys(correct_answer, student_answer)
+                # TODO: Get missing topics
+                if not keywords:
+                    keywords = self.evaluation.get_keywords(correct_answer)  # TODO: Paragraph as input?
+                self.targets.append(self.evaluation.evaluate_keywords(keywords, student_answer))
                 self.next_question = QuestionType.GENERATE
 
             case _:
@@ -129,12 +134,10 @@ class ExamManager:
                     repeated = False
                     question_and_answer = self.qm.get_question()
                     answer = self.ask_question(question_and_answer["question"])
-                    self.get_feedback(question_and_answer["answer"], answer)
+                    self.get_feedback(question_and_answer["answer"], answer, question_and_answer["keywords"])
 
                 case 1:  # Generate specific question
                     repeated = False
-                    question_and_answer = "What is OOP?"
-                    self.next_question = QuestionType.PREDEFINE
 
                     # TODO: Find answer for target keyword in database
                     # TODO: Generate question for target keyword
@@ -142,6 +145,9 @@ class ExamManager:
                     # ask_question(specific["question"])
                     # answer = get_answer()
                     # get_feedback(specific["answer"], answer)
+
+                    question_and_answer = "What is OOP?"
+                    self.next_question = QuestionType.PREDEFINE
 
                 case 2:  # Repeat question once due to silence or no entailment
                     if repeated is False:
@@ -161,6 +167,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 5, "female": False, "male": False, "no-audio": True}
+    dev_parameters = {"name": "Luna", "time": 5, "female": False, "male": False, "no_audio": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

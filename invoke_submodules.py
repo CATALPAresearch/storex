@@ -20,7 +20,7 @@ if not args["module"]:
 
 match args["module"]:
     case "get_questions":
-        from questions.question_manager import QuestionManager
+        from questions.question_managing import QuestionManager
         qm = QuestionManager()
         print(qm.get_question())
 

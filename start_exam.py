@@ -18,8 +18,8 @@ logger.disabled = True
 # Parse command line arguments
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
 parser.add_argument("-n", "--name", help="Name to be used to address you during the training exam.")
-parser.add_argument("-t", "--time", default=25, help="Duration of the training exam in minutes between 10 and 60."
-                                                     "Default: 25.")
+parser.add_argument("-t", "--time", default='25', help="Duration of the training exam in minutes between 10 and 60."
+                                                       "Default: 25.")
 parser.add_argument("-f", "--female", action='store_true',
                     help="Form of address 'Frau' will be used during the training exam.")
 parser.add_argument("-m", "--male", action='store_true',

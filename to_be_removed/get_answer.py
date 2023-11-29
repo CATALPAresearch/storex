@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
-from langchain import HuggingFaceHub
+from langchain.llms import HuggingFaceHub
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 
 
@@ -35,7 +35,7 @@ def text_generation(query, vectorstore):
 
     # Load embeddings
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
+    embeddings = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
                                        model_kwargs={'device': device})
 
     # Load vectorstore database and set up as generic retriever
@@ -63,7 +63,7 @@ def text_generation(query, vectorstore):
 def question_answering(query, vectorstore):
     # Load embeddings
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    embeddings = HuggingFaceEmbeddings(model_name='LLukas22/all-MiniLM-L12-v2-embedding-all',
+    embeddings = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
                                        model_kwargs={'device': device})
 
     # Load database and get context for query

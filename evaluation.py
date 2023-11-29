@@ -192,17 +192,11 @@ class Evaluator:
 
         return accuracy
 
-    def get_keys(self, paragraph):
-        """Gets the topic more than the actual keywords."""
-        sentence_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+    def get_keywords(self, paragraph):
+        """Gets the topic TODO: Get the keywords, maybe see test_LSA.extract_keywords"""
         key_model = KeyBERT(self.similarity_model)
         keyphrases = key_model.extract_keywords(paragraph, keyphrase_ngram_range=(1, 2))  #stop_words='german'
-        print(keyphrases)
-
-    def get_missing_keys(self, correct_answer, student_answer):
-        self.get_keys(student_answer)
-        self.get_keys(correct_answer)
-        # TODO: Compare
+        return keyphrases
 
 
 def get_key_phrases(paragraph):

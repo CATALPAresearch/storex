@@ -1,10 +1,11 @@
 """
-File for managing predefined questions.
+Class for managing predefined questions.
 """
 import random
 import questions.questions as questions
 
 
+# TODO: Predefine questions and their probabilities
 class QuestionManager:
     def __init__(self):
         self.question_list = []

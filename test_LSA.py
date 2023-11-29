@@ -186,8 +186,13 @@ if __name__ == '__main__':
     setup_stopwords()
 
     # Sample student answer and correct answer
-    correct_answer = "Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das Verstehen und Debuggen von Programmen."
-    student_answer = "Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Das Lokalitätsprinzip wird gebrochen und dies für zur Unerbersichtlichkeit."
+    correct_answer = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die "
+                      "Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und "
+                      "bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im "
+                      "Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext "
+                      "und erschwerte das Verstehen und Debuggen von Programmen.")
+    student_answer = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Das "
+                      "Lokalitätsprinzip wird gebrochen und dies für zur Unerbersichtlichkeit.")
     paragraph = """56 Das Problem der schlechten Tracebarkeit
                    Spätestens mit der Verfügbarkeit sogenannter Hochsprachen und den gleichzeitig immer größer werdenden Programmen kam die Frage auf, was "gute Programmierung" ausmacht. Eines der Hauptprobleme schlechter Programmierung war schnell identifiziert: die große Diskrepanz zwischen statischem, linearem Programmtext und dynamischem, stark verzweigendem und sich wiederholendem Programmablauf. Eine gute Programmiererin hatte ihre Programme so zu schreiben, dass der Programmtext und der Programmablauf einander möglichst ähnlich waren, genauer gesagt, dass die (statische) Struktur des Programms möglichst viele Rückschlüsse auf seinen (dynamischen) Ablauf zuließ. Man wollte also von den Programmiererinnen Klartext.
                    Ebenso schnell wie das Problem wurde sein Hauptverursacher ausgemacht: die Goto-Anweisung. Sie erlaubt Sprünge von beliebigen Stellen eines Programms an beliebige andere Stellen des Programms und durchbricht dabei auf brutale Art und Weise das äußerst nützliche Lokalitätsprinzip von Programmen: Dinge, die zusammengehören, stehen im Programmtext beieinander. So, und nur so, ist bei der Inspektion des Programmtextes unmittelbar klar, wie man an eine Stelle im Programm gelangt ist und, mindestens ebenso wichtig, wie eine Variable ihren Wert bekommen hat.
