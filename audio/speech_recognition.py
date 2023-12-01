@@ -16,7 +16,7 @@ from utils import colours
 
 import logging
 logger = logging.getLogger()
-# Todo: Check for silence and stopp the recording.
+# Todo: Check for silence and stopp the recording. If only silence, stop after a few seconds and return a message.
 
 # TODO Remove:
 #  ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
