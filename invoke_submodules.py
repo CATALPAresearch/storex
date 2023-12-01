@@ -1,5 +1,5 @@
 """
-Script for invoking the submodules as standalone for development purposes.
+Script for invoking the submodules as standalone functionalities for development and testing purposes.
 """
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
