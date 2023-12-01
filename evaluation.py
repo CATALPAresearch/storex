@@ -96,46 +96,29 @@ class Evaluator:
         :return feedback:
         """
         feedback = None
-        # Silence is turned into a short sentence by speech recognition LLMs
-        if len(student_answer) < 30:  # TODO: What is the minimum amount of words counting as an answer?
+        # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
+        if len(student_answer) < 20:  # TODO: What is the minimum amount of letters counting as an answer?
             feedback = FeedbackType.SILENCE
             return feedback
 
-        # Text classification with MNLI to check the congruity of the answer
+        # Check the congruity of the answer via text classification (MNLI)
         congruity = self.check_congruity(correct_answer, student_answer)
         if congruity[0]['label'] != 'ENTAILMENT':
-            # OFF_TOPIC for neutral entailment
+            # Set OFF_TOPIC for neutral entailment
             if congruity[0]['label'] == 'NEUTRAL':
                 feedback = FeedbackType.OFF_TOPIC
-            # CONTRADICTS for contradicting entailment
+            # Set CONTRADICTS for contradicting entailment
             if congruity[0]['label'] == 'CONTRADICTION':
                 feedback = FeedbackType.CONTRADICTS
             return feedback
 
-        # Similarity with similarity search LLM
+        # Check the similarity with similarity search LLM
         similarity = self.check_similarity(correct_answer, student_answer)
         if similarity > 0.75:  # TODO: What similarity is similar??
             feedback = FeedbackType.CORRECT
         else:
             feedback = FeedbackType.MISSING_TOPIC
         return feedback
-
-        # TODO: Topic extraction and comparison or LDA
-        # Load a text-generation model on the hub
-        # llm = HuggingFaceHub(repo_id='google/flan-t5-large',
-        #                      model_kwargs={'temperature': 0,
-        #                                    'max_length': 1024})
-        # # TODO: Antworten aufbereiten, damit sie vergleichbar sind, z.B. keywords suchen? Summary?
-        # template = """Compare the following texts:
-        # "{c_answer}"
-        # and
-        # "{s_answer}"
-        # Here are the differences:"""
-        # # prompt_template = PromptTemplate.from_template(template)
-        # # prompt = prompt_template.format(c_answer=correct_answer, s_answer=student_answer)
-        # prompt = PromptTemplate(template=template, input_variables=['c_answer', 's_answer'])
-        # llm_chain = LLMChain(prompt=prompt, llm=llm)
-        # differences = llm_chain.run({'c_answer': correct_answer, 's_answer': student_answer})
 
         # Identify the mistakes (factual inaccuracy, missing information, structural issues) out off the differences
 
