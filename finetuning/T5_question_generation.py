@@ -8,7 +8,7 @@ import argparse
 import torch
 import lightning as L
 
-from datasets import load_dataset
+from datasets import load_dataset, concatenate_datasets
 from torch.utils.data import Dataset, DataLoader
 from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from transformers import T5Tokenizer, T5ForConditionalGeneration, AdamW
@@ -153,6 +153,21 @@ class T5FineTuner(L.LightningModule):
         return AdamW(self.parameters(), lr=self.args.learning_rate, eps=args.eps)
 
 
+def max_length(column):
+    """
+    Gets the maximum total sequence length for input or target text after tokenization
+    Longer sequences will be truncated and shorter sequences will be padded
+    """
+    datasets = [dataset['train'], dataset['validate']]
+    columns = ['context', 'question_answer']
+    # Get the maximum total sequence length after tokenization
+    tokenized = concatenate_datasets(datasets).map(
+        lambda x: tokenizer(x[column], truncation=True), batched=True, remove_columns=columns)
+    maximum = max([len(x) for x in tokenized['input_ids']])
+    print(f"Max length of {column}: {maximum}")
+    return maximum
+
+
 if __name__ == "__main__":
 
     start_time = time.time()
@@ -168,12 +183,13 @@ if __name__ == "__main__":
         {'additional_special_tokens': ['<answer>', '<context>']}
     )
 
-    print('Preparing dataset...')
-    train_dataset = QGDataset(tokenizer, dataset['train'])
-    validation_dataset = QGDataset(tokenizer, dataset['validate'])
-
-    print('train_dataset: ', len(train_dataset))
-    print('validation_dataset: ', len(validation_dataset))
+    print("Preparing dataset...")
+    max_length_input = max_length('context')
+    max_length_output = max_length('question_answer')
+    train_dataset = QGDataset(tokenizer, dataset['train'], max_length_input, max_length_output)
+    validation_dataset = QGDataset(tokenizer, dataset['validate'], max_length_input, max_length_output)
+    print(f"Train dataset size: {len(train_dataset)}")
+    print(f"Validation dataset size: {len(validation_dataset)}")
 
     print('Initializing model...')
     model = T5FineTuner(model, tokenizer, args)

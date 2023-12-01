@@ -4,6 +4,7 @@ datasets
 langchain
 torch
 numpy
+nltk
 
 # Optimization
 accelerate
@@ -18,3 +19,7 @@ faiss-gpu  # Or: faiss-cpu
 PyPDF2  # For splitPDF.py
 spacy  # For processQuAD.py
 tqdm  # For processQuAD.py
+
+# Finetuning
+evaluate
+rouge_score
