@@ -1,14 +1,16 @@
 """
 Class for training exam conversation manager.
 """
+import random
 import time
 
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
 from evaluation import Evaluator
+from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager
-from utils import colours
+from utils import colours, preprocessing
 from utils.helpers import QuestionType, FeedbackType
 
 import logging
@@ -40,10 +42,15 @@ class ExamManager:
         self.end_time = start_time + duration  # TODO: Add the LLM calculation time to end_time
         # (e.g. end_time = end_time * 1.5)
 
-        # Set question manager
-        self.qm = QuestionManager()
+        # Setup stopwords for preprocessing
+        preprocessing.setup_stopwords()
+
+        # Set question manager and question models
+        self.manager = QuestionManager()
         self.last_question = None
         self.next_question = None
+        self.paraphraser = QuestionParaphraser()
+        self.generator = QuestionGenerator()
 
         # Set audio models and evaluator
         self.no_audio = True if exam_parameters["no_audio"] else False
@@ -98,7 +105,6 @@ class ExamManager:
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
-                # TODO: Get missing topics
                 if not keywords:
                     keywords = self.evaluation.get_keywords(correct_answer)  # TODO: Paragraph as input?
                 self.targets.append(self.evaluation.evaluate_keywords(keywords, student_answer))
@@ -114,10 +120,10 @@ class ExamManager:
         self.speak(greeting)
 
         # TODO: Ask first question
-        question_and_answer = {"question": "Was ist objektorientierte Programmierung?",
-                               "answer": "..."}
-        # answer = self.ask_question(question_and_answer["question"])
-        # self.get_feedback(question_and_answer["answer"], answer)
+        current_question = {'question': "Was ist objektorientierte Programmierung?",
+                            'answer': "..."}
+        # answer = self.ask_question(current_question['question'])
+        # self.get_feedback(current_question['answer'], answer)
 
         self.next_question = QuestionType.PREDEFINE
 
@@ -127,37 +133,33 @@ class ExamManager:
         while time.time() < self.end_time:
             logger.info(f"The next question should be: {self.next_question.name}")
             logger.info(f"Remaining time: {(self.end_time - time.time()) / 60} min")
-            self.last_question = question_and_answer
+            self.last_question = current_question
             match self.next_question.value:
 
                 case 0:  # Ask predefined question
                     repeated = False
-                    question_and_answer = self.qm.get_question()
-                    answer = self.ask_question(question_and_answer["question"])
-                    self.get_feedback(question_and_answer["answer"], answer, question_and_answer["keywords"])
+                    current_question = self.manager.get_question()
+                    answer = self.ask_question(current_question['question'])
+                    self.get_feedback(current_question['answer'], answer, current_question['keywords'])
 
                 case 1:  # Generate specific question
                     repeated = False
+                    if not self.targets:
+                        raise ValueError(f"Question generation was chosen, but not targets were added.")
+                    target = random.choice(self.targets)
+                    current_question = self.generator.generate_question(target)
+                    answer = self.ask_question(current_question['question'])
+                    self.get_feedback(current_question['answer'], answer, current_question['keywords'])
 
-                    # TODO: Find answer for target keyword in database
-                    # TODO: Generate question for target keyword
-                    # specific = generate_questions
-                    # ask_question(specific["question"])
-                    # answer = get_answer()
-                    # get_feedback(specific["answer"], answer)
-
-                    question_and_answer = "What is OOP?"
-                    self.next_question = QuestionType.PREDEFINE
-
-                case 2:  # Repeat question once due to silence or no entailment
-                    if repeated is False:
-                        # TODO: Frage mittels LLM umformulieren
-                        answer = self.ask_question(self.last_question["question"])
-                        self.get_feedback(self.last_question["answer"], answer)
+                case 2:  # Reiterate question due to silence or no entailment
+                    if repeated is False:  # TODO: How often should we reiterate? Currently: Once
+                        current_question = self.last_question
+                        current_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
+                        answer = self.ask_question(current_question['question'])
+                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
                         repeated = True
                     else:
-                        # TODO: Hilfestellung geben
-                        self.next_question = QuestionType.GENERATE
+                        self.next_question = QuestionType.PREDEFINE
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
