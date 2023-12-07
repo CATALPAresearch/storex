@@ -1,30 +1,26 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-import os
-import time
-import copy
+"""
+Script for training a T5 model for question generation with the pytorch.
+"""
 import argparse
+import copy
+import pytorch_lightning
+import time
 import torch
-import lightning as L
 
-from datasets import load_dataset, concatenate_datasets
-from torch.utils.data import Dataset, DataLoader
-from lightning.pytorch.callbacks.early_stopping import EarlyStopping
-from transformers import T5Tokenizer, T5ForConditionalGeneration, AdamW
+from datasets import concatenate_datasets, load_dataset
+from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
+from transformers import AdamW, T5ForConditionalGeneration, T5Tokenizer
 
 
-data_files = {"train": "train.csv", "validate": "validate.csv"}
-dataset = load_dataset('LunaticTanuki/qg_OOP', data_files=data_files)
+# Set model and database paths from the huggingface hub
+pretrained_model = "t5-small"
+finetuned_model = "LunaticTanuki/oop-de-qg-t5-small"
+database = "LunaticTanuki/oop-de-qg"
+data_files = {'train': "train.csv", 'validate': "validate.csv"}
 
-# train_file_path = load_dataset('LunaticTanuki/qg_OOP', data_files="train.csv")
-# validation_file_path = load_dataset('LunaticTanuki/qg_OOP', data_files="validate.csv")
-save_model_path = 'LunaticTanuki/german-qg-mT5-small-OOP'
-save_tokenizer_path = save_model_path
-pretrained_model = 't5-small'
-# pretrained_model = 'lmqg/mt5-small-dequad-qg'
-
+# Set arguments
 args = argparse.Namespace()
 args.num_workers = 0
 args.batch_size = 8
@@ -90,7 +86,7 @@ class QGDataset(Dataset):
             self.targets.append(tokenized_targets)
 
 
-class T5FineTuner(L.LightningModule):
+class T5FineTuner(pytorch_lightning.LightningModule):
 
     def __init__(self, model, tokenizer, args):
         super().__init__()
@@ -169,13 +165,16 @@ def max_length(column):
 
 
 if __name__ == "__main__":
-
     start_time = time.time()
-    L.seed_everything(99)
+    pytorch_lightning.seed_everything(99)
+
+    print("Loading dataset...")
+    dataset = load_dataset(database, data_files=data_files)
+    print(f"Train dataset size: {len(dataset['train'])}")
+    print(f"Validation dataset size: {len(dataset['validate'])}")
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print('Using device:', device)
-
+    print(f"Loading pre-trained model to {device}...")
     print('Loading pre-trained model...')
     model = T5ForConditionalGeneration.from_pretrained(pretrained_model).to(device)
     tokenizer = T5Tokenizer.from_pretrained(pretrained_model)
@@ -188,12 +187,10 @@ if __name__ == "__main__":
     max_length_output = max_length('question_answer')
     train_dataset = QGDataset(tokenizer, dataset['train'], max_length_input, max_length_output)
     validation_dataset = QGDataset(tokenizer, dataset['validate'], max_length_input, max_length_output)
-    print(f"Train dataset size: {len(train_dataset)}")
-    print(f"Validation dataset size: {len(validation_dataset)}")
 
     print('Initializing model...')
     model = T5FineTuner(model, tokenizer, args)
-    trainer = L.Trainer(
+    trainer = pytorch_lightning.Trainer(
         max_epochs=10,
         devices=1,
         accelerator='gpu',
@@ -202,7 +199,7 @@ if __name__ == "__main__":
         callbacks=[EarlyStopping(monitor="val_loss")]
     )
     print('Run learning rate finder...')
-    tuner = L.pytorch.tuner.Tuner(trainer)  # TODO: With tuner possible?
+    tuner = pytorch_lightning.pytorch.tuner.Tuner(trainer)  # TODO: With tuner possible?
     lr_finder = tuner.lr_find(model)
     args.learning_rate = lr_finder.suggestion()
     print('Suggested lr: ', lr_finder.suggestion())
@@ -218,14 +215,20 @@ if __name__ == "__main__":
     trainer.fit(model)
     # trainer.test()
 
-    print('Saving model...')
-    if not os.path.exists(save_model_path):
-        os.makedirs(save_model_path)
-    if not os.path.exists(save_tokenizer_path):
-        os.makedirs(save_tokenizer_path)
-    model.model.save_pretrained(save_model_path)
-    tokenizer.save_pretrained(save_tokenizer_path)
-
     end_time = time.time() - start_time
     print('Total time: %s hours' % (end_time / 60 / 60))
+
+    print("Save finetuned model to the hub...")
+    # Save tokenizer and create model card
+    tokenizer.save_pretrained(finetuned_model)
+    trainer.create_model_card()
+    # Push the results to the hub
+    trainer.push_to_hub()
+
+    # Save model locally
+    # if not os.path.exists(finetuned_model):
+    #     os.makedirs(finetuned_model)
+    # model.model.save_pretrained(finetuned_model)
+    # tokenizer.save_pretrained(finetuned_model)
+
     print('All done.')
