@@ -1,13 +1,12 @@
 """
 File for answer evaluation.
 """
-import torch
-import test_LSA
 import re
+import torch
 
 from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer, util
-from transformers import pipeline, BertTokenizer, BertConfig, BertModel
+from transformers import BertConfig, BertModel, BertTokenizer, pipeline
 from utils.helpers import FeedbackType
 
 import logging
@@ -16,7 +15,7 @@ logger = logging.getLogger()
 # os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 
-def preprocess_text(text):
+def preprocess_text(text):  # TODO: Use preprocessing.preprocess_text()
     """
     Preprocesses text by removing non-alphanumeric characters, extra whitespaces, german umlauts and stopwords and
     making all words lowercase.
@@ -97,7 +96,7 @@ class Evaluator:
         """
         feedback = None
         # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
-        if len(student_answer) < 20:  # TODO: What is the minimum amount of letters counting as an answer?
+        if len(student_answer) < 20:  # TODO: Understand sentences like "Ich weiß es nicht."
             feedback = FeedbackType.SILENCE
             return feedback
 
@@ -120,7 +119,7 @@ class Evaluator:
             feedback = FeedbackType.MISSING_TOPIC
         return feedback
 
-        # Identify the mistakes (factual inaccuracy, missing information, structural issues) out off the differences
+        # Identify the mistakes (factual inaccuracy, missing information, structural issues)
 
     def check_similarity(self, correct_answer, student_answer):
         """

@@ -9,6 +9,11 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import FAISS
+from utils import preprocessing
+
+import logging
+logger = logging.getLogger()
+
 
 # TODO: Remove api token
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
@@ -21,77 +26,58 @@ class QuestionGenerator:
         """
         # Load vectorstore embeddings
         directory = os.path.dirname(os.path.dirname(__file__))
-        self.vectorstore = (os.path.join(directory, 'data/vectorStore'))
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
-
-        self.embedding_model = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
-                                                     model_kwargs={'device': self.device})
+        vectorstore = (os.path.join(directory, 'data/vectorStore'))
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        embedding_model = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
+                                                model_kwargs={'device': device})
         # Load database
-        self.db = FAISS.load_local(self.vectorstore, self.embedding_model)
+        self.db = FAISS.load_local(vectorstore, embedding_model)
 
-        # Load language module for question generation
-        question_llm = HuggingFaceHub(repo_id="dehio/german-qg-t5-drink600")  # "LunaticTanuki/german-qg-mT5-small-OOP"
-
-        # For locally saved models:
-        # llm = HuggingFacePipeline.from_model_id(
-        #          model_id=LOCAL_MODEL_PATH,
-        #          task="text2text-generation")
-
-        # Load question generation prompt from template
-        question_template = """Context: {context}
-
-        Question:"""
-        question_prompt = PromptTemplate(template=question_template, input_variables=["context"])
+        # Load prompt from template
+        template = """Write a question from this paragraph: {context}"""
+        self.prompt = PromptTemplate(template=template, input_variables=["context"])
+        # Load question generation model
+        self.llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base')  # TODO: Try other models
         # Create chain for question generation
-        self.question_chain = LLMChain(prompt=question_prompt, llm=question_llm)
+        self.question_chain = LLMChain(prompt=self.prompt, llm=self.llm)
 
-        # Load language model for answer retrieval
-        self.answer_llm = HuggingFaceHub(repo_id="google/flan-t5-large")  # "deepset/gelectra-base-germanquad"
-        # Load answer retrieval prompt from template
-        answer_template = """Use the following pieces of context to answer the question at the end.
-        If you don't know the answer, just say that you don't know, don't try to make up an answer.
-
-        Context: {context}
-        Question: {question}
-
-        Only returns the helpful answer below and nothing else.
-        Helpful answer in German:
+    def get_question_from_retriever(self, query, k=4):
         """
-        self.answer_prompt = PromptTemplate(template=answer_template, input_variables=['context', 'question'])
+        TODO: remove this function?
+        Retrieve context for a given topic from a FAISS database.
 
-    def answer_question(self, query, retriever):
-        """
-        Retrieve an answer to a given question from a FAISS database.
-
-        :param query: Question to be answered.
-        :param retriever:
+        :param query:
+        :param k:
 
         :return result: Answer to the question.
         :return source_documents: Source documents from the database.
         """
+        # Set up as generic retriever
+        retriever = self.db.as_retriever(search_type="similarity", search_kwargs={'k': k})
+
         # Create the chain for question answering
         answer_chain = RetrievalQA.from_chain_type(
-            llm=self.answer_llm,
+            llm=self.llm,
             chain_type="stuff",  # stuff, map_reduce or map_rerank with k=10
             retriever=retriever,  # context_docs = db.similarity_search(query, k=4)
             return_source_documents=True,
-            chain_type_kwargs={'prompt': self.answer_prompt}
+            chain_type_kwargs={'prompt': self.prompt}
         )
 
         result = answer_chain({'query': query})
-        source_documents = result["source_documents"]
-        result = result["result"]
+        result = result["result"]  # Sources at: result["source_documents"]
+        logger.debug(f"Question: {result}")
+        return result
 
-        if source_documents:
-            result += f"\nQuelle: " + str(source_documents)
-        else:
-            result += f"\nKeine Quellen gefunden!"
-        print(f"Antwort: {result}")
+    def generate_question(self, keyword, k=4):
+        context = self.get_context(keyword, k)  # Todo: Summarize context? End2end, pipeline or multitask?
+        question = self.question_chain.run(context)
+        logger.debug(f"Question: {question}")
 
-        return result, source_documents
-
-    def generate_question(self, context):
-        print(self.question_chain.run(context))  # {"answer": answer, "context": CONTEXT}))
+        answer = ''  # TODO
+        keywords = preprocessing.extract_keywords(context)  # TODO: How many keywords?
+        question_dict = {'question': question, 'answer': context, 'keywords': keywords}
+        return question_dict
 
         # Get predictions with pipeline:
         # model = "deepset/gelectra-large-germanquad"
@@ -108,33 +94,17 @@ class QuestionGenerator:
         # Get context for query
         context_docs = self.db.similarity_search(query, k=k)
         context = ' '.join([doc.page_content for doc in context_docs])
-        print(context)
+        logger.debug(f"Context: {context}")
 
-        # Set up as generic retriever
-        retriever = self.db.as_retriever(search_type="similarity", search_kwargs={'k': k})
-
-        return context, retriever
+        return context
 
 
 if __name__ == '__main__':
-    test_context_1 = (
-        "Ein Literal (von lat. littera, der Buchstabe ) ist eine in der Syntax der Programmiersprache ausgedrückte "
-        "Repräsentation eines Objektes. Literale sind somit textuelle Spezifikationen von Objekten: Wenn der "
-        "Compiler ein Literal übersetzt, erzeugt er daraus — bei der Übersetzung! — das entsprechende Objekt im "
-        "Speicher. Dies steht im Gegensatz zu objekterzeugend en Anweisungen eines Programms, denn diese werden "
-        "erst zur Laufzeit des Programms ausgeführt. Da wir uns mit der programmgesteuerten Erzeugung von Objekten "
-        "aber erst in der nächsten Kurs einheit systematisch befassen, müssen wir hier zunächst mit Objekten mit "
-        "literaler Repräsentation vorlieb nehmen. Wohlgemerkt: Literale repräsentieren Objekte, es sind nicht "
-        "selbst welche.")
-    test_context_2 = (
-        "Literale sind in der Syntax der Programmiersprache ausgedrückte textuelle Spezifikationen von Objekten. Der "
-        "Compiler erzeugt aus einem Literal bei der Übersetzung das entsprechende Objekt im Speicher.")
-    test_query = "Was sind Literale?"
+    logging.basicConfig(level=logging.DEBUG)
+    logger.disabled = False
 
     generator = QuestionGenerator()
-    # generator.generate_question(test_context_1)
-    # generator.generate_question(test_context_2)
 
-    db_context, db_retriever = generator.get_context("Literal", 5)
-    generator.answer_question(test_query, db_retriever)
-    generator.generate_question(db_context)
+    generator.get_question_from_retriever('Geheimnisprinzip', 3)
+    print('-' * 200)
+    generator.generate_question('Geheimnisprinzip', 3)
