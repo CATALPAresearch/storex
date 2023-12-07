@@ -20,7 +20,7 @@ SPLITTER = spacy.load('de_core_news_sm')
 HIGHLIGHT_TOKEN = '<hl>'
 
 directory = os.path.dirname(os.path.dirname(__file__))
-INPUT_PATH = os.path.join(directory, 'data/raw/QuA_Einsendeaufgaben.jsonl')
+INPUT_FILE = os.path.join(directory, 'data/raw/QuA_Einsendeaufgaben.jsonl')
 OUTPUT_PATH = os.path.join(directory, 'data/processed/')
 OUTPUT_FILE = 'train'
 
@@ -93,7 +93,7 @@ def process_single_data(data: Dict):
 if __name__ == '__main__':
     output = OUTPUT_PATH
     os.makedirs(output, exist_ok=True)
-    path = {OUTPUT_FILE: INPUT_PATH}
+    path = {OUTPUT_FILE: INPUT_FILE}
     for k, v in path.items():
         json_data = []
         for _file in sorted(glob(v)):

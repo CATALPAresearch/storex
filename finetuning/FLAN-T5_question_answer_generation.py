@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+"""
+Script for training a Flan-T5 model for the generation of answer-question pairs with the huggingface trainer.
+"""
 import evaluate
 import nltk
 import numpy
-import os
 import time
 import torch
 
@@ -13,19 +12,16 @@ from huggingface_hub.hf_api import HfFolder
 from transformers import (AutoModelForSeq2SeqLM, AutoTokenizer, DataCollatorForSeq2Seq, Seq2SeqTrainer,
                           Seq2SeqTrainingArguments)
 
+
 nltk.download("punkt")
 HfFolder.save_token("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")
-
-# Log into huggingface account on notebooks like Colab
-# from huggingface_hub import notebook_login
-# notebook_login()
-# os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
 # Set model and database paths from the huggingface hub
 pretrained_model = "google/flan-t5-base"  # TODO: Try "google/flan-t5-large"
 finetuned_model = "LunaticTanuki/oop-de-qag-flan-t5-base"
-database = "LunaticTanuki/qg_OOP"
-data_files = {'train': "train.csv", 'validate': "validate.csv"}
+# database = "LunaticTanuki/oop-de-qg"  # Database for question generation
+database = "LunaticTanuki/oop-de-qag"  # Database for question and answer generation
+data_files = {'train': "chapters_qag.csv", 'validate': "validate_qag.csv"}
 
 
 def max_length(column):
@@ -34,7 +30,7 @@ def max_length(column):
     Longer sequences will be truncated and shorter sequences will be padded
     """
     datasets = [dataset['train'], dataset['validate']]
-    columns = ['paragraph', 'question']
+    columns = ['paragraph', 'answer-question']
     # Get the maximum total sequence length after tokenization
     tokenized = concatenate_datasets(datasets).map(
         lambda x: tokenizer(x[column], truncation=True), batched=True, remove_columns=columns)
@@ -48,11 +44,11 @@ def preprocess_function(sample, padding='max_length'):
     Preprocesses the dataset.
     """
     # Add a prefix to the input
-    inputs = ["Write a question from this paragraph: " + item for item in sample['paragraph']]
+    inputs = ["Write an answer-question pair from this paragraph: " + item for item in sample['paragraph']]
     # Tokenize inputs
     model_inputs = tokenizer(inputs, max_length=max_length_input, padding=padding, truncation=True)
     # Tokenize targets with the `text_target` keyword argument
-    labels = tokenizer(text_target=sample['question'], max_length=max_length_output, padding=padding, truncation=True)
+    labels = tokenizer(text_target=sample['answer-question'], max_length=max_length_output, padding=padding, truncation=True)
 
     # Pad and replace all tokenizer.pad_token_id in the labels with -100 to ignore padding in the loss
     if padding == 'max_length':
@@ -66,7 +62,7 @@ def preprocess_function(sample, padding='max_length'):
 
 def postprocess_text(preds, labels):
     """
-    Postprocesses the text.
+    Post-processes the text.
     """
     preds = [pred.strip() for pred in preds]
     labels = [label.strip() for label in labels]
@@ -109,19 +105,20 @@ if __name__ == '__main__':
     print(f"Loading pre-trained model to {device}...")
     model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model).to(device)  # Same as T5ForConditionalGeneration
     tokenizer = AutoTokenizer.from_pretrained(pretrained_model)                 # and T5Tokenizer
-    # tokenizer.add_special_tokens(  TODO: Can I add ['<answer>', '<question>'] in as special tokens in the target?
-    #     {'additional_special_tokens': ['<answer>', '<context>']}
-    # )
+    # For answer and question dataset:
+    tokenizer.add_special_tokens(
+        {'additional_special_tokens': ['<answer>', '<question>']}
+    )
 
     print("Preparing dataset...")
     max_length_input = max_length('paragraph')
-    max_length_output = max_length('question')
+    max_length_output = max_length('answer-question')
 
-    tokenized_dataset = dataset.map(preprocess_function, batched=True, remove_columns=['paragraph', 'question', 'answer'])
+    tokenized_dataset = dataset.map(preprocess_function, batched=True, remove_columns=['paragraph', 'answer-question'])
     print(f"Keys of tokenized dataset: {list(tokenized_dataset['train'].features)}")
 
     print("Initializing evaluation metric...")
-    metric = evaluate.load("rouge")
+    metric = evaluate.load("rouge")  # TODO: BLEAU Scala
 
     print("Initializing data collector...")
     # Ignore tokenizer pad token in the loss
@@ -178,7 +175,7 @@ if __name__ == '__main__':
     print("Total time: %s hours" % (end_time / 60 / 60))
 
     print("Save finetuned model to the hub...")
-    # Save our tokenizer and create model card
+    # Save tokenizer and create model card
     tokenizer.save_pretrained(finetuned_model)
     trainer.create_model_card()
     # Push the results to the hub

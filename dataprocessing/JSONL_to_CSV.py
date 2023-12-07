@@ -3,8 +3,8 @@ import json
 import os
 
 directory = os.path.dirname(os.path.dirname(__file__))
-INPUT_FILE = os.path.join(directory, 'data/processed/train.jsonl')
-OUTPUT_FILE = os.path.join(directory, 'data/processed/train.csv')
+INPUT_FILE = os.path.join(directory, 'data/processed/validate.jsonl')
+OUTPUT_FILE = os.path.join(directory, 'data/processed/validate.csv')
 
 count = 0
 # Get JSON data from JSONL
