@@ -79,6 +79,7 @@ class ExamManager:
     def get_feedback(self, correct_answer, student_answer, keywords=None):
         """
         Get feedback by comparing the students answer to the correct answer.
+        TODO: Remove concrete feedback prints. Add "Aha"/"Ok" or something vague before next question.
         """
         result = self.evaluation.evaluate_answer(correct_answer, student_answer)
         logger.info(f"Result: {result.name}")

@@ -44,8 +44,8 @@ class Evaluator:
         """
         Initializes the similarity and classifier models used for answer evaluation.
         """
-        # Load a sentence similarity model, try: "paraphrase-multilingual-MiniLM-L12-v2"
-        self.similarity_model = SentenceTransformer('LLukas22/all-MiniLM-L12-v2-embedding-all')
+        # Load a sentence similarity model
+        self.similarity_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")  # 'LLukas22/all-MiniLM-L12-v2-embedding-all'
 
         # Load a classifier model, try morit/xlm-t-roberta-base-mnli-xnli?
         classifier_model = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"
