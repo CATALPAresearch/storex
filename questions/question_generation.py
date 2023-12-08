@@ -70,41 +70,26 @@ class QuestionGenerator:
         return result
 
     def generate_question(self, keyword, k=4):
-        context = self.get_context(keyword, k)  # Todo: Summarize context? End2end, pipeline or multitask?
+        context = self.get_context(keyword, k)  # Todo: End2end, pipeline or multitask?
         question = self.question_chain.run(context)
-        logger.debug(f"Question: {question}")
 
-        answer = ''  # TODO
-        keywords = preprocessing.extract_keywords(context)  # TODO: How many keywords?
-        question_dict = {'question': question, 'answer': context, 'keywords': keywords}
+        answer = ' '.join(context.split(' ', 250)[:250])  # TODO: Extract answer from context or summarize to answer length
+        keywords = preprocessing.extract_keywords(self.get_context(keyword, 10))  # TODO: How many keywords?
+        keywords = [word[0] for word in keywords]
+        if keyword not in keywords:
+            keywords.append(keyword)
+        question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
+        logger.debug(f"Question and answer: {question_dict}")
         return question_dict
-
-        # Get predictions with pipeline:
-        # model = "deepset/gelectra-large-germanquad"
-        # electra = pipeline('question-answering', model=model, tokenizer=model)
-        # question_context = {'question': query, 'context': context}
-        # result = electra(question_context)
-
-        # Load model & tokenizer
-        # model = AutoModelForQuestionAnswering.from_pretrained(model)
-        # tokenizer = AutoTokenizer.from_pretrained(model)
 
     def get_context(self, query, k):
         # TODO: Topic extraction (maybe different database splitting, e.g. not at \n?)
         # Get context for query
         context_docs = self.db.similarity_search(query, k=k)
+        context_docs = [docs for docs in context_docs if not docs.page_content[0].isdigit()]
+        logger.debug(f"Context: {context_docs}")
+
+        # TODO: Process context by removing numbers, headers, examples, 'Kurseinheit', questions?
+
         context = ' '.join([doc.page_content for doc in context_docs])
-        logger.debug(f"Context: {context}")
-
         return context
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
-    logger.disabled = False
-
-    generator = QuestionGenerator()
-
-    generator.get_question_from_retriever('Geheimnisprinzip', 3)
-    print('-' * 200)
-    generator.generate_question('Geheimnisprinzip', 3)
