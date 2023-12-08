@@ -286,6 +286,7 @@ bist
 bitte
 bleiben
 bleibt
+blick
 blieb
 bloss
 böden
@@ -937,6 +938,7 @@ kaeumlich
 kam
 kann
 kannst
+kapitel
 kaum
 käumlich
 kein
@@ -984,6 +986,7 @@ kuenftig
 kuerzlich
 kuerzlichst
 künftig
+kurseinheit
 kürzlich
 kürzlichst
 laengst
