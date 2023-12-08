@@ -4,7 +4,7 @@ Script for invoking the submodules as standalone functionalities for development
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.disabled = False
 
@@ -19,7 +19,7 @@ if not args["module"]:
     raise ValueError("No module given.")
 
 match args["module"]:
-    case "get_questions":
+    case "manager":
         from questions.question_managing import QuestionManager
         qm = QuestionManager()
         print(qm.get_question())
@@ -59,6 +59,16 @@ match args["module"]:
         evaluator = Evaluator()
         # evaluator.get_missing_keys(test_correct, test_student)
         evaluator.evaluate_keywords(test_keywords, test_student)
+
+    case "generator":
+        from questions.question_generation import QuestionGenerator
+        from utils.preprocessing import setup_stopwords
+        setup_stopwords()
+        test_keyword = "Unterprogrammaufrufe"
+        generator = QuestionGenerator()
+        # generator.get_question_from_retriever(test_keyword, 3)
+        # print('-' * 200)
+        generator.generate_question(test_keyword)
 
     case _:
         raise ValueError("Given module does not exist.")

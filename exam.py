@@ -87,27 +87,27 @@ class ExamManager:
         match result.value:
             case 0:  # Correct answer
                 correct = "Korrekt!"
-                if not self.no_audio:
-                    self.audio.get_audio(correct)
+                # if not self.no_audio:
+                #     self.audio.get_audio(correct)
                 colours.print_green(correct)
                 self.next_question = QuestionType.PREDEFINE
 
-            case 1:  # No answer or really short answer
-                self.speak("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
+            case 1:  # No answer or really short answer  TODO: Move this case to ASR
+                colours.print_blue("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
                 self.next_question = QuestionType.REPEAT
 
             case 2:  # Off-topic answer
-                self.speak('Sie haben das Thema leider verfehlt.')
+                colours.print_blue('Sie haben das Thema leider verfehlt.')
                 self.next_question = QuestionType.REPEAT
 
             case 3:  # Contradicting answer
-                self.speak('Mit dieser Antwort wiedersprechen Sie dem Kurstext.')
+                colours.print_blue('Mit dieser Antwort wiedersprechen Sie dem Kurstext.')
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
-                if not keywords:
-                    keywords = self.evaluation.get_keywords(correct_answer)  # TODO: Paragraph as input?
-                self.targets.append(self.evaluation.evaluate_keywords(keywords, student_answer))
+                # if not keywords:
+                #     keywords = self.evaluation.get_keywords(correct_answer)  # TODO: Paragraph as input?
+                self.targets.extend(self.evaluation.evaluate_keywords(keywords, student_answer))
                 self.next_question = QuestionType.GENERATE
 
             case _:
@@ -139,22 +139,30 @@ class ExamManager:
                 case 0:  # Ask predefined question
                     repeated = False
                     current_question = self.manager.get_question()
+                    logger.info(f"Predefined question: {current_question}")
                     answer = self.ask_question(current_question['question'])
                     self.get_feedback(current_question['answer'], answer, current_question['keywords'])
 
                 case 1:  # Generate specific question
                     repeated = False
                     if not self.targets:
-                        raise ValueError(f"Question generation was chosen, but not targets were added.")
-                    target = random.choice(self.targets)
-                    current_question = self.generator.generate_question(target)
-                    answer = self.ask_question(current_question['question'])
-                    self.get_feedback(current_question['answer'], answer, current_question['keywords'])
+                        logger.info("No targets")
+                        self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic
+                    else:
+                        target = random.choice(self.targets)
+                        self.targets.remove(target)
+                        logger.info(f"Target: {target}")
+                        current_question = self.generator.generate_question(target)
+                        logger.info(f"Generated question: {current_question}")
+                        answer = self.ask_question(current_question['question'])
+                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
+                        repeated = True  # Todo: Reiterate generated questions with another model
 
-                case 2:  # Reiterate question due to silence or no entailment
+                case 2:  # Generate reiteration of question
                     if repeated is False:  # TODO: How often should we reiterate? Currently: Once
                         current_question = self.last_question
                         current_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
+                        logger.info(f"Generated reiteration: {current_question}")
                         answer = self.ask_question(current_question['question'])
                         self.get_feedback(current_question['answer'], answer, current_question['keywords'])
                         repeated = True

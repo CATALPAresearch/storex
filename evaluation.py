@@ -96,7 +96,7 @@ class Evaluator:
         """
         feedback = None
         # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
-        if len(student_answer) < 20:  # TODO: Understand sentences like "Ich weiß es nicht."
+        if len(student_answer) < 20:  # TODO: Understand sentences like "Ich weiß es nicht." oder "Sinnfreie Frage."
             feedback = FeedbackType.SILENCE
             return feedback
 
@@ -175,7 +175,7 @@ class Evaluator:
         return accuracy
 
     def get_keywords(self, paragraph):
-        """Gets the topic TODO: Get the keywords, maybe see test_LSA.extract_keywords"""
+        """Gets the topic TODO: Get the keywords, maybe see preprocessing.extract_keywords"""
         key_model = KeyBERT(self.similarity_model)
         keyphrases = key_model.extract_keywords(paragraph, keyphrase_ngram_range=(1, 2))  #stop_words='german'
         return keyphrases
