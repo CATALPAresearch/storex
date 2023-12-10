@@ -4,5 +4,5 @@ Für die Implementierung von Wiederholungen (Schleifen) müssen wir etwas weiter
 Die Schleife wird durch eine sogenannte Endrekursion simuliert: whileTrue: ruft sich am Ende selbst wieder auf. Wegen der Performanz (oder möglicher Beschränkungen der Anzahl der Schleifendurchläufe durch die Größe des Aufrufstacks) brauchen Sie sich dabei keine Sorgen zu machen: Da hinter dem rekursiven Aufruf nichts mehr passiert (deshalb Endrekursion), kann dieser vom Compiler in eine echte Schleife übersetzt werden.
 Für die ebenfalls aus anderen Sprachen bekannten For-Schleifen hat SMALLTALK eine andere elegante Lösung parat, auf die wir im nächsten Abschnitt eingehen werden.
 
-Frage: Wie wird die Implementierung von Wiederholungen (Schleifen) in SMALLTALK realisiert?
+Frage: Wie wird die Wiederholungen (Schleifen) in SMALLTALK realisiert?
 Antwort: In SMALLTALK wird die Implementierung von Wiederholungen (Schleifen) durch Endrekursion simuliert. Dabei wird eine Methode wie whileTrue: am Ende selbst wieder aufgerufen. Der Schleifenrumpf wird durch einen Block dargestellt, und das Abbruchkriterium wird ebenfalls in einem Block ausgewertet. Der rekursive Aufruf am Ende der Methode kann vom Compiler in eine echte Schleife übersetzt werden.
