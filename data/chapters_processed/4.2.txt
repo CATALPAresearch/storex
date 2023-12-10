@@ -2,19 +2,13 @@
 
 Anweisungen legen fest, wie ein Programm schrittweise ausgeführt wird. In SMALLTALK gelten alle Ausdrücke, die nicht Teil anderer Ausdrücke sind, als Anweisungen. Im Gegensatz zu JAVA und C# ist in SMALLTALK kein Semikolon erforderlich.
 In SMALLTALK werden Anweisungsfolgen durch einen Punkt getrennt. Dieser Punkt ist ein Trennzeichen (ähnlich wie in PASCAL oder EIFFEL) und gehört nicht zur Anweisung selbst, im Gegensatz zu den von C abgeleiteten Sprachen wie JAVA oder C#. Der Punkt am Ende einer Anweisung kann also weggelassen werden, wenn keine weitere Anweisung folgt. Die Verwendung des Punktes entspricht dem Ziel von SMALLTALK, sich natürlicher Sprache anzunähern. Ähnlich ist die Wahl des Semikolons zur Kaskadierung von Nachrichtenausdrücken zu betrachten.
-Die einzige andere Form der Anweisung in SMALLTALK ist die Return-Anweisung, auf die wir im nächsten Kapitel im Zusammenhang mit Methoden näher eingehen werden. In SMALLTALK besteht sie aus dem Sonderzeichen ^ (ursprünglich , jedoch auf den meisten Tastaturen nicht verfügbar), gefolgt von einem Ausdruck. Die Return-Anweisung gibt das Objekt zurück, zu dem dieser Ausdruck ausgewertet wird. Da alle anderen Anweisungen in SMALLTALK Ausdrücke sind, die zu einem Objekt ausgewertet werden, benötigen Methoden (Abschnitt 4.3) und Blöcke (Abschnitt 4.4) in SMALLTALK keine Return-Anweisungen, um ein Objekt zurückzugeben. Sie geben automatisch das Objekt zurück, zu dem die letzte Anweisung ausgewertet wird.
+Die einzige andere Form der Anweisung in SMALLTALK ist die Return-Anweisung, auf die wir im nächsten Kapitel im Zusammenhang mit Methoden näher eingehen werden. In SMALLTALK besteht sie aus dem Sonderzeichen ^, gefolgt von einem Ausdruck. Die Return-Anweisung gibt das Objekt zurück, zu dem dieser Ausdruck ausgewertet wird. Da alle anderen Anweisungen in SMALLTALK Ausdrücke sind, die zu einem Objekt ausgewertet werden, benötigen Methoden und Blöcke in SMALLTALK keine Return-Anweisungen, um ein Objekt zurückzugeben. Sie geben automatisch das Objekt zurück, zu dem die letzte Anweisung ausgewertet wird.
 
-Frage: Welche Funktion haben Anweisungen in einem Programm?
+Frage: Was sind Anweisungen?
 Antwort: Anweisungen legen fest, wie ein Programm schrittweise ausgeführt wird.
 
 Frage: Wie werden Anweisungen in SMALLTALK getrennt?
 Antwort: In SMALLTALK werden Anweisungsfolgen durch einen Punkt getrennt.
-
-Frage: Warum ist der Punkt in SMALLTALK wichtig?
-Antwort: Der Punkt in SMALLTALK dient als Trennzeichen für Anweisungsfolgen und trägt dazu bei, dass SMALLTALK natürlicher Sprache ähnelt.
-
-Frage: Gibt es in SMALLTALK eine spezielle Return-Anweisung?
-Antwort: Ja, in SMALLTALK gibt es eine Return-Anweisung, die durch das Sonderzeichen ^ dargestellt wird und normalerweise gefolgt von einem Ausdruck ist.
 
 Frage: Welche Funktion hat die Return-Anweisung in SMALLTALK?
 Antwort: Die Return-Anweisung gibt das Objekt zurück, zu dem der nachfolgende Ausdruck ausgewertet wird. Sie wird in Methoden und Blöcken verwendet, um das Ergebnis der Ausführung zurückzugeben.

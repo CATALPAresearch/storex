@@ -1,16 +1,13 @@
 3 Zustand
 
-Wie bereits in Abschnitt 1.3 beschrieben, kann man zwischen veränderlichen und unveränderlichen Objekten unterscheiden. Veränderungen an veränderlichen Objekten erfolgen im Laufe der Zeit, und die Objekte ändern dabei ihren Zustand. Unveränderliche Objekte hingegen haben keinen Zustand.14 Aber was macht den Zustand eines Objektes aus?
+Man kann zwischen veränderlichen und unveränderlichen Objekten unterscheiden. Veränderungen an veränderlichen Objekten erfolgen im Laufe der Zeit, und die Objekte ändern dabei ihren Zustand. Unveränderliche Objekte hingegen haben keinen Zustand.
 Der Zustand eines Objektes setzt sich aus den Werten seiner Instanzvariablen zusammen. Da Instanzvariablen Beziehungen ausdrücken, wird der Zustand eines Objekts ausschließlich durch seine Verknüpfung mit anderen Objekten definiert. Darüber hinaus folgt daraus, dass die einzige Möglichkeit, den Zustand eines Objekts zu ändern, in der Zuweisung von Instanzvariablen liegt, was gleichbedeutend mit der Änderung seiner Beziehungen ist.
 
 Frage: Was ist der Unterschied zwischen veränderlichen und unveränderlichen Objekten?
 Antwort: Veränderliche Objekte können ihren Zustand im Laufe der Zeit ändern, während unveränderliche Objekte keinen Zustand haben und ihre Werte konstant bleiben.
 
-Frage: Wie setzt sich der Zustand eines Objekts zusammen?
-Antwort: Der Zustand eines Objekts setzt sich aus den Werten seiner Instanzvariablen zusammen.
+Frage: Was ist der Zustand eines Objekts?
+Antwort: Der Zustand eines Objekts setzt sich aus den Werten seiner Instanzvariablen zusammen. Da Instanzvariablen Beziehungen ausdrücken, wird der Zustand eines Objekts ausschließlich durch seine Verknüpfung mit anderen Objekten definiert.
 
-Frage: Welche Rolle spielen Instanzvariablen bei der Definition des Zustands eines Objekts?
-Antwort: Instanzvariablen drücken Beziehungen aus und definieren den Zustand eines Objekts durch seine Verknüpfung mit anderen Objekten.
-
-Frage: Was ist die einzige Möglichkeit, den Zustand eines Objekts zu ändern?
+Frage: Wie wird der Zustand eines Objekts verändern?
 Antwort: Die einzige Möglichkeit, den Zustand eines Objekts zu ändern, besteht darin, die Werte seiner Instanzvariablen zuzuweisen, was gleichbedeutend mit der Änderung seiner Beziehungen ist.

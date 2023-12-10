@@ -6,17 +6,14 @@ Dies ist jedoch ein Sonderfall. Im Allgemeinen werden in SMALLTALK alle Ausdrüc
 Um die Präzedenz zu ändern, können Sie einfach Klammern verwenden. SMALLTALK unterstützt keine individuellen Operatorpräzedenzen wie beispielsweise "Punktrechnung vor Strichrechnung".
 Bei mehrstelligen Nachrichten mit Schlüsselwörtern werden alle Schlüsselwörter eines Ausdrucks als zu einer Nachricht gehörig interpretiert, es sei denn, es werden Klammern gesetzt.
 
-Frage: Wie wird die Reihenfolge der Auswertung von geschachtelten Ausdrücken in SMALLTALK festgelegt?
+Frage: Wie ist die Reihenfolge der Auswertung von geschachtelten Ausdrücken in SMALLTALK?
 Antwort: Die Reihenfolge der Auswertung von geschachtelten Ausdrücken in SMALLTALK wird durch Präzedenzen und Klammern festgelegt.
 
-Frage: Welcher Teil eines geschachtelten Ausdrucks wird in SMALLTALK normalerweise zuerst ausgewertet?
+Frage: In welcher Reihenfolge werden Ausdrücke ausgewertet?
 Antwort: In SMALLTALK werden Ausdrücke normalerweise von links nach rechts ausgewertet.
 
-Frage: Welche Art von Ausdrücken hat in SMALLTALK Vorrang vor anderen, wenn sie gleichzeitig auftreten?
+Frage: Welche Ausdrücke haben in SMALLTALK Vorrang?
 Antwort: In SMALLTALK haben unäre Ausdrücke Vorrang vor binären Ausdrücken, und binäre Ausdrücke haben Vorrang vor Schlüsselwortnachrichten.
 
-Frage: Wie können Sie in SMALLTALK die Reihenfolge der Auswertung ändern?
-Antwort: Um die Reihenfolge der Auswertung in SMALLTALK zu ändern, können Sie Klammern verwenden, um sicherzustellen, dass bestimmte Teile eines Ausdrucks zuerst ausgewertet werden.
-
-Frage: Wie werden mehrstellige Nachrichten mit Schlüsselwörtern in SMALLTALK normalerweise interpretiert?
-Antwort: In SMALLTALK werden mehrstellige Nachrichten mit Schlüsselwörtern normalerweise als zu einer einzelnen Nachricht gehörig interpretiert.
+Frage: Wie kann die Reihenfolge der Auswertung in SMALLTALK verändert werden?
+Antwort: Um die Reihenfolge der Auswertung in SMALLTALK zu ändern, können Klammern verwendet werden, um sicherzustellen, dass bestimmte Teile eines Ausdrucks zuerst ausgewertet werden.
