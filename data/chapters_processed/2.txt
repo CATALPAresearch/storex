@@ -1,25 +1,24 @@
 2 Beziehungen
 
 Kein Objekt existiert isoliert. Im Gegenteil, Objekte müssen in Beziehung zueinander stehen, um Bedeutung zu erlangen. Zum Beispiel hat das Objekt "1" keine Bedeutung, solange es nicht eine spezifische Eigenschaft eines anderen Objekts beschreibt, wie die Hausnummer eines Hauses oder die Anzahl der Elemente in einem Array. Tatsächlich werden die meisten Objekte in einem System erst durch ihre Beziehungen zu anderen Objekten nützlich. Ein Objekt, das eine Person repräsentiert, wird erst dann durch den Namen "Hans Mustermann" identifizierbar, wenn es in einer entsprechenden Beziehung zur Person steht, und umgekehrt.
-In der objektorientierten Programmierung wird, wie bereits zu Beginn dieses Abschnitts erwähnt, alle Information als ein Netzwerk von miteinander verbundenen Objekten dargestellt. Dieses Netzwerk kann auf zwei Arten verwendet werden: Durch Navigation, um von einem Datenelement (Information) zum anderen zu gelangen, oder durch Manipulation, um die repräsentierte Information zu ändern.
+
+Frage: Warum stehen Objekte in Beziehung zueinander?
+Antwort: Objekte stehen in Beziehung zueinander, um Bedeutung zu erlangen. Die meisten Objekte in einem System werden erst durch ihre Beziehungen zu anderen Objekten nützlich.
+
+In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt. Dieses Geflecht kann: navigiert werden, um von einem Datum (Stück Information) zu einem anderen zu kommen, oder auch manipuliert werden, um die repräsentierte Information zu verändern.
 Das Datenmodell der objektorientierten Programmierung ähnelt dem Netzwerkmodell, das vor einigen Jahrzehnten die Grundlage für große Datenbankmanagementsysteme bildete, bevor es vom relationalen Datenmodell verdrängt wurde. Erst mit der Einführung objektorientierter Datenbanken gewinnt das Netzwerkmodell wieder an theoretischer Bedeutung.
+
+Frage: Wie werden Informationen dargestellt?
+Antwort: In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt. Dieses Geflecht kann navigiert und manipuliert werden.
+
+Frage: Wie wird das Geflecht von Objekten genutzt?
+Antwort: Das Geflecht von Objekten kann navigiert werden, um von einem Datum zu einem anderen zu kommen, oder auch manipuliert werden, um die repräsentierte Information zu verändern.
+
 In der objektorientierten Programmierung werden Beziehungen zwischen Objekten über Verweise hergestellt. Durch das Verfolgen dieser Verweise kann man von einem Objekt zum nächsten "navigieren". Es ist wichtig zu beachten, dass diese Verknüpfung immer gerichtet ist. Das bedeutet, dass man von einem Objekt zu einem anderen navigieren kann, aber nicht zwangsläufig wieder zurück. Dafür wäre ein Zeiger in Gegenrichtung erforderlich.
 Variablen selbst enthalten ebenfalls Verweise. Wer also Zugriff auf die Variable hat, kann auch auf das referenzierte Objekt zugreifen und ist somit mit dem Objekt verknüpft. Es fehlt nur noch, Variablen den Objekten zuzuordnen, damit nur noch die Objekte darauf zugreifen können, und schon können Beziehungen auf einfache Weise ausgedrückt werden.
 
-Frage: Warum ist es wichtig, dass Objekte in Beziehung zueinander stehen, um Bedeutung zu erlangen?
-Antwort: Objekte müssen in Beziehung zueinander stehen, um Bedeutung zu erlangen, da die meisten Objekte in einem System erst durch ihre Beziehungen zu anderen Objekten nützlich werden. Ein Objekt allein, wie das Objekt "1", hat keine Bedeutung, bis es in einer entsprechenden Beziehung zu einem anderen Objekt steht, das seine Bedeutung verleiht.
+Frage: Wie werden Beziehungen zwischen Objekten hergestellt?
+Antwort: Beziehungen zwischen Objekten werden über Verweise hergestellt. Durch das Verfolgen dieser Verweise kann man von einem Objekt zum nächsten "navigieren". Dabei ist zu beachten, dass diese Verknüpfung immer gerichtet ist und man nicht zwangsläufig wieder zurücknavigieren kann.
 
-Frage: Wie wird in der objektorientierten Programmierung Information dargestellt?
-Antwort: In der objektorientierten Programmierung wird Information als ein Netzwerk von miteinander verbundenen Objekten dargestellt.
-
-Frage: Welche beiden Arten der Verwendung des Netzwerks von miteinander verbundenen Objekten gibt es in der objektorientierten Programmierung?
-Antwort: In der objektorientierten Programmierung kann das Netzwerk von miteinander verbundenen Objekten auf zwei Arten verwendet werden: durch Navigation, um von einem Datenelement zum anderen zu gelangen, oder durch Manipulation, um die repräsentierte Information zu ändern.
-
-Frage: Welches Datenmodell in der objektorientierten Programmierung ähnelt dem Netzwerkmodell, das vor einigen Jahrzehnten die Grundlage für große Datenbankmanagementsysteme bildete?
-Antwort: Das Datenmodell der objektorientierten Programmierung ähnelt dem Netzwerkmodell, das vor einigen Jahrzehnten die Grundlage für große Datenbankmanagementsysteme bildete, bevor es vom relationalen Datenmodell verdrängt wurde.
-
-Frage: Wie werden Beziehungen zwischen Objekten in der objektorientierten Programmierung hergestellt?
-Antwort: Beziehungen zwischen Objekten in der objektorientierten Programmierung werden über Verweise hergestellt. Durch das Verfolgen dieser Verweise kann man von einem Objekt zum nächsten "navigieren". Dabei ist zu beachten, dass diese Verknüpfung immer gerichtet ist, was bedeutet, dass man von einem Objekt zu einem anderen navigieren kann, aber nicht zwangsläufig wieder zurück.
-
-Frage: Wie sind Variablen in der objektorientierten Programmierung mit Beziehungen verknüpft?
-Antwort: Variablen in der objektorientierten Programmierung enthalten ebenfalls Verweise. Wenn jemand Zugriff auf die Variable hat, kann er auch auf das referenzierte Objekt zugreifen und ist somit mit dem Objekt verknüpft. Es fehlt nur noch, Variablen den Objekten zuzuordnen, damit nur noch die Objekte darauf zugreifen können, und schon können Beziehungen auf einfache Weise ausgedrückt werden.
+Frage: Wie werden Variablen für Beziehungen genutzt?
+Antwort: Variablen enthalten Verweise. Wenn jemand Zugriff auf die Variable hat, kann er auch auf das referenzierte Objekt zugreifen und ist somit mit dem Objekt verknüpft. Es fehlt nur noch, Variablen den Objekten zuzuordnen, damit nur noch die Objekte darauf zugreifen können, und schon können Beziehungen auf einfache Weise ausgedrückt werden.

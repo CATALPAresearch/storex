@@ -1,32 +1,33 @@
 4.1.3 Auswertung von Ausdrücken
 
 Ausdrücke allein sind lediglich syntaktische Elemente; um das Objekt zu erhalten, für das sie stehen, müssen sie ausgewertet werden. Die Auswertung ist der Prozess, bei dem ein Programm tatsächlich "etwas tut".
+
+Frage: Was ist die Auswertung von Ausdrücken?
+Antwort: Die Auswertung von Ausdrücken ist der Prozess, bei dem ein Programm tatsächlich Aktionen ausführt. Sie ist wichtig, weil sie den eigentlichen "Tätigkeitsprozess" eines Programms darstellt und sicherstellt, dass die gewünschten Operationen durchgeführt werden.
+
 Eine der grundlegendsten Aktionen, die ein Programm durchführen kann, ist die Auswertung einer Zuweisung, wie zum Beispiel y := x. Diese Auswertung bewirkt, dass die Variable y nach der Zuweisung auf dasselbe Objekt verweist wie zuvor x. Dabei steht der gesamte Ausdruck y := x für (eine Referenz auf) das Objekt, auf das x (und nach seiner Auswertung auch y) verweist. Die Zuweisung dieses Objektes an y ist eine Art Seiteneffekt der Auswertung des Ausdrucks.
-Es ist wichtig zu beachten, dass der Zuweisungsoperator := keinen (binären) Nachrichtenselektor darstellt. Hier wird keine Nachricht an ein Objekt gesendet, sondern der Inhalt einer Variable wird verändert. Die Zuweisung ist tatsächlich eine der wenigen Primitiven in SMALLTALK und gehört zu den fest in die Sprache integrierten Operationen (siehe Abschnitt 1.6).
+Es ist wichtig zu beachten, dass der Zuweisungsoperator := keinen (binären) Nachrichtenselektor darstellt. Hier wird keine Nachricht an ein Objekt gesendet, sondern der Inhalt einer Variable wird verändert. Die Zuweisung ist tatsächlich eine der wenigen Primitiven Ausdrücke in SMALLTALK und gehört zu den fest in die Sprache integrierten Operationen.
+
+Frage: Was ist eine Zuweisung?
+Antwort: Eine Zuweisung ist eine Aktion, bei der der Inhalt einer Variable geändert wird. Die Zuweisung selbst steht für (eine Referenz auf) das Objekt. Dies ist eine Art von Seiteneffekt der Auswertung des Ausdrucks.
+
+Frage: Was sind primitive Ausdrücke in SMALLTALK?
+Antwort: Die Zuweisung wird in SMALLTALK als primitiver Ausdruck betrachtet.
+
 Die Verwendung des Begriffs "Seiteneffekt" ist möglicherweise nicht notwendig, wenn "Wirkung" oder "Effekt" verwendet wird, da der erzielte Effekt das Hauptziel einer Zuweisung ist.
 Nachrichtenausdrücke werden ausgewertet, indem die Nachricht (das Prädikat des Satzes) an das Empfängerobjekt (das Subjekt) mit den Parametern (den Prädikatsergänzungen) gesendet wird, und das Empfängerobjekt liefert als Ergebnis der Nachricht ein Objekt zurück. Die genauen Mechanismen zur Bestimmung des Ergebnisobjekts durch das Empfängerobjekt werden später erläutert. Hier ist nur wichtig zu wissen, dass der Nachrichtenausdruck während der Auswertung praktisch durch das Objekt ersetzt wird, für das er steht. Dies kann ähnlich betrachtet werden wie die Auswertung einer (mathematischen) Funktion f, deren Funktionsanwendung f(x) für den Funktionswert steht.
 Eine häufig verwendete unäre Nachricht, die von allen Objekten verstanden wird, ist printString. In Reaktion darauf gibt das Empfängerobjekt normalerweise eine textuelle Repräsentation von sich zurück.
-In SMALLTALK, anders als in Sprachen wie JAVA oder C#, bei denen Methoden mit dem Rückgabetyp "void" deklariert werden können, ist es nicht möglich, auf einen Nachrichtenversand keine Antwort zurückzugeben. Dies könnte in Zeile 70 als sinnvoll angesehen werden, da dort lediglich an dem (Seiten-)Effekt, der Ausgabe von „12“ auf dem Transcript, interessiert ist. Wenn die Methode, die zur Nachricht gehört, keinen sinnvollen Rückgabewert hat, wird standardmäßig immer das Empfängerobjekt zurückgegeben. Dies ermöglicht es, Nachrichtenausdrücke einfach zu verketten und unterstützt ein sogenanntes Fluent API. Wenn der Rückgabewert des Nachrichtenausdrucks im Kontext der Nachricht keine Verwendung findet, verfällt er einfach. Die Existenz des Objekts wird jedoch nur dann beeinflusst, wenn es keine weiteren Referenzen auf das Objekt gibt und es bei der nächsten Speicherbereinigung entfernt wird.
-Die Auswertung eines Nachrichtenausdrucks führt zur Ausführung der Anweisungen im Rumpf einer Methode, weshalb sie auch als Methodenaufruf bezeichnet wird. Die Legitimität dieser Bezeichnung wird jedoch erst in Abschnitt 4.3 vollständig erklärt.
-Zusammenfassend lässt sich sagen, dass: Ein Literal zu dem Objekt ausgewertet wird, das es repräsentiert. Eine Variable zu dem Objekt ausgewertet wird, das sie benennt. Eine Zuweisung zu dem Objekt ausgewertet wird, zu dem der Ausdruck auf der rechten Seite der Zuweisung ausgewertet wird. Ein Nachrichtenausdruck zu dem Objekt ausgewertet wird, das als Antwort auf die Nachricht zurückgegeben wird. Ein kaskadierter Nachrichtenausdruck zu dem Objekt ausgewertet wird, zu dem sein letzter Nachrichtenausdruck ausgewertet wird.
 
-Frage: Was ist die Auswertung von Ausdrücken in der objektorientierten Programmierung, und warum ist sie wichtig?
-Antwort: Die Auswertung von Ausdrücken ist der Prozess, bei dem ein Programm tatsächlich Aktionen ausführt. Sie ist wichtig, weil sie den eigentlichen "Tätigkeitsprozess" eines Programms darstellt und sicherstellt, dass die gewünschten Operationen durchgeführt werden.
-
-Frage: Was ist eine Zuweisung, und wie wirkt sich die Auswertung einer Zuweisung auf Variablen aus?
-Antwort: Eine Zuweisung ist eine Aktion, bei der der Inhalt einer Variable geändert wird. Die Auswertung einer Zuweisung, wie z.B. y := x, bewirkt, dass die Variable y auf dasselbe Objekt verweist wie x. Die Zuweisung selbst steht für (eine Referenz auf) das Objekt, auf das x und nach seiner Auswertung auch y verweisen. Dies ist eine Art von Seiteneffekt der Auswertung des Ausdrucks.
-
-Frage: Warum wird der Zuweisungsoperator := nicht als (binärer) Nachrichtenselektor betrachtet?
-Antwort: Der Zuweisungsoperator := stellt keinen (binären) Nachrichtenselektor dar. Hier wird keine Nachricht an ein Objekt gesendet, sondern der Inhalt einer Variable wird verändert. Die Zuweisung ist eine grundlegende Operation in SMALLTALK und fest in die Sprache integriert.
-
-Frage: Welche Ausdrücke werden in SMALLTALK als Primitiven betrachtet?
-Antwort: Die Zuweisung und Nachrichtenausdrücke werden in SMALLTALK als Primitiven betrachtet.
-
-Frage: Wie werden Nachrichtenausdrücke in SMALLTALK ausgewertet, und was repräsentieren sie nach der Auswertung?
+Frage: Wie werden Nachrichtenausdrücke in SMALLTALK ausgewertet?
 Antwort: Nachrichtenausdrücke in SMALLTALK werden ausgewertet, indem die Nachricht (das Prädikat) an das Empfängerobjekt (das Subjekt) mit den Parametern (Prädikatsergänzungen) gesendet wird. Nach der Auswertung repräsentiert der Nachrichtenausdruck das Ergebnis der Nachricht, das von dem Empfängerobjekt zurückgegeben wird.
 
-Frage: Warum ist es in SMALLTALK nicht möglich, auf einen Nachrichtenversand keine Antwort zurückzugeben?
+In SMALLTALK, anders als in Sprachen wie JAVA oder C#, bei denen Methoden mit dem Rückgabetyp "void" deklariert werden können, ist es nicht möglich, auf einen Nachrichtenversand keine Antwort zurückzugeben. Dies könnte in Zeile 70 als sinnvoll angesehen werden, da dort lediglich an dem (Seiten-)Effekt, der Ausgabe von „12“ auf dem Transcript, interessiert ist. Wenn die Methode, die zur Nachricht gehört, keinen sinnvollen Rückgabewert hat, wird standardmäßig immer das Empfängerobjekt zurückgegeben. Dies ermöglicht es, Nachrichtenausdrücke einfach zu verketten und unterstützt ein sogenanntes Fluent API. Wenn der Rückgabewert des Nachrichtenausdrucks im Kontext der Nachricht keine Verwendung findet, verfällt er einfach. Die Existenz des Objekts wird jedoch nur dann beeinflusst, wenn es keine weiteren Referenzen auf das Objekt gibt und es bei der nächsten Speicherbereinigung entfernt wird.
+
+Frage: Ist es in SMALLTALK möglich, auf einen Nachrichtenversand keine Antwort zurückzugeben?
 Antwort: In SMALLTALK ist es nicht möglich, auf einen Nachrichtenversand keine Antwort zurückzugeben, da jeder Nachrichtenversand ein Ergebnis zurückgibt. Dies ermöglicht es, Nachrichtenausdrücke einfach zu verketten und unterstützt ein sogenanntes Fluent API (fließende Programmierung).
 
-Frage: Wie wird die Auswertung eines Nachrichtenausdrucks in SMALLTALK mit dem Ausführen von Anweisungen im Rumpf einer Methode in Verbindung gebracht?
-Antwort: Die Auswertung eines Nachrichtenausdrucks führt zur Ausführung der Anweisungen im Rumpf einer Methode. Daher wird die Auswertung eines Nachrichtenausdrucks auch als Methodenaufruf bezeichnet.
+Die Auswertung eines Nachrichtenausdrucks führt zur Ausführung der Anweisungen im Rumpf einer Methode, weshalb sie auch als Methodenaufruf bezeichnet wird.
+Zusammenfassend wird: Ein Literal zu dem Objekt ausgewertet wird, das es repräsentiert. Eine Variable zu dem Objekt ausgewertet wird, das sie benennt. Eine Zuweisung zu dem Objekt ausgewertet wird, zu dem der Ausdruck auf der rechten Seite der Zuweisung ausgewertet wird. Ein Nachrichtenausdruck zu dem Objekt ausgewertet wird, das als Antwort auf die Nachricht zurückgegeben wird. Ein kaskadierter Nachrichtenausdruck zu dem Objekt ausgewertet wird, zu dem sein letzter Nachrichtenausdruck ausgewertet wird.
+
+Frage: Was ist ein Methodenaufruf?
+Antwort: Ein Methodenaufruf ist die Auswertung eines Nachrichtenausdrucks, da diese zur Ausführung der Anweisungen im Rumpf einer Methode führt.

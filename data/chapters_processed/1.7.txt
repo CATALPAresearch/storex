@@ -1,13 +1,13 @@
 1.7 Pseudovariablen
 
-Während es für Variablen charakteristisch ist, dass sich ihr Wert ändern kann, sieht SMALLTALK dennoch einige vor, für die das nicht der Fall ist. Hier sind vor allem die Variablen mit den Namen "true", "false" und "nil" zu nennen, die auf Objekte entsprechender Bedeutung verweisen.8 Für diese Variablen ist die Zuweisung nicht zulässig.
-Eine ganze Reihe weiterer Variablen kann zwar ihren Wert ändern (also zu unterschiedlichen Zeiten auf verschiedene Objekte verweisen), jedoch erhalten sie ihren Wert vom System; auch diesen kann durch den Zuweisungsoperator := kein Wert zugewiesen werden. Dies sind z. B. die Variablen mit den Namen "self" und "super", sowie alle formalen Parameter von Methoden (siehe Abschnitt 4.3). Nicht zuletzt sind auch alle Klassennamen (siehe Kurseinheit 2) Variablen, denen man als Programmierer nichts explizit zuweisen kann. All diese Variablen werden in SMALLTALK einheitlich Pseudovariablen genannt.
+Während es für Variablen charakteristisch ist, dass sich ihr Wert ändern kann, sieht SMALLTALK dennoch einige vor, für die das nicht der Fall ist. Hier sind vor allem die Variablen mit den Namen "true", "false" und "nil" zu nennen, die auf Objekte entsprechender Bedeutung verweisen. Für diese Variablen ist die Zuweisung nicht zulässig.
+Eine ganze Reihe weiterer Variablen kann zwar ihren Wert ändern (also zu unterschiedlichen Zeiten auf verschiedene Objekte verweisen), jedoch erhalten sie ihren Wert vom System; auch diesen kann durch den Zuweisungsoperator := kein Wert zugewiesen werden. Dies sind z. B. die Variablen mit den Namen "self" und "super", sowie alle formalen Parameter von Methoden. Nicht zuletzt sind auch alle Klassennamen Variablen, denen man als Programmierer nichts explizit zuweisen kann. All diese Variablen werden in SMALLTALK einheitlich Pseudovariablen genannt.
 
-Frage: Was sind in SMALLTALK Pseudovariablen, und warum werden sie als solche bezeichnet?
-Antwort: Pseudovariablen in SMALLTALK sind Variablen wie "true", "false", "nil", "self", "super" und formale Parameter von Methoden sowie Klassennamen, denen der Programmierer keinen Wert zuweisen kann. Sie werden als Pseudovariablen bezeichnet, da sie ihren Wert entweder nicht ändern können oder ihren Wert vom System erhalten.
+Frage: Was sind Pseudovariablen in SMALLTALK?
+Antwort: Pseudovariablen in SMALLTALK sind Variablen wie "true", "false", "nil", "self", "super" und formale Parameter von Methoden sowie Klassennamen, denen der Programmierer keinen Wert zuweisen kann.
 
-Frage: Warum ist die Zuweisung für Pseudovariablen wie "true", "false" und "nil" in SMALLTALK nicht zulässig?
-Antwort: Die Zuweisung für Pseudovariablen wie "true", "false" und "nil" ist in SMALLTALK nicht zulässig, da sie auf Objekte von spezifischer Bedeutung verweisen und diese Bedeutung nicht verändert werden sollte.
+Frage: Warum werden Pseudovariablen als solche bezeichnet?
+Antwort: Sie werden als Pseudovariablen bezeichnet, da sie ihren Wert entweder nicht ändern können oder ihren Wert vom System erhalten.
 
-Frage: Warum ist es wichtig zu wissen, dass diese Variablen Pseudovariablen sind?
-Antwort: Es ist wichtig zu wissen, dass diese Variablen Pseudovariablen sind, da sie spezielle Bedeutungen und Einschränkungen in SMALLTALK haben. Programmierer sollten sich bewusst sein, dass sie nicht denselben Regeln unterliegen wie normale Variablen.
+Frage: Warum ist die Zuweisung für Pseudovariablen in SMALLTALK nicht zulässig?
+Antwort: Die Zuweisung für Pseudovariablen ist in SMALLTALK nicht zulässig, da sie auf Objekte von spezifischer Bedeutung verweisen und diese Bedeutung nicht verändert werden sollte.
