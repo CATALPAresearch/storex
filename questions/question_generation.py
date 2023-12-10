@@ -74,7 +74,7 @@ class QuestionGenerator:
         question = self.question_chain.run(context)
 
         answer = ' '.join(context.split(' ', 250)[:250])  # TODO: Extract answer from context or summarize to answer length
-        keywords = preprocessing.extract_keywords(self.get_context(keyword, 10))  # TODO: How many keywords?
+        keywords = preprocessing.extract_keywords(self.get_context(keyword, 8))  # TODO: How many keywords?
         keywords = [word[0] for word in keywords]
         if keyword not in keywords:
             keywords.append(keyword)

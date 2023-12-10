@@ -49,6 +49,7 @@ class ExamManager:
         self.manager = QuestionManager()
         self.last_question = None
         self.next_question = None
+        self.prepend_question = ""
         self.paraphraser = QuestionParaphraser()
         self.generator = QuestionGenerator()
 
@@ -70,16 +71,19 @@ class ExamManager:
 
     def ask_question(self, question):
         """Output question and get the students answer."""
+        if self.prepend_question:
+            question = f"{self.prepend_question} {question}"
+            self.prepend_question = ""
         self.speak(question)
         answer = self.transcription.get_audio_to_text()
-        print("Ihre Antwort lautet:")
+        print("Ihre Antwort lautet in etwa:")
         colours.print_yellow(answer)
         return answer
 
     def get_feedback(self, correct_answer, student_answer, keywords=None):
         """
         Get feedback by comparing the students answer to the correct answer.
-        TODO: Remove concrete feedback prints. Add "Aha"/"Ok" or something vague before next question.
+        TODO: Add multiple random vague "Aha" before next question.
         """
         result = self.evaluation.evaluate_answer(correct_answer, student_answer)
         logger.info(f"Result: {result.name}")
@@ -87,22 +91,18 @@ class ExamManager:
         # Give feedback and set next question type
         match result.value:
             case 0:  # Correct answer
-                correct = "Korrekt!"
-                # if not self.no_audio:
-                #     self.audio.get_audio(correct)
-                colours.print_green(correct)
+                self.prepend_question = "Ok."
                 self.next_question = QuestionType.PREDEFINE
 
             case 1:  # No answer or really short answer  TODO: Move this case to ASR
-                colours.print_blue("Ich habe Sie nicht verstanden. Bitte wiederholen Sie Ihre Antwort.")
                 self.next_question = QuestionType.REPEAT
 
             case 2:  # Off-topic answer
-                colours.print_blue('Sie haben das Thema leider verfehlt.')
+                self.prepend_question = "Ah?"
                 self.next_question = QuestionType.REPEAT
 
             case 3:  # Contradicting answer
-                colours.print_blue('Mit dieser Antwort wiedersprechen Sie dem Kurstext.')
+                self.prepend_question = "Achso?"
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics

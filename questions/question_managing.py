@@ -8,26 +8,48 @@ import questions.questions as questions
 # TODO: Predefine questions and their probabilities
 class QuestionManager:
     def __init__(self):
+        self.first_question = True
         self.question_list = []
-        # Append all questions per KE into the list of questions
+        self.topic_list = []
+        self.coverage = []
         for i in questions.KE:
+            # Append all questions per KE into the list of questions
             ke_questions = f"{i.name}_questions"
             self.question_list.append(getattr(questions, ke_questions))
-        # [[KE1_questions][KE2_questions][KE3_questions][KE4_questions][KE5_questions][KE6_questions][KE7_questions]]
+            # Append all topics per KE into the list of topics
+            ke_topic = f"{i.name}_topics"
+            self.topic_list.append(getattr(questions, ke_topic))
+            # Append a counter per KE into the list of coverage
+            self.coverage.append(0)
 
     def get_question(self):
-        if self.question_list[questions.KE.KE6.value]:
-            return self.question_ke6()
-        return "No question found"
+        if self.first_question is True:
+            first_open_question = self.topic_list[questions.KE.KE1.value].pop()
+            self.topic_list.insert(questions.KE.KE1.value, '')
+            self.coverage[questions.KE.KE1.value] += 1
+            return first_open_question
 
-    def question_ke6(self):
-        """
-        'Kurseinheit 6: Probleme der objektorientierten Programmierung'
+        lowest_coverage = self.coverage.index(min(self.coverage))
 
-        :return question: Question from KE6.
+        if self.topic_list[lowest_coverage] is not '':
+            open_question = self.topic_list[lowest_coverage].pop()
+            self.topic_list.insert(lowest_coverage, '')
+            self.coverage[lowest_coverage] += 1
+            return open_question
+        elif self.question_list[lowest_coverage]:
+            return self.random_question(lowest_coverage)
+        else:
+            return self.random_question(questions.KE.KE6.value)
+
+    def random_question(self, ke_index):
         """
-        random_index = random.randrange(len(self.question_list[questions.KE.KE6.value]))
-        question = self.question_list[questions.KE.KE6.value].pop(random_index)
+        Get a random question from the list of questions.
+
+        :return question:
+        """
+        random_index = random.randrange(len(self.question_list[ke_index]))
+        question = self.question_list[ke_index].pop(random_index)
+        self.coverage[ke_index] += 1
         # question = random.choice(self.question_list[questions.KE.KE6.value])
         # if question['follow-up']:
         #     pass

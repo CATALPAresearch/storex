@@ -1,4 +1,6 @@
 import os
+import re
+
 import torch
 
 from langchain.document_loaders import PyPDFLoader, DirectoryLoader, TextLoader
@@ -58,7 +60,23 @@ def create_vector_db(documents):
     print(f"Database saved to {DB_FAISS_PATH}")
 
 
+def process_doc(documents):
+    """
+    Remove headlines and questions from page content.
+
+    :param documents: Text documents to create the vector store from.
+    """
+    for document in documents:
+        processed_text = " ".join(document.page_content.split("\n", 2)[2:]).split('\n')
+        processed_text = [line for line in processed_text if line and not (line.startswith("Frage:") or
+                                                                           line.startswith("Antwort:"))]
+
+        document.page_content = '\n'.join(processed_text)
+    return documents
+
+
 if __name__ == '__main__':
     # texts = get_doc_from_pdf()
     texts = get_doc_from_txt()
+    process_doc(texts)
     create_vector_db(texts)
