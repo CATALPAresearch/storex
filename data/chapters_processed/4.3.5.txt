@@ -1,16 +1,7 @@
 4.3.5 Operationen auf zustandslosen (unveränderlichen) Objekten
 
 Methoden oder Operationen, die auf unveränderlichen Objekten ausgeführt werden, können deren Zustand naturgemäß nicht ändern. Beispielsweise ändert die Addition von Zahlen nichts an ihren Operanden, sondern liefert als Ergebnis ein anderes Objekt. Derartige Methoden (oder Operationen) sind also klassische Funktionen: Sie berechnen ein Ergebnis anhand eines oder mehrerer Argumente (wovon eines das Empfängerobjekt ist) ohne Nebenwirkungen wie Zustandsänderungen der Argumente.
-Für andere Objekte wie zum Beispiel die Punktobjekte aus Abschnitt 4.3.4 ist jedoch fraglich, ob Operationen wie die Addition den Zustand des Empfängers verändern sollten oder ein neues Objekt zurückgeben sollten. Wenn eine Veränderung des Empfängers eher einer Translation entspricht, sollte die entsprechende Methode entsprechend benannt werden. Um jedoch zu zeigen, wie man neue Objekte erzeugen und zurückgeben kann, fehlt uns hier noch einiges. Wir werden darauf erst in Abschnitt 7.3 zurückkommen.
+Für andere Objekte wie zum Beispiel die Punktobjekte ist jedoch fraglich, ob Operationen wie die Addition den Zustand des Empfängers verändern sollten oder ein neues Objekt zurückgeben sollten. Wenn eine Veränderung des Empfängers eher einer Translation entspricht, sollte die entsprechende Methode entsprechend benannt werden. Um jedoch zu zeigen, wie man neue Objekte erzeugen und zurückgeben kann, fehlt uns hier noch einiges.
 
-Frage: Was sind unveränderliche (zustandslose) Objekte in SMALLTALK?
+Frage: Was sind unveränderliche Objekte?
 Antwort: Unveränderliche oder zustandslose Objekte in SMALLTALK sind Objekte, deren Zustand nicht geändert werden kann. Operationen oder Methoden, die auf solchen Objekten ausgeführt werden, ändern nicht den Zustand des Objekts selbst, sondern erzeugen in der Regel ein neues Objekt als Ergebnis.
-
-Frage: Was sind klassische Funktionen in Bezug auf Operationen auf unveränderlichen Objekten?
-Antwort: Klassische Funktionen sind Operationen oder Methoden, die auf unveränderlichen Objekten ausgeführt werden und deren Hauptzweck darin besteht, ein Ergebnis aufgrund der Argumente zu berechnen, ohne den Zustand der Argumente zu ändern. Diese Funktionen haben keine Nebenwirkungen und verhalten sich ähnlich wie Funktionen in der mathematischen Welt.
-
-Frage: Wie unterscheidet sich die Addition von Zahlen in SMALLTALK von der Änderung des Zustands eines Objekts?
-Antwort: In SMALLTALK ändert die Addition von Zahlen nichts am Zustand der Operanden (Zahlen selbst), sondern liefert ein neues Zahl-Objekt als Ergebnis. Es erfolgt keine Änderung am Zustand der Operanden selbst. Dieses Verhalten ist typisch für unveränderliche Objekte und Operationen auf ihnen.
-
-Frage: Warum könnte die Entscheidung, ob eine Methode den Zustand eines Empfängers verändern oder ein neues Objekt zurückgeben sollte, bei bestimmten Objekten wie Punktobjekten schwierig sein?
-Antwort: Die Entscheidung darüber, ob eine Methode den Zustand des Empfängers verändern oder ein neues Objekt zurückgeben sollte, hängt von der Semantik des Objekts und der Methode ab. Bei Objekten wie Punktobjekten könnte es unterschiedliche Ansichten darüber geben, ob eine Addition beispielsweise den Zustand des Punktobjekts ändern oder ein neues Punktobjekt erzeugen sollte. Diese Entscheidung kann von der beabsichtigten Anwendung und den Designüberlegungen abhängen.

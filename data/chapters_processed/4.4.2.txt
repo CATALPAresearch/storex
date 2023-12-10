@@ -1,19 +1,15 @@
 4.4.2 Continuation
 
-Das Konzept des Home Context eines Blocks geht aber noch weiter: Es umfasst nicht nur die sichtbaren Variablen aus dem Kontext der Definition des Blocks, sondern auch den sogenannten Call Stack. Dabei handelt es sich um den Speicher, in dem die Rücksprungadressen von Methodenaufrufen abgelegt werden. Folglich bedeutet eine Return-Anweisung innerhalb eines Blocks bei seiner Auswertung immer die unmittelbare Rückkehr in den Kontext, in dem der Block definiert wurde, also in den Home Context (der Methode), und nicht in den Kontext, in dem der Block durch Senden von value ausgewertet wird. Das nachfolgende Beispiel verdeutlicht dies:
-Der Aufruf der Methode homeContext gibt "home" auf der Konsole aus, jedoch nicht "other". Dieses Konzept, das ebenfalls aus der Welt der funktionalen Programmierung stammt, wird auch als Continuation bezeichnet. Continuations spielen bei der Implementierung von Kontrollstrukturen in SMALLTALK eine entscheidende Rolle (siehe Kapitel 4.6).
-Das Prinzip der Continuation gilt übrigens auch für geschachtelte Blöcke. Explizite Return-Anweisungen aus Blöcken kehrt immer dahin zurück, wo die Definition des Blocks angestoßen wurde.
-Continuations können jedoch zu Laufzeitfehlern führen, insbesondere wenn versucht wird, von einer Methode zurückzukehren, die bereits beendet wurde.
-Return-Anweisungen in Blöcken sind ein umstrittenes Konzept, können jedoch für SMALLTALK unverzichtbar sein, da sie zur Implementierung von nahezu allen Kontrollstrukturen verwendet werden (siehe Kapitel 4.6).
+Das Konzept des Home Context eines Blocks geht aber noch weiter: Es umfasst nicht nur die sichtbaren Variablen aus dem Kontext der Definition des Blocks, sondern auch den sogenannten Call Stack. Dabei handelt es sich um den Speicher, in dem die Rücksprungadressen von Methodenaufrufen abgelegt werden. Folglich bedeutet eine Return-Anweisung innerhalb eines Blocks bei seiner Auswertung immer die unmittelbare Rückkehr in den Kontext, in dem der Block definiert wurde, also in den Home Context (der Methode), und nicht in den Kontext, in dem der Block durch Senden von value ausgewertet wird.
 
-Frage: Was umfasst das Konzept des Home Contexts eines Blocks in SMALLTALK?
+Frage: Was ist der Home Contexts eines Blocks?
 Antwort: Das Konzept des Home Contexts eines Blocks in SMALLTALK umfasst nicht nur die sichtbaren Variablen aus dem Kontext der Definition des Blocks, sondern auch den sogenannten Call Stack, der die Rücksprungadressen von Methodenaufrufen speichert.
 
-Frage: Was bedeutet es, wenn eine Return-Anweisung innerhalb eines Blocks bei seiner Auswertung immer die unmittelbare Rückkehr in den Home Context des Blocks bewirkt?
-Antwort: Wenn eine Return-Anweisung innerhalb eines Blocks in SMALLTALK ausgewertet wird, bewirkt sie immer die unmittelbare Rückkehr in den Kontext, in dem der Block definiert wurde, also in den Home Context (der Methode), und nicht in den Kontext, in dem der Block durch Senden von value ausgewertet wurde.
+Continuations spielen bei der Implementierung von Kontrollstrukturen in SMALLTALK eine entscheidende Rolle. Das Prinzip der Continuation gilt übrigens auch für geschachtelte Blöcke. Explizite Return-Anweisungen aus Blöcken kehrt immer dahin zurück, wo die Definition des Blocks angestoßen wurde.
+Continuations können jedoch zu Laufzeitfehlern führen, insbesondere wenn versucht wird, von einer Methode zurückzukehren, die bereits beendet wurde. Return-Anweisungen in Blöcken sind ein umstrittenes Konzept, können jedoch für SMALLTALK unverzichtbar sein, da sie zur Implementierung von nahezu allen Kontrollstrukturen verwendet werden.
 
-Frage: Was wird mit "Continuation" im Kontext von Blöcken in SMALLTALK gemeint?
+Frage: Was ist eine Continuation?
 Antwort: Im Kontext von Blöcken in SMALLTALK bezieht sich "Continuation" auf das Konzept, dass eine Return-Anweisung innerhalb eines Blocks immer zur unmittelbaren Rückkehr in den Home Context des Blocks führt. Dieses Konzept stammt aus der Welt der funktionalen Programmierung und spielt bei der Implementierung von Kontrollstrukturen in SMALLTALK eine wichtige Rolle.
 
 Frage: Warum können Continuations zu Laufzeitfehlern führen?
-Antwort: Continuations können zu Laufzeitfehlern führen, insbesondere wenn versucht wird, von einer Methode zurückzukehren, die bereits beendet wurde. Dies kann zu inkonsistentem Verhalten und unerwarteten Zuständen führen. Return-Anweisungen in Blöcken sind daher ein umstrittenes Konzept, werden jedoch in SMALLTALK zur Implementierung von nahezu allen Kontrollstrukturen verwendet.
+Antwort: Continuations können zu Laufzeitfehlern führen, insbesondere wenn versucht wird, von einer Methode zurückzukehren, die bereits beendet wurde. Return-Anweisungen in Blöcken sind daher ein umstrittenes Konzept.
