@@ -1,7 +1,6 @@
 """
 Script for creating a vector store from text files or pdf data.
 """
-
 import os
 import torch
 
@@ -68,7 +67,15 @@ def create_vector_db(documents):
     print(f"Database saved to {DB_FAISS_PATH}")
 
 
-# texts = get_doc_from_pdf()
-texts = get_doc_from_txt()
-process_doc(texts)
-create_vector_db(texts)
+def process_vectorstore():
+    """
+    Creates a FAISS vector database from processed text documents.
+    """
+    # texts = get_doc_from_pdf()
+    texts = get_doc_from_txt()
+    process_doc(texts)
+    create_vector_db(texts)
+
+
+if '__name__' == '__main__':
+    process_vectorstore()

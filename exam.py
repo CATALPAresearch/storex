@@ -1,11 +1,13 @@
 """
 Class for training exam conversation manager.
 """
+import os
 import random
 import time
 
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
+from dataprocessing import process_vectorstore
 from evaluation import Evaluator
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
@@ -21,15 +23,16 @@ logger = logging.getLogger()
 
 
 class ExamManager:
-    # Global variables
+    """
+    Training exam conversation manager
+    """
     def __init__(self, exam_parameters):
         """
-        Set the students parameters, set up the QuestionManager, greet the student and start the timer.
-
-        :param exam_parameters: Dictionary with parameters for the exam.
+        Sets the students parameters, stopwords, vector database, and models for question, text and audio generation,
+        and starts the timer for the exam.
         """
+        # Set student parameters like name and gender
         logger.info(f"Setting parameters: {exam_parameters}")
-        # Set student parameters
         self.student_name = exam_parameters['name']
         self.student = 'eine*n Studentin*en'
         if exam_parameters['female']:
@@ -37,14 +40,14 @@ class ExamManager:
         elif exam_parameters['male']:
             self.student = "einen Studenten"
 
-        # Set duration of the exam
-        duration = int(exam_parameters['time']) * 60
-        start_time = time.time()
-        self.end_time = start_time + duration  # TODO: Add the LLM calculation time to end_time
-        # (e.g. end_time = end_time * 1.5)
-
         # Setup stopwords for preprocessing
         preprocessing.setup_stopwords()
+
+        # Check if vector store is loaded
+        directory = os.path.dirname(__file__)
+        if not os.path.exists(os.path.join(directory, 'data/vectorStore/index.faiss')):
+            logger.info("Loading vector store...")
+            process_vectorstore.process_vectorstore()
 
         # Set question manager and question models
         self.manager = QuestionManager()
@@ -54,7 +57,11 @@ class ExamManager:
         self.paraphraser = QuestionParaphraser()
         self.question_generator = QuestionGenerator()
 
+        # Set text generation model
         self.text_generator = TextGenerator()
+
+        # Set specific topics to be targeted for questions
+        self.targets = []
 
         # Set audio models and evaluator
         self.no_audio = True if exam_parameters['no_audio'] else False
@@ -63,8 +70,11 @@ class ExamManager:
         self.transcription = SpeechRecognition()
         self.evaluation = Evaluator()
 
-        # Set specific topics to be targeted for questions
-        self.targets = []
+        # Set duration of the exam
+        duration = int(exam_parameters['time']) * 60
+        start_time = time.time()
+        self.end_time = start_time + duration  # TODO: Add the LLM calculation time to end_time (e.g. end_time = end_time * 1.5)
+                                               #  or just time the students answers
 
     def speak(self, text):
         """Output text via speaker and terminal."""
