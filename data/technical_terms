@@ -1,0 +1,517 @@
+abfrage
+abgeleitete klasse
+abhaengigkeit
+abstrakte klasse
+abstrakte klasse als interface
+abstrakte klasse in eiffel
+abstrakte klasse in java
+abstrakte klasse vs. typ
+abstraktionshierarchie
+accessor
+aenderungsabhaengigkeit
+aggregation
+aktives objekt
+aktueller parameter
+alias
+aliasing
+aliasing-problem
+allgemeinbegriff
+annotation
+annotationstyp
+anweisung
+application programming interface
+aristoteles
+array store exception
+array-initialisierer
+array-literal
+array-typ
+assoziativspeicher
+atomares objekt
+attribut
+attribut und zustand
+attribute
+attributwert
+aufzaehlungstyp
+ausdruck
+ausgabestrom
+auto boxing
+auto boxing und unboxing
+auto unboxing
+base class
+basisklasse
+beeinflussung durch return
+befehl
+behavioural subtyping
+benannte instanzvariable
+beziehung
+binaere methode
+binaere methode
+binaere nachricht
+block
+boolesche algebra
+boxing und unboxing
+bytecode
+call by reference
+call by reference in c#
+call by value
+call stack
+change log
+checked exception
+child class
+client-schnittstelle
+closure
+coding convention
+collection
+collection-klassen
+common intermediate language
+common type system
+compilation unit
+compilation units
+component object model
+continuation
+cross cast
+datenkapselung
+declaration-site variance
+declaration-site variance
+dedizierter export
+default-methode
+definition
+deklaration
+deklariertes element
+delegate
+delegation
+denotationale semantik
+dependent type
+dereferenzierung
+derived class
+direkte instanz
+direkte instanz
+direkte subklasse
+direkte subklasse
+direkte superklasse
+direkte superklasse
+direkter subtyp
+dispatch
+double dispatch
+down cast
+durchgaengigkeit der konzepte
+dynamische typpruefung
+dynamische typpruefung
+dynamischen typpruefung
+dynamisches binden
+eigenschaft
+einfachvererbung
+endrekursion
+ergebnis der generalisierung
+event
+event handler
+exception
+exception chaining
+exception handling
+exception handling in eifel
+expansion
+expansion rekursiver typen
+explizite interfaceimplementierung
+explizite zuweisung
+export
+extension
+extension einer generalisierung
+externe iteration
+factory-methode
+fall through
+fallunterscheidung
+fallunterscheidung per dynamischem binden
+familienaehnlichkeit
+fehlerhafte typannotation
+feld
+filterfunktion
+flache kopie
+fluent api
+formaler parameter
+formaler parameter eines blocks
+formaler typparameter
+forwarding
+fragile-base-class-problem
+fremdschluessel
+friend
+funktionale anforderung
+funktionale programmiersprache
+funktionale programmierung
+garbage collection
+geheimnisprinzip
+generalisierung
+generalisierung als allgemeinbegriff
+generics
+generischer typ
+genus et differentiae
+getter
+getter
+gleiche fallunterscheidung
+gleichheit von objekten
+globale variable
+goto
+heterogene collection
+hiding
+hierarchische modularisierung
+home context
+home context bei continuations
+identitaet
+identitaet eines objekts
+identitaet von objekten
+image
+impedance mismatch
+imperative programmierung
+implementation
+implementationsgeheimnis
+implizite interfaceimplementierung
+implizite zuweisung
+indexer
+indirekte instanz
+indirekter subtyp
+indizierte instanzvariable
+information hiding
+initialisierung
+initialisierung
+inklusionspolymorphie
+inklusionspolymorphie
+inlining
+innere klasse
+instanz
+instanziierbar
+instanziierung
+instanziierung einer parametrischen typdefinition
+instanziierung eines parametrischen typs
+instanzmethode
+instanzvariable
+integrierte entwicklungsumgebung
+intension
+intension einer generalisierung
+interface
+interface marker
+interface tagging
+interface-als-typ-konzept
+interfacebasierte programmierung
+interfaceimplementation
+interfaceimplementierung
+interfacetyp
+interfacevererbung
+interne iteration
+interner iterator
+invariante
+invarianz
+ist-ein-beziehung
+iteration
+iterator
+java virtual machine
+junit
+kapselung
+kardinalitaet
+klasse
+klassen
+klassen in java
+klassenbasiert
+klassendefinition
+klassenhierarchie
+klassenliteral
+klassenmethode
+klassenmethode
+klassenschnittstelle
+klassentyp
+klassenvariable
+klassifikation
+klonen
+kommentar
+komponente
+komposition
+konkrete klasse
+konstante
+konstante methode
+konstruktor
+kontext eines blocks
+kontravarianz
+kontravarianz von wildcard-typen
+kontrollfluß
+kontrollstruktur
+kopie
+kovariante redefinition
+kovarianz
+kovarianz von wildcard-typen
+lambda-ausdruck
+laufzeittypfehler
+law of demeter
+lazy initialization fuer klassenvariablen
+lazy initialization
+lazy initialization per getter
+lebenszyklus
+leere beziehung
+linke seite der zuweisung
+liskov-substitutionsprinzip
+literal
+literaloptimierung
+live programming
+live-programmierung
+loeschen von methoden
+logische programmiersprache
+lokale variable
+lokalitaetsprinzip
+marker-interface
+mehrfachhierarchie
+mehrfachvererbung
+member
+mereologie
+message dispatching
+message pattern
+metaklasse
+metaprogrammiersystem
+metasyntaktische variable
+metasyntaktische variable
+method ambiguous error
+method dispatching
+methode
+methoden
+methodenaufruf
+methodendefinition
+methodendeklaration
+methodenkopf
+methodenrumpf
+methodensignatur
+modul
+modularisierung
+modularisierung von programmen
+monitor
+multi-dispatch
+multi-methode
+multi-methoden
+multiplizitaet
+nachricht
+nachrichtenausdruck
+nachrichtenausdruck
+nachrichtenkategorie
+nachrichtenselektor
+nachrichtenversand
+name
+namensaequivalenz
+navigation
+nebeneffekt
+nebenwirkung
+netzwerkmodell
+nicht instanziierbar
+nichtfunktionale anforderung
+nominale typaequivalenz
+nominale typkonformitaet
+nominale typkonformitaet in java
+nominale typkonformitaetsdeklaration
+novarianz
+novarianz von java
+null pointer exception
+nur-lesen
+nur-schreiben
+objekt
+objektgeflecht
+objektorientierung
+offene rekursion
+open services gateway initiative
+operationale semantik
+optionales typsystem
+osgi
+outer this
+package local
+parallele ausfuehrung
+parametrische typdefinition
+parametrischer polymorphismus
+parent class
+passives objekt
+pattern
+persistenzlayer
+pipelining
+platzhalter
+pointer
+pointervariable
+polymorphie
+polymorphismus
+primitive kontrollstruktur
+primitive methode
+primitiver ausdruck
+primitiver typ
+primitiver typ in java
+programmierstil
+property
+protokoll
+protokollbeschreibung
+prototyp
+prototypenbasiert
+pseudo-typvariable self
+pseudovariable
+qualifizierter export
+raw type
+rechte seite der zuweisung
+redefinition
+redundanz
+refactoring
+referenz
+referenzsemantik
+reflection
+reflektiver zugriff
+rekursive expansion
+relationales datenmodell
+repraesentationsobjekt
+repraesentationsunabhaengigkeit
+return
+return-anweisung
+return-anweisung bei continuation
+rolle
+rollenwechsel
+rollenwechsel eines objekts
+routine
+runtime type information
+schluessel
+schluesselwort
+schluesselwortnachricht
+schnittstelle
+schnittstelle eines moduls
+schnittstellenspezifikation eines moduls
+seiteneffekt
+self
+self und super im home context
+semantischer fehler
+separation of concerns
+setter
+sichtbarkeit
+sichtbarkeitsregeln
+sichtbarkeitsregeln von variablen
+signatur
+single dispatch
+softwarekrise
+speicherbereinigung
+spezialisierung
+statik und dynamik
+statischen typpruefung
+statisches binden
+stream zum zugriff auf eine collection
+streams
+string-konkatenation
+strings
+struktur
+struktur von objekten
+strukturaequivalenz
+strukturelle typaequivalenz
+strukturelle typkonformitaet
+strukturierte programmierung
+strukturiertes objekt
+subklasse
+subklasse in java
+subklassenbeziehung
+substituierbarkeit
+subtyp
+subtypenbeziehung
+subtypenhierarchie
+subtyping
+subtyppolymorphie
+superklasse
+supertyp
+symbol
+tagging interface
+tatsaechlicher parameter
+tatsaechlicher typparameter
+teil-ganzes-beziehung
+template
+temporaere variable
+test
+tiefe kopie
+trennung der belange
+tunneling exception
+tupel
+typ
+typaequivalenz
+typannotation
+typannotation als ausdruck einer invariante
+typannotation in strongtalk
+type branding
+type cast
+type erasure
+typerweiterung
+typexpansion
+typfehler
+typhierarchie
+typinferenz
+typinvariante
+typisierung
+typkonform
+typkonformitaet
+typkonformitaet des subtypen mit dem supertypen
+typkonstruktor
+typkorrektheit
+typpruefung
+typregel
+typregel die von ausdruecken einzuhalten sind
+typregel zur zuordnung eines typs zu ausdruecken
+typsystem
+typumwandlung
+typvariable
+ueberladen
+ueberschreiben
+ueberschreiben in eiffel
+ueberschreiben mit aufruf von super
+uml
+unaere nachricht
+unchecked exception
+ungarische notation
+unified modeling language
+universalienstreit
+unsafe
+unsicher
+unveraenderliches objekt
+unzulaessige zuweisung
+up cast
+use-site variance
+variable
+variablendeklaration
+veraenderliches objekt
+verankerter typ
+vererbung
+vererbung bei typerweiterung
+vererbungsabhaengigkeit
+vererbungsinterface
+vererbungsschnittstelle
+verhalten
+verhaltensbasiertes subtyping
+verhaltensbezogenes subtyping
+versteckte fallunterscheidung
+verweis
+verweissemantik
+verwendung eines programmelements
+virtual function table
+vorgang der generalisierung
+wachsendes objekt
+weglassen von typannotation
+weglassen von typannotation in strongtalk
+wert
+werten
+wertsemantik
+wertzuweisung
+wiederverwendung
+wildcard-typ
+wrapper-typ
+zeichenkette
+zu-1-beziehung
+zu-eins-beziehung
+zu-n-beziehung
+zu-n-beziehung
+zugreifbarkeitsregel
+zugriffsmethode
+zugriffsmodifikator
+zulaessigkeit
+zulaessigkeit von methodenaufrufen
+zulaessigkeit von zuweisungen
+zulaessigkeit von zuweisungen und methodenaufrufen
+zusammengesetztes objekt
+zustand
+zustandswechsel-invariante
+zuweisung
+zuweisungsausdruck
+zuweisungskompatibilitaet
+zuweisungskompatibilitaet bei parametrisierten subtypen
+zuweisungskompatibilitaet unter parametrischem polymorphismus
+zuweisungsoperator
+zuweisungsversuch
+zwischenobjekt

@@ -1,3 +1,7 @@
+"""
+Script to split the content od the course text into files for each chapter.
+TODO: Make the script generally applicable, try facebook/nougat
+"""
 import os
 import PyPDF2
 import re
