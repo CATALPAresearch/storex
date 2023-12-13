@@ -21,30 +21,30 @@ KE5_questions = []
 KE7_questions = []
 
 # TODO: Keywords, linking between questions
-KE1_topic = [{'question': "Was sind Grundkonzepte der objektorientierten Programmierung?",
+KE1_topics = [{'question': "Was sind die Grundkonzepte der objektorientierten Programmierung?",
               'keywords': ["Objekt", "Beziehung", "Zustand", "Verhalten"]}]
 
-KE2_topic = [{'question': "Was ist die Systematik der objektorientierten Programmierung?",
+KE2_topics = [{'question': "Was ist die Systematik der objektorientierten Programmierung?",
               'keywords': ["Klasse", "Metaklasse", "Generalisierung", "Spezialisierung", "Vererbung",
                            "abstrakte Klasse", "Superklasse", "Subklasse", "dynamisches Binden", "Collection",
                            "Verhalten", "Eingabestrom", "Ausgabestrom", "Parallelität"]}]
 
-KE3_topic = [{'question': "Was sind Typen in der objektorientierten Programmierung?",
+KE3_topics = [{'question': "Was sind Typen in der objektorientierten Programmierung?",
               'keywords': ["Deklaration", "Definition", "Verwendung", "Typdefinition", "Zuweisungskompatibilität",
                            "Typäquivalenz", "Typerweiterung", "Typkonformität", "Typeinschränkung", "Subtyping",
                            "Inklusionspolymorphie", "Typumwandlung", "Generischer Typ",
                            "parametrischer Polymorphismus", "Kovarianz", "Grenze", "Typisierung"]}]
 
-KE4_topic = [{'question': "Was sind die Besonderheiten von JAVA?",
+KE4_topics = [{'question': "Was sind die Besonderheiten von JAVA?",
               'keywords': ["Programmiermodell", "Objekt", "Typ", "Klasse", "Ausdruck", "Anweisung", "Block",
                            "Kontrollstruktur", "Modul", "Interface", "Array", "Aufzählungstyp", "Generischer Typ",
                            "dynamische Typprüfung", "interne Iteration", "externe Iteration", "spezielle Klasse"]}]
 
 # TODO:
-KE5_topic = [{'question': "Was sind die Besonderheiten anderer objektorientierter Programmiersprachen?",
+KE5_topics = [{'question': "Was sind die Besonderheiten anderer objektorientierter Programmiersprachen?",
               'keywords': ["C#", "C++", "EIFFEL"]}]
 
-KE6_topic = [{'question': "Was sind Probleme der objektorientierten Programmierung?",
+KE6_topics = [{'question': "Was sind Probleme der objektorientierten Programmierung?",
               'keywords': ["Problem der Substituierbarkeit",
                            "Fragile-base-class-Problem",
                            "Problem der schlechten Tracebarkeit",
@@ -53,7 +53,7 @@ KE6_topic = [{'question': "Was sind Probleme der objektorientierten Programmieru
                            "Problem der mangelnden Skalierbarkeit",
                            "Problem der mangelnden Eignung"]}]
 
-KE7_topic = [{'question': "Was ist guter objektorientierter Stil?",
+KE7_topics = [{'question': "Was ist guter objektorientierter Stil?",
               'keywords': ["Namen", "Formatierung", "kurze Methoden", "deklarativ", "Bibliothek", "Verteilung",
                            "Gesetz Demeters", "Klassenhierarchie"]}]
 

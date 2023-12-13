@@ -147,7 +147,7 @@ class SpeechRecognition:
         logger.info(f"Speech recognition device: {device}")
 
         # Load processor and tokenizer
-        model_name = "openai/whisper-base"
+        model_name = "openai/whisper-medium"
         processor = WhisperProcessor.from_pretrained(model_name)
         tokenizer = WhisperTokenizer.from_pretrained(model_name, language="german")
 

@@ -27,12 +27,15 @@ class QuestionManager:
             first_open_question = self.topic_list[questions.KE.KE1.value].pop()
             self.topic_list.insert(questions.KE.KE1.value, '')
             self.coverage[questions.KE.KE1.value] += 1
+            self.first_question = False
             return first_open_question
+
+        return self.random_question(questions.KE.KE1.value)
 
         lowest_coverage = self.coverage.index(min(self.coverage))
 
         if self.topic_list[lowest_coverage] is not '':
-            open_question = self.topic_list[lowest_coverage].pop()
+            open_question = self.topic_list[lowest_coverage].pop()  # TODO: Pop from an empty list
             self.topic_list.insert(lowest_coverage, '')
             self.coverage[lowest_coverage] += 1
             return open_question

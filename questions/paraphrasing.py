@@ -1,6 +1,8 @@
 import os
+
+from langchain.chains import LLMChain
 from langchain.llms import HuggingFaceHub
-from langchain import PromptTemplate, LLMChain
+from langchain.prompts import PromptTemplate
 
 # TODO: Remove Token
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'

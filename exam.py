@@ -10,6 +10,7 @@ from evaluation import Evaluator
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager
+from text_generation import TextGenerator
 from utils import colours, preprocessing
 from utils.helpers import QuestionType, FeedbackType
 
@@ -29,15 +30,15 @@ class ExamManager:
         """
         logger.info(f"Setting parameters: {exam_parameters}")
         # Set student parameters
-        self.student_name = exam_parameters["name"]
-        self.address_form = ''
-        if exam_parameters["female"]:
-            self.address_form = "Frau"
-        elif exam_parameters["male"]:
-            self.address_form = "Herr"
+        self.student_name = exam_parameters['name']
+        self.student = 'eine*n Studentin*en'
+        if exam_parameters['female']:
+            self.student = "eine Studentin"
+        elif exam_parameters['male']:
+            self.student = "einen Studenten"
 
         # Set duration of the exam
-        duration = int(exam_parameters["time"]) * 60
+        duration = int(exam_parameters['time']) * 60
         start_time = time.time()
         self.end_time = start_time + duration  # TODO: Add the LLM calculation time to end_time
         # (e.g. end_time = end_time * 1.5)
@@ -49,12 +50,14 @@ class ExamManager:
         self.manager = QuestionManager()
         self.last_question = None
         self.next_question = None
-        self.prepend_question = ""
+        self.prepend_question = ''
         self.paraphraser = QuestionParaphraser()
-        self.generator = QuestionGenerator()
+        self.question_generator = QuestionGenerator()
+
+        self.text_generator = TextGenerator()
 
         # Set audio models and evaluator
-        self.no_audio = True if exam_parameters["no_audio"] else False
+        self.no_audio = True if exam_parameters['no_audio'] else False
         if not self.no_audio:
             self.audio = TextToSpeech()
         self.transcription = SpeechRecognition()
@@ -106,8 +109,8 @@ class ExamManager:
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
-                # if not keywords:
-                #     keywords = self.evaluation.get_keywords(correct_answer)  # TODO: Paragraph as input?
+                if not keywords:
+                    keywords = preprocessing.extract_keywords(correct_answer)  # self.evaluation.get_keywords(correct_answer)
                 self.targets.extend(self.evaluation.evaluate_keywords(keywords, student_answer))
                 self.next_question = QuestionType.GENERATE
 
@@ -117,18 +120,15 @@ class ExamManager:
     def start_exam(self):
         """Exam flow."""
         # Greet the student
-        greeting = (f"Guten Tag {self.address_form} {self.student_name}!".replace('  ', ' '))
+        greeting_query = (f"Begrüße {self.student}", "namens" if self.student else '',
+                          f"{self.student_name} kurz zu einer mündlichen Prüfung. Gib nur die Begrüßung zurück:")
+        logger.info(greeting_query)
+        greeting = self.text_generator.get_text(greeting_query)
+
         self.speak(greeting)
 
-        # TODO: Ask first question
-        current_question = {'question': "Was ist objektorientierte Programmierung?",
-                            'answer': "..."}
-        # answer = self.ask_question(current_question['question'])
-        # self.get_feedback(current_question['answer'], answer)
-
+        current_question = ''
         self.next_question = QuestionType.PREDEFINE
-
-        repeated = False
 
         # Match next question type while the exam time is not up
         while time.time() < self.end_time:
@@ -142,7 +142,11 @@ class ExamManager:
                     current_question = self.manager.get_question()
                     logger.info(f"Predefined question: {current_question}")
                     answer = self.ask_question(current_question['question'])
-                    self.get_feedback(current_question['answer'], answer, current_question['keywords'])
+                    if 'answer' in current_question:
+                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
+                    else:
+                        self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic.
+                                                                     #  Search in question list or generate?
 
                 case 1:  # Generate specific question
                     repeated = False
@@ -153,7 +157,7 @@ class ExamManager:
                         target = random.choice(self.targets)
                         self.targets.remove(target)
                         logger.info(f"Target: {target}")
-                        current_question = self.generator.generate_question(target)
+                        current_question = self.question_generator.generate_question(target)
                         logger.info(f"Generated question: {current_question}")
                         answer = self.ask_question(current_question['question'])
                         self.get_feedback(current_question['answer'], answer, current_question['keywords'])
