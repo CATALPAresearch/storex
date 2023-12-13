@@ -8,6 +8,7 @@ class QuestionType(IntEnum):
     PREDEFINE = 0
     GENERATE = 1
     REPEAT = 2
+    CONNECT = 3
 
 
 class FeedbackType(IntEnum):

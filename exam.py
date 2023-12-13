@@ -93,12 +93,12 @@ class ExamManager:
         colours.print_yellow(answer)
         return answer
 
-    def get_feedback(self, correct_answer, student_answer, keywords=None):
+    def get_feedback(self, question, student_answer):
         """
         Get feedback by comparing the students answer to the correct answer.
         TODO: Add multiple random vague "Aha" before next question.
         """
-        result = self.evaluation.evaluate_answer(correct_answer, student_answer)
+        result = self.evaluation.evaluate_answer(question['answer'], student_answer)
         logger.info(f"Result: {result.name}")
 
         # Give feedback and set next question type
@@ -119,13 +119,57 @@ class ExamManager:
                 self.next_question = QuestionType.REPEAT
 
             case 4:  # The answer is missing topics
-                if not keywords:
-                    keywords = preprocessing.extract_keywords(correct_answer)  # self.evaluation.get_keywords(correct_answer)
+                if 'keywords' not in question:
+                    # TODO: Get keywords (same in question manager for pre-defined?)
+                    keywords = preprocessing.extract_keywords(question)  # self.evaluation.get_keywords(correct_answer)
                 self.targets.extend(self.evaluation.evaluate_keywords(keywords, student_answer))
-                self.next_question = QuestionType.GENERATE
+                if self.targets:
+                    self.next_question = QuestionType.GENERATE
+                else:
+                    self.next_question = QuestionType.CONNECT
 
             case _:
                 raise ValueError(f"Cannot assign {result}.")
+
+        logger.info(f"The next question should be: {self.next_question.name}")
+
+    def ask_predefined_question(self):
+        predefined_question = self.manager.get_question()
+        logger.info(f"Predefined question: {predefined_question}")
+
+        answer = self.ask_question(predefined_question['question'])
+        # Get feedback for predefined questions
+        if 'answer' in predefined_question:
+            self.get_feedback(predefined_question, answer)
+        # Follow up with question list or generate? for predefined topics
+        else:
+            self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic
+
+        return predefined_question
+
+    def ask_generated_question(self):
+        # Get a random target TODO: different probabilities?
+        target = random.choice(self.targets)
+        self.targets.remove(target)
+        logger.info(f"Target: {target}")
+
+        generated_question = self.question_generator.generate_question(target)
+        logger.info(f"Generated question: {generated_question}")
+
+        answer = self.ask_question(generated_question['question'])
+        self.get_feedback(generated_question, answer)
+
+        return generated_question
+
+    def ask_repeating_question(self):
+        repeating_question = self.last_question
+        repeating_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
+        logger.info(f"Generated reiteration: {repeating_question}")
+
+        answer = self.ask_question(repeating_question['question'])
+        self.get_feedback(repeating_question, answer)
+
+        return repeating_question
 
     def start_exam(self):
         """Exam flow."""
@@ -134,7 +178,6 @@ class ExamManager:
                           f"{self.student_name} kurz zu einer mündlichen Prüfung. Gib nur die Begrüßung zurück:")
         logger.info(greeting_query)
         greeting = self.text_generator.get_text(greeting_query)
-
         self.speak(greeting)
 
         current_question = ''
@@ -142,47 +185,28 @@ class ExamManager:
 
         # Match next question type while the exam time is not up
         while time.time() < self.end_time:
-            logger.info(f"The next question should be: {self.next_question.name}")
             logger.info(f"Remaining time: {(self.end_time - time.time()) / 60} min")
             self.last_question = current_question
             match self.next_question.value:
 
-                case 0:  # Ask predefined question
+                case 0:  # Ask a predefined question
                     repeated = False
-                    current_question = self.manager.get_question()
-                    logger.info(f"Predefined question: {current_question}")
-                    answer = self.ask_question(current_question['question'])
-                    if 'answer' in current_question:
-                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
-                    else:
-                        self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic.
-                                                                     #  Search in question list or generate?
+                    current_question = self.ask_predefined_question()
 
-                case 1:  # Generate specific question
+                case 1:  # Generate a specific question
                     repeated = False
-                    if not self.targets:
-                        logger.info("No targets")
-                        self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic
-                    else:
-                        target = random.choice(self.targets)
-                        self.targets.remove(target)
-                        logger.info(f"Target: {target}")
-                        current_question = self.question_generator.generate_question(target)
-                        logger.info(f"Generated question: {current_question}")
-                        answer = self.ask_question(current_question['question'])
-                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
-                        repeated = True  # Todo: Reiterate generated questions with another model
+                    current_question = self.ask_generated_question()
 
-                case 2:  # Generate reiteration of question
+                case 2:  # Generate a reiteration of the question
                     if repeated is False:  # TODO: How often should we reiterate? Currently: Once
-                        current_question = self.last_question
-                        current_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
-                        logger.info(f"Generated reiteration: {current_question}")
-                        answer = self.ask_question(current_question['question'])
-                        self.get_feedback(current_question['answer'], answer, current_question['keywords'])
+                        current_question = self.ask_repeating_question()
                         repeated = True
                     else:
-                        self.next_question = QuestionType.PREDEFINE
+                        self.next_question = QuestionType.CONNECT  # TODO: Connected question?
+
+                case 3:  # Ask a connected question
+                    # TODO
+                    self.next_question = QuestionType.PREDEFINE
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
