@@ -15,7 +15,7 @@ simpleaudio
 pyaudio
 
 # Data processing and vector store creation
-faiss-gpu  # Or: faiss-cpu
+faiss-cpu  # Or: faiss-gpu
 PyPDF2  # For splitPDF.py
 spacy  # For processQuAD.py
 tqdm  # For processQuAD.py
