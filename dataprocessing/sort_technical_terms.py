@@ -10,6 +10,9 @@ with (open(index, 'r') as txt_file):
         line = line.lower().strip()
         line = line + '\n'
         new_lines.append(line)
+        if '-' in line:
+            same_line = line.replace('-', ' ')
+            new_lines.append(same_line)
     new_lines = sorted(new_lines)
 with open(index, 'w') as txt_file:
     txt_file.writelines(new_lines)
