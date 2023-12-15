@@ -4,36 +4,17 @@ File for answer evaluation.
 import re
 import torch
 
+from feedback_managing import FeedbackManager
 from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer, util
 from transformers import BertConfig, BertModel, BertTokenizer, pipeline
+from utils import preprocessing
 from utils.helpers import FeedbackType
 
 import logging
 logger = logging.getLogger()
 
 # os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
-
-
-def preprocess_text(text):  # TODO: Use preprocessing.preprocess_text()
-    """
-    Preprocesses text by removing non-alphanumeric characters, extra whitespaces, german umlauts and stopwords and
-    making all words lowercase.
-
-    :param text: Unprocessed text.
-    :return text: Preprocessed text.
-    """
-    # Remove non-alphanumeric characters (except for whitespaces)
-    text = re.sub(r'[^ \w+]', '', text)
-    # Make all words lower case and strip extra whitespaces
-    text = text.lower().strip()
-    # Replace german umlauts
-    umlauts = {ord('ä'): 'ae', ord('ü'): 'ue', ord('ö'): 'oe', ord('ß'): 'ss'}
-    text = text.translate(umlauts)
-
-    # TODO: Do I need stopword removal, Stemming, Lemmatization?
-
-    return text
 
 
 class Evaluator:
@@ -52,6 +33,9 @@ class Evaluator:
         self.congruity_pipeline = pipeline("text-classification", model=classifier_model)
         self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model)
 
+        # Set Feedback Manager
+        self.feedback = FeedbackManager()
+
     def evaluate_keywords(self, keywords, student_answer):
         """
         Checks if the students answer contains the given keywords and returns the accuracy of the missing topics.
@@ -60,27 +44,34 @@ class Evaluator:
         :param student_answer: Answer given by the student.
         :return missing_topics:
         """
-        processed_answer = preprocess_text(student_answer)
+        processed_answer = preprocessing.preprocess_text(student_answer)
         missing_keys = []
         missing_topics = []
 
-        # Check if keywords are directly mentioned in the students answer by searching in the preprocessed answer for
-        # the preprocessed keywords
-        for word in keywords:
-            processed_word = preprocess_text(word)
-            if not re.search(rf"{processed_word}", processed_answer):
-                missing_keys.append(word)
-            else:
-                logger.info(f"Keyword '{word}' found!")
+        # Check the mention of technical terms
+        for term in keywords['terms']:
+            processed_term = preprocessing.preprocess_text(term)
+            if processed_term not in processed_answer:
+                logger.info(f"Term '{term}' not found!")
+                missing_topics.append(term)
+        # Add information about number of missed terms to feedback
+        self.feedback.missed_terms(len(missing_topics))
+
+        if 'common' in keywords:
+            # Check if keywords are directly mentioned in the students answer by searching for the preprocessed keywords
+            for word in keywords['common']:
+                processed_word = preprocessing.preprocess_text(word)
+                if processed_word not in processed_answer:
+                    missing_keys.append(word)
+                    logger.info(f"Common keyword '{word}' not found!")
 
         # Check if keywords are indirectly mentioned in the students answer by checking the accuracy with which the
         # students answer hits the topics represented by the keywords
         if missing_keys:
-            logger.info(f"Non-mentioned keywords: {missing_keys}")
             accuracy = self.check_accuracy(missing_keys, student_answer)
             # Add missing topics starting from a threshold of accuracy
             for topic in accuracy:
-                if topic[1] < 0.2:  # TODO: What is a good threshold for accuracy?
+                if topic[1] < 0.5:  # TODO: What is a good threshold for accuracy?
                     missing_topics.append(topic[0])
 
         logger.info(f"Missing topics: {missing_topics}")
@@ -174,12 +165,13 @@ class Evaluator:
 
         return accuracy
 
+#########################################
     def get_keywords(self, paragraph):
         """Gets the topic TODO: Get the keywords, maybe see preprocessing.extract_keywords"""
         key_model = KeyBERT(self.similarity_model)
         keyphrases = key_model.extract_keywords(paragraph, keyphrase_ngram_range=(1, 2))  #stop_words='german'
         return keyphrases
-
+#########################################
 
 def get_key_phrases(paragraph):
     """

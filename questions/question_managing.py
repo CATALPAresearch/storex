@@ -24,7 +24,7 @@ class QuestionManager:
 
     def get_question(self):
         if self.first_question is True:
-            first_open_question = self.topic_list[questions.KE.KE1.value].pop()
+            first_open_question = self.topic_list.pop(questions.KE.KE1.value)
             self.topic_list.insert(questions.KE.KE1.value, '')
             self.coverage[questions.KE.KE1.value] += 1
             self.first_question = False
