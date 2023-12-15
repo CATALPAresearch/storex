@@ -56,7 +56,7 @@ match args["module"]:
         from questions.question_generation import QuestionGenerator
         from utils.preprocessing import setup_word_lists
         setup_word_lists()
-        test_keyword = "Unterprogrammaufrufe"
+        test_keyword = "verhalten"
         generator = QuestionGenerator()
         # generator.get_question_from_retriever(test_keyword, 3)
         # print('-' * 200)

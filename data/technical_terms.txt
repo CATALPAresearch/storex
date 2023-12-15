@@ -50,9 +50,10 @@ block
 boolesche algebra
 boxing
 bytecode
-c
+c sharp
 c plus plus
 c++
+c#
 call by reference
 call by value
 call stack
@@ -105,7 +106,6 @@ eiffel
 eigenschaft
 einfachvererbung
 endrekursion
-ergebnis der generalisierung
 event
 event handler
 exception
@@ -143,7 +143,7 @@ funktionale programmierung
 garbage collection
 geheimnisprinzip
 generalisierung
-generalisierung
+generalisierungspezialisierung
 generalisierung als allgemeinbegriff
 generics
 generischer typ
