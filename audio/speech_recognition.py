@@ -6,7 +6,6 @@ The audio is then transcribed into predicted text and returned.
 """
 import pyaudio
 import threading
-import torch
 import wave
 
 from array import array
@@ -38,7 +37,10 @@ SILENCE_LIMIT = 2  # Max amount of seconds where only silence is recorded
 BUF_MAX_SIZE = CHUNK_SIZE * 10  # If the recording thread can't consume fast enough, the listener will start discarding
 
 
-def main_check(self):
+def speech_check():
+    """
+    Checks for speech. TODO: WIP
+    """
     stopped = threading.Event()
     q = Queue(maxsize=int(round(BUF_MAX_SIZE / CHUNK_SIZE)))
 
@@ -59,6 +61,9 @@ def main_check(self):
 
 
 def record(stopped, q):
+    """
+    Prints 'O' while speaking and '-' while silence. TODO: WIP
+    """
     while True:
         if stopped.wait(timeout=0):
             break
@@ -72,6 +77,9 @@ def record(stopped, q):
 
 
 def listen(stopped, q):
+    """
+    Listens to microphone input. TODO: WIP
+    """
     stream = pyaudio.PyAudio().open(
         format=FORMAT,
         channels=CHANNELS,
@@ -92,10 +100,8 @@ def listen(stopped, q):
 def record_speech():
     """
     Records audio from microphone input.
-
-:return frames: Array of bytes representing audio.
-:return sample_size: Size of each sample.
-"""
+    Returns the audio frames and used sampling size.
+    """
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -127,24 +133,22 @@ def record_speech():
 
 def save_recording(frames, sampling_width, output_file):
     """
-    Save audio frames to a file.
-
-    :param frames: Array of bytes representing audio.
-    :param sampling_width: Size of each sample.
-    :param output_file: Path to output file.
+    Saves given audio frames to a given file using the specified sampling size.
     """
-    wf = wave.open(output_file, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(sampling_width)
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+    audio_file = wave.open(output_file, 'wb')
+    audio_file.setnchannels(CHANNELS)
+    audio_file.setsampwidth(sampling_width)
+    audio_file.setframerate(RATE)
+    audio_file.writeframes(b''.join(frames))
+    audio_file.close()
 
 
 class SpeechRecognition:
     def __init__(self):
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        logger.info(f"Speech recognition device: {device}")
+        """
+        Initializes forced decoder ids and the pipeline for automatic speech recognition.
+        """
+        device = 'cpu'  # Loading to cpu, due to torch.cuda.OutOfMemoryErrors
 
         # Load processor and tokenizer
         model_name = "openai/whisper-medium"
@@ -162,18 +166,19 @@ class SpeechRecognition:
 
     def get_audio_to_text(self):
         """
-        Record and transcribe audio into text.
-
-        :return transcription: Transcribed recording.
+        Records and transcribe audio into text.
+        Returns the transcribed recording.
         """
+        # Record the microphone input
         audio_frames, sample_size = record_speech()
 
+        # Save the recording to a temporary directory
         output_file = "/tmp/output.wav"
         save_recording(audio_frames, sample_size, output_file)
 
+        # Transcribe the recording
         transcription = self.pipeline(output_file,
                                       batch_size=8,
                                       generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids})["text"]
-        # TODO: Fix writing errors in transcription.
 
         return transcription

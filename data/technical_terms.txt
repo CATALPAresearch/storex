@@ -50,8 +50,8 @@ block
 boolesche algebra
 boxing
 bytecode
+c
 c plus plus
-c#
 c++
 call by reference
 call by value
@@ -233,7 +233,7 @@ konstante methode
 konstruktor
 kontext eines blocks
 kontravarianz
-kontrollfluß
+kontrollfluss
 kontrollstruktur
 kopie
 kovariante redefinition
