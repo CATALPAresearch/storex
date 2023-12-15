@@ -7,7 +7,6 @@ import time
 
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
-from dataprocessing import process_vectorstore
 from evaluation import Evaluator
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
@@ -41,11 +40,12 @@ class ExamManager:
             self.student = "einen Studenten"
 
         # Setup stopwords for preprocessing
-        preprocessing.setup_stopwords()
+        preprocessing.setup_word_lists()
 
-        # Check if vector store is loaded
+        # Check if vector store is loaded TODO: Not necessary?
         directory = os.path.dirname(__file__)
         if not os.path.exists(os.path.join(directory, 'data/vectorStore/index.faiss')):
+            from dataprocessing import process_vectorstore
             logger.info("Loading vector store...")
             process_vectorstore.process_vectorstore()
 
@@ -89,7 +89,7 @@ class ExamManager:
             self.prepend_question = ""
         self.speak(question)
         answer = self.transcription.get_audio_to_text()
-        print("Ihre Antwort lautet in etwa:")
+        print("Ihre Antwort lautet (in etwa):")
         colours.print_yellow(answer)
         return answer
 
@@ -98,10 +98,15 @@ class ExamManager:
         Get feedback by comparing the students answer to the correct answer.
         TODO: Add multiple random vague "Aha" before next question.
         """
-        result = self.evaluation.evaluate_answer(question['answer'], student_answer)
-        logger.info(f"Result: {result.name}")
+        # Get feedback by comparing the students answer to the correct answer.
+        if 'answer' in question:
+            result = self.evaluation.evaluate_answer(question['answer'], student_answer)
+            logger.info(f"Result: {result.name}")
+        # Only check keywords for topic questions
+        else:
+            result = FeedbackType.MISSING_TOPIC
 
-        # Give feedback and set next question type
+        # Set next question type
         match result.value:
             case 0:  # Correct answer
                 self.prepend_question = "Ok."
@@ -121,8 +126,8 @@ class ExamManager:
             case 4:  # The answer is missing topics
                 if 'keywords' not in question:
                     # TODO: Get keywords (same in question manager for pre-defined?)
-                    keywords = preprocessing.extract_keywords(question)  # self.evaluation.get_keywords(correct_answer)
-                self.targets.extend(self.evaluation.evaluate_keywords(keywords, student_answer))
+                    question['keywords'] = preprocessing.extract_keywords(question['answer'])  # self.evaluation.get_keywords(correct_answer)
+                self.targets.extend(self.evaluation.evaluate_keywords(question['keywords'], student_answer))
                 if self.targets:
                     self.next_question = QuestionType.GENERATE
                 else:
@@ -139,11 +144,7 @@ class ExamManager:
 
         answer = self.ask_question(predefined_question['question'])
         # Get feedback for predefined questions
-        if 'answer' in predefined_question:
-            self.get_feedback(predefined_question, answer)
-        # Follow up with question list or generate? for predefined topics
-        else:
-            self.next_question = QuestionType.PREDEFINE  # TODO: Question for connected topic
+        self.get_feedback(predefined_question, answer)
 
         return predefined_question
 
@@ -174,8 +175,8 @@ class ExamManager:
     def start_exam(self):
         """Exam flow."""
         # Greet the student
-        greeting_query = (f"Begrüße {self.student}", "namens" if self.student else '',
-                          f"{self.student_name} kurz zu einer mündlichen Prüfung. Gib nur die Begrüßung zurück:")
+        greeting_query = (f"Begrüße {self.student} namens {self.student_name} kurz zu einer mündlichen Prüfung. "
+                          f"Gib nur die Begrüßung zurück:")
         logger.info(greeting_query)
         greeting = self.text_generator.get_text(greeting_query)
         self.speak(greeting)
