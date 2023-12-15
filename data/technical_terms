@@ -2,10 +2,6 @@ abfrage
 abgeleitete klasse
 abhaengigkeit
 abstrakte klasse
-abstrakte klasse als interface
-abstrakte klasse in eiffel
-abstrakte klasse in java
-abstrakte klasse vs. typ
 abstraktionshierarchie
 accessor
 aenderungsabhaengigkeit
@@ -14,6 +10,7 @@ aktives objekt
 aktueller parameter
 alias
 aliasing
+aliasing problem
 aliasing-problem
 allgemeinbegriff
 annotation
@@ -21,47 +18,53 @@ annotationstyp
 anweisung
 application programming interface
 aristoteles
+array initialisierer
+array literal
 array store exception
+array typ
 array-initialisierer
 array-literal
 array-typ
 assoziativspeicher
 atomares objekt
 attribut
-attribut und zustand
+attribut
 attribute
 attributwert
 aufzaehlungstyp
 ausdruck
+ausdruecke
 ausgabestrom
 auto boxing
-auto boxing und unboxing
 auto unboxing
 base class
 basisklasse
-beeinflussung durch return
 befehl
 behavioural subtyping
 benannte instanzvariable
 beziehung
 binaere methode
-binaere methode
 binaere nachricht
 block
+block
 boolesche algebra
-boxing und unboxing
+boxing
 bytecode
+c plus plus
+c#
+c++
 call by reference
-call by reference in c#
 call by value
 call stack
 change log
 checked exception
 child class
+client schnittstelle
 client-schnittstelle
 closure
 coding convention
 collection
+collection klassen
 collection-klassen
 common intermediate language
 common type system
@@ -69,15 +72,18 @@ compilation unit
 compilation units
 component object model
 continuation
+continuation
+cpp
 cross cast
 datenkapselung
-declaration-site variance
+declaration site variance
 declaration-site variance
 dedizierter export
+default methode
 default-methode
 definition
 deklaration
-deklariertes element
+deklariertes
 delegate
 delegation
 denotationale semantik
@@ -85,20 +91,17 @@ dependent type
 dereferenzierung
 derived class
 direkte instanz
-direkte instanz
 direkte subklasse
-direkte subklasse
-direkte superklasse
 direkte superklasse
 direkter subtyp
 dispatch
 double dispatch
 down cast
-durchgaengigkeit der konzepte
 dynamische typpruefung
-dynamische typpruefung
+dynamischem binden
 dynamischen typpruefung
 dynamisches binden
+eiffel
 eigenschaft
 einfachvererbung
 endrekursion
@@ -108,19 +111,19 @@ event handler
 exception
 exception chaining
 exception handling
-exception handling in eifel
+exception handling
 expansion
-expansion rekursiver typen
+explixit
 explizite interfaceimplementierung
 explizite zuweisung
 export
 extension
-extension einer generalisierung
+extension
 externe iteration
+factory methode
 factory-methode
 fall through
 fallunterscheidung
-fallunterscheidung per dynamischem binden
 familienaehnlichkeit
 fehlerhafte typannotation
 feld
@@ -128,9 +131,9 @@ filterfunktion
 flache kopie
 fluent api
 formaler parameter
-formaler parameter eines blocks
 formaler typparameter
 forwarding
+fragile base class problem
 fragile-base-class-problem
 fremdschluessel
 friend
@@ -140,11 +143,11 @@ funktionale programmierung
 garbage collection
 geheimnisprinzip
 generalisierung
+generalisierung
 generalisierung als allgemeinbegriff
 generics
 generischer typ
 genus et differentiae
-getter
 getter
 gleiche fallunterscheidung
 gleichheit von objekten
@@ -154,7 +157,7 @@ heterogene collection
 hiding
 hierarchische modularisierung
 home context
-home context bei continuations
+home context
 identitaet
 identitaet eines objekts
 identitaet von objekten
@@ -163,6 +166,7 @@ impedance mismatch
 imperative programmierung
 implementation
 implementationsgeheimnis
+implizit
 implizite interfaceimplementierung
 implizite zuweisung
 indexer
@@ -171,22 +175,21 @@ indirekter subtyp
 indizierte instanzvariable
 information hiding
 initialisierung
-initialisierung
-inklusionspolymorphie
 inklusionspolymorphie
 inlining
 innere klasse
 instanz
 instanziierbar
 instanziierung
-instanziierung einer parametrischen typdefinition
-instanziierung eines parametrischen typs
+instanziierung
+instanziierung
 instanzmethode
 instanzvariable
 integrierte entwicklungsumgebung
 intension
-intension einer generalisierung
 interface
+interface
+interface als typ konzept
 interface marker
 interface tagging
 interface-als-typ-konzept
@@ -198,17 +201,18 @@ interfacevererbung
 interne iteration
 interner iterator
 invariante
+invariante
 invarianz
+ist ein beziehung
 ist-ein-beziehung
 iteration
 iterator
+java
 java virtual machine
 junit
 kapselung
 kardinalitaet
 klasse
-klassen
-klassen in java
 klassenbasiert
 klassendefinition
 klassenhierarchie
@@ -229,31 +233,31 @@ konstante methode
 konstruktor
 kontext eines blocks
 kontravarianz
-kontravarianz von wildcard-typen
 kontrollfluß
 kontrollstruktur
 kopie
 kovariante redefinition
 kovarianz
-kovarianz von wildcard-typen
+lambda ausdruck
 lambda-ausdruck
 laufzeittypfehler
 law of demeter
-lazy initialization fuer klassenvariablen
 lazy initialization
-lazy initialization per getter
 lebenszyklus
 leere beziehung
 linke seite der zuweisung
+liskov substitutionsprinzip
 liskov-substitutionsprinzip
 literal
 literaloptimierung
+live programmierung
 live programming
 live-programmierung
 loeschen von methoden
 logische programmiersprache
 lokale variable
 lokalitaetsprinzip
+marker interface
 marker-interface
 mehrfachhierarchie
 mehrfachvererbung
@@ -264,11 +268,9 @@ message pattern
 metaklasse
 metaprogrammiersystem
 metasyntaktische variable
-metasyntaktische variable
 method ambiguous error
 method dispatching
 methode
-methoden
 methodenaufruf
 methodendefinition
 methodendeklaration
@@ -276,9 +278,12 @@ methodenkopf
 methodenrumpf
 methodensignatur
 modul
+modul
 modularisierung
-modularisierung von programmen
 monitor
+multi dispatch
+multi methode
+multi methoden
 multi-dispatch
 multi-methode
 multi-methoden
@@ -299,11 +304,11 @@ nicht instanziierbar
 nichtfunktionale anforderung
 nominale typaequivalenz
 nominale typkonformitaet
-nominale typkonformitaet in java
 nominale typkonformitaetsdeklaration
 novarianz
-novarianz von java
 null pointer exception
+nur lesen
+nur schreiben
 nur-lesen
 nur-schreiben
 objekt
@@ -318,7 +323,11 @@ outer this
 package local
 parallele ausfuehrung
 parametrische typdefinition
+parametrischem polymorphismus
+parametrischen typ
+parametrischen typdefinition
 parametrischer polymorphismus
+parametrisierten subtypen
 parent class
 passives objekt
 pattern
@@ -333,13 +342,13 @@ primitive kontrollstruktur
 primitive methode
 primitiver ausdruck
 primitiver typ
-primitiver typ in java
 programmierstil
 property
 protokoll
 protokollbeschreibung
 prototyp
 prototypenbasiert
+pseudo typvariable self
 pseudo-typvariable self
 pseudovariable
 qualifizierter export
@@ -353,12 +362,13 @@ referenzsemantik
 reflection
 reflektiver zugriff
 rekursive expansion
+rekursiver typ
 relationales datenmodell
 repraesentationsobjekt
 repraesentationsunabhaengigkeit
 return
+return anweisung
 return-anweisung
-return-anweisung bei continuation
 rolle
 rollenwechsel
 rollenwechsel eines objekts
@@ -368,17 +378,14 @@ schluessel
 schluesselwort
 schluesselwortnachricht
 schnittstelle
-schnittstelle eines moduls
-schnittstellenspezifikation eines moduls
+schnittstellenspezifikation
 seiteneffekt
 self
-self und super im home context
 semantischer fehler
 separation of concerns
 setter
 sichtbarkeit
 sichtbarkeitsregeln
-sichtbarkeitsregeln von variablen
 signatur
 single dispatch
 softwarekrise
@@ -389,8 +396,10 @@ statischen typpruefung
 statisches binden
 stream zum zugriff auf eine collection
 streams
+string konkatenation
 string-konkatenation
 strings
+strongtalk
 struktur
 struktur von objekten
 strukturaequivalenz
@@ -399,7 +408,6 @@ strukturelle typkonformitaet
 strukturierte programmierung
 strukturiertes objekt
 subklasse
-subklasse in java
 subklassenbeziehung
 substituierbarkeit
 subtyp
@@ -407,12 +415,14 @@ subtypenbeziehung
 subtypenhierarchie
 subtyping
 subtyppolymorphie
+super
 superklasse
 supertyp
 symbol
 tagging interface
 tatsaechlicher parameter
 tatsaechlicher typparameter
+teil ganzes beziehung
 teil-ganzes-beziehung
 template
 temporaere variable
@@ -443,17 +453,14 @@ typkonstruktor
 typkorrektheit
 typpruefung
 typregel
-typregel die von ausdruecken einzuhalten sind
-typregel zur zuordnung eines typs zu ausdruecken
 typsystem
 typumwandlung
 typvariable
 ueberladen
 ueberschreiben
-ueberschreiben in eiffel
-ueberschreiben mit aufruf von super
 uml
 unaere nachricht
+unboxing
 unchecked exception
 ungarische notation
 unified modeling language
@@ -463,6 +470,7 @@ unsicher
 unveraenderliches objekt
 unzulaessige zuweisung
 up cast
+use site variance
 use-site variance
 variable
 variablendeklaration
@@ -484,34 +492,35 @@ virtual function table
 vorgang der generalisierung
 wachsendes objekt
 weglassen von typannotation
-weglassen von typannotation in strongtalk
 wert
-werten
 wertsemantik
 wertzuweisung
 wiederverwendung
+wildcard
+wildcard typ
 wildcard-typ
+wrapper typ
 wrapper-typ
 zeichenkette
+zu 1 beziehung
+zu eins beziehung
+zu n beziehung
 zu-1-beziehung
 zu-eins-beziehung
-zu-n-beziehung
 zu-n-beziehung
 zugreifbarkeitsregel
 zugriffsmethode
 zugriffsmodifikator
+zugriffsregeln
 zulaessigkeit
-zulaessigkeit von methodenaufrufen
-zulaessigkeit von zuweisungen
-zulaessigkeit von zuweisungen und methodenaufrufen
 zusammengesetztes objekt
 zustand
+zustandswechsel
+zustandswechsel invariante
 zustandswechsel-invariante
 zuweisung
 zuweisungsausdruck
 zuweisungskompatibilitaet
-zuweisungskompatibilitaet bei parametrisierten subtypen
-zuweisungskompatibilitaet unter parametrischem polymorphismus
 zuweisungsoperator
 zuweisungsversuch
 zwischenobjekt
