@@ -35,7 +35,7 @@ match args["module"]:
         audio = TextToSpeech()
         audio.get_audio(text_input)
 
-    case "evaluation":
+    case "evaluation":  # TODO: Broken
         from evaluation import Evaluator
 
         # Sample student answer, correct answer and keywords
@@ -45,16 +45,8 @@ match args["module"]:
                         "bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im "
                         "Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im"
                         "Programmtext und erschwerte das Verstehen und Debuggen von Programmen.")
-        test_english = ("Supervised learning is the machine learning task of learning a function that maps an input to "
-                        "an output based on example input-output pairs. It infers a function from labeled training "
-                        "data consisting of a set of training examples. In supervised learning, each example is a pair "
-                        "consisting of an input object (typically a vector) and a desired output value (also called "
-                        "the supervisory signal). A supervised learning algorithm analyzes the training data and "
-                        "produces an inferred function, which can be used for mapping new examples. An optimal "
-                        "scenario will allow for the algorithm to correctly determine the class labels for unseen "
-                        "instances. This requires the learning algorithm to generalize from the training data to "
-                        "unseen situations in a 'reasonable' way (see inductive bias).")
-        test_keywords = ['dynamisch', 'Goto', 'Lokalitätsprinzip', 'Unterprogramm', 'Binden', 'Debuggen']
+        test_keywords = {'terms': ['dynamisch', 'Goto', 'Lokalitätsprinzip', 'Binden', 'Debuggen'],
+                         'common': ['Unterprogramm']}
 
         evaluator = Evaluator()
         # evaluator.get_missing_keys(test_correct, test_student)
@@ -62,8 +54,8 @@ match args["module"]:
 
     case "generator":
         from questions.question_generation import QuestionGenerator
-        from utils.preprocessing import setup_stopwords
-        setup_stopwords()
+        from utils.preprocessing import setup_word_lists
+        setup_word_lists()
         test_keyword = "Unterprogrammaufrufe"
         generator = QuestionGenerator()
         # generator.get_question_from_retriever(test_keyword, 3)

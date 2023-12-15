@@ -30,8 +30,8 @@ class Evaluator:
 
         # Load a classifier model, try morit/xlm-t-roberta-base-mnli-xnli?
         classifier_model = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"
-        self.congruity_pipeline = pipeline("text-classification", model=classifier_model, truncating=True)
-        self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model, truncating=True)
+        self.congruity_pipeline = pipeline("text-classification", model=classifier_model, truncation=True)
+        self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model, truncation=True)
 
         # Set Feedback Manager
         self.feedback = FeedbackManager()
