@@ -30,25 +30,21 @@ class Evaluator:
 
         # Load a classifier model, try morit/xlm-t-roberta-base-mnli-xnli?
         classifier_model = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"
-        self.congruity_pipeline = pipeline("text-classification", model=classifier_model)
-        self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model)
+        self.congruity_pipeline = pipeline("text-classification", model=classifier_model, truncating=True)
+        self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model, truncating=True)
 
         # Set Feedback Manager
         self.feedback = FeedbackManager()
 
     def evaluate_keywords(self, keywords, student_answer):
         """
-        Checks if the students answer contains the given keywords and returns the accuracy of the missing topics.
-
-        :param keywords: Main keywords from the correct answer.
-        :param student_answer: Answer given by the student.
-        :return missing_topics:
+        Checks if the given students answer contains the given keywords and returns the missing topics.
         """
         processed_answer = preprocessing.preprocess_text(student_answer)
         missing_keys = []
         missing_topics = []
 
-        # Check the mention of technical terms
+        # Check the mention of technical terms in the students answer
         for term in keywords['terms']:
             processed_term = preprocessing.preprocess_text(term)
             if processed_term not in processed_answer:
@@ -57,19 +53,19 @@ class Evaluator:
         # Add information about number of missed terms to feedback
         self.feedback.missed_terms(len(missing_topics))
 
+        # Check the mention of common keywords in the students answer by searching for the preprocessed keywords
         if 'common' in keywords:
-            # Check if keywords are directly mentioned in the students answer by searching for the preprocessed keywords
             for word in keywords['common']:
                 processed_word = preprocessing.preprocess_text(word)
                 if processed_word not in processed_answer:
                     missing_keys.append(word)
                     logger.info(f"Common keyword '{word}' not found!")
 
-        # Check if keywords are indirectly mentioned in the students answer by checking the accuracy with which the
-        # students answer hits the topics represented by the keywords
+        # Check if common keywords are indirectly mentioned in the students answer by checking the accuracy with which
+        # the students answer hits the topics represented by the word
         if missing_keys:
             accuracy = self.check_accuracy(missing_keys, student_answer)
-            # Add missing topics starting from a threshold of accuracy
+            # Add missing topics under the threshold of accuracy
             for topic in accuracy:
                 if topic[1] < 0.5:  # TODO: What is a good threshold for accuracy?
                     missing_topics.append(topic[0])
@@ -79,11 +75,8 @@ class Evaluator:
 
     def evaluate_answer(self, correct_answer, student_answer):
         """
-        Compares the students answer with the correct answer.
-
-        :param correct_answer: Question-answer pair.
-        :param student_answer: Answer given by the student.
-        :return feedback:
+        Compares the given students answer with the given correct answer.
+        Returns feedback.
         """
         feedback = None
         # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
@@ -110,15 +103,12 @@ class Evaluator:
             feedback = FeedbackType.MISSING_TOPIC
         return feedback
 
-        # Identify the mistakes (factual inaccuracy, missing information, structural issues)
+        # TODO: Identify concrete mistakes (factual inaccuracy, missing information, structural issues)
 
     def check_similarity(self, correct_answer, student_answer):
         """
-        Finds the semantic similarity between two paragraphs.
-
-        :param correct_answer: Correct answer.
-        :param student_answer: Answer given by the student.
-        :return: Similarity between both answers.
+        Finds the semantic similarity between the given answers.
+        Returns the similarity between both answers.
         """
         # Compute embeddings for both answers
         c_embedding = self.similarity_model.encode(correct_answer, convert_to_tensor=True)
@@ -130,11 +120,8 @@ class Evaluator:
 
     def check_congruity(self, correct_answer, student_answer):
         """
-        Checks if the concatenated answers contain a contradiction or entail each other.
-
-        :param correct_answer: Correct answer.
-        :param student_answer: Answer given by the student.
-        :return: Congruity
+        Checks if the concatenated given answers contain a contradiction or entail each other.
+        Returns entailment, neutral or contradiction lable.
         """
         # Check entailment in concatenated answers
         congruity = self.congruity_pipeline(correct_answer + student_answer)
@@ -152,11 +139,8 @@ class Evaluator:
 
     def check_accuracy(self, keys, student_answer):
         """
-        Checks if the missing keywords are accurately represented in the students answer.
-
-        :param keys: Keywords from the correct answer which are not mentioned in the students answer directly.
-        :param student_answer: Answer given by the student.
-        :return accuracy:
+        Checks if the given keywords are accurately represented in the given students answer.
+        Returns the accuracy.
         """
         # Check the accuracy of the keys for the student answer
         accuracy_scores = self.accuracy_pipeline(student_answer, keys)
