@@ -77,13 +77,13 @@ class ExamManager:
                                                #  or just time the students answers
 
     def speak(self, text):
-        """Output text via speaker and terminal."""
+        """Outputs the given text via the speakers and in the terminal."""
         colours.print_blue(text)
         if not self.no_audio:
             self.audio.get_audio(text)
 
     def ask_question(self, question):
-        """Output question and get the students answer."""
+        """Outputs the given question and gets the students answer."""
         if self.prepend_question:
             question = f"{self.prepend_question} {question}"
             self.prepend_question = ""
@@ -95,7 +95,9 @@ class ExamManager:
 
     def get_feedback(self, question, student_answer):
         """
-        Get feedback by comparing the students answer to the correct answer.
+        Gets feedback by comparing the given students answer to the given correct answer.
+        Checks the mentioning of keywords.
+        Sets the type for the next question.
         TODO: Add multiple random vague "Aha" before next question.
         """
         # Get feedback by comparing the students answer to the correct answer.
@@ -139,41 +141,57 @@ class ExamManager:
         logger.info(f"The next question should be: {self.next_question.name}")
 
     def ask_predefined_question(self):
+        """
+        Gets, asks and returns a predefined question.
+        """
+        # Get predefined question
         predefined_question = self.manager.get_question()
         logger.info(f"Predefined question: {predefined_question}")
 
+        # Get the students answer to the question and get feedback on the answer
         answer = self.ask_question(predefined_question['question'])
-        # Get feedback for predefined questions
         self.get_feedback(predefined_question, answer)
 
         return predefined_question
 
     def ask_generated_question(self):
+        """
+        Gets, asks and returns a generated question.
+        """
         # Get a random target TODO: different probabilities?
         target = random.choice(self.targets)
         self.targets.remove(target)
         logger.info(f"Target: {target}")
 
+        # Get a generated question
         generated_question = self.question_generator.generate_question(target)
         logger.info(f"Generated question: {generated_question}")
 
+        # Get the students answer to the question and get feedback on the answer
         answer = self.ask_question(generated_question['question'])
         self.get_feedback(generated_question, answer)
 
         return generated_question
 
     def ask_repeating_question(self):
+        """
+        Gets, asks and returns a reiterated question.
+        """
+        # Get a Reiteration of the last question
         repeating_question = self.last_question
         repeating_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
         logger.info(f"Generated reiteration: {repeating_question}")
 
+        # Get the students answer to the question and get feedback on the answer
         answer = self.ask_question(repeating_question['question'])
         self.get_feedback(repeating_question, answer)
 
         return repeating_question
 
     def start_exam(self):
-        """Exam flow."""
+        """
+        Starts the exam and loops through questions while the time is not up.
+        """
         # Greet the student
         greeting_query = (f"Begrüße {self.student} namens {self.student_name} kurz zu einer mündlichen Prüfung. "
                           f"Gib nur die Begrüßung zurück:")
