@@ -69,27 +69,39 @@ class QuestionGenerator:
         logger.debug(f"Question: {result}")
         return result
 
-    def generate_question(self, keyword, k=4):
-        context = self.get_context(keyword, k)  # Todo: End2end, pipeline or multitask?
-        question = self.question_chain.run(context)
+    def generate_question(self, keyword, k=2):
+        """
+        Generates a question for the context from the given keyword.
+        """
+        # Get a context for the keyword
+        context = self.get_context(keyword, k)
+        logger.debug(f"Context: {context}")
 
-        answer = ' '.join(context.split(' ', 250)[:250])  # TODO: Extract answer from context or summarize to answer length
-        keywords = preprocessing.extract_keywords(self.get_context(keyword, 8))  # TODO: How many keywords?
-        keywords = [word[0] for word in keywords]
-        if keyword not in keywords:
-            keywords.append(keyword)
+        # Set the answer TODO: Extract from context or summarize for End2end, pipeline or multitask
+        answer = context
+        # Generate a question from the context
+        question = self.question_chain.run(context)
+        logger.debug(f"Question: {question}")
+
+        # Get technical terms and common words from the paragraph
+        keywords = preprocessing.extract_keywords(self.get_context(keyword, k))  # TODO: How many keywords?
+        logger.info(f"Keywords from context: {keywords}")
+        if keyword not in keywords['terms']:
+            keywords['terms'].append(keyword)
+
         question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
-        logger.debug(f"Question and answer: {question_dict}")
         return question_dict
 
     def get_context(self, query, k):
+        """
+        Retrieves the k most fitting context documents for the given query.
+        Returns the concatenated context.
+        """
         # TODO: Topic extraction (maybe different database splitting, e.g. not at \n?)
         # Get context for query
         context_docs = self.db.similarity_search(query, k=k)
         context_docs = [docs for docs in context_docs if not docs.page_content[0].isdigit()]
-        logger.debug(f"Context: {context_docs}")
-
-        # TODO: Process context by removing numbers, headers, examples, 'Kurseinheit', questions?
+        # TODO: Process context?
 
         context = ' '.join([doc.page_content for doc in context_docs])
         return context
