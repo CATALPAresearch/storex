@@ -1,18 +1,24 @@
 """
 Class for managing predefined questions.
 """
+import logging
 import random
 import questions.questions as questions
+
+from utils.helpers import KE
+
+logger = logging.getLogger()
 
 
 # TODO: Predefine questions and their probabilities
 class QuestionManager:
-    def __init__(self):
-        self.first_question = True
+    def __init__(self, topic_manager):
+        self.topic_manager = topic_manager
+
         self.question_list = []
         self.topic_list = []
         self.coverage = []
-        for i in questions.KE:
+        for i in KE:
             # Append all questions per KE into the list of questions
             ke_questions = f"{i.name}_questions"
             self.question_list.append(getattr(questions, ke_questions))
@@ -23,16 +29,24 @@ class QuestionManager:
             self.coverage.append(0)
 
     def get_question(self):
-        if self.first_question is True:
-            first_open_question = self.topic_list.pop(questions.KE.KE1.value)
-            self.topic_list.insert(questions.KE.KE1.value, '')
-            self.coverage[questions.KE.KE1.value] += 1
-            self.first_question = False
-            return first_open_question
+        ke_index = self.topic_manager.get_topic().value
 
-        return self.random_question(questions.KE.KE1.value)
+        # Check if the topics open question was already asked
+        open_question = self.topic_list[ke_index]
+        if open_question is not '':
+            self.coverage[KE.KE1.value] += 1
+            self.topic_list[self.topic_manager.get_topic().value] = ''
+            return open_question
+
+        # Check if there are predefined questions for the current topics
+        if self.question_list[ke_index] is not '':
+            return self.random_question(ke_index)
+        else:
+            self.topic_manager.increase_topic()
+            logger.info("Increased topic!")
 
         lowest_coverage = self.coverage.index(min(self.coverage))
+        logger.info(f"Lowest Coverage: {lowest_coverage}")
 
         if self.topic_list[lowest_coverage] is not '':
             open_question = self.topic_list[lowest_coverage].pop()  # TODO: Pop from an empty list
@@ -42,7 +56,7 @@ class QuestionManager:
         elif self.question_list[lowest_coverage]:
             return self.random_question(lowest_coverage)
         else:
-            return self.random_question(questions.KE.KE6.value)
+            return self.random_question(KE.KE6.value)
 
     def random_question(self, ke_index):
         """
@@ -53,7 +67,23 @@ class QuestionManager:
         random_index = random.randrange(len(self.question_list[ke_index]))
         question = self.question_list[ke_index].pop(random_index)
         self.coverage[ke_index] += 1
-        # question = random.choice(self.question_list[questions.KE.KE6.value])
+        # question = random.choice(self.question_list[KE.KE6.value])
         # if question['follow-up']:
         #     pass
         return question
+
+
+class TopicManager:
+    """
+    Training exam topic manager.
+    """
+    def __init__(self):
+        self.topic = KE.KE1
+
+    def get_topic(self):
+        return self.topic
+
+    def increase_topic(self):
+        # TODO: Add randomness for next topic?
+        if self.topic.value < len(KE):
+            self.topic.value += 1

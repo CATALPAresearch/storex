@@ -11,17 +11,17 @@ from audio.text_to_speech import TextToSpeech
 from evaluation import Evaluator
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
-from questions.question_managing import QuestionManager
+from questions.question_managing import QuestionManager, TopicManager
 from text_generation import TextGenerator
 from utils import colours, preprocessing
-from utils.helpers import QuestionType, FeedbackType
+from utils.helpers import QuestionType, FeedbackType, KE
 
 logger = logging.getLogger()
 
 
 class ExamManager:
     """
-    Training exam conversation manager
+    Training exam conversation manager.
     """
     def __init__(self, exam_parameters):
         """
@@ -48,7 +48,8 @@ class ExamManager:
             process_vectorstore.process_vectorstore()
 
         # Set question manager and question models
-        self.manager = QuestionManager()
+        topic_manager = TopicManager()
+        self.manager = QuestionManager(topic_manager)
         self.last_question = None
         self.next_question = None
         self.prepend_question = ''
@@ -68,11 +69,9 @@ class ExamManager:
         self.transcription = SpeechRecognition()
         self.evaluation = Evaluator()
 
-        # Set duration of the exam
+        # Set time manager with the exam duration
         duration = int(exam_parameters['time']) * 60
-        start_time = time.time()
-        self.end_time = start_time + duration  # TODO: Add the LLM calculation time to end_time (e.g. end_time = end_time * 1.5)
-                                               #  or just time the students answers
+        self.time_manager = TimeManager(duration, topic_manager)
 
     def speak(self, text):
         """Outputs the given text via the speakers and in the terminal."""
@@ -86,9 +85,11 @@ class ExamManager:
             question = f"{self.prepend_question} {question}"
             self.prepend_question = ""
         self.speak(question)
-        answer = self.transcription.get_audio_to_text()
-        print("Ihre Antwort lautet (in etwa):")
-        colours.print_yellow(answer)
+
+        with self.time_manager:
+            answer = self.transcription.get_audio_to_text()
+            print("Ihre Antwort lautet (in etwa):")
+            colours.print_yellow(answer)
         return answer
 
     def get_feedback(self, question, student_answer):
@@ -200,10 +201,13 @@ class ExamManager:
         current_question = ''
         self.next_question = QuestionType.PREDEFINE
 
-        # Match next question type while the exam time is not up
-        while time.time() < self.end_time:
-            logger.info(f"Remaining time: {(self.end_time - time.time()) / 60} min")
+        # Check if the exam time is not up
+        while self.time_manager.get_remaining_time() > 0:
             self.last_question = current_question
+            # Set the question type to predefined if the topic changed
+            if self.time_manager.check_topic():
+                self.next_question = QuestionType.PREDEFINE
+            # Match the question type for the next question
             match self.next_question.value:
 
                 case 0:  # Ask a predefined question
@@ -228,11 +232,67 @@ class ExamManager:
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
 
+        # TODO: Give Feedback
+
+        # See the student off
+        goodbye_query = (f"Verabschiede {self.student} namens {self.student_name} kurz nach einer mündlichen Prüfung. "
+                         f"Gib nur die Verabschiedung zurück:")
+        logger.info(goodbye_query)
+        goodbye = self.text_generator.get_text(goodbye_query)
+        self.speak(goodbye)
+
+
+class TimeManager:
+    """
+    Training exam time manager.
+    """
+    def __init__(self, duration, topic_manager):
+        self.remaining_time = duration
+        self.topic_manager = topic_manager
+        self.last_known_topic = topic_manager.get_topic()
+        self.topic_time = duration / len(KE)
+
+        self.start_time = None
+
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        elapsed_time = time.time() - self.start_time
+        logger.info(f"Answer took {elapsed_time:.6f} seconds.")
+        self.remaining_time = self.remaining_time - elapsed_time
+        self.topic_time = self.topic_time - elapsed_time
+        logger.info(f"Remaining time: {self.remaining_time:.6f} seconds ({self.topic_time:.6f} seconds in this topic).")
+
+    def get_remaining_time(self):
+        return self.remaining_time
+
+    def check_topic(self):
+        """
+        Checks if the topic got increased by the QuestionManager and calculates the new time per topic.
+        Checks if the time for the current topic ran out and increases the topic.
+        """
+        # Check if topic got increased
+        topic = self.topic_manager.get_topic()
+        if topic != self.last_known_topic:
+            remaining_topics = len(KE) - topic.value
+            self.topic_time = self.remaining_time / remaining_topics
+            logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
+            self.last_known_topic = topic
+            return True
+        # Check if time for topic ran out
+        elif self.topic_time <= 0:
+            self.topic_manager.increase_topic()
+            self.last_known_topic.value += 1
+            return True
+        return False
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 5, "female": False, "male": False, "no_audio": True}
+    dev_parameters = {"name": "Luna", "time": 10, "female": False, "male": False, "no_audio": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()
