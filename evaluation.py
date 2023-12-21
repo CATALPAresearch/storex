@@ -2,6 +2,7 @@
 File for answer evaluation.
 """
 import logging
+import re
 
 from feedback_managing import FeedbackManager
 from sentence_transformers import SentenceTransformer, util
@@ -41,8 +42,9 @@ class Evaluator:
 
         # Check the mention of technical terms in the students answer
         for term in keywords:
-            processed_term = preprocessing.preprocess_text(term)
-            if processed_term not in processed_answer:
+            pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
+            matches = re.findall(pattern, processed_answer)
+            if not matches:
                 missing_keys.append(term)
         logger.info(f"Missing terms: {missing_keys}")
         # Add information about number of missed terms to feedback

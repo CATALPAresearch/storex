@@ -16,6 +16,10 @@ from text_generation import TextGenerator
 from utils import colours, preprocessing
 from utils.helpers import QuestionType, FeedbackType, KE
 
+# TODO: Remove once langchain updated to InferenceClient
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 logger = logging.getLogger()
 
 

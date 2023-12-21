@@ -1,13 +1,15 @@
 abfrage
+abgeleitet
 abgeleitete klasse
 abhaengigkeit
+abstrakt
 abstrakte klasse
 abstraktionshierarchie
 accessor
 aenderungsabhaengigkeit
 aggregation
+aktiv
 aktives objekt
-aktueller parameter
 alias
 aliasing
 aliasing problem
@@ -18,6 +20,7 @@ annotationstyp
 anweisung
 application programming interface
 aristoteles
+array
 array initialisierer
 array literal
 array store exception
@@ -26,11 +29,11 @@ array-initialisierer
 array-literal
 array-typ
 assoziativspeicher
+atomar
 atomares objekt
 attribut
-attribut
-attribute
 attributwert
+aufzaehlung
 aufzaehlungstyp
 ausdruck
 ausdruecke
@@ -41,38 +44,40 @@ base class
 basisklasse
 befehl
 behavioural subtyping
+benannt
 benannte instanzvariable
 beziehung
+binaer
 binaere methode
 binaere nachricht
 block
-block
+bool
 boolesche algebra
 boxing
 bytecode
-c sharp
+c
 c plus plus
+c sharp
 c++
-c#
 call by reference
 call by value
 call stack
+cast
 change log
 checked exception
 child class
+client
 client schnittstelle
 client-schnittstelle
 closure
 coding convention
 collection
-collection klassen
-collection-klassen
+collection klasse
+collection-klasse
 common intermediate language
 common type system
 compilation unit
-compilation units
 component object model
-continuation
 continuation
 cpp
 cross cast
@@ -80,11 +85,12 @@ datenkapselung
 declaration site variance
 declaration-site variance
 dedizierter export
+default
 default methode
 default-methode
 definition
 deklaration
-deklariertes
+deklariert
 delegate
 delegation
 denotationale semantik
@@ -98,6 +104,7 @@ direkter subtyp
 dispatch
 double dispatch
 down cast
+dynamisch
 dynamische typpruefung
 dynamischem binden
 dynamischen typpruefung
@@ -111,13 +118,11 @@ event handler
 exception
 exception chaining
 exception handling
-exception handling
 expansion
-explixit
+explizit
 explizite interfaceimplementierung
 explizite zuweisung
 export
-extension
 extension
 externe iteration
 factory methode
@@ -130,8 +135,8 @@ feld
 filterfunktion
 flache kopie
 fluent api
-formaler parameter
-formaler typparameter
+formale parameter
+formale typparameter
 forwarding
 fragile base class problem
 fragile-base-class-problem
@@ -144,8 +149,9 @@ garbage collection
 geheimnisprinzip
 generalisierung
 generalisierungspezialisierung
-generalisierung als allgemeinbegriff
-generics
+generalisierungspezialisierung
+generic
+generisch
 generischer typ
 genus et differentiae
 getter
@@ -155,8 +161,8 @@ globale variable
 goto
 heterogene collection
 hiding
+hierarch
 hierarchische modularisierung
-home context
 home context
 identitaet
 identitaet eines objekts
@@ -181,13 +187,10 @@ innere klasse
 instanz
 instanziierbar
 instanziierung
-instanziierung
-instanziierung
 instanzmethode
 instanzvariable
 integrierte entwicklungsumgebung
 intension
-interface
 interface
 interface als typ konzept
 interface marker
@@ -200,7 +203,6 @@ interfacetyp
 interfacevererbung
 interne iteration
 interner iterator
-invariante
 invariante
 invarianz
 ist ein beziehung
@@ -218,12 +220,11 @@ klassendefinition
 klassenhierarchie
 klassenliteral
 klassenmethode
-klassenmethode
 klassenschnittstelle
 klassentyp
 klassenvariable
 klassifikation
-klonen
+klon
 kommentar
 komponente
 komposition
@@ -238,6 +239,7 @@ kontrollstruktur
 kopie
 kovariante redefinition
 kovarianz
+lambda
 lambda ausdruck
 lambda-ausdruck
 laufzeittypfehler
@@ -256,6 +258,7 @@ live-programmierung
 loeschen von methoden
 logische programmiersprache
 lokale variable
+lokalitaet
 lokalitaetsprinzip
 marker interface
 marker-interface
@@ -278,18 +281,14 @@ methodenkopf
 methodenrumpf
 methodensignatur
 modul
-modul
 modularisierung
 monitor
 multi dispatch
 multi methode
-multi methoden
 multi-dispatch
 multi-methode
-multi-methoden
 multiplizitaet
 nachricht
-nachrichtenausdruck
 nachrichtenausdruck
 nachrichtenkategorie
 nachrichtenselektor
@@ -322,13 +321,14 @@ osgi
 outer this
 package local
 parallele ausfuehrung
+parametrische polymorphismus
+parametrische polymorphismus
+parametrische typ
 parametrische typdefinition
-parametrischem polymorphismus
-parametrischen typ
-parametrischen typdefinition
-parametrischer polymorphismus
-parametrisierten subtypen
+parametrische typdefinition
+parametrisierte subtyp
 parent class
+passiv
 passives objekt
 pattern
 persistenzlayer
@@ -338,10 +338,10 @@ pointer
 pointervariable
 polymorphie
 polymorphismus
+primitive ausdruck
 primitive kontrollstruktur
 primitive methode
-primitiver ausdruck
-primitiver typ
+primitive typ
 programmierstil
 property
 protokoll
@@ -361,9 +361,10 @@ referenz
 referenzsemantik
 reflection
 reflektiver zugriff
+rekursiv
 rekursive expansion
-rekursiver typ
-relationales datenmodell
+rekursive typ
+relationale datenmodell
 repraesentationsobjekt
 repraesentationsunabhaengigkeit
 return
@@ -388,17 +389,17 @@ sichtbarkeit
 sichtbarkeitsregeln
 signatur
 single dispatch
+smalltalk
 softwarekrise
 speicherbereinigung
 spezialisierung
 statik und dynamik
-statischen typpruefung
-statisches binden
-stream zum zugriff auf eine collection
-streams
+statisch binden
+statisch typpruefung
+stream
+string
 string konkatenation
 string-konkatenation
-strings
 strongtalk
 struktur
 struktur von objekten
@@ -410,6 +411,7 @@ strukturiertes objekt
 subklasse
 subklassenbeziehung
 substituierbarkeit
+substitutionsprinzip
 subtyp
 subtypenbeziehung
 subtypenhierarchie
@@ -434,8 +436,6 @@ tupel
 typ
 typaequivalenz
 typannotation
-typannotation als ausdruck einer invariante
-typannotation in strongtalk
 type branding
 type cast
 type erasure
@@ -447,8 +447,6 @@ typinferenz
 typinvariante
 typisierung
 typkonform
-typkonformitaet
-typkonformitaet des subtypen mit dem supertypen
 typkonstruktor
 typkorrektheit
 typpruefung
@@ -458,7 +456,6 @@ typumwandlung
 typvariable
 ueberladen
 ueberschreiben
-uml
 unaere nachricht
 unboxing
 unchecked exception
@@ -467,7 +464,7 @@ unified modeling language
 universalienstreit
 unsafe
 unsicher
-unveraenderliches objekt
+unveraenderliche objekt
 unzulaessige zuweisung
 up cast
 use site variance
@@ -477,21 +474,17 @@ variablendeklaration
 veraenderliches objekt
 verankerter typ
 vererbung
-vererbung bei typerweiterung
 vererbungsabhaengigkeit
 vererbungsinterface
 vererbungsschnittstelle
 verhalten
-verhaltensbasiertes subtyping
-verhaltensbezogenes subtyping
+verhaltensbasierte subtyping
+verhaltensbezogene subtyping
 versteckte fallunterscheidung
 verweis
 verweissemantik
-verwendung eines programmelements
 virtual function table
-vorgang der generalisierung
-wachsendes objekt
-weglassen von typannotation
+wachsende objekt
 wert
 wertsemantik
 wertzuweisung
@@ -513,7 +506,7 @@ zugriffsmethode
 zugriffsmodifikator
 zugriffsregeln
 zulaessigkeit
-zusammengesetztes objekt
+zusammengesetzte objekt
 zustand
 zustandswechsel
 zustandswechsel invariante
