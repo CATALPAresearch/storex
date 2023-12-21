@@ -105,7 +105,8 @@ class ExamManager:
             logger.info(f"Result: {result.name}")
         # Only check keywords for topic questions
         else:
-            result = FeedbackType.MISSING_TOPIC
+            result = FeedbackType.CORRECT
+            # result = FeedbackType.MISSING_TOPIC
 
         # Set next question type
         match result.value:
@@ -163,7 +164,7 @@ class ExamManager:
         logger.info(f"Target: {target}")
 
         # Get a generated question
-        generated_question = self.question_generator.generate_question(target)
+        generated_question = self.question_generator.generate_question_answer(target)
         logger.info(f"Generated question: {generated_question}")
 
         # Get the students answer to the question and get feedback on the answer
@@ -199,14 +200,17 @@ class ExamManager:
         self.speak(greeting)
 
         current_question = ''
+        repeated = False
         self.next_question = QuestionType.PREDEFINE
 
         # Check if the exam time is not up
         while self.time_manager.get_remaining_time() > 0:
             self.last_question = current_question
+
             # Set the question type to predefined if the topic changed
             if self.time_manager.check_topic():
                 self.next_question = QuestionType.PREDEFINE
+
             # Match the question type for the next question
             match self.next_question.value:
 
@@ -276,15 +280,21 @@ class TimeManager:
         # Check if topic got increased
         topic = self.topic_manager.get_topic()
         if topic != self.last_known_topic:
+            # Set new time for topic
             remaining_topics = len(KE) - topic.value
             self.topic_time = self.remaining_time / remaining_topics
             logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
             self.last_known_topic = topic
             return True
         # Check if time for topic ran out
-        elif self.topic_time <= 0:
+        elif self.topic_time <= 0 and self.last_known_topic.value < len(KE):
             self.topic_manager.increase_topic()
-            self.last_known_topic.value += 1
+            topic = self.topic_manager.get_topic()
+            self.last_known_topic = topic
+            # Set new time for topic
+            remaining_topics = len(KE) - topic.value
+            self.topic_time = self.remaining_time / remaining_topics
+            logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
             return True
         return False
 

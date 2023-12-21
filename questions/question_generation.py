@@ -2,9 +2,10 @@
 Class for generating questions.
 """
 import os
+import re
 import torch
 
-from langchain.chains import LLMChain, RetrievalQA
+from langchain.chains import LLMChain
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
@@ -33,41 +34,53 @@ class QuestionGenerator:
         # Load database
         self.db = FAISS.load_local(vectorstore, embedding_model)
 
-        # Load prompt from template
-        template = """Write a question from this paragraph: {context}"""
-        self.prompt = PromptTemplate(template=template, input_variables=["context"])
-        # Load question generation model
-        self.llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base')  # TODO: Try other models
-        # Create chain for question generation
-        self.question_chain = LLMChain(prompt=self.prompt, llm=self.llm)
+        # Load question model and create a question chain
+        question_template = """Du erstellst Prüfungsfragen an einer deutsche Universität.
+        Schreibe eine Frage zu dem folgenden Text:
+        {context}"""
+        question_prompt = PromptTemplate(template=question_template, input_variables=["context"])
+        question_llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base',
+                                      model_kwargs={'max_new_tokens': 250})  # TODO: Why is 250 max?
+        self.question_chain = LLMChain(prompt=question_prompt, llm=question_llm)
 
-    def get_question_from_retriever(self, query, k=4):
+        self.answer_generator = AnswerGenerator()
+
+        # Load question-answer model and create a question-answer chain
+        question_answer_template = """[INST] Du erstellst Prüfungsfragen und Musterantworten für mündliche Prüfungen
+        an einer deutsche Universität.
+        Schreibe eine Frage und dazugehörige Antwort zu dem folgenden Text:
+        {context} [/INST]"""
+        question_answer_prompt = PromptTemplate(template=question_answer_template, input_variables=['context'])
+        question_answer_llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
+                                             model_kwargs={'max_new_tokens': 512, 'raw_response': True})
+        self.question_answer_chain = LLMChain(prompt=question_answer_prompt, llm=question_answer_llm)
+
+    def generate_question_answer(self, keyword, k=2):
         """
-        TODO: remove this function?
-        Retrieve context for a given topic from a FAISS database.
-
-        :param query:
-        :param k:
-
-        :return result: Answer to the question.
-        :return source_documents: Source documents from the database.
+        Generates a question-answer pair for the context from the given keyword.
         """
-        # Set up as generic retriever
-        retriever = self.db.as_retriever(search_type="similarity", search_kwargs={'k': k})
+        # Get a context for the keyword
+        context = self.get_context(keyword, k)
+        logger.debug(f"Context: {context}")
 
-        # Create the chain for question answering
-        answer_chain = RetrievalQA.from_chain_type(
-            llm=self.llm,
-            chain_type="stuff",  # stuff, map_reduce or map_rerank with k=10
-            retriever=retriever,  # context_docs = db.similarity_search(query, k=4)
-            return_source_documents=True,
-            chain_type_kwargs={'prompt': self.prompt}
-        )
+        # Generate a question and answer from the context
+        question_answer = self.question_answer_chain.run(context)
+        logger.debug(f"Question and answer: {question_answer}")
 
-        result = answer_chain({'query': query})
-        result = result["result"]  # Sources at: result["source_documents"]
-        logger.debug(f"Question: {result}")
-        return result
+        # Find the question and the answer in the model output
+        question_line = question_answer.split('\n', 1)[0]
+        question = question_line.split(': ')[1].strip()
+        answer_lines = question_answer.split('\n', 1)[1]
+        answer = answer_lines.split(': ')[1].strip()
+
+        # Get technical terms and common words from the paragraph
+        keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
+        logger.debug(f"Keywords from answer: {keywords}")
+        if keyword not in keywords['terms']:
+            keywords['terms'].append(keyword)
+
+        question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
+        return question_dict
 
     def generate_question(self, keyword, k=2):
         """
@@ -77,15 +90,16 @@ class QuestionGenerator:
         context = self.get_context(keyword, k)
         logger.debug(f"Context: {context}")
 
-        # Set the answer TODO: Extract from context or summarize for End2end, pipeline or multitask
-        answer = context
         # Generate a question from the context
         question = self.question_chain.run(context)
-        logger.debug(f"Question: {question}")
+
+        # Get the answer TODO: Extract from context or summarize for End2end, pipeline or multitask
+        answer = self.answer_generator.get_answer(context, question)
+        logger.debug(f"Question: {question}\n Answer: {answer}")
 
         # Get technical terms and common words from the paragraph
-        keywords = preprocessing.extract_keywords(self.get_context(keyword, k))  # TODO: How many keywords?
-        logger.info(f"Keywords from context: {keywords}")
+        keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
+        logger.debug(f"Keywords from answer: {keywords}")
         if keyword not in keywords['terms']:
             keywords['terms'].append(keyword)
 
@@ -105,3 +119,22 @@ class QuestionGenerator:
 
         context = ' '.join([doc.page_content for doc in context_docs])
         return context
+
+
+class AnswerGenerator:
+    def __init__(self):
+        model_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+
+        template = ("Du erstellst Musterantworten für eine Prüfung an einer deutschen Universität."
+                    "[INST] Schreibe eine Antwort für die Frage: '{question}'."
+                    "Nutze dafür nur Informationen aus dem folgenden Text: "
+                    "{context} [/INST]")
+
+        prompt = PromptTemplate(template=template, input_variables=['context', 'question'])
+        llm = HuggingFaceHub(repo_id=model_id, model_kwargs={'max_new_tokens': 512, 'raw_response': True})
+        self.llm_chain = LLMChain(prompt=prompt,
+                                  llm=llm)
+
+    def get_answer(self, context, question):
+        query = {'context': context, 'question': question}
+        return self.llm_chain.run(query)

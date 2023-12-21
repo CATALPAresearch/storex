@@ -86,4 +86,4 @@ class TopicManager:
     def increase_topic(self):
         # TODO: Add randomness for next topic?
         if self.topic.value < len(KE):
-            self.topic.value += 1
+            self.topic = KE(self.topic.value + 1)
