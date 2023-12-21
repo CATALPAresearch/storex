@@ -1,6 +1,7 @@
 """
 Class for training exam conversation manager.
 """
+import logging
 import os
 import random
 import time
@@ -15,10 +16,7 @@ from text_generation import TextGenerator
 from utils import colours, preprocessing
 from utils.helpers import QuestionType, FeedbackType
 
-import logging
 logger = logging.getLogger()
-
-# TODO: Supress test output of imported modules
 
 
 class ExamManager:

@@ -18,7 +18,7 @@ class TextGenerator:
         llm = HuggingFaceHub(repo_id=repo)
 
         self.llm_chain = LLMChain(prompt=prompt,
-                                 llm=llm)
+                                  llm=llm)
 
     def get_text(self, query):
         return self.llm_chain.run(query)
