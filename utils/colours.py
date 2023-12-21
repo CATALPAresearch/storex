@@ -1,3 +1,6 @@
+import threading
+import time
+
 RESET = "\033[0m"
 BLACK = "\033[30;1m"
 RED = "\033[31;1m"
@@ -32,7 +35,11 @@ def print_red(*args):
 
 def print_blue(*args):
     print(BLUE, end='')
-    print(*args, end='')
+    for arg in args:
+        arg = str(arg)
+        for a in arg:
+            print(a, end='', flush=True)
+            time.sleep(0.1)
     print(RESET)
 
 
@@ -46,7 +53,3 @@ def print_green(*args):
     print(GREEN, end='')
     print(*args, end='')
     print(RESET)
-
-
-if __name__ == "__main__":
-    print_rainbow("Hello World! Hello World! Hello World!")

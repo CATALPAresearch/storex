@@ -78,8 +78,3 @@ def extract_common_words(text, n=5):
     # Get the n most common words
     common_words = freq_dist.most_common(n)
     return [word[0] for word in common_words]
-
-
-setup_word_lists()
-words = extract_keywords("Von dieser Idee des Geheimnisprinzip zu unterscheiden ist der Begriff der Kapselung, der eng mit der objektorientierten Programmierung verknüpft ist. Hierbei geht es darum, dass ein Objekt seinen Zustand so kapselt, dass dieser nur von ihm selbst geändert werden kann. Im Gegensatz zum Information Hiding handelt es sich bei der Kapselung nicht um die Veränderung der Struktur von Objekten, sondern um die Veränderung ihres Zustands. Leider lässt sich die Kapselung nicht mit denselben Mitteln wie das Geheimnisprinzip umsetzen. Aufgrund von Aliasing kann ein Objekt, dessen Name (beispielsweise aufgrund des Geheimnisprinzips) unsichtbar ist, über einen anderen Namen zugänglich sein, ohne dass der erste Name dagegen etwas unternehmen könnte. Über lokale Instanzvariablen kann ein Objekt also verbergen, welche Objekte es kennt, aber es kann nicht verhindern, dass andere Objekte diese Objekte auch kennen und ohne sein Wissen manipulieren. Aufgrund der möglichen Existenz von Aliasen ist es daher nicht möglich, dass ein Objekt seinen inneren Aufbau vor der Außenwelt vollständig abschottet, es sei denn, es trifft spezielle Vorkehrungen. Diese Vorkehrungen sind derzeit noch nicht in gängige objektorientierte Programmiersprachen integriert und müssen explizit programmiert werden. ")
-print(words)
