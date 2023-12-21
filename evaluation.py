@@ -40,21 +40,21 @@ class Evaluator:
         missing_topics = []
 
         # Check the mention of technical terms in the students answer
-        for term in keywords['terms']:
+        for term in keywords:
             processed_term = preprocessing.preprocess_text(term)
             if processed_term not in processed_answer:
-                logger.info(f"Term '{term}' not found!")
-                missing_topics.append(term)
+                missing_keys.append(term)
+        logger.info(f"Missing terms: {missing_keys}")
         # Add information about number of missed terms to feedback
         self.feedback.missed_terms(len(missing_topics))
 
         # Check the mention of common keywords in the students answer by searching for the preprocessed keywords
-        if 'common' in keywords:
-            for word in keywords['common']:
-                processed_word = preprocessing.preprocess_text(word)
-                if processed_word not in processed_answer:
-                    missing_keys.append(word)
-                    logger.info(f"Common keyword '{word}' not found!")
+        # if 'common' in keywords:
+        #     for word in keywords['common']:
+        #         processed_word = preprocessing.preprocess_text(word)
+        #         if processed_word not in processed_answer:
+        #             missing_keys.append(word)
+        #             logger.info(f"Common keyword '{word}' not found!")
 
         # Check if common keywords are indirectly mentioned in the students answer by checking the accuracy with which
         # the students answer hits the topics represented by the word
