@@ -76,8 +76,8 @@ class QuestionGenerator:
         # Get technical terms and common words from the paragraph
         keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
         logger.debug(f"Keywords from answer: {keywords}")
-        if keyword not in keywords['terms']:
-            keywords['terms'].append(keyword)
+        if keyword not in keywords:
+            keywords.append(keyword)
 
         question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
         return question_dict
@@ -100,8 +100,8 @@ class QuestionGenerator:
         # Get technical terms and common words from the paragraph
         keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
         logger.debug(f"Keywords from answer: {keywords}")
-        if keyword not in keywords['terms']:
-            keywords['terms'].append(keyword)
+        if keyword not in keywords:
+            keywords.append(keyword)
 
         question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
         return question_dict

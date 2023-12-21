@@ -51,21 +51,28 @@ def remove_stopwords(text):
     return text_words
 
 
-def extract_keywords(text, n=5):
+def extract_keywords(text):
     """
-    Extract the used technical terms and the n most common words from a paragraph.
+    Extract the used technical terms.
     """
     words = preprocess_text(text)
-
     technical_words = []
     for term in technical_terms:
         if term in words:
             technical_words.append(term)
-            words.replace(term, '')
+            # words.replace(term, '')
+    return technical_words
 
+
+def extract_common_words(text, n=5):
+    """
+    Extract the n most common words from a paragraph.
+    """
+    words = preprocess_text(text)
     words = remove_stopwords(words)
     # Calculate word frequencies
     freq_dist = FreqDist(words)
     # Get the n most common words
     common_words = freq_dist.most_common(n)
-    return {'terms': technical_words, 'common': [word[0] for word in common_words]}
+    return [word[0] for word in common_words]
+
