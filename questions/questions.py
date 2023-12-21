@@ -10,7 +10,7 @@ KE7_questions = []
 
 # TODO: Keywords, linking between questions?
 
-KE1_topics = {'question': "Was sind die Grundkonzepte der objektorientierten Programmierung?",
+KE1_topics = {'question': "Was ist das Grundkonzept der objektorientierten Programmierung?",
               'keywords': {'terms': ["Objekt", "Beziehung", "Zustand", "Verhalten"]}}
 
 KE2_topics = {'question': "Was ist die Systematik der objektorientierten Programmierung?",
@@ -102,6 +102,7 @@ KE6_questions = [
     #                                                                          'Abwägungsproblem']}
 ]
 
+# TODO: Fragen Unterteilen nach Grundwissen, Vertiefung und Transfer?
 KE1_questions = [
     {'question': 'Was ist ein Literal?', 'answer': 'Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.'},
     {'question': 'Was ist der Unterschied zwischen Literale und objekterzeugenden Anweisungen?', 'answer': 'Der Compiler erzeugt bei der Übersetzung eines Literals das entsprechende Objekt im Speicher, während objekterzeugende Anweisungen erst zur Laufzeit des Programms ausgeführt werden.'},

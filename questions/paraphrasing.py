@@ -17,7 +17,7 @@ class QuestionParaphraser:
         template = """Write a question from this paragraph: {context}"""
         prompt = PromptTemplate(template=template, input_variables=["context"])
         # Load question generation model
-        llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base')  # TODO: Try other models
+        llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base', model_kwargs={'max_new_tokens': 250})  # TODO: Try other models
         # Create chain for question generation
         self.llm_chain = LLMChain(prompt=prompt, llm=llm)
 
