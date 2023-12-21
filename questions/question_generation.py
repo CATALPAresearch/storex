@@ -2,7 +2,6 @@
 Class for generating questions.
 """
 import os
-import re
 import torch
 
 from langchain.chains import LLMChain
