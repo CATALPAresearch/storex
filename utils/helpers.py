@@ -4,6 +4,16 @@ Helpers
 from enum import IntEnum
 
 
+class KE(IntEnum):
+    KE1 = 0
+    KE2 = 1
+    KE3 = 2
+    KE4 = 3
+    KE5 = 4
+    KE6 = 5
+    KE7 = 6
+
+
 class QuestionType(IntEnum):
     PREDEFINE = 0
     GENERATE = 1
