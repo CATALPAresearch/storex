@@ -5,31 +5,28 @@ from langchain.prompts import PromptTemplate
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
-REPO = 'LunaticTanuki/oop-de-qg-flan-t5-base'
-CONTEXT = ('Bei größeren Programmen kann das Bedürfnis entstehen, ein Programm nach mehreren Kriterien gleichzeitig '
-           'zu strukturieren, da verschiedene Vererbungshierarchien oder andere Strukturierungskriterien '
-           'gleichzeitig relevant sein können. Die Trennung der Belange, auch als Separation of Concerns bekannt, '
-           'wird in der objektorientierten Programmierung als unzureichend unterstützt angesehen, da es schwer ist, '
-           'verschiedene Aspekte eines Systems sauber voneinander zu trennen.')
 
-template_qg = """Write a question from this paragraph: {context}"""
-template_ag = """Use the following pieces of information to answer the user's question in German.
-If you don't know the answer, just say that you don't know the answer, don't try to make up an answer.
+class AnswerGenerator:
+    def __init__(self):
+        model_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
-Context: {context}
-Question: {question}
+        template = ("Du erstellst Musterantworten für eine Prüfung an einer deutschen Universität."
+                    "[INST] Schreibe eine Antwort für die Frage: '{question}'."
+                    "Nutze dafür nur Informationen aus dem folgenden Text: "
+                    "{context} [/INST]")
 
-Only returns the helpful answer below and nothing else.
-Helpful answer:"""
+        prompt = PromptTemplate(template=template, input_variables=['context', 'question'])
+        llm = HuggingFaceHub(repo_id=model_id)
+        self.llm_chain = LLMChain(prompt=prompt,
+                                  llm=llm)
 
-prompt = PromptTemplate(template=template_qg, input_variables=["context"])
+    def get_text(self, context, question):
+        query = {'context': context, 'question': question}
+        return self.llm_chain.run(query)
 
-# llm = HuggingFacePipeline.from_model_id(
-#          model_id=MODEL_PATH,
-#          task="text2text-generation")
-llm = HuggingFaceHub(repo_id=REPO)
 
-llm_chain = LLMChain(prompt=prompt,
-                     llm=llm)
+test_context = "Die in anderen Programmiersprachen vorhandenen Literale (oder Schlüsselwörter), wie true, false und nil (oder null), die ebenfalls atomare Objekte repräsentieren, sind in SMALLTALK nicht vorhanden. Damit sind sie nicht Literale, sondern sogenannte Pseudo-Variablen. Der Grund dafür scheint pragmatischer Natur zu sein: SMALLTALK hat keine Schlüsselwörter, und indem true, false und nil als Pseudo-Variablen betrachtet werden, müssen sie vom Compiler nicht syntaktisch von Variablen unterschieden werden. Sie repräsentieren jeweils ein entsprechendes Objekt, das in anderen Sprachen wiederum Werte sind."
+test_question = "Was sind Pseudo-Variablen in SMALLTALK?"
 
-print(llm_chain.run(CONTEXT))
+answer_generator = AnswerGenerator()
+print(answer_generator.get_text(test_context, test_question))

@@ -3,15 +3,11 @@ Script for starting a training exam.
 
 Command line arguments are parsed and the training exam is started with the correct parameters.
 """
+import logging
 import sys
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from exam import ExamManager
-
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger()
-logger.disabled = True
 
 
 # Parse command line arguments
@@ -45,6 +41,8 @@ if int(args["time"]) > 60 or int(args["time"]) < 5:
     raise ValueError("The training exam can last between 10 to 60 minutes. Please choose a duration in that time frame.")
 
 if args["logging"]:
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger()
     logger.disabled = False
 
 logging.info("Starting...")
