@@ -62,4 +62,7 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
                 KE7_questions.append(question_dict)
 
 with open(OUTPUT_FILE, 'a') as py_file:
-    py_file.write(f"KE1_questions = {KE1_questions}\n")
+    py_file.write("KE1_questions = [\n")
+    for question_dictionary in KE1_questions:
+        py_file.write(f"    {question_dictionary},\n")
+    py_file.write("]\n")
