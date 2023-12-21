@@ -4,6 +4,7 @@ Class for training exam conversation manager.
 import logging
 import os
 import random
+import threading
 import time
 
 from audio.speech_recognition import SpeechRecognition
@@ -79,9 +80,12 @@ class ExamManager:
 
     def speak(self, text):
         """Outputs the given text via the speakers and in the terminal."""
-        colours.print_blue(text)
+        # colours.print_blue(text)
+        print_thread = threading.Thread(target=colours.print_blue, args=text)
+        print_thread.start()
         if not self.no_audio:
             self.audio.get_audio(text)
+        print_thread.join()
 
     def ask_question(self, question):
         """Outputs the given question and gets the students answer."""

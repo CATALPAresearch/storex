@@ -64,7 +64,7 @@ class Evaluator:
             accuracy = self.check_accuracy(missing_keys, student_answer)
             # Add missing topics under the threshold of accuracy
             for topic in accuracy:
-                if topic[1] < 0.5:  # TODO: What is a good threshold for accuracy?
+                if topic[1] < 0.75:  # TODO: What is a good threshold for accuracy?
                     missing_topics.append(topic[0])
 
         logger.info(f"Missing topics: {missing_topics}")
