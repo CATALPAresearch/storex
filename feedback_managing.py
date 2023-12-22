@@ -2,13 +2,29 @@ from langchain.chains import LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 
+from utils.helpers import KE
+
 
 class FeedbackManager:
     def __init__(self):
         self.missed_term_counter = 0
+        self.reiterated_counter = 0
+        self.no_entailment_counter = 0
+        self.correct_answers = []
+        for unit in KE:
+            self.correct_answers.append(0)
 
-    def missed_terms(self, count):
+    def add_missed(self, count):
         self.missed_term_counter += count
+
+    def add_reiterated(self):
+        self.reiterated_counter += 1
+
+    def add_no_entailment(self):
+        self.no_entailment_counter += 1
+
+    def add_correct(self, correct, ke):
+        self.correct_answers[ke] += correct
 
 
 # Load a text-generation model on the hub

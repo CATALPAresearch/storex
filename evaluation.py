@@ -4,7 +4,6 @@ File for answer evaluation.
 import logging
 import re
 
-from feedback_managing import FeedbackManager
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 from utils import preprocessing
@@ -29,9 +28,6 @@ class Evaluator:
         self.congruity_pipeline = pipeline("text-classification", model=classifier_model, truncation=True)
         self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model, truncation=True)
 
-        # Set Feedback Manager
-        self.feedback = FeedbackManager()
-
     def evaluate_keywords(self, keywords, student_answer):
         """
         Checks if the given students answer contains the given keywords and returns the missing topics.
@@ -47,8 +43,6 @@ class Evaluator:
             if not matches:
                 missing_keys.append(term)
         logger.info(f"Missing terms: {missing_keys}")
-        # Add information about number of missed terms to feedback
-        self.feedback.missed_terms(len(missing_topics))
 
         # Check the mention of common keywords in the students answer by searching for the preprocessed keywords
         # if 'common' in keywords:
