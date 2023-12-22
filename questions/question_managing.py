@@ -30,12 +30,12 @@ class QuestionManager:
 
         # Check if the course units open question was already asked
         open_question = self.topic_list[ke_index] if ke_level == 0 else ''
-        if open_question is not '':
+        if open_question != '':
             self.topic_list[self.topic_manager.get_topic().value] = ''
             return open_question
 
         # Check if there are predefined questions for the current course unit and level
-        if self.question_list[ke_index][ke_level] is not '':
+        if self.question_list[ke_index][ke_level] != '':
             return self.random_question(ke_index, ke_level)
         else:
             self.topic_manager.increase_level()

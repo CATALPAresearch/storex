@@ -28,23 +28,26 @@ class Evaluator:
         self.congruity_pipeline = pipeline("text-classification", model=classifier_model, truncation=True)
         self.accuracy_pipeline = pipeline("zero-shot-classification", model=classifier_model, truncation=True)
 
-    def evaluate_keywords(self, keywords, student_answer):
+    def evaluate_keywords(self, question, student_answer):
         """
         Checks if the given students answer contains the given keywords and returns the missing topics.
         """
-        processed_answer = preprocessing.preprocess_text(student_answer)
-        missing_keys = []
-        missing_topics = []
+        # Get keywords from predefined and generated answers
+        if 'keywords' not in question:
+            keywords = preprocessing.extract_keywords(question['answer'])
+        else:
+            keywords = question['keywords']
+        logger.info(f"Keywords from answer: {keywords}")
 
-        # Check the mention of technical terms in the students answer
-        for term in keywords:
-            pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
-            matches = re.findall(pattern, processed_answer)
-            if not matches:
-                missing_keys.append(term)
-        logger.info(f"Missing terms: {missing_keys}")
+        mentioned_words = preprocessing.extract_keywords(student_answer, keywords)
+        logger.info(f"Mentioned terms: {mentioned_words}")
+
+        missing_words = list(set(keywords)-set(mentioned_words))
+        missing_words = [term if not isinstance(term, list) else term[0] for term in missing_words]
 
         # Check the mention of common keywords in the students answer by searching for the preprocessed keywords
+        # processed_answer = preprocessing.preprocess_text(student_answer)
+        # missing_keys = []
         # if 'common' in keywords:
         #     for word in keywords['common']:
         #         processed_word = preprocessing.preprocess_text(word)
@@ -54,15 +57,15 @@ class Evaluator:
 
         # Check if common keywords are indirectly mentioned in the students answer by checking the accuracy with which
         # the students answer hits the topics represented by the word
-        if missing_keys:
-            accuracy = self.check_accuracy(missing_keys, student_answer)
-            # Add missing topics under the threshold of accuracy
-            for topic in accuracy:
-                if topic[1] < 0.75:  # TODO: What is a good threshold for accuracy?
-                    missing_topics.append(topic[0])
+        # if missing_keys:
+        #     accuracy = self.check_accuracy(missing_keys, student_answer)
+        #     # Add missing topics under the threshold of accuracy
+        #     for topic in accuracy:
+        #         if topic[1] < 0.75:  # TODO: What is a good threshold for accuracy?
+        #             missing_topics.append(topic[0])
 
-        logger.info(f"Missing topics: {missing_topics}")
-        return missing_topics
+        logger.info(f"Missing terms: {missing_words}")
+        return missing_words
 
     def evaluate_answer(self, correct_answer, student_answer):
         """

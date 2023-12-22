@@ -130,17 +130,14 @@ class ExamManager:
             case 1:  # No answer or really short answer  TODO: Move this case to ASR
                 self.next_question = QuestionType.REPEAT
 
-            case 2, 3:  # Off-topic or contradicting answer
+            case 2 | 3:  # Off-topic or contradicting answer
                 self.prepend_question = random.choice(questioning_sounds)
                 self.next_question = QuestionType.REPEAT
                 self.feedback.add_no_entailment()
 
-            case 4:  # The answer is missing topics
-                # Get keywords from predefined answers
-                if 'keywords' not in question:
-                    question['keywords'] = preprocessing.extract_keywords(question['answer'])
+            case 4:  # Check the answer for missing topics
                 # Get missed topics and add them as targets and their amount for feedback
-                missed_topics = self.evaluation.evaluate_keywords(question['keywords'], student_answer)
+                missed_topics = self.evaluation.evaluate_keywords(question, student_answer)
                 self.targets.extend(missed_topics)
                 self.feedback.add_missed(len(missed_topics))
                 if self.targets:
@@ -299,7 +296,7 @@ class TimeManager:
         # Check if topic got increased or time for topic ran out
         topic = self.topic_manager.get_topic()
         if topic != self.last_known_topic or (self.topic_time <= 0 and self.last_known_topic.value < len(KE)):
-            self.feedback.add_correct(self.correct_answers, self.last_known_topic)
+            self.feedback.add_feedback(self.correct_answers, self.last_known_topic, self.topic_manager.get_level())
 
             # Set new topic if time for topic ran out
             if self.topic_time <= 0 and self.last_known_topic.value < len(KE):

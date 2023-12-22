@@ -51,25 +51,33 @@ def remove_stopwords(text):
     return text_words
 
 
-def extract_keywords(text):
+def extract_keywords(text, terms=None):
     """
     Extract the used technical terms.
     """
     words = preprocess_text(text)
     technical_words = []
-    for term in technical_terms:
+    if terms is None:
+        terms = technical_terms
+
+    for term in terms:
+        # Check synonym lists
+        if isinstance(term, list):
+            if any(t in words for t in term):
+                technical_words.append(term)
         # Create a regular expression pattern allowing for different grammatical endings
-        pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
-        matches = re.findall(pattern, words)
-        if matches:
-            technical_words.append(term)
-            # words.replace(term, '')
+        else:
+            pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
+            matches = re.findall(pattern, words)
+            if matches:
+                technical_words.append(term)
+
     return technical_words
 
 
 def extract_common_words(text, n=5):
     """
-    Extract the n most common words from a paragraph.
+    Extract the n most common words from a paragraph. TODO: How many keywords?
     """
     words = preprocess_text(text)
     words = remove_stopwords(words)
