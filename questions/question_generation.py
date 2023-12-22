@@ -72,13 +72,7 @@ class QuestionGenerator:
         answer_lines = question_answer.split('\n', 1)[1]
         answer = answer_lines.split(': ')[1].strip()
 
-        # Get technical terms and common words from the paragraph
-        keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
-        logger.debug(f"Keywords from answer: {keywords}")
-        if keyword not in keywords:
-            keywords.append(keyword)
-
-        question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
+        question_dict = {'question': question, 'answer': answer}
         return question_dict
 
     def generate_question(self, keyword, k=2):
@@ -96,13 +90,7 @@ class QuestionGenerator:
         answer = self.answer_generator.get_answer(context, question)
         logger.debug(f"Question: {question}\n Answer: {answer}")
 
-        # Get technical terms and common words from the paragraph
-        keywords = preprocessing.extract_keywords(answer)  # TODO: How many keywords?
-        logger.debug(f"Keywords from answer: {keywords}")
-        if keyword not in keywords:
-            keywords.append(keyword)
-
-        question_dict = {'question': question, 'answer': answer, 'keywords': keywords}
+        question_dict = {'question': question, 'answer': answer}
         return question_dict
 
     def get_context(self, query, k):
