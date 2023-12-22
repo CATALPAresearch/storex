@@ -10,7 +10,7 @@ Antwort: Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die 
 Frage: Was ist die Identität von Objekten?
 Antwort: Identität bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren.
 
-Frage: Was ist der Unterschied zwischen Gleichheit und Identität von Objekten?
+Frage: Was unterscheidet Gleichheit und Identität von Objekten?
 Antwort: Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten. Identität bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren.
 
 Frage: Warum können syntaktisch gleiche String-Literale in SMALLTALK unterschiedliche Identitäten haben?
@@ -23,7 +23,7 @@ Die Antwort ist vor allem technischer Natur. Wenn sich ein unveränderliches Obj
 Frage: Warum sind gleiche Zahlen nur manchmal identisch in SMALLTALK?
 Antwort: In SMALLTALK werden gleiche Zahlen manchmal als identisch behandelt und manchmal nicht, abhängig von ihrer Größe und technischen Gründen.
 
-Frage: Was ist der Unterschied zwischen "das gleiche" und "dasselbe"?
+Frage: Was unterscheidet die Bezeichnungen "das gleiche" und "dasselbe"?
 Antwort: In der objektorientierten Programmierung sind "das gleiche" und "dasselbe" nicht dasselbe. Zwei Objekte können gleich, aber nie dasselbe sein, oder sie sind nicht zwei Objekte, sondern eins.
 
 Frage: Warum ist die Identität von Objekten wichtig?

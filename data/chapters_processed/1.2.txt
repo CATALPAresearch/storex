@@ -5,7 +5,7 @@ Ein Literal (von lat. littera, der Buchstabe) ist eine Repräsentation eines Obj
 Frage: Was ist ein Literal?
 Antwort: Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.
 
-Frage: Was ist der Unterschied zwischen Literalen und objekterzeugenden Anweisungen?
+Frage: Was unterscheidet Literale und objekterzeugende Anweisungen?
 Antwort: Der Compiler erzeugt bei der Übersetzung eines Literals das entsprechende Objekt im Speicher, während objekterzeugende Anweisungen erst zur Laufzeit des Programms ausgeführt werden.
 
 Frage: Warum sind Literale keine Objekte?
@@ -37,7 +37,7 @@ Gleichwohl versuchen einige SMALLTALK-Compiler, identische Literale, die zusamme
 Frage: Was sind Symbole in SMALLTALK?
 Antwort: Symbole sind eine weitere Art von Objekten mit literaler Repräsentation in SMALLTALK. Sie dienen dazu, sicherzustellen, dass syntaktisch identische Zeichenketten stets dasselbe Objekt bezeichnen.
 
-Frage: Was ist der Unterschied zwischen Symbolen und Strings in SMALLTALK?
+Frage: Was unterscheidet Symbole und Strings in SMALLTALK?
 Antwort: Symbole dürfen im Gegensatz zu Strings keine Leerzeichen enthalten. Zudem ist die Erzeugung eines Objekts anhand eines Symbolliterals technisch aufwendiger als die Erzeugung eines Objekts anhand eines String-Literals.
 
 Frage: Was kann bei der Verwendung von identischen Symbolliteralen passieren?

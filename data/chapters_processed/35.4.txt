@@ -13,7 +13,7 @@ Antwort: Die primitiven Typen in JAVA sind keine Klassen, daher werden mathemati
 Frage: Können Klassendefinitionen in JAVA Operatoren definieren?
 Antwort: Nein, in JAVA ist es Klassendefinitionen nicht gestattet, Operatoren zu definieren wie es bei den binären Methoden in SMALLTALK der Fall ist.
 
-Frage: Was ist der Unterschied zwischen Prozeduren und Funktionen in JAVA?
+Frage: Was unterscheidet Prozeduren und Funktionen in JAVA?
 Antwort: In JAVA können Methoden in Prozeduren und Funktionen unterteilt werden. Der einzige Unterschied besteht darin, dass Prozeduren keine Rückgabewerte haben und daher den Rückgabetyp "void" deklarieren.
 
 Frage: Welcher Operator steht speziell für Referenztypen in JAVA zur Verfügung?

@@ -23,5 +23,5 @@ Antwort: Checked Exceptions sind Ausnahmesituationen, bei denen die Programmiere
 Frage: Was sind Unchecked Exceptions in JAVA?
 Antwort: Unchecked Exceptions sind Ausnahmesituationen, die in der Praxis überall auftreten können. Sie erfordern keine explizite Deklaration im Methodenkopf und können überall auftreten. Unchecked Exceptions werden von Exception-Klassen abgeleitet, die von RuntimeException abgeleitet sind.
 
-Frage: Was ist der Unterschied zwischen Checked und Unchecked Exceptions in JAVA?
+Frage: Was unterscheidet Checked Exceptions und Unchecked Exceptions in JAVA?
 Antwort: Der Hauptunterschied besteht darin, dass Checked Exceptions eine explizite Deklaration im Methodenkopf oder eine Behandlung innerhalb der Methode erfordern, während Unchecked Exceptions dies nicht tun. Checked Exceptions werden von Exception-Klassen abgeleitet, die nicht von RuntimeException abgeleitet sind, während Unchecked Exceptions von Exception-Klassen abgeleitet werden, die von RuntimeException abgeleitet sind. Checked Exceptions sollen den Programmierer auf mögliche Ausnahmesituationen hinweisen, während Unchecked Exceptions oft schwer vorhersehbar sind und überall auftreten können.

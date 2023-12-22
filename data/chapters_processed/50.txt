@@ -1,12 +1,12 @@
-50 C#
+50 C-Sharp
 
-C# ist Microsofts Antwort auf Java. Oberflächlich betrachtet ähnelt es Java recht stark, dennoch enthält C# einige zusätzliche Merkmale von C++, aber auch von Microsofts hauseigener Sprache, Visual Basic. Dabei ist die Entwicklung von C# wohl weniger ein Versuch, mit Microsofts eigener Marktmacht einen proprietären Standard durchzusetzen (was bei Programmiersprachen meines Wissens nach bisher noch nie gelungen ist), sondern vielmehr dem Umstand geschuldet, dass Java keine volle Kontrolle über Hardware und Betriebssystem bietet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist. Zwar hat sich Sun bemüht, bekannte Schwächen zu beheben, doch gestaltete sich dieser Prozess recht träge. Angesichts des nicht zu übersehenden Erfolgs von Java in der Entwicklergemeinschaft war die Entwicklung einer eigenen, Java-ähnlichen, aber dennoch in wichtigen Punkten unterschiedlichen Sprache eigentlich nur folgerichtig.
+C-Sharp ist Microsofts Antwort auf Java. Oberflächlich betrachtet ähnelt es Java recht stark, dennoch enthält C-Sharp einige zusätzliche Merkmale von C++, aber auch von Microsofts hauseigener Sprache, Visual Basic. Dabei ist die Entwicklung von C-Sharp wohl weniger ein Versuch, mit Microsofts eigener Marktmacht einen proprietären Standard durchzusetzen (was bei Programmiersprachen meines Wissens nach bisher noch nie gelungen ist), sondern vielmehr dem Umstand geschuldet, dass Java keine volle Kontrolle über Hardware und Betriebssystem bietet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist. Zwar hat sich Sun bemüht, bekannte Schwächen zu beheben, doch gestaltete sich dieser Prozess recht träge. Angesichts des nicht zu übersehenden Erfolgs von Java in der Entwicklergemeinschaft war die Entwicklung einer eigenen, Java-ähnlichen, aber dennoch in wichtigen Punkten unterschiedlichen Sprache eigentlich nur folgerichtig.
 
-Frage: Welche Antwort auf Java stellt C# dar?
-Antwort: C# ist Microsofts Antwort auf Java.
+Frage: Welche Antwort auf Java stellt C-Sharp dar?
+Antwort: C-Sharp ist Microsofts Antwort auf Java.
 
-Frage: Was sind einige der zusätzlichen Merkmale von C#, die es im Vergleich zu Java enthält?
-Antwort: C# enthält einige zusätzliche Merkmale von C++ sowie von Microsofts hauseigener Sprache, Visual Basic.
+Frage: Was sind einige der zusätzlichen Merkmale von C-Sharp, die es im Vergleich zu Java enthält?
+Antwort: C-Sharp enthält einige zusätzliche Merkmale von C++ sowie von Microsofts hauseigener Sprache, Visual Basic.
 
-Frage: Warum wurde C# entwickelt?
-Antwort: Die Entwicklung von C# wurde weniger als Versuch betrachtet, mit Microsofts Marktmacht einen proprietären Standard durchzusetzen, sondern war vielmehr dem Umstand geschuldet, dass Java keine volle Kontrolle über Hardware und Betriebssystem bietet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist.
+Frage: Warum wurde C-Sharp entwickelt?
+Antwort: Die Entwicklung von C-Sharp wurde weniger als Versuch betrachtet, mit Microsofts Marktmacht einen proprietären Standard durchzusetzen, sondern war vielmehr dem Umstand geschuldet, dass Java keine volle Kontrolle über Hardware und Betriebssystem bietet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist.

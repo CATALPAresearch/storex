@@ -23,10 +23,10 @@ Antwort: Aliasing kann zu Programmierfehlern führen, weil Änderungen an einem 
 Frage: Wie werden in SMALLTALK Programmierfehler durch Aliasing verhindert?
 Antwort: Um Programmierfehler durch Aliasing in SMALLTALK zu verhindern, werden auf Basis literaler Repräsentationen erzeugte Objekte als unveränderlich markiert. Wenn eine Zuweisung mit Wertsemantik benötigt wird, kann das Kopieren des Objekts verwendet werden.
 
-Frage: Was macht "copy" in SMALLTALK?
+Frage: Was ist das Schlüsselword "copy" in SMALLTALK?
 Antwort: In SMALLTALK kann das Schlüsselwort "copy" verwendet werden, um von einem Objekt eine Kopie anzufertigen, anstatt eine Referenz auf dasselbe Objekt zu erstellen. Dies verhindert Aliasing.
 
-Fehler dieser Art sind häufig die Folge dessen, dass sich eine Programmiererin der aliasbildenden Wirkung der Zuweisung nicht bewusst war. Das ist insbesondere bei den Programmiererinnen der Fall, die nicht mit der objektorientierten Programmierung großgeworden sind, die insbesondere bei einer Zuweisung "y := x" das Kopieren des Inhalts der Variablen auf der rechten Seite (x) vermuten. Tatsächlich muss man in anderen Sprachen (wie beispielsweise PASCAL oder C) eine Variable explizit als Pointervariable deklarieren, um einen Alias bilden zu können. In SMALLTALK, genau wie in JAVA und C#, ist Aliasing jedoch der Regelfall und Kopie die Ausnahme. Wer das nicht verinnerlicht hat, schreibt höchstens zufällig korrekte Programme.
+Fehler dieser Art sind häufig die Folge dessen, dass sich eine Programmiererin der aliasbildenden Wirkung der Zuweisung nicht bewusst war. Das ist insbesondere bei den Programmiererinnen der Fall, die nicht mit der objektorientierten Programmierung großgeworden sind, die insbesondere bei einer Zuweisung "y := x" das Kopieren des Inhalts der Variablen auf der rechten Seite (x) vermuten. Tatsächlich muss man in anderen Sprachen (wie beispielsweise PASCAL oder C) eine Variable explizit als Pointervariable deklarieren, um einen Alias bilden zu können. In SMALLTALK, genau wie in JAVA und C-Sharp, ist Aliasing jedoch der Regelfall und Kopie die Ausnahme. Wer das nicht verinnerlicht hat, schreibt höchstens zufällig korrekte Programme.
 
 Frage: Was ist wichtig in Bezug auf Aliase?
 Antwort: Es ist wichtig, sich der aliasbildenden Wirkung der Zuweisung bewusst zu sein, da dies in Sprachen wie SMALLTALK der Regelfall ist.

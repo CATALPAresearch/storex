@@ -13,7 +13,7 @@ Die Methode species war uns schon einmal begegnet, und zwar in Kurseinheit 1, Ab
 Frage: Was ist die einfachste Form des Kopierens eines Objekts in SMALLTALK?
 Antwort: Die einfachste Form des Kopierens eines Objekts in SMALLTALK ist das Erzeugen eines Objekts derselben Klasse mit denselben Variablenbelegungen. Dies wird durch die Methode "shallowCopy" ermöglicht.
 
-Frage: Was ist der Unterschied zwischen "shallowCopy" und "deepCopy"?
+Frage: Was unterscheidet "shallowCopy" und "deepCopy"?
 Antwort: "shallowCopy" erstellt eine flache Kopie eines Objekts, bei der die in Beziehung stehenden Objekte nicht kopiert werden, während "deepCopy" eine tiefe Kopie erstellt, bei der auch die in Beziehung stehenden Objekte kopiert werden.
 
 Frage: Welche Herausforderung kann bei flachem Kopieren auftreten, wenn es sich um ein tiefes Kopieren handelt?

@@ -10,7 +10,7 @@ Antwort: In SMALLTALK ist das Protokoll eines Objekts die Menge der Nachrichten,
 Frage: Wie wird das Protokoll in SMALLTALK unterteilt?
 Antwort: Das Protokoll von Objekten in SMALLTALK wird oft in sogenannte Nachrichtenkategorien unterteilt. Diese Kategorien haben Namen, die die enthaltenen Methodennamen zusammenfassen. Nachrichtenkategorien dienen der besseren Lesbarkeit und partitionieren das Interface eines Objekts. Einige Kategorien können das Wort "private" enthalten, um anzuzeigen, dass die darin enthaltenen Methoden vorzugsweise nur vom Objekt selbst aufgerufen werden sollten.
 
-Frage: Was ist der Unterschied zwischen Protokoll und Implementierung in SMALLTALK?
+Frage: Was unterscheidet Protokoll und Implementierung in SMALLTALK?
 Antwort: Das Protokoll beschreibt das Interface eines Objekts und umfasst die Methodensignaturen und dazugehörigen Kommentare. Die Implementierung hingegen besteht aus den tatsächlichen Methodenrümpfen und den Instanzvariablen, die das Implementationsgeheimnis eines Objekts bilden. Das Protokoll dient dazu, das Verhalten eines Objekts zu beschreiben, während die Implementierung die Details der Umsetzung enthält.
 
 Frage: Wie werden Protokolle in SMALLTALK spezifiziert?

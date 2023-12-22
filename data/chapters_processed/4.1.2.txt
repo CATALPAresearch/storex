@@ -4,14 +4,14 @@ Neben der Zuweisung ist der Nachrichtenversand die zweite wichtige Ausdrucksform
 In SMALLTALK werden parameterlose Nachrichten auch als "unär" (unary messages) bezeichnet, da sie trotz fehlender expliziter Argumente als "unär" bezeichnet werden, weil der Empfänger das erste, implizite Argument ist. Nachrichten mit einem Parameter werden als "binäre Nachrichten" (binary messages) bezeichnet, da sie nur einen Parameter haben, der aus zwei Argumenten besteht: dem Empfänger und einem weiteren Argument.
 Binäre Nachrichten bestehen aus einem oder mehreren nicht alphanumerischen Zeichen, die keine reservierten Zeichen sind. Alle anderen Nachrichten, die neben dem Empfänger mindestens ein Argument erfordern, werden in SMALLTALK Schlüsselwortnachrichten (keyword messages) genannt. Diese Nachrichten enthalten normalerweise keinen Schlüsselwort im herkömmlichen Sinne, da SMALLTALK keine herkömmlichen Schlüsselwörter verwendet.
 
-Frage: Welche ist die zweite wichtige Ausdrucksform neben der Zuweisung?
-Antwort: Die weite wichtige Ausdrucksform neben der Zuweisung in der objektorientierten Programmierung ist der Nachrichtenversand.
+Frage: Welche Ausdrucksform ist neben der Zuweisung wichtig?
+Antwort: Neben der Zuweisung ist der Nachrichtenversand eine wichtige Ausdrucksform.
 
-Frage: Was sind "unäre Nachrichten"?
-Antwort: "Unäre Nachrichten" sind parameterlose Nachrichten, die den Empfänger als implizites erstes Argument haben.
+Frage: Was sind unäre Nachrichten?
+Antwort: Unäre Nachrichten sind parameterlose Nachrichten, die den Empfänger als implizites erstes Argument haben.
 
-Frage: Was sind "binäre Nachrichten"?
-Antwort: "Binäre Nachrichten" sind Nachrichten mit einem Parameter, der aus zwei Argumenten besteht: dem Empfänger und einem weiteren Argument.
+Frage: Was sind binäre Nachrichten?
+Antwort: Binäre Nachrichten sind Nachrichten mit einem Parameter, der aus zwei Argumenten besteht: dem Empfänger und einem weiteren Argument.
 
 Frage: Was sind Schlüsselwortnachrichten in SMALLTALK?
 Antwort: Schlüsselwortnachrichten sind Nachrichten in SMALLTALK, die neben dem Empfänger mindestens ein Argument erfordern. Sie enthalten normalerweise kein herkömmliches Schlüsselwort im Sinne von Schlüsselwort-Argumenten, da SMALLTALK keine herkömmlichen Schlüsselwörter verwendet.

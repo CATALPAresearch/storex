@@ -11,7 +11,7 @@ Antwort: Das Verbergen von Implementierungen hinter Schnittstellen ist wichtig, 
 Frage: Welche Rolle spielen Zugriffsmodifikatoren in Programmiersprachen wie JAVA und C++ bei der Festlegung der Schnittstelle einer Klasse?
 Antwort: Zugriffsmodifikatoren legen fest, welche Elemente einer Klassendefinition für Benutzer sichtbar sind und somit die Schnittstelle der Klasse beeinflussen. Sie regeln die Zugriffsberechtigungen auf Methoden und Instanzvariablen.
 
-Frage: Was ist der Unterschied zwischen einer absoluten und einer relativ spezifizierten Schnittstelle einer Klasse?
+Frage: Was unterscheidet eine absolute und eine relativ spezifizierte Schnittstelle einer Klasse?
 Antwort: Eine absolute Schnittstelle verrät keinerlei Implementierungsdetails und besteht nur aus Methodendeklarationen. Eine relative Schnittstelle kann sich je nach Lokalität oder anderen Eigenschaften von benutzender und benutzter Klasse unterscheiden und gibt mehr Einblicke in die Implementierung.
 
 Frage: Warum beschränken einige Sprachen, wie JAVA und C++, die Instanzvariablen ihrer Klassen in der Schnittstelle?

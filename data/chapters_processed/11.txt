@@ -12,5 +12,5 @@ Antwort: Die beiden Enden der Subklassenbeziehung haben die Rollen "Superklasse"
 Frage: Was bedeutet es, dass die Subklassenbeziehung transitiv ist?
 Antwort: Die Transitivität der Subklassenbeziehung bedeutet, dass, wenn Klasse A eine Subklasse von Klasse B ist und Klasse B eine Subklasse von Klasse C ist, dann ist Klasse A auch eine Subklasse von Klasse C. Dies bedeutet, dass die Vererbung von Eigenschaften und Verhalten in der Klassenhierarchie entlang der Subklassenbeziehung in einer kaskadierenden Weise erfolgt.
 
-Frage: Was ist der Unterschied zwischen einer direkten Subklasse und einer indirekten Subklasse?
+Frage: Was unterscheidet ein direkte Subklasse und ein indirekte Subklasse?
 Antwort: Eine direkte Subklasse ist eine Klasse, die direkt von einer anderen Klasse erbt, ohne dass eine weitere Klasse dazwischen liegt. Eine indirekte Subklasse ist eine Klasse, die von einer Superklasse erbt, die selbst von einer anderen Klasse erbt. Mit anderen Worten, eine indirekte Subklasse ist eine Subklasse, die von einer Superklasse erbt, die ebenfalls eine Subklasse ist.

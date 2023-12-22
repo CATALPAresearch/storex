@@ -55,9 +55,9 @@ bool
 boolesche algebra
 boxing
 bytecode
-c
 c plus plus
 c sharp
+c-sharp
 c++
 call by reference
 call by value
@@ -100,16 +100,15 @@ derived class
 direkte instanz
 direkte subklasse
 direkte superklasse
-direkter subtyp
+direkte subtyp
 dispatch
 double dispatch
 down cast
 dynamisch
 dynamische typpruefung
-dynamischem binden
-dynamischen typpruefung
-dynamisches binden
+dynamisch binden
 eiffel
+eifel
 eigenschaft
 einfachvererbung
 endrekursion
