@@ -17,7 +17,7 @@ Antwort: Ausdrücke in JAVA können rekursiv aus anderen Ausdrücken aufgebaut w
 Frage: Welche Typisierungsanforderungen gelten für Ausdrücke in JAVA?
 Antwort: In JAVA müssen alle Ausdrücke korrekt typisiert sein. Das bedeutet, dass der Typ jedes Ergebnisses eines inneren Ausdrucks mit dem Typ des äußeren Ausdrucks übereinstimmen muss, an der Stelle, an der er eingesetzt wird.
 
-Frage: Was ist der Unterschied zwischen Call by Value und Call by Reference, und wie wird dies in JAVA gehandhabt?
+Frage: Was unterscheidet Call by Value und Call by Reference, und wie wird dies in JAVA gehandhabt?
 Antwort: In JAVA wird Call by Value verwendet, was bedeutet, dass Methoden keinen anderen Wert für einen tatsächlichen Parameter zuweisen können. Dies ist eine Einschränkung im Vergleich zu Call by Reference, bei dem eine Methode auf den ursprünglichen Wert einer Variablen zugreifen und ihn ändern kann.
 
 Frage: Welche Rolle spielen Lambda-Ausdrücke in JAVA, und wie unterscheiden sie sich von anonymen inneren Klassen?

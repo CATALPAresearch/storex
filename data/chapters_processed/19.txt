@@ -9,10 +9,10 @@ In untypisierten Sprachen werden Variablen ohne Angabe eines Typs (wie z. B. in 
 Frage: Was sind Bezeichner in der Programmierung, und wie werden sie verwendet?
 Antwort: Bezeichner sind Namen, die in der Programmierung frei vergeben werden können. Sie werden verwendet, um Programmelemente zu identifizieren und auf sie zu verweisen, beispielsweise Variablen oder Methoden.
 
-Frage: Was ist der Zweck der Deklaration von Programmelementen in der Programmierung?
-Antwort: Die Deklaration von Programmelementen in der Programmierung dient dazu, dem Compiler den Bezeichner bekanntzugeben, damit er ihn in der Folge wiedererkennen und mit der entsprechenden Definition in Verbindung bringen kann.
+Frage: Was ist der Zweck der Deklaration von Programmelementen?
+Antwort: Die Deklaration von Programmelementen dient dazu, dem Compiler den Bezeichner bekanntzugeben, damit er ihn in der Folge wiedererkennen und mit der entsprechenden Definition in Verbindung bringen kann.
 
-Frage: Was ist der Unterschied zwischen Deklaration und Definition in der Programmierung?
+Frage: Was unterscheidet eine Deklaration und eine Definition?
 Antwort: Deklaration gibt dem Bezeichner bekannt, während Definition ihm sagt, wofür er steht. Bei Variablen kann die Definition implizit sein und aus der Deklaration abgeleitet werden, während bei Methoden die Unterscheidung zwischen Deklaration (Signatur) und Definition (Methodenrumpf) essentiell ist.
 
 Frage: Wie äußert sich die Verwendung eines Programmelements in einem Programmtext?

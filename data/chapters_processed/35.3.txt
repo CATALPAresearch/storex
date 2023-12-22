@@ -14,7 +14,7 @@ Antwort: Variablen in JAVA haben entweder Referenzsemantik oder Wertsemantik, je
 Frage: Wie werden Werte Variablen in JAVA zugewiesen?
 Antwort: In JAVA werden Werte Variablen sowohl explizit per Zuweisungsoperator "=" als auch implizit per Methodenaufruf zugewiesen.
 
-Frage: Was ist der Unterschied zwischen der Wertzuweisung und der Zuweisung von Referenzen in JAVA?
+Frage: Was unterscheidet eine Wertzuweisung und eine Zuweisung von Referenzen in JAVA?
 Antwort: Bei der Wertzuweisung wird der tatsächliche Wert einer Variable kopiert, während bei der Zuweisung von Referenzen nur die Referenz auf das Objekt kopiert wird.
 
 Frage: Gibt es in JAVA "Call by reference"?

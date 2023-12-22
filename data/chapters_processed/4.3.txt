@@ -14,7 +14,7 @@ Antwort: Eine Methodensignatur beschreibt, welche Parameter eine Methode erwarte
 Frage: Was ist ein Nachrichtenselektor?
 Antwort: Ein Nachrichtenselektor ist Teil eines Nachrichtenausdrucks und gibt an, welche Nachricht an ein Objekt gesendet wird.
 
-Frage: Was ist der Unterschied zwischen einer Methodensignatur und einem Nachrichtenselektor?
+Frage: Was unterscheidet eine Methodensignatur und einen Nachrichtenselektor?
 Antwort: Die Methodensignatur ist das Gegenstück zum Nachrichtenselektor.
 
 Die Methodenrümpfe bestehen aus einer Folge von Anweisungen, die jeweils durch einen Punkt getrennt sind. Wenn die Anweisungen nichts anderes vorsehen, wird die Ausführung einer Methode nach Abarbeitung der letzten Anweisung explizit mit der Rückgabe des Empfängerobjekts an den Sender der Nachricht beendet. Für explizite Beendigungen und die Rückgabe eines anderen Objekts als des Empfängers ist die Return-Anweisung vorgesehen. Eine Return-Anweisung darf an beliebigen Stellen innerhalb der Methode auftreten, wodurch die Abarbeitung der Methode vor Erreichen der textuell letzten Anweisung beendet werden kann. Die Return-Anweisung beeinflusst somit den Kontrollfluss des Programms. Wichtig ist, dass eine Methode immer ein Objekt zurückgibt. Ein Nachrichtenausdruck (oder Methodenaufruf) steht immer für ein Objekt. Prozeduren im Sinne von PASCAL oder Void-Methoden im Sinne von C, JAVA usw. gibt es in SMALLTALK nicht.

@@ -11,7 +11,7 @@ Antwort: Die Sichtbarkeit von Instanzvariablen in SMALLTALK ist auf das besitzen
 
 In SMALLTALK werden zwei Arten von Instanzvariablen unterschieden: benannte und indizierte. Jede benannte Instanzvariable benennt (oder verweist auf) jeweils ein Objekt; der Name der Variable wird somit für die Dauer, in der die Variable auf das Objekt verweist, auch zum Namen des Objekts. Da es sich bei Instanzvariablen um lokale Variablen handelt, muss der Name einer benannten Instanzvariablen in SMALLTALK mit einem Kleinbuchstaben beginnen.
 Indizierte Instanzvariablen haben keine Namen, sondern werden über einen Index relativ zu dem Objekt, zu dem sie gehören, angesprochen. Damit ist der Index gewissermaßen der Name der Instanzvariable. Der Index muss eine natürliche Zahl größer 0 sein. Um den Inhalt der indizierten Instanzvariable an der Indexposition i (genauer: an der Indexposition, die durch das Zahlobjekt bestimmt wird, auf das i verweist) zu erhalten, schreibt man: at: i.
-Wer bei indizierten Instanzvariablen an Arrays denkt, liegt richtig. Indizierte Instanzvariablen sind kein Unikat von SMALLTALK: So bieten beispielsweise C# und VISUAL BASIC sog. Indexer, die im Wesentlichen indizierten Instanzvariablen entsprechen. Auch verfügen manche Objekte in VISUAL BASIC FOR APPLICATIONS (VBA) über eine Variable Item, deren Elemente über Indizierung des Objekts, dem sie zugeordnet ist, angesprochen werden können.
+Wer bei indizierten Instanzvariablen an Arrays denkt, liegt richtig. Indizierte Instanzvariablen sind kein Unikat von SMALLTALK: So bieten beispielsweise C-Sharp und VISUAL BASIC sog. Indexer, die im Wesentlichen indizierten Instanzvariablen entsprechen. Auch verfügen manche Objekte in VISUAL BASIC FOR APPLICATIONS (VBA) über eine Variable Item, deren Elemente über Indizierung des Objekts, dem sie zugeordnet ist, angesprochen werden können.
 
 Frage: Was sind zwei Arten von Instanzvariablen in SMALLTALK?
 Antwort: In SMALLTALK werden zwei Arten von Instanzvariablen unterschieden: benannte und indizierte Instanzvariablen.
@@ -23,7 +23,7 @@ Frage: Was sind indizierte Instanzvariablen in SMALLTALK?
 Antwort: Indizierte Instanzvariablen haben keine Namen, sondern werden über einen Index relativ zum Objekt angesprochen, dem sie gehören. Der Index fungiert gewissermaßen als Name für die Instanzvariable.
 
 Frage: Was sind Indexer?
-Antwort: Indexer sind ähnlich zu indizierten Instanzvariablen und werden beispielsweise von C# und VISUAL BASIC verwendet.
+Antwort: Indexer sind ähnlich zu indizierten Instanzvariablen und werden beispielsweise von C-Sharp und VISUAL BASIC verwendet.
 
 Die Anzahl der indizierten Instanzvariablen eines Objekts ist fix. Damit ist auch die Größe eines Objekts mit indizierten Instanzvariablen fest; insbesondere können Array-Objekte nicht wachsen. Es müssen aber nicht alle indizierten Instanzvariablen belegt sein; die „leeren“ enthalten dann nil.
 

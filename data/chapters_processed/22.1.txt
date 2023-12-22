@@ -8,7 +8,7 @@ Strukturäquivalenz ist eine rein syntaktische Bedingung. Insbesondere können b
 Frage: Wie wird die Strukturäquivalenz bei der Feststellung von Typäquivalenz verwendet?
 Antwort: Bei der Feststellung von Strukturäquivalenz werden die Definitionen der beteiligten Typen rekursiv expandiert, wobei Namen anderer Typen durch ihre Struktur ersetzt werden. Diese Strukturäquivalenz ermöglicht es, Typen zu vergleichen, indem ihre Strukturen miteinander verglichen werden.
 
-Frage: Was ist der Unterschied zwischen Namensäquivalenz und Strukturäquivalenz?
+Frage: Was unterscheidet Namensäquivalenz und Strukturäquivalenz?
 Antwort: Bei der Namensäquivalenz spielen die Namen der Typen eine eigenständige Rolle und haben unabhängig von ihrer Struktur Bedeutung. Bei der Strukturäquivalenz dienen Namen lediglich als abkürzende Schreibweise für die Typstrukturen. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt.
 
 Frage: Warum reicht Strukturäquivalenz als Bedingung für Zuweisungskompatibilität aus?

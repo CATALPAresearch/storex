@@ -2,7 +2,7 @@
 
 Beim Subtyping unterscheidet man, wie bei der Typäquivalenz und -konformität, zwischen nominalem und strukturellem Subtyping. Nominales Subtyping liegt vor, wenn ein Subtyp aus einem namentlich erwähnten Supertyp abgeleitet sein muss, um als sein Subtyp zu gelten. Strukturelles Subtyping liegt vor, wenn ein Typ lediglich die obige Definition von Subtyp erfüllen muss, um als solcher zu gelten. Nominales Subtyping impliziert strukturelles; analog zur Typkonformität macht das nominale Subtyping die Subtypenbeziehung antisymmetrisch, das strukturelle hingegen nicht.
 
-Frage: Was ist der Unterschied zwischen nominalem und strukturellem Subtyping?
+Frage: Was unterscheidet nominales und strukturelles Subtyping?
 Antwort: Beim Subtyping gibt es zwei Unterscheidungen: nominales und strukturelles Subtyping.
 
 Frage: Was ist nominales Subtyping?

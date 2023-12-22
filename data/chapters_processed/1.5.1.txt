@@ -21,7 +21,7 @@ Antwort: Es handelt sich bei Variablen mit Verweissemantik aus technischer Sicht
 
 Verweis- und Wertsemantik von Variablen unterscheiden sich fundamental: Unter Wertsemantik können, solange jedes Objekt seine eigene Identität hat, zwei Variablen niemals dasselbe Objekt bezeichnen, während Verweissemantik erlaubt, dass mehrere Variablen auf dasselbe Objekt verweisen. Da die Verweissemantik einen wesentlich speicher- und recheneffizienteren Umgang mit Objekten erlaubt und da unterschiedliche Objekte wie oben beschrieben unterschiedlich viel Speicherplatz belegen, so dass man im Vorfeld nicht immer weiß, wie viel davon man für eine Variable vorsehen muss, ist sie in der objektorientierten Programmierung vorherrschend. In manchen Sprachen, die neben Objekten auch Werte kennen, haben Variablen, die Objekte aufnehmen, stets Verweissemantik, und Variablen, die Werte aufnehmen, stets Wertsemantik (z. B. JAVA); andere objektorientierte Sprachen erlauben der Programmiererin, für jede Variable getrennt festzulegen, ob sie Wert- oder Verweissemantik haben soll (so z. B. C++ und EIFFEL).
 
-Frage: Was ist der Unterschied zwischen Verweissemantik und Wertsemantik von Variablen?
+Frage: Was unterscheidet Verweissemantik und Wertsemantik bei Variablen?
 Antwort: Unter Wertsemantik können zwei Variablen niemals dasselbe Objekt bezeichnen, während Verweissemantik erlaubt, dass mehrere Variablen auf dasselbe Objekt verweisen.
 
 Frage: Warum wird in der objektorientierten Programmierung häufig Verweissemantik verwendet?

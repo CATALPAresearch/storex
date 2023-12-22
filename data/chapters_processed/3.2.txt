@@ -10,7 +10,7 @@ Von dieser Idee des Geheimnisprinzips zu unterscheiden ist der Begriff der Kapse
 Frage: Was ist Kapselung?
 Antwort: Bei der Kapselung geht es darum, dass ein Objekt seinen Zustand so kapselt, dass dieser nur von ihm selbst geändert werden kann.
 
-Frage: Was ist der Unterschied zwischen dem Geheimnisprinzip und der Kapselung?
+Frage: Was unterscheidet das Geheimnisprinzip und die Kapselung?
 Antwort: Der Unterschied besteht darin, dass das Geheimnisprinzip sich auf das Verbergen von Implementationsdetails und Struktur bezieht, während die Kapselung sich auf das Verbergen und die Kontrolle des Zustands eines Objekts bezieht.
 
 Frage: Wie wird die Kapselung umgesetzt?

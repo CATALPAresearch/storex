@@ -40,7 +40,7 @@ Antwort: Ja, es gibt eine Verbindung zwischen Typen und Klassen in der objektori
 Frage: Welche Gründe gibt es, Variablen und andere Programmelemente zu typisieren?
 Antwort: Es gibt mindestens vier gute Gründe für die Typisierung von Variablen und anderen Programmelementen: Typisierung regelt das Speicher-Layout. Typisierung erlaubt die effizientere Ausführung eines Programms. Typisierung erhöht die Lesbarkeit eines Programms. Typisierung ermöglicht das automatische Finden von logischen Fehlern in einem Programm.
 
-Frage: Was ist der Unterschied zwischen statischer und dynamischer Typprüfung?
+Frage: Was unterscheidet statische und dynamische Typprüfung?
 Antwort: Statische Typprüfung erfolgt zur Übersetzungszeit und gewährleistet, dass die Typkorrektheit eines Programms vor der Ausführung sichergestellt wird. Dynamische Typprüfung erfolgt zur Laufzeit und prüft, ob der zuzuweisende Wert den geforderten Typ hat. Statische Typprüfung erfordert Typenannotationen bei der Variablendeklaration, während dynamische Typprüfung dies zur Laufzeit überprüft.
 
 Frage: Welche Phase des Entwicklungszyklus verwendet die Typisierung in der Softwareentwicklung?

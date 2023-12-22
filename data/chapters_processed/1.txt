@@ -10,9 +10,9 @@ Frage: Was sind Inkonsistenzen im objektorientierten Weltbild?
 Antwort: In der objektorientierten Programmierung werden verschiedene Arten von Sachverhalten, die in der realen Welt unterschiedliche Eigenschaften haben, durch Objekte repräsentiert. Dies kann zu Inkonsistenzen führen, da nicht alle Sachverhalte dieselben Eigenschaften wie Objekte haben. Dies ist auf die homogene Natur der Objektorientierung zurückzuführen.
 
 Wie bereits erwähnt, sind Objekte im Speicher abgelegte Daten. Dabei ist jedes Objekt an genau einer Stelle im Speicher abgelegt: Es wird damit durch seine Speicherstelle eindeutig identifiziert. Aufgrund dieser eindeutigen Identifizierbarkeit spricht man auch von der Identität eines Objekts; sie kann aus technischer Sicht mit der Speicherstelle, an der das Objekt abgelegt ist, gleichgesetzt werden. Da keine zwei Objekte an derselben Stelle abgelegt werden können, haben auch keine zwei Objekte dieselbe Identität.
-Objekte sind grundsätzlich von Werten zu unterscheiden. Werte werden auch im Speicher abgelegt, haben aber keine Identität. Es folgt, dass derselbe Wert an verschiedenen Stellen im Speicher vorkommen kann. Viele objektorientierte Programmiersprachen (wie etwa JAVA oder C#) unterscheiden ganz offen zwischen Werten und Objekten; SMALLTALK tut dies nur hinter den Kulissen und folgt ansonsten seinem Motto "alles ist ein Objekt".
+Objekte sind grundsätzlich von Werten zu unterscheiden. Werte werden auch im Speicher abgelegt, haben aber keine Identität. Es folgt, dass derselbe Wert an verschiedenen Stellen im Speicher vorkommen kann. Viele objektorientierte Programmiersprachen (wie etwa JAVA oder C-Sharp) unterscheiden ganz offen zwischen Werten und Objekten; SMALLTALK tut dies nur hinter den Kulissen und folgt ansonsten seinem Motto "alles ist ein Objekt".
 
-Frage: Was ist der Unterschied zwischen einem Objekt und einem Wert?
+Frage: Was unterscheidet ein Objekt und ein Wert?
 Antwort: Objekte haben eine eindeutige Identität und sind an einer bestimmten Stelle im Speicher abgelegt, während Werte an verschiedenen Stellen im Speicher vorkommen können und keine Identität haben.
 
 Frage: Was ist das Motto von SMALLTALK?

@@ -12,5 +12,5 @@ Antwort: Variablen sind Namen, die zu verschiedenen Zeitpunkten verschiedene Obj
 Frage: Warum gibt es Variablen?
 Antwort: Variablen sind notwendig, weil Literale immer die gleichen Objekte repräsentieren, weshalb sie zum Programmieren nicht ausreichen.
 
-Frage: Was ist der Unterschied zwischen Variablen und Literale?
+Frage: Was unterscheidet Variablen und Literale?
 Antwort: Anders als bei Literalen wird aus einer Variable kein Objekt erzeugt, sie ist lediglich ein Name für ein bereits existierendes Objekt.
