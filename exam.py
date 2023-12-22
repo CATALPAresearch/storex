@@ -141,7 +141,7 @@ class ExamManager:
                 if self.targets:
                     self.next_question = QuestionType.GENERATE
                 else:
-                    self.next_question = QuestionType.CONNECT
+                    self.next_question = QuestionType.PREDEFINE
 
             case _:
                 raise ValueError(f"Cannot assign {result}.")
@@ -237,11 +237,7 @@ class ExamManager:
                         current_question = self.ask_repeating_question()
                         repeated = True
                     else:
-                        self.next_question = QuestionType.CONNECT  # TODO: Connected question?
-
-                case 3:  # Ask a connected question
-                    # TODO
-                    self.next_question = QuestionType.PREDEFINE
+                        self.next_question = QuestionType.PREDEFINE  # TODO: Generate or Predefine question?
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
