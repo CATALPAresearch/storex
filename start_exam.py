@@ -19,9 +19,9 @@ parser.add_argument("-f", "--female", action='store_true',
                     help="Form of address 'Frau' will be used during the training exam.")
 parser.add_argument("-m", "--male", action='store_true',
                     help="Form of address 'Herr' will be used during the training exam.")
-parser.add_argument("-log", "--logging", action='store_true',
+parser.add_argument("--log", action='store_true',
                     help="If set, logging info is enabled as console output.")
-parser.add_argument("-na", "--no-audio", action='store_true',
+parser.add_argument("--mute", action='store_true',
                     help="If set, there will be no text-to-speech audio output. This can be set to increase the"
                          " performance.")
 args = vars(parser.parse_args())
@@ -40,7 +40,7 @@ if args["female"] and args["male"]:
 if int(args["time"]) > 60 or int(args["time"]) < 5:
     raise ValueError("The training exam can last between 10 to 60 minutes. Please choose a duration in that time frame.")
 
-if args["logging"]:
+if args["log"]:
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger()
     logger.disabled = False
