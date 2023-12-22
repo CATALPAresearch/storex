@@ -15,7 +15,7 @@ from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager, TopicManager
 from text_generation import TextGenerator
 from utils import colours, preprocessing
-from utils.helpers import QuestionType, FeedbackType, KE
+from utils.helpers import FeedbackType, KE, Level, QuestionType
 
 # TODO: Remove once langchain updated to InferenceClient
 import warnings
@@ -113,14 +113,14 @@ class ExamManager:
             logger.info(f"Result: {result.name}")
         # Only check keywords for topic questions
         else:
-            result = FeedbackType.CORRECT
-            # result = FeedbackType.MISSING_TOPIC
+            result = FeedbackType.MISSING_TOPIC
 
         # Set next question type
         match result.value:
             case 0:  # Correct answer
                 self.prepend_question = "Ok."
                 self.next_question = QuestionType.PREDEFINE
+                self.time_manager.increase_correct_answers()
 
             case 1:  # No answer or really short answer  TODO: Move this case to ASR
                 self.next_question = QuestionType.REPEAT
@@ -215,8 +215,10 @@ class ExamManager:
         while self.time_manager.get_remaining_time() > 0:
             self.last_question = current_question
 
-            # Set the question type to predefined if the topic changed
-            if self.time_manager.check_topic():
+            # Set the question type to predefined if a new topic started or if there should be no generated questions
+            # at the current level
+            if (self.time_manager.check_topic() or
+                    (self.time_manager.check_level() and self.next_question == QuestionType.GENERATE)):
                 self.next_question = QuestionType.PREDEFINE
 
             # Match the question type for the next question
@@ -263,6 +265,7 @@ class TimeManager:
         self.topic_manager = topic_manager
         self.last_known_topic = topic_manager.get_topic()
         self.topic_time = duration / len(KE)
+        self.correct_answers = 0
 
         self.start_time = None
 
@@ -280,30 +283,41 @@ class TimeManager:
     def get_remaining_time(self):
         return self.remaining_time
 
+    def increase_correct_answers(self):
+        self.correct_answers += 1
+
     def check_topic(self):
         """
         Checks if the topic got increased by the QuestionManager and calculates the new time per topic.
         Checks if the time for the current topic ran out and increases the topic.
         """
-        # Check if topic got increased
+        # Check if topic got increased or time for topic ran out
         topic = self.topic_manager.get_topic()
-        if topic != self.last_known_topic:
+        if topic != self.last_known_topic or (self.topic_time <= 0 and self.last_known_topic.value < len(KE)):
+
+            # Set new topic if time for topic ran out
+            if self.topic_time <= 0 and self.last_known_topic.value < len(KE):
+                self.topic_manager.increase_topic()
+                topic = self.topic_manager.get_topic()
+
             # Set new time for topic
             remaining_topics = len(KE) - topic.value
             self.topic_time = self.remaining_time / remaining_topics
             logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
+
             self.last_known_topic = topic
+            self.correct_answers = 0
             return True
-        # Check if time for topic ran out
-        elif self.topic_time <= 0 and self.last_known_topic.value < len(KE):
-            self.topic_manager.increase_topic()
-            topic = self.topic_manager.get_topic()
-            self.last_known_topic = topic
-            # Set new time for topic
-            remaining_topics = len(KE) - topic.value
-            self.topic_time = self.remaining_time / remaining_topics
-            logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
-            return True
+        return False
+
+    def check_level(self):
+        # Check the level
+        level = self.topic_manager.get_level()
+        if level == Level.REMEMBER:
+            if self.correct_answers >= 2:
+                self.topic_manager.increase_level()
+            else:
+                return True
         return False
 
 
