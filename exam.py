@@ -69,8 +69,8 @@ class ExamManager:
         self.targets = []
 
         # Set audio models
-        self.no_audio = True if exam_parameters['no_audio'] else False
-        if not self.no_audio:
+        self.mute = True if exam_parameters['mute'] else False
+        if not self.mute:
             self.audio = TextToSpeech()
         self.transcription = SpeechRecognition()
 
@@ -87,7 +87,7 @@ class ExamManager:
         # colours.print_blue(text)
         print_thread = threading.Thread(target=colours.print_blue, args=text)
         print_thread.start()
-        if not self.no_audio:
+        if not self.mute:
             self.audio.get_audio(text)
         print_thread.join()
 
@@ -328,6 +328,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 10, "female": False, "male": False, "no_audio": True}
+    dev_parameters = {"name": "Luna", "time": 10, "female": False, "male": False, "mute": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()
