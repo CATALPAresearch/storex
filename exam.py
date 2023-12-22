@@ -10,6 +10,7 @@ import time
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
 from evaluation import Evaluator
+from feedback_managing import FeedbackManager
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager, TopicManager
@@ -67,16 +68,19 @@ class ExamManager:
         # Set specific topics to be targeted for questions
         self.targets = []
 
-        # Set audio models and evaluator
+        # Set audio models
         self.no_audio = True if exam_parameters['no_audio'] else False
         if not self.no_audio:
             self.audio = TextToSpeech()
         self.transcription = SpeechRecognition()
+
+        # Set evaluator and feedback manager
         self.evaluation = Evaluator()
+        self.feedback = FeedbackManager()
 
         # Set time manager with the exam duration
         duration = int(exam_parameters['time']) * 60
-        self.time_manager = TimeManager(duration, topic_manager)
+        self.time_manager = TimeManager(duration, topic_manager, self.feedback)
 
     def speak(self, text):
         """Outputs the given text via the speakers and in the terminal."""
@@ -105,7 +109,6 @@ class ExamManager:
         Gets feedback by comparing the given students answer to the given correct answer.
         Checks the mentioning of keywords.
         Sets the type for the next question.
-        TODO: Add multiple random vague "Aha" before next question.
         """
         # Get feedback by comparing the students answer to the correct answer.
         if 'answer' in question:
@@ -114,6 +117,8 @@ class ExamManager:
         # Only check keywords for topic questions
         else:
             result = FeedbackType.MISSING_TOPIC
+
+        questioning_sounds = ["Ah?", "Achso?", "Hmm.", "Hm?", '']
 
         # Set next question type
         match result.value:
@@ -125,19 +130,19 @@ class ExamManager:
             case 1:  # No answer or really short answer  TODO: Move this case to ASR
                 self.next_question = QuestionType.REPEAT
 
-            case 2:  # Off-topic answer
-                self.prepend_question = "Ah?"
+            case 2, 3:  # Off-topic or contradicting answer
+                self.prepend_question = random.choice(questioning_sounds)
                 self.next_question = QuestionType.REPEAT
-
-            case 3:  # Contradicting answer
-                self.prepend_question = "Achso?"
-                self.next_question = QuestionType.REPEAT
+                self.feedback.add_no_entailment()
 
             case 4:  # The answer is missing topics
+                # Get keywords from predefined answers
                 if 'keywords' not in question:
-                    # TODO: Get keywords (same in question manager for pre-defined?)
-                    question['keywords'] = preprocessing.extract_keywords(question['answer'])  # self.evaluation.get_keywords(correct_answer)
-                self.targets.extend(self.evaluation.evaluate_keywords(question['keywords'], student_answer))
+                    question['keywords'] = preprocessing.extract_keywords(question['answer'])
+                # Get missed topics and add them as targets and their amount for feedback
+                missed_topics = self.evaluation.evaluate_keywords(question['keywords'], student_answer)
+                self.targets.extend(missed_topics)
+                self.feedback.add_missed(len(missed_topics))
                 if self.targets:
                     self.next_question = QuestionType.GENERATE
                 else:
@@ -166,9 +171,11 @@ class ExamManager:
         """
         Gets, asks and returns a generated question.
         """
-        # Get a random target TODO: different probabilities?
+        # Get a random target (higher probability with more occurrences)
         target = random.choice(self.targets)
-        self.targets.remove(target)
+
+        # Remove all occurrences of the selected target from the targets
+        self.targets = [t for t in self.targets if t != target]
         logger.info(f"Target: {target}")
 
         # Get a generated question
@@ -232,9 +239,10 @@ class ExamManager:
                     repeated = False
                     current_question = self.ask_generated_question()
 
-                case 2:  # Generate a reiteration of the question
-                    if repeated is False:  # TODO: How often should we reiterate? Currently: Once
+                case 2:  # Generate a reiteration of the question (once per question)
+                    if repeated is False:
                         current_question = self.ask_repeating_question()
+                        self.feedback.add_reiterated()
                         repeated = True
                     else:
                         self.next_question = QuestionType.PREDEFINE  # TODO: Generate or Predefine question?
@@ -256,12 +264,13 @@ class TimeManager:
     """
     Training exam time manager.
     """
-    def __init__(self, duration, topic_manager):
+    def __init__(self, duration, topic_manager, feedback):
         self.remaining_time = duration
         self.topic_manager = topic_manager
         self.last_known_topic = topic_manager.get_topic()
         self.topic_time = duration / len(KE)
         self.correct_answers = 0
+        self.feedback = feedback
 
         self.start_time = None
 
@@ -290,6 +299,7 @@ class TimeManager:
         # Check if topic got increased or time for topic ran out
         topic = self.topic_manager.get_topic()
         if topic != self.last_known_topic or (self.topic_time <= 0 and self.last_known_topic.value < len(KE)):
+            self.feedback.add_correct(self.correct_answers, self.last_known_topic)
 
             # Set new topic if time for topic ran out
             if self.topic_time <= 0 and self.last_known_topic.value < len(KE):
@@ -307,7 +317,7 @@ class TimeManager:
         return False
 
     def check_level(self):
-        # Check the level
+        # Check the level TODO: Increase from level 2 to 3 by time?
         level = self.topic_manager.get_level()
         if level == Level.REMEMBER:
             if self.correct_answers >= 2:
