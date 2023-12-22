@@ -11,13 +11,25 @@ directory = os.path.dirname(os.path.dirname(__file__))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed')
 OUTPUT_FILE = os.path.join(directory, 'questions/questions.py')
 
-KE1_questions = []
-KE2_questions = []
-KE3_questions = []
-KE4_questions = []
-KE5_questions = []
-KE6_questions = []
-KE7_questions = []
+KE1_questions = [[], [], []]
+KE2_questions = [[], [], []]
+KE3_questions = [[], [], []]
+KE4_questions = [[], [], []]
+KE5_questions = [[], [], []]
+KE6_questions = [[], [], []]
+KE7_questions = [[], [], []]
+
+KE_questions = [KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE5_questions, KE6_questions, KE7_questions]
+
+
+def sort_in_ke(question_answer, ke_index):
+    if question_answer['question'].startswith(("Was ist", "Was sind", "Welche")):
+        KE_questions[ke_index][0].append(question_answer)
+    elif question_answer['question'].startswith(("Wie", "Wann")):
+        KE_questions[ke_index][1].append(question_answer)
+    else:  # ("Was unterscheidet", "Warum")
+        KE_questions[ke_index][2].append(question_answer)
+
 
 # Get text from txt files
 for file in glob.glob(INPUT_PATH + '/*.txt'):
@@ -35,34 +47,42 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
 
             if re.match("KE", filename):
                 if filename == "KE1":
-                    KE1_questions.append(question_dict)
+                    ke = 0
                 if filename == "KE2":
-                    KE2_questions.append(question_dict)
+                    ke = 1
                 if filename == "KE3":
-                    KE3_questions.append(question_dict)
+                    ke = 2
                 if filename == "KE4":
-                    KE4_questions.append(question_dict)
+                    ke = 3
                 if filename == "KE5":
-                    KE5_questions.append(question_dict)
+                    ke = 4
                 if filename == "KE7":
-                    KE7_questions.append(question_dict)
+                    ke = 5
             elif float(filename) < 6:
-                KE1_questions.append(question_dict)
+                ke = 0
             elif float(filename) < 17:
-                KE2_questions.append(question_dict)
+                ke = 1
             elif float(filename) < 33:
-                KE3_questions.append(question_dict)
+                ke = 2
             elif float(filename) < 49:
-                KE4_questions.append(question_dict)
+                ke = 3
             elif float(filename) < 53:
-                KE5_questions.append(question_dict)
+                ke = 4
             elif float(filename) < 61:
-                KE6_questions.append(question_dict)
+                ke = 5
             else:
-                KE7_questions.append(question_dict)
+                ke = 6
+            sort_in_ke(question_dict, ke)
 
 with open(OUTPUT_FILE, 'a') as py_file:
-    py_file.write("KE1_questions = [\n")
-    for question_dictionary in KE1_questions:
-        py_file.write(f"    {question_dictionary},\n")
-    py_file.write("]\n")
+    for ke in range(len(KE_questions)):
+        py_file.write(f"KE{ke+1}_questions = [\n")
+        for question_list in KE_questions[ke]:
+            for question_dictionary in question_list:
+                if question_dictionary == question_list[0]:
+                    py_file.write(f"    [{question_dictionary},\n")
+                elif question_dictionary == question_list[-1]:
+                    py_file.write(f"     {question_dictionary}],\n")
+                else:
+                    py_file.write(f"     {question_dictionary},\n")
+        py_file.write("]\n")

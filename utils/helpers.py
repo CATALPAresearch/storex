@@ -8,10 +8,16 @@ class KE(IntEnum):
     KE1 = 0
     KE2 = 1
     KE3 = 2
-    KE4 = 3
+    KE4 = 3  # TODO: Combine KE 4 and 5 to "Programmiermodelle"
     KE5 = 4
     KE6 = 5
     KE7 = 6
+
+
+class Level(IntEnum):
+    REMEMBER = 0
+    APPLY = 1
+    ANALYZE = 2
 
 
 class QuestionType(IntEnum):
