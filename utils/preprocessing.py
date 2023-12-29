@@ -63,8 +63,11 @@ def extract_keywords(text, terms=None):
     for term in terms:
         # Check synonym lists
         if isinstance(term, list):
-            if any(t in words for t in term):
-                technical_words.append(term)
+            for word in term:
+                pattern = re.compile(fr"\b{re.escape(word)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
+                matches = re.findall(pattern, words)
+                if matches:
+                    technical_words.append(term)
         # Create a regular expression pattern allowing for different grammatical endings
         else:
             pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)
