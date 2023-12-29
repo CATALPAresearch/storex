@@ -5,7 +5,6 @@ abhaengigkeit
 abstrakt
 abstrakte klasse
 abstraktionshierarchie
-accessor
 aenderungsabhaengigkeit
 aggregation
 aktiv
@@ -38,7 +37,6 @@ auto unboxing
 base class
 basisklasse
 befehl
-behavioural subtyping
 benannt
 benannte instanzvariable
 beziehung
@@ -60,13 +58,10 @@ change log
 checked exception
 child class
 client
-client schnittstelle
-client-schnittstelle
+[client schnittstelle, client-schnittstelle]
 closure
 coding convention
-collection
-collection klasse
-collection-klasse
+[collection, collection-klasse]
 common intermediate language
 common type system
 compilation unit
@@ -75,12 +70,10 @@ continuation
 cpp
 cross cast
 datenkapselung
-declaration site variance
-declaration-site variance
+[declaration site variance, declaration-site variance]
 dedizierter export
 default
-default methode
-default-methode
+[default methode, default-methode]
 definition
 deklaration
 deklariert
@@ -117,8 +110,7 @@ explizite zuweisung
 export
 extension
 externe iteration
-factory methode
-factory-methode
+[factory methode, factory-methode]
 fall through
 fallunterscheidung
 familienaehnlichkeit
@@ -130,8 +122,7 @@ fluent api
 formale parameter
 formale typparameter
 forwarding
-fragile base class problem
-fragile-base-class-problem
+[fragile base class problem, fragile-base-class-problem]
 fremdschluessel
 friend
 funktionale anforderung
@@ -141,7 +132,6 @@ garbage collection
 geheimnisprinzip
 generalisierung
 generalisierungspezialisierung
-generalisierungspezialisierung
 generic
 generisch
 generischer typ
@@ -150,7 +140,7 @@ getter
 gleiche fallunterscheidung
 gleichheit von objekten
 globale variable
-goto
+[goto, goto-anweisung]
 heterogene collection
 hiding
 hierarch
@@ -197,8 +187,7 @@ interne iteration
 interner iterator
 invariante
 invarianz
-ist ein beziehung
-ist-ein-beziehung
+[ist ein beziehung, ist-ein-beziehung]
 iteration
 iterator
 java
@@ -231,29 +220,23 @@ kontrollstruktur
 kopie
 kovariante redefinition
 kovarianz
-lambda
-lambda ausdruck
-lambda-ausdruck
+[lambda, lambda ausdruck, lambda-ausdruck]
 laufzeittypfehler
 law of demeter
 lazy initialization
 lebenszyklus
 leere beziehung
 linke seite der zuweisung
-liskov substitutionsprinzip
-liskov-substitutionsprinzip
+[liskov substitutionsprinzip, liskov-substitutionsprinzip, liskov]
 literal
 literaloptimierung
-live programmierung
-live programming
-live-programmierung
+[live programmierung, live programming, live-programmierung]
 loeschen von methoden
 logische programmiersprache
 lokale variable
 lokalitaet
 lokalitaetsprinzip
-marker interface
-marker-interface
+[marker interface, marker-interface]
 mehrfachhierarchie
 mehrfachvererbung
 member
@@ -275,10 +258,8 @@ methodensignatur
 modul
 modularisierung
 monitor
-multi dispatch
-multi methode
-multi-dispatch
-multi-methode
+[multi dispatch, multi-dispatch]
+[multi methode, multi-methode]
 multiplizitaet
 nachricht
 nachrichtenausdruck
@@ -298,10 +279,8 @@ nominale typkonformitaet
 nominale typkonformitaetsdeklaration
 novarianz
 null pointer exception
-nur lesen
-nur schreiben
-nur-lesen
-nur-schreiben
+[nur lesen, nur-lesen, read-only, read only]
+[nur schreiben, nur-schreiben, write-only, write only]
 objekt
 objektgeflecht
 objektorientierung
@@ -314,9 +293,7 @@ outer this
 package local
 parallele ausfuehrung
 parametrische polymorphismus
-parametrische polymorphismus
 parametrische typ
-parametrische typdefinition
 parametrische typdefinition
 parametrisierte subtyp
 parent class
@@ -340,8 +317,7 @@ protokoll
 protokollbeschreibung
 prototyp
 prototypenbasiert
-pseudo typvariable self
-pseudo-typvariable self
+[pseudo typvariable, pseudo-typvariable]
 pseudovariable
 qualifizierter export
 raw type
@@ -359,12 +335,9 @@ rekursive typ
 relationale datenmodell
 repraesentationsobjekt
 repraesentationsunabhaengigkeit
-return
-return anweisung
-return-anweisung
+[return, return-anweisung]
 rolle
 rollenwechsel
-rollenwechsel eines objekts
 routine
 runtime type information
 schluessel
@@ -390,8 +363,7 @@ statisch binden
 statisch typpruefung
 stream
 string
-string konkatenation
-string-konkatenation
+[string konkatenation, string-konkatenation]
 strongtalk
 struktur
 struktur von objekten
@@ -416,8 +388,7 @@ symbol
 tagging interface
 tatsaechlicher parameter
 tatsaechlicher typparameter
-teil ganzes beziehung
-teil-ganzes-beziehung
+[teil ganzes beziehung, teil-ganzes-beziehung]
 template
 temporaere variable
 test
@@ -459,8 +430,7 @@ unsicher
 unveraenderliche objekt
 unzulaessige zuweisung
 up cast
-use site variance
-use-site variance
+[use site variance, use-site variance]
 variable
 variablendeklaration
 veraenderliches objekt
@@ -470,7 +440,7 @@ vererbungsabhaengigkeit
 vererbungsinterface
 vererbungsschnittstelle
 verhalten
-verhaltensbasierte subtyping
+[verhaltensbasierte subtyping, behavioural subtyping]
 verhaltensbezogene subtyping
 versteckte fallunterscheidung
 verweis
@@ -482,27 +452,19 @@ wertsemantik
 wertzuweisung
 wiederverwendung
 wildcard
-wildcard typ
-wildcard-typ
-wrapper typ
-wrapper-typ
+[wildcard typ, wildcard-typ]
+[wrapper typ, wrapper-typ]
 zeichenkette
-zu 1 beziehung
-zu eins beziehung
-zu n beziehung
-zu-1-beziehung
-zu-eins-beziehung
-zu-n-beziehung
-zugreifbarkeitsregel
-zugriffsmethode
+[zu 1 beziehung, zu eins beziehung, zu-1-beziehung, zu-eins-beziehung]
+[zu n beziehung, zu-n-beziehung]
+[zugriffsmethode, accessor]
 zugriffsmodifikator
-zugriffsregeln
+[zugriffsregel, zugreifbarkeitsregel]
 zulaessigkeit
 zusammengesetzte objekt
 zustand
 zustandswechsel
-zustandswechsel invariante
-zustandswechsel-invariante
+[zustandswechsel invariante, zustandswechsel-invariante]
 zuweisung
 zuweisungsausdruck
 zuweisungskompatibilitaet
