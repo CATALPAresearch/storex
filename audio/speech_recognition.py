@@ -4,12 +4,10 @@ Class to transcribe audio recorded from a microphone.
 Speech is recorded from the microphone until disrupted by KeyboardInterrupt or long period of silence.
 The audio is then transcribed into predicted text and returned.
 """
+import audioop
 import pyaudio
-import threading
 import wave
 
-from array import array
-from queue import Queue, Full
 from transformers import WhisperProcessor, WhisperTokenizer, pipeline
 from utils import colours
 
@@ -32,78 +30,18 @@ CHUNK_SIZE = 1024  # Number of frames that signals are split into
 FORMAT = pyaudio.paInt16  # Sound is stored in a signed 16-bit binary string
 CHANNELS = 1  # Samples per frame
 RATE = 16000  # Or: 44100? Sampling rate (frames per second)
-MIN_VOLUME = 500  # Threshold intensity that defines silence and noise signal
-SILENCE_LIMIT = 2  # Max amount of seconds where only silence is recorded
+MIN_VOLUME = 100  # Threshold intensity that defines silence and noise signal
+SILENCE_LIMIT = 3  # Max amount of seconds, where only silence is recorded
 BUF_MAX_SIZE = CHUNK_SIZE * 10  # If the recording thread can't consume fast enough, the listener will start discarding
-
-
-def speech_check():
-    """
-    Checks for speech. TODO: WIP
-    """
-    stopped = threading.Event()
-    q = Queue(maxsize=int(round(BUF_MAX_SIZE / CHUNK_SIZE)))
-
-    listen_t = threading.Thread(target=listen, args=(stopped, q))
-    listen_t.start()
-    record_t = threading.Thread(target=record, args=(stopped, q))
-    record_t.start()
-
-    try:
-        while True:
-            listen_t.join(0.1)
-            record_t.join(0.1)
-    except KeyboardInterrupt:
-        stopped.set()
-
-    listen_t.join()
-    record_t.join()
-
-
-def record(stopped, q):
-    """
-    Prints 'O' while speaking and '-' while silence. TODO: WIP
-    """
-    while True:
-        if stopped.wait(timeout=0):
-            break
-        chunk = q.get()
-        vol = max(chunk)
-        if vol >= MIN_VOLUME:
-            # TODO: write to file
-            print("O")
-        else:
-            print("-")
-
-
-def listen(stopped, q):
-    """
-    Listens to microphone input. TODO: WIP
-    """
-    stream = pyaudio.PyAudio().open(
-        format=FORMAT,
-        channels=CHANNELS,
-        rate=RATE,
-        input=True,
-        frames_per_buffer=CHUNK_SIZE,
-    )
-
-    while True:
-        if stopped.wait(timeout=0):
-            break
-        try:
-            q.put(array('h', stream.read(CHUNK_SIZE)))
-        except Full:
-            pass  # discard
 
 
 def record_speech():
     """
-    Records audio from microphone input.
-    Returns the audio frames and used sampling size.
+    Records audio from microphone input until the set silence limit is reached.
+    Returns the audio frames and used sampling size as well as information if only silence was detected.
     """
+    # Set the microphone stream
     p = pyaudio.PyAudio()
-
     stream = p.open(format=FORMAT,
                     channels=CHANNELS,
                     rate=RATE,
@@ -113,22 +51,40 @@ def record_speech():
     colours.print_red("*** Recording started ***")
 
     frames = []
+    silence_counter = 0
+    silence = True
 
     try:
+        # Record the microphone input from stream
         while True:
             data = stream.read(CHUNK_SIZE)
             frames.append(data)
+
+            # Check for silence via root-mean-square
+            rms = audioop.rms(data, 2)
+            if rms < MIN_VOLUME:
+                silence_counter += CHUNK_SIZE / RATE
+                logger.debug(silence_counter)
+            # Reset the silence counter and mark the recording as not solely containing silence
+            else:
+                silence_counter = 0
+                silence = False
+            # Stop recording, when silence limit is reached
+            if silence_counter >= SILENCE_LIMIT:
+                break
+    # Stop recording when pressing of Ctr+C is detected
     except KeyboardInterrupt:
         pass
 
     colours.print_red("*** Recording ended ***")
 
+    # Close the microphone stream
     stream.stop_stream()
     stream.close()
     p.terminate()
 
     sample_size = p.get_sample_size(FORMAT)
-    return frames, sample_size
+    return frames, sample_size, silence
 
 
 def save_recording(frames, sampling_width, output_file):
@@ -170,15 +126,17 @@ class SpeechRecognition:
         Returns the transcribed recording.
         """
         # Record the microphone input
-        audio_frames, sample_size = record_speech()
+        audio_frames, sample_size, silence = record_speech()
+        transcription = None
 
-        # Save the recording to a temporary directory
-        output_file = "/tmp/output.wav"
-        save_recording(audio_frames, sample_size, output_file)
+        if not silence:
+            # Save the recording to a temporary directory
+            output_file = "/tmp/output.wav"
+            save_recording(audio_frames, sample_size, output_file)
 
-        # Transcribe the recording
-        transcription = self.pipeline(output_file,
-                                      batch_size=8,
-                                      generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids})["text"]
+            # Transcribe the recording
+            transcription = self.pipeline(output_file,
+                                          batch_size=8,
+                                          generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids})["text"]
 
         return transcription

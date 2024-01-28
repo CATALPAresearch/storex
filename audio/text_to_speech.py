@@ -46,7 +46,7 @@ class TextToSpeech:
         inputs = self.processor(input_text, voice_preset=self.voice_preset).to(self.device)  # , return_tensors="pt")
 
         # TODO: Voice sometimes continues after sentence with some weird sounds
-        audio_array = self.model.generate(**inputs)  # , do_sample=True)
+        audio_array = self.model.generate(**inputs, pad_token_id=10000)  # TODO: Remove hardcoded pad_id_token. do_sample=True?
         audio_array = audio_array.cpu().numpy().squeeze()
         sampling_rate = self.model.generation_config.sample_rate
 
