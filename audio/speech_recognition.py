@@ -13,10 +13,6 @@ from utils import colours
 
 import logging
 logger = logging.getLogger()
-# TODO: Check for silence and stopp the recording.
-# TODO: If only silence, stop after a few seconds and return a message.
-# TODO: Training with specific materials?
-# TODO: Remove 'ehm', 'öhm', 'bla'
 
 # TODO Remove:
 #  ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
