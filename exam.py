@@ -58,7 +58,7 @@ class ExamManager:
         self.manager = QuestionManager(topic_manager)
         self.last_question = None
         self.next_question = None
-        self.prepend_question = ''
+        self.prepend_question = "Dann lassen Sie uns beginnen."
         self.paraphraser = QuestionParaphraser()
         self.question_generator = QuestionGenerator()
 
@@ -91,18 +91,24 @@ class ExamManager:
             self.audio.get_audio(text)
         print_thread.join()
 
-    def ask_question(self, question):
-        """Outputs the given question and gets the students answer."""
-        if self.prepend_question:
-            question = f"{self.prepend_question} {question}"
-            self.prepend_question = ""
-        self.speak(question)
-
-        with self.time_manager:
-            answer = self.transcription.get_audio_to_text()
+    def get_answer(self):
+        """Gets the students answer."""
+        answer = self.transcription.get_audio_to_text()
+        if answer is not None:
             print("Ihre Antwort lautet (in etwa):")
             colours.print_yellow(answer)
         return answer
+
+    def ask_question(self, question):
+        """Outputs the given question, gets the students answer and evaluates the answer."""
+        if self.prepend_question:
+            question['question'] = f"{self.prepend_question} {question['question']}"
+            self.prepend_question = ""
+        self.speak(question['question'])
+
+        with self.time_manager:
+            answer = self.get_answer()
+        self.get_feedback(question, answer)
 
     def get_feedback(self, question, student_answer):
         """
@@ -110,8 +116,10 @@ class ExamManager:
         Checks the mentioning of keywords.
         Sets the type for the next question.
         """
+        if student_answer is None:
+            result = FeedbackType.SILENCE
         # Get feedback by comparing the students answer to the correct answer.
-        if 'answer' in question:
+        elif 'answer' in question:
             result = self.evaluation.evaluate_answer(question['answer'], student_answer)
             logger.info(f"Result: {result.name}")
         # Only check keywords for topic questions
@@ -127,7 +135,8 @@ class ExamManager:
                 self.next_question = QuestionType.PREDEFINE
                 self.time_manager.increase_correct_answers()
 
-            case 1:  # No answer or really short answer  TODO: Move this case to ASR
+            case 1:  # No answer given
+                self.prepend_question = "Ich habe leider keine Antwort gehört."
                 self.next_question = QuestionType.REPEAT
 
             case 2 | 3:  # Off-topic or contradicting answer
@@ -159,8 +168,7 @@ class ExamManager:
         logger.info(f"Predefined question: {predefined_question}")
 
         # Get the students answer to the question and get feedback on the answer
-        answer = self.ask_question(predefined_question['question'])
-        self.get_feedback(predefined_question, answer)
+        self.ask_question(predefined_question)
 
         return predefined_question
 
@@ -180,8 +188,7 @@ class ExamManager:
         logger.info(f"Generated question: {generated_question}")
 
         # Get the students answer to the question and get feedback on the answer
-        answer = self.ask_question(generated_question['question'])
-        self.get_feedback(generated_question, answer)
+        self.ask_question(generated_question)
 
         return generated_question
 
@@ -195,21 +202,35 @@ class ExamManager:
         logger.info(f"Generated reiteration: {repeating_question}")
 
         # Get the students answer to the question and get feedback on the answer
-        answer = self.ask_question(repeating_question['question'])
-        self.get_feedback(repeating_question, answer)
+        self.ask_question(repeating_question)
 
         return repeating_question
+
+    def mic_test(self):
+        """Checks the microphone and greets the students."""
+        # Greet the student and check the microphone
+        mic_query = (
+            f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
+            Begrüße {self.student} namens {self.student_name} in 2 Sätzen zu einer mündlichen Prüfung.
+            Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {self.student_name} dafür gleich hineinsprechen soll.
+            Gib nur die Begrüßung zurück:[/INST]""")
+        logger.info(mic_query)
+        greeting = self.text_generator.get_text(mic_query)
+        self.speak(greeting)
+        mic_check = self.get_answer()
+
+        # Exit the exam if no sound was detected
+        if mic_check is None:
+            colours.print_red("Leider ist kein Audio über Ihr Mikrofon zu vernehmen. Bitte überprüfen Sie Ihr "
+                              "Mikrophon und starten die Trainingsprüfung dann erneut.")
+            exit(1)
 
     def start_exam(self):
         """
         Starts the exam and loops through questions while the time is not up.
         """
-        # Greet the student
-        greeting_query = (f"Begrüße {self.student} namens {self.student_name} kurz zu einer mündlichen Prüfung. "
-                          f"Gib nur die Begrüßung zurück:")
-        logger.info(greeting_query)
-        greeting = self.text_generator.get_text(greeting_query)
-        self.speak(greeting)
+        # Test the microphone and greet the students
+        self.mic_test()
 
         current_question = ''
         repeated = False
@@ -250,8 +271,11 @@ class ExamManager:
         # TODO: Give Feedback
 
         # See the student off
-        goodbye_query = (f"Verabschiede {self.student} namens {self.student_name} kurz nach einer mündlichen Prüfung. "
-                         f"Gib nur die Verabschiedung zurück:")
+        goodbye_query = (
+            f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
+            Verabschiede {self.student} namens {self.student_name} in 1 Satz nach einer mündlichen Prüfung.
+            Gib nur die Verabschiedung zurück:[/INST]"""
+        )
         logger.info(goodbye_query)
         goodbye = self.text_generator.get_text(goodbye_query)
         self.speak(goodbye)
