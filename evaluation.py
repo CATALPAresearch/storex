@@ -7,7 +7,7 @@ import re
 from sentence_transformers import SentenceTransformer, util
 from transformers import pipeline
 from utils import preprocessing
-from utils.helpers import FeedbackType
+from utils.helpers import EvaluationType
 
 logger = logging.getLogger()
 
@@ -75,7 +75,7 @@ class Evaluator:
         feedback = None
         # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
         if len(student_answer) < 20:  # TODO: Understand sentences like "Ich weiß es nicht." oder "Sinnfreie Frage."
-            feedback = FeedbackType.SILENCE
+            feedback = EvaluationType.SILENCE
             return feedback
 
         # Check the congruity of the answer via text classification (MNLI)
@@ -83,18 +83,18 @@ class Evaluator:
         if congruity[0]['label'] != 'ENTAILMENT':
             # Set OFF_TOPIC for neutral entailment
             if congruity[0]['label'] == 'NEUTRAL':
-                feedback = FeedbackType.OFF_TOPIC
+                feedback = EvaluationType.OFF_TOPIC
             # Set CONTRADICTS for contradicting entailment
             if congruity[0]['label'] == 'CONTRADICTION':
-                feedback = FeedbackType.CONTRADICTS
+                feedback = EvaluationType.CONTRADICTS
             return feedback
 
         # Check the similarity with similarity search LLM
         similarity = self.check_similarity(correct_answer, student_answer)
         if similarity > 0.75:  # TODO: What similarity is similar??
-            feedback = FeedbackType.CORRECT
+            feedback = EvaluationType.CORRECT
         else:
-            feedback = FeedbackType.MISSING_TOPIC
+            feedback = EvaluationType.MISSING_TOPIC
         return feedback
 
         # TODO: Identify concrete mistakes (factual inaccuracy, missing information, structural issues)
