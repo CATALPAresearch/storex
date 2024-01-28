@@ -16,7 +16,7 @@ from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager, TopicManager
 from text_generation import TextGenerator
 from utils import colours, preprocessing
-from utils.helpers import FeedbackType, KE, Level, QuestionType
+from utils.helpers import EvaluationType, KE, Level, QuestionType
 
 # TODO: Remove once langchain updated to InferenceClient
 import warnings
@@ -108,23 +108,23 @@ class ExamManager:
 
         with self.time_manager:
             answer = self.get_answer()
-        self.get_feedback(question, answer)
+        self.get_evaluation(question, answer)
 
-    def get_feedback(self, question, student_answer):
+    def get_evaluation(self, question, student_answer):
         """
         Gets feedback by comparing the given students answer to the given correct answer.
         Checks the mentioning of keywords.
         Sets the type for the next question.
         """
         if student_answer is None:
-            result = FeedbackType.SILENCE
-        # Get feedback by comparing the students answer to the correct answer.
+            result = EvaluationType.SILENCE
+        # Get evaluation by comparing the students answer to the correct answer.
         elif 'answer' in question:
             result = self.evaluation.evaluate_answer(question['answer'], student_answer)
             logger.info(f"Result: {result.name}")
         # Only check keywords for topic questions
         else:
-            result = FeedbackType.MISSING_TOPIC
+            result = EvaluationType.MISSING_TOPIC
 
         questioning_sounds = ["Ah?", "Achso?", "Hmm.", "Hm?", '']
 
@@ -145,7 +145,7 @@ class ExamManager:
                 self.feedback.add_no_entailment()
 
             case 4:  # Check the answer for missing topics
-                # Get missed topics and add them as targets and their amount for feedback
+                # Get missed topics and add them as targets and save the data for feedback
                 missed_topics = self.evaluation.evaluate_keywords(question, student_answer)
                 self.targets.extend(missed_topics)
                 self.feedback.add_missed(len(missed_topics))

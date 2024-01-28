@@ -26,7 +26,7 @@ class QuestionType(IntEnum):
     REPEAT = 2
 
 
-class FeedbackType(IntEnum):
+class EvaluationType(IntEnum):
     CORRECT = 0
     SILENCE = 1
     OFF_TOPIC = 2
