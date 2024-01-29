@@ -14,9 +14,6 @@ PDF_PATH = os.path.join(directory, 'data/pdf')
 TXT_PATH = os.path.join(directory, 'data/chapters_processed')
 DB_FAISS_PATH = os.path.join(directory, 'data/vectorStore')
 
-# PDF_DB_FAISS_PATH = os.path.join(DB_FAISS_PATH, 'from_pdf')
-# TXT_DB_FAISS_PATH = os.path.join(DB_FAISS_PATH, 'from_txt')
-
 
 def get_doc_from_pdf():
     """
@@ -55,9 +52,9 @@ def create_vector_db(documents):
     """
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150,
+                                                   separators=['\n\n', '\n', '.', ',', ' ', ''])
     split_text = text_splitter.split_documents(documents)
-    # docs = [langchain.docstore.document.Document(page_content=t) for t in split_text[:len(split_text)]]
 
     embeddings = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
                                        model_kwargs={'device': device})
@@ -67,15 +64,7 @@ def create_vector_db(documents):
     print(f"Database saved to {DB_FAISS_PATH}")
 
 
-def process_vectorstore():
-    """
-    Creates a FAISS vector database from processed text documents.
-    """
-    # texts = get_doc_from_pdf()
-    texts = get_doc_from_txt()
-    process_doc(texts)
-    create_vector_db(texts)
-
-
-if '__name__' == '__main__':
-    process_vectorstore()
+# Create a FAISS vector database from processed text documents.
+texts = get_doc_from_txt()  # To load directly from a pdf, call 'get_doc_from_pdf()' instead
+process_doc(texts)
+create_vector_db(texts)
