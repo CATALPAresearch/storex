@@ -65,7 +65,7 @@ class Evaluator:
         #             missing_topics.append(topic[0])
 
         logger.info(f"Missing terms: {missing_words}")
-        return missing_words
+        return missing_words, len(keywords)
 
     def evaluate_answer(self, correct_answer, student_answer):
         """
@@ -73,10 +73,7 @@ class Evaluator:
         Returns feedback.
         """
         feedback = None
-        # Check for silence, which is turned into a short sentence by speech recognition LLMs (TODO: Move to ASR)
-        if len(student_answer) < 20:  # TODO: Understand sentences like "Ich weiß es nicht." oder "Sinnfreie Frage."
-            feedback = EvaluationType.SILENCE
-            return feedback
+        # TODO: Understand sentences like "Ich weiß es nicht." oder "Sinnfreie Frage."
 
         # Check the congruity of the answer via text classification (MNLI)
         congruity = self.check_congruity(correct_answer, student_answer)

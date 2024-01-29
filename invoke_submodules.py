@@ -1,6 +1,8 @@
 """
 Script for invoking the submodules as standalone functionalities for development and testing purposes.
 """
+import random
+
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 import logging
@@ -21,7 +23,7 @@ if not args["module"]:
 match args["module"]:
     case "manager":
         from questions.question_managing import QuestionManager
-        qm = QuestionManager()
+        qm = QuestionManager()  # TODO: Topic manager parameter
         print(qm.get_question())
 
     case "speech_recognition":
@@ -60,6 +62,39 @@ match args["module"]:
         generator = QuestionGenerator()
         # generator.generate_question(test_keyword)
         generator.generate_question_answer(test_keyword)
+
+    case "feedback":
+        from feedback_managing import FeedbackManager
+        from utils.helpers import KE, Level
+
+        feedback = FeedbackManager()
+
+        question_no = 25
+        possible_value = []
+        for i in range(question_no):
+            possible_value.append(i)
+            feedback.add_question()
+
+        for _ in range(random.choice(possible_value)):
+            feedback.add_reiteration()
+        for _ in range(random.choice(possible_value)):
+            feedback.add_contradiction()
+            possible_value.pop()
+        for _ in range(random.choice(possible_value)):
+            feedback.add_irrelevant()
+            possible_value.pop()
+        for i in range(random.choice(possible_value)):
+            feedback.add_missed(random.choice([0, 1, 2, 3, 4, 5]), 5)
+            possible_value.pop()
+
+        ke_questions = []
+        for i in range(int(question_no / len(KE))):
+            ke_questions.append(i)
+
+        for i in KE:
+            feedback.add_feedback(random.choice(ke_questions), i, random.choice(list(Level)))
+
+        print(feedback.construct_feedback("Die Studentin"))
 
     case _:
         raise ValueError("Given module does not exist.")

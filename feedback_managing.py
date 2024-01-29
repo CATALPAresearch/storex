@@ -1,33 +1,113 @@
-from langchain.chains import LLMChain
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import PromptTemplate
+"""
+Class for feedback managing.
+"""
+from utils.helpers import FeedbackLevel, FeedbackType, KE, Level, topic_from_ke
 
-from utils.helpers import KE, Level
+
+def get_grade(percentage):
+    if percentage > 0.85:
+        return FeedbackType(0).name
+    elif percentage > 0.70:
+        return FeedbackType(1).name
+    elif percentage > 0.60:
+        return FeedbackType(2).name
+    elif percentage > 0.50:
+        return FeedbackType(3).name
+    elif percentage > 0.30:
+        return FeedbackType(4).name
+    else:
+        return FeedbackType(5).name
 
 
 class FeedbackManager:
     def __init__(self):
-        self.missed_term_counter = 0
-        self.reiterated_counter = 0
-        self.no_entailment_counter = 0
-        self.correct_answers = []
-        self.completed_level = []
-        for unit in KE:
+        self.all_questions = 0  # Counter for the amount of questions that were asked
+        self.contradiction_counter = 0  # Counter for contradicting, wrong answer
+        self.irrelevant_counter = 0  # Counter for off-topic, irrelevant answers
+        self.missed_term_counter = [0, 0]  # Counter for incomplete answers and amount of all keywords
+        self.reiteration_counter = 0  # Counter for the amount of help that was given in form of reiteration
+        self.non_concise_counter = 0  # Counter for non-concise answers
+
+        self.correct_answers = []  # Counter for correctly answered questions per KE
+        self.completed_level = []  # Level reached per KE
+        for _ in KE:
             self.correct_answers.append(0)
             self.completed_level.append(None)
 
-    def add_missed(self, count):
-        self.missed_term_counter += count
+    def add_question(self):
+        self.all_questions += 1
 
-    def add_reiterated(self):
-        self.reiterated_counter += 1
+    def add_contradiction(self):
+        self.contradiction_counter += 1
 
-    def add_no_entailment(self):
-        self.no_entailment_counter += 1
+    def add_irrelevant(self):
+        self.irrelevant_counter += 1
+
+    def add_missed(self, missed_count, all_count):
+        if missed_count:
+            self.missed_term_counter[0] += missed_count
+            self.missed_term_counter[1] += all_count
+        else:
+            self.non_concise_counter += 1
+
+    def add_reiteration(self):
+        self.reiteration_counter += 1
 
     def add_feedback(self, correct, ke, level):
         self.correct_answers[ke] += correct
-        self.completed_level[ke] = level
+        self.completed_level[ke] = level.value
+
+    def construct_feedback(self, student):
+        feedback_string = ""
+        questions = self.all_questions - self.reiteration_counter
+
+        # Construct strings for feedback from counters
+        contradiction_value = 1 if questions == 0 else 1 - (self.contradiction_counter / questions)
+        contradiction_grade = get_grade(contradiction_value)
+        feedback_string += f"{student} hat {contradiction_grade} inhaltliche Fehler gemacht.\n"
+
+        relevancy_value = 1 if questions == 0 else 1 - (self.irrelevant_counter / questions)
+        relevancy_grade = get_grade(relevancy_value)
+        feedback_string += f"{student} hat {relevancy_grade} irrelevante Antworten gegeben.\n"
+
+        completion_value = 1 if self.missed_term_counter[1] == 0 else (
+                1 - (self.missed_term_counter[0] / self.missed_term_counter[1]))
+        completion_grade = get_grade(completion_value)
+        feedback_string += f"{student} hat {completion_grade} unvollständige oder oberflächliche Antworten gegeben.\n"
+
+        reiteration_value = 1 if questions == 0 else 1 - (self.reiteration_counter / questions)
+        reiteration_grade = get_grade(reiteration_value)
+        feedback_string += f"{student} benötigt {reiteration_grade} Hilfestellungen.\n"
+
+        concise_value = 1 if (questions - (self.irrelevant_counter + self.contradiction_counter)) == 0 else (
+                1 - (self.non_concise_counter / (questions - (self.irrelevant_counter + self.contradiction_counter))))
+        concise_grade = get_grade(concise_value)
+        feedback_string += f"{student} hat {concise_grade} unpräzise Antworten gegeben.\n"
+
+        # Construct feedback strings from information per KE
+        max_level = max(self.completed_level)
+        level = FeedbackLevel(max_level).name
+        feedback_string += f"{student} hat ein {level} Leistungslevel erreicht.\n"
+
+        highest_level = [i for i, j in enumerate(self.completed_level) if j == max_level]
+        if len(highest_level) > 1:
+            answers = [self.correct_answers[i] for i in highest_level]
+            best_level = highest_level[answers.index(max(answers))]
+        else:
+            best_level = highest_level[0]
+        topic = topic_from_ke(best_level)
+        feedback_string += f"{student} war am besten bei dem Thema '{topic}'.\n"
+
+        lowest_level = [i for i, j in enumerate(self.completed_level) if j == min(self.completed_level)]
+        if len(lowest_level) > 1:
+            answers = [self.correct_answers[i] for i in lowest_level]
+            worst_level = lowest_level[answers.index(max(answers))]
+        else:
+            worst_level = lowest_level[0]
+        topic = topic_from_ke(worst_level)
+        feedback_string += f"{student} war am schlechtesten bei dem Thema '{topic}'."
+
+        return feedback_string
 
 
 # Load a text-generation model on the hub

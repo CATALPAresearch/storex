@@ -36,12 +36,22 @@ class ExamManager:
         """
         # Set student parameters like name and gender
         logger.info(f"Setting parameters: {exam_parameters}")
-        self.student_name = exam_parameters['name']
-        self.student = 'eine*n Studentin*en'
+        self.student = {
+            'name': exam_parameters['name'],
+            'nominative': "der*die Student*in",
+            'accusative': "eine*n Studentin*en",
+            'dative': "einem*r Studenten*in",
+            'possessive': "seine*ihre"}
         if exam_parameters['female']:
-            self.student = "eine Studentin"
+            self.student['nominative'] = "die Studentin"
+            self.student['accusative'] = "eine Studentin"
+            self.student['dative'] = "einer Studentin"
+            self.student['possessive'] = "ihre"
         elif exam_parameters['male']:
-            self.student = "einen Studenten"
+            self.student['nominative'] = "der Student"
+            self.student['accusative'] = "einen Studenten"
+            self.student['dative'] = "einen Studenten"
+            self.student['possessive'] = "seine"
 
         # Setup stopwords for preprocessing
         preprocessing.setup_word_lists()
@@ -135,20 +145,25 @@ class ExamManager:
                 self.next_question = QuestionType.PREDEFINE
                 self.time_manager.increase_correct_answers()
 
-            case 1:  # No answer given
+            case 1:  # No answer given TODO: Feedback?
                 self.prepend_question = "Ich habe leider keine Antwort gehört."
                 self.next_question = QuestionType.REPEAT
 
-            case 2 | 3:  # Off-topic or contradicting answer
+            case 2:  # Off-topic answer
                 self.prepend_question = random.choice(questioning_sounds)
                 self.next_question = QuestionType.REPEAT
-                self.feedback.add_no_entailment()
+                self.feedback.add_irrelevant()  # TODO: Don't count if question is repeated
+
+            case 3:  # Contradicting answer
+                self.prepend_question = random.choice(questioning_sounds)
+                self.next_question = QuestionType.REPEAT
+                self.feedback.add_contradiction()  # TODO: Don't count if question is repeated
 
             case 4:  # Check the answer for missing topics
                 # Get missed topics and add them as targets and save the data for feedback
-                missed_topics = self.evaluation.evaluate_keywords(question, student_answer)
+                missed_topics, max_topics = self.evaluation.evaluate_keywords(question, student_answer)
                 self.targets.extend(missed_topics)
-                self.feedback.add_missed(len(missed_topics))
+                self.feedback.add_missed(len(missed_topics), max_topics)
                 if self.targets:
                     self.next_question = QuestionType.GENERATE
                 else:
@@ -211,8 +226,8 @@ class ExamManager:
         # Greet the student and check the microphone
         mic_query = (
             f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
-            Begrüße {self.student} namens {self.student_name} in 2 Sätzen zu einer mündlichen Prüfung.
-            Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {self.student_name} dafür gleich hineinsprechen soll.
+            Begrüße {self.student['accusative']} namens {self.student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+            Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {self.student['name']} dafür gleich hineinsprechen soll.
             Gib nur die Begrüßung zurück:[/INST]""")
         logger.info(mic_query)
         greeting = self.text_generator.get_text(mic_query)
@@ -239,6 +254,7 @@ class ExamManager:
         # Check if the exam time is not up
         while self.time_manager.get_remaining_time() > 0:
             self.last_question = current_question
+            self.feedback.add_question()
 
             # Set the question type to predefined if a new topic started or if there should be no generated questions
             # at the current level
@@ -260,7 +276,7 @@ class ExamManager:
                 case 2:  # Generate a reiteration of the question (once per question)
                     if repeated is False:
                         current_question = self.ask_repeating_question()
-                        self.feedback.add_reiterated()
+                        self.feedback.add_reiteration()
                         repeated = True
                     else:
                         self.next_question = QuestionType.PREDEFINE  # TODO: Generate or Predefine question?
@@ -268,12 +284,23 @@ class ExamManager:
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
 
-        # TODO: Give Feedback
+        # Give a feedback to the students
+        feedback_rules = self.feedback.construct_feedback(self.student['nominative'])
+        feedback_query = (
+            f"""[INST] Du bist ein Professor an einer deutschen Universität.
+            Gib {self.student['dative']} ein konstruktives Feedback für {self.student['possessive']} Leistungen in einer mündlichen Prüfung.
+            Nutze folgende Informationen zu {self.student['possessive']}n Leistungen:
+            {feedback_rules}
+            Gib nur das Feedback zurück:[/INST]"""
+        )
+        logger.info(feedback_query)
+        goodbye = self.text_generator.get_text(feedback_query)
+        self.speak(goodbye)
 
         # See the student off
         goodbye_query = (
             f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
-            Verabschiede {self.student} namens {self.student_name} in 1 Satz nach einer mündlichen Prüfung.
+            Verabschiede {self.student['accusative']} namens {self.student['name']} in 1 Satz nach einer mündlichen Prüfung.
             Gib nur die Verabschiedung zurück:[/INST]"""
         )
         logger.info(goodbye_query)
