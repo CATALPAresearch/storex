@@ -28,17 +28,22 @@ args = vars(parser.parse_args())
 
 # Check if a name was given
 if not args["name"]:
-    print("No name is given. Please provide your name after -n.", file=sys.stderr)
+    print("No name is given. Please provide your name after -n.\n"
+          "Type -h to see the help text.", file=sys.stderr)
     exit(1)
 
 # Check if a maximum of one form of address was give
 if args["female"] and args["male"]:
-    print("Two forms of address were given.", file=sys.stderr)
+    print("Two forms of address were given.\n"
+          "Type -h to see the help text.", file=sys.stderr)
     exit(1)
 
-# Check and exit if number of players is not between 2 and 5 and therefore not legal
-if int(args["time"]) > 60 or int(args["time"]) < 5:
-    raise ValueError("The training exam can last between 10 to 60 minutes. Please choose a duration in that time frame.")
+# Check and exit if time is not between 10 and 60 minutes
+if int(args["time"]) > 60 or int(args["time"]) < 10:
+    print("The training exam can last between 10 to 60 minutes. Please choose a duration in that time frame.\n"
+          "Type -h to see the help text.",
+          file=sys.stderr)
+    exit(1)
 
 if args["log"]:
     logging.basicConfig(level=logging.INFO)
@@ -47,7 +52,7 @@ if args["log"]:
 
 logging.info("Starting...")
 
-# Run game with set arguments
+# Run exam with set arguments
 exam = ExamManager(args)
 exam.start_exam()
 
