@@ -147,7 +147,10 @@ class ExamManager:
 
             case 1:  # No answer given TODO: Feedback?
                 self.prepend_question = "Ich habe leider keine Antwort gehört."
-                self.next_question = QuestionType.REPEAT
+                if 'answer' in question:
+                    self.next_question = QuestionType.REPEAT
+                else:
+                    self.next_question = QuestionType.PREDEFINE
 
             case 2:  # Off-topic answer
                 self.prepend_question = random.choice(questioning_sounds)
@@ -285,6 +288,7 @@ class ExamManager:
                     raise ValueError(f"Cannot assign {self.next_question}.")
 
         # Give a feedback to the students
+        self.time_manager.append_feedback()
         feedback_rules = self.feedback.construct_feedback(self.student['nominative'])
         feedback_query = (
             f"""[INST] Du bist ein Professor an einer deutschen Universität.
@@ -339,6 +343,9 @@ class TimeManager:
     def increase_correct_answers(self):
         self.correct_answers += 1
 
+    def append_feedback(self):
+        self.feedback.add_feedback(self.correct_answers, self.last_known_topic, self.topic_manager.get_level())
+
     def check_topic(self):
         """
         Checks if the topic got increased by the QuestionManager and calculates the new time per topic.
@@ -347,7 +354,7 @@ class TimeManager:
         # Check if topic got increased or time for topic ran out
         topic = self.topic_manager.get_topic()
         if topic != self.last_known_topic or (self.topic_time <= 0 and self.last_known_topic.value < len(KE)):
-            self.feedback.add_feedback(self.correct_answers, self.last_known_topic, self.topic_manager.get_level())
+            self.append_feedback()
 
             # Set new topic if time for topic ran out
             if self.topic_time <= 0 and self.last_known_topic.value < len(KE):
@@ -379,6 +386,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 10, "female": False, "male": False, "mute": True}
+    dev_parameters = {"name": "Luna", "time": 2, "female": False, "male": False, "mute": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()
