@@ -3,7 +3,7 @@ Einsendeaufgaben
 Frage: Warum sind identische Objekte immer gleich, gleiche Objekte aber nicht identisch?
 Antwort: Objekte sind Stellen im Speicher, an denen die Daten, die ein Objekt ausmachen, hinterlegt sind. Die Identität eines Objekts ist mit der Speicherstelle gleichzusetzen. Das erklärt auf technische Weise, warum identische Objekte immer gleich, gleiche Objekte aber nicht identisch sind und warum die Veränderung (der Eigenschaften) eines Objekts seine Identität nicht berührt.
 
-Frage: Welchen Sinn hat es, den Programmierenden zu erlauben für jede Variable getrennt festzulegen, ob sie Wert- oder Verweissemantik haben soll? 
+Frage: Welchen Sinn hat es, den Programmierenden zu erlauben für jede Variable getrennt festzulegen, ob sie Wert- oder Verweissemantik haben soll?
 Antwort: Unter Wertsemantik können, solange jedes Objekt seine eigene Identität hat, zwei Variablen niemals dasselbe Objekt bezeichnen. Dies wird für die objektorientierte Programmierung eher als Nachteil angesehen. Manche Programmiersprachen erlauben der Programmiererin, für jede Variable getrennt festzulegen, ob sie Wert- oder Verweissemantik haben soll. Auf diesem Weg kann man Aliase vermeiden. Dies sollte man dann tun, wenn man verhindern möchte, dass die Veränderung des durch eine Variable bezeichneten Objekts zugleich die Veränderung der durch all seine Aliase bezeichneten Objekte (die ja alle dieselben sind) bewirkt. Bei einer Zuweisung unter Wertsemantik muss, da die Variable das Objekt zum Inhalt hat (also in der Variable gespeichert ist) und ein Objekt nicht in zwei Variablen gespeichert sein kann, eine Kopie angefertigt werden.
 
 Frage: Was sind Instanzvariablen?

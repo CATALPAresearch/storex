@@ -11,6 +11,7 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 directory = os.path.dirname(os.path.dirname(__file__))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
 OUTPUT_PATH = INPUT_PATH
+EXCLUDED_FILES = ["Einsendeaufgaben", "Weitere_Fragen"]
 
 
 def read_txt(chapter_file):
@@ -293,7 +294,7 @@ qa_generator = QuestionAnswerGenerator()
 files = glob.glob(INPUT_PATH + '*.txt')
 for file in files:
     file_name = Path(file).stem
-    if file_name != "Einsendeaufgaben":
+    if file_name not in EXCLUDED_FILES:
         chapter, headline = read_txt(file)
         # chapter_number = headline.split(' ', 1)[0]
         chapter_with_questions = [headline]
