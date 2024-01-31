@@ -23,10 +23,10 @@ Frage: Was enthält eine C++ Klasse neben Feldern (Instanzvariablen)?
 Antwort: Eine C++ Klasse enthält neben Feldern (Instanzvariablen) auch Methoden.
 
 Frage: Wie werden Klassenfelder und -methoden in C++ deklariert?
-Antwort: Klassenfelder und -methoden werden in C++ mit dem Schlüsselwort "static" in einer Klasse eingeführt, ähnlich wie in Java.
+Antwort: Klassenfelder und -methoden werden in C++ mit dem Schlüsselwort "static" in einer Klasse eingeführt, ähnlich wie in JAVA.
 
-Frage: Wie erfolgt die Erzeugung von Objekten in C++ im Vergleich zu Java?
-Antwort: In C++ erfolgt die Erzeugung von Objekten oft ohne "new". Der benötigte Speicherplatz wird bei der Deklaration reserviert, und es entstehen Werte (Objekte) mit Wertsemantik, im Gegensatz zu Java, wo "new" verwendet wird.
+Frage: Wie erfolgt die Erzeugung von Objekten in C++ im Vergleich zu JAVA?
+Antwort: In C++ erfolgt die Erzeugung von Objekten oft ohne "new". Der benötigte Speicherplatz wird bei der Deklaration reserviert, und es entstehen Werte (Objekte) mit Wertsemantik, im Gegensatz zu JAVA, wo "new" verwendet wird.
 
 Frage: Wie erzeugt man in C++ Objekte mit Identität?
 Antwort: Um in C++ Objekte mit Identität zu erzeugen, muss man Zeigervariablen (Pointer) verwenden und eine Klasse mit dem "new"-Operator instanziieren.

@@ -14,8 +14,8 @@ Antwort: In C-Sharp kann eine Typumwandlung mithilfe von Casts durchgeführt wer
 Frage: Was passiert, wenn eine Typumwandlung in C-Sharp nicht möglich ist?
 Antwort: Wenn eine Typumwandlung in C-Sharp nicht möglich ist, weil der tatsächliche Typ des Ausdrucks a kein Subtyp von T ist oder keine entsprechende Typumwandlung definiert ist, führt dies zu einem Laufzeitfehler.
 
-Frage: Welcher Operator in C-Sharp entspricht dem instanceof-Operator in Java?
-Antwort: In C-Sharp entspricht der Operator is dem instanceof-Operator in Java. Er prüft, ob das Ergebnis der Auswertung eines Ausdrucks mit einem gegebenen Typ T zuweisungskompatibel ist.
+Frage: Welcher Operator in C-Sharp entspricht dem instanceof-Operator in JAVA?
+Antwort: In C-Sharp entspricht der Operator is dem instanceof-Operator in JAVA. Er prüft, ob das Ergebnis der Auswertung eines Ausdrucks mit einem gegebenen Typ T zuweisungskompatibel ist.
 
 Frage: Wie wird in C-Sharp sichergestellt, dass ein Cast sicher ist?
 Antwort: In C-Sharp wird ein Cast sicher gemacht, indem der is-Operator verwendet wird, um zu prüfen, ob die Zuweisung kompatibel ist. Zusätzlich kann der as-Operator verwendet werden, der bei fehlschlagender Zuweisung null zurückgibt.

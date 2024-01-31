@@ -15,11 +15,11 @@ Nun kann man sich fragen, ob nicht auch eine umgekehrte, nur schreibenden Zugrif
 Die mögliche Beschränkung von Typ-Wildcards führt zu einer (potenziell unendlichen) Menge von Typen für jeden generischen Typ. Daher stellt sich die Frage, ob diese Typen in einer bestimmten Subtyp-Beziehung zueinander stehen. Dies ist tatsächlich der Fall: Für mit "extends" nach oben beschränkte Wildcard-Typen gilt, dass sie Subtypen sind, wenn die Schranken Subtypen sind. Wenn also "Integer" ein Subtyp von "Number" ist, dann ist auch "List<? extends Integer>" ein Subtyp von "List<? extends Number>". Umgekehrt gilt für mit "super" nach unten beschränkte Typen, dass "List<? super Integer>" ein Supertyp von "List<? super Number>" ist. Man sagt auch, das Subtyping mit "extends" beschränkter Wildcard-Typen sei kovariant und das mit "super" beschränkter Wildcard-Typen kontravariant.
 Dies ermöglicht es, eine Liste von Zahlen oder eine Liste von Untertypen von "Number" zu übergeben und die Summe der Zahlen zu berechnen, unabhängig von ihrem konkreten Typ.
 
-Frage: Warum wurden Typ-Wildcards (Wildcard-Typen) in Java eingeführt?
+Frage: Warum wurden Typ-Wildcards (Wildcard-Typen) in JAVA eingeführt?
 Antwort: Typ-Wildcards wurden eingeführt, um eine flexiblere Form der Zuweisungskompatibilität für generische Typen zu ermöglichen, insbesondere bei der Verwendung von Collections mit unterschiedlichen Typparametern.
 
-Frage: Was ist das Symbol für eine Typ-Wildcard in Java?
-Antwort: Das Symbol für eine Typ-Wildcard in Java ist das Fragezeichen (?).
+Frage: Was ist das Symbol für eine Typ-Wildcard in JAVA?
+Antwort: Das Symbol für eine Typ-Wildcard in JAVA ist das Fragezeichen (?).
 
 Frage: Was bedeutet es, wenn ein Typ mit einer Typ-Wildcard (z. B. List<?>) deklariert wird?
 Antwort: Wenn ein Typ mit einer Typ-Wildcard deklariert wird, bedeutet dies, dass die Variable dieses Typs Objekte beliebigen, aber unbekannten Typparameters akzeptieren kann. Es ist eine abstrakte Deklaration.
@@ -30,11 +30,11 @@ Antwort: "extends" wird verwendet, um eine obere Schranke für Typ-Wildcards anz
 Frage: Welche Einschränkung gibt es bei der Verwendung von "super" beschränkten Typ-Wildcards?
 Antwort: Bei "super" beschränkten Typ-Wildcards ist der Zugriff auf Elemente in der Regel auf schreibende Zugriffe beschränkt, und lesende Zugriffe haben immer den Typ "Object".
 
-Frage: Wie können Typ-Wildcards in Java zur Verbesserung der Typsicherheit verwendet werden?
-Antwort: Typ-Wildcards können verwendet werden, um sicherzustellen, dass Zuweisungen und Zugriffe auf generische Typen zur Übersetzungszeit statisch typsicher sind, ohne dass es zu Laufzeitfehlern kommt. Dies erhöht die Typsicherheit von Java-Programmen.
+Frage: Wie können Typ-Wildcards in JAVA zur Verbesserung der Typsicherheit verwendet werden?
+Antwort: Typ-Wildcards können verwendet werden, um sicherzustellen, dass Zuweisungen und Zugriffe auf generische Typen zur Übersetzungszeit statisch typsicher sind, ohne dass es zu Laufzeitfehlern kommt. Dies erhöht die Typsicherheit von JAVA-Programmen.
 
 Frage: Warum sind "ArrayList<Integer>" und "ArrayList<String>" trotz "Integer" und "String" als Subtypen von "Comparable" nicht zuweisungskompatibel mit "ArrayList<Comparable>"?
-Antwort:  "ArrayList<Integer>" und "ArrayList<String>" sind nicht zuweisungskompatibel mit "ArrayList<Comparable>", weil generische Typen in Java keine kovariante Zuweisung von Subtypen erlauben. Dies wurde durch die Einführung von Typ-Wildcards gelöst.
+Antwort:  "ArrayList<Integer>" und "ArrayList<String>" sind nicht zuweisungskompatibel mit "ArrayList<Comparable>", weil generische Typen in JAVA keine kovariante Zuweisung von Subtypen erlauben. Dies wurde durch die Einführung von Typ-Wildcards gelöst.
 
 Frage: Welche Art von Subtyping wird bei "extends" beschränkten Wildcard-Typen verwendet?
 Antwort: "extends" beschränkte Wildcard-Typen verwenden kovariantes Subtyping.
@@ -42,5 +42,5 @@ Antwort: "extends" beschränkte Wildcard-Typen verwenden kovariantes Subtyping.
 Frage: Welche Art von Subtyping wird bei "super" beschränkten Wildcard-Typen verwendet?
 Antwort: "super" beschränkte Wildcard-Typen verwenden kontravariantes Subtyping.
 
-Frage: Wie können Typ-Wildcards in Java dazu verwendet werden, eine Liste von Zahlen oder Untertypen von "Number" zu verarbeiten?
+Frage: Wie können Typ-Wildcards in JAVA dazu verwendet werden, eine Liste von Zahlen oder Untertypen von "Number" zu verarbeiten?
 Antwort: Typ-Wildcards können verwendet werden, um eine Methode wie "sum(List<? extends Number> list)" zu erstellen, die eine Liste von Zahlen oder Untertypen von "Number" akzeptiert und die Summe der Zahlen berechnet, unabhängig von ihrem konkreten Typ.
