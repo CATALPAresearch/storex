@@ -1,0 +1,45 @@
+44.1 Type casts
+
+Unter einem Type cast (einer Typumwandlung) versteht man den Vorgang, bei dem einem Programmelement ein anderer Typ aufgezwungen wird als der, mit dem es deklariert wurde. Type casts werden also insbesondere auf Variablen und auf Methodenausdrücke angewendet, und zwar immer dann, wenn man diese einer Variable zuweisen will, zu der keine Zuweisungskompatibilität besteht, oder wenn man darauf eine Methode aufrufen (oder ein Feld zugreifen) will, das der deklarierte Typ nicht anbietet.
+
+
+Frage: Was ist ein Type cast?
+Antwort: Ein Type cast ist der Vorgang, bei dem einem Programmelement ein anderer Typ aufgezwungen wird als der, mit dem es deklariert wurde. Type casts werden auf Variablen und Methodenausdrücke angewendet, um Zuweisungskompatibilität herzustellen oder auf Methoden zuzugreifen, die der deklarierte Typ nicht anbietet.
+
+
+Wie schon in Kapitel 27, so unterscheiden wir auch hier in Abhängigkeit davon, wie die beteiligten Typen, der Ausgangstyp und der Zieltyp eines Type casts, miteinander in Beziehung stehen, drei Arten von Typumwandlungen: Up casts: Der Zieltyp ist ein Supertyp des Ausgangstyps. Down casts: Der Zieltyp ist ein Subtyp des Ausgangstyps. Cross casts: Zieltyp und Ausgangstyp stehen in keiner Subtypenbeziehung zueinander, stehen also gewissermaßen nebeneinander.
+
+
+Frage: Was sind Up casts, Down casts und Cross casts?
+Antwort: Up casts sind Typumwandlungen, bei denen der Zieltyp ein Supertyp des Ausgangstyps ist. Down casts sind Typumwandlungen, bei denen der Zieltyp ein Subtyp des Ausgangstyps ist. Cross casts sind Typumwandlungen, bei denen Zieltyp und Ausgangstyp in keiner Subtypenbeziehung zueinander stehen.
+
+Frage: Was ist der Unterschied zwischen Up casts, Down casts und Cross casts?
+Antwort: Up casts sind Typumwandlungen, bei denen der Zieltyp ein Supertyp des Ausgangstyps ist, Down casts sind Typumwandlungen, bei denen der Zieltyp ein Subtyp des Ausgangstyps ist und Cross casts sind Typumwandlungen, bei denen Zieltyp und Ausgangstyp in keiner Subtypenbeziehung zueinander stehen.
+
+
+Wie man sich leicht vor Augen hält, ist ein Up cast auch in Java immer sicher, da jedes Objekt neben seinem Typ zugleich auch den Typ all seiner Supertypen hat (weswegen der Up cast auch immer weggelassen werden kann); Down und Cross casts sind jedoch nur erfolgreich, wenn das Objekt, zu dem der typumgewandelte Ausdruck auswertet, tatsächlich den Zieltyp (oder einen Subtyp davon) hat. Dies kann jedoch zur Übersetzungszeit nicht garantiert werden; Down und Cross casts können daher zu Laufzeittypfehlern (der in Java sogenannten ClassCastException) führen. Mit der Einführung von Generics ergeben sich ein paar Probleme mit impliziten Typumwandlungen.
+
+
+Frage: Was ist ein Up cast in Java?
+Antwort: Ein Up cast in Java ist ein Typumwandlungsausdruck, der ein Objekt in einen seiner Supertypen umwandelt. Ein Up cast ist immer sicher und kann daher auch weggelassen werden.
+
+Frage: Was ist ein Down cast in Java?
+Antwort: Ein Down cast in Java ist ein Typumwandlungsausdruck, der ein Objekt in einen seiner Subtypen umwandelt. Ein Down cast kann zu Laufzeittypfehlern führen, wenn das Objekt nicht den Zieltyp oder einen Subtyp davon hat.
+
+Frage: Was ist ein Cross cast in Java?
+Antwort: Ein Cross cast in Java ist ein Typumwandlungsausdruck, der ein Objekt in einen beliebigen anderen Typ umwandelt. Ein Cross cast kann zu Laufzeittypfehlern führen, wenn das Objekt nicht den Zieltyp oder einen Subtyp davon hat.
+
+Frage: Wann können Down und Cross casts in Java zu Laufzeittypfehlern führen?
+Antwort: Down und Cross casts können zu Laufzeittypfehlern führen, wenn das Objekt, zu dem der typumgewandelte Ausdruck auswertet, nicht den Zieltyp oder einen Subtyp davon hat.
+
+Frage: Was ist eine ClassCastException in Java?
+Antwort: Eine ClassCastException in Java ist eine Laufzeittypfehlermeldung, die geworfen wird, wenn ein Down oder Cross cast zu einem Objekt durchgeführt wird, das nicht den Zieltyp oder einen Subtyp davon hat.
+
+Frage: Wann ist ein Up cast in Java sicher?
+Antwort: Ein Up cast in Java ist immer sicher, da jedes Objekt neben seinem Typ zugleich auch den Typ all seiner Supertypen hat. Der Up cast kann daher weggelassen werden.
+
+Frage: Wann sind Down und Cross casts in Java erfolgreich?
+Antwort: Down und Cross casts sind in Java nur erfolgreich, wenn das Objekt, zu dem der typumgewandelte Ausdruck auswertet, tatsächlich den Zieltyp (oder einen Subtyp davon) hat. Dies kann jedoch zur Übersetzungszeit nicht garantiert werden und kann daher zu Laufzeittypfehlern (der in Java sogenannten ClassCastException) führen.
+
+Frage: Was ist der Unterschied zwischen Up cast, Down cast und Cross cast?
+Antwort: Ein Up cast ist eine Typumwandlung, die ein Objekt in einen seiner Supertypen umwandelt, während ein Down cast ein Objekt in einen seiner Subtypen umwandelt. Ein Cross cast ist eine Typumwandlung, die ein Objekt in einen Typ umwandelt, der nicht direkt mit seinem Typ verwandt ist. Ein Up cast ist immer sicher, während Down und Cross casts nur erfolgreich sind, wenn das Objekt den Zieltyp (oder einen Subtyp davon) hat, und können zu Laufzeittypfehlern führen.

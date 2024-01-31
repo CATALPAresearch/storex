@@ -1,0 +1,40 @@
+35.1 Literale
+
+In Java gibt es Literale für Zahlen, Zeichen und Strings. Für Arrays gibt es, da sie nicht aus Literalen zusammengesetzt sein müssen, etwas Ähnliches, nämlich die sogenannten Array-Initialisierer; sie werden in Kapitel 41 behandelt. Ob "true" und "false" bzw. "null" in Java Literale oder Schlüsselwörter sind, hängt vom Standpunkt ab: Die meisten Syntaxeditoren behandeln sie wie Schlüsselwörter, gemäß der Sprachdefinition handelt es sich jedoch um Literale, die die beiden booleschen Wahrheitswerte "wahr" und "falsch" bzw. den Wert des Nulltypen (UndefinedObject in SMALLTALK, in Java umbenannt) repräsentieren.
+
+
+Frage: Was sind Literale in Java?
+Antwort: In Java gibt es Literale für Zahlen, Zeichen und Strings. "true" und "false" bzw. "null" werden gemäß der Sprachdefinition ebenfalls als Literale behandelt, die die beiden booleschen Wahrheitswerte und den Wert des Nulltyps repräsentieren.
+
+Frage: Was sind Array-Initialisierer in Java und wofür werden sie verwendet?
+Antwort: Array-Initialisierer in Java sind eine Möglichkeit, Arrays mit Werten zu initialisieren. Sie werden verwendet, um die Elemente eines Arrays bei der Erstellung des Arrays zu initialisieren. Die Elemente werden in geschweiften Klammern ({}) aufgelistet, getrennt durch Kommas. Zum Beispiel: int[] arr = {1, 2, 3}; erstellt ein Array von ganzen Zahlen mit den Werten 1, 2 und 3.
+
+
+Zahlenliterale in Java können eine Vielzahl von Formen annehmen. Für drei besondere Werte im Fließkommabereich stehen jedoch keine Literale, sondern nur Konstanten zur Verfügung: Es handelt sich um "NaN" (für das englische "Not a Number") sowie "POSITIVE_INFINITY" und "NEGATIVE_INFINITY". Zeichenliterale werden in Java durch einfache Anführungsstriche eingeschlossen, String-Literale durch doppelte Anführungsstriche. Beide können Escape-Sequenzen zur Darstellung von Sonderzeichen enthalten.
+
+
+Frage: Wie werden Zahlenliterale in Java dargestellt?
+Antwort: Zahlenliterale in Java können eine Vielzahl von Formen annehmen. Für drei besondere Werte im Fließkommabereich stehen jedoch keine Literale, sondern nur Konstanten zur Verfügung: Es handelt sich um "NaN" (für das englische "Not a Number") sowie "POSITIVE\_INFINITY" und "NEGATIVE\_INFINITY".
+
+Frage: Was sind die Unterschiede zwischen Zeichenliteralen und String-Literalen in Java?
+Antwort: Zeichenliterale in Java werden durch einfache Anführungsstriche eingeschlossen und repräsentieren ein einzelnes Zeichen, während String-Literale durch doppelte Anführungsstriche eingeschlossen sind und eine Folge von Zeichen repräsentieren. Beide können Escape-Sequenzen zur Darstellung von Sonderzeichen enthalten.
+
+
+Anders als in SMALLTALK sind in Java Klassen keine Objekte. Dennoch muss man in Programmen gelegentlich Klassen als Werte angeben. Das geht dann nicht (wie in SMALLTALK) per Angabe des Klassennamens (der dort ja zugleich als Pseudovariable definiert war), sondern mittels eines sogenannten Klassenliterals. Dieses besteht aus dem Namen der Klasse, gefolgt von ".class", also beispielsweise "Klasse.class".
+
+
+Frage: Was ist ein Klassenliteral in Java?
+Antwort: Ein Klassenliteral in Java ist eine Notation, die aus dem Namen der Klasse, gefolgt von ".class" besteht, und mit der man Klassen als Werte angeben kann.
+
+Frage: Wie kann man in Java Klassen als Werte angeben?
+Antwort: In Java können Klassen als Werte angegeben werden, indem man ein sogenanntes Klassenliteral verwendet, das aus dem Namen der Klasse, gefolgt von ".class" besteht, also beispielsweise "Klasse.class".
+
+
+Der Typ eines solchen Klassenliterals ist "Class<T>", also im obigen Beispiel "Class<Object>". Da in Java-Programmen Klassennamen auch direkt vorkommen dürfen, beispielsweise als Empfänger beim Aufruf von Klassenmethoden oder in Typtests wie "instanceof" (siehe Abschnitt 35.4), sind Klassenliterale eher selten anzutreffen. Die ganze Unterscheidung von Klassennamen und Klassenliteralen in Java ist meiner Meinung nach alles andere als glücklich.
+
+
+Frage: Was ist ein Klassenliteral in Java?
+Antwort: Ein Klassenliteral in Java ist eine Repräsentation einer Klasse, die in der Syntax der Programmiersprache ausgedrückt wird. Der Typ eines solchen Klassenliterals ist "Class<T>", also im obigen Beispiel "Class<Object>". Klassenliterale sind eher selten anzutreffen, da Klassennamen auch direkt vorkommen dürfen, beispielsweise als Empfänger beim Aufruf von Klassenmethoden oder in Typtests wie "instanceof".
+
+Frage: Was ist der Unterschied zwischen Klassennamen und Klassenliteralen in Java?
+Antwort: In Java sind Klassennamen und Klassenliteralen zwei verschiedene Dinge. Klassennamen werden direkt verwendet, zum Beispiel als Empfänger beim Aufruf von Klassenmethoden oder in Typtests wie "instanceof". Klassenliteralen hingegen sind Objekte, die die Metaklasse einer Klasse repräsentieren. Sie werden mit dem Schlüsselwort "Class" und dem Klassennamen in spitzen Klammern erzeugt. Die Unterscheidung von Klassennamen und Klassenliteralen in Java ist nicht sehr intuitiv und wird eher selten verwendet.

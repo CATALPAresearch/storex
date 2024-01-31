@@ -247,14 +247,14 @@ class QuestionAnswerGenerator:
                            "Schlüsselwörter könnte dies, wie bereits oben diskutiert, allenfalls über die "
                            "Unterscheidung zwischen Variablen mit Wert- und Variablen mit Referenzsemantik erfolgen. "
                            "Diese Unterscheidung ist jedoch nicht immer eindeutig, und in einigen Programmiersprachen "
-                           "ist sie gar nicht zutreffend (z.B., in JAVA, in dem Strings zwar unveränderlich sind und "
+                           "ist sie gar nicht zutreffend (z.B., in Java, in dem Strings zwar unveränderlich sind und "
                            "daher eigentlich als Werte gelten, aber dennoch Referenzsemantik aufweisen). In SMALLTALK "
                            "hingegen, in dem alle Instanzvariablen Referenzen sein können, ist diese Einschränkung "
                            "nicht anwendbar.",
                 'question-answer':
                     """
                     Frage: Was unterscheidet Attribute und Beziehungen
-                    Antwort: Die Unterscheidung zwischen Attributen und Beziehungen kann in Ermangelung spezieller Schlüsselwörter allenfalls über die Unterscheidung zwischen Variablen mit Wert- und Variablen mit Referenzsemantik erfolgen. Diese ist jedoch in einigen Programmiersprachen nicht immer eindeutig ist und beispielsweise in JAVA gar nicht zutreffend.</s>
+                    Antwort: Die Unterscheidung zwischen Attributen und Beziehungen kann in Ermangelung spezieller Schlüsselwörter allenfalls über die Unterscheidung zwischen Variablen mit Wert- und Variablen mit Referenzsemantik erfolgen. Diese ist jedoch in einigen Programmiersprachen nicht immer eindeutig ist und beispielsweise in Java gar nicht zutreffend.</s>
                     """
             },
             {

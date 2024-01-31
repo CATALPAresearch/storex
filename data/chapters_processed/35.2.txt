@@ -1,0 +1,10 @@
+35.2 Gleichheit und Identität
+
+In Java wird, genau wie in SMALLTALK, zwischen Gleichheit und Identität von Objekten unterschieden. Die Gleichheit von Objekten wird mittels der Methode equals(.) (wobei (.) hier für einen nicht näher spezifizierten Parameter steht) geprüft, die Identität mittels == (bzw. != für das Negativ). equals(.) wird von der Klasse Object (in Java genau wie in SMALLTALK die Superklasse aller Klassen) geerbt und sollte in den Subklassen entsprechend der jeweiligen Bedeutung von Gleichheit überschrieben werden. Die Verwechslung von equals(.) und == ist auch in Java ein ziemlich häufiger Programmierfehler (siehe Abschnitt 1.4 in Kurseinheit 1). Das Gleichheitszeichen = steht in Java übrigens (genau wie in C, C++ und C-Sharp) für die Wertzuweisung, was ich persönlich für eine der großen Tragödien in der Informatik halte.
+
+
+Frage: Wie wird die Gleichheit von Objekten in Java geprüft?
+Antwort: Die Gleichheit von Objekten wird in Java mittels der Methode equals(.) geprüft.
+
+Frage: Wie unterscheidet man in Java zwischen Gleichheit und Identität von Objekten?
+Antwort: In Java wird zwischen Gleichheit und Identität von Objekten unterschieden. Die Gleichheit von Objekten wird mittels der Methode equals(.) geprüft, die Identität mittels == (bzw. != für das Negativ). equals(.) wird von der Klasse Object geerbt und sollte in den Subklassen entsprechend der jeweiligen Bedeutung von Gleichheit überschrieben werden. Das Gleichheitszeichen = steht in Java für die Wertzuweisung.

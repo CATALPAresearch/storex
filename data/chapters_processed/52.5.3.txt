@@ -1,0 +1,50 @@
+52.5.3 Die dynamische Komponente
+
+Bei allen Bemühungen, für EIFFEL ein möglichst "wasserdichtes" Typsystem vorzulegen und dabei so viel wie möglich zur Übersetzungszeit zu erledigen, bleibt es natürlich auch in EIFFEL-Programmen nicht aus, dass man in einen Container (eine Variable oder eine Collection) Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man die dazu notwendige Fallunterscheidung dem dynamischen Binden (einem dynamisch gebundenen Methodenaufruf) überlassen wollen; manchmal ist es einfach einfacher (und besser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode entsprechend verzweigt.
+
+
+Frage: Wozu können Typprüfungen in EIFFEL notwendig sein?
+Antwort: Typprüfungen können in EIFFEL notwendig sein, wenn man in einen Container Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man die dazu notwendige Fallunterscheidung dem dynamischen Binden überlassen wollen; manchmal ist es einfach einfacher (und besser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode entsprechend verzweigt.
+
+Frage: Warum ist es manchmal notwendig, den Typ explizit zu prüfen und innerhalb einer Methode zu verzweigen?
+Antwort: Es ist manchmal notwendig, den Typ explizit zu prüfen und innerhalb einer Methode zu verzweigen, wenn man in einen Container (eine Variable oder eine Collection) Elemente ungleichen Typs hineinpackt und hinterher wissen will, welchen genauen Typs ein Element ist, um es seinem Typ entsprechend verwenden zu können. Nicht immer wird man die dazu notwendige Fallunterscheidung dem dynamischen Binden überlassen wollen; manchmal ist es einfach einfacher (und besser nachvollziehbar), wenn man den Typ explizit prüft und innerhalb einer Methode entsprechend verzweigt.
+
+
+Solche Typtests werden in EIFFEL von einem sogenannten Zuweisungsversuch (engl. "assignment attempt") übernommen, der bei mangelnder (dynamisch festgestellter) Zuweisungskompatibilität einfach "void" (das Äquivalent von "nil" in SMALLTALK und "null" in Java) zuweist.
+
+
+Frage: Was ist ein Zuweisungsversuch in EIFFEL?
+Antwort: In EIFFEL wird ein Zuweisungsversuch verwendet, um einen Typtest durchzuführen. Wenn die Zuweisungskompatibilität nicht gegeben ist, wird einfach "void" zugewiesen.
+
+
+Dies ergibt nie einen Typfehler, sondern führt höchstens dazu, dass "a" "void" zugewiesen wird. Es bleibt dann die Aufgabe der Programmiererin, "a" nach der Zuweisung zu kontrollieren. Es entspricht dies direkt dem "as" aus C-Sharp, dem "dynamic_cast<T>(x)" aus C++ sowie dem Java-Konstrukt.
+
+
+Frage: Was passiert, wenn man einem Objekt eine Nachricht schickt, die nicht zu seinem Typ passt?
+Antwort: Wenn man einem Objekt eine Nachricht schickt, die nicht zu seinem Typ passt, führt dies nicht zu einem Typfehler, sondern höchstens dazu, dass das Objekt "void" zugewiesen wird. Die Programmiererin muss dann selbst sicherstellen, dass das Objekt nach der Zuweisung korrekt verwendet wird. Dies entspricht dem "as" aus C-Sharp, dem "dynamic\_cast<T>(x)" aus C++ sowie dem Java-Konstrukt.
+
+Frage: Was passiert, wenn man ein Objekt einer anderen Klasse zuweist?
+Antwort: Wenn man ein Objekt einer anderen Klasse zuweist, wird höchstens dazu führen, dass das Objekt "void" zugewiesen wird, und es liegt dann in der Verantwortung der Programmiererin, das Objekt nach der Zuweisung zu überprüfen. Dies entspricht dem "as" aus C-Sharp, dem "dynamic\_cast<T>(x)" aus C++ und dem Java-Konstrukt.
+
+
+Explizite Typumwandlungen gibt es in EIFFEL nicht; sie können also auch keine Laufzeitfehler verursachen. Der Zuweisungsversuch erfüllt aber weitgehend die Funktion einer Typumwandlung, denn er ist nur erfolgreich, wenn die rechte Seite zuweisungskompatibel mit der linken ist, was per Definition nur dann der Fall ist, wenn die rechte Seite ein Objekt eines Subtyps (einschließlich Gleichheit) der linken Seite hat. Es wird hier allerdings die Typumwandlung immer mit einer Zuweisung verbunden; man braucht also unter Umständen eine temporäre Variable, die man sich sonst hätte sparen können. Dass der Zuweisungsversuch in EIFFEL anders als der Downcast in Java keinen Laufzeitfehler verursachen kann, ist wenig tröstlich, denn der Wert "void" in einer Variable kann es natürlich schon; in Wirklichkeit wird hier lediglich ein Typumwandlungsfehler gegen eine Nullzeiger-Ausnahme getauscht.
+
+
+Frage: Was ist der Unterschied zwischen dem Zuweisungsversuch in EIFFEL und dem Downcast in Java?
+Antwort: Im Gegensatz zum Zuweisungsversuch in EIFFEL kann der Downcast in Java einen Laufzeitfehler verursachen.
+
+Frage: Was ist der Unterschied zwischen expliziten Typumwandlungen in EIFFEL und Java?
+Antwort: In EIFFEL gibt es keine expliziten Typumwandlungen, während es in Java welche gibt. In EIFFEL kann der Zuweisungsversuch die Funktion einer Typumwandlung erfüllen, während er in Java einen Laufzeitfehler verursachen kann. Allerdings kann der Zuweisungsversuch in EIFFEL auch einen Typumwandlungsfehler verursachen, der jedoch als Nullzeiger-Ausnahme behandelt wird.
+
+Frage: Was ist der Unterschied zwischen Zuweisungskompatibilität und Gleichheit in EIFFEL?
+Antwort: In EIFFEL sind zwei Typen zuweisungskompatibel, wenn der Zieltyp ein Subtyp des Quelltyps ist, einschließlich der Gleichheit. Das bedeutet, dass der Quelltyp entweder genau dem Zieltyp entspricht oder ein Subtyp des Zieltyps ist. Gleichheit hingegen bedeutet, dass die beiden Typen identisch sind, d.h. der Quelltyp und der Zieltyp sind exakt der gleiche Typ.
+
+
+Die Typumwandlung wird in EIFFEL aber auch noch für etwas anderes gebraucht, nämlich für das Binden von Aufrufen kovariant redefinierter Methoden. Da EIFFEL ja, wie oben beschrieben, polymorphe CAT-Calls verbieten muss, diese aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bindung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche.
+
+
+Frage: Wofür wird die Typumwandlung in EIFFEL verwendet?
+Antwort: In EIFFEL wird die Typumwandlung für das Binden von Aufrufen kovariant redefinierter Methoden verwendet. Da EIFFEL polymorphe CAT-Calls verbieten muss, diese aber gleichwohl notwendig sein können, hat man nur die Möglichkeit, die dynamische Bindung programmatisch zu emulieren. Und dafür braucht man Zuweisungsversuche.
+
+Frage: Was ist das Binden von Aufrufen kovariant redefinierter Methoden?
+Antwort: Das Binden von Aufrufen kovariant redefinierter Methoden ist ein Mechanismus in EIFFEL, bei dem die dynamische Bindung von Methodenaufrufen programmatisch emuliert wird, um polymorphe CAT-Calls zu ermöglichen. Dabei werden Zuweisungsversuche verwendet, um die richtige Methode zur Laufzeit zu bestimmen.

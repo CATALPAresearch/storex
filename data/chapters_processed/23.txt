@@ -1,0 +1,39 @@
+23 Typerweiterung
+
+Wie bereits in Kapitel 21 angedeutet, verlangt die Zuweisungskompatibilität nicht unbedingt Typäquivalenz. Tatsächlich reicht es aus, bei einer rein strukturellen (syntaktischen) Betrachtung, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge der Methoden) des Typs der linken Seite enthält, um in der Folge Typfehler zu vermeiden. Anders ausgedrückt: Der Typ auf der rechten Seite einer Zuweisung darf eine Erweiterung dessen auf der linken Seite um zusätzliche Methoden sein.
+
+
+Frage: Was ist die Bedingung für Typkompatibilität bei Zuweisungen in SMALLTALK?
+Antwort: Für Typkompatibilität bei Zuweisungen in SMALLTALK reicht es aus, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge der Methoden) des Typs der linken Seite enthält. Der Typ auf der rechten Seite einer Zuweisung darf also eine Erweiterung dessen auf der linken Seite um zusätzliche Methoden sein.
+
+Frage: Was ist für die Zuweisungskompatibilität notwendig?
+Antwort: Für die Zuweisungskompatibilität ist es ausreichend, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge der Methoden) des Typs der linken Seite enthält, um Typfehler zu vermeiden. Der Typ auf der rechten Seite einer Zuweisung darf eine Erweiterung dessen auf der linken Seite um zusätzliche Methoden sein.
+
+Frage: Was ist die Bedingung für Zuweisungskompatibilität in objektorientierten Programmiersprachen?
+Antwort: Für Zuweisungskompatibilität in objektorientierten Programmiersprachen reicht es aus, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge der Methoden) des Typs der linken Seite enthält, um Typfehler zu vermeiden.
+
+
+Die sogenannte Typerweiterung (engl. type extension; "extension" hier im Sinne von Erweiterung und nicht im Sinne der Ausdehnung als Gegenstück zur Intension) sieht genau dies vor.
+
+
+Frage: Was ist Typerweiterung?
+Antwort: Typerweiterung ist eine Technik, um bestehende Datentypen zu erweitern. Dabei wird ein neuer Datentyp definiert, der auf einem bestehenden Datentyp aufbaut und diesen erweitert. Diese Technik ermöglicht es, bestehende Datentypen zu nutzen und gleichzeitig neue Funktionen hinzuzufügen, ohne den ursprünglichen Datentyp zu verändern.
+
+Frage: Wie funktioniert Typerweiterung?
+Antwort: Typerweiterung wird zum Beispiel durch die Definition neuer Module erreicht, die den ursprünglichen Datentyp erweitern, indem sie neue Methoden hinzufügen. Diese neuen Module können dann verwendet werden, um auf die erweiterten Funktionen des Datentyps zuzugreifen, ohne den ursprünglichen Code zu ändern.
+
+Frage: Was sind die Vorteile von Typerweiterung?
+Antwort: Die Vorteile von Typerweiterung sind, dass sie es ermöglicht, bestehenden Code wiederzuverwenden und neue Funktionalität hinzuzufügen, ohne den ursprünglichen Code zu ändern. Dies führt zu einer besseren Codequalität, da weniger Änderungen am Code vorgenommen werden müssen und die Wahrscheinlichkeit von Fehlern reduziert wird.
+
+Frage: Was sind die Nachteile von Typerweiterung?
+Antwort: Die Nachteile von Typerweiterung sind, dass sie die Komplexität des Codes erhöhen kann, da es mehrere Versionen des gleichen Datentyps gibt. Dies kann zu Verwirrung führen und die Wartbarkeit des Codes beeinträchtigen. Außerdem kann Typerweiterung zu einer unkontrollierten Ausdehnung des Codes führen, wenn nicht sorgfältig geplant und implementiert wird.
+
+
+Der erweiternde Typ wird also relativ zu einem bereits bestehenden, dem erweiterten Typ definiert. Die Methodendeklarationen des erweiterten Typs werden dabei gewissermaßen an den erweiternden Typ vererbt; dieser braucht sie also nicht noch einmal zu wiederholen. Die Zuweisungskompatibilität unter Typerweiterung regelt der Begriff der Typkonformität.
+
+
+Frage: Was ist ein erweiternder Typ?
+Antwort: Ein erweiternder Typ, auch Untertyp genannt, ist eine Typdefinition, die auf einer bestehenden Typdefinition aufbaut und diese erweitert. Die Methodendeklarationen des erweiterten Typs werden dabei vererbt und müssen nicht noch einmal wiederholt werden.
+
+Frage: Was ist der Begriff der Typkonformität?
+Antwort: Der Begriff der Typkonformität regelt die Zuweisungskompatibilität unter Typerweiterung.

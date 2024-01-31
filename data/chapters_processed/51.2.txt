@@ -1,0 +1,65 @@
+51.2 Klassen
+
+C++ ist insofern objektorientiert, als es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt. Metaklassen gibt es in C++ nicht; gleichwohl kann der Name einer Klasse als Wert verwendet werden.
+
+
+Frage: Gibt es in C++ Metaklassen?
+Antwort: Nein, in C++ gibt es keine Metaklassen.
+
+Frage: Unterstützt C++ Objektorientierung?
+Antwort: Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt. Metaklassen gibt es in C++ nicht; gleichwohl kann der Name einer Klasse als Wert verwendet werden.
+
+Frage: Was sind die Hauptunterschiede zwischen C++ und Smalltalk in Bezug auf Objektorientierung?
+Antwort: Die Hauptunterschiede zwischen C++ und Smalltalk in Bezug auf Objektorientierung sind, dass Smalltalk keine Strukturen (structs) kennt, alle Instanzvariablen in Smalltalk Referenzen sein können, Smalltalk Metaklassen anbietet und der Name einer Klasse in Smalltalk als Wert verwendet werden kann.
+
+
+Dass man in C++ wie in Java das Schlüsselwort class verwendet, heißt nicht automatisch, dass man damit Klassen im Sinne Javas oder SMALLTALKs definiert. Insbesondere haben Variablen mit einer Klasse als Typ keine Referenz-, sondern Wertsemantik. Entsprechend müssen die Werte solcher Variablen, die "Objekte", nicht erst mit new angelegt werden — der für ein "Objekt" benötigte Speicherplatz wird, genau wie bei den Records PASCALs oder bei den Structs von C, bei der Deklaration reserviert. Dabei steht "Objekt" hier deswegen in Anführungsstrichen, weil diese "Objekte" eigentlich keine Objekte sind, sondern Werte; insbesondere haben sie keine Identität, und bei Zuweisungen an andere Variablen werden Kopien angefertigt. Aliase gibt es entsprechend zunächst auch keine.
+
+
+Frage: Was ist der Unterschied zwischen Objekten in SMALLTALK und Objekten in C++?
+Antwort: In SMALLTALK haben Objekte Identität, während in C++ Objekte Werte sind, die keine Identität haben. Bei Zuweisungen an andere Variablen werden in SMALLTALK Referenzen angefertigt, während in C++ Kopien erstellt werden.
+
+Frage: Was ist der Unterschied zwischen Referenz- und Wertsemantik?
+Antwort: Bei der Referenzsemantik wird auf ein Objekt verwiesen, während bei der Wertsemantik eine Kopie des Objekts erstellt wird. In C++ und Java haben Variablen mit einer Klasse als Typ Wertsemantik, während in SMALLTALK Variablen mit Referenzsemantik arbeiten.
+
+Frage: Was ist der Unterschied zwischen Objekten mit Wertsemantik und Objekten mit Referenzsemantik?
+Antwort: Objekte mit Wertsemantik werden bei Zuweisungen an andere Variablen kopiert, während Objekte mit Referenzsemantik nur einen Verweis auf das Objekt kopieren. Objekte mit Wertsemantik haben keine Identität, während Objekte mit Referenzsemantik eine Identität haben.
+
+
+Um in C++ Objekte mit Identität zu erzeugen, muss man Variablen vom Typ eines Zeigers auf eine Klasse anlegen und dann eine Klasse mit dem New-Operator instanziieren. Sieht man einmal von der expliziten Festlegung ab, dass es sich bei der Variable a um eine Pointervariable handelt, dann gleicht der parameterlose Konstruktor einer äquivalenten Anweisung in Java oder C-Sharp. Zur Dereferenzierung einer solchen Pointer-(Objekt-)Variable bei gleichzeitigem Zugriff auf ein Element (Feld oder Methode) der Instanz in C++ "->", z.B., "a->x" oder "a->f(x)" für ein Feld oder eine Methode der Klasse. Besondere Obacht ist bei Zuweisungen geboten, da man sich hier genau überlegen muss, ob man Pointer oder die Werte, auf die die Pointer zeigen, zuweisen will.
+
+
+Frage: Wie erzeugt man in C++ Objekte mit Identität?
+Antwort: Um in C++ Objekte mit Identität zu erzeugen, muss man Variablen vom Typ eines Zeigers auf eine Klasse anlegen und dann eine Klasse mit dem New-Operator instanziieren.
+
+
+Besonders verwirrend ist die Situation bei den impliziten Zuweisungen, die im Rahmen von Methodenaufrufen stattfinden. C++ macht zunächst ein "Call by value", das heißt, es wird eine Kopie des Inhalts des tatsächlichen Parameters dem formalen Parameter zugewiesen. Im Falle von Pointer-Variablen wie dem obigen a bedeutet das aber, dass nicht das Objekt, sondern nur der Zeiger auf das Objekt übergeben wird. Es entspricht dies genau dem Verhalten von Java und SMALLTALK, wobei allerdings bei beiden nirgends explizit angegeben wird, dass es sich um eine Pointer-variable handelt — es ist einfach immer so.
+
+
+Frage: Was ist der Unterschied zwischen "Call by value" und der Übertragung von Pointer-Variablen in C++?
+Antwort: Im "Call by value" in C++ wird eine Kopie des Inhalts des tatsächlichen Parameters dem formalen Parameter zugewiesen. Bei Pointer-Variablen wie dem obigen a wird jedoch nur der Zeiger auf das Objekt übergeben, was dem Verhalten von Java und SMALLTALK entspricht. In Java und SMALLTALK wird jedoch nirgends explizit angegeben, dass es sich um eine Pointer-variable handelt.
+
+Frage: Was passiert bei Methodenaufrufen mit Pointer-Variablen in C++?
+Antwort: Bei Methodenaufrufen mit Pointer-Variablen in C++ wird nicht das Objekt, sondern nur der Zeiger auf das Objekt übergeben. Dies entspricht dem Verhalten von Java und SMALLTALK, wobei bei beiden nirgends explizit angegeben wird, dass es sich um eine Pointer-Variable handelt.
+
+Frage: Was bedeutet "Call by value" in C++?
+Antwort: Bei "Call by value" in C++ wird eine Kopie des Inhalts des tatsächlichen Parameters dem formalen Parameter zugewiesen.
+
+Frage: Was passiert bei "Call by value" in C++, wenn Pointer-Variablen übergeben werden?
+Antwort: Wenn Pointer-Variablen wie dem obigen a übergeben werden, wird nicht das Objekt, sondern nur der Zeiger auf das Objekt übergeben.
+
+Frage: Wie verhält sich Java und SMALLTALK in Bezug auf die Übergabe von Parametern?
+Antwort: In Java und SMALLTALK wird bei Methodenaufrufen immer der Zeiger auf das Objekt übergeben, und es wird nirgends explizit angegeben, dass es sich um eine Pointer-variable handelt.
+
+
+Wenn man nun davon abweichend ein "Call by reference" haben möchte, dann gibt es zum einen die Möglichkeit, an der Aufrufstelle den Zeigeroperator & zu verwenden, der anstelle einer Kopie des Inhalts der Variable einen Zeiger auf die Speicherstelle der Variable erzeugt und diesen übergibt. Dafür müssen dann aber die formalen Parameter so deklariert werden, dass sie Zeiger auf Zeiger aufnehmen können. Alternativ gibt es in C++ aber die Möglichkeit, wie in PASCAL zu verfahren wobei dann die Aufrufstelle unverändert bleiben kann (also ohne & auskommt).
+
+
+Frage: Was ist der Unterschied zwischen "Call by value" und "Call by reference"?
+Antwort: "Call by value" bedeutet, dass eine Kopie des Inhalts der Variablen an die Funktion übergeben wird, während "Call by reference" bedeutet, dass an die Funktion ein Zeiger auf die Speicherstelle der Variablen übergeben wird. In C++ kann man "Call by reference" auch mit Zeigern auf Zeiger implementieren, oder aber wie in PASCAL, indem man die formalen Parameter so deklariert, dass sie Zeiger aufnehmen können und an der Aufrufstelle kein Zeigeroperator & verwendet wird.
+
+Frage: Was ist der Unterschied zwischen "Call by reference" und der Übergabe von Zeigern in C++?
+Antwort: "Call by reference" ist eine Technik, bei der anstelle einer Kopie des Inhalts der Variablen ein Zeiger auf die Speicherstelle der Variablen übergeben wird. In C++ kann dies durch die Verwendung des Zeigeroperators & an der Aufrufstelle erreicht werden, wobei die formalen Parameter so deklariert werden müssen, dass sie Zeiger auf Zeiger aufnehmen können. Alternativ kann in C++ wie in PASCAL verfahren werden, wobei die Aufrufstelle unverändert bleibt (also ohne & auskommt). Der Unterschied besteht darin, dass bei "Call by reference" die Aufrufstelle geändert werden muss, während bei der Übergabe von Zeigern in C++ die Aufrufstelle unverändert bleibt.
+
+Frage: Was ist der Unterschied zwischen "Call by reference" und der Möglichkeit in C++ wie in PASCAL zu verfahren?
+Antwort: "Call by reference" in C++ erfordert die Verwendung des Zeigeroperators & an der Aufrufstelle, um einen Zeiger auf die Speicherstelle der Variablen zu erzeugen und zu übergeben. Dagegen erfordert die Möglichkeit in C++ wie in PASCAL zu verfahren, dass keine Änderungen an der Aufrufstelle vorgenommen werden müssen, da die formalen Parameter so deklariert werden, dass sie Zeiger auf Zeiger aufnehmen können.

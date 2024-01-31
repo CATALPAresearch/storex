@@ -1,0 +1,103 @@
+38 Anweisungen, Blöcke und Kontrollstrukturen
+
+Genau wie in SMALLTALK werden in Java Ausdrücke im Rahmen der Ausführung von Anweisungen ausgewertet. Anders als in SMALLTALK gibt es in Java jedoch eine Vielzahl von Schlüsselwörtern, die Anweisungen einleiten. Dennoch ist es auch in Java möglich, bestimmte Ausdrücke zu Anweisungen zu machen: Man schließt einfach einen betreffenden Ausdruck durch ein Semikolon ab. Insbesondere werden so Variablendeklarationen, Wertzuweisungen, Methodenaufrufe und Klasseninstanziierungen (siehe Kapitel 37) direkt zu Anweisungen. Man beachte, dass, anders als das Semikolon in PASCAL oder der Punkt in SMALLTALK, das Semikolon in Java kein Trennzeichen ist, sondern Teil der Anweisung.
+
+
+Frage: Wie werden Ausdrücke in Java zu Anweisungen?
+Antwort: In Java können bestimmte Ausdrücke zu Anweisungen gemacht werden, indem sie durch ein Semikolon abgeschlossen werden. Dazu gehören Variablendeklarationen, Wertzuweisungen, Methodenaufrufe und Klasseninstanziierungen.
+
+Frage: Was ist der Unterschied zwischen einem Ausdruck und einer Anweisung in Java?
+Antwort: In Java werden Ausdrücke im Rahmen der Ausführung von Anweisungen ausgewertet. Ein Ausdruck wird zu einer Anweisung, indem er mit einem Semikolon abgeschlossen wird. Im Gegensatz zum Semikolon in PASCAL oder dem Punkt in SMALLTALK ist das Semikolon in Java kein Trennzeichen, sondern Teil der Anweisung. Variablendeklarationen, Wertzuweisungen, Methodenaufrufe und Klasseninstanziierungen sind in Java direkt als Anweisungen möglich.
+
+
+Nahezu alle Anweisungen finden sich in Java-Programmen innerhalb von Methoden. Blöcke sind in Java lediglich (in geschweifte Klammern eingefasste) Abschnitte des Quelltextes, die an die Stelle einzelner Anweisungen treten können und die einen Sichtbarkeitsbereich für darin enthaltene Variablendeklarationen darstellen. Blöcke wie in SMALLTALK kennt Java erst seit Version 8, mit der Einführung der Lambda-Ausdrücke.
+
+
+Frage: Was sind Blöcke in Java?
+Antwort: In Java sind Blöcke lediglich (in geschweifte Klammern eingefasste) Abschnitte des Quelltextes, die an die Stelle einzelner Anweisungen treten können und die einen Sichtbarkeitsbereich für darin enthaltene Variablendeklarationen darstellen. Blöcke wie in SMALLTALK kennt Java erst seit Version 8, mit der Einführung der Lambda-Ausdrücke.
+
+
+Es sind also Variablendeklarationen, Methodenaufrufe (inklusive der Konstruktoraufrufe) und Zuweisungen Anweisungen. Alle anderen Anweisungen werden durch Schlüsselwörter eingeleitet und realisieren Kontrollstrukturen, die den Kontrollfluss eines Programms dazu bringen, von der normalen, sequentiellen Ausführung abzuweichen. Im Einzelnen sind dies: while-Anweisungen, repeat-Anweisungen, for-Anweisungen, case-Anweisungen.
+
+
+Frage: Was sind die Kontrollstrukturen in der Programmierung?
+Antwort: Die Kontrollstrukturen in der Programmierung sind if-Anweisungen, while-Anweisungen, repeat-Anweisungen, for-Anweisungen und case-Anweisungen. Sie dienen dazu, den Kontrollfluss eines Programms von der normalen, sequentiellen Ausführung abzuweichen.
+
+Frage: Was sind die Anweisungen die den Kontrollfluss eines Programms beeinflussen?
+Antwort: Die Anweisungen die den Kontrollfluss eines Programms beeinflussen sind: if-Anweisungen, while-Anweisungen, repeat-Anweisungen, case-Anweisungen, for-Anweisungen, loop-Anweisungen, exit-Anweisungen und return-Anweisungen.
+
+
+Die If-Anweisung der Form if (<Boolescher Ausdruck>) <Statement>, bei der <Statement> genau dann ausgeführt wird, wenn <Boolescher Ausdruck> zu true auswertet; die If-else-Anweisung der Form if (<Boolescher Ausdruck>) <Statement 1> else <Statement 2>, bei der <Statement 1> genau dann ausgeführt wird, wenn <Boolescher Ausdruck> zu true auswertet, und <Statement 2> sonst; die Switch-Anweisung der Form: switch (<Ausdruck>) { case <Literal 1>: <Anweisungsliste 1> case <Literal 2>: <Anweisungsliste 2> default: <Anweisungsliste> } wobei <Ausdruck> sowie <Literal 1>, <Literal 2> usw. vom Typ char, byte, short, int (bzw. einem der dazugehörigen Wrapper-Typen), String oder von einem Aufzählungstyp sein müssen, und <Anweisungsliste 1> usw. für Folgen von Anweisungen stehen können, die jeweils mit einem break; abgeschlossen werden können (aber nicht müssen); die While-Anweisung der Form while (<Boolescher Ausdruck>) <Statement>, die im Wesentlichen der If-Anweisung entspricht, mit dem Unterschied, dass <Statement> nicht nur einmal ausgeführt wird, sondern solange, bis <Boolescher Ausdruck> zu false auswertet; die Do-Anweisung der Form do <Statement> while (<Boolescher Ausdruck>), die im Wesentlichen dem While-Statement entspricht, mit dem Unterschied, dass <Boolescher Ausdruck> immer erst nach Ausführung von <Statement> ausgewertet wird (man beachte, dass <Statement> kein Block sein muss; das abschließende Semikolon wirkt dann etwas deplaziert, so wie das vor else beim If-Statement); die For-Anweisung in der Form: for (<Initialisierungsausdruck>; <Boolescher Ausdruck>; <Veränderungsausdruck>) <Statement> Gleichwohl können in einem der drei Segmente innerhalb der Klammern auch mehrere Ausdrücke erscheinen, die dann aber durch Kommata getrennt werden. All diese syntaktischen Inkonsequenzen sind Erbe von C. die erweiterte For-Anweisung in der Form for (<Variable> : <Ausdruck>) <Statement>, die <Statement> für alle Werte, die <Ausdruck> liefert, einmal ausführt, und zwar mit dem jeweiligen Wert als Inhalt der Variable. <Ausdruck> zu diesem Zweck muss entweder vom Typ eines Arrays sein oder das Interface Iterable implementieren muss, was bedeutet, dass das Objekt, zu dem <Ausdruck> ausgewertet wird, die Methoden hasNext() und next() anbieten muss; die Break-Anweisung der Form break; bzw. break <Label>;, die innerhalb von Schleifen oder Switch-Statements dazu führt, dass diese sofort verlassen werden, wobei <Label> sich auf ein Label bezieht, das einer äußeren Schleife oder einem äußeren Switch-Statement vorangestellt wurde; die Continue-Anweisung der Form continue; bzw. continue <Label>;, die innerhalb von Schleifen dazu führt, dass der Rest des innersten bzw. des durch <Label> bezeichneten Schleifenrumpfs für den aktuellen Durchlauf nicht mehr ausgeführt wird, sondern sofort mit dem nächsten Durchlauf, falls vorhanden, fortgesetzt wird (Continue-Anweisungen außerhalb von Schleifen bzw. mit einer Nicht-Schleife als Label sind ein Syntaxfehler); die Return-Anweisung der Form return; bzw. return <Ausdruck>;, die bewirkt, dass die umschließende Methode sofort beendet wird und ggf. der Wert der Auswertung von <Ausdruck> zurückgegeben wird (return; darf auch in einem Konstruktor vorkommen); die Try-Anweisung der Form: try <Try-Block> catch (<formaler Parameter 1>) <Catch-Block 1> catch (<formaler Parameter 2>) <Catch-Block 2> finally <Finally-Block> wobei <Try-Block> für einen Block steht, von dessen Ausführung man weiß, dass sie durch einen Laufzeitfehler abgebrochen werden kann, wobei mit den Sequenzen catch (<formaler Parameter 1>) <Catch-Block 1> usw. für verschiedene Arten von Laufzeitfehlern verschiedene Behandlungsblöcke angegeben werden können, und wobei finally <Finally-Block> einen Block spezifiziert, der immer ausgeführt wird, nachdem alle anderen Blöcke ausgeführt oder abgebrochen wurden (kann auch weggelassen werden); die Throw-Anweisung der Form throw <Exception>;, die das Programm eine Exception werfen lässt; die Assert-Anweisung der Form assert <Ausdruck 1>; oder assert <Ausdruck 1> : <Ausdruck 2>;, wobei <Ausdruck 1> ein Boolescher Ausdruck und <Ausdruck 2> von beliebigem Typ außer void sein muss. Diese Anweisung bewirkt, dass das Programm mit einer entsprechenden Fehlermeldung abgebrochen wird, wenn <Ausdruck 1> zu false auswertet, wobei ggf. das Ergebnis von <Ausdruck 2> mit der Fehlermeldung ausgegeben wird. Außerdem ist die leere Anweisung, bestehend aus einem einzelnen Semikolon, eine Anweisung.
+
+
+Frage: Was bewirkt eine If-Anweisung in der Programmierung?
+Antwort: Eine If-Anweisung in der Programmierung führt genau dann das angegebene Statement aus, wenn der boole'sche Ausdruck zu true auswertet.
+
+Frage: Was ist ein boolescher Ausdruck?
+Antwort: Ein boolescher Ausdruck ist ein Ausdruck, der entweder zu true oder false auswertet. Er wird in If-Anweisungen verwendet, um die Bedingung zu testen, die entscheidet, ob das Statement ausgeführt wird oder nicht.
+
+Frage: Was bedeutet die If-else-Anweisung in der Programmierung?
+Antwort: Die If-else-Anweisung ist eine Steuerungsstruktur, die es ermöglicht, eine bestimmte Anweisung auszuführen, wenn ein boolescher Ausdruck wahr ist, und eine andere Anweisung auszuführen, wenn der boolesche Ausdruck falsch ist. Die Anweisung, die ausgeführt wird, wenn der boolesche Ausdruck wahr ist, wird als <Statement 1> bezeichnet, und die Anweisung, die ausgeführt wird, wenn der boolesche Ausdruck falsch ist, wird als <Statement 2> bezeichnet.
+
+Frage: Was ist die Switch-Anweisung in Java?
+Antwort: Die Switch-Anweisung in Java ist eine Steuerungsanweisung, die einen Ausdruck mit einem oder mehreren Literalen vergleicht und eine entsprechende Anweisungsliste ausführt. Der Ausdruck und die Literale müssen vom Typ char, byte, short, int, String oder einem Aufzählungstyp sein. Die Anweisungslisten können mit einem break abgeschlossen werden, müssen aber nicht. Wenn keines der Literale mit dem Ausdruck übereinstimmt, wird die default-Anweisungsliste ausgeführt.
+
+Frage: Was macht eine While-Anweisung?
+Antwort: Die While-Anweisung wiederholt eine Anweisung, solange eine boolesche Bedingung wahr ist.
+
+Frage: Was ist die Do-Anweisung in der Programmierung?
+Antwort: Die Do-Anweisung ist eine Steuerungsstruktur, die eine Anweisung wiederholt ausführt, solange eine bestimmte Bedingung wahr ist. Die Do-Anweisung in der Form do <Statement> while (<Boolescher Ausdruck>) führt die Anweisung <Statement> aus und wertet dann den booleschen Ausdruck aus. Wenn der boolesche Ausdruck wahr ist, wird die Anweisung erneut ausgeführt. Diese Form unterscheidet sich vom While-Statement dadurch, dass der boolesche Ausdruck erst nach Ausführung der Anweisung ausgewertet wird.
+
+Frage: Was ist der Unterschied zwischen der Do-Anweisung und dem While-Statement?
+Antwort: Der Unterschied liegt darin, dass bei der Do-Anweisung der boolesche Ausdruck erst nach Ausführung des Statements ausgewertet wird, während beim While-Statement der boolesche Ausdruck vor der Ausführung des Statements ausgewertet wird.
+
+Frage: Was ist die For-Anweisung in der Programmierung?
+Antwort: Die For-Anweisung ist eine Kontrollstruktur in der Programmierung, die eine Schleife durchläuft, wobei sie drei Segmente innerhalb der Klammern enthält: Initialisierungsausdruck, booleschen Ausdruck und Veränderungsausdruck. Diese Segmente können auch mehrere Ausdrücke enthalten, die durch Kommata getrennt werden. Das <Statement> wird so lange wiederholt, bis der boolesche Ausdruck nicht mehr wahr ist. Diese Schleifenkonstruktion ist ein Erbe von C.
+
+Frage: Was ist eine erweiterte For-Anweisung?
+Antwort: Die erweiterte For-Anweisung in der Form for (<Variable> : <Ausdruck>) <Statement> führt <Statement> für alle Werte, die <Ausdruck> liefert, einmal aus, und zwar mit dem jeweiligen Wert als Inhalt der Variable. <Ausdruck> muss entweder vom Typ eines Arrays sein oder das Interface Iterable implementieren, was bedeutet, dass das Objekt, zu dem <Ausdruck> ausgewertet wird, die Methoden hasNext() und next() anbieten muss.
+
+Frage: Was bewirkt die Break-Anweisung in Programmiersprachen?
+Antwort: Die Break-Anweisung führt dazu, dass eine Schleife oder ein Switch-Statement sofort verlassen wird. Sie kann mit einem Label versehen werden, auf das sie sich bezieht, um eine äußere Schleife oder ein äußeres Switch-Statement zu verlassen.
+
+Frage: Was bewirkt die Continue-Anweisung in Schleifen?
+Antwort: Die Continue-Anweisung führt dazu, dass der Rest des innersten bzw. des durch <Label> bezeichneten Schleifenrumpfs für den aktuellen Durchlauf nicht mehr ausgeführt wird, sondern sofort mit dem nächsten Durchlauf, falls vorhanden, fortgesetzt wird.
+
+Frage: Was bewirkt die Return-Anweisung in einer Methode?
+Antwort: Die Return-Anweisung bewirkt, dass die umschließende Methode sofort beendet wird und ggf. der Wert der Auswertung von <Ausdruck> zurückgegeben wird.
+
+die For-Anweisung in der Form: for (<Initialisierungsausdruck>; <Boolescher Ausdruck>; <Veränderungsausdruck>) <Statement> Gleichwohl können in einem der drei Segmente innerhalb der Klammern auch mehrere Ausdrücke erscheinen, die dann aber durch Kommata getrennt werden. All diese syntaktischen Inkonsequenzen sind Erbe von C. die erweiterte For-Anweisung in der Form for (<Variable> : <Ausdruck>) <Statement>, die <Statement> für alle Werte, die <Ausdruck> liefert, einmal ausführt, und zwar mit dem jeweiligen Wert als Inhalt der Variable. <Ausdruck> zu diesem Zweck muss entweder vom Typ eines Arrays sein oder das Interface Iterable implementieren muss, was bedeutet, dass das Objekt, zu dem <Ausdruck> ausgewertet wird, die Methoden hasNext() und next() anbieten muss; die Break-Anweisung der Form break; bzw. break <Label>;, die innerhalb von Schleifen oder Switch-Statements dazu führt, dass diese sofort verlassen werden, wobei <Label> sich auf ein Label bezieht, das einer äußeren Schleife oder einem äußeren Switch-Statement vorangestellt wurde; die Continue-Anweisung der Form continue; bzw. continue <Label>;, die innerhalb von Schleifen dazu führt, dass der Rest des innersten bzw. des durch <Label> bezeichneten Schleifenrumpfs für den aktuellen Durchlauf nicht mehr ausgeführt wird, sondern sofort mit dem nächsten Durchlauf, falls vorhanden, fortgesetzt wird (Continue-Anweisungen außerhalb von Schleifen bzw. mit einer Nicht-Schleife als Label sind ein Syntaxfehler); die Return-Anweisung der Form return; bzw. return <Ausdruck>;, die bewirkt, dass die umschließende Methode sofort beendet wird und ggf. der Wert der Auswertung von <Ausdruck> zurückgegeben wird (return; darf auch in einem Konstruktor vorkommen);
+die Synchronized-Anweisung der Form synchronized (<Ausdruck>) <Block>, die dafür sorgt, dass der durch <Block> bezeichnete Anweisungsblock nur ausgeführt wird, wenn das mit dem Objekt, zu dem <Ausdruck> ausgewertet wird, verbundene Lock dies zulässt (siehe Abschnitt 47.3);
+
+Frage: Was bewirkt die Synchronized-Anweisung in Java?
+Antwort: Die Synchronized-Anweisung in Java sorgt dafür, dass der durch den Block bezeichnete Anweisungsblock nur ausgeführt wird, wenn das mit dem Objekt, zu dem der Ausdruck ausgewertet wird, verbundene Lock dies zulässt.
+
+Frage: Was ist eine Try-Anweisung?
+Antwort: Eine Try-Anweisung ist eine Programmstruktur, die versucht, einen bestimmten Block auszuführen, während sie verschiedene Arten von Laufzeitfehlern behandeln kann. Sie besteht aus einem Try-Block, einem oder mehreren Catch-Blöcken und einem optionalen Finally-Block. Der Try-Block enthält den Code, der versucht wird auszuführen. Die Catch-Blöcke enthalten Code, der ausgeführt wird, wenn ein Laufzeitfehler auftritt. Der Finally-Block enthält Code, der immer ausgeführt wird, unabhängig davon, ob ein Fehler aufgetreten ist oder nicht.
+
+Frage: Was bewirkt die Throw-Anweisung in einem Programm?
+Antwort: Die Throw-Anweisung lässt das Programm eine Exception werfen, was zu einer Ausnahmesituation führt.
+
+Frage: Was bewirkt die Assert-Anweisung?
+Antwort: Die Assert-Anweisung bewirkt, dass das Programm mit einer entsprechenden Fehlermeldung abgebrochen wird, wenn der angegebene Boolesche Ausdruck falsch ist. Sie kann auch verwendet werden, um zusätzliche Informationen auszugeben, wenn der Ausdruck wahr ist.
+
+
+Bemerkungen: Das Weglassen von break; am Ende einer Liste von Anweisungen in einem Case-Zweig der Switch-Anweisung wird als "Fall durch" bezeichnet und bewirkt, dass mit den Anweisungen des nächsten Case-Zweigs fortgefahren wird. Dies ermöglicht das Zusammenführen mehrerer Fälle, ist jedoch eines der fehlerträchtigsten Konstrukte C-artiger Sprachen. Die Assert-Anweisung kann Seiteneffekte haben, wie das Ändern von Werten von Variablen aus umgebenden Blöcken oder von Instanzvariablen. Wenn der Ablauf des Programms von diesen Werten abhängt, macht es einen Unterschied, ob ein Programm mit oder ohne Prüfung der Assertions ausgeführt wird. Das ist ein starkes Stück.
+
+Frage: Was ist die Assert-Anweisung und welche Wirkung kann sie haben?
+Antwort: Die Assert-Anweisung ist eine Programmieranweisung, die dazu dient, bestimmte Bedingungen während der Ausführung eines Programms zu überprüfen. Sie kann Seiteneffekte haben, wie das Ändern von Werten von Variablen aus umgebenden Blöcken oder von Instanzvariablen. Wenn der Ablauf des Programms von diesen Werten abhängt, macht es einen Unterschied, ob ein Programm mit oder ohne Prüfung der Assertions ausgeführt wird.
+
+Frage: Was sind die möglichen Seiteneffekte der Assert-Anweisung?
+Antwort: Die Assert-Anweisung kann Seiteneffekte haben, wie das Ändern von Werten von Variablen aus umgebenden Blöcken oder von Instanzvariablen.
+
+
+Assert-Anweisungen sind ein erster zarter Versuch, in Java auch noch andere Invarianten als die Typinvarianten unterzubringen. Dabei findet die Überprüfung dieser mittels assert eingebrachten Invarianten im Gegensatz zum Großteil der Typprüfung erst zur Laufzeit statt, indem die entsprechenden Statements ausgeführt werden. Dabei beziehen sich die Bedingungen, die die Invarianten formulieren, häufig auf Methoden des Programms, für die die Invarianten angegeben werden sollen. Da diese Methoden aber auch den Zustand des Programms ändern können, kann man einer Zusicherung mit assert nicht ansehen, ob sie seiteneffektfrei ist. Fortschrittlichere Verfahren zur Zusicherung von Invarianten werden nicht als Anweisungen formuliert, sondern als Quellcodeannotationen und stellen zudem sicher, dass alle Zugriffe auf Programmelemente, die zur Laufzeit notwendig sind, den Zustand des Programms nicht verändern.
+
+
+Frage: Was sind Assert-Anweisungen in Java?
+Antwort: Assert-Anweisungen in Java sind ein Verfahren, um Invarianten in einem Programm zu überprüfen. Dabei werden die Bedingungen, die die Invarianten formulieren, zur Laufzeit überprüft, indem die entsprechenden Statements ausgeführt werden. Fortschrittlichere Verfahren zur Zusicherung von Invarianten werden jedoch als Quellcodeannotationen formuliert und stellen sicher, dass alle Zugriffe auf Programmelemente den Zustand des Programms nicht verändern.
+
+Frage: Wozu werden Assert-Anweisungen in Java verwendet?
+Antwort: Assert-Anweisungen in Java werden verwendet, um sicherzustellen, dass bestimmte Bedingungen während der Laufzeit erfüllt sind. Dabei werden die Bedingungen in Form von Statements formuliert, die zur Laufzeit ausgeführt werden. Assert-Anweisungen beziehen sich häufig auf Methoden des Programms, für die die Invarianten angegeben werden sollen. Allerdings können diese Methoden den Zustand des Programms ändern, weshalb man einer Zusicherung mit assert nicht ansehen kann, ob sie seiteneffektfrei ist.
+
+

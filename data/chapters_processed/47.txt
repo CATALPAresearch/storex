@@ -1,0 +1,10 @@
+47 Spezielle Klassen
+
+Grundsätzlich sollte eine Klassenbibliothek mit den Mitteln der Sprache programmiert werden, aber von der Sprachdefinition unabhängig und somit austauschbar sein. Dies gilt natürlich genauso für die Prozeduren in imperativen Sprachen: Auch diese sollten nicht Teil der Sprache sein, sondern lediglich darin geschrieben werden. Nun hat man sich aber schon bei den edelsten imperativen Sprachen nicht daran gehalten (in PASCAL beispielsweise sind read und write Bestandteil der Sprache, und der Compiler weiß, dass ihnen — als einzige Prozeduren — beliebig viele Parameter übergeben werden dürfen, wobei jeder einzelne Parameter in seinem Typ nicht festgelegt ist); bei den objektorientierten Sprachen tut man es erst recht nicht. So sind in Java einige Klassen von der Sprache fest vorgegeben und können nicht beliebig ersetzt werden.
+
+
+Frage: Warum sollte eine Klassenbibliothek mit den Mitteln der Sprache programmiert werden, aber von der Sprachdefinition unabhängig sein?
+Antwort: Das hat den Vorteil, dass die Klassenbibliothek austauschbar ist und somit die Sprache flexibler einsetzbar wird.
+
+Frage: Warum wird in objektorientierten Sprachen oft nicht daran gehalten, Klassenbibliotheken von der Sprachdefinition unabhängig zu programmieren?
+Antwort: Das liegt daran, dass die Sprache selbst oft bestimmte Klassen vorgibt, die nicht beliebig ersetzt werden können.

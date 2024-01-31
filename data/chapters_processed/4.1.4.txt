@@ -1,0 +1,19 @@
+4.1.4 Reihenfolge der Auswertung von geschachtelten Ausdrücken
+
+Da Ausdrücke andere Ausdrücke enthalten können, stellt sich die Frage nach der Reihenfolge der Auswertung von geschachtelten Ausdrücken. Diese Reihenfolge wird, wie in anderen Programmiersprachen, implizit durch Präzedenzen und explizit durch Klammern festgelegt.
+Betrachten wir zunächst die doppelte Zuweisung in Zeile 38 oben. Anfangs mag es nicht sofort klar sein, welche der beiden Zuweisungen zuerst ausgewertet (ausgeführt) werden soll: y := x oder x := 1. Wenn man jedoch berücksichtigt, dass y := x := 1 ein geschachtelter Ausdruck ist, und jeder (Teil-)Ausdruck für ein Objekt steht, ergibt sich, dass der zweite Ausdruck zuerst ausgewertet und durch das Ergebnis, nämlich "1", ersetzt werden muss. Andernfalls würde die "1" dem Ergebnis von y := x zugewiesen, was aber gemäß Abschnitt 4.1.3 ein Objekt und keine Variable ist. Zeile 38 weist also zuerst x und dann y das Objekt "1" zu, und die Auswertung erfolgt von rechts nach links.
+Dies ist jedoch ein Sonderfall. Im Allgemeinen werden in SMALLTALK alle Ausdrücke von links nach rechts ausgewertet. Dabei haben unäre Ausdrücke Vorrang vor binären Ausdrücken, und binäre Ausdrücke wiederum haben Vorrang vor Schlüsselwortnachrichten. Bei gleichrangigen Ausdrücken erfolgt die Auswertung von links nach rechts.
+Um die Präzedenz zu ändern, können Sie einfach Klammern verwenden. SMALLTALK unterstützt keine individuellen Operatorpräzedenzen wie beispielsweise "Punktrechnung vor Strichrechnung".
+Bei mehrstelligen Nachrichten mit Schlüsselwörtern werden alle Schlüsselwörter eines Ausdrucks als zu einer Nachricht gehörig interpretiert, es sei denn, es werden Klammern gesetzt.
+
+Frage: Wie ist die Reihenfolge der Auswertung von geschachtelten Ausdrücken in SMALLTALK?
+Antwort: Die Reihenfolge der Auswertung von geschachtelten Ausdrücken in SMALLTALK wird durch Präzedenzen und Klammern festgelegt.
+
+Frage: In welcher Reihenfolge werden Ausdrücke ausgewertet?
+Antwort: In SMALLTALK werden Ausdrücke normalerweise von links nach rechts ausgewertet.
+
+Frage: Welche Ausdrücke haben in SMALLTALK Vorrang?
+Antwort: In SMALLTALK haben unäre Ausdrücke Vorrang vor binären Ausdrücken, und binäre Ausdrücke haben Vorrang vor Schlüsselwortnachrichten.
+
+Frage: Wie kann die Reihenfolge der Auswertung in SMALLTALK verändert werden?
+Antwort: Um die Reihenfolge der Auswertung in SMALLTALK zu ändern, können Klammern verwendet werden, um sicherzustellen, dass bestimmte Teile eines Ausdrucks zuerst ausgewertet werden.

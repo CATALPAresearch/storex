@@ -1,0 +1,62 @@
+9.2 Spezialisierung
+
+Ähnlich wie bei der Klassifikation kann man das Prinzip der Generalisierung umkehren. Man spricht dann von der Spezialisierung. Während die Generalisierung Eigenschaften weglässt oder generalisiert (Abstraktion), fügt die Spezialisierung Eigenschaften hinzu oder spezialisiert bereits vorhandene. Man kann also von jeder Klasse sagen, dass sie eine Spezialisierung ihrer Generalisierungen ist (sofern sie welche hat).
+
+
+Frage: Was ist Spezialisierung?
+Antwort: Spezialisierung ist das Prinzip, bei dem Eigenschaften hinzugefügt oder bereits vorhandene spezialisiert werden, im Gegensatz zur Generalisierung, bei der Eigenschaften weggelassen oder generalisiert werden. Jede Klasse ist eine Spezialisierung ihrer Generalisierungen, sofern sie welche hat.
+
+Frage: Was ist Spezialisierung in der objektorientierten Programmierung?
+Antwort: Spezialisierung ist ein Prinzip in der objektorientierten Programmierung, bei dem Eigenschaften hinzugefügt oder bereits vorhandene spezialisiert werden, um eine Unterklasse zu erstellen, die eine spezifischere Version der Oberklasse darstellt. Jede Klasse ist eine Spezialisierung ihrer Generalisierungen (sofern sie welche hat).
+
+
+Dass eine Generalisierung bereits über Spezialisierungen verfügt, hindert eine Klasse nicht daran, neue hinzuzufügen. So ist es beispielsweise im obigen Beispiel von "Zweibeiner" denkbar, dass man im Nachhinein noch "Menschenaffe" als Spezialisierung ergänzt. Als Unterscheidungsmerkmal könnte z. B. eine Methode "klettern" dienen, die Mensch und Vogel fehlt. Sie zu ergänzen stellt überhaupt kein Problem dar - ja, es ist sogar eine der größten Errungenschaften der objektorientierten Programmierung, dass solche Programmiererweiterungen modular, also ohne andere Teile des Programms zu beeinflussen, immer möglich sind. Mehr dazu in Kapitel 26 in Kurseinheit 3.
+
+
+Frage: Kann eine Klasse neue Spezialisierungen hinzufügen, wenn sie bereits Generalisierungen besitzt?
+Antwort: Ja, eine Klasse kann neue Spezialisierungen hinzufügen, auch wenn sie bereits Generalisierungen besitzt. Das ist eine der größten Errungenschaften der objektorientierten Programmierung, dass solche Programmiererweiterungen modular, also ohne andere Teile des Programms zu beeinflussen, immer möglich sind.
+
+Frage: Kann eine Klasse neue Spezialisierungen hinzufügen, wenn die Generalisierung bereits über Spezialisierungen verfügt?
+Antwort: Ja, eine Klasse kann neue Spezialisierungen hinzufügen, wenn die Generalisierung bereits über Spezialisierungen verfügt. Das ist eine der größten Errungenschaften der objektorientierten Programmierung, dass solche Programmiererweiterungen modular, also ohne andere Teile des Programms zu beeinflussen, immer möglich sind.
+
+Frage: Wie wirkt sich die Generalisierung auf Spezialisierungen aus?
+Antwort: Die Generalisierung hindert eine Klasse nicht daran, neue Spezialisierungen hinzuzufügen. Das bedeutet, dass eine Klasse, die bereits eine Generalisierung hat, immer noch neue Spezialisierungen hinzufügen kann, ohne die bestehenden Teile des Programms zu beeinflussen. Diese Fähigkeit, Programmiererweiterungen modular hinzuzufügen, ist eine der größten Errungenschaften der objektorientierten Programmierung.
+
+
+Leider ist es in der Programmierpraxis nicht immer ganz so einfach. Oftmals findet man Klassen (bzw. Instanzen), die ungefähr das tun, was man möchte, und denen man nur noch ein wenig hinzufügen möchte. Man möchte dann von einer Klasse spezialisieren, die selbst keine Generalisierung im oben genannten Sinne ist.
+
+
+Frage: Was bedeutet es, wenn man von einer Klasse spezialisiert?
+Antwort: Wenn man von einer Klasse spezialisiert, erweitert man diese Klasse um neue Eigenschaften und Verhaltensweisen. Die spezialisierte Klasse ist eine Unterklasse der ursprünglichen Klasse und erbt alle Eigenschaften und Verhaltensweisen von dieser.
+
+Frage: Was bedeutet es, wenn man von einer Klasse spezialisieren möchte, die selbst keine Generalisierung ist?
+Antwort: In diesem Fall spricht man von einer Spezialisierung durch Verengung (engl. narrowing). Dabei wird eine bestehende Klasse so spezialisiert, dass sie weniger Fähigkeiten besitzt als die ursprüngliche Klasse. Diese Art der Spezialisierung ist in der objektorientierten Programmierung eher unüblich, kann aber in manchen Fällen sinnvoll sein.
+
+Frage: Was ist Spezialisierung in der Programmierung?
+Antwort: Spezialisierung in der Programmierung ist der Prozess der Erstellung einer neuen Klasse, die auf einer bestehenden Klasse basiert und diese erweitert oder verändert, um spezifischere Funktionalitäten bereitzustellen. Die neue Klasse wird als spezialisiertere Version der ursprünglichen Klasse angesehen, da sie die gleichen allgemeinen Merkmale und Verhalten besitzt, aber zusätzliche Merkmale und Verhalten hinzufügt, um ihre Funktionalität zu erweitern.
+
+
+Ähnlich wie bei der Generalisierung ist es bei der Spezialisierung auch möglich, dies ohne das Hinzufügen von Eigenschaften zu erreichen, nämlich durch das Beschränken von Eigenschaften. So kann z. B. bei der Spezialisierung von "Säugetier" zu "Zweibeiner" der Wertebereich der Instanzvariable "anzahlBeine" von {2, 4} (also entweder zwei oder vier) auf {2} (also nur noch zwei) eingeschränkt werden. Die sprachlichen Möglichkeiten, dies auf Klassendefinitionsebene auszudrücken, sind allerdings in SMALLTALK (wie bereits im Zusammenhang mit der Generalisierung erwähnt) nicht gegeben; diese kommen erst mit der Typisierung von Variablen (Kapitel 18 in Kurseinheit 3). Die Beschränkung des Wertebereichs durch Spezialisierung ist jedoch in jedem Fall von der Instanziierung zu unterscheiden, bei der (gegebenenfalls durch Initialisierung) einer Instanzvariable eines Objekts ein Element aus dem Wertebereich (wie z. B. 2) zugewiesen wird. Dass im Fall von "Zweibeiner" dafür nur noch ein Element als Wert in Frage kommt, spielt dabei keine Rolle.
+
+
+Frage: Was ist der Unterschied zwischen Spezialisierung und Instanziierung?
+Antwort: Spezialisierung und Instanziierung sind zwei verschiedene Vorgänge. Spezialisierung bedeutet, den Wertebereich einer Instanzvariable einzuschränken, während Instanziierung bedeutet, einer Instanzvariable eines Objekts ein Element aus dem Wertebereich zuzuweisen. Im Fall von "Zweibeiner" kann durch Spezialisierung der Wertebereich der Instanzvariable "anzahlBeine" auf {2} eingeschränkt werden, während durch Instanziierung einer Instanzvariable eines Objekts der Wert 2 zugewiesen wird.
+
+Frage: Was ist Spezialisierung in der objektorientierten Programmierung?
+Antwort: Spezialisierung in der objektorientierten Programmierung bedeutet, eine Klasse durch Einschränkung der Eigenschaften zu verfeinern. Dies kann erreicht werden, indem der Wertebereich einer Instanzvariable eingeschränkt wird. Zum Beispiel kann die Klasse "Säugetier" durch Spezialisierung zu "Zweibeiner" werden, indem der Wertebereich der Instanzvariable "anzahlBeine" von {2, 4} auf {2} eingeschränkt wird.
+
+Frage: Was ist Spezialisierung und wie kann sie erreicht werden?
+Antwort: Spezialisierung ist ein Prozess, bei dem eine allgemeinere Klasse in eine speziellere Klasse aufgeteilt wird, indem der Wertebereich einer Instanzvariable eingeschränkt wird. In Smalltalk kann dies nicht direkt auf Klassendefinitionsebene ausgedrückt werden, sondern muss durch die Instanziierung und Initialisierung der Instanzvariable erfolgen.
+
+
+Vollkommen unvereinbar mit der Spezialisierung ist übrigens das Entfernen von Instanzvariablen oder Methoden. Dies ergibt sich schon daraus, dass die Umkehrung der Spezialisierung, die Generalisierung, dann nicht aus dem bloßen Weglassen entstehen könnte. Die Richtung von Spezialisierung und Generalisierung würde zudem, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte, beliebig werden.
+
+
+Frage: Kann man Instanzvariablen oder Methoden entfernen, wenn man sie nicht mehr benötigt?
+Antwort: Nein, das ist nicht möglich. Das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+
+Frage: Was ist die Folge von Entfernen von Instanzvariablen oder Methoden?
+Antwort: Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+
+Frage: Warum ist das Entfernen von Instanzvariablen oder Methoden unvereinbar mit der Spezialisierung?
+Antwort: Das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung, weil die Umkehrung der Spezialisierung, die Generalisierung, dann nicht aus dem bloßen Weglassen entstehen könnte. Zudem würde die Richtung von Spezialisierung und Generalisierung beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.

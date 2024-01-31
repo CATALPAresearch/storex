@@ -1,0 +1,14 @@
+7 Klassen
+
+Sprachphilosophisch gesehen ist eine Klasse ein Allgemeinbegriff wie etwa "Person", "Haus" oder "Dokument". Diese Allgemeinbegriffe stehen in der Regel für eine ganze Menge von Objekten, also etwa alle Personen, Häuser oder Dokumente. Gleichwohl ist die Klasse selbst immer ein Singular — sie ist nämlich selbst ein Objekt, das unter den Allgemeinbegriff "Klasse" fällt. Diese Sprachregelung wird auch in der objektorientierten Programmierung eingehalten (obwohl sie natürlich nicht, da Computer unsere Sprache nicht kennen, überprüft werden kann und deswegen Abweichungen immer wieder vorkommen): Alle Klassennamen sind Singular.
+
+Frage: Was sind Klassen sprachphilosophisch?
+Antwort: Sprachphilosophisch betrachtet ist eine Klasse ein Allgemeinbegriff. Diese Allgemeinbegriffe repräsentieren in der Regel eine Menge von Objekten,. Dennoch ist die Klasse selbst immer im Singular, da sie selbst ein Objekt ist, das unter den Allgemeinbegriff "Klasse" fällt.
+
+Jede Klasse ist mit bestimmten Eigenschaften verbunden, die charakteristisch für sie sind. Diese Eigenschaften ordnen wir jedoch nicht der Klasse selbst zu, sondern den Objekten, die dieser Klasse angehören. Zum Beispiel sind mit dem Allgemeinbegriff "Person" Eigenschaften wie Name, Geburtstag und möglicherweise weitere Attribute verknüpft, aber auch bestimmtes, für Personen charakteristisches Verhalten. Dasselbe Prinzip gilt für "Haus", "Dokument" und alle anderen Allgemeinbegriffe. Existenz und Adäquatheit von Allgemeinbegriffen sind Themen großer philosophischer Diskurse wie etwa dem sog. Universalienstreit und stehen hier nicht zur Debatte. Wichtig ist, dass mit ihnen stets Sätze wie „<ein Individuum> ist ein <ein Allgemeinbegriff>“ gebildet werden können, also etwa „Peter ist eine Person“. Mit solchen Sätzen verbindet sich nämlich die Übertragung aller Eigenschaften, die mit einem Allgemeinbegriff verbunden sind (s. o.), auf das Individuum. So hat Peter, wenn er eine Person ist und "Person" wie oben definiert wurde, eben auch einen Namen und einen Geburtstag.
+
+Frage: Was sind die Eigenschaften einer Klasse?
+Antwort: Die Eigenschaften einer Klasse ordnen wir den Objekten zu, die dieser Klasse angehören. Zum Beispiel sind mit dem Allgemeinbegriff "Person" Eigenschaften wie Name, Geburtstag und möglicherweise weitere Attribute verknüpft, aber auch bestimmtes Verhalten, das für Personen charakteristisch ist. Diese Eigenschaften gehören den individuellen Objekten an, die Teil der Klasse "Person" sind.
+
+Frage: Was ermöglicht die Sprachregelung in der objektorientierten Programmierung bezüglich der Klassennamen?
+Antwort: Die Sprachregelung in der objektorientierten Programmierung besagt, dass alle Klassennamen im Singular sind. Dies bedeutet, dass jeder Klassenname einen Singularausdruck verwendet, um die Klasse zu benennen, selbst wenn die Klasse eine Menge von Objekten repräsentiert.

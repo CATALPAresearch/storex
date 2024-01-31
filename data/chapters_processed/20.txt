@@ -1,0 +1,76 @@
+20 Typdefinitionen und deren Verwendung
+
+Damit durch ein Typsystem Fehler ausgeschlossen werden können, die auf der Voraussetzung von Eigenschaften von Objekten beruhen, die diese gar nicht haben (beispielsweise der Verwendung von Nicht-Zahlen in arithmetischen Ausdrücken), muss bekannt sein, welche Eigenschaften einem Typ und damit seinen Elementen zugeordnet sind. Im Fall von SMALLTALK sind die Eigenschaften, die mit einem Objekt verbunden werden können, schnell gefasst: Es handelt sich einfach um die Menge der Methoden, die es versteht, also um sein Protokoll. Ein solches Protokoll definiert einen Typ: Er umfasst die Menge der Objekte, die über das Protokoll verfügen.
+
+
+Frage: Wie wird ein Typ in SMALLTALK definiert?
+Antwort: In SMALLTALK wird ein Typ durch das Protokoll definiert, das heißt, durch die Menge der Methoden, die ein Objekt versteht.
+
+Frage: Wozu dient ein Typsystem in der Programmierung?
+Antwort: Ein Typsystem dient dazu, Fehler auszuschließen, die auf der Voraussetzung von Eigenschaften von Objekten beruhen, die diese gar nicht haben. Zum Beispiel der Verwendung von Nicht-Zahlen in arithmetischen Ausdrücken.
+
+Frage: Was ist ein Protokoll in Smalltalk?
+Antwort: In Smalltalk ist ein Protokoll die Menge der Methoden, die ein Objekt versteht. Es definiert einen Typ, der die Menge der Objekte umfasst, die über das Protokoll verfügen.
+
+
+Wenn man nun eine Variable mit einem solchen Protokoll als Typ typisiert und das Programm typkorrekt ist, dann ist garantiert, dass jede Methode, die im Protokoll enthalten ist und die auf der Variable aufgerufen wird, auch für den Inhalt der Variable, das referenzierte Objekt, definiert ist. Typfehler, also Fehler der Sorte „does not understand“, treten dann nicht mehr auf.
+
+
+Frage: Wozu dient die Typisierung einer Variablen mit einem Protokoll?
+Antwort: Die Typisierung einer Variablen mit einem Protokoll dient dazu, Typfehler zu vermeiden. Wenn das Programm typkorrekt ist, ist garantiert, dass jede Methode, die im Protokoll enthalten ist und auf der Variablen aufgerufen wird, auch für den Inhalt der Variablen definiert ist.
+
+Frage: Was wird verhindert, wenn man eine Variable mit einem Protokoll als Typ typisiert und das Programm typkorrekt ist?
+Antwort: Wenn man eine Variable mit einem Protokoll als Typ typisiert und das Programm typkorrekt ist, wird verhindert, dass Typfehler auftreten, also Fehler der Sorte „does not understand“, die auftreten, wenn eine Methode aufgerufen wird, die für den Inhalt der Variable, das referenzierte Objekt, nicht definiert ist.
+
+
+Nun kommen in Protokollen aber selbst Variablen vor, nämlich die formalen Parameter der Methoden, die das Protokoll ausmachen. Außerdem ist eine Methode ein Programmelement, das für ein Objekt steht (mit der Ausführung ein Objekt liefert) und deswegen selbst, genau wie Variablen, typisiert werden sollte. Protokolle definieren also nicht nur Typen, sie verwenden auch selbst welche, nämlich indem sie die Typen der Ein- und Ausgabeobjekte spezifizieren. Ein einfaches Beispiel für eine Typdefinition, die selbst Typen verwendet, ist die folgende:
+
+
+Frage: Was sind formale Parameter von Methoden in Protokollen?
+Antwort: Formale Parameter von Methoden sind Variablen, die das Protokoll ausmachen.
+
+Frage: Was sind Protokolle und welche Rolle spielen Variablen in ihnen?
+Antwort: Protokolle sind eine Art von Typdefinition, die die Methoden und Eigenschaften beschreiben, die ein Objekt haben muss, um eine bestimmte Rolle zu erfüllen. Variablen spielen in Protokollen eine Rolle, indem sie als formale Parameter in Methoden auftauchen und als Typen für die Ein- und Ausgabeobjekte spezifiziert werden.
+
+
+Wie schon bei einer temporären Variable stehen die Typannotationen von formalen Parametern in STRONGTALK in spitzen Klammern dahinter. Diese Schreibweise sollten Sie nicht allzu sehr verinnerlichen, da andere Programmiersprachen die spitzen Klammern zur Kennzeichnung von Typvariablen (in Kapitel 29 behandelt) verwenden. Der Rückgabetyp einer Methode wird durch ein vorangestelltes Dach (^) gekennzeichnet und folgt auf den letzten Parameter. Da es in SMALLTALK keine Methoden gibt, die nichts zurückgeben (eine Methode ohne explizite Rückgabeanweisung gibt in SMALLTALK ja immer das Empfängerobjekt zurück), muss auch immer ein Rückgabetyp angegeben werden. Ist dies der Typ selbst, kann der Name Self verwendet werden. Es handelt sich dabei gewissermaßen um eine Pseudo-Typvariable (entsprechend der Pseudovariable self, deren Typ sie darstellt).
+
+
+Frage: Wie werden der Rückgabetyp und die Typannotationen von formalen Parametern in STRONGTALK gekennzeichnet?
+Antwort: Die Typannotationen von formalen Parametern in STRONGTALK stehen in spitzen Klammern dahinter und der Rückgabetyp einer Methode wird durch ein vorangestelltes Dach (^) gekennzeichnet.
+
+Frage: Wie werden Rückgabetypen in STRONGTALK angegeben?
+Antwort: Der Rückgabetyp einer Methode wird durch ein vorangestelltes Dach (^) gekennzeichnet und folgt auf den letzten Parameter. Da es in SMALLTALK keine Methoden gibt, die nichts zurückgeben, muss auch immer ein Rückgabetyp angegeben werden. Ist dies der Typ selbst, kann der Name Self verwendet werden.
+
+Frage: Was repräsentiert der Rückgabetyp Self in Smalltalk?
+Antwort: Der Rückgabetyp Self in Smalltalk repräsentiert den Typ des Empfängerobjekts.
+
+
+Falls Sie sich wundern, dass obige Zeilen kein Schlüsselwort zur Einleitung der Typdefinition beinhalten: STRONGTALK ist, genau wie SMALLTALK, ein interaktives, browsergestütztes System, in dem Typen in Formulare eingetragen und nicht in Textdateien spezifiziert werden. Gleichwohl fällt auf, dass innerhalb der Typdefinition in Typen als Teile von den spitzen Klammern (also da, wo Typen stehen sollen) keine Typdefinition auftauchen, sondern Namen. Und tatsächlich wird in STRONGTALK jeder Typ benannt (in seiner Typdefinition mit einem Namen versehen). Im folgenden werden Typen, ähnlich wie Klassen, in tabellarischer Form notiert.
+
+
+Frage: Wie werden Typen in STRONGTALK definiert?
+Antwort: In STRONGTALK werden Typen in tabellarischer Form definiert und mit einem Namen versehen. Die Typdefinition enthält keine Typdefinitionen, sondern Namen.
+
+
+In STRONGTALK ist die Protokollbildung der einzige sogenannte Typkonstruktor, d. h., das einzige Sprachkonstrukt, mit dem man neue Typen definieren kann. Andere Programmiersprachen sehen ein reichhaltigeres Angebot vor: In PASCAL beispielsweise gibt es die Typkonstruktoren record, array of, set of, file of, Zeiger auf (^) sowie Aufzählungen (enumerations) und Teilbereiche (ranges). In C++ gibt es u. a. class und struct (entsprechend record in PASCAL), Java, C-Sharp und EIFFEL bieten auch jeweils verschiedene Typkonstruktoren an. Für eine puristische Sprache wie SMALLTALK bzw. STRONGTALK reicht jedoch einer vollkommen aus.
+
+
+Frage: Was ist die Protokollbildung in STRONGTALK?
+Antwort: In STRONGTALK ist daieProtokollbildung der einzige Typkonstruktor, mit dem man neue Typen definieren kann.
+
+Frage: Was ist der einzige Typkonstruktor in STRONGTALK?
+Antwort: In STRONGTALK ist die Protokollbildung der einzige Typkonstruktor.
+
+
+Wie man leicht einsieht, gibt es in STRONGTALK keine primitiven Typen, also keine Typen, deren Definitionen nicht selbst auf einen oder mehrere Typen zurückgeführt werden müssten. Daran rührt auch die Optionalität der Annotierung nichts: Selbst wenn man eine Typannotation weglässt (was immer erlaubt ist), hat die entsprechende Variable bzw. der Rückgabewert der Methode einen Typ, nur wird er an dieser Stelle nicht angegeben. Das wirft natürlich die Frage auf, wie man Typen unter zwangsläufiger Selbstbezüglichkeit überhaupt eine Bedeutung beimessen kann.
+
+
+Frage: Was gibt es in STRONGTALK nicht?
+Antwort: In STRONGTALK gibt es keine primitiven Typen, also keine Typen, deren Definitionen nicht selbst auf einen oder mehrere Typen zurückgeführt werden müssten.
+
+Frage: Gibt es in STRONGTALK primitiven Typen?
+Antwort: Nein, in STRONGTALK gibt es keine primitiven Typen, also keine Typen, deren Definitionen nicht selbst auf einen oder mehrere Typen zurückgeführt werden müssten.
+
+Frage: Was ist der Unterschied zwischen STRONGTALK und anderen Programmiersprachen hinsichtlich primitiver Typen?
+Antwort: Im Gegensatz zu STRONGTALK haben andere Programmiersprachen oft primitiver Typen, deren Definitionen nicht auf andere Typen zurückgeführt werden müssen. In STRONGTALK gibt es keine primitiven Typen, alle Typen sind selbstbezüglich.

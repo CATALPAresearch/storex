@@ -1,0 +1,9 @@
+4 Verhalten
+
+Wenn Objekte ihren Zustand kapseln, ist es ausschließlich ihr Verhalten, welches ihn ändert, und somit das Verhalten, das Zustandsänderungen eines Objekts herbeiführt. Umgekehrt hängt das Verhalten eines Objekts in der Regel von seinem Zustand ab. Wie aber wird das Verhalten eines Objekts beschrieben? Bevor wir uns dieser Frage zuwenden, müssen wir zuerst den Begriff des Ausdrucks klären.
+
+Frage: Was ist das Verhalten eines Objekts?
+Antwort: Wenn Objekte ihren Zustand kapseln, ist ausschließlich sas Verhalten eines Objekts dafür verantwortlich, den Zustand eines Objekts zu ändern und die Interaktion mit diesem Objekt zu steuern. Das Verhalten bestimmt, wie ein Objekt auf Nachrichten reagiert und welche Operationen es auf seinem internen Zustand durchführt.
+
+Frage: Warum hängt das Verhalten eines Objekts von seinem Zustand ab?
+Antwort: Das Verhalten eines Objekts hängt in der Regel von seinem Zustand ab, weil der Zustand eines Objekts die Informationen enthält, die benötigt werden, um die richtigen Entscheidungen zu treffen und die entsprechenden Aktionen auszuführen. Das Verhalten eines Objekts basiert auf den Daten in seinem Zustand, und diese Daten beeinflussen, wie das Objekt auf Nachrichten reagiert.

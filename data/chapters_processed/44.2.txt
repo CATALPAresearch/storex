@@ -1,0 +1,20 @@
+44.2 Typtests
+
+Laufzeitfehler der obigen Art vermeidet man in Java mithilfe sogenannter Typtests, die man vor einer Typumwandlung durchführt. Das dazugehörige Schlüsselwort heißt instanceof.
+
+
+Frage: Was sind Typtests in Java?
+Antwort: Typtests in Java sind eine Methode, um Laufzeitfehler zu vermeiden. Sie werden durchgeführt, bevor eine Typumwandlung durchgeführt wird. Das Schlüsselwort hierfür ist instanceof.
+
+Frage: Wie vermeidet man in Java Laufzeitfehler durch Typumwandlung?
+Antwort: In Java vermeidet man Laufzeitfehler durch Typumwandlung mithilfe von Typtests, die man mit dem Schlüsselwort instanceof durchführt.
+
+Frage: Was ist der Zweck des Schlüsselworts instanceof in Java?
+Antwort: Das Schlüsselwort instanceof in Java wird verwendet, um vor einer Typumwandlung einen Typtest durchzuführen, um Laufzeitfehler zu vermeiden.
+
+
+Typtests in Kombination mit bedingten Umwandlungen (Casting) bilden die typsichere Variante der Typumwandlung. Es bleibt allerdings an der Programmiererin hängen, zu sagen, was passieren soll, wenn der Wert von 'o' nicht den geforderten Typ (hier String) hat.
+
+
+Frage: Was sind typsichere Varianten der Typumwandlung?
+Antwort: Typtests in Kombination mit bedingten Umwandlungen (Casting) bilden die typsichere Variante der Typumwandlung. Die Programmiererin muss jedoch festlegen, was passieren soll, wenn der Wert eines Objekts nicht den geforderten Typ hat.

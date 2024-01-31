@@ -1,0 +1,26 @@
+50.4 Das Typsystem von C-Sharp
+
+Auch wenn es in großen Teilen recht ähnlich aussieht, weicht das Typsystem von C-Sharp in mehreren wesentlichen Punkten von dem von Java ab: der Art der Unterscheidung von Wert- und Referenztypen, den angebotenen Typkonstruktoren für Wert- und Referenztypen und dem Umgang mit Interfaces als Typen.
+
+
+Frage: Wie unterscheidet sich das Typsystem von C-Sharp von dem von Java?
+Antwort: Das Typsystem von C-Sharp unterscheidet sich von dem von Java in der Art der Unterscheidung von Wert- und Referenztypen, den angebotenen Typkonstruktoren für Wert- und Referenztypen und dem Umgang mit Interfaces als Typen.
+
+Frage: Wann wird in C-Sharp die Unterscheidung von Wert- und Referenztypen getroffen?
+Antwort: In C-Sharp wird die Unterscheidung von Wert- und Referenztypen dynamisch zur Laufzeit getroffen.
+
+Frage: Welche Typkonstruktoren bietet C-Sharp für Wert- und Referenztypen an?
+Antwort: C-Sharp bietet für Wert-Typen die Typkonstruktoren struct und enum, für Referenz-Typen die Typkonstruktoren class und interface an.
+
+Frage: Wie werden Interfaces in C-Sharp verwendet?
+Antwort: In C-Sharp können Interfaces als Typen verwendet werden, das heißt, dass eine Variable einen Interface-Typ haben kann.
+
+
+Darüber hinaus hat C-Sharp noch eine ganze Reihe weiterer Verbesserungen, die mit dem Typsystem in Verbindung gebracht werden können; auf sie wird hier aber nur am Rande eingegangen.
+
+
+Frage: Welche Verbesserungen bietet C-Sharp in Verbindung mit dem Typsystem?
+Antwort: C-Sharp bietet eine ganze Reihe von Verbesserungen in Verbindung mit dem Typsystem, auf die hier aber nicht näher eingegangen wird.
+
+Frage: Was sind die Verbesserungen von C-Sharp im Vergleich zu C++, die mit dem Typsystem in Verbindung gebracht werden können?
+Antwort: C-Sharp hat eine ganze Reihe weiterer Verbesserungen im Vergleich zu C++, die mit dem Typsystem in Verbindung gebracht werden können, wie zum Beispiel die Unterstützung von generischen Typen, die eine bessere Typsicherheit und eine bessere Leistung ermöglichen. C-Sharp hat auch eine bessere Unterstützung für die Typparameter-Inferenz, die es dem Compiler ermöglicht, die Typparameter in generischen Typen automatisch zu ermitteln. Darüber hinaus hat C-Sharp eine bessere Unterstützung für die automatische Speicherverwaltung, die es dem Programmierer ermöglicht, sich weniger um die Speicherverwaltung kümmern zu müssen.

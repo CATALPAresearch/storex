@@ -1,0 +1,128 @@
+52.5.2 Statische Komponente
+
+Wie auch in Java definiert jede unparametrisierte Klasse in EIFFEL einen Typ, und jede parametrisierte Klasse eine (generische) Menge von Typen. Alle Variablen (einschließlich Methoden und deren Parameter) müssen einen Typ haben. Die Zuweisungskompatibilität ist an nominale Typkonformität gebunden, die wiederum mit der Typerweiterung (in EIFFEL einfach Vererbung genannt) einhergeht, ganz wie in Java. Anders als in Java ist es jedoch zulässig, Instanzvariablen und Funktionsparameter wie im obigen Beispiel kovariant zu redefinieren. Von kontravarianter Redefinition will MEYER nichts wissen (eine Begründung sollten Sie mittlerweile selbst zur Verfügung haben). Das bedeutet jedoch mangelnde Substituierbarkeit und bereitet EIFFEL erwartungsgemäß einige nicht triviale Probleme.
+
+
+Frage: Was ist nominale Typkonformität in EIFFEL?
+Antwort: In EIFFEL ist nominale Typkonformität die Zuweisungskompatibilität, die mit der Typerweiterung (Vererbung) einhergeht. Das bedeutet, dass eine Unterklasse mit einer Oberklasse kompatibel ist und eine Variable der Oberklasse mit einem Objekt der Unterklasse zugewiesen werden kann.
+
+Frage: Wie ist die Zuweisungskompatibilität in EIFFEL gebunden?
+Antwort: Die Zuweisungskompatibilität ist in EIFFEL an nominale Typkonformität gebunden, die wiederum mit der Typerweiterung (in EIFFEL einfach Vererbung genannt) einhergeht, ganz wie in Java.
+
+
+Zunächst einmal wollen wir uns das Typsystem von EIFFEL noch genauer ansehen. Es basiert, wie in der objektorientierten Programmierung üblich, auf dem Begriff der Typkonformität (Kapitel 23 in Kurseinheit 3). In EIFFEL ist ein Typ U typkonform zu einem Typ T: Wenn U und T gleich sind, Wenn U eine direkte Erweiterung von T ist (direkt von T erbt) und wenn zusätzlich, im Falle von parametrischer Erzeugung von U und T, jeder tatsächliche Typparameter von U konform ist zum entsprechenden tatsächlichen Typparameter von T oder Wenn es einen Typ V gibt, so dass U typkonform mit V und V typkonform mit T ist (U ist eine indirekte Erweiterung von T).
+
+
+Frage: Auf welcher Basis beruht das Typsystem von EIFFEL?
+Antwort: Das Typsystem von EIFFEL basiert auf dem Begriff der Typkonformität.
+
+Frage: Was bedeutet es, wenn ein Typ U in EIFFEL typkonform zu einem Typ T ist?
+Antwort: U ist typkonform zu T, wenn U und T gleich sind, wenn U eine direkte Erweiterung von T ist und wenn zusätzlich, im Falle von parametrischer Erzeugung von U und T, jeder tatsächliche Typparameter von U konform ist zum entsprechenden tatsächlichen Typparameter von T oder wenn es einen Typ V gibt, so dass U typkonform mit V und V typkonform mit T ist.
+
+Frage: Was ist der Unterschied zwischen direkter und indirekter Erweiterung in EIFFEL?
+Antwort: Eine direkte Erweiterung bedeutet, dass U direkt von T erbt, während eine indirekte Erweiterung bedeutet, dass es einen Typ V gibt, so dass U typkonform mit V und V typkonform mit T ist.
+
+
+Außerdem gibt es in EIFFEL noch einen Typkonstruktor like <ein Ausdruck>, dessen erzeugter Typ typkonform zum Typ von <ein Ausdruck> ist. Dieser spielt bei der kovarianten Redefinition eine wichtige Rolle. Zu einem so erzeugten Typ ist jedoch nur der Basistyp konform, keiner seiner Subtypen.
+
+
+Frage: Was ist der Typkonstruktor like <ein Ausdruck> in EIFFEL?
+Antwort: Der Typkonstruktor like <ein Ausdruck> in EIFFEL erzeugt einen Typ, der typkonform zum Typ von <ein Ausdruck> ist. Dieser spielt bei der kovarianten Redefinition eine wichtige Rolle. Zu einem so erzeugten Typ ist jedoch nur der Basistyp konform, keiner seiner Subtypen.
+
+
+EIFFEL benutzt also eckige Klammern und einem Pfeil (->) anstelle von spitzen Klammern und extends in Java.
+
+
+Frage: Wie werden Methoden in EIFFEL aufgerufen?
+Antwort: In EIFFEL werden Methoden mit eckigen Klammern und einem Pfeil (->) aufgerufen.
+
+Frage: Wie werden in EIFFEL Vererbungsbeziehungen ausgedrückt?
+Antwort: In EIFFEL werden Vererbungsbeziehungen durch eckige Klammern und einem Pfeil (->) anstelle von spitzen Klammern und extends in Java ausgedrückt.
+
+Frage: Was ist der Unterschied zwischen EIFFEL und Java in Bezug auf die Syntax für Vererbung?
+Antwort: In EIFFEL wird Vererbung durch eckige Klammern und Pfeil (->) dargestellt, während in Java spitze Klammern und extends verwendet werden.
+
+
+In EIFFEL wird übrigens anders als in C-Sharp nicht pro Typkonstruktor zwischen Wert- und Referenztypen unterschieden. Zu jedem Typ kann es (ähnlich wie in C++) beide Formen geben. Dazu gibt es in EIFFEL die Möglichkeit, bei einer Deklaration anzugeben, dass Variablen eines Typs Wertsemantik, also ein Objekt anstelle einer Referenz auf ein Objekt zum Inhalt haben sollen. Dies ist manchmal für alle Variablen eines Typs sinnvoll, z. B. bei Zahlen und Wahrheitswerten, manchmal aber auch nur für manche. So gibt es in EIFFEL einen Typkonstruktor expanded, der einer einzelnen Variable Wertsemantik gibt und in Klassendefinitionen allen Variablen des entsprechenden Typs automatisch Wertsemantik gibt. EIFFELs Typkonstruktor expanded entspricht also gewissermaßen einer Umkehrung des in PASCAL-artigen Sprachen verwendeten Typkonstruktors ^ (Zeiger auf). Die Unterscheidung von Wert- und Referenztypen einer Klasse hat in EIFFEL einen starken konzeptuellen Hintergrund, da sie die Komposition und ihre Abgrenzung als eine besondere Beziehung zwischen Objekten unterstützt, nämlich das Enthalten-Sein von Objekten in anderen (vgl. dazu auch Kapitel 59 in Kurseinheit 6).
+
+
+Frage: Wie wird in EIFFEL die Unterscheidung zwischen Wert- und Referenztypen einer Klasse umgesetzt?
+Antwort: In EIFFEL wird die Unterscheidung zwischen Wert- und Referenztypen einer Klasse durch den Typkonstruktor expanded umgesetzt. Dieser gibt einer einzelnen Variable Wertsemantik und in Klassendefinitionen allen Variablen des entsprechenden Typs automatisch Wertsemantik. Diese Unterscheidung hat in EIFFEL einen starken konzeptuellen Hintergrund, da sie die Komposition und ihre Abgrenzung als eine besondere Beziehung zwischen Objekten unterstützt, nämlich das Enthalten-Sein von Objekten in anderen.
+
+Frage: Was ist der Unterschied zwischen Wert- und Referenztypen in EIFFEL?
+Antwort: In EIFFEL gibt es die Möglichkeit, bei einer Deklaration anzugeben, dass Variablen eines Typs Wertsemantik haben sollen, was bedeutet, dass sie ein Objekt anstelle einer Referenz auf ein Objekt zum Inhalt haben. Dies ist manchmal für alle Variablen eines Typs sinnvoll, z.B. bei Zahlen und Wahrheitswerten, manchmal aber auch nur für manche. Der Unterschied von Wert- und Referenztypen hat in EIFFEL einen starken konzeptuellen Hintergrund, da er die Komposition und ihre Abgrenzung als eine besondere Beziehung zwischen Objekten unterstützt, nämlich das Enthalten-Sein von Objekten in anderen.
+
+
+Nun ist es in der Realität so, dass nicht alle Instanzen einer Klasse immer Typkonstruktoren für entweder Komponenten (also in anderen Objekten enthalten) oder freie Objekte (also nirgends enthalten) sind. EIFFEL wird dem gerecht, indem es erlaubt, von einer Klasse fallweise Komponentenobjekte (über expanded Variablen) und freie Objekte (über normale Variablen) zu haben. Dieses Feature ist nicht in C-Sharp (zumindest nicht im Safe mode) verfügbar, denn dort definieren Structs ausschließlich Werttypen und Klassen ausschließlich Referenztypen. In C++ (und im Unsafe mode von C-Sharp) kann man es simulieren, zahlt jedoch den Preis, mit expliziten Pointern umgehen zu müssen.
+
+
+Frage: Was ist der Unterschied zwischen expanded Variablen und normalen Variablen in EIFFEL?
+Antwort: In EIFFEL können Instanzen einer Klasse fallweise Komponentenobjekte (über expanded Variablen) und freie Objekte (über normale Variablen) haben. Expanded Variablen sind Komponentenobjekte, während normale Variablen freie Objekte sind. Dieses Feature ist in C-Sharp (zumindest nicht im Safe mode) nicht verfügbar, denn dort definieren Structs ausschließlich Werttypen und Klassen ausschließlich Referenztypen.
+
+Frage: Was ist der Unterschied zwischen Komponentenobjekten und freien Objekten in EIFFEL?
+Antwort: In EIFFEL können Instanzen einer Klasse fallweise Komponentenobjekte und freie Objekte haben. Komponentenobjekte werden über expanded Variablen definiert und sind in anderen Objekten enthalten, während freie Objekte über normale Variablen definiert werden und nirgends enthalten sind.
+
+
+Nun stand bereits in Kurseinheit 1, Abschnitt 1.6 zu lesen, dass bei der Zuweisung zwischen zwei Variablen mit Wertsemantik der Wert der einen Variable in die andere Variable kopiert wird, während bei der Zuweisung zwischen zwei Variablen mit Referenzsemantik lediglich der Zeiger kopiert wird. Dies ist auch in EIFFEL so. Bei der Zuweisung einer Variable mit Referenzsemantik an eine Variable mit Wertsemantik reicht es jedoch nicht, einen Zeiger zu kopieren, denn die Zielvariable hat keinen Platz für einen Zeiger, sondern für die Attributwerte. Stattdessen wird hier das Objekt, auf das der Zeiger verweist, kopiert (genauer: die Attribute des Objekts in den für die Attribute des Werts reservierten Speicher der Variable kopiert). Im umgekehrten Fall, also wenn eine Variable mit Wertsemantik an eine Variable mit Referenzsemantik zugewiesen wird, wird ein Klon des Objekts erzeugt, und eine Referenz auf diesen Klon wird übergeben.
+
+
+Frage: Was passiert bei der Zuweisung zwischen zwei Variablen mit unterschiedlicher Semantik?
+Antwort: Wenn eine Variable mit Referenzsemantik an eine Variable mit Wertsemantik zugewiesen wird, wird das Objekt, auf das der Zeiger verweist, kopiert. Wenn eine Variable mit Wertsemantik an eine Variable mit Referenzsemantik zugewiesen wird, wird ein Klon des Objekts erzeugt und eine Referenz auf diesen Klon wird übergeben.
+
+Frage: Was passiert bei der Zuweisung einer Variable mit Referenzsemantik an eine Variable mit Wertsemantik?
+Antwort: Bei der Zuweisung einer Variable mit Referenzsemantik an eine Variable mit Wertsemantik wird das Objekt, auf das der Zeiger verweist, kopiert. Genauer: die Attribute des Objekts in den für die Attribute des Werts reservierten Speicher der Variable kopiert.
+
+
+Eine solche Verankerung bewirkt, dass sich der Typ von x automatisch mit dem von y verändert. Dies hat zunächst noch nichts mit Kovarianz zu tun. Da die Typen der Parameter von setF und getF alle per Deklaration dieselben sind wie der Typ von f, muss in der Definition von B textuell nichts anderes stehen. Da nun aber in EIFFEL die Redefinition von Instanzvariablen per Definition immer kovariant sein muss, muss Y ein Subtyp von X sein. Der Rückgabetyp von getF und der Parametertyp von setF ändern sich damit automatisch ebenfalls kovariant.
+
+
+Frage: Was bedeutet kovarianter Rückgabetyp und kovarianter Parametertyp?
+Antwort: Wenn eine Unterklasse eine Instanzvariable oder eine Methode redefiniert, dann muss der Typ der Instanzvariable oder der Rückgabetyp der Methode in der Unterklasse ein Subtyp des Typs in der Oberklasse sein. Dies wird als kovarianter Typ bezeichnet. Wenn der Parametertyp einer Methode in der Unterklasse ein Subtyp des Parametertyps in der Oberklasse ist, dann wird dies als kovarianter Parametertyp bezeichnet.
+
+
+Ein besonderer Fall von verankerten Typen ergibt sich bei rekursiven Typen, also Typen, deren Definition den definierten Typ selbst referenziert. In diesem Fall schreibt man in EIFFEL anstelle der Typreferenz bei der Deklaration einer Variable vom zu definierenden Typ like Current. Bei einem entsprechend deklarierten Feld ändert sich der Typ bei der Vererbung also immer automatisch zum erbenden Typ hin, also immer mit dem Typ und damit kovariant. Für das Beispiel der zu trennenden Skifahrerinnen (Zeilen 1391–1425) ergibt sich damit. Die beiden erbenden Klassen GIRL und BOY müssen dann nichts mehr redefinieren.
+Wir können nun zur Lösung des Problems der Kovarianz in EIFFEL kommen. Die obige Konstruktion (hier unverändert wiederholt) wird dann vom Type checker zur Übersetzungszeit zurückgewiesen, da g1 nicht vom Typ like s1 ist, was aber laut den Typkonformitätsregeln von EIFFEL notwendig wäre. Leider ist das nur ein Teilerfolg.
+
+
+Frage: Was ist das Problem der Kovarianz in EIFFEL?
+Antwort: Das Problem der Kovarianz in EIFFEL tritt auf, wenn eine Konstruktion vom Type checker zur Übersetzungszeit zurückgewiesen wird, weil der Typ des Objekts nicht mit den Typkonformitätsregeln übereinstimmt.
+
+Frage: Wie kann das Problem der Kovarianz in EIFFEL gelöst werden?
+Antwort: Eine Lösung für das Problem der Kovarianz kann sein, die Typkonformitätsregeln von EIFFEL zu ändern, um die Kovarianz zu ermöglichen.
+
+
+Die erste und einfachste Möglichkeit, dies zu verhindern, wäre, die Zuweisungskompatibilität für Variablen mit verankerten Typen und Typankern einzuschränken und unter ihnen nur noch Typäquivalenz zu akzeptieren. Es wären dann nur noch Zuweisungen zwischen Variablen eines als Typanker verwendeten Typs mit solchen, die ihn als Anker benutzen, erlaubt. Insbesondere wäre eine Zuweisung wie s1 := g1 (die ja notwendig war, um ein Objekt vom Typ GIRL so zu „verpacken“, dass es an g2 mit seinem verankerten Typ like s1 zugewiesen werden kann) damit nicht mehr möglich. Alle anderen Zuweisungen wären natürlich weiterhin zugelassen. Dies hätte jedoch zur Konsequenz, dass bei verankert genutzten Typen geschlossene Zirkel entstünden, aus denen kein Objekt hinaus und in die keines hinein käme (außer bei seiner Erzeugung). Außerdem wäre es für die Programmiererin schwer, vorab zu entscheiden, ob ein Typ entweder als Anker zur kovarianten Redefinition verwendet oder ob er polymorph, also für Variablen, die Objekte unterschiedlichen Typs haben dürfen, genutzt werden soll.
+
+
+Frage: Was wäre eine Möglichkeit, Zuweisungskompatibilität für Variablen mit verankerten Typen einzuschränken?
+Antwort: Eine Möglichkeit wäre, Zuweisungen zwischen Variablen eines als Typanker verwendeten Typs nur noch mit solchen zu erlauben, die ihn als Anker benutzen. Dadurch würden geschlossene Zirkel entstehen, aus denen kein Objekt hinaus und in die keines hinein käme. Diese Methode hätte jedoch den Nachteil, dass es für die Programmiererin schwer wäre, vorab zu entscheiden, ob ein Typ entweder als Anker zur kovarianten Redefinition verwendet oder ob er polymorph, also für Variablen, die Objekte unterschiedlichen Typs haben dürfen, genutzt werden soll.
+
+Frage: Was würde passieren, wenn man die Zuweisungskompatibilität für Variablen mit verankerten Typen und Typankern einschränken würde?
+Antwort: Wenn man die Zuweisungskompatibilität für Variablen mit verankerten Typen und Typankern einschränken würde, wären nur noch Zuweisungen zwischen Variablen eines als Typanker verwendeten Typs mit solchen, die ihn als Anker benutzen, erlaubt. Das hätte zur Konsequenz, dass bei verankert genutzten Typen geschlossene Zirkel entstünden, aus denen kein Objekt hinaus und in die keines hinein käme (außer bei seiner Erzeugung). Außerdem wäre es für die Programmiererin schwer, vorab zu entscheiden, ob ein Typ entweder als Anker zur kovarianten Redefinition verwendet oder ob er polymorph, also für Variablen, die Objekte unterschiedlichen Typs haben dürfen, genutzt werden soll.
+
+
+Die zweite Möglichkeit wäre, eine Typinferenz für das gesamte Programm durchzuführen, um die möglichen Zuweisungen an Variablen zu sammeln. Dazu sind insbesondere alle Methodenaufrufe anzusehen. Diese können je nach Konfiguration des endgültigen Systems sehr unterschiedlich ausfallen. Eine solche Typinferenz ist jedoch in den meisten Fällen unrealistisch.
+
+
+Frage: Warum ist eine Typinferenz für das gesamte Programm in den meisten Fällen unrealistisch?
+Antwort: Eine Typinferenz für das gesamte Programm ist unrealistisch, da sie alle Methodenaufrufe im System berücksichtigen muss, die je nach Konfiguration sehr unterschiedlich ausfallen können. Zudem ist sie sehr aufwendig und erfordert eine komplexe Algorithmik.
+
+
+Die dritte Möglichkeit ist die, alle dynamisch gebundenen Aufrufe von Methoden, deren Verfügbarkeit oder Parametertypen sich in überschriebenen Versionen („Redefinitionen“) ändern (die von MEYER so genannten CAT-Calls, wobei CAT für „Change Availability or Type“ steht), zu verbieten. Ein Aufruf von share auf s1 wie oben ist damit verboten, weil share in BOY und GIRL kovariant redefiniert wird. Auf einer Variable vom Typ GIRL oder BOY wäre er hingegen zulässig, solange sichergestellt ist, dass diese Variable keinen Wert von einem Subtyp von GIRL bzw. BOY zugewiesen bekommen kann. Das ist möglich, wenn kein solcher Subtyp existiert oder wenn keine Zuweisung an die Variable existiert, bei der die rechte Seite ein Subtyp der Variable ist. Das erste ist lokal nicht nachzuweisen, das zweite hingegen schon, jedoch nur für explizite Zuweisungen (inklusive der Instanziierung, die in EIFFEL auf einer Variable durchgeführt wird und ihr automatisch einen Wert gibt). Für die Zuweisung an formale Parameter kann dies jedoch nicht lokal nachgewiesen werden, weil im Gegensatz zu expliziten Zuweisungen an Variablen die Methodenaufrufe von überall her erfolgen können.
+
+
+Frage: Was sind CAT-Calls in Eiffel?
+Antwort: CAT-Calls (Change Availability or Type Calls) sind dynamisch gebundene Aufrufe von Methoden, deren Verfügbarkeit oder Parametertypen sich in überschriebenen Versionen ändern können. Ein Beispiel für einen CAT-Call ist der Aufruf von share auf s1 wie oben, der verboten ist, weil share in BOY und GIRL kovariant redefiniert wird.
+
+Frage: Was für Möglichkeiten gibt es in EIFFEL, dynamisch gebundene Aufrufe von Methoden zu behandeln?
+Antwort: Die drei Möglichkeiten sind: 1) Alle dynamisch gebundenen Aufrufe von Methoden zuzulassen, 2) Alle dynamisch gebundenen Aufrufe von Methoden zu verbieten, die in überschriebenen Versionen („Redefinitionen“) verfügbar oder deren Parametertypen sich ändern und 3) Alle dynamisch gebundenen Aufrufe von Methoden zu verbieten, deren Verfügbarkeit oder Parametertypen sich in überschriebenen Versionen („Redefinitionen“) ändern (die von MEYER so genannten CAT-Calls). Die erste Möglichkeit erlaubt alle dynamisch gebundenen Aufrufe von Methoden, die zweite verbietet alle und die dritte verbietet nur die, die in überschriebenen Versionen („Redefinitionen“) verfügbar oder deren Parametertypen sich ändern.
+
+
+Wie Sie sehen, sind die Bedingungen ziemlich restriktiv, und man kommt nicht umhin, das Typsystem von EIFFEL als etwas eigenartig zu empfinden. Wie es sich in der Praxis auswirkt, ist mir leider nicht bekannt; MEYER behauptet, dass die Probleme praktisch keine Rolle spielen. Ich möchte hinzufügen, dass falls doch, die durchschnittliche Programmiererin kaum verstehen wird, was denn nun genau das Problem ist und was sie tun kann, es zu umgehen.
+
+
+Frage: Wie wirkt sich das Typsystem von EIFFEL in der Praxis aus?
+Antwort: Der Autor des Textes ist nicht sicher, wie sich das Typsystem von EIFFEL in der Praxis auswirkt, da er keine praktischen Erfahrungen damit hat. Er weist jedoch darauf hin, dass der Schöpfer von EIFFEL, Bertrand Meyer, behauptet, dass die damit verbundenen Probleme praktisch keine Rolle spielen. Der Autor fügt hinzu, dass falls doch, die durchschnittliche Programmiererin kaum verstehen wird, was das Problem ist und was sie tun kann, um es zu umgehen.
+
+Frage: Was kann man über das Typsystem von EIFFEL sagen?
+Antwort: Das Typsystem von EIFFEL ist ziemlich restriktiv und wird von einigen als eigenartig empfunden. Obwohl die Probleme in der Praxis laut MEYER kaum eine Rolle spielen, ist es möglich, dass sie auftreten. Wenn dies der Fall ist, versteht die durchschnittliche Programmiererin wahrscheinlich nicht, was das Problem ist und was sie tun kann, um es zu umgehen.

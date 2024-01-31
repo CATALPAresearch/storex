@@ -1,0 +1,132 @@
+41 Arrays
+
+In Java ist es möglich, sowohl von primitiven (Wert-)Typen als auch von Referenztypen Arrays zu bilden. Anders als z. B. in PASCAL können aber über den Array-Typkonstruktor keine neuen Typen benannt werden; die Typkonstruktion erfolgt immer implizit in einer Variablendeklaration.
+
+
+Frage: Kann man in Java Arrays von primitiven Typen bilden?
+Antwort: Ja, in Java ist es möglich, sowohl von primitiven (Wert-)Typen als auch von Referenztypen Arrays zu bilden.
+
+Frage: Kann man in Java neue Typen über den Array-Typkonstruktor benennen?
+Antwort: Nein, in Java können über den Array-Typkonstruktor keine neuen Typen benannt werden. Die Typkonstruktion erfolgt immer implizit in einer Variablendeklaration.
+
+Frage: Was ist der Unterschied zwischen primitiven (Wert-)Typen und Referenztypen in Java?
+Antwort: Primitiven (Wert-)Typen werden direkt im Speicher abgelegt, während Referenztypen auf einen Speicherbereich verweisen, der die Daten enthält. Der Hauptunterschied liegt darin, wie sie in Arrays abgelegt werden. Für primitiven Typen wird ein neuer Typ benannt, während für Referenztypen die Typkonstruktion immer implizit in einer Variablendeklaration erfolgt.
+
+
+In Java sind zwei Variablen vereinbart, wovon die erste ein Array von Fließkommazahlen zum Typ hat und die zweite ein Array von Objekten. Die alternative Schreibweise ist ebenfalls gebräuchlich. Anders als z. B. in PASCAL wird die Größe des Arrays in der Deklaration nicht festgelegt — dies geschieht erst bei der Initialisierung.
+
+
+Frage: Wie wird die Größe eines Arrays in Java festgelegt?
+Antwort: Die Größe eines Arrays in Java wird nicht in der Deklaration festgelegt, sondern erst bei der Initialisierung.
+
+
+In Java ist es möglich, Arrays bei ihrer Deklaration zu initialisieren. Man beachte die Ähnlichkeit zu literalen Arrays in SMALLTALK (Abschnitt 1.2); allerdings müssen die Elemente der Arrays in Java nicht selbst Literale sein, sondern dürfen auch andere Ausdrücke sein. Die Größe des Arrays (in diesem Fall 2) wird bei der Initialisierung automatisch festgelegt; ansonsten muss dies bei der Erzeugung des Arrays mittels eines Konstruktors explizit geschehen.
+
+
+Frage: Wie können Arrays in Java initialisiert werden?
+Antwort: In Java können Arrays bei ihrer Deklaration initialisiert werden, indem man ihnen Werte zuweist. Die Größe des Arrays wird dabei automatisch festgelegt. Die Elemente des Arrays müssen nicht selbst Literale sein, sondern dürfen auch andere Ausdrücke sein.
+
+
+Alle Elemente des Arrays enthalten danach jedoch null (Javas Äquivalent von SMALLTALKs nil). Java-Arrays sind übrigens 0-basiert, was soviel heißt wie dass das erste Element den Index 0 hat. (Zur Erinnerung: In SMALLTALK hat es den Index 1.) Array-Initialisierer können auch geschachtelt werden und somit mehrere Dimensionen umfassen.
+
+
+Frage: Wie ist die Initialisierung von Elementen in Java-Arrays?
+Antwort: Alle Elemente des Arrays enthalten nach der Initialisierung den Wert null (Javas Äquivalent von SMALLTALKs nil).
+
+Frage: Wie ist die Nummerierung der Indizes in Java-Arrays?
+Antwort: Java-Arrays sind 0-basiert, was soviel heißt wie dass das erste Element den Index 0 hat. (Zur Erinnerung: In SMALLTALK hat es den Index 1.)
+
+Frage: Wie können Array-Initialisierer in Java sein?
+Antwort: Array-Initialisierer können in Java auch geschachtelt werden und somit mehrere Dimensionen umfassen.
+
+Frage: Was passiert mit den Elementen eines Arrays nach der Initialisierung in Java?
+Antwort: Nach der Initialisierung eines Arrays in Java enthalten alle Elemente den Wert null.
+
+Frage: Was bedeutet es, wenn ein Array in Java 0-basiert ist?
+Antwort: Wenn ein Array in Java 0-basiert ist, hat das erste Element den Index 0.
+
+Frage: Was kann ein Array-Initialisierer in Java umfassen?
+Antwort: Ein Array-Initialisierer in Java kann mehrere Dimensionen umfassen.
+
+Frage: Was ist ein Array-Initialisierer in Java?
+Antwort: Ein Array-Initialisierer in Java ist eine Möglichkeit, ein Array mit Werten zu initialisieren.
+
+Frage: Was ist der Index des ersten Elements in einem 0-basierten Array?
+Antwort: Der Index des ersten Elements in einem 0-basierten Array ist 0.
+
+
+Beispielsweise liefert einen möglichen Anfangswert für ein zweidimensionales Array mit der Deklaration int integers[][] (also ein Array mit Elementtyp int und mit zwei Dimensionen). Wie man sieht, müssen die Größen der zweiten und aller weiteren Dimensionen nicht für jedes Element der ersten Dimension gleich viele Elemente enthalten (sog. Ragged oder Jagged arrays sind möglich; tatsächlich handelt es sich bei mehrdimensionalen Arrays in Java auch gar nicht um mehrdimensionale Arrays, sondern um Arrays von Arrays).
+
+
+Frage: Was sind Ragged oder Jagged arrays in Java?
+Antwort: Ragged oder Jagged arrays in Java sind mehrdimensionalen Arrays, bei denen die Größen der zweiten und aller weiteren Dimensionen nicht für jedes Element der ersten Dimension gleich viele Elemente enthalten müssen.
+
+Frage: Wie werden mehrdimensionale Arrays in Java deklariert?
+Antwort: Mehrdimensionale Arrays in Java werden als Arrays von Arrays deklariert.
+
+Frage: Gibt es eine Einschränkung bei der Größe der Dimensionen in Java?
+Antwort: Nein, in Java gibt es keine Einschränkung bei der Größe der Dimensionen.
+
+
+Interessanterweise haben in Java Array-Variablen immer und unabhängig vom Basistyp Referenzsemantik. Bei der Zuweisung an die Variable f oben wird also nicht ein ganzes Array als Kopie übergeben, sondern lediglich ein Pointer darauf. Dies hat vermutlich den Hintergrund, dass Array-Kopieroperationen sehr teuer sind und zudem selten benötigt werden. Warum auch immer, im Ergebnis kann f an eine Variable vom Typ Object zugewiesen werden. Eine Zuweisung von f an eine Variable vom Typ Object[] ist hingegen nicht zulässig — float[] ist kein Subtyp von Object[] und somit auch nicht damit zuweisungskompatibel. Man beachte übrigens, dass Arrays, selbst wenn sie wie Klassen und Interfaces Typen bilden, außer ihrem Basistyp (also beispielsweise float oder Object) keine weiteren Definitionselemente anzugeben erlauben; insbesondere kann man für einen Array-Typen keine weiteren Eigenschaften (Felder oder Methoden) definieren. Allerdings ist für jedes Array die (Pseudo-)Variable length definiert, deren Inhalt die Größe des Arrays (Anzahl Elemente) angibt. Außerdem wird die Methode clone() aus Object so überschrieben, dass sie ein Objekt gleichen Typs, also ebenfalls ein Array des Basistyps, zurückgibt.
+
+
+Frage: Wie verhält sich die Zuweisungskompatibilität von Array-Variablen in Java?
+Antwort: In Java haben Array-Variablen immer Referenzsemantik. Eine Zuweisung von f an eine Variable vom Typ Object ist zulässig, während eine Zuweisung von f an eine Variable vom Typ Object[] nicht zulässig ist. Dies liegt daran, dass float[] kein Subtyp von Object[] ist.
+
+Frage: Was ist das Verhalten von Array-Variablen in Java?
+Antwort: In Java haben Array-Variablen immer Referenzsemantik, unabhängig vom Basistyp. Bei der Zuweisung an die Variable f wird also nur ein Pointer auf das Array übergeben, nicht das gesamte Array als Kopie. Dies hat den Hintergrund, dass Array-Kopieroperationen sehr teuer sind und selten benötigt werden. Eine Zuweisung von f an eine Variable vom Typ Object ist möglich, während eine Zuweisung von f an eine Variable vom Typ Object[] nicht zulässig ist. Arrays sind außer ihrem Basistyp (z.B. float oder Object) nicht weiter definierbar, und es können keine weiteren Eigenschaften (Felder oder Methoden) für einen Array-Typen definiert werden. Für jedes Array ist jedoch die (Pseudo-)Variable length definiert, die die Größe des Arrays (Anzahl der Elemente) angibt. Die Methode clone() aus Object wird für Arrays überschrieben, um ein Objekt gleichen Typs zurückzugeben.
+
+Frage: Warum haben Array-Variablen in Java immer Referenzsemantik?
+Antwort: Array-Variablen haben in Java immer Referenzsemantik, weil Array-Kopieroperationen sehr teuer sind und zudem selten benötigt werden. Dies hat den Hintergrund, dass bei der Zuweisung an die Variable f lediglich ein Pointer darauf übergeben wird, anstatt ein ganzes Array als Kopie.
+
+
+Die bemerkte mangelnde Zuweisungskompatibilität von Object[] und float[] wirft natürlich sofort die Frage auf, ob denn auch die Zuweisung einer Variable vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] unzulässig ist. Wir hatten ja in Abschnitt 29.3 von Kurseinheit 3 am Beispiel zweier Instanzen eines parametrischen Typs bemerkt, dass dies zu einem nicht ganz offensichtlichen Problem führt, das sich analog auf Arrays übertragen lässt. Die Überraschung folgt hier auf den Fuß: Die Zuweisung ist in Java zulässig.
+
+
+Frage: Ist die Zuweisung einer Variablen vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] in Java zulässig?
+Antwort: Ja, die Zuweisung ist in Java zulässig.
+
+Frage: Warum ist die Zuweisung einer Variable vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] zulässig in Java?
+Antwort: In Java ist die Zuweisung einer Variablen vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] zulässig, weil Java eine polymorphe Zuweisung von Arrays erlaubt. Dies bedeutet, dass ein Array-Referenzvariablen jeder Kompatibilitätsebene einen Wert zugewiesen werden kann, der eine Array-Instanz eines beliebigen Subtyps der angegebenen Kompatibilitätsebene ist.
+
+
+Warum aber geht man dieses Risiko ein und überträgt die Zuweisungskompatibilität von Typen auf Arrays von diesen Typen? Zunächst einmal kann man festhalten, dass hier auf die Möglichkeit der statischen Typprüfung, die (auf Basis mangelnder Typkonformität) einen Typfehler bei der Zuweisung aus Zeile 1045 gemeldet hätte, zugunsten einer dynamischen Typprüfung mit möglicher Meldung eines Laufzeitfehlers verzichtet wurde. Dies tut man immer dann, wenn die statische Typprüfung Programme verhindert, die man gern schreiben möchte und die auch korrekt sein können, ohne dass dies jedoch vom Compiler garantiert werden könnte. Es ist nämlich gar nicht gesagt, dass die Zuweisung der Zeile 1045 immer zu einem Laufzeitfehler führt — nur wenn man anschließend schreibend (wie in Zeile 1046) auf das Array zugreift und dann noch mit dem falschen Typ, kommt es zu einem solchen Fehler (zu typinkorrekten Variablenbelegungen). Da man diese Bedingung aber schlecht zur Übersetzungszeit abprüfen kann, wird eben ein Laufzeittest durchgeführt. Ein klassischer Kompromiss, der diesmal zugunsten der Flexibilität beim Programmieren ausging.
+
+
+Frage: Warum wird auf statische Typprüfung verzichtet und stattdessen eine dynamische Typprüfung mit möglicher Meldung eines Laufzeitfehlers durchgeführt?
+Antwort: Dies geschieht, um die Möglichkeit der statischen Typprüfung zu vermeiden, die auf Basis mangelnder Typkonformität einen Typfehler bei der Zuweisung melden würde. Stattdessen wird eine dynamische Typprüfung durchgeführt, um die Flexibilität beim Programmieren zu erhöhen, auch wenn dies zu einem Laufzeitfehler führen kann.
+
+Frage: Warum wird auf die statische Typprüfung zugunsten einer dynamischen Typprüfung verzichtet?
+Antwort: Der Verzicht auf die statische Typprüfung zugunsten einer dynamischen Typprüfung wird vorgenommen, um die Möglichkeit der statischen Typprüfung zu verhindern, die (auf Basis mangelnder Typkonformität) einen Typfehler bei der Zuweisung melden würde. Dies geschieht, wenn die statische Typprüfung Programme verhindert, die man gern schreiben möchte und die auch korrekt sein können, ohne dass dies vom Compiler garantiert werden könnte.
+
+Frage: Warum wird in diesem Fall auf die statische Typprüfung verzichtet und stattdessen eine dynamische Typprüfung durchgeführt?
+Antwort: Der Verzicht auf die statische Typprüfung zugunsten einer dynamischen Typprüfung wird vorgenommen, um die Möglichkeit zu haben, Programme zu schreiben, die zwar korrekt sein können, aber von dem Compiler nicht garantiert werden können. Dies geschieht, um die Flexibilität beim Programmieren zu erhöhen. Ein Laufzeittest wird durchgeführt, um sicherzustellen, dass der Typ beim Zugriff auf das Array korrekt ist.
+
+
+Warum aber will man Zuweisungskompatibilität zwischen Arrays nicht gleichen Typs und damit Zuweisungen wie die in Zeile 1045 unbedingt haben? Die Antwort ist einfach: weil es Prozeduren gibt, die den (statischen) Typ der Array-Elemente nicht genau festlegen, sondern lediglich nach oben beschränken wollen. So gibt es beispielsweise in Java den Interfacetyp Comparable. Dieser Interfacetyp kann als statischer Typ für Array-Elemente verwendet werden, um Arrays zu definieren, deren Elemente eine beliebige Klasse sind, die das Interface Comparable implementiert.
+
+Frage: Wozu dient Zuweisungskompatibilität zwischen Arrays nicht gleichen Typs?
+Antwort: Zuweisungskompatibilität zwischen Arrays nicht gleichen Typs ist nützlich, wenn es Prozeduren gibt, die den (statischen) Typ der Array-Elemente nicht genau festlegen, sondern nur nach oben beschränken wollen. Zum Beispiel kann der Interfacetyp Comparable<T> als statischer Typ für Array-Elemente verwendet werden, um zu signalisieren, dass die Array-Elemente eine Methode compareTo(T o) implementieren müssen. Die tatsächliche Klasse der Array-Elemente muss diese Methode nicht unbedingt von Comparable<T> erben, sie kann auch eine eigene Klasse sein, die compareTo(T o) implementiert.
+
+Frage: Warum ist Zuweisungskompatibilität zwischen Arrays nicht gleichen Typs wünschenswert?
+Antwort: Zuweisungskompatibilität zwischen Arrays nicht gleichen Typs ist wünschenswert, weil es Prozeduren gibt, die den (statischen) Typ der Array-Elemente nicht genau festlegen, sondern lediglich nach oben beschränken wollen. So kann eine Prozedur mit einem Array von Objekten aufgerufen werden, die den Typ Comparable<T> implementieren, unabhängig davon, welcher Typ T das ist.
+
+
+Die Methode compareTo soll dabei einen Wert zurückgeben, der angibt, wie der Vergleich des Empfänger- mit dem Parameterobjekt ausgegangen ist. Eine Methode mit der Signatur sort(Comparable[]) kann dann Arrays beliebiger Elementtypen zum Sortieren annehmen, solange diese nur Comparable implementieren und damit Auskunft über ihre relative Ordnung zu geben in der Lage sind. Da beim Sortieren die Elemente eines Arrays nicht ersetzt, sondern nur umgeordnet werden, kann dabei auch kein Typfehler von der Art der Zeile 1046 auftreten. Diese Methode sort ist also faktisch sicher — ein konservatives statisches Typsystem hätte ihre Verwendung jedoch nicht zugelassen. Der eingegangene Kompromiss zwischen statischer und dynamischen Typprüfung ist also durchaus vertretbar.
+
+
+Frage: Was macht die Methode compareTo?
+Antwort: Die Methode compareTo vergleicht das Empfänger-Objekt mit dem Parameterobjekt und gibt einen Wert zurück, der angibt, wie der Vergleich ausgegangen ist.
+
+Frage: Was ist die Aufgabe der Methode sort?
+Antwort: Die Methode sort sortiert ein Array von Objekten, die das Interface Comparable implementieren.
+
+Frage: Was ist der Vorteil der dynamischen Typprüfung in Bezug auf die Methode sort?
+Antwort: Der Vorteil der dynamischen Typprüfung ist, dass sie die Verwendung der Methode sort erlaubt, obwohl das statische Typsystem dies nicht zugelassen hätte. Dadurch wird eine sichere Verwendung ermöglicht.
+
+Frage: Warum ist die Methode sort faktisch sicher?
+Antwort: Die Methode sort ist faktisch sicher, weil beim Sortieren die Elemente eines Arrays nicht ersetzt, sondern nur umgeordnet werden, und daher kein Typfehler von der Art der Zeile 1046 auftreten kann.
+
+Frage: Warum ist der Kompromiss zwischen statischer und dynamischen Typprüfung vertretbar?
+Antwort: Der Kompromiss zwischen statischer und dynamischen Typprüfung ist vertretbar, weil er die Verwendung der Methode sort erlaubt, die Arrays beliebiger Elementtypen zum Sortieren annehmen kann, solange diese nur Comparable implementieren und damit Auskunft über ihre relative Ordnung zu geben in der Lage sind.

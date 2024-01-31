@@ -1,0 +1,17 @@
+52.7 Tupel anstelle von Klassen
+
+Ein relativ neues Feature in EIFFEL sind die sogenannten Tupel. Tupel ermöglichen es, ohne großen Aufwand mehrere Objekte zu gruppieren, insbesondere ohne die Notwendigkeit, eine Klasse zu definieren. Tupel sind besonders interessant, wenn strukturierte Daten benötigt werden, ohne dass diesen eine eigenständige Bedeutung zugeordnet wird. Dies ist besonders prominent bei Methoden, die mehrere Werte anstelle eines einzigen Wertes zurückgeben sollen.
+
+
+Frage: Was sind Tupel in EIFFEL?
+Antwort: Tupel in EIFFEL sind eine Möglichkeit, mehrere Objekte ohne großen Aufwand zu gruppieren, insbesondere ohne die Notwendigkeit, eine Klasse zu definieren. Tupel sind besonders interessant, wenn strukturierte Daten benötigt werden, ohne dass diesen eine eigenständige Bedeutung zugeordnet wird. Dies ist besonders prominent bei Methoden, die mehrere Werte anstelle eines einzigen Wertes zurückgeben sollen.
+
+Frage: Wofür werden Tupel in EIFFEL verwendet?
+Antwort: Tupel werden in EIFFEL als eine Möglichkeit verwendet, mehrere Objekte ohne großen Aufwand zu gruppieren, insbesondere ohne die Notwendigkeit, eine Klasse zu definieren. Sie sind besonders interessant, wenn strukturierte Daten benötigt werden, ohne dass diesen eine eigenständige Bedeutung zugeordnet wird. Dies ist beispielsweise bei Methoden der Fall, die mehrere Werte anstelle eines einzigen Wertes zurückgeben sollen.
+
+
+Tupeltypen werden deklariert, indem für jede Position ein Typ angegeben wird. Konkrete Werte eines Tupels werden in eckigen Klammern notiert. Die Positionen eines Tupels können auch Namen erhalten. Da Tupeltypen anonym sind, erfolgt die Zuordnung eines Tupels zu einem Tupeltyp (normalerweise während der Instanziierung) durch den Abgleich der vorhandenen Positionen mit den deklarierten Positionstypen sowie gegebenenfalls den Positionsnamen.
+
+
+Frage: Was sind Tupeltypen?
+Antwort: Tupeltypen sind eine Möglichkeit, Werte mit mehreren Komponenten zu definieren, bei der jeder Komponente ein eigener Typ zugeordnet ist.

@@ -1,0 +1,69 @@
+25 Typeinschränkung
+
+Typerweiterung ist nicht die einzige Möglichkeit, auf der Basis eines bereits bestehenden einen neuen, verwandten Typen zu erzeugen; Typeinschränkung ist eine andere. Eine erste, offensichtliche Form der Typeinschränkung liegt dann vor, wenn ein Typ auf Basis eines anderen unter Entfernen von Eigenschaften (Methoden) definiert wird (das Beispiel vom Pinguin als einem Vogel, der nicht fliegen kann, kennen Sie ja bereits aus Kurseinheit 1, Abschnitt 9.2; das Beispiel vom Quadrat als einem Rechteck, das nur eine Kantenlänge braucht, ist ein anderes). Diese Form der Typeinschränkung stellt zumindest auf Ebene der Typdefinition (der Intensionen) die Umkehrung der Typerweiterung dar. Es liegt auf der Hand, dass diese Form der Typeinschränkung nicht zur Zuweisungskompatibilität führt; dies folgt schon aus der fehlenden Symmetrie der Typkonformität. Sie soll hier deswegen keine weitere Berücksichtigung finden, auch wenn es Sprachen gibt, die sie erlauben (z. B. EIFFEL).
+
+
+Frage: Was ist Typeinschränkung?
+Antwort: Typeinschränkung ist eine Möglichkeit, auf der Basis eines bereits bestehenden Typs einen neuen, verwandten Typen zu erzeugen, indem man ihn auf Basis des bestehenden Typs definiert, aber mit dem Entfernen von Eigenschaften (Methoden). Diese Form der Typeinschränkung stellt die Umkehrung der Typerweiterung dar, führt aber nicht zur Zuweisungskompatibilität.
+
+Frage: Was ist der Unterschied zwischen Typerweiterung und Typeinschränkung?
+Antwort: Typerweiterung erfolgt durch Hinzufügen von Eigenschaften (Methoden) zu einem bestehenden Typen, während Typeinschränkung durch Entfernen von Eigenschaften (Methoden) von einem bestehenden Typen erfolgt. Typerweiterung führt zur Zuweisungskompatibilität, während Typeinschränkung nicht dazu führt.
+
+
+Eine unter dem Gesichtspunkt der Zuweisungskompatibilität interessantere Form der Typeinschränkung besteht darin, die verwendeten Typen einer Typdefinition durch andere, speziellere zu ersetzen (ohne hier schon zu sagen, was „spezieller“ im Zusammenhang mit Typen bedeutet). Diese Form der Typeinschränkung ergibt sich auf natürliche Weise, wenn man sich den Zusammenhang von Extensionen von definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht.
+
+
+Frage: Was ist eine Form der Typeinschränkung?
+Antwort: Eine Form der Typeinschränkung besteht darin, die verwendeten Typen einer Typdefinition durch andere, speziellere Typen zu ersetzen. Diese Form der Typeinschränkung ergibt sich auf natürliche Weise, wenn man sich den Zusammenhang von Extensionen von definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht.
+
+Frage: Was ist die unter dem Gesichtspunkt der Zuweisungskompatibilität interessante Form der Typeinschränkung?
+Antwort: Die unter dem Gesichtspunkt der Zuweisungskompatibilität interessante Form der Typeinschränkung besteht darin, die verwendeten Typen einer Typdefinition durch andere, speziellere zu ersetzen. Diese Form der Typeinschränkung ergibt sich auf natürliche Weise, wenn man sich den Zusammenhang von Extensionen von definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht.
+
+
+Man mag sich fragen, warum bei der Typerweiterung keine zwei Formen analog zur Typeinschränkung eingeführt wurden. Die Typerweiterung würde damit zur vollständigen Umkehrung der Typeinschränkung wie hier beschrieben. Wie Sie noch sehen werden, ist das Ziel nicht die Schaffung zweier Komplementäre, sondern die Vereinigung beider zu einer Beziehung zwischen Typen – dazu müssen sie aber in dieselbe und nicht in gegensätzliche Richtungen gehen. Außerdem ist eine Erweiterung des Wertebereichs bei Einschränkung des Definitionsbereichs nicht durch den Begriff der Relation wie oben erklärt; eine wichtige Analogie zur Realität, die durch Typen zwecks semantischer Prüfung nachgebildet werden soll, ginge damit verloren.
+
+
+Frage: Was ist das Ziel der Typerweiterung ?
+Antwort: Das Ziel der Typerweiterung ist die Vereinigung von Typerweiterung und Typeinschränkung zu einer Beziehung zwischen Typen, nicht die Schaffung zweier Komplementäre.
+
+Frage: Warum wurden bei der Typerweiterung keine zwei Formen eingeführt?
+Antwort: Es wurden keine zwei Formen der Typerweiterung eingeführt, weil das Ziel nicht die Schaffung zweier Komplementäre, sondern die Vereinigung beider zu einer Beziehung zwischen Typen ist. Eine wichtige Analogie zur Realität, die durch Typen zwecks semantischer Prüfung nachgebildet werden soll, ginge damit nicht verloren.
+
+
+Nun ergibt sich aber bei der Typeinschränkung auch ohne Löschen das Problem, dass sie die Zuweisungskompatibilität, die ja für die Typerweiterung noch per Typkonformität geregelt werden konnte, aushebelt.
+
+
+Frage: Was ist die Zuweisungskompatibilität?
+Antwort: Die Zuweisungskompatibilität ist eine Regel, die bestimmt, ob ein Wert einer Variablen zugewiesen werden kann. Wenn der Typ des Werts mit dem Typ der Variablen kompatibel ist, ist die Zuweisungskompatibilität gegeben.
+
+Frage: Was ist die Typkonformität?
+Antwort: Die Typkonformität ist eine Regel, die bestimmt, ob ein Typ in eine Typerweiterung übergehen kann. Wenn der Typ des Werts mit dem Typ der Variablen kompatibel ist, ist die Typkonformität gegeben.
+
+Frage: Was passiert, wenn die Zuweisungskompatibilität durch die Typeinschränkung ausgehebelt wird?
+Antwort: Wenn die Zuweisungskompatibilität durch die Typeinschränkung ausgehebelt wird, kann kein Wert mehr zugewiesen werden, was zu einem Fehler führt.
+
+Frage: Was ist die Auswirkung der Typeinschränkung auf die Zuweisungskompatibilität?
+Antwort: Die Typeinschränkung hebelt die Zuweisungskompatibilität aus, was bedeutet, dass die Zuweisung von Werten mit unverträglichen Typen nicht mehr möglich ist.
+
+Frage: Was ist das Problem bei der Typeinschränkung und der Zuweisungskompatibilität?
+Antwort: Das Problem ist, dass die Typeinschränkung die Zuweisungskompatibilität aushebelt, die für die Typerweiterung noch per Typkonformität geregelt werden konnte. Das bedeutet, dass die Zuweisung von Werten unterschiedlicher Typen nicht mehr möglich ist, auch wenn sie in einem übergeordneten Typ enthalten sind.
+
+
+Wesentlich für diese Betrachtungsweise, und damit das geschilderte Problem, ist übrigens, dass nach der Zuweisung von Zeile 901 d und z auf dasselbe Objekt, nämlich eine Zeichnung, verweisen. d ist also ein Alias für z. Unter Wertsemantik, bei der bei der Zuweisung eine Kopie erstellt wird, hätte man hingegen überlegen müssen, wie man ein Objekt vom Typ Zeichnung in einer Variable vom Typ Dokument speichern kann; je nach interner Repräsentation der Objekte (die ja durch den Typ nicht festgelegt ist), ist dafür nämlich gar nicht genug Platz. Gleichzeitig mit der Kopie könnte dann eine Typkonvertierung erfolgen, bei der aus der Zeichnung ein Dokument gemacht würde (was auch immer das heißen mag). Dieses Dokument müsste dann, per obiger Typdefinition, auch auf einem Zeilendrucker druckbar sein. Es ist allerdings schwer vorstellbar, wie dies umzusetzen ist, wenn das entsprechende Objekt nicht einmal mehr weiß, dass es eine Zeichnung ist, geschweige denn, wie seine interne Repräsentation aussieht. In der Praxis der objektorientierten Programmierung ist daher auch nur die Referenzsemantik in Fragen der Zuweisungskompatibilität interessant.
+
+
+Frage: Was ist der Unterschied zwischen Wertsemantik und Referenzsemantik?
+Antwort: Unter Wertsemantik, bei der Zuweisung eine Kopie erstellt wird, hätte man überlegen müssen, wie man ein Objekt vom Typ Zeichnung in einer Variablen vom Typ Dokument speichern kann. In der Praxis der objektorientierten Programmierung ist jedoch nur die Referenzsemantik in Fragen der Zuweisungskompatibilität interessant. Bei Referenzsemantik verweisen zwei Variablen auf dasselbe Objekt, während bei Wertsemantik eine Kopie erstellt wird.
+
+Frage: Was ist der Unterschied zwischen Wertsemantik und Referenzsemantik in Bezug auf Zuweisungskompatibilität in der objektorientierten Programmierung?
+Antwort: In der objektorientierten Programmierung ist bei der Zuweisungskompatibilität nur die Referenzsemantik relevant. Bei der Referenzsemantik wird nur der Verweis auf das Objekt kopiert und in der Variablen gespeichert, während bei der Wertsemantik eine Kopie des Objekts angefertigt wird. Dies führt dazu, dass bei der Referenzsemantik Änderungen am Objekt in einer Variablen auch das Objekt in einer anderen Variablen betrifft, wenn sie auf dasselbe Objekt verweisen. Bei der Wertsemantik hingegen betrifft eine Änderung am Objekt in einer Variablen nicht das Objekt in einer anderen Variablen, da es sich um eine Kopie handelt.
+
+
+Was die Freiheit von Typfehlern angeht, kann man das Löschen von Eigenschaften (Methoden) übrigens auch als einen Spezialfall der Typeinschränkung der obigen, zweiten Form auffassen, nämlich einer, in der der Wertebereich auf die leere Menge eingeschränkt wird. So wäre beispielsweise druckenAuf: mit einem Parametertyp ohne Elemente gar nicht mehr aufrufbar (da es kein typkorrektes Parameterobjekt gäbe), was einer Löschung gleichkäme.
+
+
+Frage: Wie kann man das Löschen von Eigenschaften (Methoden) als Spezialfall der Typeinschränkung auffassen?
+Antwort: Man kann das Löschen von Eigenschaften (Methoden) als Spezialfall der Typeinschränkung auffassen, indem man den Wertebereich auf die leere Menge einschränkt. In diesem Fall wäre die Methode nicht mehr aufrufbar, da es kein typkorrektes Parameterobjekt gäbe, was einer Löschung gleichkäme.
+
+Frage: Wie kann man das Löschen von Eigenschaften (Methoden) in Bezug auf Typfehler verstehen?
+Antwort: Das Löschen von Eigenschaften (Methoden) kann als ein Spezialfall der Typeinschränkung verstanden werden, bei der der Wertebereich auf die leere Menge eingeschränkt wird. In diesem Fall wäre die Methode nicht mehr aufrufbar, da es kein typkorrektes Parameterobjekt gäbe, was einer Löschung gleichkäme.

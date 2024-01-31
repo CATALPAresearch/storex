@@ -1,0 +1,31 @@
+4.3.2 Methodenaufruf und dynamisches Binden
+
+Wenn das Versenden von Nachrichten bisher als die Übergabe eines entsprechenden Nachrichtenobjekts an den Empfänger dargestellt wurde, ist das nicht ganz korrekt. Vielmehr wird ein Nachrichtenausdruck auch in SMALLTALK aus Effizienzgründen vom Compiler in einen einfachen Methodenaufruf übersetzt, der mit dem Funktionsaufruf aus der prozeduralen Programmierung (wie z.B. in PASCAL oder C) vergleichbar ist.
+
+Frage: Wie wird ein Nachrichtenausdruck in SMALLTALK übersetzt?
+Antwort: Ein Nachrichtenausdruck wird in SMALLTALK aus Effizienzgründen vom Compiler in einen einfachen Methodenaufruf übersetzt, der mit dem Funktionsaufruf aus der prozeduralen Programmierung vergleichbar ist.
+
+Dennoch wird das Mysterium des Nachrichtenversands in der objektorientierten Literatur aus didaktischen Gründen weiter gepflegt. Es gibt jedoch auch einen kleinen, feinen Unterschied zum gewöhnlichen Prozeduraufruf.
+Die Entscheidung darüber, welche Methode in Reaktion auf einen Nachrichtenversand aufgerufen und abgearbeitet wird, hängt nicht nur vom Nachrichtenselektor allein ab, sondern auch vom Objekt, an das die Nachricht geschickt wird. Es ist nämlich durchaus üblich, dass verschiedene Objekte mit gleichen Methodensignaturen unterschiedliche Methodenimplementierungen verbinden. Beispielsweise implementieren Zahlen und Symbole die Methode "printString" jeweils anders. Somit führt der Ausdruck "1 + 2" zu einem anderen Methodenaufruf als "a + b", wenn "a" und "b" unterschiedliche Objekte sind.
+
+Frage: Von welchem Objekt hängt die Auswahl der Methode ab?
+Antwort: Die Auswahl der Methode, die aufgerufen wird, hängt nicht nur vom Nachrichtenselektor allein ab, sondern auch vom Objekt, an das die Nachricht geschickt wird. Verschiedene Objekte mit gleichen Methodensignaturen können unterschiedliche Methodenimplementierungen haben.
+
+Aus der Abhängigkeit des Methodenaufrufs vom Empfängerobjekt folgt, dass nicht immer schon zur Übersetzungszeit entschieden werden kann, welche Methodenimplementierung bei einem Methodenaufruf ausgewählt werden muss. Dies geschieht erst zur Laufzeit, wenn das Empfängerobjekt durch eine Variable benannt oder von einem Ausdruck geliefert wird. Dies nennt man dynamisches Binden (im Gegensatz zum statischen Binden, bei dem ein Aufruf schon zur Übersetzungszeit an eine Implementierung gebunden wird). Das dynamische Binden ist eine charakteristische Eigenschaft der objektorientierten Programmierung und wird auch als Polymorphismus oder Polymorphie bezeichnet. Details dazu werden in den nächsten Kapiteln erläutert.
+
+Frage: Was ist dynamisches Binden?
+Antwort: Dynamisches Binden ist eine charakteristische Eigenschaft der objektorientierten Programmierung, bei der die Auswahl der Methodenimplementierung erst zur Laufzeit erfolgt, abhängig vom Empfängerobjekt des Methodenaufrufs. Dies wird auch als Polymorphismus oder Polymorphie bezeichnet.
+
+Frage: Was ist statisches Binden?
+Antwort: Bei statischem Binden wird ein Methodenaufruf schon zur Übersetzungszeit an eine Implementierung gebunden.
+
+Nachdem festgelegt wurde, welche Methode aufgerufen wird, erfolgt die Zuweisung der formalen Parameter mit Objekten. Dies geschieht durch eine implizite Zuweisung der tatsächlichen Parameter des Aufrufs an die formalen Parameter der Methode. Die tatsächlichen Parameter sind die Objekte, die an der Stelle des Methodenaufrufs als Argumente stehen. Je nach Sichtweise kann bei der Ausführung einer Return-Anweisung eine weitere implizite Zuweisung erfolgen, wobei das Ergebnis des Ausdrucks der Return-Anweisung der "Variable" des Methodennamens zugewiesen wird.
+
+Frage: Wie erfolgt die Zuweisung der formalen Parameter in einer Methode?
+Antwort: Die Zuweisung der formalen Parameter erfolgt in einer Methode durch eine implizite Zuweisung der tatsächlichen Parameter des Methodenaufrufs an die formalen Parameter der Methode.
+
+Es ist jedoch zu beachten, dass formale Parameter in SMALLTALK Pseudovariablen sind und daher keine explizite Zuweisung an sie erlaubt ist (außer bei der impliziten Zuweisung beim Aufruf).
+Was passiert, wenn ein Methodenaufruf ins Leere läuft, ist ebenfalls von Interesse. Da in SMALLTALK Ausdrücke beliebige Objekte liefern können, kann der Compiler nicht garantieren, dass das Empfängerobjekt tatsächlich über eine entsprechende Methode verfügt. In solchen Fällen wird der Methodenaufruf in einen Aufruf der Methode "doesNotUnderstand:" des ursprünglichen Empfängers umgewandelt. Diese Methode reagiert standardmäßig mit einer Fehlermeldung wie "<Objekt> does not understand: <Nachrichtenselektor>". Diese Standardreaktion kann jedoch geändert werden, um auf Fehlermeldungen anders zu reagieren.
+
+Frage: Was passiert, wenn ein Methodenaufruf in SMALLTALK ins Leere läuft?
+Antwort: Wenn ein Methodenaufruf ins Leere läuft, wird er in einen Aufruf der Methode "doesNotUnderstand:" des ursprünglichen Empfängers umgewandelt. Diese Methode reagiert standardmäßig mit einer Fehlermeldung, die besagt, dass das Objekt die Nachricht nicht versteht. Diese Standardreaktion kann jedoch geändert werden, um auf Fehlermeldungen anders zu reagieren.

@@ -1,0 +1,75 @@
+8.5 Die Metaklassenleiter in SMALLTALK
+
+Gemäß der SMALLTALK-Philosophie müssen auch Metaklassen (als Objekte) Instanzen von Klassen sein. Es erscheint jedoch nicht mehr sinnvoll, jeder Metaklasse eigene Instanzvariablen und Methoden zuzuweisen. Daher ist es nicht notwendig, dass jede Metaklasse (als Klasse) ihre eigene Meta-Metaklasse (als Metaklasse der Klasse) hat. Für die Praxis reicht es aus, eine gemeinsame Meta-Metaklasse vorzusehen, von der alle Metaklassen Instanzen sind. In Übereinstimmung mit der Benennungspraxis in SMALLTALK, bei der jede Klasse so benannt ist, dass ihre Instanzen den Satz "<eine Instanz> ist ein <Klassenname>" korrekt ergänzen, wird diese Klasse als "Metaclass" bezeichnet, da alle ihre Instanzen Metaklassen sind.
+
+
+Frage: Was ist die Rolle der Metaklasse "Metaclass" in SMALLTALK?
+Antwort: Die Metaklasse "Metaclass" in SMALLTALK ist eine gemeinsame Metaklasse, von der alle Metaklassen Instanzen sind. Sie wird verwendet, um die Instanzvariablen und Methoden für Metaklassen bereitzustellen, da es nicht notwendig ist, jeder Metaklasse eigene Instanzvariablen und Methoden zuzuweisen.
+
+Frage: Wozu dient die Metaclass in Smalltalk?
+Antwort: Die Metaclass in Smalltalk dient als gemeinsame Meta-Metaklasse für alle Metaklassen, von der alle Metaklassen Instanzen sind.
+
+Frage: Was ist die Benennungspraxis in SMALLTALK für die Klasse, von der alle Metaklassen Instanzen sind?
+Antwort: Die Benennungspraxis in SMALLTALK für die Klasse, von der alle Metaklassen Instanzen sind, ist "Metaclass".
+
+
+Die Frage ergibt sich sofort, von welcher Klasse die Klasse "Metaclass" eine Instanz ist. Tatsächlich muss laut der SMALLTALK-Philosophie, nach der Klassen Objekte und jedes Objekt Instanz einer Klasse ist, auch die "Metaclass" eine Instanz einer Klasse sein. Um diese Hierarchie nicht ins Unendliche fortsetzen zu müssen, wurde in SMALLTALK zu einem einfachen Trick gegriffen: Die Klasse "Metaclass" von "Metaclass" wird selbst nur als einfache Metaklasse betrachtet (obwohl sie eigentlich eine Meta-Meta-Metaklasse ist). Genau wie alle anderen Metaklassen ist sie eine Instanz von "Metaclass". Für "Metaclass" gilt daher: Metaclass ist eine Instanz von Metaclass.
+
+
+Frage: Was ist die Metaklasse von Metaclass?
+Antwort: Die Metaklasse von Metaclass ist selbst nur eine einfache Metaklasse und wird als Instanz von Metaclass betrachtet.
+
+Frage: Was ist die Klasse von Metaclass in Smalltalk?
+Antwort: Die Klasse von Metaclass in Smalltalk ist Metaclass selbst.
+
+
+Das folgende Diagramm veranschaulicht die Zusammenhänge. Beachten Sie, dass alle Objekte außerhalb der Ebene 0 gleichzeitig Klassen und Instanzen sind. Der gestrichelte Pfeil stellt die "Ist-eine-Instanz-von"-Beziehung dar (in UML-Notation).
+
+Frage: Was repräsentiert die "Ist-eine-Instanz-von"-Beziehungn?
+Antwort: Die "Ist-eine-Instanz-von"-Beziehung stellt die Beziehung zwischen einer Klasse und einer Instanz dar, was bedeutet, dass die Instanz ein Objekt der Klasse ist.
+
+
+Die aufmerksame Leserin wird sofort bemerken, dass dieser Kunstgriff, die Hierarchie zu beenden, die Interpretation von Klassen als Mengen von Objekten und deren Instanzen als Elemente dieser Mengen im Sinne von Abschnitt 7.3 verhindert. Andernfalls wäre die Menge von Objekten, die zu "Metaclass" gehört, indirekt ein Element von sich selbst, was nicht möglich ist. Dies hat jedoch keine praktischen Auswirkungen.
+
+
+Frage: Was ist der Kunstgriff, um die Hierarchie zu beenden?
+Antwort: Der Kunstgriff, um die Hierarchie zu beenden, besteht darin, die Interpretation von Klassen als Mengen von Objekten und deren Instanzen als Elemente dieser Mengen zu verhindern. Dadurch wird vermieden, dass die Menge von Objekten, die zu "Metaclass" gehört, indirekt ein Element von sich selbst wird, was nicht möglich ist. Dies hat jedoch keine praktischen Auswirkungen.
+
+Frage: Was verhindert die Interpretation von Klassen als Mengen von Objekten?
+Antwort: Die Interpretation von Klassen als Mengen von Objekten wird durch den Kunstgriff verhindert, die Hierarchie zu beenden, was im Widerspruch zu Abschnitt 7.3 stünde.
+
+Frage: Was verhindert die Interpretation von Klassen als Mengen von Objekten und deren Instanzen als Elemente dieser Mengen?
+Antwort: Die Tatsache, dass wenn Klassen als Mengen von Objekten interpretiert werden, die Menge von Objekten, die zu "Metaclass" gehört, indirekt ein Element von sich selbst wäre, was nicht möglich ist.
+
+
+In SMALLTALK haben wir es also mit einem mehrstufigen Zusammenspiel von Klassen und Instanzen zu tun. Auf der untersten Stufe, Ebene 0, befinden sich konkrete Objekte, die nicht instanziierbar sind und in der Regel Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Eine Stufe darüber, auf Ebene 1, stehen die Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Diese Klassen repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit und stellen die Konzepte und Allgemeinbegriffe des Anwendungsbereichs dar. In der Regel werden mehrere Objekte der Ebene 0 zu jeder Klasse der Ebene 1 erstellt, wodurch eine 1: n-Beziehung zwischen ihnen entsteht.
+
+
+Frage: Wie ist das Zusammenspiel von Klassen und Instanzen in SMALLTALK?
+Antwort: In SMALLTALK gibt es ein mehrstufiges Zusammenspiel von Klassen und Instanzen. Auf der untersten Stufe, Ebene 0, befinden sich konkrete Objekte, die nicht instanziierbar sind und in der Regel Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Eine Stufe darüber, auf Ebene 1, stehen die Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Diese Klassen repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit und stellen die Konzepte und Allgemeinbegriffe des Anwendungsbereichs dar. In der Regel werden mehrere Objekte der Ebene 0 zu jeder Klasse der Ebene 1 erstellt, wodurch eine 1: n-Beziehung zwischen ihnen entsteht.
+
+Frage: Wie ist die Beziehung zwischen Klassen und Objekten in SMALLTALK?
+Antwort: In SMALLTALK gibt es eine 1:n-Beziehung zwischen Klassen und Objekten. Klassen stellen die Definitionen für Objekte bereit und repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit. Objekte werden durch Instanziierung von Klassen erstellt.
+
+Frage: Was ist der Unterschied zwischen Objekten der Ebene 0 und Klassen der Ebene 1 in Smalltalk?
+Antwort: Objekte der Ebene 0 sind konkrete Instanzen, die nicht instanziierbar sind und in der Regel Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Klassen der Ebene 1 hingegen stellen die Definition (Instanzvariablen und -methoden) dieser Objekte bereit und repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit. Sie sind instanziierbar und stellen die Konzepte und Allgemeinbegriffe des Anwendungsbereichs dar.
+
+
+Die Klassen der Ebene 1 sind selbst Objekte und daher Instanzen von Klassen, die auf Ebene 2 stehen. Die Klassen der Ebene 2, die Metaklassen, definieren die Klassen auf Ebene 1. Da es nicht sinnvoll ist, mehrere Instanzen derselben Klasse der Ebene 1 zu haben, die alle über dieselbe Definition verfügen, hat jede Metaklasse genau eine Instanz. Es besteht also eine 1-zu-1-Beziehung zwischen Metaklassen und ihren Instanzen, den Klassen der Ebene 1, die die Objekte der Anwendung beschreiben.
+
+
+Frage: Was ist die Beziehung zwischen Metaklassen und Klassen der Ebene 1?
+Antwort: Es besteht eine 1-zu-1-Beziehung zwischen Metaklassen und ihren Instanzen, den Klassen der Ebene 1, die die Objekte der Anwendung beschreiben.
+
+Frage: Was sind Metaklassen?
+Antwort: Metaklassen sind Klassen, die auf einer höheren Ebene als die Klassen stehen, die die Objekte der Anwendung beschreiben. Sie definieren die Klassen der Ebene 1 und haben eine 1-zu-1-Beziehung zu diesen. Jede Metaklasse hat genau eine Instanz.
+
+
+Auf Ebene 3 erhalten alle Metaklassen eine gemeinsame Klasse, von der sie Instanzen sind, nämlich die Klasse "Metaclass". Beachten Sie, dass hier wieder eine 1: n-Beziehung vorliegt. Anders als auf Ebene 2, auf der verschiedene Konzepte jeweils eine eigene Klasse haben, wird auf Ebene 3 die Vielfalt auf genau eine Klasse reduziert. Diese Klasse hat dann wieder genau eine Metaklasse.
+
+
+Frage: Was ist die Klasse "Metaclass" in der Metaklassenhierarchie?
+Antwort: Die Klasse "Metaclass" ist die gemeinsame Klasse für alle Metaklassen auf Ebene 3. Sie ist die Superklasse von allen Metaklassen und hat selbst genau eine Metaklasse.
+
+Frage: Was ist die Klasse "Metaclass" auf Ebene 3?
+Antwort: Auf Ebene 3 erhalten alle Metaklassen eine gemeinsame Klasse, von der sie Instanzen sind, nämlich die Klasse "Metaclass".

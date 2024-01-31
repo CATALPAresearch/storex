@@ -1,0 +1,36 @@
+1.4 Gleichheit und Identität von Objekten
+
+Wie oben schon zur Unterscheidung von String- und Symbolliteralen angedeutet wurde, wird durch das Vorkommen desselben Literals an mehreren Stellen eines Programms nicht notwendigerweise dasselbe, also identische, Objekt repräsentiert. Es kann auch sein, dass die erzeugten Objekte nur gleich sind. Das wirft natürlich sofort die Frage auf, was der Unterschied zwischen Gleichheit und Identität bei Objekten ist und wie überhaupt Objekte unterschieden werden können.
+Die Gleichheit von Objekten ist Definitionssache und orientiert sich in der Regel an ihrem Erscheinungsbild oder ihrer Bedeutung. Gleichheit wird in SMALLTALK durch den Gleichheitsoperator = getestet. Obwohl zwei gleiche Zahl-Literale verschieden sind (und für verschiedene Objekte stehen), bezeichnen sie doch (aus mathematischer Sicht) die gleiche Zahl, sodass man sie in SMALLTALK als gleich definiert hat.
+Die Identität zweier Objekte (alternativ: die gleiche Identität zweier Objekte) wird in SMALLTALK durch == getestet. Zwei syntaktisch gleiche String-Literale können also zwei Objekte mit verschiedener Identität repräsentieren. Dies ist zumindest dann sinnvoll, wenn die durch die String-Literale erzeugten Objekte unabhängig voneinander veränderbar sein sollen und deswegen tatsächlich zwei Objekte sein müssen. Übrigens: Phrasen wie "zwei identische Objekte" sind strenggenommen Unsinn, denn es handelt sich bei vorliegender Identität definitionsgemäß nicht um zwei, sondern nur um ein Objekt. Die Frage nach der Identität von Objekten ist nur dann sinnvoll, wenn die Objekte durch Namen (oder Variablen) repräsentiert werden.
+
+Frage: Was ist die Gleichheit von Objekten?
+Antwort: Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten und wird in SMALLTALK durch den Gleichheitsoperator getestet.
+
+Frage: Was ist die Identität von Objekten?
+Antwort: Identität bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren.
+
+Frage: Was unterscheidet Gleichheit und Identität von Objekten?
+Antwort: Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten. Identität bezieht sich darauf, ob zwei Objekte dasselbe Objekt im Speicher repräsentieren.
+
+Frage: Warum können syntaktisch gleiche String-Literale in SMALLTALK unterschiedliche Identitäten haben?
+Antwort: Syntaktisch gleiche String-Literale können in SMALLTALK unterschiedliche Identitäten haben, wenn die durch die String-Literale erzeugten Objekte unabhängig voneinander veränderbar sein sollen und deswegen tatsächlich zwei Objekte sein müssen.
+
+Während man sich unter der Identität einer Person oder eines Dokuments leicht etwas vorstellen kann, scheint der Begriff der Identität für manche andere Objekte merkwürdig. Im Falle atomarer (also nicht zusammengesetzter) Objekte könnte man versucht sein, die Identität zweier Objekte mit der Gleichheit ihrer Erscheinungen gleichzusetzen: Es erscheint wenig sinnvoll, zwei immer gleiche Objekte mit unterschiedlicher Identität zu haben. So kann man sich beispielsweise fragen, warum man mehrere "1" mit unterschiedlicher Identität in einem System haben sollte. Tatsächlich würde es wohl kaum auffallen, wenn zwei solche gleichen, aber sich dennoch aufgrund ihrer Identität unterscheidenden Objekte zu einem verschmelzen würden. Ganz anders ist das bei veränderlichen Objekten: Aufgrund ihrer Veränderlichkeit können sie sich auch nur vorübergehend gleichen, müssen aber selbst während dieser vorübergehenden Gleichheit voneinander zu unterscheiden sein, da sie sich hinterher wieder auseinanderentwickeln können und man dann nicht mehr wüsste, welches welches war. Da dies aber für unveränderliche Objekte nicht der Fall sein kann, ist es durchaus berechtigt, zu fragen, warum sie sich nur aufgrund ihrer Identität unterscheiden sollten.
+Die Antwort ist vor allem technischer Natur. Wenn sich ein unveränderliches Objekt wie beispielsweise eine Zahl nicht aus einem Literal, sondern aus einer Operation (einer Rechenoperation) ergibt, dann müsste, für eine Zusammenlegung gleicher Objekte zu einem, immer erst überprüft werden, ob ein gleiches Objekt bereits angelegt wurde. Da dies Programme stark verlangsamen würde, nimmt man lieber in Kauf, mehrere gleiche, aber nicht identische Objekte zu haben. Aber warum sind dann gleiche Zahlen manchmal identisch, manchmal nicht? Die Antwort ist noch technischer: Sie hat etwas mit der Repräsentation von Objekten im Speicher zu tun. Und so werden in SMALLTALK bestimmte Objekte eben anders behandelt als der Rest: Ganze Zahlen (Integer) bis zu einer bestimmten Größe und Zeichen sind aus technischen Gründen immer auch identisch, wenn sie gleich sind — für den Rest (mit Ausnahme der Symbole!) gilt das nicht.
+"Das gleiche" und "dasselbe" sind in der objektorientierten Programmierung nicht dasselbe. Zwei Objekte können zwar gleich, aber nie dasselbe sein, oder sie sind nicht zwei Objekte, sondern eins!
+
+Frage: Warum sind gleiche Zahlen nur manchmal identisch in SMALLTALK?
+Antwort: In SMALLTALK werden gleiche Zahlen manchmal als identisch behandelt und manchmal nicht, abhängig von ihrer Größe und technischen Gründen.
+
+Frage: Was unterscheidet die Bezeichnungen "das gleiche" und "dasselbe"?
+Antwort: In der objektorientierten Programmierung sind "das gleiche" und "dasselbe" nicht dasselbe. Zwei Objekte können gleich, aber nie dasselbe sein, oder sie sind nicht zwei Objekte, sondern eins.
+
+Frage: Warum ist die Identität von Objekten wichtig?
+Antwort: Die Identität von Objekten ist wichtig, um festzustellen, ob zwei Namen oder Variablen dasselbe Objekt repräsentieren oder nicht.
+
+Frage: Warum haben veränderliche Objekte eine Identität?
+Antwort: Veränderliche Objekte haben eine Identität um sie auch bei vorübergehender Gleichheit voneinander unterscheiden zu können, da sie sich hinterher wieder auseinanderentwickeln können.
+
+Frage: Warum haben unveränderliche Objekte eine Identität?
+Antwort: Unveränderliche Objekte haben aus technischen Gründen eine Identität. Wenn sich ein unveränderliches Objekt aus einer Operation ergibt, dann müsste für eine Zusammenlegung gleicher Objekte zu einem immer erst überprüft werden, ob ein gleiches Objekt bereits angelegt wurde. Ganze Zahlen bis zu einer bestimmten Größe und Zeichen sind aus technischen Gründen immer auch identisch, wenn sie gleich sind.

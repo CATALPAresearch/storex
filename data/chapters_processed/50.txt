@@ -1,0 +1,7 @@
+50 C-Sharp
+
+C-Sharp ist Microsofts Antwort auf Java. Oberflächlich betrachtet ähnelt es Java recht stark, dennoch enthält C-Sharp einige zusätzliche Merkmale von C++, aber auch von Microsofts hauseigener Sprache, Visual Basic. Dabei ist die Entwicklung von C-Sharp wohl weniger ein Versuch, mit Microsofts eigener Marktmacht einen proprietären Standard durchzusetzen (was bei Programmiersprachen meines Wissens nach bisher noch nie gelungen ist), sondern vielmehr dem Umstand geschuldet, dass Java keine volle Kontrolle über Hardware und Betriebssystem bietet und somit nicht für jede kommerzielle Softwareentwicklung geeignet ist. Zwar hat sich Sun bemüht, bekannte Schwächen zu beheben, doch gestaltete sich dieser Prozess recht träge. Angesichts des nicht zu übersehenden Erfolgs von Java in der Entwicklergemeinschaft war die Entwicklung einer eigenen, Java-ähnlichen, aber dennoch in wichtigen Punkten unterschiedlichen Sprache eigentlich nur folgerichtig.
+
+
+Frage: Was ist C-Sharp und wie unterscheidet es sich von Java?
+Antwort: C-Sharp ist eine von Microsoft entwickelte Programmiersprache, die Java ähnelt, aber auch Merkmale von C++ und Visual Basic enthält. Im Gegensatz zu Java bietet C-Sharp volle Kontrolle über Hardware und Betriebssystem, was es für die kommerzielle Softwareentwicklung geeigneter macht. Die Entwicklung von C-Sharp war eher eine Reaktion auf die Schwächen von Java und die Notwendigkeit einer schnelleren Entwicklungsumgebung als ein Versuch, mit Microsofts Marktmacht einen proprietären Standard durchzusetzen.

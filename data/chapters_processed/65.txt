@@ -1,0 +1,57 @@
+65 Deklarativer Stil
+
+Einhergehend mit kurzen Methoden und aussagekräftigen Bezeichnern ist ein deklarativer Programmierstil für die objektorientierte Programmierung typisch: Die Ausdrucksform bemüht sich mehr um das "Was" als um das "Wie". Der Effizienzgedanke ist dabei sekundär – mögliche Optimierungen werden dem Compiler überlassen und ansonsten für später aufgehoben, wenn sich herausstellen sollte, dass die Abarbeitung einer deklarativ formulierten Lösung zu ineffizient ist.
+
+
+Frage: Was ist ein deklarativer Programmierstil in der objektorientierten Programmierung?
+Antwort: Ein deklarativer Programmierstil in der objektorientierten Programmierung bemüht sich mehr um das "Was" als um das "Wie". Er ist typisch für die objektorientierte Programmierung und geht einher mit kurzen Methoden und aussagekräftigen Bezeichnern. Der Effizienzgedanke ist dabei sekundär – mögliche Optimierungen werden dem Compiler überlassen und ansonsten für später aufgehoben, wenn sich herausstellen sollte, dass die Abarbeitung einer deklarativ formulierten Lösung zu ineffizient ist.
+
+Frage: Was ist der Unterschied zwischen einem deklarativen und einem imperativen Programmierstil?
+Antwort: Ein deklarativer Programmierstil beschäftigt sich mehr mit dem "Was" als mit dem "Wie" und beschreibt, was das Programm tun soll, während ein imperativer Programmierstil sich mehr auf die Anweisungen und die Reihenfolge der Befehle konzentriert, die das Programm ausführen soll, um ein bestimmtes Ergebnis zu erzielen.
+
+
+Da die objektorientierte Programmierung ihrem Wesen nach eher imperativ als deklarativ ist, beschränkt sich das Deklarative im Wesentlichen auf den Aufruf von Methoden, die nach dem benannt sind, was sie tun. So ist es in der objektorientierten Programmierung durchaus üblich, einzelne Schleifen, in denen beispielsweise ein Element gesucht wird, aus einem Methodenrumpf in eine eigene Methode zu verschieben und durch einen entsprechenden Methodenaufruf zu ersetzen. Das Programm liest sich also nur deklarativ und ist es nicht wirklich – es handelt sich ja auch nur um einen Stil.
+
+
+Frage: Wie ist die objektorientierte Programmierung im Hinblick auf imperative und deklarative Programmierung?
+Antwort: Objektorientierte Programmierung ist eher imperativ als deklarativ, aber es ist möglich, einen deklarativen Stil zu verwenden, indem man einzelne Schleifen in eigene Methoden verschiebt und durch Methodenaufrufe ersetzt.
+
+Frage: Was ist der Unterschied zwischen imperativer und deklarativer Programmierung?
+Antwort: Imperative Programmierung ist eine Programmierparadigme, bei der der Programmierer explizit die Schritte angibt, die der Computer ausführen soll, um ein Problem zu lösen. Deklarative Programmierung hingegen ist eine Programmierparadigme, bei der der Programmierer lediglich die gewünschte Lösung angibt, ohne die Schritte zur Lösung des Problems zu spezifizieren. In der objektorientierten Programmierung ist es durchaus üblich, einzelne Schleifen aus einem Methodenrumpf in eine eigene Methode zu verschieben und durch einen entsprechenden Methodenaufruf zu ersetzen, um das Programm deklarativer zu gestalten, aber es ist immer noch imperativ.
+
+
+Für beide Alternativen der Methode "auswerten" in Klasse "Klausel" gibt es übrigens eine "Shortcut"-Variante (die so heißt, weil die Iteration ggf. vorzeitig abgebrochen wird).
+
+
+Frage: Was ist eine Shortcut-Variante in der Programmierung?
+Antwort: Eine Shortcut-Variante ist eine abgekürzte oder optimierte Variante einer Methode, die eine Iteration ggf. vorzeitig abbricht, wenn eine bestimmte Bedingung erfüllt ist. Sie wird auch als "Schnellausgang" oder "Frühausgang" bezeichnet.
+
+
+Aber solange man sich nicht sicher ist, dass eine (vermeintliche) Abkürzung funktional äquivalent ist (also dasselbe Ergebnis liefert), sollte man von solchen Optimierungen die Finger lassen. (Es könnte beispielsweise sein, dass "auswerten" für "Literale" einen Seiteneffekt hat; in diesem Fall wären die optimierten Versionen nicht mehr äquivalent!)
+
+
+Frage: Warum sollte man bei Optimierungen vorsichtig sein?
+Antwort: Man sollte bei Optimierungen vorsichtig sein, weil nicht sichergestellt ist, dass die optimierte Version funktional äquivalent ist und dasselbe Ergebnis liefert. Zum Beispiel könnte "auswerten" für "Literale" einen Seiteneffekt haben, was die optimierten Versionen ungleich machen würde.
+
+Frage: Was sollte man bei vermeintlichen Abkürzungen beachten?
+Antwort: Man sollte sicherstellen, dass die Abkürzung funktional äquivalent ist, d.h. dasselbe Ergebnis liefert, bevor man solche Optimierungen vornimmt. Wenn beispielsweise "auswerten" für "Literale" einen Seiteneffekt hat, wären die optimierten Versionen nicht mehr äquivalent.
+
+Frage: Was bedeutet funktional äquivalent?
+Antwort: Funktional äquivalent bedeutet, dass zwei Ausdrücke das gleiche Ergebnis liefern, wenn sie mit den gleichen Eingabewerten ausgeführt werden.
+
+
+Ein anderes Zeichen eines deklarativen Programmierstils ist die Verwendung von Zusicherungen (Vor- und Nachbedingungen, Invarianten) anstelle von Kommentaren.
+
+
+Frage: Was sind Zusicherungen in einem deklarativen Programmierstil?
+Antwort: Zusicherungen sind Vor- und Nachbedingungen sowie Invarianten, die anstelle von Kommentaren in einem deklarativen Programmierstil verwendet werden.
+
+
+Wenn es die Sprache zulässt. Damit schlägt man zwei Fliegen mit einer Klappe: Man kann die Zusicherungen zur Laufzeitverifikation einsetzen und zeigt dem Aufrufer der Methode, wie er selbst prüfen kann, ob die Vorbedingung eingehalten ist.
+
+
+Frage: Was ist die Bedeutung von Zusicherungen (Assertions) in der Programmierung?
+Antwort: Zusicherungen (Assertions) sind in der Programmierung eine Möglichkeit, die Richtigkeit von Bedingungen zu einem bestimmten Zeitpunkt während der Ausführung eines Programms zu überprüfen. Wenn die Sprache dies zulässt, können sie auch dazu verwendet werden, dem Aufrufer der Methode zu zeigen, wie er selbst prüfen kann, ob die Vorbedingung eingehalten ist.
+
+Frage: Wozu können Zusicherungen in der objektorientierten Programmierung eingesetzt werden?
+Antwort: Zusicherungen können in der objektorientierten Programmierung eingesetzt werden, um die Laufzeitverifikation zu ermöglichen und dem Aufrufer der Methode zu zeigen, wie er prüfen kann, ob die Vorbedingung eingehalten ist.

@@ -1,0 +1,54 @@
+8.6 Praktische Bedeutung der Metaklassen für die Programmierung
+
+In SMALLTALK sind Klassen Instanzen von Metaklassen, die selbst Instanzen einer weiteren Klasse sind, und alle diese zusammen sind Objekte. Daher ist jedes SMALLTALK-Programm, ja das ganze SMALLTALK-System, nichts weiter als ein Geflecht von Objekten (abgesehen von den primitiven Methoden). SMALLTALK ist somit nicht nur ein Programmiersystem, sondern auch ein Metaprogrammiersystem in der Tradition funktionaler und logischer Programmiersprachen wie LISP und PROLOG. In der Welt der imperativen und objektorientierten Programmiersprachen sucht diese Mächtigkeit bis heute ihresgleichen.
+
+
+Frage: Was ist SMALLTALK?
+Antwort: SMALLTALK ist ein objektorientiertes Programmiersystem, in dem Klassen Instanzen von Metaklassen sind, die selbst Instanzen einer weiteren Klasse sind, und alle diese zusammen sind Objekte. SMALLTALK ist somit ein Geflecht von Objekten und bietet die Möglichkeiten von Metaprogrammierung.
+
+
+Als Programmiererin, die nicht gleich eine neue Sprache entwickeln möchte, werden Sie wahrscheinlich nicht in die Ebene der Metaklassen hinabsteigen oder diese gar selbst ändern. Wenn Sie beispielsweise möchten, dass beim Erstellen einer neuen Klasse automatisch Zugriffsmethoden für alle benannten Instanzvariablen dieser Klasse generiert werden, ist dies leicht möglich, indem Sie an der entsprechenden Stelle (z. B. in der Klasse "Class" oder "Behavior", die auf der Ebene der Metaklassen steht und für das Erstellen neuer Klassen verantwortlich ist) eine neue Methode zur Klassendefinition hinzufügen, die die vorhandenen Methoden um die automatische Generierung der Zugriffsmethoden erweitert.
+
+
+Frage: Was ist eine Metaklasse in der Programmierung?
+Antwort: Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+
+Frage: Was ist die Aufgabe von Metaklassen in der Programmierung?
+Antwort: Metaklassen sind eine Ebene oberhalb von Klassen und werden verwendet, um die Verhaltensweisen von Klassen zu definieren. Sie können auch geändert werden, um die Erstellung von Klassen zu ändern, wie zum Beispiel das automatische Generieren von Zugriffsmethoden für alle benannten Instanzvariablen einer Klasse.
+
+Frage: Was ist die Klasse "Class" oder "Behavior" in Smalltalk?
+Antwort: Die Klasse "Class" oder "Behavior" in Smalltalk ist eine Metaklasse, die für das Erstellen neuer Klassen verantwortlich ist.
+
+Frage: Was ist eine Metaklasse in Smalltalk?
+Antwort: In Smalltalk ist eine Metaklasse eine Klasse, die dazu dient, andere Klassen zu definieren und zu erstellen.
+
+Frage: Wie kann man in Smalltalk automatische Zugriffsmethoden für alle benannten Instanzvariablen einer Klasse generieren?
+Antwort: Dies ist möglich, indem man eine neue Methode zur Klassendefinition in der Klasse "Class" oder "Behavior" hinzufügt, die die vorhandenen Methoden um die automatische Generierung der Zugriffsmethoden erweitert.
+
+
+Im täglichen Programmieralltag werden Sie dies jedoch wahrscheinlich nicht tun. Stattdessen beschränkt sich Ihre Arbeit darauf, einfache Klassen anzulegen und zu ändern, also Klassen, deren Instanzen selbst keine Klassen sind. Die erforderlichen Metaklassen erstellt SMALLTALK automatisch selbst, und im Klassenbrowser werden sie nur durch die Unterscheidung zwischen Instanz- und Klassenvariablen bzw. -methoden sichtbar.
+
+
+Frage: Was sind Metaklassen in SMALLTALK?
+Antwort: Metaklassen sind Klassen, die Klassen erstellen. In SMALLTALK erstellt die Programmiersprache automatisch Metaklassen, die für den Programmierer nicht sichtbar sind, außer durch die Unterscheidung zwischen Instanz- und Klassenvariablen bzw. -methoden im Klassenbrowser.
+
+Frage: Wer erstellt Metaklassen in Smalltalk?
+Antwort: Smalltalk erstellt Metaklassen automatisch selbst.
+
+Frage: Wann werden Metaklassen im Klassenbrowser sichtbar?
+Antwort: Metaklassen werden im Klassenbrowser nur durch die Unterscheidung zwischen Instanz- und Klassenvariablen bzw. -methoden sichtbar.
+
+Frage: Wozu werden temporäre Variablen in Smalltalk verwendet?
+Antwort: Temporäre Variablen werden in Smalltalk verwendet, um Zwischenergebnissen Namen zu geben und die Lesbarkeit zu verbessern.
+
+Frage: Wie wird der Zustand eines Objekts in Smalltalk verändert?
+Antwort: Der Zustand eines Objekts in Smalltalk wird verändert, indem die Werte seiner Instanzvariablen zugewiesen werden, was gleichbedeutend mit der Änderung seiner Beziehungen ist.
+
+Frage: Wann entstehen Aliase in Smalltalk?
+Antwort: Aliase entstehen in Smalltalk immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.
+
+Frage: Wie werden Informationen in der objektorientierten Programmierung in Smalltalk dargestellt?
+Antwort: In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt, das navigiert und manipuliert werden kann.
+
+Frage: Was erstellt SMALLTALK automatisch für Klassen?
+Antwort: SMALLTALK erstellt automatisch Metaklassen für Klassen, deren Instanzen selbst keine Klassen sind.

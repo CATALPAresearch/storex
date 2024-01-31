@@ -1,0 +1,99 @@
+55 Das Fragile Base-Class-Problem
+
+Das Fragile-Base-Class-Problem bezieht sich auf eine ganze Familie von Problemen, die eng mit der Vererbung zusammenhängen. Der Name ist insofern etwas irreführend, als nicht unbedingt die Basisklassen, also die Superklassen (siehe Abschnitt 11.1), als "anfällig" oder "zerbrechlich" gelten, sondern eher die Klassen, die von ihnen erben. Ein einfaches Beispiel soll verdeutlichen, um was es geht.
+
+
+Frage: Was ist das Fragile-Base-Class-Problem?
+Antwort: Das Fragile-Base-Class-Problem bezieht sich auf eine Familie von Problemen, die eng mit der Vererbung zusammenhängen. Es tritt auf, wenn eine Unterklasse eine Methode der Superklasse überschreibt und diese Änderung unbeabsichtigte Auswirkungen auf andere Unterklassen hat, die ebenfalls diese Methode überschreiben.
+
+
+Angenommen, wir haben eine Klasse namens TapeArchive geschrieben, die Videobänder archiviert. Da es sich nicht um eine einfache Desktop-Anwendung handelt, sondern um ein kommerzielles System, erfolgt die Datenhaltung in einer Datenbank. In der objektorientierten Programmierung ist es üblich, solche Klassen wiederzuverwenden, indem man von ihnen neue Klassen ableitet. Wenn beispielsweise eine Anforderung von Kunden besteht, bei jeder Archivierung eine Nachricht zu senden, und diese Anforderung nicht für alle Kunden der Software gleichermaßen interessant ist, dann schreibt man eine Subklasse, die dieses geänderte Verhalten bereitstellt. Das Schöne an der Objektorientierung ist dabei, dass man nur die Unterschiede (Differentia) spezifizieren muss, der Rest wird einfach geerbt. Im gegebenen Fall genügt es, die Initialisierung und die Methode addTape: anzupassen. Das Verhalten von addAllTapes: kann unverändert bleiben, da es die (dynamisch gebundene) Methode addTape: aufruft und somit auch das von NotifyingTapeArchive geforderte Verhalten, nämlich die Benachrichtigung aller archivierten Bänder, garantiert.
+
+
+Frage: Was ist die Bedeutung von Differentia in der Objektorientierung?
+Antwort: In der Objektorientierung ist Differentia der Teil, der spezifiziert werden muss, während der Rest einfach geerbt wird. Es ist der Unterschied, der eine Klasse von anderen Klassen unterscheidet.
+
+
+Das Problem ist jedoch, dass man der Klasse TapeArchive nicht ansieht, was sie garantiert oder wovon die Korrektheit ihrer Subklassen abhängt. Wenn später eine andere Kundin bemängelt, dass das Hinzufügen großer Mengen von Bändern zu lange dauert, und das wiederholte Aufrufen von addTape: aus addAllTapes: als Ursache identifiziert, könnte sie vorschlagen, nicht nur die nörgelnde Kundin, sondern alle Kundinnen mit der optimierten Implementierung von TapeArchive zu beglücken. Das klingt verlockend, aber hier liegt bereits das Problem.
+Vermutlich können die meisten von Ihnen nicht sofort sagen, was dagegen spricht, denn in der Klasse TapeArchive scheint alles in Ordnung zu sein. Der Fehler liegt darin, dass die Korrektheit der Methode addAllTapes: davon abhängt, dass sie addTape: aufruft - nicht unbedingt für die Klasse TapeArchive selbst, aber für ihre Subklasse NotifyingTapeArchive. Hier werden nun nur noch für einzeln archivierte Bänder Benachrichtigungen verschickt. Hätten Sie diesen Fehler vorhergesehen? Wahrscheinlich nicht, da die Täuschung darin besteht, dass addAllTapes: in TapeArchive die Methode addTape: der benachbarten Methode aufruft. Wenn Sie den Aufruf von addTape: in addAllTapes: entfernen und nur den Beitrag von addTape: in addAllTapes: verlagern, wäre dies eine semantikerhaltende Umstrukturierung (ein sogenanntes Refactoring). Allerdings beraubt dies die Subklassen der Möglichkeit, eigenes Verhalten genau an dieser Stelle, dem Aufruf von addTape:, einzubringen. Wenn diese Beraubung im Nachhinein erfolgt, kann sie den Code "zerbrechen".
+
+Frage: Was ist ein Refactoring?
+Antwort: Refactoring ist eine semantikerhaltende Umstrukturierung von Code, bei der der Verhaltensumfang der Methode nicht verändert wird, sondern nur die innere Struktur der Methode.
+
+
+Das Problem ist, dass nicht einmal klar ist, wem die Schuld zuzuweisen ist - TapeArchive, weil es einen Vertrag bricht, den es nicht abgeschlossen hat (oder weil es keine Rücksicht auf Subklassen nimmt, die es nicht kennt), oder NotifyingTapeArchive, weil es sich grundlos darauf verlässt, dass die geerbten Methoden dauerhaft die eigenen Methoden aufrufen? Wenn die Schuld nicht einmal feststeht, wie kann man das Problem verhindern?
+
+
+Frage: Wie kann das Fragile Base-Class-Problem verhindert werden, wenn die Schuld nicht feststeht?
+Antwort: Das Fragile Base-Class-Problem kann verhindert werden, indem man eine klare Schnittstelle definiert und sicherstellt, dass alle Klassen diese Schnittstelle einhalten. Zudem sollten Subklassen die Möglichkeit haben, die Verhaltensweise der übergeordneten Klassen zu überschreiben, ohne dass dies zu unerwarteten Nebenwirkungen führt. Das Problem kann außerdem verhindert werden, indem man eine klare Dokumentation und Kommunikation zwischen den Subklassen und Superklassen pflegt, um sicherzustellen, dass die geerbten Methoden die eigenen Methoden aufrufen. Zudem kann man eine Schnittstelle definieren, die von der Superklasse und allen Subklassen eingehalten wird, um sicherzustellen, dass die Methodenaufrufe konsistent sind.
+
+
+Es gibt zahlreiche Varianten des Fragile-Base-Class-Problems, die hier nicht alle aufgeführt werden sollen. Ihnen allen ist gemeinsam, dass zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, die nur unvollständig dokumentiert sind. Es könnte angenommen werden, dass von allem, was vererbt wird, eine Abhängigkeit ausgeht, die bei Änderungen berücksichtigt werden muss. Dies würde jedoch die Möglichkeiten, in Superklassen Änderungen vorzunehmen, so stark einschränken, dass das gesamte Konzept ad absurdum geführt würde. Es bleibt daher wenig mehr, als bei der Verwendung von Vererbung äußerst vorsichtig zu sein oder sie gänzlich zu verbieten.
+
+
+Frage: Was ist das Fragile-Base-Class-Problem?
+Antwort: Das Fragile-Base-Class-Problem beschreibt die Situation, in der zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, die nur unvollständig dokumentiert sind. Diese Abhängigkeiten können bei Änderungen berücksichtigt werden müssen, was die Möglichkeiten, in Superklassen Änderungen vorzunehmen, einschränken kann.
+
+
+Die Vererbung von Implementierung - die Fähigkeit, eine Komponente von einer anderen Komponente abzuleiten oder Teile ihrer Funktionalität zu erben - ist eine sehr nützliche Technologie zum Erstellen von Anwendungen. Die Vererbung von Implementierung kann jedoch viele Probleme in einem verteilten, sich weiterentwickelnden Objektsystem verursachen.
+
+
+Frage: Was ist die Vererbung von Implementierung?
+Antwort: Die Vererbung von Implementierung ist eine Technologie zum Erstellen von Anwendungen, bei der eine Komponente von einer anderen Komponente abgeleitet wird oder Teile ihrer Funktionalität erbt.
+
+Frage: Was ist Vererbung von Implementierung und welche Probleme kann sie verursachen?
+Antwort: Vererbung von Implementierung ist eine Technologie, die es ermöglicht, eine Komponente von einer anderen Komponente abzuleiten oder Teile ihrer Funktionalität zu erben. Diese Technologie kann jedoch viele Probleme in einem verteilten, sich weiterentwickelnden Objektsystem verursachen, da sie die Kopplung zwischen Komponenten erhöht und die Änderungen in der Basiskomponente Auswirkungen auf die abgeleiteten Komponenten haben können.
+
+
+Das Problem bei der Vererbung von Implementierung besteht darin, dass der "Vertrag" oder die Beziehung zwischen Komponenten in einer Implementierungshierarchie nicht klar definiert ist. Sie ist implizit und mehrdeutig. Wenn die Eltern- oder Kindkomponente unerwartet ihr Verhalten ändert, kann dies zu undefiniertem Verhalten verwandter Komponenten führen. Dies ist kein Problem, wenn die Implementierungshierarchie von einer definierten Gruppe von Programmierern kontrolliert wird, die Updates an allen Komponenten gleichzeitig vornehmen können. Genau diese Fähigkeit zur Kontrolle und Änderung einer Gruppe von verwandten Komponenten unterscheidet jedoch eine Anwendung, selbst eine komplexe Anwendung, von einem echten verteilten Objektsystem. Daher kann die Implementierungsvererbung zwar sehr nützlich sein, um Anwendungen zu erstellen, ist jedoch nicht für ein Systemobjektmodell geeignet, das eine Architektur für Komponentensoftware definiert.
+
+
+Frage: Warum ist die Implementierungsvererbung nicht für ein Systemobjektmodell geeignet, das eine Architektur für Komponentensoftware definiert?
+Antwort: Die Implementierungsvererbung ist nicht für ein Systemobjektmodell geeignet, das eine Architektur für Komponentensoftware definiert, weil sie implizit und mehrdeutig ist. Wenn die Eltern- oder Kindkomponente unerwartet ihr Verhalten ändert, kann dies zu undefiniertem Verhalten verwandter Komponenten führen. Diese Unsicherheit ist nicht akzeptabel in einem System, das von vielen verschiedenen Programmierern entwickelt wird, die nicht alle gleichzeitig Updates an allen Komponenten vornehmen können.
+
+
+In einem System, das aus Komponenten verschiedener Anbieter besteht, ist es entscheidend, dass ein bestimmter Komponentenanbieter sein Produkt revidieren, aktualisieren und verteilen (oder neu verteilen) kann, ohne den bestehenden Code auf dem Feld zu beeinträchtigen, der die vorherige Revision oder Revisionen seiner Komponente verwendet. Um dies zu erreichen, muss die tatsächliche Schnittstelle auf der von solchen Clients verwendeten Komponente für beide Parteien kristallklar sein. Andernfalls, wie kann der Komponentenanbieter sicherstellen, dass er diese Schnittstelle beibehält und somit die bestehenden Clients nicht stört?
+
+
+Frage: Warum ist es wichtig, dass die Schnittstelle einer Komponente für den Anbieter und den Client klar definiert ist?
+Antwort: Damit der Komponentenanbieter sein Produkt revidieren, aktualisieren und verteilen (oder neu verteilen) kann, ohne den bestehenden Code auf dem Feld zu beeinträchtigen, der die vorherige Revision oder Revisionen seiner Komponente verwendet.
+
+Frage: Warum ist es wichtig, dass die Schnittstelle einer Komponente für beide Parteien kristallklar ist?
+Antwort: Damit der Komponentenanbieter sicherstellen kann, dass er die Schnittstelle beibehält und somit die bestehenden Clients nicht stört.
+
+
+Übertragen auf die objektorientierte Programmierung besteht das Problem darin, dass der Vertrag zwischen den Klassen in einer Vererbungshierarchie nicht klar definiert ist. Wenn Super- oder Subklassen ihr Verhalten unerwartet ändern, kann dies zu undefiniertem Verhalten in verwandten Klassen führen. Die Vererbung von Implementierung wurde aus der Spezifikation von Microsofts Component Object Model (COM) verbannt und durch die Vererbung von Schnittstellen (was als Subtyping bezeichnet wird) ersetzt. Trotzdem bleiben Vorbehalte gegenüber dem dynamischen Binden bestehen.
+
+
+Frage: Warum wurde die Vererbung von Implementierung in Microsofts Component Object Model (COM) verbannt?
+Antwort: Die Vererbung von Implementierung wurde in COM verbannt, weil der Vertrag zwischen den Klassen in einer Vererbungshierarchie nicht klar definiert ist. Wenn Super- oder Subklassen ihr Verhalten unerwartet ändern, kann dies zu undefiniertem Verhalten in verwandten Klassen führen.
+
+Frage: Was ist der Vorteil von Interfaces gegenüber der Vererbung von Implementierung?
+Antwort: Der Vorteil von Interfaces gegenüber der Vererbung von Implementierung ist, dass sie den Vertrag zwischen Klassen klar definiert und das dynamische Binden ermöglicht, ohne sich um die Implementierungsdetails kümmern zu müssen.
+
+Frage: Was ist der Nachteil von Interfaces gegenüber der Vererbung von Implementierung?
+Antwort: Der Nachteil von Interfaces gegenüber der Vererbung von Implementierung ist, dass sie keine gemeinsam genutzten Implementierungen ermöglicht und die Code-Duplizierung erhöhen kann.
+
+
+Es liegt nahe, in Bezug auf die Vererbung das zu tun, was man bei Abhängigkeiten immer tut: Schnittstellen einführen. Im Gegensatz zu der Schnittstelle, die einem Client einer Klasse angeboten wird (der diese Schnittstelle nutzt, indem er seine Variablen mit dem zur Klasse gehörenden Typ deklariert und somit auf Instanzen der Klasse zugreifen kann), handelt es sich bei der Schnittstelle zwischen einer Klasse und ihren Subklassen jedoch um eine etwas anders geartete. Hier gibt es lediglich zwei Variablen, self (oder this) und super, die jedoch keine Abhängigkeit von anderen Objekten ausdrücken und nicht explizit typisiert sind. Die damit verbundene Schnittstelle, also die Menge der Eigenschaften, auf die man über diese Variable zugreifen kann, und wo man diese Eigenschaften findet (also wo sie definiert sind), muss man selbst zusammensuchen. Dies hat nichts mit Information Hiding und dem Verbergen von Implementationsdetails zu tun. Was stattdessen benötigt wird, ist ein explizites Vererbungsinterface.
+
+
+Frage: Was ist ein explizites Vererbungsinterface?
+Antwort: Ein explizites Vererbungsinterface ist eine Schnittstelle zwischen einer Klasse und ihren Subklassen, die die Eigenschaften definiert, auf die man über die Variablen self oder super zugreifen kann. Im Gegensatz zu anderen Schnittstellen handelt es sich hierbei nicht um eine Abhängigkeit zu anderen Objekten, sondern um eine Schnittstelle, die das Verhalten zwischen einer Klasse und ihren Subklassen regelt.
+
+Frage: Was ist der Unterschied zwischen der Schnittstelle, die einem Client einer Klasse angeboten wird und der Schnittstelle zwischen einer Klasse und ihren Subklassen?
+Antwort: Die Schnittstelle, die einem Client einer Klasse angeboten wird, ist die Schnittstelle, die der Client nutzt, indem er Variablen mit dem zur Klasse gehörenden Typ deklariert und somit auf Instanzen der Klasse zugreifen kann. Die Schnittstelle zwischen einer Klasse und ihren Subklassen hingegen ist eine etwas anders geartete Schnittstelle, die lediglich zwei Variablen, self (oder this) und super, umfasst und nicht explizit typisiert ist. Die Schnittstelle zwischen einer Klasse und ihren Subklassen muss man selbst zusammensuchen und ist nicht mit Information Hiding und dem Verbergen von Implementationsdetails zu tun.
+
+
+Einige erste Ansätze zur Einführung expliziter Vererbungsinterfaces wurden bereits gesehen, wie die Verwendung des Zugriffsmodifikators protected in Java, C-Sharp und C++ sowie die explizite Deklaration von Überschreibbarkeit und Überschreibung mittels virtual und override in C-Sharp (und C++). Im obigen Beispiel würde die Deklaration von addTape: als nicht überschreibbar (und somit als statisch gebunden, nicht dynamisch gebunden) verhindern, dass NotifyingTapeArchive diese Methode ändert und sich darauf verlässt, dass die geerbte Methode addAllTapes: die überschreibende Version von addTape: aufruft (obwohl sie sie immer noch neu einführen könnte, würde diese neue Version bei der Bindung in addAllTapes: nicht berücksichtigt). NotifyingTapeArchive müsste dann beide Methoden neu implementieren und sicherstellen, dass addAllTapes: keinen Fehler macht. Dies hätte jedoch zur Folge, dass bei einem direkten Aufruf von addTape: von außerhalb auf einer Variable vom Typ TapeArchive, die eine Instanz vom Typ NotifyingTapeArchive hält, die überschreibende Implementierung ignoriert wird (da keine dynamische Bindung mehr stattfindet). Im Gegensatz dazu würde die Verwendung von virtual bei addTape: in TapeArchive darauf hinweisen, dass die Methode in Subklassen relevante Modifikationen enthalten kann, so dass Aufrufe dieser Methode nicht einfach gekürzt werden können, wie im obigen Beispiel geschehen.
+
+
+Frage: Was ist der Unterschied zwischen statischer und dynamischer Bindung?
+Antwort: Statische Bindung findet zur Übersetzungszeit statt und ist damit schneller, während dynamische Bindung zur Laufzeit erfolgt und damit etwas langsamer ist. Statische Bindung wird verwendet, wenn der Compiler die Methodenaufrufe bereits zur Übersetzungszeit auflösen kann, während dynamische Bindung verwendet wird, wenn der Compiler die Methodenaufrufe nicht auflösen kann und sie daher zur Laufzeit auflösen muss.
+
+
+Bei der Definition von Java wurde dies jedoch nicht berücksichtigt. Der Zugriffsmodifikator protected, virtual und override sind mehr als Symbole für das Bewusstsein, dass es das Fragile-Base-Class-Problem gibt.
+
+
+Frage: Was ist das Fragile-Base-Class-Problem in Java?
+Antwort: Das Fragile-Base-Class-Problem in Java ist ein Problem, bei dem Änderungen an der Superklasse (Basisklasse) eine Unterklasse brechen können, wenn der Zugriffsmodifikator protected, virtual und override nicht berücksichtigt werden.

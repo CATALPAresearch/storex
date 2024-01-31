@@ -1,0 +1,10 @@
+50.3.1 Properties
+
+Properties sind gewissermaßen die Umkehrung von Zugriffsmethoden (Settern und Gettern; s. Abschnitt 4.3.4 in Kurseinheit 1): Anstatt auf ein Feld eines Objektes über Methoden (lesend und schreibend) zuzugreifen, ruft man Methoden über das auf, was syntaktisch wie ein Feldzugriff aussieht. Dies erlaubt es, (lesende und schreibende) Feldzugriffe mit Nebeneffekten zu versehen (wie z. B. einer dynamischen Typprüfung bei schreibendem Zugriff, wenn man kovariante Redefinition imitieren will). Dabei sind "get" und "set" Schlüsselwörter von C-Sharp, und "value" ist eine spezielle Variable (vergleichbar mit "this"), die den Eingabewert eines Setters hält. Um einem Punkt seine Koordinaten zuzuweisen bzw. darauf zuzugreifen, kann man dann die Properties X, Y, Winkel und Radius wie Felder verwenden. Keine große Sache, aber es macht den Code auf der Aufruferinnenseite knapper und besser lesbar. Den Getter oder den Setter kann man wahlweise auch weglassen; auf diese Weise lassen sich Felder mit Nur-Lese- bzw. Nur-Schreib-Zugriff simulieren.
+
+
+Frage: Was sind Properties in C-Sharp?
+Antwort: Properties in C-Sharp sind eine Möglichkeit, gewissermaßen die Umkehrung von Zugriffsmethoden zu erreichen. Statt auf ein Feld eines Objekts über Methoden zuzugreifen, ruft man Methoden über das auf, was syntaktisch wie ein Feldzugriff aussieht. Dies erlaubt es, Feldzugriffe mit Nebeneffekten zu versehen, wie zum Beispiel einer dynamischen Typprüfung bei schreibendem Zugriff. Properties können auch dazu verwendet werden, Felder mit Nur-Lese- oder Nur-Schreib-Zugriff zu simulieren.
+
+Frage: Wie werden Properties in C-Sharp verwendet?
+Antwort: Properties werden verwendet, um (lesend und schreibend) Feldzugriffe zu ermöglichen, die wie Feldzugriffe aussehen, aber mit zusätzlichen Funktionalitäten. Sie können auch verwendet werden, um Felder mit Nur-Lese- oder Nur-Schreib-Zugriff zu simulieren.

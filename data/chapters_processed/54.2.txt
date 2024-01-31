@@ -1,0 +1,76 @@
+54.2 Subtyping und das Prinzip der Substituierbarkeit
+
+Das Beispiel von Aktion und Speichern legte bereits nahe, dass die Substituierbarkeit immer dann fraglich ist, wenn keine Typerweiterung vorliegt, insbesondere wenn es sich um eine Typeinschränkung handelt. Dies soll nun etwas genauer beleuchtet werden.
+
+
+Frage: Was ist Substituierbarkeit in Bezug auf Typerweiterung und Typeinschränkung?
+Antwort: Substituierbarkeit bedeutet, dass ein Objekt eines Typs durch ein Objekt eines anderen Typs ersetzt werden kann, ohne dass die Korrektheit des Programms beeinträchtigt wird. Wenn eine Typerweiterung vorliegt, ist die Substituierbarkeit in der Regel unproblematisch. Wenn jedoch eine Typeinschränkung vorliegt, kann die Substituierbarkeit fraglich sein, da das ersetzende Objekt möglicherweise nicht die gleichen Eigenschaften und Methoden aufweist wie das ursprüngliche Objekt.
+
+Frage: Was ist fraglich bei der Substituierbarkeit, wenn es sich um eine Typeinschränkung handelt?
+Antwort: Wenn es sich um eine Typeinschränkung handelt, ist die Substituierbarkeit fraglich.
+
+Frage: Wann ist die Substituierbarkeit fraglich?
+Antwort: Die Substituierbarkeit ist fraglich, wenn die neue Klasse eine Eigenschaft besitzt, die die alte Klasse nicht besitzt.
+
+
+In Java ist die Klasse Stack als Subklasse der Klasse Vector definiert, wobei Vector kein Vektor im mathematischen Sinne ist, sondern eher ein dynamisches Array, das in seiner Größe wachsen kann. Dies führt jedoch dazu, dass an Stellen im Programm, an denen eine indizierte Sammlung von Objekten mit wahlfreiem Zugriff erwartet wird (also ein Objekt vom Typ Vector), ein Objekt vom Typ Stack auftauchen kann. Obwohl Stack intern möglicherweise auf einem dynamischen Array ähnlich Vector aufbaut (und daher von Vector erbt), muss es an seiner öffentlich zugänglichen Schnittstelle die Funktionen für den wahlfreien Zugriff unterdrücken. In Java ist dies jedoch nicht möglich. Sollte das Programm also, in Erwartung einer indizierten Sammlung, auf ein Element zugreifen und stattdessen einen Stack vorfinden, kann das Programm nicht fortgesetzt werden, es sei denn, es findet vor dem Zugriff eine entsprechende Prüfung (und möglicherweise eine Verzweigung zu alternativen Verfahren) statt. Eine solche Prüfung muss jedoch zur Laufzeit erfolgen, und wenn sie vergessen wird (nicht implementiert), kann dies zu einem schwerwiegenden Programmierfehler führen. Solche Fehler lassen sich einfach vermeiden, indem man abgeleiteten Typen verbietet, Eigenschaften zu unterdrücken.
+
+
+Frage: Warum können in Java abgeleitete Typen keine Eigenschaften unterdrücken?
+Antwort: In Java können abgeleitete Typen keine Eigenschaften unterdrücken, weil es in Java nicht möglich ist, die öffentlich zugängliche Schnittstelle eines abgeleiteten Typs von der des Basistyps zu unterscheiden. Wenn ein Objekt vom Typ Stack in einem Programmabschnitt erwartet wird, in dem ein Objekt vom Typ Vector auftauchen kann, kann das Programm nicht fortgesetzt werden, wenn es auf ein Element zugreifen will, wenn stattdessen ein Stack vorliegt. Eine solche Prüfung muss zur Laufzeit erfolgen, und wenn sie vergessen wird, kann dies zu einem schwerwiegenden Programmierfehler führen. Solche Fehler lassen sich einfach vermeiden, indem man abgeleiteten Typen verbietet, Eigenschaften zu unterdrücken.
+
+
+Eine schwächere Variante, die jedoch ähnlich katastrophale Folgen haben kann und deren Vorliegen nur schwer festzustellen ist, tritt auf, wenn eine Funktion in einem Subtyp so abgeändert wird, dass sie dem erwarteten Verhalten des Supertyps widerspricht. Dies ist beispielsweise bei den beiden Typen Set (Menge) und Bag (Multimenge) der Fall. Wenn man Set als Subtyp von Bag annimmt, könnte man dies als eine Art Typeinschränkung verstehen, bei der die Anzahl der Vorkommen jedes einzelnen Elements auf die Werte 0 und 1 (den Wertebereich {0, 1}) beschränkt ist. Die Funktionen "Hinzufügen eines Elements", "Entfernen eines Elements" sowie die Angabe der Größe und der Test auf das Vorhandensein eines Elements werden von Set genauso unterstützt wie von Bag. Der einzige Unterschied scheint zu sein, dass das Hinzufügen eines bereits vorhandenen Elements in der Menge von Set keine Veränderung bewirkt.
+
+
+Frage: Was ist eine mögliche Folge davon, wenn eine Funktion in einem Subtyp so abgeändert wird, dass sie dem erwarteten Verhalten des Supertyps widerspricht?
+Antwort: Eine mögliche Folge davon ist, dass das Verhalten des Programms schwer vorherzusagen und zu verstehen ist, was zu Fehlern und unerwarteten Ergebnissen führen kann.
+
+Frage: Was ist der Unterschied zwischen Set und Bag?
+Antwort: Set und Bag sind zwei verschiedene Datentypen. Set ist eine Menge, die nur einmal jedes Element enthalten kann, während Bag eine Multimenge ist, die mehrere Vorkommen desselben Elements enthalten kann.
+
+Frage: Was passiert, wenn man Set als Subtyp von Bag annimmt?
+Antwort: Wenn man Set als Subtyp von Bag annimmt, könnte man dies als eine Art Typeinschränkung verstehen, bei der die Anzahl der Vorkommen jedes einzelnen Elements auf die Werte 0 und 1 (den Wertebereich {0, 1}) beschränkt ist.
+
+
+Bei genauerer Betrachtung ergibt sich jedoch das Problem, dass Set durch seine Eigenheit mehrere charakteristische Eigenschaften von Multimengen verletzt. Zum Beispiel gilt für Sets nicht wie für Bags, dass jedes Hinzufügen eines Elements die Größe um 1 erhöht. Auch gilt nicht, dass genauso viele Elemente entnommen werden können, wie hinzugefügt wurden; doppelte Einfügungen werden von Set einfach ignoriert. Ein Programm, das auf die Eigenschaften von Bags setzt und stattdessen mit einem Set arbeiten muss, funktioniert mit hoher Wahrscheinlichkeit nicht mehr korrekt.
+
+
+Frage: Was sind die Eigenschaften von Sets?
+Antwort: Sets sind eine Datenstruktur, die die Eigenschaften besitzt, dass jedes Hinzufügen eines Elements die Größe nicht unbedingt um 1 erhöht und dass genauso viele Elemente entnommen werden können, wie hinzugefügt wurden. Doppelte Einfügungen werden von Sets einfach ignoriert.
+
+Frage: Was sind die charakteristischen Eigenschaften von Multimengen (Bags)?
+Antwort: Die charakteristischen Eigenschaften von Multimengen (Bags) sind, dass jedes Hinzufügen eines Elements die Größe um 1 erhöht und dass genauso viele Elemente entnommen werden können, wie hinzugefügt wurden.
+
+
+Umgekehrt würde, wenn man Bag als Subtyp von Set annähme, die für Set charakteristische Eigenschaft verletzt, nämlich dass nach dem Entfernen eines Elements dieses nicht mehr in der Menge enthalten ist. Programme, die darauf basieren, dass diese Eigenschaft garantiert wird und die stattdessen eine Multimenge erhalten, funktionieren nicht mehr korrekt. Je nach Standpunkt kann dies als Typfehler angesehen werden.
+
+
+Frage: Was ist ein mögliches Problem, wenn man Bag als Subtyp von Set annimmt?
+Antwort: Wenn man Bag als Subtyp von Set annimmt, kann dies dazu führen, dass die für Set charakteristische Eigenschaft verletzt wird, nämlich dass nach dem Entfernen eines Elements dieses nicht mehr in der Menge enthalten ist. Programme, die darauf basieren, dass diese Eigenschaft garantiert wird und die stattdessen eine Multimenge erhalten, funktionieren nicht mehr korrekt. Je nach Standpunkt kann dies als Typfehler angesehen werden.
+
+Frage: Was ist der Grund für den Typfehler, wenn man Bag als Subtyp von Set annimmt?
+Antwort: Der Grund für den Typfehler ist, dass die für Set charakteristische Eigenschaft verletzt wird, nämlich dass nach dem Entfernen eines Elements dieses nicht mehr in der Menge enthalten ist. Programme, die darauf basieren, dass diese Eigenschaft garantiert wird und die stattdessen eine Multimenge erhalten, funktionieren nicht mehr korrekt.
+
+
+Wenn man versucht, der Ursache des Fehlers auf den Grund zu gehen, kommt man schnell zu der Einsicht, dass die charakteristischen Eigenschaften keiner der beiden Typen die des jeweils anderen implizieren, und dass sie sich tatsächlich im Widerspruch zueinander befinden. Daher lassen sich keine korrekten Aussagen wie "Für alle Objekte vom Typ X gilt..." bilden, wobei die Objekte vom Typ X (Bag oder Set) immer auch die vom jeweils anderen Typen Y einschließen sollen, der als Subtyp von X betrachtet wird. Dies entspricht jedoch genau der Definition des Subtypings aus Kurseinheit 3, Abschnitt 26.1. Tatsächlich ist es mehr oder weniger eine Frage der Interpretation, ob die in Kapitel 26 genannten syntaktischen Bedingungen, insbesondere die Ko- und Kontravarianz, für das Subtyping ausreichen oder ob strengere Substituierbarkeitsbedingungen erfüllt sein müssen.
+
+
+Frage: Was ist das Problem bei der Definition von Subtypen für Bag und Set?
+Antwort: Die charakteristischen Eigenschaften von Bag und Set stehen im Widerspruch zueinander, so dass sich keine korrekten Aussagen bilden lassen, die für alle Objekte vom Typ X gelten sollen, die auch die vom jeweils anderen Typen Y einschließen. Dies steht im Widerspruch zur Definition des Subtypings, daher ist es eine Frage der Interpretation, ob die syntaktischen Bedingungen für das Subtyping ausreichen oder ob strengere Substituierbarkeitsbedingungen erfüllt sein müssen.
+
+Frage: Was ist das Problem bei der Definition von Subtypen?
+Antwort: Das Problem bei der Definition von Subtypen ist, dass die charakteristischen Eigenschaften eines Typs nicht die des anderen implizieren und sich tatsächlich im Widerspruch zueinander befinden. Daher lassen sich keine korrekten Aussagen bilden, die Objekte vom Typ X einschließen sollen, die auch die vom jeweils anderen Typen Y einschließen sollen, der als Subtyp von X betrachtet wird.
+
+Frage: Warum können keine korrekten Aussagen wie "Für alle Objekte vom Typ X gilt..." gebildet werden, wobei die Objekte vom Typ X immer auch die vom jeweils anderen Typen Y einschließen sollen, der als Subtyp von X betrachtet wird?
+Antwort: Die charakteristischen Eigenschaften der beiden Typen Bag und Set stehen im Widerspruch zueinander, daher lassen sich keine korrekten Aussagen bilden, die die Eigenschaften beider Typen implizieren.
+
+
+In der Praxis wird die Prüfung der Substituierbarkeit durch Typüberprüfungsverfahren in Form der Prüfung der Typkonformität immer nur angenähert. Tatsächlich kann nicht einmal eine Substituierbarkeit ausgeschlossen werden, wenn mangelnde Typkonformität vorliegt. Dennoch werden entsprechende Zuweisungen nicht zugelassen. Umgekehrt bedeutet jedoch Typkonformität nicht automatisch auch Substituierbarkeit. Dazu ist auch eine Betrachtung des Verhaltens notwendig.
+
+
+Frage: Was ist der Unterschied zwischen Typkonformität und Substituierbarkeit?
+Antwort: Typkonformität bedeutet, dass ein Objekt dem erwarteten Typ entspricht, während Substituierbarkeit bedeutet, dass ein Objekt anstelle eines anderen Objekts verwendet werden kann, ohne dass sich das Verhalten des Programms ändert. Typkonformität ist eine notwendige, aber nicht hinreichende Bedingung für Substituierbarkeit.
+
+Frage: Was bedeutet Typkonformität nicht automatisch auch Substituierbarkeit?
+Antwort: Typkonformität bedeutet nicht automatisch auch Substituierbarkeit, weil auch bei Typkonformität das Verhalten der Objekte verglichen werden muss, um sicherzustellen, dass die Substituierbarkeit gegeben ist.

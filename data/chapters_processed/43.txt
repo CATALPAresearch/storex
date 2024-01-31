@@ -1,0 +1,10 @@
+43 Generische Typen
+
+Analog zur Einführung von parametrisierten Typen abstrahieren die generischen Typen von Java von Typen, indem sie die Referenzierung eines oder mehrerer Typen innerhalb einer Typdefinition durch Typvariablen ersetzen. Anders als in STRONGTALK stehen die Typvariablen in Java jedoch nicht in eckigen, sondern in spitzen Klammern.
+
+
+Frage: Was sind generische Typen in Java?
+Antwort: Generische Typen in Java sind eine Abstraktion von Typen, bei der die Referenzierung eines oder mehrerer Typen innerhalb einer Typdefinition durch Typvariablen ersetzt wird. Diese Typvariablen stehen in Java jedoch nicht in eckigen, sondern in spitzen Klammern.
+
+Frage: Wie werden Typvariablen in Java bezeichnet?
+Antwort: In Java werden Typvariablen in generischen Typen in spitzen Klammern bezeichnet.

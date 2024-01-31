@@ -1,0 +1,10 @@
+4.3.3 Methoden als Parameter
+
+Am Anfang dieses Kapitels wurde von dem Mysterium des Nachrichtenversands gesprochen. Tatsächlich ist jedoch zumindest in SMALLTALK seine Realisierung in Form von Methodenaufrufen nur ein Kompromiss zugunsten der Ausführungseffizienz. In SMALLTALK sind Nachrichten (oder genauer gesagt Nachrichtenselektoren) selbst Objekte - schließlich soll in SMALLTALK alles ein Objekt sein. Um tatsächlich als Nachrichtenobjekt an ein anderes Objekt verschickt zu werden, muss man jedoch eine spezielle Methode (genauer gesagt, einen speziellen Methodenaufruf), nämlich "perform:", verwenden. Diese Methode ermöglicht es, einem Empfängerobjekt eine Nachricht als Objekt (wenn auch nur als Parameter von "perform:") zu senden. Das Empfängerobjekt reagiert darauf, indem es die zur Nachricht passende Methode ausführt, als hätte es direkt einen entsprechenden Methodenaufruf erhalten.
+Der Nachrichtenselektor ist immer ein Symbol und darf beim "Versand" mittels "perform:" anders als beim direkten Aufruf auch in einer Variable gespeichert sein. Bei binären und höherwertigen Nachrichten werden zusätzlich Argumente (Parameter) benötigt, die an den Nachrichtenselektor angehängt werden können. Dies erfolgt durch Erweiterung von "perform:" zu "perform:with:", "perform:with:with:", usw.
+
+Frage: Wie kann man Nachrichten in SMALLTALK als Objekte verwenden?
+Antwort: In SMALLTALK kann man Nachrichten (oder Nachrichtenselektoren) selbst als Objekte verwenden, indem man die Methode "perform:" verwendet. Diese Methode ermöglicht es, einem Empfängerobjekt eine Nachricht als Objekt zu senden, und das Empfängerobjekt führt die zur Nachricht passende Methode aus, als hätte es einen entsprechenden Methodenaufruf erhalten.
+
+Frage: Was ist der Nachrichtenselektor?
+Antwort: Der Nachrichtenselektor ist der Name der Nachricht, die an ein Objekt gesendet wird. Der Nachrichtenselektor ist wichtig, da er angibt, welche Methode auf dem Empfängerobjekt aufgerufen werden soll.

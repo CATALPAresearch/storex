@@ -1,0 +1,7 @@
+42 Aufzählungstypen
+
+Bis Java 1.4 waren class, interface und [] (Array) die einzigen Typkonstruktoren; mit Java 1.5 ist auch enum für Aufzählungstypen hinzugekommen, wobei diese unter die Klassentypen fallen: Neben der Angabe der Elemente der Aufzählung kann man auch Felder und Methoden angeben, die auf ihnen definiert sind. Damit werden die Elemente einer Aufzählung gewissermaßen zu Konstanten, also zu lebenslang gültigen Namen für Objekte einer Klasse, die den Aufzählungstyp repräsentiert.
+
+
+Frage: Was sind Aufzählungstypen in Java?
+Antwort: Aufzählungstypen in Java sind mit Java 1.5 hinzugekommen und stellen eine Unterart der Klassentypen dar. Sie werden mit dem Schlüsselwort enum definiert und können Elemente, Felder und Methoden enthalten. Die Elemente einer Aufzählung werden zu Konstanten, also zu lebenslang gültigen Namen für Objekte einer Klasse, die den Aufzählungstyp repräsentiert.

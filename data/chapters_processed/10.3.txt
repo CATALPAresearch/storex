@@ -1,0 +1,61 @@
+10.3 Abstrakte Klassen
+
+Die Genera Aristoteles' sind allesamt abstrakt — es gibt keine Säugetiere, die nicht Mensch, Hund, Katze oder etwas Konkretes wären. Übertragen auf die objektorientierte Programmierung bedeutet das: Generalisierungen, also Klassen, die aus Generalisierungen hervorgegangen sind, haben selbst keine Instanzen und sind daher insbesondere nicht instanziierbar.
+
+
+Frage: Was bedeutet es, wenn Generalisierungen in der objektorientierten Programmierung abstrakt sind?
+Antwort: Das bedeutet, dass Generalisierungen, also Klassen, die aus Generalisierungen hervorgegangen sind, selbst keine Instanzen haben und daher nicht instanziierbar sind.
+
+Frage: Was sind Generalisierungen in der objektorientierten Programmierung?
+Antwort: Generalisierungen in der objektorientierten Programmierung sind Klassen, die aus Generalisierungen hervorgegangen sind und selbst keine Instanzen haben. Sie sind daher nicht instanziierbar.
+
+
+In der objektorientierten Programmierung nennt man nicht instanziierbare Klassen abstrakt. Der Grund für die mangelnde Instanziierbarkeit ist nicht immer konzeptuell (wie beispielsweise das Prinzip, dass eine Klasse eine Generalisierung ist und daher nicht instanziierbar sein sollte), sondern oft rein technisch. Abstrakten Klassen fehlen in der Regel Angaben, die das Verhalten ihrer Instanzen vollständig spezifizieren und diese somit brauchbar machen würden. Instanzen dieser Klassen wären unvollständig definiert und würden zu Laufzeitfehlern führen. Diese fehlenden Eigenschaften werden in den Klassen geliefert, die von den abstrakten erben (siehe nächstes Kapitel), wobei die Idee ist, dass sich die Eigenschaften von Klasse zu Klasse unterscheiden. Klassen, die nicht abstrakt sind und eigene Instanzen haben können, nennt man konkret. Ein typisches Beispiel für eine abstrakte Klasse in SMALLTALK ist die Klasse Collection.
+
+
+Frage: Was ist eine abstrakte Klasse in der objektorientierten Programmierung?
+Antwort: Abstrakte Klassen in der objektorientierten Programmierung sind nicht instanziierbare Klassen. Der Grund für die mangelnde Instanziierbarkeit kann konzeptuell oder rein technisch sein. Instanzen dieser Klassen wären unvollständig definiert und würden zu Laufzeitfehlern führen. Diese fehlenden Eigenschaften werden in den Klassen geliefert, die von den abstrakten erben. Ein typisches Beispiel für eine abstrakte Klasse in SMALLTALK ist die Klasse Collection.
+
+Frage: Was ist der Unterschied zwischen abstrakten und konkreten Klassen?
+Antwort: Abstrakte Klassen sind nicht instanziierbar, da sie in der Regel Angaben fehlen, die das Verhalten ihrer Instanzen vollständig spezifizieren. Konkrete Klassen hingegen haben eigene Instanzen und können instanziiert werden.
+
+
+Schon am Fehlen von Instanzvariablen erkennt man, dass die Implementierung von Collection begrenzt ist. Instanzen wären schlicht zustandslos und daher kaum zu gebrauchen. Besonders deutlich wird die Abstraktheit jedoch an der Implementation der Methode add:. Hier wird anstatt etwas Entsprechendes zu tun, die Methode implementedBySubclass aufgerufen, die eine Fehlermeldung ausgibt. Wenn jemand versuchen würde, add: auf einer Instanz von Collection oder einer ihrer Subklassen aufzurufen, würde das zu einer Enttäuschung führen.
+
+
+Frage: Warum ist die Implementierung von Collection begrenzt?
+Antwort: Die Implementierung von Collection ist begrenzt, weil sie keine Instanzvariablen besitzt und die Methode add: lediglich eine Fehlermeldung ausgibt, anstatt etwas Entsprechendes zu tun.
+
+Frage: Was ist der Zweck der Methode implementedBySubclass in der Klasse Collection?
+Antwort: Der Zweck der Methode implementedBySubclass in der Klasse Collection ist es, eine Fehlermeldung auszugeben, wenn jemand versucht, die Methode add: auf einer Instanz von Collection oder einer ihrer Subklassen aufzurufen. Dies wird getan, um zu verdeutlichen, dass die Implementierung von Collection begrenzt ist und Instanzen von Collection oder ihren Subklassen zustandslos sind und daher kaum zu gebrauchen wären.
+
+
+Allerdings tritt diese Enttäuschung erst zur Laufzeit auf. Viele andere Sprachen verlangen daher, dass man abstrakte Klassen mit einem Schlüsselwort wie "abstract" markiert und verbieten dann (durch den Compiler), die Klasse zu instanziieren. Dies ist in SMALLTALK jedoch nicht möglich, da Klassen in Variablen gespeichert werden können und der Compiler nicht wissen kann, welches Objekt die Variable nun gerade bezeichnet.
+
+
+Frage: Warum ist es in Smalltalk nicht möglich, abstrakte Klassen mit einem Schlüsselwort wie "abstract" zu markieren und sie vom Compiler verbieten zu lassen?
+Antwort: In Smalltalk werden Klassen in Variablen gespeichert, und der Compiler kann nicht wissen, welches Objekt die Variable nun gerade bezeichnet. Daher ist es in Smalltalk nicht möglich, abstrakte Klassen mit einem Schlüsselwort wie "abstract" zu markieren und sie vom Compiler verbieten zu lassen.
+
+
+Der Hinweis, dass man eine abstrakte Klasse instanziiert hat, erfolgt in SMALLTALK nicht nur zur Laufzeit, sondern auch dann, wenn man versucht, eine nicht implementierte Methode aufzurufen. Um zu verhindern, dass Instanzen einer abstrakten Klasse überhaupt erzeugt werden, könnte man die Konstruktoren, insbesondere "new" und "new:", entsprechend überschreiben. Dies würde jedoch auch die Instanziierung der Klassen verhindern, die von Collection erben, was kaum zumutbar ist. Diese Klassen müssten dann "new" und "new:" wieder neu einführen, da "new" und "new:" primitive Methoden aufrufen.
+
+
+Frage: Was passiert, wenn man versucht, eine nicht implementierte Methode in SMALLTALK aufzurufen?
+Antwort: Wenn man versucht, eine nicht implementierte Methode in SMALLTALK aufzurufen, erfolgt ein Hinweis, dass man eine abstrakte Klasse instanziiert hat.
+
+Frage: Was passiert, wenn man eine abstrakte Klasse in SMALLTALK instanziiert?
+Antwort: In SMALLTALK wird ein Hinweis zur Instanziierung einer abstrakten Klasse sowohl zur Laufzeit als auch dann ausgelöst, wenn man versucht, eine nicht implementierte Methode aufzurufen. Um zu verhindern, dass Instanzen einer abstrakten Klasse überhaupt erzeugt werden, könnte man die Konstruktoren, insbesondere "new" und "new:", entsprechend überschreiben. Dies wäre jedoch nicht praktikabel, da es auch die Instanziierung der Klassen verhindern würde, die von Collection erben.
+
+
+Man könnte in SMALLTALK die Methode add: in der Klasse Collection ganz weglassen. Ein Aufruf von add: auf einer Instanz von Collection oder einer ihrer Subklassen würde dann zu einem Aufruf von doesNotUnderstand und der Ausgabe einer entsprechenden Fehlermeldung führen. Diese Fehlermeldung wäre jedoch weniger aufschlussreich für die Programmierer, da sie nicht zwischen einem falschen Methodennamen und dem Vergessen der Implementierung in einer Subklasse unterscheiden könnte. Es ist sinnvoll, eine Methode wie add: in Collection bereitzustellen, die auf ein Versäumnis hinweist, falls eines vorliegt.
+
+
+Frage: Warum ist es sinnvoll, eine Methode wie add: in Collection bereitzustellen?
+Antwort: Es ist sinnvoll, eine Methode wie add: in Collection bereitzustellen, um eine aufschlussreichere Fehlermeldung auszugeben, falls eine Subklasse die Implementierung der Methode vergisst.
+
+
+Der Aufruf einer abstrakten, in der Klasse nicht implementierten Methode aus derselben Klasse heraus (mit "self" als Empfänger) ist ein gängiges Muster in der objektorientierten Programmierung. Man nennt es auch "offene Rekursion", da der Aufruf auf dem Objekt selbst erfolgt und noch nicht klar ist, welche erbende Klasse die Implementierung liefert. Dieses Muster wird auch verwendet, um das oben beschriebene Dilemma von Quadrat und Rechteck aufzulösen.
+
+
+Frage: Was ist offene Rekursion?
+Antwort: Offene Rekursion ist ein Muster in der objektorientierten Programmierung, bei dem eine abstrakte, in der Klasse nicht implementierte Methode aus derselben Klasse heraus mit "self" als Empfänger aufgerufen wird. Dieses Muster wird verwendet, um die Implementierung der Methode in einer erbenden Klasse zu ermöglichen.

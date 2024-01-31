@@ -1,0 +1,36 @@
+14.4 Selbstdarstellung
+
+Wir hatten bereits ausgenutzt, dass alle Objekte in SMALLTALK eine (mehr oder weniger aussagekräftige) String-Repräsentation besitzen. Die Methode printString gibt eine Darstellung des Objekts als String zurück. Dies ist für Ausgaben auf dem Transcript interessant, aber auch für die Inspektion von Objekten und für das Debugging, bei denen sich die Objekte unter Verwendung dieser Methode der Betrachterin präsentieren.
+
+
+Frage: Was macht die Methode printString in SMALLTALK?
+Antwort: Die Methode printString gibt eine Darstellung des Objekts als String zurück. Diese Methode ist für Ausgaben auf dem Transcript interessant, aber auch für die Inspektion von Objekten und für das Debugging.
+
+
+Die Methode inspect startet auf dem Empfänger einen Inspektor und gibt den Empfänger zurück. Dies ist nützlich, wenn man ein Zwischenergebnis eines Ausdrucks inspizieren möchte, ohne den Ausdruck dazu in zwei aufteilen zu wollen. Man fügt einfach inspect an der Stelle des Ausdrucks ein, an der das zu inspizierende Objekt gewonnen wurde.
+
+
+Frage: Was macht die Methode inspect in SMALLTALK?
+Antwort: Die Methode inspect startet auf dem Empfänger einen Inspektor und gibt den Empfänger zurück.
+
+
+Die Methode storeOn: erlaubt, ein Objekt so auf einen Ausgabestrom zu schreiben, dass es daraus rekonstruiert werden kann. Dabei wird keine binäre, sondern eine textuelle Repräsentation verwendet. So schreibt beispielsweise SQUEAK bei Auswertung von Time noon storeOn: aStream die Zeichenfolge '12:00 pm' auf den durch aStream bezeichneten Ausgabestrom und (Interval from: 1 to: 5) die Zeichenfolge '(1 to: 5)'.
+
+
+Frage: Was macht die Methode storeOn: in SMALLTALK?
+Antwort: Die Methode storeOn: erlaubt, ein Objekt so auf einen Ausgabestrom zu schreiben, dass es daraus rekonstruiert werden kann. Dabei wird eine textuelle Repräsentation verwendet.
+
+Frage: Was macht die Methode reconstructFrom: in SMALLTALK?
+Antwort: Die Methode reconstructFrom: erlaubt, ein Objekt aus einer binären Repräsentation auf einem Eingabestrom zu rekonstruieren.
+
+Frage: Was macht die Methode printOn: in SMALLTALK?
+Antwort: Die Methode printOn: gibt die textuelle Repräsentation eines Objekts auf einem Ausgabestrom aus, die für Menschen lesbar ist.
+
+Frage: Was macht die Methode nextPutAll: in SMALLTALK?
+Antwort: Die Methode nextPutAll: gibt eine Sequenz von Objekten auf einem Ausgabestrom aus.
+
+Frage: Was macht die Methode nextPut: in SMALLTALK?
+Antwort: Die Methode nextPut: gibt ein Objekt auf einem Ausgabestrom aus.
+
+Frage: Was macht die Methode readFrom: in SMALLTALK?
+Antwort: Die Methode readFrom: erlaubt, ein Objekt aus einem Eingabestrom zu lesen.

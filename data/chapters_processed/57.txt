@@ -1,0 +1,27 @@
+57 Das Problem der eindimensionalen Strukturierung
+
+Klassen sind die Module der objektorientierten Programmierung. Die Menge der Module und damit das Programm werden durch die Vererbungshierarchie weiter strukturiert. Parallel dazu (und weitgehend, bis auf die Vererbung von Beziehungen unabhängig) gibt es noch eine Struktur, die durch das Bestehen von Beziehungen zwischen Klassen (genauer: das Bestehen der Möglichkeit von Beziehungen zwischen Objekten der Klassen; s. Kapitel 2 in Kurseinheit 1) geprägt ist. Diese ist jedoch nicht hierarchisch und insgesamt eher unorganisiert, weshalb sie sich nicht zur systematischen Programmorganisation eignet. Außerdem besteht ein gewisser Konflikt zwischen der Hierarchie der Subklassenbeziehung und den Beziehungen zwischen Objekten: Wenn man einen Teilbaum der Vererbungshierarchie herauslöst, trennt man damit praktisch immer Beziehungen zwischen Mitgliedern des Teilbaums und anderen. Die Klassenhierarchie stellt also insbesondere keine Form der hierarchischen Modularisierung dar.
+
+
+Frage: Wie werden Klassen in der objektorientierten Programmierung strukturiert?
+Antwort: Die Menge der Module und damit das Programm werden durch die Vererbungshierarchie weiter strukturiert. Parallel dazu gibt es noch eine Struktur, die durch das Bestehen von Beziehungen zwischen Klassen geprägt ist. Diese ist jedoch nicht hierarchisch und insgesamt eher unorganisiert. Die Klassenhierarchie stellt also insbesondere keine Form der hierarchischen Modularisierung dar.
+
+
+Insbesondere bei größeren Programmen kann leicht das Bedürfnis aufkommen, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren. Dies kann beispielsweise verschiedene Vererbungshierarchien betreffen. So, wie man in der Biologie eine Taxonomie der Arten nach Herkunft (Genetik) und nach Merkmalen erstellen kann und da beide ihren Nutzen haben, man weder auf die eine noch auf die andere ohne Not verzichten möchte, so kann man ein Programm beispielsweise unter dem Gesichtspunkt der Vererbung von Funktionalität und von Daten alternativ strukturieren wollen. Voraussetzung hierfür ist allerdings, dass die verschiedenen Darstellungen getrennt voneinander gepflegt werden und dass durch sie weder Inkonsistenzen im Code noch ungewollte Interferenzen entstehen können.
+
+
+Frage: Warum ist es wichtig, verschiedene Vererbungshierarchien in einem Programm getrennt voneinander zu pflegen?
+Antwort: Es ist wichtig, verschiedene Vererbungshierarchien in einem Programm getrennt voneinander zu pflegen, um Inkonsistenzen im Code und ungewollte Interferenzen zu vermeiden.
+
+Frage: Warum ist es wichtig, verschiedene Darstellungen eines Programms getrennt voneinander zu pflegen?
+Antwort: Es ist wichtig, verschiedene Darstellungen eines Programms getrennt voneinander zu pflegen, um Inkonsistenzen im Code und ungewollte Interferenzen zu vermeiden.
+
+
+Ein Nachteil der objektorientierten Programmierung (wie auch aller anderen heute bekannten Programmierparadigmen) ist sicherlich, dass die sog. Trennung der Belange, besser bekannt als die Separation of Concerns, nur unzureichend unterstützt wird. Ansätze wie das Subject- oder Aspect-oriented Programming wurden zwar hoch gehandelt, sind aber dennoch nicht im Mainstream angekommen. Die Gründe dafür mögen vielfältig sein, aber letztlich ist es wohl immer illusorisch zu versprechen, man könne die essentielle Komplexität, die einem Problem innewohnt, durch programmiersprachliche Mittel beseitigen. Insbesondere die getrennte Spezifikation eines Systems aus verschiedenen Sichten verlagert die Komplexität nur in das Zusammenführen der Sichten: Wie so oft muss das Ganze mehr sein als die Summe seiner Teile, um seinen Zweck zu erfüllen. Unsere heutigen Softwaresysteme sind die kompliziertesten technischen Artefakte, die die Menschheit jemals hervorgebracht hat, und wer hier Einfachheit verspricht, sollte sich schämen.
+
+
+Frage: Was ist die Trennung der Belange (Separation of Concerns) in der objektorientierten Programmierung?
+Antwort: Die Trennung der Belange, auch Separation of Concerns genannt, ist ein Prinzip in der objektorientierten Programmierung, das die Aufgaben und Verantwortlichkeiten von Objekten und Komponenten klar trennen soll. Es ist jedoch unzureichend unterstützt und kann die Komplexität nur in das Zusammenführen der Sichten verschieben.
+
+Frage: Warum wird die Trennung der Belange in der objektorientierten Programmierung nur unzureichend unterstützt?
+Antwort: Die Trennung der Belange wird in der objektorientierten Programmierung nur unzureichend unterstützt, weil die Ansätze wie das Subject- oder Aspect-oriented Programming zwar hoch gehandelt wurden, aber noch nicht im Mainstream angekommen sind. Die Gründe dafür sind vielfältig, aber letztlich ist es illusorisch, die essentielle Komplexität, die einem Problem innewohnt, durch programmiersprachliche Mittel beseitigen zu wollen. Die getrennte Spezifikation eines Systems aus verschiedenen Sichten verlagert die Komplexität nur in das Zusammenführen der Sichten. Unsere heutigen Softwaresysteme sind die kompliziertesten technischen Artefakte, die die Menschheit jemals hervorgebracht hat, und wer hier Einfachheit verspricht, sollte sich schämen.

@@ -1,0 +1,10 @@
+31 Grenzen der Typisierung
+
+Wie Sie sehen, ist das Problem der kovarianten Redefinition ziemlich hartnäckig. Man muss aber gar nicht so weit gehen, um an die praktischen Grenzen der Typisierung zu gelangen. Nun könnte man einen Typ NotZero definieren und x als von diesem Typ deklarieren, womit der obige Ausdruck kein Problem mehr wäre. Selbst wenn es Typsysteme gibt, die das können, so sind diese kaum praxistauglich.
+
+
+Frage: Was ist das Problem der kovarianten Redefinition?
+Antwort: Das Problem der kovarianten Redefinition ist, dass es zu Typinkonsistenzen führen kann, wenn eine Unterklasse eine Methode mit demselben Namen wie eine Methode der Oberklasse definiert, aber mit einem anderen Rückgabetyp.
+
+Frage: Warum sind Typsysteme, die kovariante Redefinition erlauben, kaum praxistauglich?
+Antwort: Typsysteme, die kovariante Redefinition erlauben, sind kaum praxistauglich, weil sie zu Problemen führen können, wenn Objekte mit unterschiedlichen Typen miteinander interagieren. Wenn beispielsweise eine Methode, die ein Objekt erwartet, das von Typ A ist, ein Objekt erhält, das von Typ B ist, aber B von A abgeleitet ist, kann dies zu unerwarteten Ergebnissen führen, wenn die Methode versucht, auf die spezifischen Eigenschaften von A zuzugreifen, die in B nicht vorhanden sind. Dies kann zu Laufzeitfehlern führen und die Wartbarkeit und Zuverlässigkeit des Codes beeinträchtigen.

@@ -1,0 +1,34 @@
+12.2 Das Einbeziehen überschriebener Methoden: Nachrichten an super
+
+Nicht selten möchte eine überschreibende Methode die überschriebene Methode nicht vollständig ersetzen, sondern lediglich modifizieren. Dies ist z. B. regelmäßig bei den als Konstruktoren fungierenden Klassenmethoden new und new: der Fall: Selbst wenn sie überschrieben werden, müssen sie doch das grundlegende Verhalten beibehalten, also neue Instanzen der Klasse zurückgeben. Dies geschieht am sinnvollsten, indem aus der überschreibenden Methode die überschriebene Methode aufgerufen und um die gewünschten zusätzlichen Ausdrücke ergänzt wird. Nur leider ist diese nicht mehr sichtbar — sie wurde ja gerade überschrieben. Für diesen Zweck verfügt SMALLTALK über eine weitere Pseudovariable namens „super“.
+
+
+Frage: Was ist die Funktion der Pseudovariablen „super“ in SMALLTALK?
+Antwort: Die Pseudovariable „super“ in SMALLTALK wird verwendet, um die überschriebene Methode aufzurufen, wenn eine überschreibende Methode lediglich modifizieren möchte, aber das grundlegende Verhalten beibehalten muss.
+
+
+Die Verwendung von super als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der (direkten) Superklasse der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet.
+
+
+Frage: Was bewirkt die Verwendung von super als Nachrichtenempfänger in einer Methodendefinition?
+Antwort: Die Verwendung von super als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der (direkten) Superklasse der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet.
+
+Frage: Was bewirkt die Verwendung von self als Nachrichtenempfänger in einer Methodendefinition?
+Antwort: Die Verwendung von self als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet.
+
+Frage: Was bewirkt die Verwendung von this als Nachrichtenempfänger in einer Methodendefinition?
+Antwort: Die Verwendung von this als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet.
+
+
+
+Man beachte, dass die Suche anders als bei self unabhängig von der Klasse des Objekts ist, für das super steht: Obwohl super genau wie self als Objekt stets den aktuellen Nachrichtenempfänger bezeichnet, bewirkt super immer eine von der Klasse des konkreten Empfängerobjekts losgelöste Suche, die eben mit der Superklasse der Klasse, in der super verwendet wird, beginnt und nicht etwa mit der Superklasse der Klasse, von der das (durch super bezeichnete) Empfängerobjekt eine direkte Instanz ist.
+
+
+Frage: Was ist der Unterschied zwischen self und super in der Objektsuche?
+Antwort: Der Unterschied liegt darin, dass die Suche bei self von der Klasse des Objekts abhängt, für das self steht, während die Suche bei super unabhängig von der Klasse des Objekts ist, für das super steht. Super beginnt die Suche immer mit der Superklasse der Klasse, in der super verwendet wird, und nicht mit der Superklasse der Klasse, von der das Empfängerobjekt eine direkte Instanz ist.
+
+Frage: Was bewirkt die Verwendung von super?
+Antwort: Die Verwendung von super bewirkt eine Suche, die mit der Superklasse der Klasse beginnt, in der super verwendet wird, und nicht mit der Superklasse der Klasse, von der das Empfängerobjekt eine direkte Instanz ist.
+
+Frage: Wie unterscheidet sich die Suche bei self und super?
+Antwort: Die Suche bei self ist abhängig von der Klasse des Objekts, für das self steht, während die Suche bei super unabhängig von der Klasse des Objekts ist, für das super steht. Bei super beginnt die Suche mit der Superklasse der Klasse, in der super verwendet wird, und nicht mit der Superklasse der Klasse, von der das Empfängerobjekt eine direkte Instanz ist.

@@ -1,0 +1,9 @@
+4.4.3 Parametrisierte Blöcke
+
+Die Blöcke in SMALLTALK können auch als anonyme Funktionen aufgefasst werden. Bisher waren alle Blöcke parameterlos, und ihre Beziehung zur Umgebung wurde ausschließlich über den Home Context hergestellt. Es ist jedoch auch möglich, Blöcke mit Parametern zu versehen, die bei ihrer Auswertung an Objekte aus dem Auswertungskontext gebunden werden können.
+
+Frage: Was sind anonyme Funktionen?
+Antwort: Blöcke in SMALLTALK können auch als anonyme Funktionen aufgefasst werden.
+
+Frage: Was sind parametrisierten Blöcke?
+Antwort: Parametrisierte Blöcke können mit Parametern versehen werden, die bei ihrer Auswertung an Objekte aus dem Auswertungskontext gebunden werden können.

@@ -1,0 +1,16 @@
+Kurseinheit 5: Andere objektorientierte Programmiersprachen
+
+Während der obige Leitspruch aus akademischer Sicht sicherlich richtig ist, können sich Praktikerinnen (und solche, die es werden wollen) diese Einstellung nicht erlauben. Stattdessen müssen sie die Programmiersprachen kennen, die auf dem Markt gefragt sind. In dieser Kurseinheit zeichnen sich die behandelten Sprachen, mit Ausnahme von EIFFEL, weniger durch revolutionäre Konzepte oder neuartige Sichtweisen aus, sondern vielmehr dadurch, dass sie in der Praxis weit verbreitet sind. Dennoch könnten einige Eigenheiten der einzelnen Sprachen Leserinnen Anlass geben, ihre bisherigen Denkweisen zu überprüfen.
+
+
+Frage: Warum werden in der akademischen Sicht Programmiersprachen wie Java, C++ oder Python weniger durch revolutionäre Konzepte oder neuartige Sichtweisen ausgezeichnet?
+Antwort: In der akademischen Sicht werden Programmiersprachen wie Java, C++ oder Python weniger durch revolutionäre Konzepte oder neuartige Sichtweisen ausgezeichnet, sondern vielmehr durch ihre weite Verbreitung in der Praxis.
+
+Frage: Warum werden in der akademischen Sichtweise bestimmte Programmiersprachen bevorzugt?
+Antwort: In der akademischen Sichtweise werden Programmiersprachen bevorzugt, die durch revolutionäre Konzepte oder neuartige Sichtweisen auffallen, anstatt durch ihre Verbreitung in der Praxis. Diese Sprachen können Leserinnen dazu ermutigen, ihre bisherigen Denkweisen zu überprüfen.
+
+Frage: Warum ist es wichtig für Praktikerinnen, die Programmiersprachen zu kennen, die auf dem Markt gefragt sind?
+Antwort: Für Praktikerinnen ist es wichtig, die Programmiersprachen zu kennen, die auf dem Markt gefragt sind, weil sie so in der Lage sind, die Sprachen zu verwenden, die in der Industrie und im Geschäftsleben am häufigsten eingesetzt werden. Dies erhöht ihre Beschäftigungsfähigkeit und ermöglicht es ihnen, an einer Vielzahl von Projekten zu arbeiten.
+
+
+Das Ziel dieser Kurseinheit besteht übrigens nicht darin, Sie zu Programmiererinnen in einer der (oder gar allen) in dieser Kurseinheit behandelten Sprachen wie C-Sharp, C++ und EIFFEL zu machen. Das Ziel ist vielmehr, Ihnen eine erste Übersicht über diese Sprachen zu geben und Ihr Verständnis für sie zu fördern. Sie sollen einen Eindruck davon bekommen, worauf Sie sich einlassen, wenn Sie sich entscheiden, Software in einer der genannten Sprachen zu entwickeln. Dazu gehört nicht, jedes Konstrukt jeder dieser Sprachen zu kennen oder sogar nur einmal gesehen zu haben. Vielmehr geht es darum, ein Verständnis dafür zu entwickeln, was die charakteristischen Eigenschaften, Stärken und Schwächen jeder einzelnen Sprache sind. Die Länge der folgenden Darstellung hängt von den Unterschieden zwischen den einzelnen Sprachen und den bereits behandelten ab.

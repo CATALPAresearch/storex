@@ -1,0 +1,20 @@
+8.1 Konstruktoren
+
+Mithilfe von Metaklassen lassen sich in SMALLTALK auf natürliche Art und Weise sogenannte Konstruktoren definieren. Ein Konstruktor ist eine Methode, die, wenn sie auf einer Klasse aufgerufen wird, eine neue Instanz dieser Klasse zurückgibt (es handelt sich also aus Sicht der Instanzen der Klasse um eine Klassenmethode). Wir haben bereits zwei Konstruktoren in SMALLTALK kennengelernt: Sie werden über die Selektoren "new" (für Objekte ohne indizierte Instanzvariablen) und "new:" (für Objekte mit indizierten Instanzvariablen) aufgerufen.
+
+
+Frage: Was ist ein Konstruktor in SMALLTALK?
+Antwort: In SMALLTALK werden Konstruktoren mithilfe von Metaklassen definiert. Ein Konstruktor ist eine Methode, die, wenn sie auf einer Klasse aufgerufen wird, eine neue Instanz dieser Klasse zurückgibt. Es gibt zwei Konstruktoren in SMALLTALK: "new" für Objekte ohne indizierte Instanzvariablen und "new:" für Objekte mit indizierten Instanzvariablen.
+
+
+Da Klassen selbst Objekte sind, sind "new" und "new:" Instanzmethoden der Klassen. Dabei sind "basicNew" und "basicNew:" ebenfalls Instanzmethoden der Klasse, deren Implementierung allerdings primitiv ist. Sie geben eine neue Instanz (ein neues Objekt) der Klasse, auf der sie aufgerufen wurden, zurück. Da durch "basicNew" und "basicNew:" alle Instanzvariablen der erzeugten Objekte den Wert "nil" zugewiesen bekommen, wird auf den neuen Objekten vor ihrer Rückgabe die Methode "initialize" aufgerufen. "Initialize" ist eine Instanzmethode des neuen Objekts, die die Instanzvariablen je nach Klasse, in der die Methode definiert ist, anders belegt.
+
+
+Frage: Was sind "basicNew" und "basicNew:" in Bezug auf Klassen?
+Antwort: "basicNew" und "basicNew:" sind Instanzmethoden der Klasse, die eine neue Instanz der Klasse zurückgeben, auf der sie aufgerufen wurden. Alle Instanzvariablen der erzeugten Objekte bekommen den Wert "nil" zugewiesen.
+
+Frage: Was passiert nach dem Aufruf von basicNew und basicNew:?
+Antwort: Nach dem Aufruf von basicNew und basicNew: wird auf den neuen Objekten vor ihrer Rückgabe die Methode "initialize" aufgerufen.
+
+Frage: Was ist die Aufgabe der Methode "initialize"?
+Antwort: Die Methode "initialize" ist eine Instanzmethode des neuen Objekts, die die Instanzvariablen je nach Klasse, in der die Methode definiert ist, anders belegt.

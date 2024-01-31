@@ -1,0 +1,13 @@
+44 Dynamische Typprüfung in Java
+
+Wie Sie gesehen haben, hat das Typsystem Javas eine starke statische Komponente. Gleichwohl können nicht alle Typprüfungen zur Übersetzungszeit durchgeführt werden. Während man die dynamischen Typprüfungen bei Arrays (Kapitel 41) noch durch die Einführung von Wildcards hätte vermeiden können, gilt das nicht für die gelegentlich notwendigen Typumwandlungen (Type casts; zumindest nicht für alle).
+
+
+Frage: Was ist das Typsystem von Java?
+Antwort: Das Typsystem von Java hat eine starke statische Komponente, bei der jedoch nicht alle Typprüfungen zur Übersetzungszeit durchgeführt werden können. Für manche Typumwandlungen sind dynamische Typprüfungen notwendig.
+
+Frage: Was ist der Zweck von Wildcards in Java?
+Antwort: Der Zweck von Wildcards in Java ist es, die dynamischen Typprüfungen bei Arrays zu vermeiden.
+
+Frage: Was sind Wildcards in Java?
+Antwort: Wildcards in Java sind eine Möglichkeit, dynamische Typprüfungen bei Arrays zu vermeiden. Sie ermöglichen es, Arrays mit unterschiedlichen Typen zu verwenden, ohne dass statische Typprüfungen zur Übersetzungszeit erforderlich sind.

@@ -1,0 +1,55 @@
+Kurseinheit 7: Objektorientierter Stil
+
+Unabhängig davon, wie formal sie sind, sind Programmiersprachen Sprachen und ermöglichen es einer Autorin, sich auf eine persönliche Art und Weise auszudrücken. Die Ausdrucksweise bestimmt dabei nicht den Inhalt des Programms (seine Funktion), sondern seine Qualität. Zum Beispiel, wie effizient ein gegebenes Problem gelöst wird oder wie verständlich die Formulierung der Lösung für die Betrachterin ist. Besonders die Verständlichkeit hat viel mit Schreibstil zu tun, aber auch andere Faktoren spielen in Stilfragen eine Rolle, wie Mode und Ästhetik (Eleganz).
+
+
+Frage: Wie beeinflusst die Ausdrucksweise einer Programmiersprache die Qualität eines Programms?
+Antwort: Die Ausdrucksweise einer Programmiersprache beeinflusst die Qualität eines Programms, indem sie die Effizienz der Problemlösung und die Verständlichkeit der Formulierung beeinflusst. Dies hängt von Faktoren wie Schreibstil, Mode und Ästhetik ab.
+
+Frage: Wie beeinflusst die Ausdrucksweise die Qualität eines Programms?
+Antwort: Die Ausdrucksweise in Programmiersprachen beeinflusst die Qualität eines Programms, indem sie die Effizienz der Problemlösung und die Verständlichkeit der Formulierung beeinflusst. Dies hängt von Faktoren wie Schreibstil, Mode und Ästhetik ab.
+
+Frage: Warum spielt die Ausdrucksweise in Programmiersprachen eine Rolle?
+Antwort: Die Ausdrucksweise in Programmiersprachen bestimmt nicht den Inhalt des Programms, sondern seine Qualität. Sie beeinflusst, wie effizient ein gegebenes Problem gelöst wird oder wie verständlich die Formulierung der Lösung für die Betrachterin ist. Besonders die Verständlichkeit hat viel mit Schreibstil zu tun, aber auch andere Faktoren wie Mode und Ästhetik (Eleganz) spielen eine Rolle.
+
+
+Es hat zweifellos in den letzten Jahrzehnten einen Wandel in Stilfragen gegeben, weg von einem mathematisch prägnanten Stil hin zu einem prosaisch-verbosen Stil.
+
+
+Frage: Was ist der Unterschied zwischen einem mathematisch prägnanten Stil und einem prosaisch-verbosen Stil in der Programmierung?
+Antwort: Ein mathematisch prägnanter Stil in der Programmierung zeichnet sich durch eine kompakte und präzise Schreibweise aus, während ein prosaisch-verboser Stil durch eine ausführliche und detaillierte Schreibweise gekennzeichnet ist.
+
+Frage: Was versteht man unter einem mathematisch prägnanten Stil in der Programmierung?
+Antwort: Ein mathematisch prägnanter Stil in der Programmierung zeichnet sich durch eine kompakte, präzise und logische Schreibweise aus, die an die mathematische Notation erinnert. Er vermeidet unnötige Wiederholungen und nutzt stattdessen abstrakte Konzepte und Funktionen, um die Absicht des Programmcodes klar und eindeutig auszudrücken. Diese Art der Programmierung wird oft als "sauber" und "elegant" angesehen, da sie die Komplexität reduziert und die Wartbarkeit des Codes verbessert.
+
+
+Es handelt sich dabei um ein PASCAL-Programm zur Lösung des Problems der stabilen Heirat. Ein bedeutender Anteil aller Variablen in Programmen trägt oft den Namen "i". In diesem Beispiel sind die Variablen jedoch als "r", "m", "w" usw. benannt. Das grundlegende Problem bleibt jedoch dasselbe: Man muss sich vertieft in das Programm und den dazugehörigen Text einarbeiten, um zu verstehen, wofür die Variablen stehen.
+
+
+Frage: Warum ist die Verwendung aussagekräftiger Variablennamen wichtig?
+Antwort: Die Verwendung aussagekräftiger Variablennamen ist wichtig, um das Verständnis des Programms zu erleichtern. Wenn Variablennamen wie "i" verwendet werden, ist es schwieriger zu verstehen, wofür die Variablen stehen. Durch die Verwendung aussagekräftiger Variablennamen wie "r", "m" oder "w" in diesem Beispiel wird das Programm jedoch leichter verständlich.
+
+Frage: Was ist das grundlegende Problem bei der Verwendung von Variablennamen wie "i" in Programmen?
+Antwort: Das grundlegende Problem ist, dass man sich vertieft in das Programm und den dazugehörigen Text einarbeiten muss, um zu verstehen, wofür die Variablen stehen.
+
+Frage: Wozu können temporäre Variablen in Programmen dienen?
+Antwort: Temporäre Variablen können in Programmen zur besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.
+
+Frage: Wann werden temporäre Variablen vom System entfernt?
+Antwort: Temporäre Variablen werden vom System nach Beendigung der Methode entfernt.
+
+Frage: Sind die Werte temporärer Variablen außerhalb der Methode sichtbar?
+Antwort: Nein, die Werte temporärer Variablen sind außerhalb der Methode nicht sichtbar.
+
+Frage: Wann müssen temporäre Variablen in einer Methode deklariert werden?
+Antwort: Temporäre Variablen müssen in einer Methode zu Beginn der Methode (nach der Methodensignatur und vor der ersten Anweisung) deklariert werden.
+
+
+Heute ist es üblich, Bezeichner (Namen für Module, Typen, Variablen, Prozeduren und Funktionen) in einem Programm so zu wählen, dass Kommentare zur Bedeutung der jeweiligen Programmelemente unnötig sind, da die Bezeichner ihre Bedeutung bereits im Kontext ausdrücken. Es wird sogar argumentiert, dass ein gut geschriebenes objektorientiertes Programm keine Kommentare benötigt. Trotzdem gibt es Fälle, in denen eine Lösung, auch wenn sie in ihrer verständlichsten Form vorliegt, weniger elegant ist als eine raffinierte Variante, die nicht jedem sofort ersichtlich ist. In solchen Situationen ist die Versuchung groß, die geistreichere Lösung zu wählen und sie mit einem erklärenden Kommentar zu versehen, für diejenigen Leserinnen, die nicht sofort folgen können. Einige der berühmtesten Algorithmen sind nicht offensichtlich und haben ihren Autoren zu Ruhm verholfen.
+
+
+Frage: Warum sind Kommentare in einem Programm nicht immer notwendig?
+Antwort: Heutzutage ist es üblich, Bezeichner in einem Programm so zu wählen, dass Kommentare zur Bedeutung der jeweiligen Programmelemente unnötig sind, da die Bezeichner ihre Bedeutung bereits im Kontext ausdrücken. Ein gut geschriebenes objektorientiertes Programm benötigt daher eigentlich keine Kommentare.
+
+Frage: Warum werden Kommentare in einem gut geschriebenen objektorientierten Programm nicht benötigt?
+Antwort: In einem gut geschriebenen objektorientierten Programm werden Bezeichner (Namen für Module, Typen, Variablen, Prozeduren und Funktionen) so gewählt, dass sie ihre Bedeutung bereits im Kontext ausdrücken, wodurch Kommentare unnötig werden.

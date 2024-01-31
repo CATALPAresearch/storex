@@ -1,0 +1,143 @@
+56 Das Problem der schlechten Tracebarkeit
+
+Spätestens mit der Verfügbarkeit sogenannter Hochsprachen und den gleichzeitig immer größer werdenden Programmen kam die Frage auf, was "gute Programmierung" ausmacht. Eines der Hauptprobleme schlechter Programmierung war schnell identifiziert: die große Diskrepanz zwischen statischem, linearem Programmtext und dynamischem, stark verzweigendem und sich wiederholendem Programmablauf. Eine gute Programmiererin hatte ihre Programme so zu schreiben, dass der Programmtext und der Programmablauf einander möglichst ähnlich waren, genauer gesagt, dass die (statische) Struktur des Programms möglichst viele Rückschlüsse auf seinen (dynamischen) Ablauf zuließ. Man wollte also von den Programmiererinnen Klartext.
+
+
+Frage: Was ist das Ziel von "guter Programmierung"?
+Antwort: Das Ziel von "guter Programmierung" ist es, die Diskrepanz zwischen statischem, linearem Programmtext und dynamischem, stark verzweigendem und sich wiederholendem Programmablauf zu minimieren. Eine gute Programmiererin schreibt ihre Programme so, dass die statische Struktur des Programms möglichst viele Rückschlüsse auf seinen dynamischen Ablauf zulässt.
+
+Frage: Was bedeutet "gute Programmierung"?
+Antwort: Laut dem Kurstext bedeutet "gute Programmierung", dass der Programmtext und der Programmablauf einander möglichst ähnlich sind, genauer gesagt, dass die (statische) Struktur des Programms möglichst viele Rückschlüsse auf seinen (dynamischen) Ablauf zulässt.
+
+Frage: Was war das Hauptproblem schlechter Programmierung?
+Antwort: Das Hauptproblem schlechter Programmierung war die große Diskrepanz zwischen statischem, linearem Programmtext und dynamischem, stark verzweigendem und sich wiederholendem Programmablauf.
+
+
+Ebenso schnell wie das Problem wurde sein Hauptverursacher ausgemacht: die Goto-Anweisung. Sie erlaubt Sprünge von beliebigen Stellen eines Programms an beliebige andere Stellen des Programms und durchbricht dabei auf brutale Art und Weise das äußerst nützliche Lokalitätsprinzip von Programmen: Dinge, die zusammengehören, stehen im Programmtext beieinander. So, und nur so, ist bei der Inspektion des Programmtextes unmittelbar klar, wie man an eine Stelle im Programm gelangt ist und, mindestens ebenso wichtig, wie eine Variable ihren Wert bekommen hat.
+
+
+Frage: Was ist das Lokalitätsprinzip von Programmen?
+Antwort: Das Lokalitätsprinzip von Programmen besagt, dass Dinge, die zusammengehören, auch im Programmtext beieinander stehen sollten. Dadurch wird die Lesbarkeit und Nachvollziehbarkeit des Programms verbessert.
+
+
+Zur Veranschaulichung soll die nachfolgende Abbildung dienen, die einen Programmtext als eine Folge von Anweisungen stilisiert. Anweisungen sind durch Kreise dargestellt, die (textuelle) Folge der Anweisungen im Programmtext durch die kleinen Pfeile. Ohne besondere, den Kontrollfluss beeinflussende Anweisungen entspricht die (dynamische) Reihenfolge der Ausführung der (statischen) Folge der Anweisungen im Programmtext. Bei Betrachtung des stärker umrandeten, mittleren Kreises (der entsprechenden Anweisung), z. B. während einer Debug-Sitzung, ist daher aus dem unmittelbaren Kontext heraus (der Ellipse; Lokalitätsprinzip!) klar, welche Anweisung davor ausgeführt wurde und welche als nächstes drankommt. Alles ist in bester Ordnung.
+Handelt es sich nun bei einer der Anweisungen um ein Goto, dann ist die Sachlage längst nicht mehr so klar. Man hat vielmehr die folgenden Fälle zu unterscheiden: Die betrachtete Anweisung ist selbst ein Goto: In diesem Fall ist zwar klar, woher der Programmfluss kommt, und auch, wohin er geht, letzteres aber nur mit einer gewissen Einschränkung — das Ziel ist nicht der Nachbar im Programmtext, sondern befindet sich außerhalb des gewählten Kontextes. Nun kann man den Kontext natürlich so wählen, dass er das Ziel enthält, und kurze Sprünge sind vielleicht auch so innerhalb des betrachteten Kontextes möglich; allgemein gilt jedoch, dass jede gewählte Lokalität durch einen Sprung verletzt werden kann. Immerhin lässt sich aber das Ziel des Sprungs aus dem Kontext erkennen und der Kontext entsprechend wechseln. Die betrachtete Anweisung ist Ziel eines Gotos: Hier ist die Sachlage schon schwieriger. Der Programmfluss scheint bei Betrachtung des Kontextes genau wie im ersten Beispiel zu verlaufen. Wenn man den Kontext allerdings vergrößert, lernt man, dass die dynamischen Vorgänger in der betrachteten Anweisung auch andere sein können. Der Kontext selbst gibt jedoch keinen Hinweis darauf; zwar kann das Vorhandensein eines Sprunglabels einen Hinweis darauf geben, dass die so markierte Anweisung Ziel eines Gotos sein kann, sie muss es aber nicht; in Sprachen wie BASIC beispielsweise (damals noch weit verbreitet), in denen Zeilennummern gültige Sprungziele sind, muss jede Anweisung als mit einem Label versehen betrachtet werden und kann somit Sprungziel von irgendwoher sein. Außerdem kann eine Anweisung von verschiedenen Gotos angesprungen werden, so dass unklar bleibt, welches die (zeitliche) Vorgängeranweisung war. Die betrachtete Anweisung ist unmittelbare Nachfolgerin eines Gotos: Hier ist zwar aus dem Kontext ersichtlich, dass die statischen Vorgänger nicht die dynamischen sein können, ansonsten kann man aber nur mutmaßen, dass es sich vielleicht um toten Code handeln könnte (also um Code, der niemals ausgeführt wird). Es kann nämlich die Anweisung Sprungziel von Gotos außerhalb des Kontexts sein (wie in allen anderen Fällen auch).
+
+
+Frage: Was ist die Auswirkung von Goto-Anweisungen auf den Programmfluss?
+Antwort: Goto-Anweisungen können den Programmfluss beeinflussen, indem sie den Kontext verlassen und zu einer anderen Stelle im Programm springen. Das Ziel des Sprungs ist nicht immer eindeutig aus dem Kontext erkennbar, und es kann unklar sein, welche Anweisungen vorher ausgeführt wurden.
+
+
+Fazit: Die Verwendung von Goto-Anweisungen verursacht ein hohes Maß an Nichtwissen bei der Interpretation von Quelltext. Speziell beim Debugging von Programmen ist der Blick in den Quelltext des Programms so nur sehr bedingt von Nutzen. Von daher, so der allgemeine Konsens, ist die Benutzung von Gotos zu vermeiden.
+
+
+Frage: Warum wird die Verwendung von Goto-Anweisungen im Programmieren nicht empfohlen?
+Antwort: Die Verwendung von Goto-Anweisungen verursacht ein hohes Maß an Nichtwissen bei der Interpretation von Quelltext, insbesondere beim Debugging von Programmen ist der Blick in den Quelltext des Programms nur bedingt von Nutzen.
+
+
+Wenn man also kein Goto benutzen darf, wie steuert man dann den Ablauf von Programmen? Die sogenannte strukturierte Programmierung sieht dafür neben der Sequenz von Anweisungen (ausgedrückt durch die unmittelbare Nachbarschaft im Programmtext) die Verzweigung, die Wiederholung und den Unterprogrammaufruf vor. Von diesen behalten die ersten beiden das Lokalitätsprinzip bei, solange man den Kontext auf den Umfang der Fallunterscheidung bzw. Schleife, die damit ausgedrückt wird, ausdehnt. Für den Unterprogrammaufruf gilt das jedoch nicht mehr: Schon weil ein Unterprogramm in der Regel von mehreren Stellen eines Programms aus aufgerufen werden kann und weil diese Stellen nicht automatisch denselben Kontext haben, wird hier das Lokalitätsprinzip durchbrochen. Dies ist aber unvermeidlich, und man tröstet sich damit, dass ein Unterprogramm, genauer eine Prozedur oder eine Funktion, immer genau an die Stelle zurückkehrt, von der es aufgerufen wurde.
+
+
+Frage: Was ist strukturierte Programmierung?
+Antwort: Die strukturierte Programmierung ist eine Programmiermethode, die neben der Sequenz von Anweisungen, die Verzweigung, die Wiederholung und den Unterprogrammaufruf vorsieht. Sie behält das Lokalitätsprinzip bei, solange man den Kontext auf den Umfang der Fallunterscheidung bzw. Schleife ausdehnt.
+
+Frage: Was ist das Lokalitätsprinzip in der Programmierung?
+Antwort: Das Lokalitätsprinzip in der Programmierung besagt, dass die Bedeutung eines Elements in einem Programm durch seinen unmittelbaren Kontext bestimmt wird. Dieses Prinzip wird bei der strukturierten Programmierung durch die Sequenz von Anweisungen, Verzweigungen und Wiederholungen eingehalten, aber durchbrochen, wenn ein Unterprogramm aufgerufen wird, da es von mehreren Stellen eines Programms aus aufgerufen werden kann und diese Stellen nicht automatisch denselben Kontext haben.
+
+
+Bei Betrachtung des textuell unmittelbaren Vorgängers der betrachteten Anweisung sieht man sofort, dass es sich beim dynamischen Vorgänger um die Return-Anweisung des aufgerufenen Unterprogramms handeln muss. Dies ist zwar nicht lokal, aber wenn man sich sicher sein kann, dass das Unterprogramm nur die Variablen manipuliert, die bei seinem Aufruf als tatsächliche Parameter übergeben wurden, und wenn zudem das Unterprogramm bekannte Vor- und Nachbedingungen enthält, dann ist das kein Problem. Selbst wenn man nicht weiß, wie die Variablen manipuliert wurden, so ist die Unwissenheit, die durch einen Unterprogrammaufruf verursacht wird, im Vergleich zu der beim Goto gering. Ihr steht auf der anderen Seite ein großer Nutzen gegenüber: Man vermeidet die Duplizierung von Code, die nötig wäre, wenn man die Anweisungen des Unterprogramms im Aufrufkontext halten wollte und es mehrere solche Aufrufkontexte gibt (das sog. Inlining, das manche Compiler aus Optimierungsgründen durchführen). Man erlaubt der Programmiererin, ihre Programme in Abschnitte zu unterteilen, die sie getrennt untersuchen und verstehen kann.
+
+
+Frage: Was ist der Unterschied zwischen dem dynamischen Vorgänger einer Anweisung und dem Unterprogrammaufruf?
+Antwort: Der dynamische Vorgänger einer Anweisung ist die Anweisung, die unmittelbar davor ausgeführt wurde. Beim Unterprogrammaufruf hingegen wird der Kontrollfluss an eine andere Stelle im Programm übergeben, was zu einer gewissen Unwissenheit führt. Allerdings ist diese Unwissenheit im Vergleich zum Goto geringer und bietet den Vorteil, dass Code dupliziert werden kann und die Programmierung in Abschnitte unterteilt werden kann, die getrennt untersucht und verstanden werden können.
+
+Frage: Was ist der Unterschied zwischen dem dynamischen Vorgänger einer Anweisung und dem Goto?
+Antwort: Der dynamische Vorgänger einer Anweisung ist die Anweisung, die unmittelbar davor im Programmablauf ausgeführt wurde. Beim Goto wird die Programmlogik durch Sprunganweisungen unterbrochen, was zu einer unübersichtlichen Programmstruktur führen kann. Im Gegensatz dazu bietet der dynamische Vorgänger eine klare und strukturierte Abfolge der Anweisungen.
+
+Frage: Was ist der Unterschied zwischen der Unwissenheit, die durch einen Unterprogrammaufruf und durch eine Goto-Anweisung verursacht wird?
+Antwort: Die Unwissenheit, die durch einen Unterprogrammaufruf verursacht wird, ist im Vergleich zu der beim Goto gering.
+
+Frage: Welche Vorteile bietet ein Unterprogrammaufruf gegenüber der Duplizierung von Code?
+Antwort: Durch den Unterprogrammaufruf wird die Duplizierung von Code vermieden, was die Notwendigkeit beseitigt, die Anweisungen des Unterprogramms im Aufrufkontext zu halten, wenn es mehrere solche Aufrufkontexte gibt. Dies erleichtert die Unterteilung von Programmen in Abschnitte, die getrennt untersucht und verstanden werden können.
+
+
+Besonders der zweite Punkt ist wichtig: Aus Sicht der Programmiererin sollte es nämlich reichen, zu wissen, was ein Unterprogramm tut, um es korrekt benutzen zu können. Sie muss also insbesondere nicht in das Unterprogramm hineinschauen, also seine Anweisungen inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umgekehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall aufgerufen wird — es reicht dann, zu wissen, mit welchen Parametern es versorgt wird, und die sind ihr per formale Parameterdeklaration bekannt. (Voraussetzung dieser Argumentation ist jedoch, dass es keine globalen Variablen gibt, die eine gegenseitige Beeinflussung von Aufrufstelle und Unterprogramm an den tatsächlichen und formalen Parametern vorbei erlauben. Diese globalen Variablen sind jedoch mindestens so sehr verpönt wie das Goto.)
+
+
+Frage: Was ist der Vorteil von lokalen Variablen in Unterprogrammen?
+Antwort: Der Vorteil von lokalen Variablen in Unterprogrammen ist, dass die Programmiererin das Unterprogramm korrekt benutzen kann, ohne in das Unterprogramm hineinschauen zu müssen. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt.
+
+Frage: Was ist der Vorteil von Unterprogrammen?
+Antwort: Der Vorteil von Unterprogrammen ist, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umgekehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall aufgerufen wird.
+
+Frage: Warum ist es wichtig, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können?
+Antwort: Es ist wichtig, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können, weil sie sich so auf den Kontext der Aufrufstelle konzentrieren kann und nicht abgelenkt wird durch die Implementierungsdetails des Unterprogramms. Dies erleichtert die Lesbarkeit und Wartbarkeit des Codes.
+
+
+Bei der objektorientierten Programmierung hat man es zunächst mit einer leicht veränderten Situation zu tun. Hier sind nämlich nicht allein das Vermeiden von doppeltem Code sowie die stufenweise Verfeinerung Kriterien für die Aufteilung in Unterprogramme, sondern auch die Disziplin, jede Teilfunktion der Klasse zuzuordnen, deren Daten sie manipuliert. Typische objektorientierte Programme teilen daher die Implementierung größerer Funktionen nicht nur in kleinere auf, sondern verteilen diese auch noch über viele Klassen. Auch wenn es sich dabei stets nur um Unterprogrammaufrufe handelt, die allen obengenannten Anforderungen genügen, so erfolgen die zum Programmverstehen notwendigen Kontextwechsel doch in so kurzer Folge, dass man schnell den Überblick darüber verliert.
+
+
+Frage: Was sind die Kriterien für die Aufteilung in Unterprogramme bei der objektorientierten Programmierung?
+Antwort: Bei der objektorientierten Programmierung sind die Kriterien für die Aufteilung in Unterprogramme das Vermeiden von doppeltem Code, die stufenweise Verfeinerung, das Zuordnen jeder Teilfunktion der Klasse, deren Daten sie manipuliert, und die Disziplin, die Implementierung größerer Funktionen zu verteilen.
+
+Frage: Warum ist es wichtig, jede Teilfunktion der Klasse zuzuordnen, deren Daten sie manipuliert?
+Antwort: Es ist wichtig, jede Teilfunktion der Klasse zuzuordnen, deren Daten sie manipuliert, um das Vermeiden von doppeltem Code sowie die stufenweise Verfeinerung zu gewährleisten und die Implementierung größerer Funktionen in kleinere Unterprogramme aufzuteilen. Diese Disziplin hilft, den Überblick über das Programm zu behalten, auch wenn die Unterprogrammaufrufe in so kurzer Folge erfolgen, dass man schnell den Kontextwechsel verlieren kann.
+
+
+Nun ergibt sich aber mit der Einführung von dynamisch gebundenen Unterprogrammaufrufen, wie sie ja für die objektorientierte Programmierung prägend sind, das Problem, dass aus dem Programmtext nicht unmittelbar ersichtlich ist, wohin der Sprung geht: Wie bereits in Kurseinheit 1, Abschnitt 4.3.2 bemerkt, verbindet das dynamische Binden den Unterprogrammaufruf mit der Verzweigung.
+
+
+Frage: Was ist das Problem mit dynamisch gebundenen Unterprogrammaufrufen in der objektorientierten Programmierung?
+Antwort: Das Problem mit dynamisch gebundenen Unterprogrammaufrufen in der objektorientierten Programmierung ist, dass aus dem Programmtext nicht unmittelbar ersichtlich ist, wohin der Sprung geht. Das dynamische Binden verbindet den Unterprogrammaufruf mit der Verzweigung.
+
+Frage: Was ist dynamisches Binden und wie verbindet es Unterprogrammaufruf mit Verzweigung?
+Antwort: Dynamisches Binden ist eine Technik in der objektorientierten Programmierung, bei der der Unterprogrammaufruf mit der Verzweigung verbunden wird, indem die Entscheidung darüber, welches Unterprogramm aufgerufen werden soll, zur Laufzeit getroffen wird, anstatt zur Übersetzungszeit. Das bedeutet, dass der Compiler nicht im Voraus entscheiden kann, welches Unterprogramm aufgerufen wird, sondern dass diese Entscheidung zur Laufzeit getroffen wird, wenn der Unterprogrammaufruf tatsächlich ausgeführt wird. Dies ermöglicht es, dass der Zielcode des Unterprogrammaufrufs zur Laufzeit bestimmt wird, was eine flexiblere und dynamischere Programmstruktur ermöglicht.
+
+
+Es ist an der Stelle der betrachteten Anweisung nicht klar, von woher der in der Anweisung zuvor angestoßene Unterprogrammaufruf zurückkehrt — es könnte von jeder Implementierung der im Gosub genannten Methode sein. Um das Sprungziel und damit die Return-Anweisung, die unmittelbarer Vorgänger war, zu identifizieren, muss man die Klasse des Empfängerobjekts kennen, also die Klasse des Werts der Variable, auf der die Methode aufgerufen wurde. Das ist aber in der Regel nur auf Basis einer vollständigen Programmanalyse bestimmbar, die sich nicht lokal durchführen lässt. Das Lokalitätsprinzip wird also durch das dynamische Binden weiter aufgeweicht als durch den Unterprogrammaufruf allein.
+
+
+Frage: Was ist das Lokalitätsprinzip und wie wird es durch dynamisches Binden aufgeweicht?
+Antwort: Das Lokalitätsprinzip besagt, dass die Bedeutung eines Namens durch die unmittelbare Umgebung bestimmt wird, in der er deklariert ist. Durch dynamisches Binden wird das Lokalitätsprinzip aufgeweicht, da die Bedeutung eines Namens, der auf eine Methode verweist, nicht nur durch die unmittelbare Umgebung bestimmt wird, sondern auch durch die Klasse des Empfängerobjekts, auf dem die Methode aufgerufen wurde. Diese Information ist in der Regel nicht lokal bestimmbar und erfordert eine vollständige Programmanalyse.
+
+Frage: Was passiert, wenn man die Klasse des Empfängerobjekts nicht kennt?
+Antwort: Wenn man die Klasse des Empfängerobjekts nicht kennt, ist es nicht möglich, an der Stelle der betrachteten Anweisung zu bestimmen, von woher der in der Anweisung zuvor angestoßene Unterprogrammaufruf zurückkehrt. Das Lokalitätsprinzip wird also durch das dynamische Binden weiter aufgeweicht als durch den Unterprogrammaufruf allein.
+
+
+Dieser Umstand hat dazu geführt, dass das dynamische Binden von Skeptikerinnen und Gegnerinnen der objektorientierten Programmierung schon als eine Art Goto der 90er Jahre betrachtet wurde. Dieser Vergleich ist jedoch nicht ganz fair, weil, genau wie beim statisch gebundenen Unterprogrammaufruf, die Aufruferin ja gar nicht wissen muss, welche genauen Anweisungen als Antwort darauf ausgeführt werden müssen — es reicht zu wissen, welchen Vertrag die aufgerufene Methode (das aufgerufene Unterprogramm) erfüllt. Dies sollte nach den Regeln des Subtyping (Abschnitt 54.2) stets unabhängig vom vertragserfüllenden Objekt sein.
+
+
+Frage: Warum wird dynamisches Binden in der objektorientierten Programmierung kritisiert?
+Antwort: Kritikerinnen der objektorientierten Programmierung haben das dynamische Binden als eine Art Goto der 90er Jahre betrachtet. Dieser Vergleich ist jedoch nicht ganz fair, weil die Aufruferin nicht wissen muss, welche genauen Anweisungen als Antwort darauf ausgeführt werden müssen. Es reicht zu wissen, welchen Vertrag die aufgerufene Methode erfüllt.
+
+Frage: Warum ist der Vergleich des dynamischen Bindens mit Goto der 90er Jahre nicht ganz fair?
+Antwort: Der Vergleich ist nicht ganz fair, weil im Gegensatz zum Goto die Aufruferin nicht wissen muss, welche genauen Anweisungen als Antwort darauf ausgeführt werden müssen, sondern es reicht zu wissen, welchen Vertrag die aufgerufene Methode erfüllt. Diese Unabhängigkeit vom vertragserfüllenden Objekt ist ein wichtiger Unterschied zum Goto.
+
+
+Andererseits sind die Verträge in der Praxis gar nicht im Programmtext spezifiziert, oder kennen Sie ein Programm, in dem für jede dynamisch gebundene Methode Vor- und Nachbedingungen spezifiziert wären? Daher kann es bei der Betrachtung der Aufrufstelle sehr wohl interessant sein, was denn nun genau in der aufgerufenen Methode passiert ist, z. B. weil man sich eine bestimmte, resultierende Variablenbelegung nicht erklären kann. In diesen Fällen wird man sich also, beim Tracen oder beim Debuggen, auch den aufgerufenen Code anschauen wollen. Das Problem ist nur, dass man gar nicht weiß, an welcher Stelle man schauen muss. Es bleibt in der Praxis also nur, das Programm erneut auszuführen, vor dem dynamisch gebundenen Aufruf zu stoppen und sich den Variableninhalt anzusehen oder den Programmablauf Schritt für Schritt zu verfolgen, mit all den oben beschriebenen Problemen.
+
+
+Frage: Warum kann es bei der Betrachtung der Aufrufstelle interessant sein, was in der aufgerufenen Methode passiert ist?
+Antwort: Es kann interessant sein, weil man sich eine bestimmte, resultierende Variablenbelegung nicht erklären kann und mehr Informationen über die Abläufe in der aufgerufenen Methode benötigt.
+
+Frage: Warum ist es in der Praxis nicht immer möglich, den aufgerufenen Code anzuschauen?
+Antwort: In der Praxis ist es nicht immer möglich, den aufgerufenen Code anzuschauen, weil man nicht weiß, an welcher Stelle man schauen muss. Man muss das Programm erneut ausführen, vor dem dynamisch gebundenen Aufruf stoppen und sich den Variableninhalt ansehen oder den Programmablauf Schritt für Schritt verfolgen.
+
+Frage: Was ist das Problem, wenn man sich den aufgerufenen Code anschauen will?
+Antwort: Das Problem ist, dass man gar nicht weiß, an welcher Stelle man schauen muss.
+
+Frage: Wie kann man sich den Variableninhalt ansehen, wenn man nicht weiß, an welcher Stelle man schauen muss?
+Antwort: In der Praxis bleibt nur, das Programm erneut auszuführen, vor dem dynamisch gebundenen Aufruf zu stoppen und sich den Variableninhalt anzusehen.
+
+Frage: Warum ist es wichtig, den aufgerufenen Code anzuschauen, wenn man sich eine bestimmte, resultierende Variablenbelegung nicht erklären kann?
+Antwort: Es ist wichtig, den aufgerufenen Code anzuschauen, um zu verstehen, was in der aufgerufenen Methode passiert ist und wie sich dies auf die Variablenbelegung ausgewirkt hat. Dies kann hilfreich sein, um Fehler zu debuggen und das Verhalten des Programms zu verstehen.
+
+
+Es ist wohl unbestritten, dass objektorientierte Programme schwerer zu tracen und zu debuggen sind als prozedurale. Wie schon bei den statisch gebundenen Unterprogrammaufrufen (die ja ebenfalls ein Problem darstellen können) ist die Frage jedoch, ob das, was man durch das dynamische Binden hinzugewinnt, den Preis aufwiegt. Während diese Frage jede für sich selbst entscheiden muss, so scheint die Antwort für viele Programmiererinnen — weit mehr als eine Generation nach dem Aufkommen der Objektorientierung und damit vor dem Hintergrund genügend praktischer Erfahrung — überwiegend positiv zu sein. Man darf aber auch die Neinsagerinnen nicht als Ewiggestrige abstempeln — sie mögen gute Gründe haben.
+
+
+Frage: Sind objektorientierte Programme schwerer zu tracen und zu debuggen als prozedurale?
+Antwort: Es ist wohl unbestritten, dass objektorientierte Programme schwerer zu tracen und zu debuggen sind als prozedurale. Jedoch scheint die Antwort für viele Programmiererinnen positiv zu sein, dass der Gewinn durch das dynamische Binden den Preis aufwiegt.
+
+Frage: Warum werden objektorientierte Programme als schwerer zu tracen und zu debuggen angesehen als prozedurale?
+Antwort: Objektorientierte Programme werden als schwerer zu tracen und zu debuggen angesehen als prozedurale, weil sie dynamisch gebundene Unterprogrammaufrufe verwenden, was die Nachverfolgung von Programmabläufen erschweren kann.

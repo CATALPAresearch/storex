@@ -1,0 +1,46 @@
+43.5 Generische Methoden
+
+Neben in Typdefinitionen können Typvariablen (formale Typparameter) auch in Methodendefinitionen eingeführt (deklariert) werden. In diesem Fall ist die Sichtbarkeit der Typparameter auf die jeweilige Methode beschränkt. Es lassen sich damit variable Über- und Rückgabeparametertypen für eine Methode deklarieren. Die Belegung der Typparameter mit konkreten Typen als Werten erfolgt dann bei der Bindung eines Methodenaufrufs zur Übersetzungszeit. Der tatsächliche Typparameter muss dabei nicht angegeben werden, wenn er sich aus dem Kontext eindeutig ergibt (sog. Typinferenz).
+
+
+Frage: Wozu können Typparameter in Methodendefinitionen eingesetzt werden?
+Antwort: Typparameter in Methodendefinitionen können dazu genutzt werden, variable Über- und Rückgabeparametertypen für eine Methode zu deklarieren. Die Belegung der Typparameter mit konkreten Typen als Werten erfolgt dann bei der Bindung eines Methodenaufrufs zur Übersetzungszeit.
+
+Frage: Was sind Typparameter in der Programmierung?
+Antwort: Typparameter, auch formale Typparameter genannt, sind Variablen, die in Typdefinitionen oder Methodendefinitionen eingeführt werden können. Sie ermöglichen die Deklaration variabler Über- und Rückgabeparametertypen für eine Methode. Die Belegung der Typparameter mit konkreten Typen als Werten erfolgt bei der Bindung eines Methodenaufrufs zur Übersetzungszeit.
+
+
+Beim Aufruf einer parametrischen Methode muss der tatsächliche Typparameter angegeben werden. Allerdings erlaubt der Java-Compiler, diesen wegzulassen, wenn er sich aus dem Aufruf erschließen lässt (die oben erwähnte Typinferenz).
+
+
+Frage: Was ist ein tatsächlicher Typparameter bei einer parametrischen Methode?
+Antwort: Beim Aufruf einer parametrischen Methode muss der tatsächliche Typparameter angegeben werden, der den formalen Typparametern zugeordnet wird. Allerdings erlaubt der Java-Compiler, diesen wegzulassen, wenn er sich aus dem Aufruf erschließen lässt (die oben erwähnte Typinferenz).
+
+Frage: Was ist Typinferenz in Java?
+Antwort: Typinferenz in Java ist eine Funktion des Compilers, die es ermöglicht, den tatsächlichen Typparameter bei einem Aufruf einer parametrischen Methode wegzulassen, wenn er sich aus dem Aufruf erschließen lässt.
+
+
+Der (formale) Typparameter einer generischen Methode kann zunächst an jeden beliebigen Typ gebunden werden. Genau wie bei generischen Klassen reduziert dies jedoch entweder die Verwendbarkeit oder die Typsicherheit der mit dem Parameter übergebenen Objekte, da deren Typ innerhalb der Methode unbekannt ist. Es ist also, wieder genau wie bei generischen Klassen, möglich, den Typparameter mit extends zu beschränken.
+
+
+Frage: Was bedeutet es, einen Typparameter mit extends zu beschränken?
+Antwort: Wenn ein Typparameter mit extends beschränkt wird, kann er nur an einen Typ gebunden werden, der eine Unterklasse des angegebenen Typs ist. Dadurch wird die Verwendbarkeit oder Typsicherheit der mit dem Parameter übergebenen Objekte innerhalb der Methode eingeschränkt.
+
+Frage: Was ist der Zweck von Typparametern in generischen Methoden?
+Antwort: Der Typparameter einer generischen Methode kann an jeden beliebigen Typ gebunden werden. Er reduziert jedoch entweder die Verwendbarkeit oder die Typsicherheit der mit dem Parameter übergebenen Objekte, da deren Typ innerhalb der Methode unbekannt ist. Daher ist es möglich, den Typparameter mit extends zu beschränken.
+
+Frage: Was bedeutet es, den Typparameter einer generischen Methode mit extends zu beschränken?
+Antwort: Wenn man den Typparameter einer generischen Methode mit extends beschränkt, kann er nur an Typen gebunden werden, die eine Unterklasse der angegebenen Klasse sind. Das erhöht die Typsicherheit der mit dem Parameter übergebenen Objekte, da deren Typ innerhalb der Methode bekannt ist.
+
+
+Nicht selten wird der Typparameter (nicht die mit ihm deklarierten Parameter!) innerhalb der Methode nicht mehr verwendet. Eine Variable, die nur einmal vorkommt, kann man aber auch weglassen oder zumindest unbenannt lassen. Und so ist es in diesen Fällen gute Praxis, anstelle des Typparameters ein (entsprechend beschränktes) Typ-Wildcard zu verwenden.
+
+
+Frage: Was ist ein Typparameter und wann sollte man eine Typ-Wildcard verwenden?
+Antwort: Ein Typparameter ist ein Parameter, der innerhalb einer Methode nicht mehr verwendet wird. Wenn eine Variable nur einmal vorkommt, kann man sie weglassen oder zumindest unbenannt lassen. In diesen Fällen ist es gute Praxis, anstelle des Typparameters eine Typ-Wildcard zu verwenden.
+
+Frage: Was ist eine gute Praxis, wenn eine Variable nur einmal innerhalb einer Methode vorkommt?
+Antwort: Wenn eine Variable nur einmal innerhalb einer Methode vorkommt, ist es gute Praxis, anstelle des Typparameters ein entsprechend beschränktes Typ-Wildcard zu verwenden.
+
+Frage: Was ist eine Typparameter und wann sollte man eine Typ-Wildcard anstelle des Typparameters verwenden?
+Antwort: Ein Typparameter ist ein Parameter, der in einer Methode verwendet wird, um einen Typ anzugeben. Es ist gute Praxis, eine Typ-Wildcard anstelle des Typparameters zu verwenden, wenn die Variable nur einmal vorkommt und nicht mehr verwendet wird. Eine Typ-Wildcard ist eine eingeschränkte Version des Typparameters, die anzeigt, dass die Variable mit einem beliebigen Typ initialisiert werden kann.

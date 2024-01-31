@@ -1,0 +1,29 @@
+51.5.2 Dynamische Komponente
+
+Die Beschreibung der dynamischen Typprüfung in C++ ist knapp: Es gibt keine. Einige Objekte in C++ wissen jedoch zumindest im Prinzip, von welcher Klasse sie eine Instanz sind. Dies liegt daran, dass sie einen Zeiger auf die Sprungtabelle ihrer virtuellen Methoden besitzen. Da diese virtuelle Funktionstabelle für alle Objekte einer Klasse gleich ist, kann sie als eine Art Repräsentation der Klasse angesehen werden. Aus diesem Grund wurde C++ schließlich eine Bibliotheksfunktion hinzugefügt, die es ermöglicht, für Objekte mit dynamisch gebundenen Methoden festzustellen, welcher Klasse sie angehören. Diese Information wird als Runtime Type Information (RTTI) bezeichnet.
+
+
+Frage: Was ist Runtime Type Information (RTTI) in C++?
+Antwort: RTTI ist eine Bibliotheksfunktion in C++, die es ermöglicht, für Objekte mit dynamisch gebundenen Methoden festzustellen, welcher Klasse sie angehören.
+
+Frage: Wie wird RTTI in C++ implementiert?
+Antwort: RTTI wird in C++ durch einen Zeiger auf die Sprungtabelle der virtuellen Methoden implementiert, der für alle Objekte einer Klasse gleich ist und somit als eine Art Repräsentation der Klasse angesehen werden kann.
+
+Frage: Wozu wird RTTI in C++ verwendet?
+Antwort: RTTI wird in C++ verwendet, um die Klasse eines Objekts zur Laufzeit zu bestimmen, wenn dies zur Laufzeit erforderlich ist.
+
+Frage: Wann ist die Verwendung von RTTI in C++ sinnvoll?
+Antwort: Die Verwendung von RTTI in C++ ist sinnvoll, wenn die Klasse eines Objekts zur Laufzeit bestimmt werden muss, um beispielsweise eine geeignete Methode für die Ausführung auszuwählen.
+
+Frage: Ist RTTI in C++ immer verfügbar?
+Antwort: Nein, RTTI ist in C++ nicht immer verfügbar, da es nur für Objekte mit dynamisch gebundenen Methoden zur Verfügung steht.
+
+
+Konkret kann RTTI folgendermaßen genutzt werden: Es gibt eine Funktion namens typeid, die auf einer Referenz aufgerufen werden kann. Da diese Funktion auf Klassennamen überladen ist und eine Struktur zurückgibt, auf der == als Gleichheitstest definiert ist, kann der Typ eines Objekts ermittelt werden. Eine weitere nützliche Funktion, die RTTI verwendet, ist dynamic_cast<T>(x). Diese Funktion nimmt zwei Parameter, einen Typ (T) und ein Objekt (x), und gibt das Objekt mit dem angegebenen Typ zurück, wenn die RTTI dies als korrekt erkennt, andernfalls gibt sie 0 zurück.
+
+
+Frage: Was ist RTTI und wie kann es genutzt werden?
+Antwort: RTTI (Runtime Type Information) ist eine Funktion, die auf einer Referenz aufgerufen werden kann, um den Typ eines Objekts zu ermitteln. In diesem Fall gibt es eine Funktion namens typeid, die auf einer Referenz aufgerufen werden kann, um den Klassennamen des Objekts zu ermitteln. Diese Funktion ist überladen und gibt eine Struktur zurück, auf der == als Gleichheitstest definiert ist.
+
+Frage: Was passiert, wenn ein Objekt eine Nachricht erhält, die es nicht versteht?
+Antwort: Wenn ein Objekt eine Nachricht erhält, die es nicht versteht, wird eine Methode Not a Understand aufgerufen, die eine Fehlermeldung ausgeben kann.
