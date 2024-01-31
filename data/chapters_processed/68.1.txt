@@ -1,0 +1,37 @@
+68.1 Bedeutung
+
+Das Gesetz Demeters besagt nicht mehr, als dass Nachrichten nur an Objekte versendet werden dürfen, die der Sender selbst kennt oder erzeugt. Dabei ist "kennen" im Sinne von Kurseinheit 1 zu verstehen: Ein Objekt kennt ein anderes, wenn es in direkter Beziehung dazu steht, wenn es also auf eine Variable direkt (also ohne den Umweg über ein anderes Objekt) zugreift, die das andere Objekt benennt. Es kennt das andere Objekt dauerhaft (oder zumindest für eine längere Dauer), wenn es sich bei der Variable um eine Instanzvariable handelt, und temporär, wenn es sich bei der Variable um den formalen Parameter einer Methode handelt (wobei die Dauer des Kennens dann auf die Dauer der Abarbeitung der Methode beschränkt ist, es sei denn, der formale Parameter wird einer Instanzvariable zugewiesen). Temporäre (lokale) Variablen werden beim Gesetz Demeters nicht mitgezählt.
+
+
+Frage: Was besagt das Gesetz Demeters?
+Antwort: Das Gesetz Demeters besagt, dass Nachrichten nur an Objekte versendet werden dürfen, die der Sender selbst kennt oder erzeugt. Dabei ist "kennen" im Sinne von Kurseinheit 1 zu verstehen: Ein Objekt kennt ein anderes, wenn es in direkter Beziehung dazu steht, wenn es also auf eine Variable direkt (also ohne den Umweg über ein anderes Objekt) zugreift, die das andere Objekt benennt.
+
+
+Das Gesetz Demeters wird typischerweise verletzt, wenn Nachrichten an Objekte gesendet (Methoden auf Objekten aufgerufen) werden, die selbst nur als Ergebnis eines Nachrichtenausdrucks (Methodenaufrufs) vorliegen. Dies ist in der Regel bei Kettenaufrufen der Fall (s. u.), kann aber auch über eine zwischenzeitliche Zuweisung zu einer temporären Variable erfolgen.
+
+
+Frage: Was verstößt gegen das Gesetz Demeters?
+Antwort: Das Gesetz Demeters wird verletzt, wenn Nachrichten an Objekte gesendet werden, die selbst nur als Ergebnis eines Nachrichtenausdrucks vorliegen, wie zum Beispiel bei Kettenaufrufen oder über eine zwischenzeitliche Zuweisung zu einer temporären Variablen.
+
+Frage: Wann wird das Gesetz Demeters typischerweise verletzt?
+Antwort: Das Gesetz Demeters wird typischerweise verletzt, wenn Nachrichten an Objekte gesendet werden, die selbst nur als Ergebnis eines Nachrichtenausdrucks vorliegen, wie zum Beispiel bei Kettenaufrufen oder über eine zwischenzeitliche Zuweisung zu einer temporären Variablen.
+
+
+Sinn und Zweck des Gesetzes Demeters ist, die Kopplung und damit die Entwurfsabhängigkeiten zwischen Klassen zu verringern. Wird das Gesetz Demeters verletzt, kann die Änderung (des Protokolls) einer Klasse dazu führen, dass auch Klassen angepasst werden müssen, die selbst in keiner unmittelbaren Beziehung zu der Klasse stehen (sondern eben nur in einer mittelbaren, die nach dem Gesetz vermieden werden soll).
+
+
+Frage: Was ist das Ziel des Gesetzes Demeters?
+Antwort: Das Ziel des Gesetzes Demeters ist es, die Kopplung und damit die Entwurfsabhängigkeiten zwischen Klassen zu verringern. Wenn das Gesetz Demeters verletzt wird, kann die Änderung (des Protokolls) einer Klasse dazu führen, dass auch Klassen angepasst werden müssen, die selbst in keiner unmittelbaren Beziehung zu der Klasse stehen.
+
+
+Das Gesetz Demeters wird oft (und leicht verkürzt) in folgender Phrase zusammengefasst: "Sprich nicht mit Fremden" Bezogen auf SMALLTALK heißt das, dass Methodenaufrufe zwar geschachtelt, aber nicht verkettet erfolgen dürfen.
+
+Frage: Was bedeutet das Gesetz Demeters in Bezug SMALLTALK?
+Antwort: Das Gesetz Demeters ist ein Prinzip der objektorientierten Programmierung, das besagt, dass ein Objekt nur mit seinen direkten Nachbarn kommunizieren sollte, anstatt sich in die inneren Angelegenheiten anderer Objekte einzumischen. In SMALLTALK bedeutet "Sprich nicht mit Fremden", dass Methodenaufrufe zwar geschachtelt, aber nicht verkettet erfolgen dürfen. Das heißt, ein Objekt darf eine Methode auf einem anderen Objekt aufrufen, aber es sollte nicht erwarten, dass dieses Objekt eine Methode auf einem dritten Objekt aufruft.
+
+
+Man beachte, dass Demeters Gesetz faktisch eine neue, kontextabhängige Zugriffbarkeitsregel einführt: Eigenschaften von Objekten, die ein Objekt nicht selbst kennt, sind für das Objekt gleichgestellt mit denen von Objekten, die es zwar selbst kennt, auf die es aber nicht zugreifen darf.
+
+
+Frage: Was führt das Demeters Gesetz ein?
+Antwort: Demeters Gesetz ist führt eine neue, kontextabhängige Zugriffbarkeitsregel ein, die besagt, dass ein Objekt nicht direkt auf Eigenschaften von Objekten zugreifen soll, die es nicht selbst kennt. Stattdessen soll es Nachrichten an andere Objekte senden, um die gewünschten Informationen zu erhalten.

@@ -1,0 +1,45 @@
+4.3 Methoden
+
+Die Auswertung von Nachrichtenausdrücken, also von Nachrichten, die an Objekte verschickt werden, erfolgt mithilfe sogenannter Methoden. Eine Methode beschreibt, was ein Objekt in Reaktion auf den Erhalt einer entsprechenden Nachricht tun soll. Eine Methode besteht aus einem Methodenkopf, der in SMALLTALK auch als "Message pattern" bezeichnet wird, aber allgemein und im Folgenden eher als Methodensignatur bezeichnet wird. Es enthält eine optionale Liste von lokalen Variablen und einen Methodenrumpf. Der Methodenrumpf enthält die Anweisungen, die die Methode ausmachen und die zur Auswertung eines Nachrichtenausdrucks ausgeführt werden. Es ist üblich, jede Methode mit einem Kommentar in doppelten Anführungsstrichen zu versehen, der beschreibt, was diese Methode tut.
+
+Frage: Was ist eine Methode?
+Antwort: Eine Methode beschreibt, was ein Objekt in Reaktion auf den Erhalt einer bestimmten Nachricht tun soll. Eine Methode besteht aus einem Methodenkopf (Methodensignatur), einer optionalen Liste von lokalen Variablen und einem Methodenrumpf, der die Anweisungen für die Ausführung der Methode enthält.
+
+Die Methodensignatur besteht aus dem Namen der Methode und der Liste ihrer formalen Parameter. Formale Parameter sind lokale Variablen, denen beim Aufruf der Methode automatisch ein Wert, der als sogenannter tatsächlicher Parameter bezeichnet wird, zugewiesen wird. Die Sichtbarkeit der formalen Parameter ist auf die Methode beschränkt, in deren Methodensignatur sie vorkommen. Wie alle lokalen Variablen müssen sie mit einem Kleinbuchstaben beginnen und sind temporäre Variablen. Das bedeutet, dass sie nur für die Dauer der Ausführung der Methode existieren. Alle durch formale Parameter gebildeten Aliase sind ebenfalls temporär. In SMALLTALK sind formale Parameter zudem Pseudovariablen, d.h., es kann ihnen innerhalb der Methode, für die sie sichtbar sind, nichts zugewiesen werden. Syntaktisch unterscheidet sich SMALLTALK von den meisten anderen Programmiersprachen auch in der Methodendefinition dadurch, dass die formalen Parameter nicht durch Kommata getrennt in einer in Klammern eingeschlossenen Liste hinter dem Methodennamen stehen, sondern jeder Parameter wird einzeln von einem Nachrichtenbestandteil eingeleitet.
+Die Methodensignatur dient der Auswahl der zu einer Nachricht passenden Methode. Sie ist das Gegenstück zum Nachrichtenselektor, anhand dessen die Auswahl der zu einem Nachrichtenausdruck passenden Methode durchgeführt wird. Anders als ein Nachrichtenausdruck nennt eine Methodensignatur jedoch kein Empfängerobjekt, und die offenen Stellen eines Nachrichtenselektors werden ausschließlich durch Variablen, nämlich die formalen Parameter, und nicht durch beliebige Ausdrücke besetzt.
+
+Frage: Was ist eine Methodensignatur?
+Antwort: Eine Methodensignatur beschreibt, welche Parameter eine Methode erwartet und wie sie in SMALLTALK aufgerufen wird. Sie besteht aus dem Methodennamen und der Liste der formalen Parameter.
+
+Frage: Was ist ein Nachrichtenselektor?
+Antwort: Ein Nachrichtenselektor ist Teil eines Nachrichtenausdrucks und gibt an, welche Nachricht an ein Objekt gesendet wird.
+
+Frage: Was unterscheidet eine Methodensignatur und einen Nachrichtenselektor?
+Antwort: Die Methodensignatur ist das Gegenstück zum Nachrichtenselektor.
+
+Die Methodenrümpfe bestehen aus einer Folge von Anweisungen, die jeweils durch einen Punkt getrennt sind. Wenn die Anweisungen nichts anderes vorsehen, wird die Ausführung einer Methode nach Abarbeitung der letzten Anweisung explizit mit der Rückgabe des Empfängerobjekts an den Sender der Nachricht beendet. Für explizite Beendigungen und die Rückgabe eines anderen Objekts als des Empfängers ist die Return-Anweisung vorgesehen. Eine Return-Anweisung darf an beliebigen Stellen innerhalb der Methode auftreten, wodurch die Abarbeitung der Methode vor Erreichen der textuell letzten Anweisung beendet werden kann. Die Return-Anweisung beeinflusst somit den Kontrollfluss des Programms. Wichtig ist, dass eine Methode immer ein Objekt zurückgibt. Ein Nachrichtenausdruck (oder Methodenaufruf) steht immer für ein Objekt. Prozeduren im Sinne von PASCAL oder Void-Methoden im Sinne von C, Java usw. gibt es in SMALLTALK nicht.
+
+Frage: Was sind Methodenrümpfe?
+Antwort: Methodenrümpfe bestehen aus einer Folge von Anweisungen.
+
+Frage: Wie wird die Ausführung einer Methode beendet?
+Antwort: Die Ausführung einer Methode wird standardmäßig nach Abarbeitung der letzten Anweisung mit der Rückgabe des Empfängerobjekts an den Sender der Nachricht beendet. Für explizite Beendigungen und die Rückgabe eines anderen Objekts als des Empfängers ist die Return-Anweisung da.
+
+Frage: Was ist die Return-Anweisung?
+Antwort: Die Return-Anweisung ermöglicht eine explizite Beendigung der Methode und die Rückgabe eines anderen Objekts als des Empfängers. Die Return-Anweisung kann an beliebigen Stellen innerhalb der Methode auftreten und beeinflusst den Kontrollfluss des Programms.
+
+Sollte eine Methode temporäre Variablen für ihre Berechnungen benötigen, müssen diese zu Beginn der Methode (nach der Methodensignatur und vor der ersten Anweisung) deklariert werden. Die Werte dieser Variablen werden standardmäßig mit nil initialisiert und sind außerhalb der Methode nicht sichtbar. Die Variablen werden nach Abarbeitung der Methode vom System wieder entfernt, und sie können sich daher zwischen zwei Ausführungen einer Methode nichts merken. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben. Umgekehrt können temporäre Variablen, die nur einmal verwendet werden, eingespart werden, indem man kaskadierte Nachrichtenausdrücke verwendet.
+
+Frage: Was sind temporäre Variablen?
+Antwort: Eine Methode kann temporäre Variablen für ihre Berechnungen benötigen. Temporäre Variablen existieren nur für die Dauer der Ausführung der Methode und werden vom System nach Beendigung der Methode entfernt. Die Werte sind außerhalb der Methode nicht sichtbar. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.
+
+Methoden sind die Einheiten des Programms, in denen Sie als Programmiererin Ihre Anweisungen unterbringen. Sie werden nach der Eingabe (und bei jeder Änderung) mit dem "Speichern" kompiliert. Beachten Sie dabei, dass Methoden nicht in Dateien gespeichert werden, sondern in einer Datenstruktur von SMALLTALK, und zwar in Form von Objekten. Tatsächlich besteht der Großteil eines jeden SMALLTALK-Programms, ja des gesamten SMALLTALK-Systems, aus Methodendefinitionen. Die Methodendefinitionen entsprechen im Wesentlichen der Definition von Funktionen (oder, mit obiger Einschränkung, Prozeduren) in anderen Sprachen. In SMALLTALK ist es jedoch nicht möglich (und in der objektorientierten Programmierung allgemein nicht üblich), Methoden zu verschachteln, d.h., eine Methode innerhalb einer anderen Methode zu deklarieren. Außerdem gibt es in SMALLTALK keine "Hauptmethode" wie beispielsweise die Main-Methoden in der C-Sprachfamilie. Sie müssen dem SMALLTALK-System explizit mitteilen, welche Methode Sie ausführen möchten, indem Sie einen entsprechenden Ausdruck eingeben und auswerten lassen.
+
+Frage: Was sind Methoden?
+Antwort: Methoden sind die Einheiten des Programms, in denen die Anweisungen untergebracht sind.
+
+Frage: Wie werden Methoden kompiliert?
+Antwort: Methoden werden werden nach der Eingabe und bei jeder Änderung mit dem "Speichern" kompiliert.
+
+Frage: Wie werden Methoden in SMALLTALK gespeichert?
+Antwort: Methoden werden in SMALLTALK nicht in Dateien gespeichert, sondern in einer Datenstruktur von SMALLTALK, nämlich in Form von Objekten. Dies bedeutet, dass der Großteil eines jeden SMALLTALK-Programms aus Methodendefinitionen besteht, die im SMALLTALK-System als Objekte gespeichert sind.

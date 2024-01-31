@@ -1,0 +1,10 @@
+10 Vererbung und abstrakte Klassen
+
+Generalisierung und Spezialisierung, wie oben dargestellt, sind eher theoretisch motivierte Konzepte. In der Programmierung orientiert man sich jedoch häufig, wie im obigen Beispiel mit Pinguinen angedeutet, an praktischen Gesichtspunkten. Daher haben nicht Generalisierung und Spezialisierung die Entwicklung objektorientierter Programmiersprachen geprägt, sondern abstrakte Klassen und Vererbung. Diese pragmatische Ausrichtung ist jedoch nicht ohne Probleme, und daher werden uns die Überlegungen zu Generalisierung und Spezialisierung spätestens in Kurseinheit 3 wieder begegnen.
+
+
+Frage: Was sind abstrakte Klassen und Vererbung?
+Antwort: Abstrakte Klassen und Vererbung sind wichtige Konzepte in der objektorientierten Programmierung. Abstrakte Klassen sind Klassen, die nicht instanziiert werden können, sondern nur als Basisklasse für andere Klassen dienen. Vererbung ist ein Mechanismus, bei dem eine Klasse (die Unterklasse) die Eigenschaften und Verhalten einer anderen Klasse (der Oberklasse) erbt. Die Unterklasse kann die Eigenschaften und Verhalten der Oberklasse erweitern oder modifizieren. Diese Konzepte ermöglichen es, Code zu modularisieren und wiederzuverwenden.
+
+Frage: Was sind die praktischen Gesichtspunkte, die die Entwicklung objektorientierter Programmiersprachen geprägt haben?
+Antwort: Die praktischen Gesichtspunkte, die die Entwicklung objektorientierter Programmiersprachen geprägt haben, sind abstrakte Klassen und Vererbung. Diese Konzepte sind an praktischen Beispielen wie der Programmierung von Pinguinen ausgerichtet.

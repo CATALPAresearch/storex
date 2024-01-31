@@ -1,0 +1,33 @@
+4.1.2 Nachrichtenausdrücke
+
+Neben der Zuweisung ist der Nachrichtenversand die zweite wichtige Ausdrucksform der objektorientierten Programmierung. SMALLTALK verwendet hierfür eine Syntax, die stark an die der englischen Sprache angelehnt ist. Sie verlangt ein Subjekt (den Empfänger der Nachricht), ein Prädikat (die Nachricht) sowie eine optionale Liste von Objekten als Prädikatsergänzungen (die Parameter der Nachricht). Dabei wird auf die in anderen Sprachen übliche Verwendung des Punkts als Trennzeichen zwischen Empfänger und Nachricht und Klammern zum Umschließen der Parameterliste verzichtet. Stattdessen verwendet man bei Zustandswechsel von zwei oder mehr Parametern Partikeln (Präpositionen oder Konjunktionen) ähnelnde Nachrichtenteile, die den Parametern vorangestellt werden. Ein Parameter kann auch eine Variable sein oder ein anderer Ausdruck.
+In SMALLTALK werden parameterlose Nachrichten auch als "unär" (unary messages) bezeichnet, da sie trotz fehlender expliziter Argumente als "unär" bezeichnet werden, weil der Empfänger das erste, implizite Argument ist. Nachrichten mit einem Parameter werden als "binäre Nachrichten" (binary messages) bezeichnet, da sie nur einen Parameter haben, der aus zwei Argumenten besteht: dem Empfänger und einem weiteren Argument.
+Binäre Nachrichten bestehen aus einem oder mehreren nicht alphanumerischen Zeichen, die keine reservierten Zeichen sind. Alle anderen Nachrichten, die neben dem Empfänger mindestens ein Argument erfordern, werden in SMALLTALK Schlüsselwortnachrichten (keyword messages) genannt. Diese Nachrichten enthalten normalerweise keinen Schlüsselwort im herkömmlichen Sinne, da SMALLTALK keine herkömmlichen Schlüsselwörter verwendet.
+
+Frage: Welche Ausdrucksform ist neben der Zuweisung wichtig?
+Antwort: Neben der Zuweisung ist der Nachrichtenversand eine wichtige Ausdrucksform.
+
+Frage: Was sind unäre Nachrichten?
+Antwort: Unäre Nachrichten sind parameterlose Nachrichten, die den Empfänger als implizites erstes Argument haben.
+
+Frage: Was sind binäre Nachrichten?
+Antwort: Binäre Nachrichten sind Nachrichten mit einem Parameter, der aus zwei Argumenten besteht: dem Empfänger und einem weiteren Argument.
+
+Frage: Was sind Schlüsselwortnachrichten in SMALLTALK?
+Antwort: Schlüsselwortnachrichten sind Nachrichten in SMALLTALK, die neben dem Empfänger mindestens ein Argument erfordern. Sie enthalten normalerweise kein herkömmliches Schlüsselwort im Sinne von Schlüsselwort-Argumenten, da SMALLTALK keine herkömmlichen Schlüsselwörter verwendet.
+
+Ein Nachrichtenausdruck besteht aus einem Empfängerobjekt, einem Nachrichtenselektor und einer Anzahl von Argumentausdrücken, die die Teile des Nachrichtenselektors sperren. Der Ausdruck als Ganzes repräsentiert das Ergebnis der Nachrichtenauswertung durch den Empfänger.
+Da ein Nachrichtenausdruck für ein Objekt steht, kann er selbst Teil eines anderen Nachrichtenausdrucks sein, entweder als Empfänger der Nachricht oder als eines ihrer Argumente. In diesem Fall ist es möglicherweise notwendig, den geschachtelten Nachrichtenausdruck in Klammern zu setzen, um sicherzustellen, dass er korrekt erkannt wird.
+Die Kaskadierung ist eine syntaktische Abkürzung, die es ermöglicht, eine Sequenz von Nachrichten an dasselbe Empfängerobjekt zu senden, ohne das Objekt jedes Mal wiederholen zu müssen.
+
+Frage: Was ist ein Nachrichtenausdruck?
+Antwort: Ein Nachrichtenausdruck besteht aus einem Empfängerobjekt, einem Nachrichtenselektor und einer Anzahl von Argumentausdrücken. Der Ausdruck als Ganzes repräsentiert das Ergebnis der Nachrichtenauswertung durch den Empfänger.
+
+Frage: Was ist die Kaskadierung in SMALLTALK?
+Antwort: Die Kaskadierung ist eine syntaktische Abkürzung in SMALLTALK, die es ermöglicht, eine Sequenz von Nachrichten an dasselbe Empfängerobjekt zu senden, ohne das Objekt jedes Mal wiederholen zu müssen. Dies erleichtert das Verketten von Nachrichten an dasselbe Objekt.
+
+Es ist wichtig zu beachten, dass die Reihenfolge der Nachrichtenteile in einem Nachrichtenselektor die Bedeutung der Nachricht bestimmt. Die an das Objekt gesendete Nachricht, der sogenannte Nachrichtenselektor, ist immer ein Symbol, das aus der Konkatenation aller seiner Teile besteht. Die Namen der Nachrichtenteile sind frei wählbar, beginnen jedoch konventionell mit einem Kleinbuchstaben.
+Die Verwendung der Kaskadierung kann die Einführung temporärer Variablen in einigen Fällen vermeiden, insbesondere wenn ein Ausdruck, der das Empfängerobjekt liefert und nur einmal ausgewertet werden soll, anstelle einer Variablen steht.
+
+Frage: Ist die Reihenfolge der Nachrichtenteile in SMALLTALK von Bedeutung?
+Antwort: Die Reihenfolge der Nachrichtenteile in einem Nachrichtenselektor bestimmt die Bedeutung der Nachricht. Der Nachrichtenselektor selbst ist ein Symbol, das aus der Konkatenation aller seiner Teile besteht.

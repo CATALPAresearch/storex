@@ -1,0 +1,59 @@
+54.5 Relativität der Substituierbarkeit
+
+Man kann nun argumentieren, dass die Substituierbarkeit im Einzelfall von der jeweiligen Verwendung der Typen abhängt (vgl. Fußnote 86). Im Beispiel von "Set" und "Bag" kann man daher nicht grundsätzlich behaupten, dass das eine den Ersatz des anderen ausschließt. Es kann durchaus Anwendungsfälle für den einen oder anderen Typ geben, in denen der jeweils andere als Ersatz dienen kann. Das Vorhandensein einer tatsächlichen Substituierbarkeit hängt also nicht allein von den beteiligten Typen ab, sondern auch von ihrer Verwendung. Dies wiederum bedeutet (auch vor dem Hintergrund des oben Gesagten zur funktionalen Äquivalenz), dass es so etwas wie eine absolute Substituierbarkeit, die von jeder möglichen Verwendung losgelöst ist, eigentlich nicht existiert.
+
+
+Frage: Was ist Substituierbarkeit und wie hängt sie von der Verwendung der Typen ab?
+Antwort: Substituierbarkeit bezieht sich auf die Möglichkeit, einen Typ durch einen anderen Typ ersetzen zu können. Im Beispiel von "Set" und "Bag" kann die Substituierbarkeit nicht grundsätzlich ausgeschlossen werden, da es Anwendungsfälle geben kann, in denen der eine Typ den anderen ersetzen kann. Die tatsächliche Substituierbarkeit hängt jedoch nicht nur von den beteiligten Typen ab, sondern auch von ihrer Verwendung. Es gibt also keine absolute Substituierbarkeit, die von jeder möglichen Verwendung losgelöst ist.
+
+Frage: Was bestimmt die Substituierbarkeit von Typen?
+Antwort: Die Substituierbarkeit von Typen hängt nicht nur von den beteiligten Typen ab, sondern auch von ihrer Verwendung. Es gibt also keine absolute Substituierbarkeit, die von jeder möglichen Verwendung losgelöst ist.
+
+
+Wie kann man diesem Umstand begegnen? Nun, indem man nicht nur die Sichtweise der Programmiererin berücksichtigt, die die Typen erstellt und sich um deren Substituierbarkeit (sowie die darauf basierende Subtypenbeziehung) kümmert, sondern auch die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte. Nur diese Programmiererin weiß genau, welche Erwartungen sie an einen Typen (genauer gesagt, an die Objekte eines Typs) hat, und nur sie kann beurteilen, welche Typen in ihrem speziellen Anwendungsfall gegeneinander austauschbar sind.
+
+
+Frage: Wie kann man mit der Substituierbarkeit von Typen umgehen?
+Antwort: Man kann der Substituierbarkeit von Typen begegnen, indem man die Sichtweise der Programmiererin berücksichtigt, die die Typen für einen bestimmten Zweck verwenden möchte. Diese Programmiererin weiß genau, welche Erwartungen sie an einen Typen hat und kann beurteilen, welche Typen in ihrem speziellen Anwendungsfall gegeneinander austauschbar sind.
+
+Frage: Wie kann man die Substituierbarkeit von Typen und die darauf basierende Subtypenbeziehung berücksichtigen?
+Antwort: Man kann dies tun, indem man die Sichtweise der Programmiererin berücksichtigt, die die Typen erstellt und sich um deren Substituierbarkeit kümmert, sowie die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte. Nur diese Programmiererin weiß genau, welche Erwartungen sie an einen Typen hat, und nur sie kann beurteilen, welche Typen in ihrem speziellen Anwendungsfall gegeneinander austauschbar sind.
+
+Frage: Warum ist die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte, wichtig?
+Antwort: Die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte, ist wichtig, weil sie genau weiß, welche Erwartungen sie an einen Typen hat und welche Typen in ihrem speziellen Anwendungsfall gegeneinander austauschbar sind.
+
+
+Wie drückt aber die Programmiererin ihre Erwartungen aus? Die Antwort ist überraschend einfach: Sie definiert selbst einen Typen, dessen Definition nur die Eigenschaften umfasst, die sie benötigt. Ein solcher Typ spezifiziert gewissermaßen die Rolle, die die Objekte im Kontext der Verwendung spielen sollen. In der Regel wird dieser Typ nur einen Teil der Eigenschaften umfassen, die allgemeine Typen wie "Set" oder "Bag" spezifizieren. Im Gegenzug erweitert sich jedoch die Auswahl der Typen, deren Objekte für ihre speziellen Zwecke in Frage kommen.
+
+
+Frage: Wie können Programmierer ihre Erwartungen an Objekte ausdrücken?
+Antwort: Programmierer können ihre Erwartungen an Objekte ausdrücken, indem sie selbst einen Typen definieren, der nur die Eigenschaften umfasst, die sie benötigen. Ein solcher Typ spezifiziert gewissermaßen die Rolle, die die Objekte im Kontext der Verwendung spielen sollen.
+
+
+Die einzige Voraussetzung dafür, dass Objekte die ihnen aus Sicht der Anwenderin zugewiesene Rolle auch tatsächlich spielen können, ist, dass sie typkonform sind.
+
+
+Frage: Was ist die Voraussetzung dafür, dass Objekte ihre Rolle spielen können?
+Antwort: Die einzige Voraussetzung dafür ist, dass sie typkonform sind.
+
+Frage: Was bedeutet es, wenn ein Objekt typkonform ist?
+Antwort: Wenn ein Objekt typkonform ist, bedeutet das, dass es die Eigenschaften und Verhaltensweisen besitzt, die von einem Objekt seines Typs erwartet werden. Es erfüllt also die Anforderungen, die an Objekte dieses Typs gestellt werden.
+
+Frage: Warum ist es wichtig, dass Objekte typkonform sind?
+Antwort: Es ist wichtig, dass Objekte typkonform sind, weil sie nur dann die ihnen zugewiesene Rolle spielen können. Wenn Objekte nicht typkonform sind, können sie nicht die gewünschten Funktionen erfüllen und können zu Fehlern im Programm führen.
+
+Frage: Was ist die Voraussetzung dafür, dass Objekte typkonform sind?
+Antwort: Die Voraussetzung dafür, dass Objekte typkonform sind, ist, dass sie die Eigenschaften und Verhaltensweisen besitzen, die von einem Objekt seines Typs erwartet werden.
+
+Frage: Was passiert, wenn ein Objekt nicht typkonform ist?
+Antwort: Wenn ein Objekt nicht typkonform ist, kann es nicht die gewünschten Funktionen erfüllen und kann zu Fehlern im Programm führen.
+
+
+Diese doppelte Sichtweise auf Typen, sowohl aus Sicht der Nutzerin als auch aus Sicht der Anbieterin, beginnt sich erst langsam durchzusetzen. Die Programmiersprachen Java und später auch C-Sharp bieten immerhin das Konzept von "Interfaces als Typen" an (siehe Kapitel 40 in Kurseinheit 4 und Abschnitt 50.4.2 in Kurseinheit 5), mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. In der Praxis wird diese Möglichkeit jedoch in beiden Sprachen selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen. Möglicherweise wird dies in Zukunft anders gehandhabt.
+
+
+Frage: Was ist der Unterschied zwischen der Sicht der Nutzerin und der Sicht der Anbieterin auf Typen?
+Antwort: Die Sicht der Nutzerin auf Typen ist, wie sie in einem Programm verwendet werden, während die Sicht der Anbieterin sich auf die Implementierung des Typs bezieht. Die Programmiersprachen Java und C-Sharp bieten das Konzept von "Interfaces als Typen" an, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. In der Praxis wird diese Möglichkeit jedoch selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen.
+
+Frage: Was sind Interfaces als Typen?
+Antwort: Interfaces als Typen sind ein Konzept in Programmiersprachen wie Java und C-Sharp, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. Diese Möglichkeit wird jedoch selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen.

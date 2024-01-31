@@ -1,0 +1,57 @@
+40.1 Interfaces als Schnittstellen
+
+Die öffentliche Schnittstelle einer Klasse in Java ist die Menge ihrer Instanzvariablen und -methoden (in Java zusammen auch Member genannt), die public deklariert sind. Nun gibt es in Java die Möglichkeit, eine öffentliche Schnittstelle als eigenständiges Konstrukt zu deklarieren, das von dem der Klasse unabhängig ist, das aber genauso wie eine Klasse einen Typ definiert. Es geschieht dies mit Hilfe des Schlüsselwortes "interface":
+
+
+Frage: Was ist eine öffentliche Schnittstelle in Java?
+Antwort: In Java ist eine öffentliche Schnittstelle eine eigenständige Deklaration, die von der Klasse unabhängig ist und einen Typ definiert. Sie wird mit Hilfe des Schlüsselwortes "interface" deklariert und enthält eine Menge von Instanzvariablen und -methoden, die public deklariert sind.
+
+Frage: Was ist der Unterschied zwischen einer Klasse und einem Interface in Java?
+Antwort: Ein Interface in Java ist ein eigenständiges Konstrukt, das eine öffentliche Schnittstelle definiert, während eine Klasse sowohl eine öffentliche Schnittstelle als auch eine Implementierung der Methoden bereitstellt. Ein Interface kann nur Methoden deklarieren, aber keine Implementierungen bereitstellen. Eine Klasse hingegen kann eine Implementierung für die Methoden bereitstellen, die in einem Interface deklariert sind. Ein Interface kann von mehreren Klassen implementiert werden, während eine Klasse nur von einer Superklasse erben kann.
+
+
+Anders als bei Klassen entspricht hier das Fehlen eines Zugriffsmodifikators der Zugreifbarkeit "public" — alles andere scheint für eine Schnittstelle auch unsinnig. Folgende weitere syntaktischen Unterschiede der Interfacedeklaration in den Zeilen 1029–1032 zur Klassendefinition der Zeilen 986–991 fallen auf: die Verwendung des Schlüsselwortes "interface" anstelle von "class" (klar), das Fehlen von Felddeklarationen und der Umstand, dass der Methodendeklaration keine Implementierung mehr folgt, sondern lediglich das abschließende Semikolon.
+
+
+Frage: Was ist der Unterschied zwischen einer Klassendeklaration und einer Interfacedeklaration?
+Antwort: Eine Klassendeklaration enthält Felddeklarationen und eine Implementierung der Methoden, während eine Interfacedeklaration nur die Methodensignatur ohne Implementierung enthält und keine Felddeklarationen. Zudem wird für eine Interfacedeklaration das Schlüsselwort "interface" anstelle von "class" verwendet.
+
+
+Das Schlüsselwort "abstract", das eine Klasse für eine solche Methodendeklaration anführen müsste, wird in Interfaces automatisch angenommen; Interfaces liefern zunächst erwartungsgemäß weder Implementierungen noch Objekte (Instanzen). Mit derselben Begründung kann auch das Fehlen von Feldern erklärt werden: Da bei Feldern nicht zwischen Deklaration und Implementierung (Definition; s. Kapitel 19 in Kurseinheit 3) unterschieden werden kann (die Deklaration ist, da sie Namen und Typ vorgibt und mehr auch für eine Implementierung nicht angegeben werden kann, zugleich Implementierung des Feldes), wurden sie aus den Interfaces verbannt. Diese Einschränkung ist aber keine wirkliche, da ein Feldzugriff in einem Interface durch Zugriffsmethoden (Accessoren, also durch Getter und Setter) ersetzt werden kann.
+
+
+Frage: Was ist der Zweck von Interfaces in der objektorientierten Programmierung?
+Antwort: Interfaces in der objektorientierten Programmierung definieren eine Schnittstelle für Klassen, die die Methoden und Konstanten enthalten, die eine Klasse implementieren muss, um ein bestimmtes Verhalten zu zeigen. Sie liefern zunächst erwartungsgemäß weder Implementierungen noch Objekte (Instanzen). Felder werden aus den Interfaces verbannt, können aber durch Zugriffsmethoden (Accessoren) ersetzt werden.
+
+Frage: Warum können Interfaces keine Implementierungen oder Objekte liefern?
+Antwort: Interfaces können keine Implementierungen oder Objekte liefern, weil sie lediglich eine Schnittstelle definieren, die von Klassen implementiert werden kann. Sie legen lediglich fest, welche Methoden eine Klasse implementieren muss, um ein bestimmtes Interface zu implementieren.
+
+Frage: Warum gibt es in Interfaces keine Felder?
+Antwort: In Interfaces gibt es keine Felder, weil bei Feldern nicht zwischen Deklaration und Implementierung unterschieden werden kann. Da Interfaces lediglich Schnittstellen definieren, die von Klassen implementiert werden können, wurden Felder aus den Interfaces verbannt. Stattdessen können Feldzugriffe in Interfaces durch Zugriffsmethoden (Accessoren) ersetzt werden.
+
+
+Eine Klasse kann nun angeben, dass sie ein Interface implementiert. Sie tut das unter Verwendung des Schlüsselwortes "implements". Damit verpflichtet sich die Klasse, alle im Interface angekündigten Methoden zu implementieren und öffentlich anzubieten. Dabei kann eine Klasse mehrere Interfaces gleichzeitig implementieren (die entsprechenden Namen werden einfach, durch Kommata getrennt, überlassen; in diesem Fall muss die Methode aber zumindest als abstrakt deklariert werden. Interface - aneinandergehängt); zugleich ist die Angabe der implementierten Interfaces eine nominale Typkonformitätsdeklaration, d. h., Instanzen der Klasse sind mit allen Variablen jedes der genannten Interfaces zuweisungskompatibel.
+
+
+Frage: Was bedeutet es, wenn eine Klasse ein Interface implementiert?
+Antwort: Wenn eine Klasse ein Interface implementiert, verpflichtet sie sich, alle im Interface angekündigten Methoden zu implementieren und öffentlich anzubieten. Zudem ist die Angabe der implementierten Interfaces eine nominale Typkonformitätsdeklaration, d.h. Instanzen der Klasse sind mit allen Variablen jedes der genannten Interfaces zuweisungskompatibel.
+
+
+Es definieren also die Interfaces von Java genau wie Klassen Typen und können daher genauso wie Klassen in Variablendeklarationen verwendet werden. Der Type checker garantiert dann, dass auf der Variable mit Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface mit Namen „Interfacename“ deklariert sind, selbst wenn das Objekt, das die Variable benennt, mehr anbietet. So ist es möglich, dass Methoden und Felder einer Instanz vor anderen Instanzen anderer oder derselben Klasse verborgen werden können: Man deklariert einfach die Variablen, die auf die Instanz verweisen, mit dem Interface als Typ. Eine genauere Betrachtung der Bedeutung der Verwendung von Interfaces erfolgt in Kapitel 45.
+
+
+Frage: Was ist die Funktion von Interfaces in Java?
+Antwort: Interfaces definieren Typen in Java und können daher in Variablendeklarationen verwendet werden. Der Type checker garantiert, dass auf der Variablen mit Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface mit Namen „Interfacename“ deklariert sind, selbst wenn das Objekt, das die Variable benennt, mehr anbietet. So ist es möglich, dass Methoden und Felder einer Instanz vor anderen Instanzen anderer oder derselben Klasse verborgen werden können.
+
+Frage: Was sind Interfaces in Java und wie werden sie verwendet?
+Antwort: Interfaces in Java definieren Typen und können daher in Variablendeklarationen verwendet werden. Der Type checker garantiert, dass auf der Variablen mit Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface mit Namen „Interfacename“ deklariert sind, selbst wenn das Objekt, das die Variable benennt, mehr anbietet. So ist es möglich, dass Methoden und Felder einer Instanz vor anderen Instanzen anderer oder derselben Klasse verborgen werden können: Man deklariert einfach die Variablen, die auf die Instanz verweisen, mit dem Interface als Typ.
+
+
+Es kann also eine Klasse in Java zwar nur direkte Subklasse genau einer anderen Klasse sein, dafür aber mehrere Interfaces gleichzeitig implementieren. Diese mögliche „Mehrfachimplementierung“ von Interfaces wurde häufig als Ersatz für die in Java fehlende Möglichkeit der Mehrfachvererbung angepriesen — das aber war Unsinn, denn bei der Implementierung eines Interfaces wurde nichts vererbt (sieht man mal von der sog. Interfacevererbung ab, die aber auch keine wirkliche Vererbung ist, denn auch die Deklarationen werden nicht automatisch von einem Interface auf seine implementierenden Klassen übertragen, sondern müssen dort wiederholt werden). Vielmehr hat man es mit einer Art Mehrfach - Subtyping zu tun, das aber auch ganz nett ist, wie die Überlegungen in Kapitel 45 zeigen werden.
+
+
+Frage: Was ist Interfacevererbung in Java?
+Antwort: Interfacevererbung in Java bedeutet, dass eine Klasse mehrere Interfaces gleichzeitig implementieren kann. Dabei wird nichts vererbt, sondern es handelt sich um eine Art Mehrfach-Subtyping.
+
+Frage: Was ist der Unterschied zwischen Mehrfachvererbung und Mehrfach-Subtyping in Java?
+Antwort: Mehrfachvererbung bezieht sich auf die Fähigkeit einer Klasse, Eigenschaften und Methoden von mehr als einer Superklasse zu erben, während Mehrfach-Subtyping darauf beruht, dass eine Klasse mehr als einem Interface gleichzeitig implementieren kann. Im Gegensatz zur Mehrfachvererbung wird bei der Implementierung eines Interface nichts vererbt, sondern es wird eine Art Mehrfach-Subtyping erreicht, das auch nützlich sein kann.

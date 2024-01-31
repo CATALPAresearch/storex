@@ -1,0 +1,40 @@
+52.6 Zusicherungen in EIFFEL: Vorbedingungen, Nachbedingungen und Klasseninvarianten
+
+Ein herausragendes Merkmal von EIFFEL ist die Integration von Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen. Bei der Behandlung von Java sind wir bereits auf die Assert-Anweisung gestoßen, die es erlaubte, Zusicherungen zur Laufzeit auszuwerten und das Programm bei einer Verletzung ggf. abzubrechen. Da es sich jedoch um eine Anweisung handelte, gab es keine von der Sprachdefinition vorgesehenen Orte, an denen solche Zusicherungen auftreten sollten — ihre Platzierung lag ganz im Ermessen der Programmiererin. In EIFFEL ist dies anders.
+
+
+Frage: Wie werden Zusicherungen in EIFFEL behandelt?
+Antwort: In EIFFEL werden Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen integriert. Das bedeutet, dass die Zusicherungen an bestimmten Stellen in der Sprache vorgesehen sind und nicht willkürlich platziert werden können.
+
+Frage: Was ist eine Besonderheit von EIFFEL in Bezug auf Zusicherungen?
+Antwort: In EIFFEL sind Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen integriert. Das bedeutet, dass es für Zusicherungen vorgesehene Orte gibt und sie nicht ganz im Ermessen der Programmiererin liegen.
+
+Frage: Was ist der Unterschied zwischen der Verwendung von Zusicherungen in EIFFEL und Java?
+Antwort: In EIFFEL sind Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen integriert, während in Java die Assert-Anweisung verwendet wird, die es erlaubt, Zusicherungen zur Laufzeit auszuwerten, aber keine von der Sprachdefinition vorgesehenen Orte für ihre Platzierung gibt.
+
+
+Die Syntax zur Definition einer Methode in EIFFEL sieht zwei Schlüsselwörter vor, "require" und "ensure", von denen das erste vor der Implementierung der Methode (dem Methodenrumpf) und das zweite danach auftreten kann. Beiden Schlüsselwörtern folgen Boolesche Ausdrücke, die alle zu "wahr" ausgewertet werden müssen. Die Idee hinter einer "Require"-Klausel ist, dass die darin ausgedrückten Bedingungen erfüllt sein müssen, damit die betreffende Methode ordnungsgemäß funktionieren kann. Zum Beispiel macht es Sinn, für die Methode "pop" in der Klasse "STACK" zu verlangen, dass der Stapel, auf dem die Methode aufgerufen wird, nicht leer ist. Die Idee hinter einer "Ensure"-Klausel ist, dass eine Methode, deren "Require"-Klausel erfüllt war, im Gegenzug garantieren muss, dass die in der "Ensure"-Klausel ausgedrückten Bedingungen erfüllt sind. Im Fall des Stacks bedeutet das beispielsweise, dass nach einem "push" das übergebene Element tatsächlich oben auf dem Stapel liegt, sodass die Methode "top" beispielsweise das soeben auf den Stapel gelegte Element zurückgeben kann. Um ihre Bedingungen zu formulieren, dürfen die Ausdrücke in beiden Klauseln auf Abfragen (queries) der Klasse zurückgreifen. Diese sollten jedoch tunlichst nebenwirkungsfrei sein, zum einen, weil die "Ensure"-Klausel sonst nicht garantieren kann, dass eine geprüfte Bedingung auch nach ihrer vollständigen Auswertung immer noch wahr ist (man stelle sich vor, was passieren würde, wenn die "Ensure"-Klausel in "push" die Methode "pop" aufrufen würde!), zum anderen, weil in EIFFEL (wie in Java) die Überprüfung der Zusicherungen zur Laufzeit deaktiviert werden kann (wodurch das Programm bei Überprüfung der Zusicherungen eine andere Semantik hätte als ohne; vergleiche die Anmerkungen zur Assert-Anweisung in Java in Kurseinheit 4, Kapitel 38).
+
+
+Frage: Was ist die Funktion von "require" und "ensure" in EIFFEL?
+Antwort: "Require" und "ensure" sind Schlüsselwörter in EIFFEL, die Boolesche Ausdrücke folgen. "Require"-Klauseln sollten erfüllt sein, damit die Methode korrekt funktioniert, während "Ensure"-Klauseln garantieren, dass die Methode bestimmte Bedingungen erfüllt. Beide Klauseln dürfen nebenwirkungsfreie Abfragen der Klasse verwenden.
+
+
+Neben der Möglichkeit, Vor- und Nachbedingungen zu formulieren, gibt es in EIFFEL auch die Möglichkeit, sog. Klasseninvarianten (Schlüsselwort "invariant") zu deklarieren. Klasseninvarianten müssen jederzeit zwischen zwei Methodenaufrufen gelten; man kann sich vorstellen, dass sie jeder Vor- und Nachbedingung per Konjunktion hinzugefügt werden. Auf die etwas subtilen Probleme, die das Aliasing in Zusammenhang mit Zusicherungen schafft, wollen wir an dieser Stelle nicht eingehen; dies wird ausführlicher in Kurs 01853 behandelt.
+
+
+Frage: Was sind Klasseninvarianten in EIFFEL?
+Antwort: Klasseninvarianten sind in EIFFEL eine Möglichkeit, Zusicherungen zu formulieren, die zwischen zwei Methodenaufrufen gelten müssen. Sie werden mit dem Schlüsselwort "invariant" deklariert und können sich vorstellen, dass sie jeder Vor- und Nachbedingung per Konjunktion hinzugefügt werden.
+
+
+Zusicherungen werden in EIFFEL von Klassen auf ihre Subklassen vererbt. Wenn eine Methode redefiniert wird, dürfen auch Vor- und Nachbedingungen angepasst werden. Allerdings gilt hierbei, dass die Vorbedingung nur abgeschwächt und die Nachbedingung nur verschärft werden darf. Die Sprachdefinition von EIFFEL stellt sicher, dass diese Bedingung eingehalten wird, indem die Vorbedingung einer redefinierten Methode implizit disjunktiv mit der geerbten Vorbedingung und die redefinierte Nachbedingung implizit konjunktiv mit der geerbten verknüpft wird.
+
+
+Frage: Was ist der Zusammenhang zwischen Zusicherungen und Methoden in EIFFEL?
+Antwort: In EIFFEL werden Zusicherungen wie Vor- und Nachbedingungen von Klassen auf ihre Subklassen vererbt. Wenn eine Methode redefiniert wird, dürfen auch die Zusicherungen angepasst werden, allerdings gilt hierbei, dass die Vorbedingung nur abgeschwächt und die Nachbedingung nur verschärft werden darf. Die Sprachdefinition von EIFFEL stellt sicher, dass diese Bedingung eingehalten wird, indem die Vorbedingung einer redefinierten Methode implizit disjunktiv mit der geerbten Vorbedingung und die redefinierte Nachbedingung implizit konjunktiv mit der geerbten verknüpft wird.
+
+Frage: Was passiert mit Zusicherungen (Vor- und Nachbedingungen) bei der Redefinition einer Methode in EIFFEL?
+Antwort: Bei der Redefinition einer Methode in EIFFEL dürfen die Vorbedingungen nur abgeschwächt und die Nachbedingungen nur verschärft werden. Die Sprachdefinition von EIFFEL stellt sicher, dass diese Bedingung eingehalten wird, indem die Vorbedingung einer redefinierten Methode implizit disjunktiv mit der geerbten Vorbedingung und die redefinierte Nachbedingung implizit konjunktiv mit der geerbten verknüpft wird.
+
+Frage: Was ist der Unterschied zwischen Vor- und Nachbedingungen in EIFFEL?
+Antwort: In EIFFEL sind Vorbedingungen (preconditions) Bedingungen, die vor der Ausführung einer Methode erfüllt sein müssen, während Nachbedingungen (postconditions) Bedingungen sind, die nach der Ausführung einer Methode erfüllt sein müssen. Vorbedingungen werden verwendet, um sicherzustellen, dass die Methode nur dann aufgerufen wird, wenn die Voraussetzungen erfüllt sind, während Nachbedingungen sicherstellen, dass die Methode das gewünschte Ergebnis liefert.

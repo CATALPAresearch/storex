@@ -1,0 +1,59 @@
+11.1 Bedeutung der Subklassenbeziehung
+
+Die Bedeutung der Subklassenbeziehung variiert von Sprache zu Sprache. Wie Sie sich vielleicht schon gedacht haben, kann man die Subklassenbeziehung mit der Spezialisierungsbeziehung gleichsetzen oder auch mit der Vererbung; es sind aber auch noch andere Definitionen möglich. Tatsächlich wird die hier eingeführte Beziehung zwischen Klassen, die als Subklassenbeziehung bezeichnet wird, nicht immer so genannt. Entsprechend heißen dann die Rollen auch nicht Sub- und Superklasse, sondern z. B. abgeleitete Klassen und Basisklassen. Im Englischen sind hierfür neben Derived class und Base class auch die Begriffe Child class bzw. Parent class in Gebrauch.
+
+
+Frage: Wie wird die Subklassenbeziehung in verschiedenen Programmiersprachen bezeichnet?
+Antwort: Die Subklassenbeziehung kann in verschiedenen Programmiersprachen mit Spezialisierungsbeziehung, Vererbung, abgeleitete Klassen und Basisklassen, Child class und Parent class gleichgesetzt werden.
+
+Frage: Was ist die Subklassenbeziehung in der objektorientierten Programmierung?
+Antwort: Die Subklassenbeziehung ist eine Beziehung zwischen Klassen, bei der eine Klasse eine Unterklasse einer anderen Klasse ist. Diese Beziehung kann auch als Spezialisierungsbeziehung oder Vererbung bezeichnet werden. Die Unterklasse erweitert oder spezialisiert die Oberklasse und erbt gleichzeitig ihre Eigenschaften und Methoden. Die Bezeichnungen für die Rollen der Klassen können je nach Programmiersprache variieren, wie zum Beispiel Sub- und Superklasse, abgeleitete Klasse und Basisklasse, oder Child- und Parent-Klasse.
+
+
+In SMALLTALK wird die Subklassenbeziehung mit der Vererbungsbeziehung gleichgesetzt. Eine Subklasse erbt demnach alle Instanzvariablen und Methoden ihrer Superklasse. Dass sie darüber hinaus auch noch ihre Klassenvariablen und -methoden erbt, ist nicht selbstverständlich. Wichtig ist hier, festzuhalten, dass durch eine existierende Subklassenbeziehung zwischen zwei Klassen nicht ausgedrückt wird, dass die Subklasse eine Spezialisierung der Superklasse ist oder gar die Superklasse eine Generalisierung der Subklasse. Dies sicherzustellen obliegt der Verantwortung des Programmierers.
+
+
+Frage: Was ist die Subklassenbeziehung in SMALLTALK?
+Antwort: In SMALLTALK wird die Subklassenbeziehung mit der Vererbungsbeziehung gleichgesetzt, d.h. eine Subklasse erbt alle Instanzvariablen und Methoden ihrer Superklasse. Es wird jedoch nicht ausgedrückt, dass die Subklasse eine Spezialisierung der Superklasse ist oder die Superklasse eine Generalisierung der Subklasse. Diese Sicherstellung obliegt der Verantwortung des Programmierers.
+
+Frage: Was wird durch eine Subklassenbeziehung zwischen zwei Klassen ausgedrückt?
+Antwort: Durch eine Subklassenbeziehung zwischen zwei Klassen wird ausgedrückt, dass die Subklasse alle Instanzvariablen und Methoden der Superklasse erbt. Es wird jedoch nicht ausgedrückt, dass die Subklasse eine Spezialisierung der Superklasse ist oder die Superklasse eine Generalisierung der Subklasse. Diese Sicherstellung obliegt der Verantwortung des Programmierers.
+
+
+Jede neue Klasse, die in einem SMALLTALK-System angelegt wird, muss direkt von einer Superklasse erben — es ist deshalb notwendig, dass beim Erzeugen einer neuen Klasse die Superklasse angegeben wird. Da, wie bereits mehrfach erwähnt, die SMALLTALK-Programmierung nicht dateibasiert ist, sondern mittels eines dafür vorgesehenen Browsers erfolgt, gibt es zum Zweck der Angabe der Superklasse auch kein spezielles Schlüsselwort wie beispielsweise "extends", das die Subklassenbeziehung ausdrückt. Man legt vielmehr eine neue Klasse an, indem man ihrer Superklasse eine entsprechende Nachricht sendet.
+
+
+Frage: Wie wird in SMALLTALK eine neue Klasse erstellt und welche Superklasse muss angegeben werden?
+Antwort: In SMALLTALK wird eine neue Klasse erstellt, indem man ihrer Superklasse eine entsprechende Nachricht sendet. Dabei ist es notwendig, dass beim Erzeugen einer neuen Klasse die Superklasse angegeben wird.
+
+Frage: Wie wird eine neue Klasse in SMALLTALK erstellt?
+Antwort: Jede neue Klasse, die in einem SMALLTALK-System angelegt wird, muss direkt von einer Superklasse erben. Dazu muss beim Erzeugen einer neuen Klasse die Superklasse angegeben werden, indem man ihrer Superklasse eine entsprechende Nachricht sendet.
+
+Frage: Wie werden in Smalltalk Klassen importiert?
+Antwort: In Smalltalk gibt es keine explizite Möglichkeit, eine Klasse zu importieren. Stattdessen werden alle Klassen, die in einem SMALLTALK-System zur Verfügung stehen, in einem gemeinsamen Namensraum verwaltet.
+
+Frage: Wie werden in Smalltalk Klassen in einem gemeinsamen Namensraum verwaltet?
+Antwort: In Smalltalk werden alle Klassen, die in einem SMALLTALK-System zur Verfügung stehen, in einem gemeinsamen Namensraum verwaltet.
+
+Frage: Wie werden in Smalltalk Klassen verwaltet?
+Antwort: In Smalltalk werden alle Klassen, die in einem SMALLTALK-System zur Verfügung stehen, in einem gemeinsamen Namensraum verwaltet.
+
+
+Damit eine Subklassenbeziehung zwischen zwei Klassen zulässig ist, müssen deren Definitionen bestimmte Bedingungen erfüllen. In SMALLTALK gilt dabei für neue, benannte Instanz- und Klassenvariablen, dass sie nicht dieselben Namen haben dürfen wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn die Superklasse solche hat, sie auch in der Subklasse vorhanden sein müssen. Methodendefinitionen hingegen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden. Entsprechende Regeln in anderen Programmiersprachen können teilweise erheblich komplexer sein.
+
+
+Frage: Was sind die Bedingungen für eine zulässige Subklassenbeziehung in SMALLTALK?
+Antwort: Für eine zulässige Subklassenbeziehung zwischen zwei Klassen müssen deren Definitionen bestimmte Bedingungen erfüllen. In SMALLTALK gilt dabei für neue, benannte Instanz- und Klassenvariablen, dass sie nicht dieselben Namen haben dürfen wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn die Superklasse solche hat, sie auch in der Subklasse vorhanden sein müssen. Methodendefinitionen hingegen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden.
+
+Frage: Welche Bedingungen müssen für eine zulässige Subklassenbeziehung erfüllt sein?
+Antwort: Für eine zulässige Subklassenbeziehung müssen die Definitionen der Klassen bestimmte Bedingungen erfüllen. In SMALLTALK gilt dabei für neue, benannte Instanz- und Klassenvariablen, dass sie nicht dieselben Namen haben dürfen wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn die Superklasse solche hat, sie auch in der Subklasse vorhanden sein müssen. Methodendefinitionen hingegen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden.
+
+Frage: Was muss bei der Definition einer Subklasse in SMALLTALK beachtet werden?
+Antwort: In SMALLTALK müssen bei der Definition einer Subklasse neue, benannte Instanz- und Klassenvariablen andere Namen als Variablen in Superklassen haben und indizierte Instanzvariablen müssen vorhanden sein, wenn die Superklasse solche hat. Methodendefinitionen mit derselben Signatur überschreiben einfach die geerbten Methoden.
+
+
+Da die Subklassenbeziehung auch in SMALLTALK nicht reflexiv ist, muss es mindestens eine Klasse geben, die keine Subklasse ist (und entsprechend keine Superklasse hat). Dies ist die Klasse "Object", die oberste aller Superklassen. In ihr sind die Definitionen angelegt, die den Instanzen aller Klassen zugutekommen sollen (z. B. die Methode "printString"). Diese Methoden werden per Vererbung auf alle anderen Klassen übertragen, wodurch sie deren Instanzen zur Verfügung stehen. Eine ganze Reihe nützlicher Methoden, die in "Object" definiert sind, werden wir in Kapitel 14 kennenlernen.
+
+
+Frage: Was ist die Klasse "Object" in SMALLTALK?
+Antwort: Die Klasse "Object" ist die oberste Superklasse in SMALLTALK, von der alle anderen Klassen abgeleitet sind. Sie enthält Definitionen, die den Instanzen aller Klassen zugutekommen sollen, wie zum Beispiel die Methode "printString". Diese Methoden werden durch Vererbung auf alle anderen Klassen übertragen, wodurch sie deren Instanzen zur Verfügung stehen.

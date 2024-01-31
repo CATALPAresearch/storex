@@ -1,0 +1,24 @@
+40.2 Interfaces als abstrakte Klassen
+
+Wenn ich im vorangegangenen Absatz das Präteritum bemüht habe, dann liegt das daran, dass Interfaces in Java seit Version 8 einen Bedeutungswandel erfahren haben. Der ursprüngliche Anlass hierfür ergibt sich aus der Evolution von Software, genauer aus der Erweiterung von Interfaces im Laufe der Zeit um zusätzliche Methoden und der Tatsache, dass solche Erweiterungen ein Nachführen der Klassen, die die Interfaces implementieren, zwingend erfordern. Insbesondere bei sog. Black-box-Frameworks, deren Interfaces dazu gedacht sind, von Anwendungsklassen implementiert zu werden, deren Entwicklung in den Händen Dritter liegt, ist dies ein erhebliches Problem. Dasselbe Problem hätte man nicht, wenn man stattdessen abstrakte Klassen verwenden würde — dann könnte man nämlich die zusätzlichen Methoden mit einer Default-Implementierung versehen, die von den „implementierenden“ Klassen geerbt würde, sofern diese Klassen keine eigenen Implementierungen angeben. Interfaces in Varia -
+
+
+Frage: Was ist der Bedeutungswandel von Interfaces in Java seit Version 8?
+Antwort: Seit Java 8 können Interfaces Methoden mit einer Default-Implementierung enthalten. Dadurch wurde der ursprüngliche Zweck von Interfaces, die nur als Typdeklarationen fungieren, erweitert. Diese Erweiterung war notwendig, um die Erweiterung von Interfaces um zusätzliche Methoden zu ermöglichen, ohne dass die Klassen, die diese Interfaces implementieren, nachgeführt werden müssen.
+
+
+Genau das wurde in Java 8 auch für Interfaces eingeführt: Ein Interface kann die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür hat Java ein neues Schlüsselwort spendiert bekommen: "default". Allerdings haben Interfaces immer noch keine Instanzvariablen, und entsprechend können Default-Methoden allenfalls auf abstrakte Getter und Setter zugreifen.
+
+
+Frage: Was ist die Bedeutung des Schlüsselworts "default" in Java 8?
+Antwort: Mit dem Schlüsselwort "default" kann eine Methode in einem Interface vorgegeben werden, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird.
+
+Frage: Was ist die Funktion von Default-Methoden in Java 8?
+Antwort: In Java 8 können Interfaces die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür wurde das Schlüsselwort "default" eingeführt. Default-Methoden können allenfalls auf abstrakte Getter und Setter zugreifen, da Interfaces keine Instanzvariablen haben.
+
+
+Mit Java 9 schließlich wurde — letztlich nur konsequent — erlaubt, in Interfaces auch private Methoden zu definieren. Da diese ausschließlich aus dem Interface selbst heraus zugreifbar sind, dienen sie ausschließlich der Verbesserung der Lesbarkeit von Default-Methoden, indem man zusammenhängende Teile aus ihnen herauslöst und in private Methoden verlegt.
+
+
+Frage: Was ist der Zweck von privaten Methoden in Interfaces in Java 9?
+Antwort: Der Zweck von privaten Methoden in Interfaces in Java 9 ist die Verbesserung der Lesbarkeit von Default-Methoden, indem man zusammenhängende Teile aus ihnen herauslöst und in private Methoden verlegt. Diese privaten Methoden sind ausschließlich aus dem Interface selbst heraus zugreifbar.

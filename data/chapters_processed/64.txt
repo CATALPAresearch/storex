@@ -1,0 +1,20 @@
+64 Kurze Methoden
+
+Wer sich den Quellcode objektorientierter Programme ansieht, wird feststellen, dass die Methoden im Durchschnitt ziemlich kurz sind. Wie bereits in Kurseinheit 6, Kapitel 56 erwähnt, ist dies eine Folge des Umstandes, dass in der objektorientierten Programmierung die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Sobald eine Funktion verschiedene Arten von Daten manipuliert (also Objekte, die Instanzen verschiedener Klassen sind), ist es wahrscheinlich, dass diese Funktion nicht vollständig in einer Methode implementiert wird.
+
+
+Frage: Warum sind Methoden in objektorientierter Programmierung im Durchschnitt kurz?
+Antwort: Die Methoden sind im Durchschnitt kurz, weil die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Sobald eine Funktion verschiedene Arten von Daten manipuliert, ist es wahrscheinlich, dass diese Funktion nicht vollständig in einer Methode implementiert wird.
+
+Frage: Warum sind Methoden in objektorientierter Programmierung im Durchschnitt kurz?
+Antwort: Methoden in objektorientierter Programmierung sind im Durchschnitt kurz, weil die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Sobald eine Funktion verschiedene Arten von Daten manipuliert, ist es wahrscheinlich, dass diese Funktion nicht vollständig in einer Methode implementiert wird.
+
+
+Was zunächst wie eine unmittelbare Folge des objektorientierten Paradigmas erscheint, hat sich zu einem objektorientierten Stil weiterentwickelt: Eine typische objektorientierte Programmiererin scheut sich nicht davor, Methoden zu schreiben, die nur aus einer Zeile bestehen (oder die nur eine Anweisung, wenn auch mit geschachtelten Ausdrücken, enthalten) – im Gegenteil, sie fühlt sich sogar gut dabei, denn was sie gerade produziert, gilt als objektorientierter Stil. So ist es sogar üblich, Teile einer Methode in eine neue auszulagern (das "Extract-method"-Refactoring, das einige vielleicht aus ECLIPSE und ähnlichen Entwicklungsumgebungen kennen), auch wenn dieser Teil (zunächst) ausschließlich von seiner ursprünglichen Position aus aufgerufen wird, wenn es nur der besseren Lesbarkeit dient (insbesondere Wiederverwendung spielt keine Rolle). Ein positiver Nebeneffekt dieser starken Zerlegung von Funktionalität ist die hohe Dichte an Bezeichnern in objektorientierten Programmen: Da jede Teilfunktion, die in eine Methode ausgelagert wird, einen eigenen, eindeutigen Namen haben muss (bis auf Überladen/Überschreiben), wird die Programmiererin dazu gezwungen, sich ständig (in Form der Namenswahl für Bezeichner) dazu zu äußern, was sie gerade tut.
+
+
+Frage: Warum bevorzugen objektorientierte Programmierer kurze Methoden?
+Antwort: Objektorientierte Programmierer bevorzugen kurze Methoden, weil sie als objektorientierter Stil gelten. Diese Methoden können nur aus einer Zeile bestehen und die Funktionalität wird stark zerlegt. Dies führt zu einer hohen Dichte an Bezeichnern in objektorientierten Programmen, da jede Teilfunktion, die in eine Methode ausgelagert wird, einen eigenen, eindeutigen Namen haben muss.
+
+Frage: Warum ist es üblich, Teile einer Methode in eine neue auszulagern?
+Antwort: Es ist üblich, Teile einer Methode in eine neue auszulagern, um die Lesbarkeit zu verbessern und die Funktionalität besser zu zerlegen. Dies wird auch als "Extract-method"-Refactoring bezeichnet. Jede Teilfunktion, die in eine Methode ausgelagert wird, muss einen eigenen, eindeutigen Namen haben, was die Programmiererin dazu zwingt, sich ständig (in Form der Namenswahl für Bezeichner) dazu zu äußern, was sie gerade tut.

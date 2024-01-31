@@ -1,0 +1,58 @@
+50.2 Gemeinsamkeiten mit und kleinere Unterschiede zu Java
+
+C-Sharp unterscheidet sich, was Objekte, Variablen und Ausdrücke, Anweisungen, Blöcke und Kontrollstrukturen angeht, nicht großartig von Java. Es ist in C-Sharp allerdings möglich, Operatoren (also z. B. +, –, == etc., aber nicht new, ( ), ||, &&, =) zu überladen. C-Sharp besitzt dafür das Schlüsselwort "operator", das in einer Operatordefinition (die ansonsten so aussieht wie eine Methodendefinition) vorangestellt wird:
+
+            
+Frage: Was kann in C-Sharp zu überladen werden?
+Antwort: In C-Sharp ist es möglich, Operatoren wie +, -, ==, new, ( ), ||, &&, = etc. zu überladen.
+
+Frage: Was ist Operatorüberladung in C-Sharp?
+Antwort: In C-Sharp ist es möglich, Operatoren wie +, -, ==, new, ( ), ||, &&, = etc. zu überladen. Dies wird durch das Schlüsselwort "operator" in einer Operatordefinition erreicht, die der Definition einer Methode ähnelt.
+
+Frage: Was ist in C-Sharp ein Operator?
+Antwort: In C-Sharp ist ein Operator ein Symbol, das einen Operanden entgegennimmt und einen neuen Wert berechnet. Es gibt verschiedene Arten von Operatoren, wie arithmetische Operatoren (+, -, \*, /), Vergleichsoperatoren (==, !=, <, >) und logische Operatoren (&&, ||). In C-Sharp können Operatoren überladen werden, was bedeutet, dass sie eine benutzerdefinierte Funktionalität haben können, wenn sie auf benutzerdefinierte Datentypen angewendet werden.
+
+
+Außerdem ist es in C-Sharp Konvention, Methodennamen mit einem Großbuchstaben beginnen zu lassen, aber das ist wie gesagt nur Konvention. Wichtiger (und für viele Programmierprobleme von unschätzbarem Wert) ist da schon die Möglichkeit von C-Sharp, Call by reference nach dem Vorbild von PASCAL (also ohne explizite Pointer; s. o.) zu erlauben und damit Funktionen wie das Vertauschen von Variableninhalten (die Methode "swap") sicher zu programmieren. Allerdings muss "ref" — anders als in PASCAL "var" — auch an der Aufrufstelle verwendet werden. Formale Parameter können auch mit "out" modifiziert werden (wobei für die Aufrufstelle dasselbe gilt wie für "ref").
+
+
+Frage: Was ist die Konvention für das Benennen von Methodennamen in C-Sharp?
+Antwort: Die Konvention für das Benennen von Methodennamen in C-Sharp ist, sie mit einem Großbuchstaben beginnen zu lassen.
+
+Frage: Was ist eine Besonderheit von C-Sharp in Bezug auf das Vertauschen von Variableninhalten?
+Antwort: C-Sharp erlaubt Call by reference nach dem Vorbild von PASCAL, was das sichere Programmieren von Funktionen wie dem Vertauschen von Variableninhalten ermöglicht.
+
+Frage: Was ist Call by reference in C-Sharp?
+Antwort: Call by reference in C-Sharp ist eine Möglichkeit, Funktionen oder Methoden zu schreiben, bei der die Funktions- oder Methodenparameter als Referenzen übergeben werden, anstatt als Werte. Das bedeutet, dass die Funktion oder Methode direkt auf die Originalvariablen zugreifen und diese ändern kann, anstatt Kopien der Variablen zu verwenden. Diese Funktionalität ist ähnlich wie in Pascal, aber in C-Sharp wird es ohne explizite Pointer implementiert. Diese Funktionalität ist besonders nützlich für Methoden wie "swap", die die Werte von zwei Variablen vertauschen.
+
+
+Der Unterschied ist der, dass bei Verwendung von "ref" die Variable, die den tatsächlichen Parameter liefert, vor dem Aufruf initialisiert worden sein (einen Wert zugewiesen bekommen haben) muss, während dies bei "out" nicht der Fall ist. Dafür muss bei "out" der formale Parameter in der Methode einen Wert zugewiesen bekommen. Dass "ref" und "out" in C-Sharp anders als "var" in PASCAL an der Aufrufstelle wiederholt werden müssen, hat den Vorteil, dass die Programmiererin weiß, dass ihre die tatsächlichen Parameter liefernden Variablen nach dem Aufruf andere Werte haben können. Sie drücken also das Vorhandensein einer Zuweisung in beide Richtungen (hin und zurück) aus. Sowohl "ref" als auch "out" ermöglichen, dass eine Methode mehr als einen Rückgabewert hat. Da diese Möglichkeit in Java und SMALLTALK fehlt, findet man in diesen Sprachen häufig Klassen vor, die einzig dem Zweck dienen, mehrere Rückgabewerte in einem Objekt zu verpacken. Da sie an der Aufrufstelle aber wieder ausgepackt werden müssen, ist das eine ziemlich umständliche Lösung. Eine elegantere Alternative sind die Tupel EIFFELs (s. Abschnitt 52.7).
+
+
+Frage: Was ist der Unterschied zwischen "ref" und "out" in C-Sharp?
+Antwort: Bei "ref" muss die Variable, die den tatsächlichen Parameter liefert, vor dem Aufruf initialisiert worden sein, während dies bei "out" nicht der Fall ist. Dafür muss bei "out" der formale Parameter in der Methode einen Wert zugewiesen bekommen. Der Unterschied liegt also in der Richtung der Zuweisung.
+
+Frage: Was sind "ref" und "out" in C-Sharp?
+Antwort: "ref" und "out" sind Mechanismen in einigen Programmiersprachen wie C-Sharp, die es einer Methode ermöglichen, mehr als einen Rückgabewert zu haben. Diese Mechanismen sind in Sprachen wie Java und SMALLTALK nicht vorhanden, weshalb man dort häufig Klassen findet, die einzig dem Zweck dienen, mehrere Rückgabewerte in einem Objekt zu verpacken.
+
+Frage: Wofür werden "ref" und "out" verwendet?
+Antwort: Sowohl "ref" als auch "out" ermöglichen, dass eine Methode mehr als einen Rückgabewert hat. Sie werden verwendet, um mehrere Rückgabewerte in einem Objekt zu verpacken.
+
+
+Nun verdient C-Sharp im Kontext von Methodenaufrufen nicht nur lobende Erwähnung. Die wohl bedeutendste Unterlassung ist, dass es in C-Sharp keine "Throws"-Klauseln in Methodendeklarationen gibt — die aus Java bekannte Unterscheidung von Checked exceptions und Unchecked exceptions (Abschnitt 47.2 in Kurseinheit 4) entfällt also und es gibt nur Unchecked exceptions. Das bedeutet, dass die Aufruferin einer Methode nicht gezwungen wird, darüber nachzudenken, was zu tun ist, wenn die Methode nicht korrekt ausgeführt werden kann; ja sie weiß nicht einmal bei Betrachten der Schnittstelle, dass die Methode auch abgebrochen werden kann. Das ist natürlich debattierbar, soll aber dem Umstand Rechnung tragen, dass bei einer stark geschichteten Architektur (beispielsweise beim Einsatz von Middleware) das Wissen um Exceptions auf der ganzen Wegstrecke von der Exception-Quelle bis zum Exception handler vorhanden sein muss, obwohl die mittleren Schichten naturgemäß an Art und Auftreten von Ausnahmen keinerlei Interesse haben. Das mit Java Version 1.4 eingeführte sog. "Exception chaining" erlaubt, eine Checked exception in einer Unchecked exception zu verpacken und später, z. B. nach Durchlaufen der Middleware, wieder auszupacken (erneut zu werfen). Das sog. "Exception tunneling" bietet ebenfalls Abhilfe. Ein weiterer, für die Programmierpraxis nicht weniger bedeutsamer Unterschied bei Methoden ergibt sich im Zusammenhang mit dem Überschreiben: Während in Java alle Methoden im Prinzip überschrieben werden können (es sei denn, ihre Definition trägt den Zusatz "final"), so dass der Compiler zunächst von einer dynamischen Bindung der Aufrufe ausgehen muss, sind in C-Sharp, der Tradition von C++ folgend, dynamisch zu bindende Methoden unbedingt als solche zu deklarieren, und zwar mit dem Schlüsselwort "virtual". Entsprechend muss eine überschreibende Methode mit dem Schlüsselwort "override" deklariert werden. Soll hingegen eine Methode gleicher Signatur in einer Subklasse neu eingeführt (und nicht anstelle der, die sie überschreibt, dynamisch gebunden) werden, dann ist dies durch Verwendung des Schlüsselworts "new" bekanntzugeben. Anders als landläufig angenommen hat dies nicht nur Performanzgründe (es vermindert die Zahl der dynamischen Bindungen in einem Programm), sondern auch gewichtige programmiertechnische: Man markiert alle Stellen im Programm, an denen das sog. "Fragile-base-class-Problem" (Thema von Kapitel 55 in Kurseinheit 6) auftreten kann. Keine Deklaration.
+
+Frage: Wie wird eine Methode in C-Sharp überschrieben?
+Antwort: In C-Sharp muss eine Methode, die überschrieben werden soll, mit dem Schlüsselwort "virtual" deklariert werden. Die überschreibende Methode muss mit dem Schlüsselwort "override" deklariert werden.
+
+Frage: Was ist der Unterschied zwischen dem Überschreiben von Methoden in Java und C-Sharp?
+Antwort: In Java können alle Methoden überschrieben werden, während in C-Sharp dynamisch zu bindende Methoden unbedingt als solche zu deklarieren sind und eine überschreibende Methode mit dem Schlüsselwort "override" deklariert werden muss. Wenn eine Methode gleicher Signatur in einer Subklasse neu eingeführt werden soll, muss dies durch Verwendung des Schlüsselworts "new" bekanntgegeben werden. Diese Deklaration vermindert die Zahl der dynamischen Bindungen in einem Programm und markiert alle Stellen im Programm, an denen das sog. "Fragile-base-class-Problem" auftreten kann.
+
+
+Einige Sprachkonstrukte verwenden in C-Sharp andere Schlüsselwörter als Java, so "lock" anstatt "synchronized" sowie "foreach" anstatt "for" für die zweite Form von "For"-Schleifen (s. Kapitel 38 in Kurseinheit 4). Andere weichen in ihrer Bedeutung leicht von denen Javas ab: So sind auch "Strings" als Basis einer "Switch"-Anweisung zugelassen (in Java erst seit Version 7!) und jeder Zweig (case), der mindestens eine Anweisung enthält, muss mit einer expliziten Kontrollflussanweisung ("break", "goto", "return" oder "throw") abgeschlossen werden. Außerdem hat C-Sharp eine "Goto"-Anweisung, mit der man jedoch nicht in Blöcke hinein springen kann. All dies hat allerdings nichts mit Objektorientierung zu tun.
+
+
+Frage: Wie unterscheidet sich C-Sharp von Java in Bezug auf Schlüsselwörter und Kontrollflussanweisungen?
+Antwort: In C-Sharp werden einige Sprachkonstrukte mit anderen Schlüsselwörtern als in Java verwendet, wie zum Beispiel "lock" anstatt "synchronized" und "foreach" anstatt "for" für die zweite Form von "For"-Schleifen. Zudem sind in C-Sharp auch "Strings" als Basis einer "Switch"-Anweisung zugelassen und jeder Zweig muss mit einer expliziten Kontrollflussanweisung abgeschlossen werden. Im Gegensatz zu Java verfügt C-Sharp über eine "Goto"-Anweisung, mit der man jedoch nicht in Blöcke hinein springen kann. Diese Unterschiede haben jedoch nichts mit Objektorientierung zu tun.
+
+Frage: Was sind die Unterschiede zwischen C-Sharp und Java in Bezug auf Sprachkonstrukte?
+Antwort: Einige Sprachkonstrukte verwenden in C-Sharp andere Schlüsselwörter als Java, wie zum Beispiel "lock" anstatt "synchronized" und "foreach" anstatt "for" für die zweite Form von "For"-Schleifen. Andere weichen in ihrer Bedeutung leicht von denen Javas ab, wie zum Beispiel die Zulassung von "Strings" als Basis einer "Switch"-Anweisung in C-Sharp und die Notwendigkeit einer expliziten Kontrollflussanweisung am Ende jedes Zweigs. Zudem hat C-Sharp eine "Goto"-Anweisung, mit der man jedoch nicht in Blöcke hinein springen kann. Diese Unterschiede haben jedoch nichts mit Objektorientierung zu tun.

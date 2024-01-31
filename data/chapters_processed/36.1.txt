@@ -1,0 +1,55 @@
+36.1 Klassendefinitionen
+
+Die Klasse kann dann Instanzen erzeugen, die Objekte der Klasse sind. Die Objekte besitzen einen Zustand, der sich aus den Werten ihrer Instanzvariablen zusammensetzt. Die Instanzvariablen können durch Methoden der Klasse manipuliert werden. Die Klassendefinition gliedert sich in die Angabe von Instanzvariablen, die in Java als Felder bezeichnet werden, und Instanzmethoden. Beide werden, der Tradition von C++ folgend, zusammenfassend auch als "Member" bezeichnet. Der Begriff "Member" (das englische Wort für ein Element einer Menge) bezieht sich auf die Klassendefinition. Konstruktoren zählen nicht zu den Members.
+
+
+Frage: Was ist eine Klasse in Java?
+Antwort: In Java ist eine Klasse eine Vorlage für die Erstellung von Objekten. Sie definiert den Zustand und das Verhalten der Objekte. Der Zustand eines Objekts setzt sich aus den Werten seiner Instanzvariablen zusammen, und das Verhalten wird durch die Methoden der Klasse bestimmt. Instanzvariablen können durch Methoden der Klasse manipuliert werden.
+
+Frage: Was sind Instanzvariablen und Instanzmethoden in Java?
+Antwort: Instanzvariablen und Instanzmethoden sind Bestandteile einer Klassendefinition in Java. Sie werden zusammenfassend auch als "Member" bezeichnet. Instanzvariablen, auch Felder genannt, sind Variablen, die zu einer Instanz einer Klasse gehören. Instanzmethoden sind Methoden, die auf eine Instanz einer Klasse angewendet werden können.
+
+Frage: Was ist der Begriff "Member" in Java?
+Antwort: Der Begriff "Member" in Java bezieht sich auf die Klassendefinition und umfasst Instanzvariablen und Instanzmethoden.
+
+Frage: Sind Konstruktoren Members in Java?
+Antwort: Nein, Konstruktoren zählen nicht zu den Members in Java.
+
+Frage: Was sind Instanzvariablen und Instanzmethoden in Java?
+Antwort: Instanzvariablen, auch als Felder bezeichnet, und Instanzmethoden sind die beiden Bestandteile einer Klassendefinition in Java. Sie werden zusammenfassend auch als "Member" bezeichnet. Instanzvariablen speichern den Zustand eines Objekts, während Instanzmethoden das Verhalten eines Objekts definieren. Konstruktoren zählen nicht zu den Members.
+
+Frage: Was ist der Unterschied zwischen Members und Konstruktoren in Java?
+Antwort: Members einer Klasse sind Instanzvariablen und Instanzmethoden, während Konstruktoren keine Members sind. Konstruktoren werden separat in Abschnitt 36.3 behandelt.
+
+Frage: Was ist der Zweck von Konstruktoren in Java?
+Antwort: Konstruktoren werden verwendet, um die Initialisierung von Objekten zu definieren, wenn sie erstellt werden. Sie werden nicht als Members einer Klasse betrachtet.
+
+
+Neben Feldern und Methoden kann eine Klassendefinition in Java auch geschachtelte sowie sogenannte innere Klassendefinitionen besitzen. Diese Klassendefinitionen gelten ebenfalls als Members der umschließenden Klasse. Sie sind vor allem dann sinnvoll, wenn ausgedrückt werden soll, dass die Existenz der inneren Klasse ohne die der äußeren sinnlos wäre. Beispielsweise ist es üblich, wenn verknüpfte Listen implementiert werden, die Klasse der Listenelemente innerhalb der Klasse der Liste zu definieren. Denn diese Listenelemente werden kaum außerhalb einer Liste verwendet und ihre Klasse wird nicht benötigt. Innere Klassen werden immer im Kontext von Instanzen ihrer äußeren Klasse(n) instanziiert. Instanzen innerer Klassen liegen somit "innerhalb" von Instanzen ihrer äußeren Klasse(n) und können über das Konstrukt "Outer this" auf diese zugreifen.
+
+
+Frage: Was sind innere Klassen in Java?
+Antwort: Innere Klassen in Java sind Klassendefinitionen, die innerhalb einer anderen Klasse definiert werden. Sie sind vor allem sinnvoll, wenn die Existenz der inneren Klasse ohne die der äußeren sinnlos wäre. Instanzen innerer Klassen liegen "innerhalb" von Instanzen ihrer äußeren Klasse(n) und können über das Konstrukt "Outer this" auf diese zugreifen.
+
+Frage: Wozu werden innere Klassen in Java verwendet?
+Antwort: Innere Klassen in Java werden verwendet, um die enge Beziehung zwischen zwei Klassen auszudrücken. Sie werden vor allem dann sinnvoll, wenn die Existenz der inneren Klasse ohne die der äußeren sinnlos wäre. Zum Beispiel, wenn verknüpfte Listen implementiert werden, wird die Klasse der Listenelemente innerhalb der Klasse der Liste definiert. Instanzen innerer Klassen liegen immer "innerhalb" von Instanzen ihrer äußeren Klasse(n) und können über das Konstrukt "Outer this" auf diese zugreifen.
+
+
+Members können auch als "static" deklariert werden. Dabei bedeutet "static", dass sich so deklarierte Felder und Methoden nicht auf Objekte, sondern auf die Klasse selbst beziehen, in der sie definiert sind. Es handelt sich also um Klassenvariablen und -methoden. Da in Java im Gegensatz zu Smalltalk Klassen selbst keine Objekte sind, sondern während der Programmausführung dauerhaft existierende, unveränderliche Gebilde, die nicht in Variablen gespeichert werden können, werden als "static" deklarierte Members auch nicht dynamisch gebunden.
+
+
+Frage: Was bedeutet es, wenn Members in Java als "static" deklariert werden?
+Antwort: Wenn Members in Java als "static" deklariert werden, beziehen sie sich nicht auf Objekte, sondern auf die Klasse selbst. Es handelt sich also um Klassenvariablen und -methoden, die nicht dynamisch gebunden werden.
+
+Frage: Was bedeutet es, wenn Members als "static" deklariert werden?
+Antwort: Wenn Members als "static" deklariert werden, beziehen sie sich nicht auf Objekte, sondern auf die Klasse selbst. Es handelt sich also um Klassenvariablen und -methoden. Diese werden nicht dynamisch gebunden, sondern sind während der Programmausführung dauerhaft existierende, unveränderliche Gebilde, die nicht in Variablen gespeichert werden können.
+
+
+Achtung: Im Fall von "static" deklarierten Feldern könnte man meinen, dass diese zu Konstanten werden. Das ist jedoch nicht der Fall. In Java dient das Schlüsselwort "final" dazu, Variablen als Konstanten zu deklarieren. "final" bedeutet, dass einer Variable genau einmal ein Wert zugewiesen werden darf. Im Gegensatz dazu benötigte man in dem schlüsselwortlosen Smalltalk konstante Methoden für Konstanten (siehe Abschnitt 4.3.6). Auf Methoden angewandt bedeutet "final", dass diese in Subklassen nicht überschrieben werden dürfen. Mehr dazu im nächsten Abschnitt.
+
+
+Frage: Was ist der Unterschied zwischen "static" und "final" in Java?
+Antwort: "static" deklarierte Felder sind nicht konstant, während "final" dazu verwendet wird, Variablen als Konstanten zu deklarieren. "final" bedeutet, dass einer Variablen genau einmal ein Wert zugewiesen werden darf. Im Gegensatz dazu benötigte man in Smalltalk konstante Methoden für Konstanten. "final" in Java verhindert auch, dass eine Methode in Subklassen überschrieben wird.
+
+Frage: Was bedeutet das Schlüsselwort "final" in Java?
+Antwort: In Java dient das Schlüsselwort "final" dazu, Variablen als Konstanten zu deklarieren, was bedeutet, dass einer Variablen genau einmal ein Wert zugewiesen werden darf. Auf Methoden angewandt bedeutet "final", dass diese in Subklassen nicht überschrieben werden dürfen.

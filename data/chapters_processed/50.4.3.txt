@@ -1,0 +1,39 @@
+50.4.3 Generizität in C-Sharp
+
+Genau wie in Java entspricht in C-Sharp zunächst jeder Klasse und jedem Interface ein Typ. Mit der Version 2.0 ist C-Sharp jedoch ebenfalls generisch geworden. Genauer gesagt erlaubt C-Sharp sowohl beschränkten als auch unbeschränkten parametrischen Polymorphismus, sowohl von Klassen als auch von Methoden. Die Syntax für beschränkte Typparameter sieht so aus, wobei die Syntax für unbeschränkte sich nicht von der von Java unterscheidet. Parametrisch definierte Klassen und Interfaces spezifizieren jeweils eine (potenziell unendliche) Menge von Typen, die durch Einsetzen konkreter Typparameter in die Typvariablen entstehen. C-Sharp erlaubt zudem, den tatsächlichen Typparameter bei parametrischen Methodenaufrufen wegzulassen, wenn ihn der Compiler aus den Typen der Argumente erschließen kann (Typinferenz).
+
+
+Frage: Unterstützt C-Sharp generische Programmierung?
+Antwort: Ja, C-Sharp unterstützt ab Version 2.0 generische Programmierung sowohl bei Klassen als auch bei Methoden. Es erlaubt sowohl beschränkten als auch unbeschränkten parametrischen Polymorphismus. C-Sharp erlaubt zudem, den tatsächlichen Typparameter bei parametrischen Methodenaufrufen wegzulassen, wenn ihn der Compiler aus den Typen der Argumente erschließen kann (Typinferenz).
+
+Frage: Unterstützt C-Sharp generischen Polymorphismus?
+Antwort: Ja, C-Sharp unterstützt sowohl beschränkten als auch unbeschränkten parametrischen Polymorphismus, sowohl von Klassen als auch von Methoden. Die Syntax für beschränkte Typparameter sieht anders aus als die von Java, während die Syntax für unbeschränkte sich nicht unterscheidet. Parametrisch definierte Klassen und Interfaces spezifizieren jeweils eine (potenziell unendliche) Menge von Typen, die durch Einsetzen konkreter Typparameter in die Typvariablen entstehen. C-Sharp erlaubt zudem, den tatsächlichen Typparameter bei parametrischen Methodenaufrufen wegzulassen, wenn ihn der Compiler aus den Typen der Argumente erschließen kann (Typinferenz).
+
+Frage: Was ist der Unterschied zwischen beschränktem und unbeschränktem parametrischen Polymorphismus in C-Sharp?
+Antwort: Beschränkter parametrischer Polymorphismus in C-Sharp erlaubt die Einschränkung der zulässigen Typen für die Typvariablen, während unbeschränkter parametrischer Polymorphismus keine Einschränkungen vorsieht. Die Syntax für beschränkte Typparameter in C-Sharp sieht anders aus als die für unbeschränkte, die Syntax für unbeschränkte Typparameter ist in C-Sharp identisch mit der von Java.
+
+
+Auch wenn sich die Generics von C-Sharp auf den ersten Blick nicht groß von denen von Java zu unterscheiden scheinen, verbirgt sich hinter der Oberfläche doch ein anderer Mechanismus. Während Java die Typparameter grundsätzlich immer wegkompiliert (um Abwärtskompatibilität zu erreichen; die sog. Type erasure), instanziiert C-Sharp im Fall von Werttyp-Parametern (wie int, float usw., aber auch die per struct definierten Typen) jede generische Klasse für jeden verwendeten Typ einmal, erzeugt also alternative Implementierungen (sog. Typexpansion). Dies hat den Vorteil, dass diese Implementierungen ohne Boxing/Unboxing auskommen und vom JIT-Compiler durch Berücksichtigung der Typparameter optimiert werden können. Für Referenztypen wird der Code jedoch (wie in Java) nur einmal erzeugt. Gleichwohl bleibt die generische Typinformation in C-Sharp auch zur Laufzeit erhalten und kann per Reflection abgefragt werden.
+
+
+Frage: Wie werden Generics in C-Sharp und Java behandelt?
+Antwort: In Java werden die Typparameter grundsätzlich immer wegkompiliert, um Abwärtskompatibilität zu erreichen. Im Gegensatz dazu instanziiert C-Sharp im Fall von Werttyp-Parametern jede generische Klasse für jeden verwendeten Typ einmal, erzeugt also alternative Implementierungen. Für Referenztypen wird der Code jedoch nur einmal erzeugt. Gleichwohl bleibt die generische Typinformation in C-Sharp auch zur Laufzeit erhalten und kann per Reflection abgefragt werden.
+
+Frage: Wie werden Typen in C-Sharp und Java behandelt?
+Antwort: In Java werden die Typparameter grundsätzlich immer wegkompiliert, um Abwärtskompatibilität zu erreichen (Type erasure). Im Gegensatz dazu instanziiert C-Sharp im Fall von Werttyp-Parametern (wie int, float usw., aber auch die per struct definierten Typen) jede generische Klasse für jeden verwendeten Typ einmal, erzeugt also alternative Implementierungen (sog. Typexpansion). Für Referenztypen wird der Code jedoch (wie in Java) nur einmal erzeugt. Gleichwohl bleibt die generische Typinformation in C-Sharp auch zur Laufzeit erhalten und kann per Reflection abgefragt werden.
+
+Frage: Was ist der Unterschied zwischen Generics in C-Sharp und Java?
+Antwort: Der Hauptunterschied besteht darin, dass Java die Typparameter grundsätzlich immer wegkompiliert, während C-Sharp im Fall von Werttyp-Parametern jede generische Klasse für jeden verwendeten Typ einmal instanziiert und alternative Implementierungen erzeugt, was zu optimierten Implementierungen führt. Für Referenztypen verhält sich C-Sharp jedoch wie Java. Zudem bleibt die generische Typinformation in C-Sharp zur Laufzeit erhalten und kann per Reflection abgefragt werden.
+
+
+Genau wie in Java gibt es in C-Sharp beim Subtyping von Containern (wie z. B. Collections) ein Varianzproblem: Collection<A> und Collection<B> sind auch dann nicht zuweisungskompatibel, wenn A ein Subtyp von B ist (vgl. Abschnitt 43.2 in Kurseinheit 4). Um dennoch Zuweisungskompatibilität herzustellen, sieht C-Sharp keine spezielle Annotation der Benutzung eines Typs wie in Java vor, sondern eine Annotation der Definition des Typs: Dem kovarianten bzw. kontravarianten Typparameter wird dazu das Schlüsselwort out bzw. in vorangestellt. Die Beschränkungen (nur lesen bzw. nur schreiben) sind dann bei allen Verwendungen des Typs die gleichen. Übrigens: Für Arrays in C-Sharp gilt dasselbe wie in Java: Sie sind kovariant, das Schreiben in ein Array kann jedoch zu einem Laufzeittypfehler führen, der in C-Sharp "Array Type-Mismatch Exception" heißt.
+
+
+Frage: Wie wird in C-Sharp Zuweisungskompatibilität bei Containern hergestellt?
+Antwort: In C-Sharp wird Zuweisungskompatibilität bei Containern hergestellt, indem dem kovarianten bzw. kontravarianten Typparameter das Schlüsselwort out bzw. in vorangestellt wird. Die Beschränkungen (nur lesen bzw. nur schreiben) sind dann bei allen Verwendungen des Typs die gleichen.
+
+Frage: Wie wird in C-Sharp das Varianzproblem bei der Zuweisung von Containern gelöst?
+Antwort: In C-Sharp wird das Varianzproblem bei der Zuweisung von Containern durch eine Annotation der Definition des Typs gelöst. Dem kovarianten bzw. kontravarianten Typparameter wird dazu das Schlüsselwort out bzw. in vorangestellt. Die Beschränkungen (nur lesen bzw. nur schreiben) sind dann bei allen Verwendungen des Typs die gleichen.
+
+Frage: Was ist der Unterschied zwischen der Annotation der Benutzung eines Typs in Java und der Annotation der Definition des Typs in C-Sharp?
+Antwort: In Java wird ein Typparameter durch eine Annotation der Benutzung eines Typs als kovariant, kontravariant oder invariant markiert, während in C-Sharp die Annotation der Definition des Typs erfolgt. Das bedeutet, dass in Java die Varianz eines Typs bei seiner Verwendung festgelegt wird, während in C-Sharp die Varianz eines Typs bei seiner Definition festgelegt wird. In C-Sharp wird dem kovarianten oder kontravarianten Typparameter das Schlüsselwort out oder in vorangestellt, um die Beschränkungen (nur lesen oder nur schreiben) bei allen Verwendungen des Typs festzulegen.

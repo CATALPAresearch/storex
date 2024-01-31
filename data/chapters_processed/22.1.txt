@@ -1,0 +1,37 @@
+22.1 Strukturäquivalenz
+
+Um strukturelle Typäquivalenz festzustellen, werden die Definitionen der beteiligten Typen rekursiv expandiert, was so viel heißt wie, dass in einer Typdefinition vorkommende Namen anderer Typen durch ihre Struktur ersetzt werden.
+
+
+Frage: Was ist strukturelle Typäquivalenz?
+Antwort: Strukturelle Typäquivalenz ist ein Verfahren, um festzustellen, ob zwei Typen gleich sind. Dabei werden die Definitionen der beteiligten Typen rekursiv expandiert, was bedeutet, dass in einer Typdefinition vorkommende Namen anderer Typen durch ihre Struktur ersetzt werden.
+
+
+Dann sind die Typen Person und Firma sowie Wohnung und Büro jeweils strukturäquivalent, aber nicht namensäquivalent. Bei der Strukturäquivalenz haben Namen also lediglich die Funktion der abkürzenden Schreibweise, bei der Namensäquivalenz hingegen auch eine von der Struktur unabhängige Bedeutung. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt; Namensäquivalenz ist somit das stärkere Konzept.
+
+
+Frage: Was ist der Unterschied zwischen Strukturäquivalenz und Namensäquivalenz?
+Antwort: Strukturäquivalenz bedeutet, dass zwei Typen die gleiche Struktur haben, aber die Namen können unterschiedlich sein. Bei Namensäquivalenz hingegen haben die Namen eine von der Struktur unabhängige Bedeutung, d.h. sie sind identisch. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt.
+
+
+Strukturäquivalenz als Bedingung der Zuweisungskompatibilität reicht aus, um Typfehler, also logische und Laufzeitfehler, die auf der Annahme einer nicht vorliegenden Eigenschaft (Methode) bei einem Wert einer Variable basieren, zu verhindern. Sie garantiert, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten auch durchgeführt werden können.
+
+
+Frage: Was ist Strukturäquivalenz als Bedingung der Zuweisungskompatibilität?
+Antwort: Strukturäquivalenz als Bedingung der Zuweisungskompatibilität bedeutet, dass die Struktur zweier Objekte gleich sein muss, damit sie einander zugewiesen werden können. Diese Bedingung verhindert Typfehler, indem sie garantiert, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten durchgeführt werden können.
+
+Frage: Was ist Strukturäquivalenz?
+Antwort: Strukturäquivalenz ist eine Bedingung der Zuweisungskompatibilität, die ausreicht, um Typfehler zu verhindern. Sie garantiert, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten durchgeführt werden können.
+
+Frage: Was ist Strukturäquivalenz und wie verhindert sie Typfehler?
+Antwort: Strukturäquivalenz ist eine Bedingung der Zuweisungskompatibilität, die dazu dient, Typfehler zu verhindern. Sie besagt, dass zwei Objekte, die einer Variablen zugewiesen werden können, die gleiche Struktur haben müssen, d.h. sie müssen über die gleichen Attribute und Methoden verfügen. Durch diese Bedingung wird sichergestellt, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten durchgeführt werden können, und somit logische und Laufzeitfehler vermieden werden.
+
+
+Strukturäquivalenz ist eine rein syntaktische Bedingung. Insbesondere können bei geforderter Strukturäquivalenz Typen zufällig zuweisungskompatibel sein, die inhaltlich überhaupt nichts miteinander zu tun haben. Dadurch können Objekte, die eigentlich getrennten Typen (disjunkten Wertebereichen) angehören, über Kreuz und über die Typgrenzen hinweg zugewiesen werden. Semantische Fehler sind also immer noch möglich. Man trifft daher in Sprachen mit Strukturäquivalenz gelegentlich die Praxis an, jedem Typ eine für ihn charakteristische Methode exklusiv zuzuordnen, so dass er mit keinem anderen mehr strukturäquivalent ist. Diese Technik nennt man Type branding.
+
+
+Frage: Was ist Type branding?
+Antwort: Type branding ist eine Technik, bei der jedem Typ eine für ihn charakteristische Methode exklusiv zugeordnet wird, sodass er mit keinem anderen mehr strukturäquivalent ist. Diese Technik wird gelegentlich in Sprachen mit Strukturäquivalenz angewendet, um semantische Fehler durch das Zuweisen von Objekten über Typgrenzen hinweg zu vermeiden.
+
+Frage: Was ist Strukturäquivalenz?
+Antwort: Strukturäquivalenz ist eine rein syntaktische Bedingung, die festlegt, ob zwei Objekte gleich aufgebaut sind. Insbesondere können bei geforderter Strukturäquivalenz Typen zufällig zuweisungskompatibel sein, die inhaltlich überhaupt nichts miteinander zu tun haben.

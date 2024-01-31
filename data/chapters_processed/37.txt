@@ -1,0 +1,44 @@
+37 Ausdrücke
+
+Ausdrücke in Java können sein: Literale, Variablen, die spezielle Variable this, Operatoranwendungen, Feldzugriffe der Form a.x, wobei a für den Besitzer des Feldes (ein Objekt oder eine Klasse) und x für das Feld (die Instanz- bzw. Klassenvariable) steht (a kann auch durch super ersetzt werden), Methodenaufrufe der Form a.m(...), wobei a für den Empfänger des Aufrufs steht oder für super, m für die Methode und ... für die tatsächlichen Parameter (die wiederum Ausdrücke sind), Array-Zugriffe der Form a[i], wobei a für das Array und i für einen Index steht (eine ganze, positive Zahl; bei mehrdimensionalen Arrays können entsprechend weitere Indizes in eckigen Klammern angegeben werden), Klasseninstanziierungen der Form new <Klassenname>(<Parameter>), Array-Instanziierungen der Form new <Basistypname>[<n>], wobei <Basistypname> für den Typ der Elemente steht (z. B. int bei einem Array von Integern) und <n> für einen Ausdruck, dessen Auswertung eine ganze, positive Zahl liefert (es können auch mehrere Dimensionen angegeben werden), Konditionalausdrücke der Form <Boolescher Ausdruck> ? <Ausdruck 1> : <Ausdruck 2>, wobei in Abhängigkeit davon, ob <Boolescher Ausdruck> zu wahr oder zu falsch auswertet, entweder <Ausdruck 1> oder <Ausdruck 2> ausgewertet wird und das Ergebnis des Gesamtausdrucks liefert, Cast-Ausdrücke der Form (<Typname>) <Ausdruck>, wobei <Typname> für das Ziel des Casts steht und <Ausdruck> für den Ausdruck, dessen Ergebnis den mit <Typname> bezeichneten Typ annehmen soll, Lambda-Ausdrücke der Form (<Parameterdeklarationen>) -> <Rumpf>, wobei <Parameterdeklarationen> den formalen Parameterdeklarationen einer Methode entspricht und <Rumpf> entweder eine einzelne Anweisung oder ein Block von Anweisungen, entsprechend einem Methodenrumpf (inklusive der geschweiften Klammern), ist. Falls nur ein Parameter deklariert wird, können die runden Klammern auch weggelassen werden.
+
+
+Frage: Was sind die verschiedenen Arten von Ausdrücken in Java?
+Antwort: In Java gibt es Literale, Variablen, Operatoranwendungen, Feldzugriffe, Methodenaufrufe, Array-Zugriffe, Klasseninstanziierungen, Array-Instanziierungen, Konditionalausdrücke, Cast-Ausdrücke, Lambda-Ausdrücke.
+
+
+Wie man sieht, können in Java Ausdrücke rekursiv aus anderen aufgebaut werden. Methodenausdrücke beinhalten einen Ausdruck für den Empfänger sowie möglicherweise weitere Ausdrücke für die Parameter des Methodenaufrufs. Array-Zugriffe und -Instanziierungen beinhalten Ausdrücke zur Bestimmung des Indexes bzw. der Größe, usw. Dabei müssen alle Ausdrücke korrekt typisiert sein, was bedeutet, dass der Typ jedes Ergebnisses eines inneren Ausdrucks mit dem Typ des äußeren Ausdrucks, an der Stelle, an der er eingesetzt wird, zuweisungskompatibel sein muss.
+
+
+Frage: Was ist ein Methodenausdruck in Java?
+Antwort: Ein Methodenausdruck in Java beinhaltet einen Ausdruck für den Empfänger sowie möglicherweise weitere Ausdrücke für die Parameter des Methodenaufrufs.
+
+Frage: Was bedeutet es, dass alle Ausdrücke korrekt typisiert sein müssen in Java?
+Antwort: Das bedeutet, dass der Typ jedes Ergebnisses eines inneren Ausdrucks mit dem Typ des äußeren Ausdrucks, an der Stelle, an der er eingesetzt wird, zuweisungskompatibel sein muss.
+
+
+In Java gibt es nur Call by Value und kein Call by Reference, ähnlich wie in SMALLTALK. Das bedeutet, dass Methoden keinen anderen Wert für einen tatsächlichen Parameter zuweisen können. Das ist eine erhebliche Einschränkung.
+
+
+Frage: Gibt es in Java Call by Reference?
+Antwort: Nein, in Java gibt es nur Call by Value und keine Call by Reference.
+
+Frage: Was ist der Unterschied zwischen Call by Value und Call by Reference in Programmiersprachen?
+Antwort: Call by Value bedeutet, dass der Wert eines Parameters an eine Methode übergeben wird, während Call by Reference bedeutet, dass eine Referenz auf den Speicherort des Parameters übergeben wird. In Java und SMALLTALK gibt es nur Call by Value, was bedeutet, dass Methoden keinen anderen Wert für einen tatsächlichen Parameter zuweisen können.
+
+
+Lambda-Ausdrücke in Java, die mit Version 8 eingeführt wurden, ersetzen die zuvor verwendete Praxis, Funktionen über anonyme innere Klassen zu implementieren, die ein Interface (siehe Abschnitt 40) mit nur einer Methode implementieren. Lambda-Ausdrücke haben den Typ eines Interfaces, der jedoch nicht direkt angegeben wird, sondern inferiert wird. Die Funktionen, die Lambda-Ausdrücke darstellen, erhalten über das Interface einen Namen. Anonyme Funktionen oder Blöcke wie in SMALLTALK können in Java über vordefinierte Interfaces erstellt werden.
+
+
+Frage: Was sind Lambda-Ausdrücke in Java?
+Antwort: Lambda-Ausdrücke in Java sind eine Möglichkeit, Funktionen zu definieren, die mit Version 8 eingeführt wurden. Sie ersetzen die zuvor verwendete Praxis, Funktionen über anonyme innere Klassen zu implementieren. Lambda-Ausdrücke haben den Typ eines Interfaces, der jedoch nicht direkt angegeben wird, sondern inferiert wird. Die Funktionen, die Lambda-Ausdrücke darstellen, erhalten über das Interface einen Namen.
+
+Frage: Wie können anonyme Funktionen oder Blöcke in Java erstellt werden?
+Antwort: In Java können anonyme Funktionen oder Blöcke über vordefinierte Interfaces erstellt werden.
+
+
+Es gibt einige Unterschiede zwischen Java-Ausdrücken und SMALLTALK-Ausdrücken, darunter die Verwendung von direkten Feldzugriffen in Java (a.x) und das Fehlen von indizierten Instanzvariablen. Außerdem unterscheidet Java zwischen Operatoranwendungen (+, -, etc.), Methodenaufrufen, Konstruktoraufrufen und Arrayzugriffen, während in SMALLTALK nur Methodenaufrufe existieren.
+
+
+Frage: Wie unterscheiden sich Java-Ausdrücke und SMALLTALK-Ausdrücke?
+Antwort: Es gibt einige Unterschiede zwischen Java-Ausdrücken und SMALLTALK-Ausdrücken, darunter die Verwendung von direkten Feldzugriffen in Java (a.x) und das Fehlen von indizierten Instanzvariablen in SMALLTALK. Außerdem unterscheidet Java zwischen Operatoranwendungen (+, -, etc.), Methodenaufrufen, Konstruktoraufrufen und Arrayzugriffen, während in SMALLTALK nur Methodenaufrufe existieren.

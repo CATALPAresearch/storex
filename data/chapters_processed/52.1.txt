@@ -1,0 +1,10 @@
+52.1 Das Programmiermodell von EIFFEL
+
+EIFFEL ist, wie alle anderen hier behandelten Sprachen (mit Ausnahme von C++), eine rein objektorientierte Programmiersprache, bei der der gesamte Code innerhalb von Klassen organisiert ist. Klassen können (mit der in Abschnitt 52.5 gemachten Einschränkung) separat übersetzt werden. Die Ausführung von EIFFEL erfolgt nicht auf einer virtuellen Maschine, sondern direkt auf der Zielmaschine. Es gibt jedoch mittlerweile auch eine Version von EIFFEL für .NET, die wie alle .NET-Sprachen zunächst in CIL übersetzt wird und dann in Maschinencode. Die Sprache selbst sieht aufgrund ihrer Einfachheit keine speziellen Konstrukte vor, mit denen Programmierer zwischen leistungsstarken und weniger leistungsstarken Implementierungen wählen können. Eventuelle Performance-Verbesserungen werden ganz der Verantwortung eines optimierenden Compilers überlassen. EIFFEL verwendet Garbage Collection zur Speicherfreigabe. Es handelt sich um eine akademische Sprache.
+
+
+Frage: Ist EIFFEL eine objektorientierte Programmiersprache?
+Antwort: Ja, EIFFEL ist eine rein objektorientierte Programmiersprache, bei der der gesamte Code innerhalb von Klassen organisiert ist.
+
+Frage: Was ist EIFFEL und welche Eigenschaften hat sie?
+Antwort: EIFFEL ist eine rein objektorientierte Programmiersprache, bei der der gesamte Code innerhalb von Klassen organisiert ist. Sie wird direkt auf der Zielmaschine ausgeführt, mit Ausnahme einer Version für .NET, die zunächst in CIL übersetzt wird. EIFFEL verwendet Garbage Collection zur Speicherfreigabe und ist eine akademische Sprache. Sie sieht keine speziellen Konstrukte für leistungsstarke und weniger leistungsstarke Implementierungen vor, diese werden einem optimierenden Compiler überlassen.

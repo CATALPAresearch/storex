@@ -1,0 +1,36 @@
+29.4 Beschränkter parametrischer Polymorphismus
+
+Das obige Beispiel hat gezeigt, dass die einfache Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung nur teilweise nützlich ist. Da die Typvariablen selbst nicht typisiert sind, kann man innerhalb der Typdefinition (und der den Typ implementierenden Klassen) keine Aussagen über den Typ treffen. Außerhalb, bei der Verwendung (Instanziierung) der Typdefinition, ist das hingegen möglich, da hier die Typvariable durch einen Typ ersetzt ist.
+
+
+Frage: Was ist parametrischer Polymorphismus?
+Antwort: Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird. Dadurch wird die Typsicherheit gewährleistet.
+
+Frage: Was ist der Nachteil der einfachen Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung?
+Antwort: Der Nachteil der einfachen Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung ist, dass die Typvariablen selbst nicht typisiert sind, und man daher innerhalb der Typdefinition keine Aussagen über den Typ treffen kann.
+
+
+Was man jedoch gerne hätte, ist, dass die Typvariable innerhalb der mit ihr parametrisierten Typdefinition selbst wertbeschränkt ist, und zwar derart, dass man bei den als Werte zulässigen Typen ein bestimmtes, benötigtes Protokoll voraussetzen kann. Die tatsächlichen Typparameter sind dann nicht mehr beliebig wählbar, sondern nur noch aus solchen Typen, die die Einschränkungen erfüllen. Eine Möglichkeit, dies zu erzielen, wäre die Einführung von Metatypen, deren Wertebereiche Typen mit von den Metatypen vorgegebenen Eigenschaften sind. Diese Möglichkeit wird jedoch in der Praxis nicht genutzt.
+
+
+Frage: Was sind Metatypen?
+Antwort: Metatypen sind eine Möglichkeit, um die Typvariable innerhalb der mit ihr parametrisierten Typdefinition wertbeschränkt zu machen. Dabei sind die Wertebereiche der Metatypen Typen mit von den Metatypen vorgegebenen Eigenschaften. Diese Möglichkeit wird jedoch in der Praxis nicht genutzt.
+
+Frage: Warum werden Metatypen in der Praxis nicht genutzt?
+Antwort: Metatypen werden in der Praxis nicht genutzt, da sie eine zusätzliche Komplexität in die Sprache einführen und die Sprache unnötig erschweren würden. Zudem gibt es andere Möglichkeiten, um Typbeschränkungen zu erreichen, wie zum Beispiel die Verwendung von generischen Typen oder die Verwendung von Interfaces.
+
+
+Stattdessen verwendet man eine Art der Beschränkung des Wertebereichs von Typvariablen, die auf Subtyping beruht. Wenn man nämlich erzwingen kann, dass ein tatsächlicher Typparameter (also der Wert der Typvariable) ein Subtyp eines bestimmten Typs ist, der die benötigten Eigenschaften (Methoden) umfasst, dann ist damit alles erreicht, was man benötigt. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps (siehe Kapitel 26).
+
+
+Frage: Was ist Subtyping?
+Antwort: Subtyping ist eine Art der Beschränkung des Wertebereichs von Typvariablen, bei der ein tatsächlicher Typparameter (der Wert der Typvariable) ein Subtyp eines bestimmten Typs sein muss, der die benötigten Eigenschaften umfasst. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps.
+
+
+Die Beschränkung ist keine Typisierung wie in normalen Variablendeklarationen. Sie drückt vielmehr aus, dass die Typen, die als Werte für E eingesetzt werden dürfen, Subtypen von Number sein müssen. Eine unzulässige Deklaration führt zu einem entsprechenden Typfehler während der statischen Typprüfung.
+
+Frage: Was bedeutet die Beschränkung von Typvariablen?
+Antwort: Die Beschränkung von Typvariablen drückt aus, dass die Typen, die als Werte für die Typvariable eingesetzt werden dürfen, Subtypen des angegebenen Typs sein müssen.
+
+Frage: Was passiert, wenn eine unzulässige Deklaration von Typvariablen durchgeführt wird?
+Antwort: Wenn eine unzulässige Deklaration von Typvariablen durchgeführt wird, führt dies zu einem Typfehler während der statischen Typprüfung.

@@ -1,0 +1,17 @@
+4.3.6 Konstante Methoden
+
+In SMALLTALK gibt es keine frei bezeichenbaren Konstanten, sondern nur Literale. Da verschiedene Vorkommen gleicher Literale jedoch (außer bei Symbolen) verschiedene Objekte erzeugen, sind Literale nicht für alle Zwecke ausreichend. Hierfür gibt es einen Trick, um dasselbe Literal mehrfach verwenden zu können, nämlich durch eine sogenannte konstante Methode.
+An einer konstanten Methode ist nichts weiter konstant, als dass sie immer dasselbe Objekt zurückgibt. Der Trick besteht darin, dass das zum Literal gehörende Objekt nur einmal, nämlich zur Übersetzungszeit der Methode, erzeugt wird, und die Ausführung der Methode immer auf dieses und damit dasselbe Objekt zurückgreift.
+
+Frage: Was sind konstante Methoden?
+Antwort: Konstante Methoden sind Methoden, die immer dasselbe Objekt zurückgeben. Sie werden häufig verwendet, um Literale auf eine Weise zu repräsentieren, die sicherstellt, dass sie konsistent sind und immer auf dasselbe Objekt verweisen.
+
+Frage: Warum werden konstante Methoden verwendet?
+Antwort: Konstante Methoden werden verwendet, um sicherzustellen, dass bestimmte Literale in einem Programm konsistent sind und immer auf dasselbe Objekt verweisen. Dies ist wichtig, um Probleme im Zusammenhang mit Objektidentität und Vergleichen zu vermeiden.
+
+Es gibt jedoch zwei Probleme. Das erste ist offensichtlich: Bei einer erneuten Übersetzung der Methode wird auch ein neues Objekt erzeugt, das dann nicht mehr identisch ist mit dem früher zurückgegebenen (abgesehen von den bereits bekannten Ausnahmen). Das kann zu Problemen führen, wenn das früher zurückgegebene Objekt in Variablen gespeichert wurde und nun mit dem neuen auf Identität verglichen werden soll. Daher sollte man dies tunlichst vermeiden.
+Das zweite Problem ist subtiler: Bei der konstanten Methode eines Objekts o und nach Auswertung der Anweisungen b := o konstanteMethode. enthält b an erster Stelle ebenfalls eine 0! Die vermeintlich konstante Methode ist also alles andere als konstant! Interessanterweise ist das Ergebnis dieses Experiments genau das Gegenteil dessen, was wir erwartet hätten.
+Zumindest das zweite Problem lässt sich eindämmen, indem man auf Sprachebene durch Literale erzeugte Objekte als unveränderlich annimmt und Änderungen der Art von b := o konstanteMethode. vermeidet. Die eigentliche Erkenntnis ist jedoch, dass die Referenzsemantik von Variablen und das damit verbundene Aliasing von Objekten zu höchst subtilen Problemen führen kann, derer man sich immer bewusst sein sollte.
+
+Frage: Was ist ein Problem bei konstanten Methoden?
+Antwort: Bei der erneuten Übersetzung einer Methode mit einer konstanten Methode wird möglicherweise ein neues Objekt erzeugt, das nicht identisch mit dem zuvor zurückgegebenen Objekt ist. Dies kann zu Problemen führen, wenn das zuvor zurückgegebene Objekt in Variablen gespeichert wurde und mit dem neuen Objekt auf Identität verglichen wird.

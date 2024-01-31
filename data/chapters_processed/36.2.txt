@@ -1,0 +1,73 @@
+36.2 Subklassenbeziehung
+
+In Java, wie auch in SMALLTALK, ist vorgesehen, dass alle Klassen außer Object von bereits existierenden Klassen ableiten können. Java verwendet dazu das Schlüsselwort "extends." Dadurch wird das Bestehen einer Subklassenbeziehung zwischen B und A deklariert. Die Verwendung von "extends" legt nahe, dass es sich dabei um eine Typerweiterung handelt, aus der (gemäß Kapitel 23) Zuweisungskompatibilität folgt, was tatsächlich der Fall ist.
+
+
+Frage: Was bedeutet es, wenn eine Java-Klasse von einer anderen Klasse ableitet?
+Antwort: Wenn eine Java-Klasse von einer anderen Klasse ableitet, wird eine Subklassenbeziehung zwischen den beiden Klassen deklariert. Die abgeleitete Klasse erbt alle Eigenschaften und Methoden der Basisklasse und kann diese erweitern oder überschreiben. Diese Beziehung ermöglicht auch Zuweisungskompatibilität, was bedeutet, dass eine Instanz der abgeleiteten Klasse auch als Instanz der Basisklasse behandelt werden kann.
+
+
+Durch die Angabe einer "extends"-Klausel gibt eine Klasse an, von welcher anderen Klasse sie die nicht als "static" deklarierten Member erbt. Da die erbende Klasse, auch in Java als Subklasse bezeichnet, die geerbten Methoden nur invariant überschreiben darf (und geerbte Felder in ihrer Sichtbarkeit nicht reduziert werden dürfen; s. Abschnitt 39.1), ist ihr Typ automatisch ein Subtyp des Typs der Klasse, von der sie erbt.
+
+
+Frage: Was bedeutet die "extends"-Klausel in einer Klassendeklaration in Java?
+Antwort: Durch die Angabe einer "extends"-Klausel gibt eine Klasse in Java an, von welcher anderen Klasse sie die nicht als "static" deklarierten Member erbt. Die erbende Klasse ist automatisch ein Subtyp des Typs der Klasse, von der sie erbt.
+
+Frage: Was ist der Unterschied zwischen einer Klasse und einem Objekt?
+Antwort: Eine Klasse ist eine Art Blaupause oder Vorlage für die Erstellung von Objekten, während ein Objekt eine konkrete Instanz einer Klasse ist. Ein Objekt besitzt einen Zustand und ein Verhalten, das durch die Methoden der Klasse definiert wird, von der es abgeleitet ist.
+
+Frage: Was ist der Unterschied zwischen einem Typ und einer Klasse?
+Antwort: Ein Typ ist eine Menge von Objekten, die eine bestimmte Schnittstelle implementieren, während eine Klasse eine Blaupause oder Vorlage für die Erstellung von Objekten ist. Eine Klasse definiert den Zustand und das Verhalten ihrer Objekte, und ein Typ definiert die Schnittstelle, die von den Objekten implementiert werden muss.
+
+Frage: Was bedeutet es, wenn der Typ einer Variablen eine Subklasse ist?
+Antwort: Wenn der Typ einer Variablen eine Subklasse ist, kann die Variable auf Objekte der Subklasse und der Oberklasse verweisen. Das bedeutet, dass die Variable auf Objekte verweisen kann, die die Methoden und Attribute der Oberklasse und der Subklasse besitzen.
+
+
+Wie in SMALLTALK gibt es in Java abstrakte Klassen. Anders als in SMALLTALK verwendet Java jedoch das Schlüsselwort "abstract," mit dem man eine Klasse als abstrakt und damit als nicht instanziierbar deklarieren kann.
+
+
+Frage: Wie werden abstrakte Klassen in Java deklariert?
+Antwort: In Java werden abstrakte Klassen mit dem Schlüsselwort "abstract" deklariert, um sie als abstrakt und damit als nicht instanziierbar zu kennzeichnen.
+
+Frage: Was bedeutet es, wenn eine Klasse in Java als abstrakt deklariert wird?
+Antwort: Wenn eine Klasse in Java als abstrakt deklariert wird, bedeutet das, dass sie nicht instanziiert werden kann, d.h. es können keine Objekte dieser Klasse erzeugt werden. Diese Klasse dient lediglich als Basisklasse für andere Klassen und enthält in der Regel eine oder mehrere abstrakte Methoden, die von den Unterklassen implementiert werden müssen.
+
+
+Das bedeutet, dass von einer solchen Klasse keine Instanzen mehr gebildet werden dürfen (vgl. Abschnitt 10.3). Dieses Verbot, dessen Einhaltung vom Compiler überprüft wird, gilt unabhängig davon, ob von der Klasse Instanzen erstellt werden könnten. Selbst wenn alles, was für das Funktionieren der Instanzen benötigt wird, in der Klasse vorhanden ist (einschließlich Konstruktoren), darf sie nicht instanziiert werden. Häufiger fehlt jedoch in der Klasse die Implementierung von einer oder mehreren (bis hin zu allen) benötigten Methoden. Diese Methoden werden dann in der Klasse lediglich deklariert, und zwar ebenfalls mit dem Schlüsselwort "abstract."
+
+
+Frage: Was bedeutet es, wenn eine Klasse als abstrakt markiert wird?
+Antwort: Wenn eine Klasse als abstrakt markiert wird, dürfen keine Instanzen mehr von dieser Klasse gebildet werden. Dieses Verbot gilt unabhängig davon, ob von der Klasse Instanzen erstellt werden könnten. Selbst wenn alles, was für das Funktionieren der Instanzen benötigt wird, in der Klasse vorhanden ist, darf sie nicht instanziiert werden.
+
+
+Man gibt dann hinter der Methodensignatur (also dem Namen und den Parametern) keine Implementierung (in geschweiften Klammern) an, sondern lediglich ein abschließendes Semikolon. Im Gegensatz dazu muss in SMALLTALK eine abstrakte Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet werden (s. Abschnitt 10.3 in Kurseinheit 2).
+
+
+Frage: Wie wird eine abstrakte Methode in SMALLTALK gekennzeichnet?
+Antwort: In SMALLTALK wird eine abstrakte Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet.
+
+Frage: Wie wird eine abstrakte Methode in Smalltalk deklariert?
+Antwort: In Smalltalk wird eine abstrakte Methode hinter der Methodensignatur (also dem Namen und den Parametern) nicht mit einer Implementierung (in geschweiften Klammern) deklariert, sondern lediglich mit einem abschließenden Semikolon. Zusätzlich muss die Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet werden.
+
+Frage: Was ist der Begriff des Ausdrucks in der objektorientierten Programmierung?
+Antwort: In der objektorientierten Programmierung ist ein Ausdruck eine Kombination von Operatoren und Operanden, die zu einem neuen Wert ausgewertet wird. Ein Ausdruck kann eine Variable, eine Konstante, eine Funktion, eine Methode oder eine Kombination aus diesen Elementen sein. Er beschreibt das Verhalten eines Objekts, indem er eine Aktion ausführt oder eine Information bereitstellt.
+
+
+Die Aufforderung, eine abstrakte Methode in einer Subklasse zu implementieren, gibt es in Java ebenfalls, jedoch nicht als Laufzeitfehler auf der Programmausführungsebene, sondern auf der Compiler-Ebene. Wenn man von einer abstrakten Klasse (per "extends") ableitet, dann muss die abgeleitete Klasse entweder selbst als abstrakt deklariert sein, oder man muss alle abstrakten Methoden der Klasse, von der sie ableitet, mit Implementierungen versehen. Tut man das nicht, erhält man vom Compiler eine entsprechende Aufforderung.
+
+
+Frage: Was passiert, wenn man in Java eine abstrakte Klasse ableitet und die abstrakten Methoden nicht implementiert?
+Antwort: Wenn man in Java eine abstrakte Klasse ableitet und die abstrakten Methoden nicht implementiert, erhält man vom Compiler eine entsprechende Aufforderung.
+
+
+Komplementär zur "abstract"-Deklaration gibt es in Java auch die Möglichkeit, zu verhindern, dass von einer Klasse abgeleitet wird. Man verwendet dafür einfach das Schlüsselwort "final." Das Gleiche gilt für einzelne Methoden, deren Überschreiben in einer Subklasse durch eine "final"-Deklaration verhindert werden kann. Eine einfache, goldene Regel der objektorientierten Programmierung besagt übrigens, dass man alle Klassen entweder als abstrakt oder als final deklarieren sollte. Dies fördert das Prinzip der abstrakten Generalisierung und vermeidet die Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien (Kapitel 9 in Kurseinheit 2 und 69 in Kurseinheit 6).
+
+
+Frage: Was bedeutet es, wenn eine Klasse in Java als "final" deklariert wird?
+Antwort: Wenn eine Klasse in Java als "final" deklariert wird, verhindert es, dass von dieser Klasse abgeleitet wird.
+
+Frage: Was bewirkt die "final"-Deklaration einer Methode in Java?
+Antwort: Durch die "final"-Deklaration einer Methode in Java wird das Überschreiben der Methode in einer Subklasse verhindert.
+
+Frage: Was besagt die goldene Regel der objektorientierten Programmierung bezüglich der Deklaration von Klassen als abstrakt oder final?
+Antwort: Die goldene Regel der objektorientierten Programmierung besagt, dass man alle Klassen entweder als abstrakt oder als final deklarieren sollte. Dies fördert das Prinzip der abstrakten Generalisierung und vermeidet die Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien.

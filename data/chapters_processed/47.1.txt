@@ -1,0 +1,32 @@
+47.1 Object
+
+Die Klasse Object definiert die Eigenschaften, die allen Objekten, einschließlich Array-Objekten, gemeinsam sind. Hierbei handelt es sich nicht um Felder (Instanzvariablen), sondern um elf Methoden. Diese sind: Object clone(): Zum Erzeugen von Kopien (vergleichbar mit SMALLTALK's copy). boolean equals(Object): Zum Test auf Gleichheit anstelle von Identität (entsprechend SMALLTALK's =). String toString(): Gibt eine String-Repräsentation des Objekts zurück (entsprechend SMALLTALK's printString). Class<? extends Object> getClass(): Zur Ermittlung des Klassentyps (entsprechend SMALLTALK's class). int hashCode(): Zur Speicherung von Objekten in Hash-Tabellen (entsprechend SMALLTALK's hash). void finalize(): Wird vom Garbage Collector aufgerufen, wenn das Objekt aus dem Speicher entfernt wird (dies ermöglicht das Freigeben von externen Ressourcen, die mit dem Objekt verbunden sind, wie z. B. das Schließen von Dateien). void notify() und void notifyAll(): Zur Benachrichtigung von Threads, die auf den Monitor des Objekts warten. void wait(): In drei Versionen, um den ausführenden Thread zum Warten zu bringen, entweder bis dem Objekt ein Notify gesendet wird oder ein anderes Ereignis eintritt.
+
+
+Frage: Was sind die Methoden, die in der Klasse Object definiert sind?
+Antwort: Die Klasse Object definiert die Methoden clone(), equals(Object), toString(), getClass(), hashCode(), finalize(), notify(), notifyAll() und wait().
+
+Frage: Was sind die Eigenschaften der Klasse Object in Java?
+Antwort: Die Klasse Object definiert die Eigenschaften, die allen Objekten, einschließlich Array-Objekten, gemeinsam sind. Hierbei handelt es sich um elf Methoden, darunter clone() zum Erzeugen von Kopien, equals(Object) zum Test auf Gleichheit anstelle von Identität, toString() zur Rückgabe einer String-Repräsentation des Objekts, getClass() zur Ermittlung des Klassentyps, hashCode() zur Speicherung von Objekten in Hash-Tabellen, und finalize() zur Freigabe von externen Ressourcen, die mit dem Objekt verbunden sind.
+
+
+In Java ist jeder Typ ein Subtyp von Object. Dies gilt auch für Interfaces. Es ist jedoch zu beachten, dass Interfaces in anderen Aspekten nicht von Klassen abgeleitet werden können.
+
+
+Frage: Was bedeutet es, dass jeder Typ in Java ein Subtyp von Object ist?
+Antwort: Das bedeutet, dass jeder Typ in Java eine Unterklasse von Object ist und somit die Methoden von Object erbt.
+
+Frage: Was sind die Auswirkungen der Tatsache, dass Interfaces in Java auch Subtypen von Object sind?
+Antwort: Interfaces können nicht wie Klassen instanziiert werden, aber sie können als Typen für Variablen, Parameter und Rückgabewerte verwendet werden. Da Interfaces auch Subtypen von Object sind, können sie daher überall dort verwendet werden, wo ein Object erwartet wird.
+
+Frage: Was ist der Subtyp von jedem Typ in Java?
+Antwort: In Java ist jeder Typ ein Subtyp von Object, was auch für Interfaces gilt.
+
+Frage: Was ist in Java der Unterschied zwischen Klassen und Interfaces?
+Antwort: In Java sind Klassen die Blaupausen für Objekte, die definieren, welche Attribute und Methoden ein Objekt besitzt. Interfaces hingegen definieren nur eine Schnittstelle, die von Klassen implementiert werden kann. Sie spezifizieren eine Menge von Methodensignaturen, die eine Klasse implementieren muss, wenn sie das Interface implementiert. Im Gegensatz zu Klassen können Interfaces keine Attribute haben und die Methoden in Interfaces sind immer abstrakt.
+
+Frage: Warum können Interfaces in Java nicht von Klassen abgeleitet werden?
+Antwort: Interfaces in Java können nicht von Klassen abgeleitet werden, weil sie nur eine Schnittstelle definieren und keine Implementierung enthalten. Sie spezifizieren lediglich eine Menge von Methodensignaturen, die eine Klasse implementieren muss, wenn sie das Interface implementiert. Daher können Interfaces nicht von Klassen abgeleitet werden, sondern nur von anderen Interfaces.
+
+Frage: Welche Rolle spielen Interfaces in Java?
+Antwort: Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.

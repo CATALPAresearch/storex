@@ -1,0 +1,64 @@
+47.3 Multi-Threading
+
+Ähnlich wie in SMALLTALK erlaubt auch Java das Programmieren von parallelen Ausführungssträngen. Diese werden in Java jedoch als Threads und nicht als Prozesse bezeichnet. Threads sind im Gegensatz zu den Prozessen eines Betriebssystems leichtgewichtig, was bedeutet, dass Threads keine separate Allokation von Ressourcen wie Hauptspeicher erfordern und alle auf denselben Ressourcen arbeiten. Daher können mehrere Threads innerhalb eines Prozesses ausgeführt werden. Der Preis dafür ist, dass die Mechanismen zur Synchronisation bei Threads selbst implementiert werden müssen, während sie bei Prozessen über die Inter-Prozess-Kommunikation des Betriebssystems geregelt sind. (Bei den "Prozessen" in SMALLTALK handelt es sich also eher um Threads als um Prozesse im oben beschriebenen Sinn.)
+
+
+Frage: Wie werden parallele Ausführungsstränge in Java bezeichnet?
+Antwort: In Java werden parallele Ausführungsstränge als Threads bezeichnet.
+
+Frage: Was ist der Unterschied zwischen Threads und Prozessen in Java?
+Antwort: In Java werden parallele Ausführungsstränge als Threads bezeichnet, im Gegensatz zu Prozessen in anderen Programmiersprachen. Threads sind leichtgewichtiger als Prozesse, da sie keine separate Allokation von Ressourcen wie Hauptspeicher erfordern und alle auf denselben Ressourcen arbeiten. Der Preis dafür ist, dass die Mechanismen zur Synchronisation bei Threads selbst implementiert werden müssen, während sie bei Prozessen über die Inter-Prozess-Kommunikation des Betriebssystems geregelt sind.
+
+
+In Java wird ein neuer Thread gestartet, indem man eine neue Instanz der Klasse Thread erzeugt und auf dieser Instanz die Methode start() aufruft.
+
+
+Frage: Wie wird in Java ein neuer Thread gestartet?
+Antwort: In Java wird ein neuer Thread gestartet, indem man eine neue Instanz der Klasse Thread erzeugt und auf dieser Instanz die Methode start() aufruft.
+
+
+Die Frage ist nun, was dieser Thread tun soll. Die Klasse Thread enthält eine Methode namens run(), die von start() aufgerufen wird. Diese Methode ist jedoch standardmäßig leer, sodass der Thread sofort beendet wird. Um sicherzustellen, dass ein neuer Thread sinnvolle Aufgaben ausführt, gibt es zwei Möglichkeiten: Man definiert eine neue Subklasse von Thread und überschreibt darin die Methode run(), um die gewünschten Aufgaben auszuführen oder zumindest anzustoßen. Man lässt eine Klasse das Interface Runnable implementieren, implementiert dann in der Klasse die vom Interface geforderte Methode run(), erzeugt eine Instanz dieser Klasse und startet deren Methode run() mit (new Thread(i)).start(), wobei i die Instanz darstellt.
+
+
+Frage: Wie kann man sicherstellen, dass ein neuer Thread sinnvolle Aufgaben ausführt?
+Antwort: Es gibt zwei Möglichkeiten: Man definiert eine neue Subklasse von Thread und überschreibt darin die Methode run(), um die gewünschten Aufgaben auszuführen oder zumindest anzustoßen. Man lässt eine Klasse das Interface Runnable implementieren, implementiert dann in der Klasse die vom Interface geforderte Methode run(), erzeugt eine Instanz dieser Klasse und startet deren Methode run() mit (new Thread(i)).start(), wobei i die Instanz darstellt.
+
+
+Auch im zweiten Fall wird eine Instanz der Klasse Thread erzeugt, die den neuen Thread repräsentiert. Es ist jedoch wichtig zu beachten, dass diese Instanz nicht selbst der Thread ist. Der Thread ist, wie bereits erwähnt, ein paralleler Ausführungsstrang der JVM, der nicht an ein spezifisches Objekt gebunden ist, sondern zwischen den Empfängerobjekten wechselt. Aktive Objekte, die ihren eigenen Ausführungsstrang haben und behalten (wie im Kapitel 16 beschrieben), müssen in Java genauso wie in SMALLTALK simuliert werden. Jeder Thread hat jedoch ein Thread-Objekt, das ihn repräsentiert und spezifische Daten wie den Namen des Threads und seine Priorität speichert. Dieses Objekt kann mit Thread.currentThread() abgefragt werden.
+
+
+Frage: Was ist das Verhältnis zwischen einem Thread und einem Thread-Objekt in Java?
+Antwort: Ein Thread ist ein paralleler Ausführungsstrang der JVM, der nicht an ein spezifisches Objekt gebunden ist, sondern zwischen den Empfängerobjekten wechselt. Jeder Thread hat jedoch ein Thread-Objekt, das ihn repräsentiert und spezifische Daten wie den Namen des Threads und seine Priorität speichert. Das Thread-Objekt kann mit Thread.currentThread() abgefragt werden.
+
+Frage: Was repräsentiert eine Instanz der Klasse Thread in Java?
+Antwort: Eine Instanz der Klasse Thread in Java repräsentiert nicht den Thread selbst, sondern simuliert einen aktiven Objekt, der seinen eigenen Ausführungsstrang hat und behält. Der Thread ist ein paralleler Ausführungsstrang der JVM, der nicht an ein spezifisches Objekt gebunden ist, sondern zwischen den Empfängerobjekten wechselt. Das Thread-Objekt speichert spezifische Daten wie den Namen des Threads und seine Priorität.
+
+
+Die Threads in Java erfordern daher eine explizite Synchronisation. Ähnlich wie bei den Prozessen in SMALLTALK funktioniert dies mit Semaphoren, die in Java als Monitore bezeichnet werden. Jeder Monitor ist mit einem Objekt verknüpft (und jedes Objekt mit einem Monitor). Wenn ein Thread einen Monitor eines Objekts sperrt ("lockt"), kann kein anderer Thread denselben Monitor sperren, bis die Sperre durch den ersten Thread aufgehoben wird.
+
+
+Frage: Wie wird die Synchronisation von Threads in Java erreicht?
+Antwort: Die Synchronisation von Threads in Java erfolgt mit Monitoren, die mit Objekten verknüpft sind. Wenn ein Thread einen Monitor eines Objekts sperrt, kann kein anderer Thread denselben Monitor sperren, bis die Sperre durch den ersten Thread aufgehoben wird.
+
+Frage: Was ist der Zweck von Monitoren in Java?
+Antwort: Monitoren in Java werden verwendet, um den Zugriff auf ein Objekt durch mehrere Threads zu synchronisieren. Wenn ein Thread einen Monitor sperrt, kann kein anderer Thread denselben Monitor sperren, bis die Sperre durch den ersten Thread aufgehoben wird.
+
+
+Es gibt zwei Möglichkeiten, die Synchronisation von Threads zu erzwingen. Die erste Möglichkeit erfolgt durch die Verwendung der synchronized-Anweisung, die Sie bereits kurz kennengelernt haben. Die Anweisungen innerhalb eines synchronisierten Blocks können nur ausgeführt werden, wenn sie nicht gleichzeitig von einem anderen Thread ausgeführt werden. Das mit dem Block assoziierte Objekt, auf dessen Monitor die Sperre angewendet wird, muss in der synchronized-Anweisung angegeben werden. Häufig ist dies das Schlüsselwort this, das auf das Objekt im Kontext des Blocks verweist.
+
+
+Frage: Wie kann die Synchronisation von Threads erzwungen werden?
+Antwort: Die Synchronisation von Threads kann durch die Verwendung der synchronized-Anweisung erzwungen werden. Die Anweisungen innerhalb eines synchronisierten Blocks können nur ausgeführt werden, wenn sie nicht gleichzeitig von einem anderen Thread ausgeführt werden. Das mit dem Block assoziierte Objekt, auf dessen Monitor die Sperre angewendet wird, muss in der synchronized-Anweisung angegeben werden.
+
+Frage: Was ist der Zweck der synchronized-Anweisung in Java?
+Antwort: Die synchronized-Anweisung in Java wird verwendet, um die Synchronisation von Threads zu erzwingen. Sie stellt sicher, dass die Anweisungen innerhalb des synchronisierten Blocks nur dann ausgeführt werden, wenn sie nicht gleichzeitig von einem anderen Thread ausgeführt werden. Das mit dem Block assoziierte Objekt, auf dessen Monitor die Sperre angewendet wird, muss in der synchronized-Anweisung angegeben werden.
+
+
+Die zweite Möglichkeit besteht darin, eine gesamte Methode mit synchronized zu deklarieren. Wenn es sich um eine Instanzmethode handelt, wird die Sperre auf das Objekt angewendet, auf dem die Methode aufgerufen wird. Wenn es sich um eine Klassenmethode (also eine static deklarierte Methode) handelt, wird die Sperre auf das Objekt angewendet, das die Klasse repräsentiert. Beachten Sie jedoch, dass Felder nicht als synchronized deklariert werden können.
+
+
+Frage: Wie kann eine Methode in Java synchronisiert werden?
+Antwort: Eine Methode kann in Java synchronisiert werden, indem sie mit dem Schlüsselwort "synchronized" deklariert wird. Es gibt zwei Möglichkeiten, eine Methode zu synchronisieren: entweder durch die Synchronisierung der gesamten Methode oder durch die Synchronisierung eines bestimmten Blocks innerhalb der Methode. Wenn es sich um eine Instanzmethode handelt, wird die Sperre auf das Objekt angewendet, auf dem die Methode aufgerufen wird. Wenn es sich um eine Klassenmethode handelt, wird die Sperre auf das Objekt angewendet, das die Klasse repräsentiert. Felder können jedoch nicht als synchronized deklariert werden.
+
+Frage: Was passiert, wenn eine Instanzmethode mit synchronized deklariert wird?
+Antwort: Wenn eine Instanzmethode mit synchronized deklariert wird, wird die Sperre auf das Objekt angewendet, auf dem die Methode aufgerufen wird.

@@ -1,0 +1,34 @@
+13.2.2 Sortierte Collections
+
+Eine weitere nützliche Collection-Klasse wird durch SortedCollection implementiert. Es handelt sich dabei um eine Subklasse von OrderedCollection, bei der die Reihenfolge der Elemente nicht von außen, also durch die Angabe eines Indexes oder die Reihenfolge der Einfügung, festgelegt wird, sondern von innen, genauer durch eine Qualität der eingefügten Objekte. Zwischenobjekte der Klasse SortedCollection setzt man ein, wenn man die in Beziehung stehenden Objekte in einer bestimmten Reihenfolge haben möchte, wie z. B. die Kinder einer Person in der Namensfolge, und zwar unabhängig davon, in welcher Reihenfolge sie der Collection hinzugefügt wurden. Voraussetzung dafür, dass die Elemente einer SortedCollection sortiert werden können, ist, dass sie verglichen werden können, dass also die (binäre) Methode <= (für kleiner gleich) darauf definiert ist. So liefert beispielsweise mit #(1 2 3) das gewünschte Ergebnis.
+
+
+Frage: Was ist die Klasse SortedCollection in Smalltalk?
+Antwort: SortedCollection ist eine Subklasse von OrderedCollection, die die Elemente in einer bestimmten Reihenfolge hält, die durch eine Qualität der eingefügten Objekte bestimmt wird. Die Elemente müssen vergleichbar sein, d.h. die (binäre) Methode <= muss darauf definiert sein.
+
+Frage: Wozu dient die Klasse SortedCollection?
+Antwort: Die Klasse SortedCollection wird verwendet, um eine Collection von Objekten in einer bestimmten Reihenfolge zu halten, die durch eine Qualität der Objekte bestimmt wird. Die Objekte müssen vergleichbar sein, d.h. die binäre Methode <= muss auf sie anwendbar sein.
+
+
+Wenn die Elemente, die in eine sortierte Collection eingefügt werden sollen, keine Größen sind und insbesondere den Vergleich <= nicht implementieren, dann ist es immer noch möglich, für eine neue Instanz einer SortedCollection einen sogenannten Sortierblock zu spezifizieren, der zwei formale Parameter hat und dessen Auswertung zurückliefert, ob der erste tatsächlich e Parameter kleiner oder gleich dem zweiten ist.
+
+
+Frage: Was ist ein Sortierblock in SortedCollection in SMALLTALK?
+Antwort: Wenn die Elemente, die in eine sortierte Collection eingefügt werden sollen, keine Größen sind und insbesondere den Vergleich <= nicht implementieren, kann für eine neue Instanz einer SortedCollection ein Sortierblock spezifiziert werden. Dieser Sortierblock ist ein Block mit zwei formalen Parametern, der eine Auswertung zurückliefert, die angibt, ob der erste Parameter kleiner oder gleich dem zweiten ist.
+
+
+Eine Menge von Objekten aus einer Collection kann in eine andere übertragen werden, wobei die Eigenschaften der Ziel-Collection berücksichtigt werden, z. B. asSet, das doppelte Elemente entfernt. Diese Konvertierungsmethoden sind in Collection implementiert, analog zu asBag und asOrderedCollection oben. Besonders interessant sind natürlich Konvertierungen in Collections, die strengere Bedingungen stellen, z. B. asSet und asSortedCollection.
+
+
+Frage: Was können Konvertierungsmethoden in Collections tun?
+Antwort: Konvertierungsmethoden in Collections können eine Menge von Objekten aus einer Collection in eine andere übertragen, wobei die Eigenschaften der Ziel-Collection berücksichtigt werden, z.B. asSet, das doppelte Elemente entfernt. Besonders interessant sind Konvertierungen in Collections, die strengere Bedingungen stellen, z.B. asSet und asSortedCollection.
+
+Frage: Was ist der Zweck von Konvertierungsmethoden in Collection?
+Antwort: Der Zweck von Konvertierungsmethoden in Collection ist es, eine Menge von Objekten aus einer Collection in eine andere zu übertragen, wobei die Eigenschaften der Ziel-Collection berücksichtigt werden, wie z.B. das Entfernen doppelter Elemente bei der Konvertierung in eine Menge (asSet) oder das Sortieren der Elemente bei der Konvertierung in eine sortierte Collection (asSortedCollection).
+
+
+Bitte beachten Sie jedoch, dass eine nachträgliche Änderung der Attributwerte, die zum Vergleich der Objekte für die Sortierung herangezogen wurden, keine automatische Änderung der Reihenfolge bewirkt, selbst wenn dies eigentlich notwendig wäre.
+
+
+Frage: Was passiert, wenn man die Attributwerte eines Objekts nachträglich ändert, die für die Sortierung herangezogen wurden?
+Antwort: Eine nachträgliche Änderung der Attributwerte, die zum Vergleich der Objekte für die Sortierung herangezogen wurden, bewirkt keine automatische Änderung der Reihenfolge.

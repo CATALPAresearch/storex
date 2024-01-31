@@ -1,0 +1,98 @@
+26.3 Kovarianz und Kontravarianz bei Methodenaufrufen
+
+Dass Typerweiterung als Basis des Subtyping keine technischen Probleme bereitet, sollte hinreichend klargeworden sein: Typfehler sind damit ausgeschlossen, und es bleibt lediglich das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind (wie im Beispiel von zweidimensionalen und dreidimensionalen Punkten). Es bleibt noch die Frage, ob und falls ja, in welchem Umfang Typeinschränkung im Rahmen des Subtyping erlaubt ist. Diese Frage soll an einem Beispiel beantwortet werden.
+
+
+Frage: Was ist Typerweiterung als Basis des Subtyping?
+Antwort: Typerweiterung als Basis des Subtyping bedeutet, dass ein neuer Typ, der ein Supertyp ist, zusätzliche Eigenschaften und Methoden enthalten kann, aber die Eigenschaften und Methoden des Supertyps haben muss. Dadurch sind Typfehler ausgeschlossen, und es bleibt lediglich das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind.
+
+Frage: Was ist Typerweiterung und warum bereitet sie keine technischen Probleme?
+Antwort: Typerweiterung ist eine Möglichkeit, eine neue Unterklasse von einer bestehenden Klasse abzuleiten, indem neue Attribute und Methoden hinzugefügt werden. Es bereitet keine technischen Probleme, weil es keine Typfehler verursacht, da die Unterklasse alle Merkmale der Oberklasse erbt und zusätzliche Merkmale hinzufügen kann. Das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind, kann nicht immer vermieden werden, aber es ist kein technisches Problem.
+
+
+Welche Bedingungen sind an die Parametertypen bei der Redefinition zu stellen, damit eine Zuweisung eines Objekts vom Typ B an eine Variable vom Typ A in der Folge zu keiner Verletzung einer (anderen) Typinvariante führt? Die Antwort lässt sich systematisch herleiten. Es ergibt sich, dass sich bei einer Redefinition einer Methode die Eingabeparametertypen einer Funktion nur „nach oben“ (also zu einem Supertypen hin), die Ausgabeparameter hingegen nur „nach unten“ (hin zu einem Subtyp) verändern dürfen, wenn die Typkorrektheit eines Programms nicht verletzt werden soll.
+
+
+Frage: Welche Bedingungen müssen an die Parametertypen bei der Redefinition einer Methode gestellt werden, um eine Verletzung einer Typinvariante zu vermeiden?
+Antwort: Die Typinvariante muss für den neuen Parametertyp und den alten Parametertyp gelten, d.h. der neue Parametertyp muss eine Unterklasse des alten Parametertyps sein.
+
+Frage: Wie verändern sich die Eingabe- und Ausgabeparameter bei einer Methodenredefinition?
+Antwort: Bei einer Methodenredefinition dürfen sich die Eingabeparameter nur zu einem Supertypen hin und die Ausgabeparameter nur zu einem Subtyp hin verändern, um die Typkorrektheit des Programms zu gewährleisten.
+
+Frage: Was passiert bei der Redefinition einer Methode mit den Eingabe- und Ausgabeparametern?
+Antwort: Bei der Redefinition einer Methode dürfen sich die Eingabeparameter nur zu einem Supertypen ändern, während die Ausgabeparameter nur zu einem Subtyp geändert werden dürfen, um die Typkorrektheit des Programms zu gewährleisten.
+
+
+Nun ändern sich aber bei der Redefinition einer Methode nicht nur die Parametertypen (Ein- und Ausgabe bzw. Rückgabe), sondern auch der Typ des Empfängers. Dieser ändert sich bei der Redefinition aber immer nach unten (da der redefinierende Typ ja als Subtyp vom redefinierten abgeleitet wird). Es folgt also, dass die Eingabeparameter zum Empfängertyp gegenläufig variieren müssen, der Ausgabeparameter hingegen gleichgerichtet. Man spricht im ersten Fall daher von einer Kontravarianz, im zweiten von einer Kovarianz, und sagt: Die Eingabeparameter sind kontravariant und der Ausgabeparameter ist kovariant. Man spricht im Kontext von Subtyping auch von Typkonformität des Subtypen mit dem Supertypen.
+
+
+Frage: Was bedeutet Kontravarianz und Kovarianz bei der Redefinition von Methoden?
+Antwort: Bei der Redefinition von Methoden bedeutet Kontravarianz, dass die Eingabeparameter zum Empfängertyp gegenläufig variieren, während Kovarianz bedeutet, dass der Ausgabeparameter gleichgerichtet variiert. Die Eingabeparameter sind kontravariant und der Ausgabeparameter ist kovariant.
+
+Frage: Was ist Kontravarianz und Kovarianz?
+Antwort: Kontravarianz und Kovarianz sind zwei Begriffe, die die Richtung der Variation von Parametern bei der Redefinition von Methoden beschreiben. Kontravarianz bezieht sich auf die Eingabeparameter, die gegenläufig zum Empfängertyp variieren, während Kovarianz sich auf den Ausgabeparameter bezieht, der gleichgerichtet zum Empfängertyp variiert.
+
+Frage: Was ist Subtyping?
+Antwort: Subtyping, auch bekannt als Typkonformität, ist eine Beziehung zwischen zwei Typen, bei der der Subtyp die Eigenschaften des Supertyps erbt und somit mit ihm kompatibel ist.
+
+Frage: Was versteht man unter Typkonformität im Kontext von Subtyping?
+Antwort: Typkonformität im Kontext von Subtyping bedeutet, dass der Subtyp den vom Supertypen definierten Vertrag einhält und somit kompatibel mit dem Supertypen ist. Das heißt, dass der Subtyp alle Methoden und Eigenschaften des Supertyps besitzt und die Methoden des Supertyps korrekt implementiert. Dadurch kann der Subtyp an jeder Stelle eingesetzt werden, an der der Supertyp erwartet wird.
+
+
+Nun enthält die Idee von der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren einen kleinen Schönheitsfehler: Wenn es sich nämlich bei der Eingabe in eine Funktion und bei ihrer Ausgabe um dasselbe Objekt handelt, kann diesem nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden, denn der Subtyp verlangt ja mehr Eigenschaften, als der Supertyp garantiert.
+
+
+Frage: Was ist das Problem bei der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren?
+Antwort: Das Problem ist, dass wenn das Eingabe-Objekt und das Ausgabe-Objekt identisch sind, nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden kann, da der Subtyp mehr Eigenschaften verlangt als der Supertyp garantiert.
+
+Frage: Was ist der Schönheitsfehler bei der Idee von der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren?
+Antwort: Der Schönheitsfehler ist, dass wenn es sich bei der Eingabe in eine Funktion und bei ihrer Ausgabe um dasselbe Objekt handelt, kann diesem nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden, denn der Subtyp verlangt ja mehr Eigenschaften, als der Supertyp garantiert.
+
+Frage: Warum kann einem Objekt nicht einmal ein Supertyp und einmal ein Subtyp zugedacht werden?
+Antwort: Das ist nicht möglich, weil ein Subtyp mehr Eigenschaften verlangt als ein Supertyp garantiert. Wenn es sich bei der Eingabe in eine Funktion und bei ihrer Ausgabe um dasselbe Objekt handelt, kann diesem nicht einmal ein Supertyp und einmal ein Subtyp zugedacht werden, da dies zu inkonsistenten Zuständen führen würde.
+
+
+Da das Umgekehrte freilich auch nicht geht, bleibt nichts anderes, als die Unveränderlichkeit der Parametertypen, auch als Invarianz oder besser (da das dazu passende Adjektiv „invariant“ in seiner Bedeutung schon belegt ist) als Novarianz bezeichnet, zu verlangen.
+
+
+Frage: Was ist Novarianz?
+Antwort: Novarianz ist die Unveränderlichkeit der Parametertypen in einem Programm.
+
+Frage: Was bedeutet Novarianz?
+Antwort: Novarianz bedeutet, dass die Parametertypen unveränderlich sein müssen, um die Integrität der Objekte zu gewährleisten. Diese Unveränderlichkeit wird auch als Invarianz bezeichnet.
+
+
+Obige analytischen Überlegungen führen also, mit der eben gemachten Einschränkung, zur Regel von den kontravarianten Parameter- und den kovarianten Rückgabetypredefinitionen. Es gibt aber noch einen zweiten Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen, die diese Betrachtung deutlich in Frage stellen. Dazu soll (wie schon in Kapitel 25) die Interpretation von Methoden als Relationen bzw., da hier der Rückgabetyp mit berücksichtigt wird, als Funktionen oder Abbildungen herhalten. Der hier zweistellige Definitionsbereich (Empfängertyp plus Parametertyp) der Funktion steht dabei stellvertretend für beliebige Stellenzahl, also für Methoden mit beliebig vielen Parametern. Der Wertebereich ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
+
+
+Frage: Wie können Methoden als Relationen interpretiert werden?
+Antwort: Methoden können als Relationen interpretiert werden, wobei der Definitionsbereich (Empfängertyp plus Parametertyp) stellvertretend für beliebige Stellenzahl steht und der Wertebereich einstellig ist, da eine Methode stets nur einen Wert zurückgibt.
+
+Frage: Wie können Methoden interpretiert werden?
+Antwort: Methoden können als Relationen interpretiert werden, oder, da hier der Rückgabetyp mit berücksichtigt wird, als Funktionen oder Abbildungen.
+
+Frage: Was ist der zweite Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen?
+Antwort: Der zweite Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen ist die Interpretation von Methoden als Relationen bzw. als Funktionen oder Abbildungen. Hier steht der zweistellige Definitionsbereich (Empfängertyp plus Parametertyp) der Funktion stellvertretend für beliebige Stellenzahl, also für Methoden mit beliebig vielen Parametern. Der Wertebereich ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
+
+
+Wenn man nun die Anzahl der Empfängerobjekte einschränkt (was ja beim Übergang zu einem Subtypen geschieht), dann schrumpft damit nicht nur der Wertebereich der Funktion (wie in Kapitel 25 schon illustriert), sondern auch die Menge der möglichen Eingabewerte (der zweite und alle weiteren Definitionsbereiche), die mit der bereits eingeschränkten Menge der Empfänger gemeinsam auftreten können. Es verhalten sich also nicht nur die Ergebnistypen, sondern auch die Parametertypen kovariant.
+
+
+Frage: Was bedeutet es, wenn Parametertypen kovariant sind?
+Antwort: Wenn Parametertypen kovariant sind, dann schrumpft die Menge der möglichen Eingabewerte, wenn man die Anzahl der Empfängerobjekte einschränkt.
+
+Frage: Was bedeutet kovariant?
+Antwort: Kovariant bedeutet, dass die Parametertypen sich entsprechend der Variation der Ergebnistypen verhalten. Wenn also der Ergebnistyp eingeschränkt wird, werden auch die Parametertypen entsprechend eingeschränkt.
+
+
+Dieses Ergebnis ist gewissermaßen frustrierend, da es die soeben hergeleitete Kontravarianzregel für Parametertypen infrage stellt: Was programmiertechnisch möglich und sinnvoll erscheint, hat in der Realität (der Interpretation oder Semantik) keine Bedeutung. Auf der anderen Seite erklärt es aber, warum kontravariante Parameterredefinitionen in der Programmierpraxis nicht benötigt werden. Kovarianz für Parametertypen zuzulassen, so sinnvoll es auch zu sein scheint, erlaubt jedoch typinkorrekte Programme; Sie werden im Kontext der Programmiersprache EIFFEL (Kurseinheit 5, Abschnitt 52.5) noch ausführlicher auf das Problem und eine mögliche Lösung hingewiesen.
+
+
+Frage: Was bedeutet die Kontravarianzregel für Parametertypen?
+Antwort: Die Kontravarianzregel für Parametertypen bedeutet, dass eine Unterklasse eine Methode mit einem formellen Parameter vom Typ der Oberklasse aufrufen kann, wobei der tatsächliche Parameter vom Typ der Unterklasse ist. Diese Regel ist in der Realität jedoch nicht sinnvoll und wird in der Programmierpraxis nicht benötigt.
+
+Frage: Was bedeutet Kontravarianz für Parametertypen?
+Antwort: Kontravarianz für Parametertypen bedeutet, dass eine Unterklasse einen Parametertyp eines übergeordneten Typs ersetzen kann. Dies ist in der Programmierpraxis jedoch nicht notwendig, da es in der Realität keine Bedeutung hat.
+
+Frage: Was ist die Kontravarianzregel für Parametertypen?
+Antwort: Die Kontravarianzregel für Parametertypen ist eine Regel in der objektorientierten Programmierung, die besagt, dass ein Untertyp eines Parametertyps als Argument für eine Methode verwendet werden kann, die den Obertyp des Parametertyps erwartet. Diese Regel wird infrage gestellt, weil sie in der Realität (der Interpretation oder Semantik) keine Bedeutung hat, aber in der Programmierpraxis nicht benötigt wird.

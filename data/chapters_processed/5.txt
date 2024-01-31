@@ -1,0 +1,11 @@
+5 Zusammenfassung der SMALLTALK-Syntax
+
+Sicher ist Ihnen aufgefallen, dass uns bislang keine Schlüsselwörter in SMALLTALK begegnet sind (bis auf die sog. Schlüsselwortnachrichten, die aber frei wählbar sind und deswegen eben gerade keine Schlüsselwörter sind). Der Grund hierfür ist einfach: Es gibt keine Schlüsselwörter, lediglich ein paar Symbole mit spezieller Bedeutung. Es sind dies:
+Zuweisung, Trennzeichen zwischen zwei Anweisungen sowie Dezimalpunkt für Gleitkommazahlen, Trennzeichen zum Kaskadieren von Nachrichten, Markierung von Parametern in Nachrichten und Blöcken, Klammerung von Ausdrücken zur Festlegung der Reihenfolge der Auswertung, Bildung von Blöcken, Trennzeichen zwischen den Parametern eines Blocks und seinen Anweisungen, Markierung von Kommentaren, Markierung von String-Literalen, Markierung von Zeichenliteralen, Markierung von Symbol- und Array-Literalen, Rückgabe-Operator (Return)
+Das ist alles! Die reservierten Namen true, false, nil, self und super sind die von Pseudovariablen; alle aus anderen Sprachen bekannten Schlüsselwörter sind als Methoden in SMALLTALK selbst definiert.
+
+Frage: Warum gibt es in SMALLTALK keine Schlüsselwörter?
+Antwort: In SMALLTALK gibt es keine Schlüsselwörter, sondern nur Symbole mit spezieller Bedeutung. Stattdessen sind alle aus anderen Sprachen bekannten Schlüsselwörter in SMALLTALK als Methoden implementiert.
+
+Frage: Was sind reservierte Namen in SMALLTALK?
+Antwort: In SMALLTALK gibt es einige reservierte Namen, die als Pseudovariablen dienen. Diese reservierten Namen sind: true, false, nil, self and super. Alle anderen Schlüsselwörter, die in anderen Programmiersprachen üblich sind, werden in SMALLTALK als Methoden definiert.

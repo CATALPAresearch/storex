@@ -1,0 +1,58 @@
+10.2 Vererbung in prototypenbasierten Sprachen
+
+In der klassenbasierten Form der objektorientierten Programmierung ist die Vererbung an Klassen gebunden: Selbst wenn sich die Definitionen eigentlich auf die Instanzen der Klassen beziehen, so ist es doch die Klasse, die Teile ihrer Definition (Intension) von anderen erbt. Im Gegensatz dazu ist die Vererbung in prototypenbasierten objektorientierten Programmiersprachen, in denen es ja keine Klassen gibt, vollständig zwischen Objekten definiert: Jedes Objekt gibt eines oder mehrere andere an, deren Eigenschaften und Verhalten es übernimmt. Dabei kann es geerbte Teile der Definition überschreiben und auch löschen.
+
+
+Frage: Wie ist die Vererbung in der klassenbasierten und prototypenbasierten objektorientierten Programmierung definiert?
+Antwort: In der klassenbasierten Form der objektorientierten Programmierung ist die Vererbung an Klassen gebunden, während in prototypenbasierten objektorientierten Programmiersprachen die Vererbung vollständig zwischen Objekten definiert ist.
+
+Frage: Wie ist die Vererbung in der klassenbasierten Form der objektorientierten Programmierung gebunden?
+Antwort: In der klassenbasierten Form der objektorientierten Programmierung ist die Vererbung an Klassen gebunden, d.h. Selbst wenn sich die Definitionen eigentlich auf die Instanzen der Klassen beziehen, so ist es doch die Klasse, die Teile ihrer Definition (Intension) von anderen erbt.
+
+Frage: Was ist der Unterschied zwischen klassenbasierter und prototypenbasierter objektorientierter Programmierung in Bezug auf Vererbung?
+Antwort: In der klassenbasierten Form der objektorientierten Programmierung ist die Vererbung an Klassen gebunden, während in prototypenbasierten objektorientierten Programmiersprachen, in denen es ja keine Klassen gibt, die Vererbung vollständig zwischen Objekten definiert ist.
+
+
+Auf den ersten Blick scheint es so, als sei dies sogar der natürlichere Weg der Vererbung: Schließlich findet in der Natur Vererbung ja auch ausschließlich zwischen Individuen statt, ja genaugenommen gibt es so etwas wie biologische Klassen (Arten etc.) in der Natur überhaupt nicht. Denn es differenzieren sich ständig einzelne „Arten“ zu neuen, und es ist nicht ausgeschlossen, dass einmal ausdifferenzierte Arten irgendwann wieder verschmelzen. Abgesehen davon ist, wie bereits in Kapitel 7 erwähnt, die reale Existenz von Allgemeinbegriffen strittig (der Universalienstreit).
+
+
+Frage: Wie verhält sich die Vererbung in der Natur?
+Antwort: In der Natur findet Vererbung ausschließlich zwischen Individuen statt. Es gibt keine biologischen Klassen wie Arten, sondern Individuen differenzieren sich ständig zu neuen Arten und können wieder verschmelzen.
+
+Frage: Was ist der natürlichere Weg der Vererbung?
+Antwort: Auf den ersten Blick scheint es so, als sei der natürlichere Weg der Vererbung, dass sie ausschließlich zwischen Individuen stattfindet, wie es auch in der Natur der Fall ist.
+
+
+Man kann dem freilich entgegenhalten, dass man als Programmierer keine einzelnen Objekte, sondern Klassen entwirft, die damit die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben. Auch sind objektorientierte Programme nicht für die Ewigkeit gemacht, sondern unterliegen der ständigen Anpassung, eben der Evolution, und somit sind auch Klassendefinitionen im ständigen Wandel. Eine Übertragung der Vererbung auf Klassen ist also nicht vollkommen unnatürlich.
+
+
+Frage: Kann man in der objektorientierten Programmierung Klassen entwerfen?
+Antwort: Ja, in der objektorientierten Programmierung kann man Klassen entwerfen, die die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben. Objekte werden durch Instanzen dieser Klassen erzeugt.
+
+Frage: Sind Klassendefinitionen in der objektorientierten Programmierung ständig im Wandel?
+Antwort: Ja, Klassendefinitionen unterliegen in der objektorientierten Programmierung der ständigen Anpassung und somit der Evolution.
+
+Frage: Ist eine Übertragung der Vererbung auf Klassen in der objektorientierten Programmierung unnatürlich?
+Antwort: Nein, eine Übertragung der Vererbung auf Klassen ist in der objektorientierten Programmierung nicht unnatürlich.
+
+Frage: Kann man Klassen als Schöpfung der objektorientierten Programmierung betrachten?
+Antwort: Objektorientierte Programmierung ist eine Weltsicht, die auf der Schöpfung von Objekten basiert, aber man kann dem freilich entgegenhalten, dass man als Programmierer keine einzelnen Objekte, sondern Klassen entwirft, die damit die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben.
+
+Frage: Warum ist die Übertragung der Vererbung auf Klassen nicht vollkommen unnatürlich?
+Antwort: Die Übertragung der Vererbung auf Klassen ist nicht vollkommen unnatürlich, weil Programmierer in objektorientierten Programmen Klassen entwerfen, die die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben. Zudem sind objektorientierte Programme nicht für die Ewigkeit gemacht, sondern unterliegen der ständigen Anpassung und somit sind auch Klassendefinitionen im ständigen Wandel.
+
+
+Nicht zuletzt muss man auch erkennen, dass viele Anwendungsdomänen, für die programmiert wird, aus massenhaft gleichen Objekten bestehen, die durch den klassenbasierten Ansatz besser abgedeckt werden als durch den prototypenbasierten. Und so macht denn auch die Vererbung unter Instanzen das Nachvollziehen (und Debuggen) eines Programms eher noch schwieriger als die Vererbung unter Klassen ohnehin schon (s. Kapitel 56 in Kurseinheit 6).
+
+
+Frage: Was ist der Unterschied zwischen klassenbasiertem und prototypenbasiertem Ansatz in der Programmierung?
+Antwort: Im klassenbasierten Ansatz werden Objekte durch Klassen definiert, die eine Art "Blaupause" für die Objekte sind. Im Gegensatz dazu werden Objekte im prototypenbasierten Ansatz durch andere Objekte erzeugt, die als Prototypen dienen.
+
+Frage: Warum ist die Vererbung unter Instanzen das Nachvollziehen (und Debuggen) eines Programms schwieriger als die Vererbung unter Klassen?
+Antwort: Die Vererbung unter Instanzen kann das Nachvollziehen und Debuggen eines Programms schwieriger machen, da die Vererbungshierarchie nicht so einfach zu verfolgen ist wie bei der Vererbung unter Klassen. Die Vererbung unter Klassen ist üblicherweise hierarchisch und bietet eine klare Struktur, während die Vererbung unter Instanzen eher netzartig sein kann und daher schwieriger nachzuvollziehen ist.
+
+Frage: Was ist der Unterschied zwischen dem klassenbasierten und dem prototypenbasierten Ansatz in der objektorientierten Programmierung?
+Antwort: Im klassenbasierten Ansatz werden sämtliche Informationen als ein Geflecht von Objekten dargestellt, die auf Klassen basieren. In einem prototypenbasierten Ansatz hingegen werden Objekte als Prototypen verwendet, die als Vorlage für andere Objekte dienen. Der klassenbasierte Ansatz ist besser geeignet, wenn es viele gleiche Objekte gibt, während der prototypenbasierte Ansatz eher für die Erstellung von einzigartigen Objekten geeignet ist.
+
+Frage: Was sind die Vorteile des klassenbasierten Ansatzes gegenüber dem prototypenbasierten Ansatz?
+Antwort: Der klassenbasierte Ansatz ist besser geeignet, um massenhaft gleiche Objekte abzudecken, was in vielen Anwendungsdomänen der Fall ist. Im Vergleich zur Vererbung unter Instanzen, die der prototypenbasierte Ansatz bietet, ist die Vererbung unter Klassen im klassenbasierten Ansatz einfacher nachzuvollziehen und zu debuggen.

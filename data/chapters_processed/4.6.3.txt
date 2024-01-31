@@ -1,0 +1,16 @@
+4.6.3 Iteration
+
+Wenn Sie If und While schon kennen, kennen Sie sicher auch For. Die klassische Form der For-Schleife verwendet eine Zählvariable, einen Anfangswert, ein Inkrement (das auch negativ, also ein Dekrement sein kann) sowie einen Endwert. Solche For-Schleifen gibt es in SMALLTALK auch.
+Hier interessiert uns aber vor allem eine Form der Iteration, die nicht einer einfachen Zählschleife entspricht, sondern über eine Menge von beliebigen Objekten geht. Solche Mengen sind uns ja schon begegnet, wenn auch nur in Gestalt von literalen Arrays.
+Anders als in vielen anderen Sprachen kann man in SMALLTALK über die Elemente eines Arrays direkt, also ohne die Verwendung einer Zählschleife, deren Laufvariable als Index in das Array dient, iterieren. i ist aber diesmal keine Zählvariable, da hier nichts gezählt wird; es ist vielmehr eine Laufvariable, der der Reihe nach die Elemente des literalen Arrays #(5) zugewiesen werden. do: ersetzt also ganz offensichtlich das aus manchen anderen Sprachen bekannte For-each-Konstrukt.
+Wie wir gleich sehen werden, ist die Iteration, also das Fortschalten der Elemente und die Überprüfung der Abbruchbedingung, in der Collection, über die iteriert wird, implementiert. Deshalb nennt man dieses Verfahren auch interne Iteration (im Gegensatz zur herkömmlichen externen Iteration, bei der die Laufvariable selbst gesetzt und abgefragt werden muss).
+Die Implementierung der Kontrollstruktur erfolgt wiederum selbst in SMALLTALK und ist ziemlich einfach. Dabei ist to:do: für Ganzahlen analog zu dem bereits erwähnten to:by:do implementiert. Die Zählvariable index des Blocks läuft von 1 bis zur Anzahl der indizierten Instanzvariablen des Empfängers von do: (im obigen Beispiel ein Array). Diese Anzahl wird über den Aufruf von size auf dem Empfänger (repräsentiert durch self) abgefragt. Der Inhalt der indizierten Instanzvariable n des Empfängers wird dann der Reihe nach als Parameter mittels value: an den Block aBlock zur Auswertung geschickt.
+
+Frage: Wie wird die Iteration in SMALLTALK realisiert?
+Antwort: Die Iteration in SMALLTALK erfolgt durch eine Form der internen Iteration, bei der die Steuerstruktur für das Fortschreiten durch Elemente und die Überprüfung der Abbruchbedingung innerhalb der Sammlung erfolgt, über die iteriert wird.
+
+Frage: Was ist interne Iteration?
+Antwort: Bei der internen Iteration erfolgt die Steuerstruktur für das Fortschreiten durch Elemente und die Überprüfung der Abbruchbedingung innerhalb der Sammlung erfolgt, über die iteriert wird.
+
+Frage: Was ist externe Iteration?
+Antwort: Bei der traditionellen externen Iteration muss manuell eine Schleifenvariable als Index verwaltet werden.

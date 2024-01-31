@@ -1,0 +1,23 @@
+62.1 Verwendung von Abkürzungen
+
+Abkürzungen sind nicht grundsätzlich zu vermeiden — im Gegenteil, wenn sie etabliert sind und man davon ausgehen darf, dass eine Leserin des Programms sie kennt, ist ihre Verwendung (aus den oben angeführten Gründen gegen zu lange Namen) sogar angezeigt. Auf hausgemachte Abkürzungen, deren Bedeutung nur von einem selbst bekannt ist, sollte man hingegen verzichten.
+
+
+Frage: Sind Abkürzungen in der Programmierung zu vermeiden?
+Antwort: Abkürzungen sind nicht grundsätzlich zu vermeiden. Wenn sie etabliert sind und man davon ausgehen darf, dass eine Leserin des Programms sie kennt, ist ihre Verwendung sogar angezeigt. Man sollte jedoch auf hausgemachte Abkürzungen verzichten, deren Bedeutung nur von einem selbst bekannt ist.
+
+
+Bei der Programmierung mit Java und anderen typisierten objektorientierten Programmiersprachen begegnet man häufig dem Phänomen, dass Typen und Variablen gleich heißen, sich nur in der Groß- bzw. Kleinschreibung ihres Anfangsbuchstabens unterscheiden. Ein typisches Beispiel dafür ist das folgende:
+
+Frage: Wie werden Typen und Variablen in Java bezeichnet?
+Antwort: In Java werden Typen und Variablen häufig gleich benannt, sich nur in der Groß- bzw. Kleinschreibung ihres Anfangsbuchstabens unterscheidend. Ein typisches Beispiel dafür ist das folgende:
+
+
+In diesen Fällen, wenn es keinen besseren Namen für die Variable gibt, ist es vollkommen legitim, eine Abkürzung für den Variablennamen zu wählen, insbesondere dann, wenn die Sichtbarkeit der Variable auf die unmittelbare Umgebung der Deklaration beschränkt ist. Sobald dies jedoch nicht der Fall ist (typischerweise schon bei der Deklaration von Instanzvariablen), sollte der lange Name bevorzugt werden. Dies gilt auch für den Fall, dass der Typ der Variable aus dem Kontext abgeleitet werden kann und deswegen nicht mehr angegeben wird (Typinferenz).
+
+
+Frage: Wann sollte man einen langen Namen für eine Variable bevorzugen?
+Antwort: Einen langen Namen für eine Variable sollte man bevorzugen, wenn der Typ der Variablen nicht mehr angegeben wird (Typinferenz), wenn die Sichtbarkeit der Variablen nicht auf die unmittelbare Umgebung der Deklaration beschränkt ist oder wenn der Typ der Variable aus dem Kontext nicht abgeleitet werden kann.
+
+Frage: Warum sollte man den langen Namen einer Variablen bevorzugen, wenn sie nicht nur in ihrer unmittelbaren Umgebung sichtbar ist?
+Antwort: Der lange Name einer Variablen sollte bevorzugt werden, wenn sie nicht nur in ihrer unmittelbaren Umgebung sichtbar ist, um die Lesbarkeit und Verständlichkeit des Codes zu erhöhen. Ein aussagekräftiger und beschreibender Name hilft anderen Programmierern und auch dem zukünftigen Selbst, den Zweck und die Funktion der Variablen besser zu verstehen.

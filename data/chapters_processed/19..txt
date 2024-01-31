@@ -1,0 +1,56 @@
+19. Deklaration, Definition und Verwendung von Programmelementen
+
+Programme bestehen aus Schlüsselwörtern und -zeichen sowie aus Programmelementen, deren Namen, die sogenannten Bezeichner, frei vergeben werden können. Viele Programmiersprachen verlangen, dass man diese Programmelemente vor der ersten Verwendung vereinbart oder deklariert. Durch eine solche Deklaration gibt man dem Compiler den Bezeichner bekannt; er kann ihn in der Folge wiedererkennen und mit der Deklaration in Verbindung bringen.
+
+
+Frage: Was ist eine Deklaration in Programmierung?
+Antwort: Eine Deklaration in Programmierung ist ein Vorgang, bei dem man Programmelemente, wie Variablen oder Funktionen, vor der ersten Verwendung bekannt gibt. Dabei wird der Bezeichner dem Compiler bekannt gegeben, damit er ihn in der Folge wiedererkennen und mit der Deklaration in Verbindung bringen kann.
+
+Frage: Was ist die Bedeutung einer Deklaration in Programmierung?
+Antwort: Eine Deklaration in Programmierung ist ein Prozess, bei dem man einem Compiler einen Bezeichner bekannt gibt, bevor er zum ersten Mal verwendet wird. Dies ermöglicht es dem Compiler, den Bezeichner in der Folge wiederzuerkennen und mit der Deklaration in Verbindung zu bringen.
+
+
+Bei der Definition wird dem Bezeichner das zugeordnet, wofür er steht. Im Falle einer Variable ist das eine bestimmte Stelle im Speicher, die genügend Platz bietet, um den Wert der Variable aufzunehmen. Im Falle einer Methode sind es die Anweisungen, die durch die Methode zusammengefasst werden. Nicht selten (aber immer abhängig von der Programmiersprache) erfolgen Deklaration und Definition in einem Ausdruck. In solchen Fällen spricht man von Deklaration beziehungsweise Definition des Programmelementes, abhängig davon, was man gerade meint. Bei Variablen ist die Definition in der Regel implizit und aus der Deklaration ableitbar (der Speicherplatz wird vom Compiler automatisch zugewiesen), so dass man hier häufig Deklaration meint, selbst wenn man Definition sagt. Bei Methoden hingegen ist die Unterscheidung essentiell: In ihrer Deklaration wird ihre Signatur, das ist ihr Name (in SMALLTALK der Nachrichtenselektor), und die Liste der formalen Parameter bekanntgegeben. In ihrer Definition wird der Signatur der Methodenrumpf, also die Folge der mit der Methode verbundenen und bei einem Aufruf auszuführenden Anweisungen, zugeordnet. Von der Definition einer Variable zu unterscheiden ist übrigens ihre Initialisierung, bei der ihr (der dafür vorgesehenen Speicherstelle) ein Anfangswert zugewiesen wird; in manchen Kontexten (insbesondere im Kontext der Programmanalyse) ist mit Variablendefinition aber auch die Zuweisung eines Werts an eine Variable ganz allgemein gemeint.
+
+
+Frage: Was ist der Unterschied zwischen Deklaration und Definition einer Variablen?
+Antwort: Bei der Deklaration wird dem Bezeichner das zugeordnet, wofür er steht, während bei der Definition der Speicherplatz für die Variable zugewiesen wird. In manchen Kontexten wird der Begriff Definition aber auch für die Zuweisung eines Anfangswerts an eine Variable verwendet.
+
+Frage: Was ist die Signatur einer Methode?
+Antwort: Die Signatur einer Methode ist ihr Name und die Liste der formalen Parameter.
+
+Frage: Was ist der Unterschied zwischen Deklaration und Definition einer Methode?
+Antwort: Bei der Deklaration wird die Signatur einer Methode bekannt gegeben, bei der Definition wird der Signatur der Methodenrumpf zugeordnet.
+
+Frage: Was ist die Initialisierung einer Variablen?
+Antwort: Die Initialisierung einer Variablen ist die Zuweisung eines Anfangswerts an eine Variable.
+
+
+Deklaration und Definition dienen letztlich nur einem Zweck: der Verwendung. Die Verwendung eines Programmelements äußert sich darin, dass sein Name, der Bezeichner, im Programmtext angeführt oder referenziert wird. An der Stelle der Verwendung steht eine Variable für den Wert, den sie hat (bzw., wenn sie auf der linken Seite einer Zuweisung auftaucht, haben soll). Der Bezeichner einer Methode steht hingegen meistens für ihren Aufruf (in manchen Sprachen durch ein Schlüsselwort eingeleitet), seltener auch für einen Zeiger auf die Implementierung.
+
+
+Frage: Was ist der Zweck der Deklaration und Definition von Programmelementen?
+Antwort: Der Zweck der Deklaration und Definition von Programmelementen ist die Verwendung. Die Verwendung eines Programmelements äußert sich darin, dass sein Name, der Bezeichner, im Programmtext angeführt oder referenziert wird.
+
+
+Variablendeklarationen haben Sie in SMALLTALK bislang an zwei Stellen gesehen: als formale Parameter in Methodendeklarationen und als temporäre, lokale Variablen in Methodenrümpfen. Im Beispiel stecken die Deklarationen von a und b als formaler Parameter und von c als temporäre Variable. Weitere Formen der Deklaration werden Sie im Verlauf dieses Kurstextes noch kennenlernen.
+
+
+Frage: Wo können Variablen in SMALLTALK deklariert werden?
+Antwort: Variablen können in SMALLTALK als formale Parameter in Methodendeklarationen und als temporäre, lokale Variablen in Methodenrümpfen deklariert werden.
+
+Frage: Was sind formale Parameter in SMALLTALK?
+Antwort: Formale Parameter sind Variablen, die in der Deklaration einer Methode angegeben werden und Werte entgegennehmen, die bei einem Methodenaufruf übergeben werden.
+
+Frage: Was sind temporäre Variablen in SMALLTALK?
+Antwort: Temporäre Variablen sind lokale Variablen, die in der Methode deklariert und verwendet werden, um temporäre Werte zu speichern oder Berechnungen durchzuführen. Sie sind nur innerhalb der Methode verfügbar und verlieren ihren Wert, sobald die Methode beendet ist.
+
+
+In untypisierten Sprachen werden Variablen ohne Angabe eines Typs (wie z. B. in SMALLTALK) oder gar nicht (etliche Skriptsprachen und z. B. BASIC) deklariert. Letzteres hat den erheblichen Nachteil, dass Variablen durch ihre erste Verwendung quasi implizit deklariert (und damit angelegt) werden, was bei Schreibfehlern dazu führt, dass man plötzlich zwei Variablen anstatt einer hat, wobei die eine mit der anderen nichts zu tun hat. Eine solche Einladung zu Programmierfehlern sollten Sie als diejenige, die die Entscheidung für die Auswahl einer Sprache zu treffen hat, stets ablehnen.
+
+
+Frage: Was sind die Nachteile von Sprachen, die Variablen nicht deklarieren?
+Antwort: Wenn Variablen nicht deklariert werden, können Schreibfehler dazu führen, dass plötzlich zwei Variablen anstatt einer existieren, was zu Programmierfehlern führen kann. Diese Art von Fehlern ist schwer zu erkennen und zu beheben.
+
+Frage: Warum sollte man die Verwendung von Sprachen, die Variablen nicht deklarieren, vermeiden?
+Antwort: Man sollte die Verwendung von Sprachen, die Variablen nicht deklarieren, vermeiden, weil dies zu Programmierfehlern führen kann, wenn Variablen durch ihre erste Verwendung implizit deklariert werden und Schreibfehler dazu führen, dass man plötzlich zwei Variablen anstatt einer hat, die nichts miteinander zu tun haben.

@@ -1,0 +1,84 @@
+29.5 Rekursiv beschränkter parametrischer Polymorphismus
+
+Rekursive Typen sind Typen, die sich in ihrer Definition selbst referenzieren. Ein Beispiel für einen rekursiven Typ hatten Sie oben schon kennengelernt: Der (zur Klasse Person gehörende) Typ Person hat Methoden, die Person als Parameter- bzw. Rückgabetypen haben. Rekursive Typen sind ein wichtiges Instrument der Programmierung. Ohne sie wären dynamische Strukturen wie beispielsweise verschachtelte Listen oder Bäume kaum möglich. Rekursive Typen bringen jedoch auch bestimmte Probleme mit sich. Zum Beispiel ist die strukturelle Äquivalenz zweier rekursiver Typen nicht so leicht festzustellen, da die dazu notwendige Expansion rekursiver Typen (das Einsetzen der Struktur für jeden darin vorkommenden Typnamen) unendlich große Definitionen ergeben kann.
+
+
+Frage: Was sind rekursive Typen?
+Antwort: Rekursive Typen sind Typen, die sich in ihrer Definition selbst referenzieren. Sie sind ein wichtiges Instrument der Programmierung, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu ermöglichen. Allerdings bringen sie auch Probleme mit sich, wie zum Beispiel die Feststellung der strukturellen Äquivalenz zweier rekursiver Typen, die aufgrund der notwendigen Expansion unendlich große Definitionen ergeben kann.
+
+Frage: Wozu werden rekursive Typen verwendet?
+Antwort: Rekursive Typen werden verwendet, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu definieren. Sie sind ein wichtiges Instrument der Programmierung, bringen aber auch Probleme mit sich, wie zum Beispiel die Schwierigkeit, die strukturelle Äquivalenz zweier rekursiver Typen festzustellen.
+
+
+Ein weiteres Problem ergibt sich, wenn man in einer parametrischen Typdefinition den Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel halten möchte, dieser Typ jedoch der definierte Typ ist (eine binäre Methode; siehe Fußnote 21 in Kapitel 4.3). So möchte man beispielsweise den Test auf Gleichheit so definieren, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
+
+
+Frage: Was ist das Problem bei der Variabilität des Typs eines Methodenarguments in einer parametrischen Typdefinition?
+Antwort: Das Problem ist, dass der Typ des Methodenarguments der definierte Typ ist und man dennoch den Typ variabel halten möchte. Zum Beispiel bei der Definition des Test auf Gleichheit, wo das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
+
+Frage: Was ist das Problem bei der Verwendung von variablen Typen in einer parametrischen Typdefinition?
+Antwort: Das Problem ist, dass der Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel sein soll, aber der Typ bereits definiert ist. Dies tritt auf, wenn man beispielsweise den Test auf Gleichheit so definieren möchte, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
+
+Frage: Warum möchte man den Typ eines Methodenarguments variabel halten in einer parametrischen Typdefinition?
+Antwort: Man möchte den Typ eines Methodenarguments variabel halten, um beispielsweise den Test auf Gleichheit so zu definieren, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
+
+
+Nun ist jedoch Number ein Subtyp von Object, sodass man die Deklaration von "=" eigentlich aus Object übernehmen könnte, wenn der Typ des Parameters automatisch so angepasst würde, dass er dem definierten Typ entspricht. In einem ersten Ansatz wäre man vielleicht versucht, den Gleichheitstest in Object einfach als "= einObject <Self> ^ <Boolean>" zu deklarieren, aber das würde, wenn die Pseudo-Typvariable Self beim Subtyping jeweils den Subtyp annimmt, zu einer kovarianten Redefinition mit den bereits bekannten Problemen führen. Auch hier bietet der parametrische Polymorphismus eine Alternative, wenn auch nicht ganz so, wie vielleicht erwartet.
+
+
+Frage: Was ist der parametrische Polymorphismus?
+Antwort: Der parametrische Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Funktion oder Methode mit verschiedenen Typen verwendet werden kann, indem die Typen als Parameter übergeben werden. In diesem Fall wird der Gleichheitstest in Object als parametrische Methode deklariert, die den Typ des Parameters automatisch an den definierten Typ anpasst.
+
+Frage: Was ist das Problem bei der kovarianten Redefinition von "=" in Object?
+Antwort: Das Problem bei der kovarianten Redefinition von "=" in Object ist, dass es zu Problemen führen würde, wenn die Pseudo-Typvariable Self beim Subtyping jeweils den Subtyp annimmt.
+
+Frage: Was ist der Unterschied zwischen Invarianz, Kovarianz und Kontravarianz?
+Antwort: Invarianz, Kovarianz und Kontravarianz sind Konzepte in der objektorientierten Programmierung, die sich auf die Beziehung zwischen dem Typ eines Objekts und dem Typ eines seiner Untertypen beziehen. Invarianz bedeutet, dass der Typ eines Objekts unverändert bleibt, wenn es in ein Untertyp-Objekt konvertiert wird. Kovarianz bedeutet, dass der Typ eines Objekts sich auf die gleiche Weise ändert wie der Typ des Untertyps, wenn es in ein Untertyp-Objekt konvertiert wird. Kontravarianz bedeutet, dass der Typ eines Objekts sich entgegengesetzt zum Typ des Untertyps ändert, wenn es in ein Untertyp-Objekt konvertiert wird.
+
+
+Man ersetzt dazu zunächst den Typ des Parameters durch eine Typvariable T. Was man machen kann, ist, einen allgemeinen parametrischen Typ zu definieren, der nur dem Zweck des Gleichheitstests dient und den Parametertyp des Tests variabel hält.
+
+
+Frage: Was ist eine Typvariable?
+Antwort: Eine Typvariable ist ein Platzhalter für einen Typ, der in diesem Fall verwendet wird, um den Typ des Parameters durch eine Variable zu ersetzen, um einen allgemeinen parametrischen Typ zu definieren.
+
+Frage: Wozu dient ein allgemeiner parametrischer Typ ?
+Antwort: Ein allgemeiner parametrischer Typ dient dem Zweck, den Parametertyp des Tests variabel zu halten und nur für den Gleichheitstest verwendet zu werden.
+
+Frage: Was ist ein parametrischer Typ?
+Antwort: Ein parametrischer Typ ist ein Typ, der einen oder mehrere Typvariablen enthält, die bei der Instanziierung durch konkrete Typen ersetzt werden. Dies ermöglicht die Erstellung von generischen Klassen und Methoden, die für verschiedene Typen verwendet werden können.
+
+Frage: Wozu dient ein parametrischer Typ im Gleichheitstest?
+Antwort: Ein parametrischer Typ wird im Gleichheitstest verwendet, um den Typ des Parameters variabel zu halten und einen allgemeinen Gleichheitstest zu definieren, der für verschiedene Typen verwendet werden kann.
+
+
+Man kann dann die gewünschte Rekursion indirekt, nämlich per Definition eines nicht parametrischen Typs als Subtyp des parametrisierten Typs Equatable herstellen, wobei man den zu definierenden Typ gleichzeitig als tatsächlichen Typparameter einsetzt.
+
+
+Frage: Wie kann man Rekursion in einem parametrisierten Typ herstellen?
+Antwort: Man kann die gewünschte Rekursion indirekt herstellen, indem man einen nicht parametrischen Typ als Subtyp des parametrisierten Typs Equatable definiert und gleichzeitig den zu definierenden Typ als tatsächlichen Typparameter einsetzt.
+
+Frage: Wie kann man Rekursion in Smalltalk definieren?
+Antwort: In Smalltalk kann man Rekursion indirekt definieren, indem man einen nicht parametrischen Typ als Subtyp des parametrisierten Typs Equatable definiert und gleichzeitig als tatsächlichen Typparameter einsetzt.
+
+Frage: Wie kann man Rekursion in der Programmierung herstellen?
+Antwort: Eine Möglichkeit, Rekursion in der Programmierung herzustellen, ist die Verwendung eines nicht parametrischen Typs als Subtyp eines parametrisierten Typs, wobei man den zu definierenden Typ gleichzeitig als tatsächlichen Typparameter einsetzt.
+
+
+Genau diese Beschränkung des tatsächlichen Typparameters kann man nun mit einer stilistischen Figur erreichen, die vermutlich manch einen von Ihnen erhebliche Kopfschmerzen bereiten wird (zumindest macht sie das mir immer wieder aufs Neue): Man beschränkt den formalen Typparameter T von Equatable auf einen Subtyp von Equatable[T], wobei das Vorkommen von T in Equatable[T] eine Verwendung der gerade erst eingeführten Typvariable T darstellt.
+
+
+Frage: Was ist eine stilistische Figur in Bezug auf den formalen Typparameter T von Equatable?
+Antwort: Eine stilistische Figur in Bezug auf den formalen Typparameter T von Equatable ist die Beschränkung von T auf einen Subtyp von Equatable[T].
+
+
+Wenn Sie hier ein Verständnisproblem haben, trösten Sie sich. Es dauert eine Weile, bis man es verstanden hat, und noch länger, bis solche Figuren zum aktiven Repertoire gehören. Gleichwohl sollten Sie sich damit befassen. Das Java-Collections-Framework in der Version von Java 5 ist voll solcher Typdefinitionen. Nicht weil sie schön sind, sondern weil man sie braucht, um das Framework typsicher zu machen, ohne seine Flexibilität zu opfern. Auch Sie werden, wenn Sie objektorientiert programmieren, über kurz oder lang solche Konstrukte verwenden müssen.
+
+
+Frage: Wozu dienen Typdefinitionen in objektorientierter Programmierung?
+Antwort: Typdefinitionen in objektorientierter Programmierung dienen dazu, das Framework typsicher zu machen, ohne seine Flexibilität zu opfern. Sie werden sie benötigen, wenn Sie objektorientiert programmieren.
+
+Frage: Warum werden komplexe Typdefinitionen in Java benötigt?
+Antwort: Sie werden benötigt, um das Java-Collections-Framework typsicher zu machen, ohne seine Flexibilität zu opfern. Auch wenn man objektorientiert programmiert, wird man über kurz oder lang solche Konstrukte verwenden müssen.
+
+

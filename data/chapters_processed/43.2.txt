@@ -1,0 +1,84 @@
+43.2 Parametrische Typen und Subtyping: Wildcards
+
+Für generische Typen ist es ebenso wie für Arrays durchaus sinnvoll, eine liberalere Form der Zuweisungskompatibilität zuzulassen. Dies ermöglicht es, Objekte verschiedener Instanzen eines parametrisierten Typs bei einem Methodenaufruf demselben formalen Parameter zuzuweisen. Zum Beispiel möchte man für generische Collections eine Methode "sort" mit einem Parameter definieren, der eine zu sortierende Liste oder Ähnliches enthält. Dann sollten Sie diese Methode mit Objekten verschiedener Instanzen von "ArrayList<E>" (wie in Zeile 1052 ff. definiert) aufrufen können, also beispielsweise mit Objekten vom Typ "ArrayList<Integer>" und "ArrayList<String>".
+
+
+Frage: Wozu dient die liberale Zuweisungskompatibilität bei generischen Typen?
+Antwort: Die liberale Zuweisungskompatibilität bei generischen Typen ermöglicht es, Objekte verschiedener Instanzen eines parametrisierten Typs bei einem Methodenaufruf demselben formalen Parameter zuzuweisen. Zum Beispiel kann so eine Methode "sort" mit Objekten verschiedener Instanzen von "ArrayList<E>" aufgerufen werden, also beispielsweise mit Objekten vom Typ "ArrayList<Integer>" und "ArrayList<String>".
+
+Frage: Warum ist es sinnvoll, für generische Typen eine liberalere Form der Zuweisungskompatibilität zuzulassen?
+Antwort: Es ist sinnvoll, weil es so möglich ist, Objekte verschiedener Instanzen eines parametrisierten Typs bei einem Methodenaufruf demselben formalen Parameter zuzuweisen. Zum Beispiel kann so eine Methode "sort" mit Objekten verschiedener Instanzen von "ArrayList<E>" aufgerufen werden, also beispielsweise mit Objekten vom Typ "ArrayList<Integer>" und "ArrayList<String>".
+
+
+Aber wie wir bereits gesehen haben, sind "ArrayList<Integer>" und "ArrayList<String>" trotz der Tatsache, dass "Integer" und "String" Subtypen von "Comparable" sind, nicht zuweisungskompatibel mit "ArrayList<Comparable>". Was also tun?
+
+
+Frage: Wie kann man die Zuweisungskompatibilität zwischen "ArrayList<Integer>" und "ArrayList<Comparable<Integer>>" herstellen?
+Antwort: Die Zuweisungskompatibilität zwischen "ArrayList<Integer>" und "ArrayList<Comparable<Integer>>" kann durch die Verwendung des Upper-Bounded Wildcards hergestellt werden. Dazu wird der generische Typ mit einem Fragezeichen und dem Upper-Bound (in diesem Fall "Comparable<Integer>") angegeben, was bedeutet, dass der generische Typ jede Klasse sein kann, die ein Subtyp von "Comparable<Integer>" ist. Somit ist "Integer" ein Subtyp von "Comparable<Integer>" und die Zuweisungskompatibilität wird hergestellt.
+
+Frage: Was ist die Lösung für das Problem der fehlenden Zuweisungskompatibilität zwischen "ArrayList<Integer>" und "ArrayList<Comparable>"?
+Antwort: Die Lösung für das Problem der fehlenden Zuweisungskompatibilität zwischen "ArrayList<Integer>" und "ArrayList<Comparable>" ist die Verwendung von Generics. Generics ermöglichen es, den Typ der Elemente in einer ArrayList bei der Erstellung der ArrayList anzugeben. Dadurch wird sichergestellt, dass nur Elemente des angegebenen Typs in die ArrayList aufgenommen werden können. Wenn man also eine ArrayList<Integer> erstellt, kann man nicht versehentlich eine ArrayList<String> zuweisen, und umgekehrt.
+
+
+In Java wurde das Konzept der Typ-Wildcards (auch als Typ-Joker oder Platzhalter bezeichnet) eingeführt, um dieses Problem zu lösen. Wildcards können bei der Instanziierung eines generischen Typs den Platz des tatsächlichen Typparameters einnehmen und zunächst für einen beliebigen Typ stehen. Das Symbol für eine Typ-Wildcard ist das Fragezeichen: "List<?>" ist also ein Typ, mit dem Variablen (einschließlich formaler Parameter) deklariert werden können. Per Definition ist dieser Typ "List<?>" ein Supertyp aller Instanziierungen von "List<T>" - beispielsweise sind "List<Integer>" und "List<String>" mit "List<?>" zuweisungskompatibel.
+
+
+Frage: Was sind Typ-Wildcards in Java?
+Antwort: Typ-Wildcards, auch als Typ-Joker oder Platzhalter bezeichnet, sind ein Konzept in Java, das eingeführt wurde, um das Problem der Instanziierung eines generischen Typs mit einem beliebigen Typ zu lösen. Sie können bei der Instanziierung eines generischen Typs den Platz des tatsächlichen Typparameters einnehmen und zunächst für einen beliebigen Typ stehen. Das Symbol für eine Typ-Wildcard ist das Fragezeichen: "List<?>" ist also ein Typ, mit dem Variablen (einschließlich formaler Parameter) deklariert werden können. Per Definition ist dieser Typ "List<?>" ein Supertyp aller Instanziierungen von "List<T>" - beispielsweise sind "List<Integer>" und "List<String>" mit "List<?>" zuweisungskompatibel.
+
+
+Wildcards sind jedoch keine Typvariablen und können nicht ersetzt werden. Sie werden bei der Verwendung an der Stelle definiert, an der sie benötigt werden. Dies nennt man Use-site-Variance im Gegensatz zur Declaration-site-Variance, wie sie beispielsweise in C-Sharp existiert (siehe Abschnitt 50.4.3 in Kurseinheit 5).
+
+
+Frage: Was ist der Unterschied zwischen Use-site-Variance und Declaration-site-Variance?
+Antwort: Use-site-Variance bedeutet, dass Wildcards bei der Verwendung an der Stelle definiert werden, an der sie benötigt werden, während Declaration-site-Variance bedeutet, dass Wildcards an der Stelle definiert werden, an der sie erklärt werden, wie beispielsweise in C-Sharp.
+
+Frage: Was sind Wildcards und wie werden sie definiert?
+Antwort: Wildcards sind Platzhalter, die anstelle eines bestimmten Typs verwendet werden können. Im Gegensatz zu Typvariablen werden Wildcards bei der Verwendung an der Stelle definiert, an der sie benötigt werden. Dies nennt man Use-site-Variance.
+
+
+List<?> ist also selbst ein Typ, aber das Fragezeichen selbst ist keiner (und auch keine Typvariable). Mit Typ-Wildcards parametrisierte Typen wie "List<?>" und "ArrayList<?>", im Folgenden als Wildcard-Typen bezeichnet, sind abstrakt, da es keine direkten Instanzen von ihnen gibt. Die Verwendung von Typ-Wildcards kann jedoch nicht alle Probleme im Zusammenhang mit dem Aliasing lösen, da nicht sichergestellt werden kann, dass "list" tatsächlich auf ein Objekt vom Typ "List<Integer>" verweist. Die einzige gültige Zuweisung an Elemente von "list" ist die von "null". Umgekehrt kann beim Lesen der Elemente aus "list" kein anderer Typ als "Object" angenommen werden, da "list" Listen mit beliebigem Elementtyp zugewiesen werden dürfen. Dies ist jedoch unbefriedigend.
+
+
+Frage: Was sind Wildcard-Typen in Java?
+Antwort: Wildcard-Typen wie "List<?>" und "ArrayList<?>" sind abstrakt und haben keine direkten Instanzen. Das Fragezeichen selbst ist kein Typ oder eine Typvariable.
+
+
+Per extends beschränkte Typ-Wildcards erlauben also eine spezielle Art des Subtypings, bei der Zuweisungen von Objekten eines Subtyps an Variablen eines Supertyps erlaubt sind, aber in der Folge schreibende Zugriffe auf Variablen, die mit dem Typparameter als Typ deklariert sind, verboten sind (lesende Zugriffe sind hingegen erlaubt). Diese Situation unterscheidet sich von der bei Arrays (Kapitel 41) lediglich dadurch, dass die Typprüfung statisch, also bereits zur Übersetzungszeit, durchgeführt wird. Dies stellt sicher, dass es niemals zu einem Laufzeitfehler, wie der Array Store Exception, kommt. Ein entsprechender dynamischer Typtest kann somit entfallen.
+
+
+Frage: Was sind per extends beschränkte Typ-Wildcards?
+Antwort: Per extends beschränkte Typ-Wildcards erlauben eine spezielle Art des Subtypings, bei der Zuweisungen von Objekten eines Subtyps an Variablen eines Supertyps erlaubt sind, aber in der Folge schreibende Zugriffe auf Variablen, die mit dem Typparameter als Typ deklariert sind, verboten sind (lesende Zugriffe sind hingegen erlaubt). Diese Situation unterscheidet sich von der bei Arrays lediglich dadurch, dass die Typprüfung statisch, also bereits zur Übersetzungszeit, durchgeführt wird.
+
+Frage: Was erlauben per extends beschränkte Typ-Wildcards?
+Antwort: Per extends beschränkte Typ-Wildcards erlauben eine spezielle Art des Subtypings, bei der Zuweisungen von Objekten eines Subtyps an Variablen eines Supertyps erlaubt sind, aber in der Folge schreibende Zugriffe auf Variablen, die mit dem Typparameter als Typ deklariert sind, verboten sind (lesende Zugriffe sind hingegen erlaubt).
+
+
+Nun kann man sich fragen, ob nicht auch eine umgekehrte, nur schreibenden Zugriff erlaubende Art des Subtypings möglich ist. Die Antwort ist einfach: Ja. Man muss dazu nur die Beschränkung des Typ-Wildcards umkehren und verlangen, dass nur Supertypen der Schranke eingesetzt werden dürfen. Da Supertypen mit ihren Subtypen zuweisungskompatibel sind, weiß der Compiler, dass er Elemente jedes beliebigen Subtyps der Schranke zuweisen darf.
+
+
+Frage: Was ist umgekehrtes Subtyping?
+Antwort: Umgekehrtes Subtyping ist eine Art des Subtypings, bei der nur Supertypen der Schranke eingesetzt werden dürfen. Da Supertypen mit ihren Subtypen zuweisungskompatibel sind, weiß der Compiler, dass er Elemente jedes beliebigen Subtyps der Schranke zuweisen darf.
+
+
+"List<? super Integer>" ist also ein spezieller Supertyp von allen Instanzen von "List<E>", deren tatsächlicher Typparameter (also der für "E" eingesetzte Typ) ein Supertyp von "Integer" ist. Der Supertyp ist speziell, weil zwar eine Zuweisungskompatibilität gegeben ist, der Zugriff auf die Elementtypen (die mit dem Typparameter typisierten Elemente des Typs) auf schreibenden beschränkt ist.
+
+
+Frage: Was ist der Supertyp "List<? super Integer>" in Java?
+Antwort: "List<? super Integer>" ist ein spezieller Supertyp von allen Instanzen von "List<E>", deren tatsächlicher Typparameter (also der für "E" eingesetzte Typ) ein Supertyp von "Integer" ist. Der Supertyp ist speziell, weil zwar eine Zuweisungskompatibilität gegeben ist, der Zugriff auf die Elementtypen (die mit dem Typparameter typisierten Elemente des Typs) auf schreibenden beschränkt ist.
+
+
+Die mögliche Beschränkung von Typ-Wildcards führt zu einer (potenziell unendlichen) Menge von Typen für jeden generischen Typ. Daher stellt sich die Frage, ob diese Typen in einer bestimmten Subtyp-Beziehung zueinander stehen. Dies ist tatsächlich der Fall: Für mit "extends" nach oben beschränkte Wildcard-Typen gilt, dass sie Subtypen sind, wenn die Schranken Subtypen sind. Wenn also "Integer" ein Subtyp von "Number" ist, dann ist auch "List<? extends Integer>" ein Subtyp von "List<? extends Number>". Umgekehrt gilt für mit "super" nach unten beschränkte Typen, dass "List<? super Integer>" ein Supertyp von "List<? super Number>" ist. Man sagt auch, das Subtyping mit "extends" beschränkter Wildcard-Typen sei kovariant und das mit "super" beschränkter Wildcard-Typen kontravariant.
+
+
+Frage: Was bedeutet es, wenn man sagt, dass das Subtyping mit "extends" beschränkter Wildcard-Typen kovariant ist?
+Antwort: Das Subtyping mit "extends" beschränkter Wildcard-Typen ist kovariant, das heißt, wenn "Integer" ein Subtyp von "Number" ist, dann ist auch "List<? extends Integer>" ein Subtyp von "List<? extends Number>".
+
+Frage: Was bedeutet es, wenn man sagt, dass das Subtyping mit "super" beschränkter Wildcard-Typen kontravariant ist?
+Antwort: Das Subtyping mit "super" beschränkter Wildcard-Typen ist kontravariant, das heißt, "List<? super Integer>" ist ein Supertyp von "List<? super Number>", wenn "Integer" ein Subtyp von "Number" ist.
+
+Frage: Wie hängen die Subtyp-Beziehungen von generischen Typen mit Typ-Wildcards zusammen?
+Antwort: Für mit "extends" nach oben beschränkte Wildcard-Typen gilt, dass sie Subtypen sind, wenn die Schranken Subtypen sind. Wenn also "Integer" ein Subtyp von "Number" ist, dann ist auch "List<? extends Integer>" ein Subtyp von "List<? extends Number>". Umgekehrt gilt für mit "super" nach unten beschränkte Typen, dass "List<? super Integer>" ein Supertyp von "List<? super Number>" ist. Man sagt auch, das Subtyping mit "extends" beschränkter Wildcard-Typen sei kovariant und das mit "super" beschränkter Wildcard-Typen kontravariant.
+
+Frage: Was bedeutet kovarianter Subtyping von Wildcard-Typen?
+Antwort: Kovarianter Subtyping von Wildcard-Typen bedeutet, dass wenn ein Typ S ein Subtyp von T ist, dann ist auch der mit "extends" nach oben beschränkte Wildcard-Typ "List<? extends S>" ein Subtyp von "List<? extends T>"

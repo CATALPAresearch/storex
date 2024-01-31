@@ -1,0 +1,34 @@
+50.4.2 Interfacetypen in C-Sharp
+
+Obwohl C-Sharp das Konzept der Interface-Implementierung aus Java übernommen hat, wurde seine Rolle hier deutlich gestärkt. In C-Sharp ist es möglich, dass eine Klasse dieselbe Methodendeklaration, die von verschiedenen Interfaces "geerbt" wurde, getrennt voneinander implementiert. Dies wird mithilfe von sogenannten expliziten Interfaceimplementierungen erreicht, wie im folgenden Beispiel dargestellt (beachten Sie, dass in C-Sharp der Doppelpunkt die Schlüsselwörter "extends" und "implements" aus Java ersetzt).
+
+
+Frage: Was sind explizite Interfaceimplementierungen in C-Sharp?
+Antwort: Explizite Interfaceimplementierungen in C-Sharp ermöglichen es einer Klasse, dieselbe Methodendeklaration, die von verschiedenen Interfaces "geerbt" wurde, getrennt voneinander zu implementieren. Dies wird erreicht, indem die Methodendeklaration mit dem Namen des Interfaces und dem Doppelpunkt versehen wird.
+
+
+Der Nutzen der expliziten Interfaceimplementierung liegt darin, dass die Methode gibTelefonnummer() je nach Aufruf unterschiedlich reagiert, abhängig davon, über welches Interface sie angesprochen wird. Der Typ der Variable (oder des Ausdrucks), die als Empfänger fungiert, gibt gewissermaßen die Rolle vor, in der das Objekt angesprochen wird (hier: Angestellte oder Privatperson). Es ist weder vorgesehen noch möglich, etwas wie x.Angestellte.gibTelefonnummer() an der Aufrufstelle zu schreiben (wobei x das Objekt bezeichnet); stattdessen steht einfach x.gibTelefonnummer(). Falls die Methodendeklaration Telefonnummer gibTelefonnummer() von einem gemeinsamen Superinterface von Angestellte und Privatperson, z. B. Erreichbar, geerbt würde, wäre das Programm ungültig. Es muss immer der tatsächlich deklarierende Typ als Qualifizierer angegeben werden.
+
+
+Frage: Was ist der Nutzen der expliziten Interfaceimplementierung?
+Antwort: Der Nutzen der expliziten Interfaceimplementierung liegt darin, dass die Methode gibTelefonnummer() je nach Aufruf unterschiedlich reagiert, abhängig davon, über welches Interface sie angesprochen wird. Der Typ der Variablen (oder des Ausdrucks), die als Empfänger fungiert, gibt gewissermaßen die Rolle vor, in der das Objekt angesprochen wird.
+
+
+Falls im obigen Beispiel für die beiden expliziten Interfaceimplementierungen von gibTelefonnummer() nicht wie in Java der Zugriffsmodifikator "public" angegeben wurde, geschah dies nicht ohne Grund. In C-Sharp ist es nämlich möglich, Methoden nicht als "public" zu deklarieren und dennoch per Interfaceimplementierung von außen darauf zuzugreifen. Allerdings ist dies an die explizite Interfaceimplementierung gebunden. Die sogenannte implizite Interfaceimplementierung, bei der manchmal nicht klar ist, welcher der aufgelisteten Supertypen ein Interface und welcher eine Superklasse ist, wird durch eine Namenskonvention aufgelöst: Im Common Type System von .NET sollten alle Interfacenamen mit einem "I" beginnen. Dies steht in der Tradition der bei MICROSOFT weit verbreiteten und nach dem früheren Mitarbeiter CHARLES SIMONYI benannten ungarischen Notation.
+
+
+Frage: Was ist die Bedeutung des Buchstabens "I" am Anfang von Interfacenamen in C-Sharp?
+Antwort: Der Buchstabe "I" am Anfang von Interfacenamen in C-Sharp ist eine Namenskonvention, die aufzeigen soll, dass es sich bei dem Namen um ein Interface und nicht um eine Superklasse handelt. Diese Namenskonvention ist Teil des Common Type Systems von .NET.
+
+Frage: Was ist die Funktion der ungarischen Notation in C-Sharp?
+Antwort: Die ungarische Notation in C-Sharp wird verwendet, um die Typen von Variablen und Methoden zu identifizieren, indem man den Variablen- oder Methodennamen mit einem Präfix versehen, das den Typ angibt. In diesem Fall wird die ungarische Notation verwendet, um die implizite Interfaceimplementierung in C-Sharp aufzulösen, indem alle Interfacenamen mit einem "I" beginnen.
+
+
+Explizite Interfaceimplementierungen können nicht überschrieben werden und dürfen nicht als "virtual" deklariert sein. Eine Klasse, die von einer Klasse mit expliziten Interfaceimplementierungen erbt, erbt diese ohne die Möglichkeit, sie zu überschreiben, es sei denn, sie implementiert das Interface erneut. Es ist jedoch wichtig zu beachten, dass diese erneute explizite Implementierung keine Überschreibung darstellt. Insbesondere findet bei Aufruf der explizit implementierten Methode kein dynamisches Binden statt.
+
+
+Frage: Was bedeutet es, wenn eine Klasse explizite Interfaceimplementierungen erbt?
+Antwort: Wenn eine Klasse von einer Klasse mit expliziten Interfaceimplementierungen erbt, erbt sie diese Implementierungen ohne die Möglichkeit, sie zu überschreiben, es sei denn, sie implementiert das Interface erneut. Es ist jedoch wichtig zu beachten, dass diese erneute explizite Implementierung keine Überschreibung darstellt und bei Aufruf der explizit implementierten Methode kein dynamisches Binden stattfindet.
+
+Frage: Was passiert, wenn eine Klasse, die von einer Klasse mit expliziten Interfaceimplementierungen erbt, diese Methode erneut implementiert?
+Antwort: Wenn eine Klasse, die von einer Klasse mit expliziten Interfaceimplementierungen erbt, diese Methode erneut implementiert, dann stellt dies keine Überschreibung dar und findet bei Aufruf der explizit implementierten Methode kein dynamisches Binden statt.

@@ -1,0 +1,85 @@
+12 Dynamisches Binden
+
+Wie bereits angerissen, verbirgt sich hinter dem Nachrichtenversand ein dynamisch gebundener Methodenaufruf. Dabei ist die Auswahl der Methode nicht nur vom Nachrichtenselektor, sondern auch vom Empfängerobjekt abhängig. In Abschnitt 11.2 hatten wir bereits angedeutet, wie in Superklassen definierte Methoden für ihre Subklassen zugreifbar sind; hier schauen wir uns nun etwas genauer an, wie die dynamische Bindung von Methodenaufrufen vonstatten geht.
+
+
+Frage: Was ist ein dynamisch gebundener Methodenaufruf?
+Antwort: Ein dynamisch gebundener Methodenaufruf ist eine Methode, bei der die Auswahl der Methode nicht nur vom Nachrichtenselektor, sondern auch vom Empfängerobjekt abhängig ist.
+
+
+Wenn eine Methode auf einem Empfängerobjekt aufgerufen wird, wird zunächst geprüft, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist. Dies kann man auch selbst tun: Es gibt dafür in der Klasse Behavior eine Instanzmethode oder so ähnlich (je nach System), die somit allen Klassen (als Klassenmethode) zur Verfügung steht. (Behavior ist ja eine Superklasse von Class, die wiederum Superklasse aller Metaklassen ist, von denen jede Klasse eine Instanz ist, so dass alle Klassen die Methode includesSelector: verstehen.)
+
+
+Frage: Wie wird eine Methode in SMALLTALK aufgerufen?
+Antwort: In SMALLTALK wird eine Methode auf einem Empfängerobjekt aufgerufen, indem zunächst geprüft wird, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist. Diese Prüfung kann man auch selbst durchführen, indem man die Instanzmethode includesSelector: der Klasse Behavior aufruft, die allen Klassen zur Verfügung steht.
+
+Frage: Wie wird überprüft, ob eine Methode in der Klasse eines Empfängers enthalten ist?
+Antwort: Wenn eine Methode auf einem Empfängerobjekt aufgerufen wird, wird zunächst geprüft, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist. Diese Überprüfung kann man auch selbst durchführen, indem man die Instanzmethode includesSelector: der Klasse Behavior aufruft, die allen Klassen als Klassenmethode zur Verfügung steht.
+
+Frage: Was ist das Methodenwörterbuch in Smalltalk?
+Antwort: Das Methodenwörterbuch in Smalltalk ist eine Tabelle, die alle Methoden enthält, die zu einer bestimmten Klasse gehören. Wenn eine Methode auf einem Empfängerobjekt aufgerufen wird, wird zunächst geprüft, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist.
+
+
+Wird die Methode gefunden, dann wird sie ausgeführt. Wird sie nicht gefunden, wird zunächst in der direkten Superklasse der Klasse des Objekts weitergesucht und dann in deren direkter Superklasse usw. bis zur Klasse Object. Sobald die Methode gefunden wird, wird sie ausgeführt. Wird die Methode auch in Object nicht gefunden, kommt es zum bereits erwähnten Versenden der Nachricht doesNotUnderstand: an den ursprünglichen Empfänger mit der ursprünglichen, problematischen Nachricht als Argument.
+
+
+Frage: Was passiert, wenn eine Methode nicht gefunden wird?
+Antwort: Wenn eine Methode nicht gefunden wird, wird in der direkten Superklasse der Klasse des Objekts weitergesucht und dann in deren direkter Superklasse usw. bis zur Klasse Object. Sobald die Methode gefunden wird, wird sie ausgeführt. Wird die Methode auch in Object nicht gefunden, kommt es zum Versenden der Nachricht doesNotUnderstand: an den ursprünglichen Empfänger mit der ursprünglichen, problematischen Nachricht als Argument.
+
+
+Man beachte, dass selbst wenn auf den Empfang einer Nachricht die Methode einer Superklasse des Empfängerobjekts ausgeführt wird, das Objekt, auf dem sie ausgeführt wird, das Empfängerobjekt bleibt. Da die Methode jedoch in einer Superklasse kompiliert wurde (und zum Zeitpunkt der Kompilierung die Subklassen u. U. noch gar nicht existierten), kann die Methode nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind. Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind, sind für die Methode also nicht (direkt) sichtbar. Gleichwohl — und das wird häufig nicht verstanden — handelt es sich immer noch um das ursprüngliche Empfängerobjekt, das auch immer noch Instanz seiner Klasse ist. Die gerade ausgeführte Methode betrachtet es lediglich wie ein Objekt der Klasse, in der sie (die Methode) definiert ist. Dies hat auch Auswirkungen auf die Bedeutung der Pseudovariable super, wie wir noch sehen werden.
+
+
+Frage: Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind?
+Antwort: Wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, kann sie dies tun, wenn sie in der gleichen Klasse definiert ist. Wenn die Methode jedoch in einer Superklasse definiert ist, kann sie nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind, und nicht auf Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind.
+
+Frage: Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, aber in der Unterklasse hinzugekommen sind?
+Antwort: Die Methode kann nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind. Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind, sind für die Methode also nicht (direkt) sichtbar.
+
+Frage: Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, aber in einer Superklasse definiert wurde?
+Antwort: Die Methode kann nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind. Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind, sind für die Methode also nicht (direkt) sichtbar.
+
+
+Der Suchalgorithmus ist, genau wie der Methodenaufruf selbst, aus Effizienzgründen direkt in der virtuellen Maschine implementiert. Die Implementierung ist jedoch im Wesentlichen äquivalent zu der der Methode canUnderstand:, die genau wie includesSelector: in der Klasse Behavior definiert ist.
+
+
+Frage: Wo ist der Suchalgorithmus für Methodenaufrufe implementiert?
+Antwort: Der Suchalgorithmus für Methodenaufrufe ist direkt in der virtuellen Maschine implementiert.
+
+Frage: Wie ist die Implementierung des Suchalgorithmus für Methodenaufrufe im Vergleich zur Methode canUnderstand:?
+Antwort: Die Implementierung des Suchalgorithmus für Methodenaufrufe ist im Wesentlichen äquivalent zur Implementierung der Methode canUnderstand:, die in der Klasse Behavior definiert ist.
+
+Frage: Was ist das Ziel des Suchalgorithmus?
+Antwort: Das Ziel des Suchalgorithmus ist, eine Methode mit der angeforderten Bezeichnung zu finden und auszuführen.
+
+Frage: Wie werden temporäre Variablen im Suchalgorithmus verwendet?
+Antwort: Temporäre Variablen können im Suchalgorithmus verwendet werden, um Zwischenergebnisse zu speichern und die Lesbarkeit zu verbessern.
+
+Frage: Was ist der Suchalgorithmus in der objektorientierten Programmierung?
+Antwort: Der Suchalgorithmus ist ein Algorithmus, der in der virtuellen Maschine implementiert ist und dazu dient, die passende Methode für einen bestimmten Methodenaufruf zu finden. Er ist im Wesentlichen äquivalent zur Methode canUnderstand:, die in der Klasse Behavior definiert ist.
+
+
+Man beachte übrigens, wie wenig Aufwand es ist, aus dem klassenbasierten Methoden-Lookup einen objektbasierten zu machen: Man muss dazu lediglich jedem einzelnen Objekt sein eigenes Methodenwörterbuch zur Verfügung stellen. Wenn man zusätzlich noch Objekte von Objekten anstelle von Klassen von Klassen erben lässt, dann hat man schon die prototypenbasierte Form der objektorientierten Programmierung. Der Unterschied ist also technisch nicht besonders groß — konzeptuell hingegen schon, denn mit den Klassen entfielen auch die sonst so nützlichen Begriffe von Generalisierung und Spezialisierung (von der Generalisierung von Objekten zu sprechen erscheint wenig sinnvoll).
+
+
+Frage: Was ist der Unterschied zwischen klassenbasierter und prototypenbasierter Form der objektorientierten Programmierung?
+Antwort: Der Unterschied ist technisch nicht besonders groß, aber konzeptuell schon. In der klassenbasierten Form der objektorientierten Programmierung gibt es die Begriffe Generalisierung und Spezialisierung, die sinnvoll sind. In der prototypenbasierten Form hingegen spricht man eher von Objekten, die von anderen Objekten erben, als von Klassen, die von Klassen erben.
+
+Frage: Was ist der Unterschied zwischen dem klassenbasierten Methoden-Lookup und dem objektbasierten Methoden-Lookup?
+Antwort: Der Unterschied zwischen dem klassenbasierten Methoden-Lookup und dem objektbasierten Methoden-Lookup besteht darin, dass man beim objektbasierten Methoden-Lookup jedem Objekt sein eigenes Methodenwörterbuch zur Verfügung stellt, während beim klassenbasierten Methoden-Lookup die Methoden in der Klasse gespeichert sind.
+
+Frage: Was passiert mit den Begriffen Generalisierung und Spezialisierung, wenn man von Objekten statt von Klassen spricht?
+Antwort: Wenn man von Objekten statt von Klassen spricht, erscheint es wenig sinnvoll, von Generalisierung und Spezialisierung zu sprechen.
+
+
+Eines der immer wieder vorgetragenen Hauptargumente gegen den Einsatz von SMALLTALK in der kommerziellen Programmierung ist der Umstand, dass das dynamische Binden wirklich vollkommen dynamisch ist: Dass einem Objekt eine Nachricht geschickt wird, die es nicht versteht, tritt immer erst zur Laufzeit zutage. In den statisch typgeprüften Sprachen, die wir in den nächsten Kurseinheiten kennenlernen werden, ist das charakteristischerweise nicht so. Dem kann man entgegenhalten, dass die heutigen (auch) statisch typgeprüften Programmiersprachen wie Java, C-Sharp oder C++ sämtliche nicht ohne dynamische Typumwandlungen auskommen, die ebenfalls zu Laufzeitfehlern führen können. Tatsächlich ist es sowohl in SMALLTALK als auch in Java und C-Sharp (in C++ nur mit Einschränkungen; s. Abschnitt 51.5) nicht nur möglich, sondern sogar geboten, Laufzeitfehler da, wo möglich, zu vermeiden, indem man vor einem Methodenaufruf explizit prüft, ob ein Objekt die gewünschte Methode auch hat — in SMALLTALK mittels canUnderstand:, in Java et al. mittels eines entsprechenden Typtests vor einem Downcast. Die größere Flexibilität, die die objektorientierte Programmierung durch das dynamische Binden bietet, hat eben den Preis, dass bestimmte Laufzeitprüfungen durchgeführt werden müssen. Statische Typprüfung kann das Risiko von Typfehlern verringern, aber nicht ausschließen — gleichzeitig schränkt es die Flexibilität beim Programmieren ein, ein Umstand, der so manchen, der schon einmal größere Programme in SMALLTALK geschrieben hat, an der Verwendung typgeprüfter Sprachen stört.
+
+
+Frage: Was ist der Unterschied zwischen dynamischem und statischem Binden in der objektorientierten Programmierung?
+Antwort: Beim dynamischen Binden wird eine Nachricht an ein Objekt geschickt und es wird zur Laufzeit entschieden, welche Methode aufgerufen wird. Beim statischen Binden wird dies bereits zur Übersetzungszeit entschieden. Ein Vorteil des dynamischen Bindens ist die größere Flexibilität, allerdings müssen dafür bestimmte Laufzeitprüfungen durchgeführt werden. Statische Typprüfung kann das Risiko von Typfehlern verringern, schränkt aber die Flexibilität beim Programmieren ein.
+
+Frage: Was ist das Hauptargument gegen den Einsatz von SMALLTALK in der kommerziellen Programmierung?
+Antwort: Das Hauptargument gegen den Einsatz von SMALLTALK in der kommerziellen Programmierung ist, dass das dynamische Binden wirklich vollkommen dynamisch ist, was bedeutet, dass einem Objekt eine Nachricht geschickt wird, die es nicht versteht, erst zur Laufzeit auffällt.
+
+Frage: Was ist der Unterschied zwischen dynamischem Binden und statischer Typprüfung?
+Antwort: Dynamisches Binden bedeutet, dass eine Nachricht, die an ein Objekt geschickt wird, erst zur Laufzeit geprüft wird, ob das Objekt die Nachricht versteht. Statische Typprüfung hingegen bedeutet, dass diese Prüfung bereits vor der Ausführung des Programms durchgeführt wird. Statische Typprüfung kann das Risiko von Typfehlern verringern, aber nicht ausschließen, während dynamisches Binden die Flexibilität beim Programmieren erhöht, allerdings auch bestimmte Laufzeitprüfungen erfordert.

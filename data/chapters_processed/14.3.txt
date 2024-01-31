@@ -1,0 +1,26 @@
+14.3 Kommunikation mit mehreren: Multicasting
+
+Neben vielen anderen Neuerungen wird SMALLTALK auch das Model-View-Controller-Entwurfsmuster (MVC-Pattern) zugeschrieben, das sich heute noch (auch in Web-Anwendungen) großer Beliebtheit erfreut. Beim MVC-Pattern gibt es verschiedene (An-)Sichten auf ein logisches Modell, und da Änderungen im Modell potenziell alle Sichten betreffen, muss jede Änderung alle Sichten darüber unterrichten. Es ist also eine Eins-zu-viele-Kommunikation erforderlich, die nicht durch den normalen Nachrichtenversand abgedeckt wird.
+
+
+Frage: Was ist das Model-View-Controller-Entwurfsmuster (MVC-Pattern)?
+Antwort: Das MVC-Pattern ist ein Entwurfsmuster, das in SMALLTALK eingeführt wurde und sich heute noch großer Beliebtheit erfreut. Es gibt verschiedene Ansichten auf ein logisches Modell, und Änderungen im Modell können potenziell alle Sichten betreffen. Daher muss jede Änderung alle Sichten darüber unterrichten, was eine Eins-zu-viele-Kommunikation erfordert, die nicht durch den normalen Nachrichtenversand abgedeckt wird.
+
+Frage: Was ist das MVC-Pattern und wofür wird es verwendet?
+Antwort: Das MVC-Pattern (Model-View-Controller-Entwurfsmuster) ist ein Entwurfsmuster, das in SMALLTALK eingeführt wurde und heute noch in vielen Anwendungen, auch Webanwendungen, verwendet wird. Es gibt verschiedene Ansichten auf ein logisches Modell. Änderungen im Modell können alle Sichten betreffen, daher muss jede Änderung alle Sichten darüber unterrichten. Das MVC-Pattern erfordert eine Eins-zu-viele-Kommunikation, die nicht durch den normalen Nachrichtenversand abgedeckt wird.
+
+
+Das folgende Protokoll setzt diese Form der Kommunikation in SMALLTALK um; es ist vollständig in SMALLTALK implementiert und sollte Ihnen inzwischen kein Problem mehr bereiten. Beachten Sie, dass Object keine Lazy Initialization seiner Klassenvariable Dependents vorsieht; die Methode initDependents muss daher bei Erzeugung einer neuen Klasse jeweils einmal aufgerufen werden.
+
+
+Frage: Was ist Lazy Initialization?
+Antwort: Lazy Initialization ist eine Technik, bei der die Initialisierung einer Variablen oder eines Objekts verzögert wird, bis sie tatsächlich benötigt wird. Diese Technik wird eingesetzt, um Ressourcen zu sparen und die Leistung zu verbessern.
+
+Frage: Was ist eine Klassenvariable?
+Antwort: Eine Klassenvariable ist eine Variable, die allen Instanzen einer Klasse gemeinsam ist und deren Wert für alle Instanzen gleich ist.
+
+Frage: Was ist die Methode initDependents?
+Antwort: Die Methode initDependents ist eine Methode, die bei der Erzeugung einer neuen Klasse aufgerufen werden muss, um die Klassenvariable Dependents zu initialisieren.
+
+Frage: Was ist das Protokoll in SMALLTALK?
+Antwort: Das Protokoll ist eine Sammlung von Methoden, die eine bestimmte Funktionalität bereitstellen. In SMALLTALK ist das Protokoll vollständig in SMALLTALK implementiert und ermöglicht die Kommunikation zwischen Objekten.

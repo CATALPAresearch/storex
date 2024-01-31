@@ -1,0 +1,30 @@
+35.4 Operationen und Methoden
+
+Einhergehend mit der Trennung zwischen primitiven und Referenztypen gibt es in Java auch eine Trennung zwischen Operationen und Methoden: Auf den primitiven Typen sind bestimmte Operationen, wie mathematische und boolesche Operationen, fest vorgegeben, wie es die Sprachdefinition vorsieht. Alle anderen Operationen müssen als Methoden in Klassen definiert werden. Da primitive Typen jedoch keine Klassen sind, gibt es beispielsweise für mathematische Funktionen eine spezielle Klasse namens Math, in der Funktionen wie sin(.) als Klassenmethoden hinterlegt sind. Umgekehrt ist es Klassendefinitionen nicht gestattet, Operatoren zu definieren, wie es bei den binären Methoden in SMALLTALK der Fall ist (siehe Abschnitt 4.1.2 in Kurseinheit 1). Die klare Trennung zwischen primitiven und Referenztypen ist konsequent durchgezogen, was den Charakter von Java als Programmiersprache geprägt hat. Anfangs führte dies zu ihrem Ruf als hybride Programmiersprache, die sowohl objektorientierte als auch imperative Eigenschaften aufweist. Aus meiner Sicht ist die Unterscheidung zwischen Objekten und Werten, wie sie in Java vorgenommen wurde, jedoch sinnvoll: Werte besitzen weder Identität noch Zustand, daher unterscheiden sie sich von Objekten.
+
+
+Frage: Wie ist der Umgang mit primitiven Typen und Referenztypen in Java?
+Antwort: In Java gibt es eine klare Trennung zwischen primitiven Typen und Referenztypen. Für primitiven Typen sind bestimmte Operationen fest vorgegeben, wie es die Sprachdefinition vorsieht. Alle anderen Operationen müssen als Methoden in Klassen definiert werden. Primitive Typen sind keine Klassen und es ist daher nicht gestattet, Operatoren in Klassendefinitionen zu definieren. Diese Trennung ist konsequent durchgezogen und hat den Charakter von Java als Programmiersprache geprägt.
+
+Frage: Was ist der Unterschied zwischen primitiven und Referenztypen in Java?
+Antwort: In Java gibt es eine Trennung zwischen primitiven und Referenztypen. Primitiven Typen sind vordefinierte Datentypen, wie zum Beispiel int, float oder boolean. Referenztypen hingegen sind Objekte, die in der Sprache definiert werden. Die Operationen auf primitiven Typen sind fest vorgegeben, während alle anderen Operationen als Methoden in Klassen definiert werden müssen. Primitiven Typen besitzen weder Identität noch Zustand, im Gegensatz zu Referenztypen.
+
+Frage: Warum gibt es in Java eine klare Trennung zwischen primitiven und Referenztypen?
+Antwort: Die klare Trennung zwischen primitiven und Referenztypen ist konsequent durchgezogen, was den Charakter von Java als Programmiersprache geprägt hat. Sie ist sinnvoll, weil Werte, im Gegensatz zu Objekten, weder Identität noch Zustand besitzen und somit unterschieden werden müssen.
+
+
+Die Methoden in Java können in Prozeduren und Funktionen unterteilt werden, wobei der einzige Unterschied darin besteht, dass Prozeduren keine Rückgabewerte haben und daher den Rückgabetyp "void" deklarieren. Dies ist eine der vielen Erbschaften aus der Programmiersprache C.
+
+
+Frage: Was ist der Unterschied zwischen Prozeduren und Funktionen in Java?
+Antwort: Der Unterschied zwischen Prozeduren und Funktionen in Java besteht darin, dass Prozeduren keine Rückgabewerte haben und daher den Rückgabetyp "void" deklarieren, während Funktionen einen Rückgabewert haben.
+
+
+Ein Operator, der speziell für Referenztypen in Java zur Verfügung steht, ist der Typtest "instanceof". Er ermöglicht es zu überprüfen, ob ein Objekt eine Instanz eines bestimmten Typs ist. Dabei wird nicht zwischen direkten und indirekten Instanzen unterschieden. Zum Beispiel ergibt "x instanceof Object" immer "true", unabhängig davon, für welches Objekt "x" steht. Weitere Informationen zur Bedeutung des Typtests finden Sie in Kapitel 44.
+
+
+Frage: Was macht der Operator "instanceof" in Java?
+Antwort: Der Operator "instanceof" in Java ermöglicht es zu überprüfen, ob ein Objekt eine Instanz eines bestimmten Typs ist. Dabei wird nicht zwischen direkten und indirekten Instanzen unterschieden.
+
+Frage: Was kann der Typtest "instanceof" in Java?
+Antwort: Der Typtest "instanceof" in Java ermöglicht es zu überprüfen, ob ein Objekt eine Instanz eines bestimmten Typs ist, unabhängig davon, ob es sich um eine direkte oder indirekte Instanz handelt. Zum Beispiel ergibt "x instanceof Object" immer "true", unabhängig davon, für welches Objekt "x" steht.

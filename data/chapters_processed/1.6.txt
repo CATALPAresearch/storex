@@ -1,0 +1,19 @@
+1.6 Zuweisung
+
+Damit eine Variable ein Objekt bezeichnet, muss dieses ihr durch eine sogenannte Zuweisung, in anderen Kontexten auch als Wertzuweisung bezeichnet, zugeordnet werden. In den meisten SMALLTALK-Implementierungen ist der Zuweisungsoperator :=, was durch ALGOL und PASCAL bekannt ist.
+
+Frage: Was ist eine Zuweisung?
+Antwort: Eine Zuweisung ist der Vorgang, bei dem einer Variable ein Objekt zugewiesen wird, damit sie dieses Objekt bezeichnet.
+
+Die Verwechslung von = für die Zuweisung mit dem Test auf Gleichheit ist eine der Tragödien in der Geschichte der Programmiersprachen. Ich möchte nicht wissen, wie viele fatale Fehler auf die dadurch provozierte Verwechselung von Test auf Gleichheit und Zuweisung zurückzuführen sind.
+Nach einer Zuweisung x := y bezeichnen die beiden Variablen "x" und "y" das gleiche Objekt (genau welches ist hier nicht ersichtlich). Ob sie auch dasselbe bezeichnen, hängt von der Semantik der Variablen ab. Man beachte, dass in SMALLTALK (anders als in typisierten Sprachen) aus Sicht des Compilers nichts dagegen spricht, der Variable "x" erst eine Zahl und dann einen String zuzuweisen. Auch Array-Literale können jeder beliebigen Variable zugewiesen werden.
+Man beachte weiterhin, dass die Zuweisung (anders als der Test auf Gleichheit = oder Identität ==) nicht kommutativ ist: "x := y" hat nur dann dieselbe Bedeutung wie "y := x", wenn "x" und "y" schon vor der jeweiligen Zuweisung denselben Wert hatten. Zur besseren sprachlichen Unterscheidung der Seite, der zugewiesen wird, und der, die zugewiesen wird, spricht man häufig von der linken und der rechten Seite einer Zuweisung.
+
+Frage: Warum ist die Zuweisung kommutativ?
+Antwort: Die Zuweisung ist nicht kommutativ, da "x := y" und "y := x" unterschiedliche Bedeutungen haben, es sei denn, "x" und "y" hatten bereits denselben Wert vor der jeweiligen Zuweisung.
+
+Die Zuweisung ist ein elementares Konstrukt der objektorientierten Programmierung sowie der Programmierung überhaupt. Nur die wenigsten Sprachen kommen ohne sie aus. Neben der expliziten Zuweisung durch den Zuweisungsoperator kommt auch eine implizite Zuweisung (bei Methodenaufrufen) vor.
+Der oben geschilderte Unterschied zwischen Wert- und Verweissemantik von Variablen hat erhebliche Konsequenzen für die Zuweisung: Bei einer Zuweisung unter Wertsemantik muss eine Kopie angefertigt werden, da die Variable das Objekt zum Inhalt hat (also in der Variable gespeichert ist), und ein Objekt nicht in zwei Variablen gespeichert sein kann. Das hat zur Folge, dass die beiden Variablen "x" und "y" nach der Zuweisung aus Zeile 21 nicht dasselbe (identische) Objekt bezeichnen (was unter Wertsemantik, wie oben bereits gesagt, auch gar nicht geht), sodass z. B. Änderungen am in "x" gespeicherten Objekt das in "y" gespeicherte Objekt nicht betreffen. Bei einer Zuweisung unter Verweissemantik wird jedoch nur der Verweis der rechten Seite kopiert und in der Variablen auf der linken Seite gespeichert. Wenn die Variablen auf der linken und der rechten Seite unterschiedliche Semantiken haben, dann liegt entweder eine unzulässige Zuweisung (siehe Kapitel 18) vor, oder es muss, je nach Art der Variable auf der linken Seite, eine Kopie eines Objekts oder ein Verweis auf ein Objekt angefertigt werden.
+
+Frage: Was unterscheidet Zuweisungen unter Wertsemantik und unter Verweissemantik?
+Antwort: Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.

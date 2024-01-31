@@ -1,0 +1,10 @@
+20.2 Verwendung definierter Typen
+
+Definierte Typen können in Programmen verwendet werden, in STRONGTALK bei der Deklaration von (anderen) Typen, von Variablen, von Blöcken und von Methoden. Man spricht dann von einer Typisierung der deklarierten Programmelemente. Die Verwendung in Typdefinitionen haben Sie bereits oben kennengelernt, die Verwendung in Methoden verläuft analog. Variablen (Instanzvariablen, temporäre Variablen, etc.) werden in STRONGTALK genauso wie formale Parameter (die ebenfalls Variablen sind) typisiert, nämlich durch die Anfügung eines Typnamens in spitzen Klammern. Bei Blöcken taucht der Rückgabetyp im selben Segment wie die formalen Parameter auf, also vor dem Seperator.
+
+
+Frage: Wozu werden Typen in STRONGTALK verwendet?
+Antwort: In STRONGTALK werden Typen verwendet, um (andere) Typen, Variablen, Blöcke und Methoden zu definieren. Dies wird als Typisierung der deklarierten Programmelemente bezeichnet.
+
+Frage: Wozu dient die Typisierung in Programmiersprachen?
+Antwort: Die Typisierung in Programmiersprachen dient dazu, die Verwendung von Variablen, Blöcken und Methoden zu regeln und zu beschränken. Durch die Angabe eines Typs wird festgelegt, welche Werte eine Variable speichern kann, welche Werte ein Block zurückgeben kann und welche Werte eine Methode erwartet oder zurückgibt. Dies hilft, Fehler zu vermeiden und die Lesbarkeit und Wartbarkeit des Codes zu verbessern.

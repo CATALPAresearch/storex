@@ -1,0 +1,20 @@
+13.2.3 Arrays
+
+Nicht zuletzt werden auch ganz banale Arrays häufig verwendet, insbesondere wegen der Möglichkeit der einfachen literalen Definition. So kann man ohne viel Aufwand über die Elemente einer beliebigen, ad hoc spezifizierten Aufzählung iterieren. Beispielsweise weist der Laufparameter des Blocks, "element", nacheinander die Elemente des literalen Arrays zu.
+
+
+Frage: Wofür werden Arrays häufig verwendet?
+Antwort: Arrays werden häufig wegen der Möglichkeit der einfachen literalen Definition verwendet, insbesondere um über die Elemente einer beliebigen, ad hoc spezifizierten Aufzählung zu iterieren.
+
+Frage: Was ist die Funktion von Arrays in der Programmierung?
+Antwort: Arrays werden in der Programmierung häufig verwendet, insbesondere wegen der Möglichkeit der einfachen literalen Definition. Sie ermöglichen es, einfach über die Elemente einer beliebigen, ad hoc spezifizierten Aufzählung zu iterieren. Zum Beispiel kann man den Laufparameter eines Blocks, "element", nacheinander die Elemente des literalen Arrays zuweisen.
+
+
+Der wesentliche Nachteil von Arrays ist, dass ihre Größe beschränkt ist. Benötigt man eine geordnete Collection, die beliebig wachsen kann, der also am Anfang, am Ende oder an einer beliebigen Position dazwischen Elemente hinzugefügt werden können, dann kann man auf Instanzen der Klasse "OrderedCollection" zurückgreifen. Diese eignen sich aufgrund des angebotenen Methodensatzes und ihres Protokolls speziell für die Implementierung von Stapeln (Stacks) und Puffern (Queues).
+
+
+Frage: Wofür eignen sich Instanzen der Klasse "OrderedCollection"?
+Antwort: Instanzen der Klasse "OrderedCollection" eignen sich für die Implementierung von Stapeln (Stacks) und Puffern (Queues), da sie eine geordnete Collection sind, die beliebig wachsen kann und Elemente am Anfang, am Ende oder an einer beliebigen Position dazwischen hinzufügen kann.
+
+Frage: Was sind die Nachteile von Arrays?
+Antwort: Der wesentliche Nachteil von Arrays ist, dass ihre Größe beschränkt ist und dass sie nicht beliebig wachsen können.

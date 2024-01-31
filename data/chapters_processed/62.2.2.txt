@@ -1,0 +1,51 @@
+62.2.2 Grammatikalisch-inhaltliche (semantische) Namenskonventionen
+
+Überaus angemessen, wenn auch nicht immer in letzter Konsequenz einzuhalten, ist, die verschiedenen Wortarten einer natürlichen Sprache für verschiedene Arten von Programmelementen zu verwenden. So legt beispielsweise der in Kurseinheit 1, Kapitel für Klassennamen Substantive verwendet. Tatsächlich ist es eine vielzitierte objektorientierte Technik, in der Analysephase eines Projekts alle Substantive der Spezifikation zu extrahieren, um auf der Basis der so gewonnenen Liste die Menge der Klassen eines Systems zu identifizieren.
+
+
+Frage: Wie können Substantive in der Programmierung verwendet werden?
+Antwort: In der Programmierung können Substantive für Klassennamen verwendet werden. Diese Technik wird oft in der Analysephase eines Projekts angewendet, um die Menge der Klassen eines Systems zu identifizieren.
+
+Frage: Warum werden Substantive für Klassennamen verwendet?
+Antwort: Substantive werden für Klassennamen verwendet, weil sie die Namen von Dingen oder Konzepten bezeichnen, die in der Objektorientierung als Klassen repräsentiert werden. Diese Technik erleichtert die Identifizierung der Klassen eines Systems in der Analysephase.
+
+
+Methoden, die eine Aktion implementieren (Befehle in EIFFEL, s. Kurseinheit 5, Abschnitt 52.2), wird man aufgrund ihres prädikativen Charakters mit Verben benennen, wobei es eine Stilfrage ist, ob man die Infinitiv- oder die Imperativform (im Englischen übrigens kein Unterschied in der Erscheinungsform) bevorzugt. Persönlich fühle ich mich hier an keine Regel gebunden außer an die, dass Ausdrücke durch meine Namenwahl möglichst lesbar werden. So klingt "hinzufügen" (Infinitivform) in meinen Ohren besser als "add" (Imperativform), "entfernen" (Imperativform) klingt dagegen besser als "remove" (Infinitivform). Man könnte natürlich der imperativen Form ein Reflexivpronomen hinzufügen wie etwa in "sich entfernen," aber das ist eher unüblich (obwohl nicht ohne Charme!). Verbergänzungen wie Präpositionen verwendet man in SMALLTALK dauernd (schon um mehrere Parameter voneinander abzusetzen); in Sprachen wie Java fügt man einem allgemeinen (und häufig überladenen) Verb dann gelegentlich noch ein Substantiv als Objekt des Prädikats hinzu, wie in "addElement." Gerade dieses Beispiel ist jedoch nicht unumstritten, da „Element“ hier gewissermaßen redundant ist — wenn es mehrere Methoden namens „add“ gibt, kann man sie auch mittels ihrer Parametertypen unterscheiden (also überladen). So heißt die entsprechende Methode im JDK heute auch nur noch "add(.)".
+
+
+Frage: Wie sollten Methoden, die eine Aktion implementieren, benannt werden?
+Antwort: Methoden, die eine Aktion implementieren, sollten mit Verben benannt werden, wobei es eine Stilfrage ist, ob man die Infinitiv- oder die Imperativform bevorzugt. Die Namen sollten so gewählt werden, dass sie möglichst lesbar sind.
+
+
+Keine Verben, sondern Adjektive (oder Kopula plus Prädikatsnomen) verwendet man hingegen für Methoden, die eine Abfrage darstellen (Queries; s. Abschnitt 52.2), wie etwa "istLeer" oder "hatInhalt."
+
+
+Frage: Wie werden Methoden bezeichnet, die eine Abfrage darstellen?
+Antwort: Methoden, die eine Abfrage darstellen, werden als Queries bezeichnet und werden mit Adjektiven oder Kopula plus Prädikatsnomen benannt.
+
+
+Für Instanzvariablen verwendet man unterschiedliche Wortarten, und zwar abhängig davon, ob eine Instanzvariable ein Attribut oder eine Beziehung repräsentiert. Wenn es sich um ein Attribut handelt, das eine mehrwertige Qualität ausdrückt (wie Größe, Farbe etc.), dann wird man den Namen der Qualität verwenden und damit ein Substantiv (ggf. in Kleinschreibung). Wenn es sich um ein zweiwertiges (Boolesches) Attribut handelt, dann nimmt man das entsprechende Adjektiv (wie etwa "leer"), ein Gerundivum (z. B. "laufend") oder ein Partizip (wie etwa "gelöst"). Für Instanzvariablen, die Beziehungen ausdrücken, nimmt man gerne den Namen der Gegenrolle, also beispielsweise "mutter" in einer Kind-Mutter-Beziehung. Bei n-Beziehungen nehme ich persönlich gerne den Plural, also z. B. "kinder" (statt "kind") für die umgekehrte Richtung.
+
+
+Frage: Wie werden Instanzvariablen benannt, die ein Attribut repräsentieren?
+Antwort: Für Instanzvariablen, die ein Attribut repräsentieren, wird der Name der Qualität verwendet, die das Attribut ausdrückt. Dabei wird ein Substantiv (ggf. in Kleinschreibung) verwendet.
+
+Frage: Wie werden Instanzvariablen benannt, die eine Beziehung repräsentieren?
+Antwort: Für Instanzvariablen, die Beziehungen ausdrücken, nimmt man gerne den Namen der Gegenrolle, also beispielsweise "mutter" in einer Kind-Mutter-Beziehung. Bei n-Beziehungen nehme ich persönlich gerne den Plural, also z. B. "kinder" (statt "kind") für die umgekehrte Richtung.
+
+
+Interfaces sind zwar wie Klassen Typen, aber bezeichnen keine Allgemeinbegriffe, sondern eher Rollen, die die Objekte, die konkrete Ausprägungen der Allgemeinbegriffe sind, spielen können. Rollen werden aber, genau wie Allgemeinbegriffe, häufig durch Substantive bezeichnet: „Mutter“ ist ein Beispiel hierfür. Andere Rollen, insbesondere die, die mit Parametern von Methoden verbunden sind, werden häufig durch Adjektive bezeichnet: "Druckbar" beispielsweise könnte der Parametertyp einer Methode "drucken" sein, den das zu druckende Objekt haben muss. Tatsächlich enden viele der gebräuchlichen Interfacenamen im Englischen auf „able“ oder „ible“, so z. B. bei "Serializable."
+
+
+Frage: Was sind Interfaces in der objektorientierten Programmierung?
+Antwort: Interfaces sind in der objektorientierten Programmierung Typen, die eher Rollen bezeichnen, die Objekte spielen können, als Allgemeinbegriffe. Sie werden häufig durch Substantive oder Adjektive bezeichnet.
+
+
+Eine ganz interessante Option ergibt sich übrigens für Programmiererinnen, deren Muttersprache nicht Englisch ist: Man hat hier die Möglichkeit, bei der Wahl der Bezeichner zwischen zwei Sprachen zu wählen und damit eine zusätzliche Form der Differenzierung einzusetzen. Ich persönlich verwende dann gerne für Begrifflichkeiten aus der Anwendungsdomäne (also dem Gegenstandsbereich, mit dem sich das Programm befasst) deutsche Bezeichner und für solche aus der technischen Umsetzung (Hilfsklassen etc.) englische. Alternativ kann man natürlich auch alle selbst beigesteuerten Programmelemente auf Deutsch benennen, um sie von den aus Bibliotheken und Frameworks zusammengeklaubten zu unterscheiden.
+
+
+Frage: Was ist eine Möglichkeit für Programmiererinnen, deren Muttersprache nicht Englisch ist?
+Antwort: Eine Möglichkeit für Programmiererinnen, deren Muttersprache nicht Englisch ist, ist die Wahl der Bezeichner zwischen zwei Sprachen zu wählen und damit eine zusätzliche Form der Differenzierung einzusetzen. Zum Beispiel können sie für Begrifflichkeiten aus der Anwendungsdomäne deutsche Bezeichner und für solche aus der technischen Umsetzung englische Bezeichner verwenden. Alternativ können sie auch alle selbst beigesteuerten Programmelemente auf Deutsch benennen, um sie von den aus Bibliotheken und Frameworks zusammengeklaubten zu unterscheiden.
+
+Frage: Warum kann es sinnvoll sein, bei der Wahl der Bezeichner zwischen zwei Sprachen zu wählen?
+Antwort: Das kann sinnvoll sein, um eine zusätzliche Form der Differenzierung einzusetzen. Zum Beispiel kann man für Begrifflichkeiten aus der Anwendungsdomäne deutsche Bezeichner verwenden und für solche aus der technischen Umsetzung englische. Alternativ kann man auch alle selbst beigesteuerten Programmelemente auf Deutsch benennen, um sie von den aus Bibliotheken und Frameworks zusammengeklaubten zu unterscheiden.

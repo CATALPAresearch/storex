@@ -1,0 +1,30 @@
+50.3.3 Ereignisse (Events)
+
+Viele Applikationen, insbesondere solche mit GUI, benötigen neben der direkten Kommunikation zwischen Objekten, die sich kennen (die ja durch Nachrichtenaustausch bzw., je nach Diktion, durch Methodenaufrufe bewerkstelligt wird), auch eine Kommunikation mit unbekannten. Die Problematik hatten wir im Kontext von SMALLTALK bereits besprochen.
+
+
+Frage: Was ist die Problematik bei der Kommunikation mit unbekannten Objekten?
+Antwort: Die Problematik bei der Kommunikation mit unbekannten Objekten ist, dass diese Objekte nicht direkt bekannt sind und somit kein Nachrichtenaustausch stattfinden kann. Um dieses Problem zu lösen, werden sogenannte Broker-Objekte eingesetzt, die als Vermittler zwischen den Objekten fungieren. Diese Broker-Objekte stellen sicher, dass Nachrichten an die richtigen Objekte weitergeleitet werden, auch wenn diese unbekannt sind. In SMALLTALK wird dieses Problem durch den Objekt-Manager gelöst, der eine Art Broker-Objekt darstellt.
+
+
+Nun kommt dieses Problem so häufig vor, dass sich MICROSOFT dafür entschieden hat, es zumindest teilweise von der Ebene der Programmierung (wo es in Form eines sog. Patterns abgehandelt wird; mehr dazu in Kurs 01853) auf die Ebene der Programmiersprache zu heben (in SMALLTALK, wo diese Unterscheidung nicht so ausgeprägt ist, war das Problem ja mittels einer Implementierung der benötigten Mechanismen in der Klasse Object gelöst worden, von der alle anderen erben).
+
+
+Frage: Wie hat Microsoft das Problem der temporären Variablen gelöst?
+Antwort: Microsoft hat das Problem der temporären Variablen zumindest teilweise auf die Ebene der Programmiersprache gehoben, indem es eine Möglichkeit geschaffen hat, diese Unterscheidung in der Programmiersprache zu behandeln.
+
+Frage: Warum hat Microsoft sich entschieden, das Problem der Unterscheidung zwischen Verweis- und Wertsemantik auf die Ebene der Programmiersprache zu heben?
+Antwort: Das Problem der Unterscheidung zwischen Verweis- und Wertsemantik tritt sehr häufig auf. Microsoft hat sich dafür entschieden, es zumindest teilweise auf die Ebene der Programmiersprache zu heben, um es mittels einer Implementierung der benötigten Mechanismen in der Sprache zu lösen. In Smalltalk, wo diese Unterscheidung nicht so ausgeprägt ist, war das Problem mittels einer Implementierung in der Klasse Object gelöst worden, von der alle anderen Klassen erben.
+
+
+Zu diesem Zweck wurde das Konstrukt des Events (Ereignisses) eingeführt, über das sog. Event handler aktiviert werden können. Dabei handelt es sich um die in Abschnitt 50.4.1 skizzierten sog. Delegates. Leider ist die Syntax von C-Sharp, die mit Deklaration und Registrierung von Eventhandlern sowie der Verbreitung von Ereignissen verbunden ist, nach Ansicht des Autors dieses Textes komplett unleserlich geraten, so dass hier auf eine weitergehende Befassung mit dem Thema verzichtet wird.
+
+
+Frage: Was ist ein Event (Ereignis) in C-Sharp und wie wird es gehandhabt?
+Antwort: Ein Event (Ereignis) in C-Sharp ist ein Konstrukt, über das sog. Event handler aktiviert werden können. Die Handhabung von Ereignissen erfolgt über die in Abschnitt 50.4.1 skizzierten sog. Delegates. Leider ist die Syntax von C-Sharp, die mit Deklaration und Registrierung von Eventhandlern sowie der Verbreitung von Ereignissen verbunden ist, nach Ansicht des Autors dieses Textes komplett unleserlich geraten, so dass hier auf eine weitergehende Befassung mit dem Thema verzichtet wird.
+
+Frage: Was ist ein Event (Ereignis) in C-Sharp und wozu dient es?
+Antwort: In C-Sharp wurde das Konstrukt des Events (Ereignisses) eingeführt, um sog. Event handler aktivieren zu können. Ein Event handler ist ein Delegat, der auf ein Ereignis reagiert. Das Ereignis dient dazu, auf etwas zu reagieren, wie z.B. auf eine Benutzerinteraktion. Leider ist die Syntax von C-Sharp, die mit Deklaration und Registrierung von Eventhandlern sowie der Verbreitung von Ereignissen verbunden ist, nach Ansicht des Autors dieses Textes komplett unleserlich geraten.
+
+Frage: Was ist ein Event (Ereignis) in der Programmierung?
+Antwort: Ein Event (Ereignis) ist ein Konstrukt in der Programmierung, das dazu dient, eine bestimmte Aktion auszulösen, wenn ein bestimmter Zustand erreicht ist oder eine bestimmte Benutzerinteraktion erfolgt. Über sog. Eventhandler können dann auf diese Ereignisse reagiert werden.

@@ -1,0 +1,37 @@
+50.1 Das Programmiermodell von C-Sharp
+
+Das Programmiermodell von C-Sharp unterscheidet sich zunächst nicht wesentlich von dem von Java: Auch in C-Sharp ist der Code auf Klassen verteilt, die einzeln übersetzt werden können. Klassen werden in Dateien gespeichert, jedoch ist das Verhältnis von Klasse zu Datei lockerer als in Java (u. a. können Klassen anders heißen als ihre Dateien und sogar auf mehrere Dateien aufgeteilt werden). Allerdings sind der Bytecode und die dazu passende virtuelle Maschine nicht speziell für C-Sharp entworfen, sondern für alle sog. .NET-Sprachen. So heißt denn auch die Sprache des Bytecode Common Intermediate Language (CIL); sie gilt als (gerade noch) menschenlesbar.
+
+
+Frage: Wie ist das Verhältnis von Klasse zu Datei in C-Sharp?
+Antwort: Das Verhältnis von Klasse zu Datei in C-Sharp ist lockerer als in Java. Klassen können anders heißen als ihre Dateien und sogar auf mehrere Dateien aufgeteilt werden.
+
+Frage: Was ist der Unterschied zwischen der Verwendung von Klassen in C-Sharp und Java?
+Antwort: Der Unterschied liegt darin, dass in C-Sharp das Verhältnis von Klasse zu Datei lockerer ist als in Java. In C-Sharp können Klassen anders heißen als ihre Dateien und sogar auf mehrere Dateien aufgeteilt werden. Im Gegensatz dazu ist in Java das Verhältnis von Klasse zu Datei strenger, da die Klasse denselben Namen wie ihre Datei haben muss.
+
+
+Anders als bei Java waren bei C-Sharp Flexibilität und Performanz von Anfang an kritische Gesichtspunkte des Sprachentwurfs. Für C-Sharp war daher von Anfang an und ausschließlich die sog. Just-in-time-(JIT-)Kompilierung vorgesehen, die den CIL-Code unmittelbar vor der Ausführung (und nur, wenn er überhaupt ausgeführt wird) in Maschinencode der Maschine, auf der er gerade läuft, übersetzt. Die Einheiten der JIT-Kompilierung gehen dabei hinunter bis zu einzelnen Methoden. Eine vollständige Kompilierung von CIL in nativen Maschinencode vor der Ausführung ist ebenfalls möglich.
+
+
+Frage: Was ist Just-in-time-(JIT-)Kompilierung in C-Sharp?
+Antwort: Bei C-Sharp ist die Just-in-time-(JIT-)Kompilierung eine Technik, bei der der CIL-Code unmittelbar vor der Ausführung (und nur, wenn er überhaupt ausgeführt wird) in Maschinencode der Maschine, auf der er gerade läuft, übersetzt wird. Die Einheiten der JIT-Kompilierung gehen dabei hinunter bis zu einzelnen Methoden.
+
+
+Eine andere Eigenschaft von Java, mit der die Programmiererinnen von MICROSOFT offenbar nicht unter allen Umständen leben konnten, ist die Garbage Collection. In C-Sharp hat man daher die Möglichkeit, den Speicherplatz für Objekte, die mit "new" erzeugt wurden, selbst wieder freizugeben. Doch wehe derjenige, der das vergisst: Speicherlecks sind die unmittelbare Folge. Noch schlimmer sind aber Speicherfreigaben von Objekten, auf die noch Referenzen existieren: Diese zeigen dann ins Leere oder, wenn der Speicher wieder belegt wird, auf oder mitten hinein in ein anderes Objekt. Eine Katastrophe. Aber damit nicht genug: Das mit SMALLTALK und Java abgeschaffte Hantieren mit Pointern wurde in C-Sharp auch wiedereingeführt, wohl weil man in der systemnahen Programmierung (und bei Aufrufen in das hauseigene Betriebssystem) nicht darauf verzichten konnte. Allerdings sind beide Rückschritte — explizite Speicherverwaltung und das Hantieren mit Pointern — in sog. unsichere Bereiche verbannt. Dazu gibt es in C-Sharp einen Modifikator "unsafe", der solche Bereiche einleitet:
+
+
+Frage: Was ist die Funktion des "unsafe"-Modifikators in C-Sharp?
+Antwort: Der "unsafe"-Modifikator in C-Sharp dient dazu, Bereiche im Programm zu markieren, in denen explizite Speicherverwaltung und das Hantieren mit Pointern erlaubt sind. Diese Bereiche werden als "unsicher" bezeichnet.
+
+
+Dabei bedeutet der Stern hinter einem Typ, dass es sich um einen Zeiger-auf-Typ handelt; vor einer Variable bedeutet er, dass die Variable dereferenziert wird, also nicht auf den Pointer, sondern auf die Speicherstelle, auf die der Pointer zeigt, zugegriffen wird. Nebenbei bedeutet der Stern aber auch noch die Multiplikation und all das, wofür er sonst noch überladen wurde. Neben Methoden können auch Klassen, Blöcke und Variablen unsicher sein.
+
+
+Frage: Was bedeutet der Stern hinter einem Typ in Objective-C?
+Antwort: Der Stern hinter einem Typ in Objective-C bedeutet, dass es sich um einen Zeiger-auf-Typ handelt.
+
+Frage: Was bedeutet der Stern vor einer Variable in der Programmierung?
+Antwort: Vor einer Variable bedeutet der Stern, dass die Variable dereferenziert wird, also nicht auf den Pointer, sondern auf die Speicherstelle, auf die der Pointer zeigt, zugegriffen wird.
+
+Frage: Was bedeutet der Stern neben Methoden, Klassen, Blöcken und Variablen in der Programmierung?
+Antwort: Neben Methoden, Klassen, Blöcken und Variablen bedeutet der Stern, dass sie unsicher sind. Das heißt, sie können Null-Werte haben und müssen vor der Verwendung auf Null überprüft werden.
