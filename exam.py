@@ -56,6 +56,9 @@ class ExamManager:
         # Setup stopwords for preprocessing
         preprocessing.setup_word_lists()
 
+        # Set text generation model
+        self.text_generator = TextGenerator()
+
         # Set question manager and question models
         topic_manager = TopicManager()
         self.manager = QuestionManager(topic_manager)
@@ -64,10 +67,7 @@ class ExamManager:
         self.repeating_reason = None
         self.prepend_question = "Dann lassen Sie uns beginnen."
         self.paraphraser = QuestionParaphraser()
-        self.question_generator = QuestionGenerator()
-
-        # Set text generation model
-        self.text_generator = TextGenerator()
+        self.question_generator = QuestionGenerator(self.text_generator)
 
         # Set specific topics to be targeted for questions
         self.targets = []
@@ -382,6 +382,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 2, "female": False, "male": False, "mute": True}
+    dev_parameters = {"name": "Luna", "time": 10, "female": False, "male": False, "mute": True}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

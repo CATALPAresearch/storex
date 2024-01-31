@@ -18,8 +18,20 @@ logger = logging.getLogger()
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 
+def get_query(context):
+    query = f"""Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
+    Nutze nur Informationen aus folgendem Text:
+    Kontext: {context}
+
+    Passe die Ausgabe an folgendes Template an:
+    Frage: [Prüfungsfrage]
+    Antwort: [Musterantwort]"""
+
+    return query
+
+
 class QuestionGenerator:
-    def __init__(self):
+    def __init__(self, text_generator):
         """
         Initializes
         """
@@ -33,18 +45,20 @@ class QuestionGenerator:
         self.db = FAISS.load_local(vectorstore, embedding_model)
 
         # Load question-answer model and create a question-answer chain
-        question_answer_template = """[INST] Du bist ein Professor an einer deutschen Universität.
-        Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
+        question_answer_template = """Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
         Nutze nur Informationen aus folgendem Text:
         Kontext: {Kontext}
 
         Passe die Ausgabe an folgendes Template an:
         Frage: [Prüfungsfrage]
-        Antwort: [Musterantwort][/INST]"""
-        question_answer_prompt = PromptTemplate(template=question_answer_template, input_variables=['context'])
-        question_answer_llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
-                                             model_kwargs={'max_new_tokens': 512, 'raw_response': True})
-        self.question_answer_chain = LLMChain(prompt=question_answer_prompt, llm=question_answer_llm)
+        Antwort: [Musterantwort]"""
+
+        self.question_generator = text_generator
+
+        # question_answer_prompt = PromptTemplate(template=question_answer_template, input_variables=['context'])
+        # question_answer_llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
+        #                                      model_kwargs={'max_new_tokens': 512, 'raw_response': True})
+        # self.question_answer_chain = LLMChain(prompt=question_answer_prompt, llm=question_answer_llm)
 
     def generate_question_answer(self, keyword, k=2):
         """
@@ -55,7 +69,8 @@ class QuestionGenerator:
         logger.debug(f"Context: {context}")
 
         # Generate a question and answer from the context
-        question_answer = self.question_answer_chain.run(context)
+        question_query = get_query(context)
+        question_answer = self.question_generator.get_text(question_query)
         logger.debug(f"Question and answer: {question_answer}")
 
         # Find the question and the answer in the model output
