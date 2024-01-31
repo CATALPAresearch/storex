@@ -40,7 +40,7 @@ if args["female"] and args["male"]:
 
 # Check and exit if time is not between 10 and 60 minutes
 if int(args["time"]) > 60 or int(args["time"]) < 10:
-    print("The training exam can last between 10 to 60 minutes. Please choose a duration in that time frame.\n"
+    print("The training exam can last 10 to 60 minutes. Please choose a duration in that time frame.\n"
           "Type -h to see the help text.",
           file=sys.stderr)
     exit(1)
