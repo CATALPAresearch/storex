@@ -32,7 +32,7 @@ class FeedbackManager:
         self.completed_level = []  # Level reached per KE
         for _ in KE:
             self.correct_answers.append(0)
-            self.completed_level.append(None)
+            self.completed_level.append(0)
 
     def add_question(self):
         self.all_questions += 1
