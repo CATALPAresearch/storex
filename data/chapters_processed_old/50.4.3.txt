@@ -10,8 +10,8 @@ Antwort: Generizität in C-Sharp ermöglicht es, parametrischen Polymorphismus s
 Frage: Welche Arten von Generizität werden in C-Sharp unterstützt?
 Antwort: C-Sharp unterstützt sowohl beschränkte als auch unbeschränkte parametrische Polymorphismus für Klassen und Methoden. Dies bedeutet, dass Typparameter sowohl eingeschränkte (mit bestimmten Anforderungen) als auch unbeschränkte (ohne Anforderungen) Typen sein können.
 
-Frage: Was unterscheidet Generics in C-Sharp und Generics in Java?
-Antwort: Obwohl die Oberfläche von C-Sharp Generics der von Java ähnelt, unterscheidet sich der Mechanismus dahinter. C-Sharp instanziiert generische Klassen für Werttypen (wie int oder selbst definierte structs) für jeden verwendeten Typ, während Java Typparameter grundsätzlich immer entfernt (Type Erasure) und nur eine Implementierung erzeugt.
+Frage: Was unterscheidet Generics in C-Sharp und Generics in JAVA?
+Antwort: Obwohl die Oberfläche von C-Sharp Generics der von JAVA ähnelt, unterscheidet sich der Mechanismus dahinter. C-Sharp instanziiert generische Klassen für Werttypen (wie int oder selbst definierte structs) für jeden verwendeten Typ, während JAVA Typparameter grundsätzlich immer entfernt (Type Erasure) und nur eine Implementierung erzeugt.
 
 Frage: Wie wird das Varianzproblem bei der Subtypisierung von Containern in C-Sharp gelöst?
 Antwort: In C-Sharp wird das Varianzproblem bei der Subtypisierung von Containern durch das Hinzufügen des Schlüsselworts "out" für kovariante Typparameter und "in" für kontravariante Typparameter bei der Definition des Typs gelöst. Dies stellt sicher, dass Zuweisungskompatibilität auch dann gegeben ist, wenn die generischen Typen verschiedene Typparameter haben.

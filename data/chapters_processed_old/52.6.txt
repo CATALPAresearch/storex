@@ -6,7 +6,7 @@ Neben der Möglichkeit, Vor- und Nachbedingungen zu formulieren, gibt es in EIFF
 Zusicherungen werden in EIFFEL von Klassen auf ihre Subklassen vererbt. Wenn eine Methode redefiniert wird, dürfen auch Vor- und Nachbedingungen angepasst werden. Allerdings gilt hierbei, dass die Vorbedingung nur abgeschwächt und die Nachbedingung nur verschärft werden darf. Die Sprachdefinition von EIFFEL stellt sicher, dass diese Bedingung eingehalten wird, indem die Vorbedingung einer redefinierten Methode implizit disjunktiv mit der geerbten Vorbedingung und die redefinierte Nachbedingung implizit konjunktiv mit der geerbten verknüpft wird.
 
 Frage: Was ist ein herausragendes Merkmal von EIFFEL in Bezug auf Zusicherungen (Assertions)?
-Antwort: Ein herausragendes Merkmal von EIFFEL ist die Integration von Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen. Anders als in Java, wo Zusicherungen flexibel platziert werden können, gibt es in EIFFEL spezielle vorgesehene Stellen für diese Zusicherungen.
+Antwort: Ein herausragendes Merkmal von EIFFEL ist die Integration von Zusicherungen in Form von Vor- und Nachbedingungen bei Methodenaufrufen. Anders als in JAVA, wo Zusicherungen flexibel platziert werden können, gibt es in EIFFEL spezielle vorgesehene Stellen für diese Zusicherungen.
 
 Frage: Welche Schlüsselwörter werden in EIFFEL verwendet, um Vor- und Nachbedingungen für Methoden zu definieren?
 Antwort: In EIFFEL werden die Schlüsselwörter "require" (vor der Implementierung der Methode) und "ensure" (nach der Implementierung der Methode) verwendet, um Vor- und Nachbedingungen für Methoden zu definieren.

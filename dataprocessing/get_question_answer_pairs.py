@@ -4,6 +4,7 @@ import os
 from langchain.chains import LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
+from pathlib import Path
 
 os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
@@ -31,11 +32,11 @@ def write_txt(question_chapter, chapter_no):
 class QuestionAnswerGenerator:
     def __init__(self):
         template = (
-            """
-            Erstelle Frage-Antwort Paare für eine mündliche Prüfung an einer deutschen Universität.
+            """<s>[INST] Du bist ein Professor an einer deutschen Universität.
+            Erstelle einfache Frage-Antwort Paare für eine mündliche Prüfung.
             Nutze nur Informationen aus folgendem Text:
             Kontext: {context}
-
+            Gib nur das Frage-Antwort Paar zurück:[/INST]
             {question-answer}
             """)
         self.example_prompt = PromptTemplate(input_variables=['context', 'question-answer'],
@@ -70,7 +71,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was ist ein Literal?
-                    Antwort: Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.
+                    Antwort: Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.</s>
                     """
             },
             {
@@ -85,7 +86,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Welche Arten von Ausdrücken gibt es?
-                    Antwort: Es gibt Literale, Variablen, Zuweisungsausdrücke und Nachrichtenausdrücke.
+                    Antwort: Es gibt Literale, Variablen, Zuweisungsausdrücke und Nachrichtenausdrücke.</s>
                     """
             },
             {
@@ -102,7 +103,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was ist die "Garbage Collection" in SMALLTALK?
-                    Antwort: Die "Garbage Collection" ist ein Mechanismus in SMALLTALK, der Objekte aus dem Speicher entfernt, wenn sie nicht mehr über Variablen zugreifbar sind.
+                    Antwort: Die "Garbage Collection" ist ein Mechanismus in SMALLTALK, der Objekte aus dem Speicher entfernt, wenn sie nicht mehr über Variablen zugreifbar sind.</s>
                     """
             },
             {
@@ -118,7 +119,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was sind temporäre Variablen?
-                    Antwort: Eine Methode kann temporäre Variablen für ihre Berechnungen benötigen. Temporäre Variablen existieren nur für die Dauer der Ausführung der Methode und werden vom System nach Beendigung der Methode entfernt. Die Werte sind außerhalb der Methode nicht sichtbar. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.
+                    Antwort: Eine Methode kann temporäre Variablen für ihre Berechnungen benötigen. Temporäre Variablen existieren nur für die Dauer der Ausführung der Methode und werden vom System nach Beendigung der Methode entfernt. Die Werte sind außerhalb der Methode nicht sichtbar. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.</s>
                     """
             },
         ]
@@ -141,7 +142,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Wie werden Informationen in der objektorientierten Programmierung dargestellt?
-                    Antwort: In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt. Dieses Geflecht kann navigiert und manipuliert werden.
+                    Antwort: In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt. Dieses Geflecht kann navigiert und manipuliert werden.</s>
                     """
             },
             {
@@ -155,7 +156,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Wann entstehen Aliase?
-                    Antwort: Aliase entstehen immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.
+                    Antwort: Aliase entstehen immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.</s>
                     """
             },
             {
@@ -167,7 +168,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Wie wird der Zustand eines Objekts verändern?
-                    Antwort: Die einzige Möglichkeit, den Zustand eines Objekts zu ändern, besteht darin, die Werte seiner Instanzvariablen zuzuweisen, was gleichbedeutend mit der Änderung seiner Beziehungen ist.
+                    Antwort: Die einzige Möglichkeit, den Zustand eines Objekts zu ändern, besteht darin, die Werte seiner Instanzvariablen zuzuweisen, was gleichbedeutend mit der Änderung seiner Beziehungen ist.</s>
                     """
             },
             {
@@ -183,7 +184,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was sind temporäre Variablen?
-                    Antwort: Eine Methode kann temporäre Variablen für ihre Berechnungen benötigen. Temporäre Variablen existieren nur für die Dauer der Ausführung der Methode und werden vom System nach Beendigung der Methode entfernt. Die Werte sind außerhalb der Methode nicht sichtbar. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.
+                    Antwort: Eine Methode kann temporäre Variablen für ihre Berechnungen benötigen. Temporäre Variablen existieren nur für die Dauer der Ausführung der Methode und werden vom System nach Beendigung der Methode entfernt. Die Werte sind außerhalb der Methode nicht sichtbar. Temporäre Variablen können auch der besseren Lesbarkeit dienen, indem sie Zwischenergebnissen Namen geben.</s>
                     """
             },
         ]
@@ -218,7 +219,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was unterscheidet Zuweisungen unter Wertsemantik und unter Verweissemantik?
-                    Antwort: Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.
+                    Antwort: Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.</s>
                     """
             },
             {
@@ -236,7 +237,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Warum werden Pseudovariablen als solche bezeichnet?
-                    Antwort: Sie werden als Pseudovariablen bezeichnet, da sie ihren Wert entweder nicht ändern können oder ihren Wert vom System erhalten.
+                    Antwort: Sie werden als Pseudovariablen bezeichnet, da sie ihren Wert entweder nicht ändern können oder ihren Wert vom System erhalten.</s>
                     """
             },
             {
@@ -253,7 +254,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Was unterscheidet Attribute und Beziehungen
-                    Antwort: Die Unterscheidung zwischen Attributen und Beziehungen kann in Ermangelung spezieller Schlüsselwörter allenfalls über die Unterscheidung zwischen Variablen mit Wert- und Variablen mit Referenzsemantik erfolgen. Diese ist jedoch in einigen Programmiersprachen nicht immer eindeutig ist und beispielsweise in Java gar nicht zutreffend.
+                    Antwort: Die Unterscheidung zwischen Attributen und Beziehungen kann in Ermangelung spezieller Schlüsselwörter allenfalls über die Unterscheidung zwischen Variablen mit Wert- und Variablen mit Referenzsemantik erfolgen. Diese ist jedoch in einigen Programmiersprachen nicht immer eindeutig ist und beispielsweise in JAVA gar nicht zutreffend.</s>
                     """
             },
             {
@@ -265,7 +266,7 @@ class QuestionAnswerGenerator:
                 'question-answer':
                     """
                     Frage: Warum hängt das Verhalten eines Objekts von seinem Zustand ab?
-                    Antwort: Das Verhalten eines Objekts hängt in der Regel von seinem Zustand ab, weil der Zustand eines Objekts die Informationen enthält, die benötigt werden, um die richtigen Entscheidungen zu treffen und die entsprechenden Aktionen auszuführen. Das Verhalten eines Objekts basiert auf den Daten in seinem Zustand, und diese Daten beeinflussen, wie das Objekt auf Nachrichten reagiert.
+                    Antwort: Das Verhalten eines Objekts hängt in der Regel von seinem Zustand ab, weil der Zustand eines Objekts die Informationen enthält, die benötigt werden, um die richtigen Entscheidungen zu treffen und die entsprechenden Aktionen auszuführen. Das Verhalten eines Objekts basiert auf den Daten in seinem Zustand, und diese Daten beeinflussen, wie das Objekt auf Nachrichten reagiert.</s>
                     """
             }
         ]
@@ -291,8 +292,10 @@ class QuestionAnswerGenerator:
 qa_generator = QuestionAnswerGenerator()
 files = glob.glob(INPUT_PATH + '*.txt')
 for file in files:
+    file_name = Path(file).stem
+    # Specifications for example with: if file_name.startswith('1') and file_name not in ['1']:
     chapter, headline = read_txt(file)
-    chapter_number = headline.split(' ', 1)[0]
+    # chapter_number = headline.split(' ', 1)[0]
     chapter_with_questions = [headline]
     for paragraph in chapter:
         chapter_with_questions.append(paragraph)
@@ -307,5 +310,5 @@ for file in files:
                 i += 1
         chapter_with_questions.extend(questions)
         chapter_with_questions.append('\n')
-    write_txt(chapter_with_questions, chapter_number)
-    exit(0)
+    write_txt(chapter_with_questions, file_name)
+    print(f"File {file_name} done!")

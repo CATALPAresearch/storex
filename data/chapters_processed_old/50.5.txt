@@ -2,8 +2,8 @@
 
 C-Sharp ist nicht nur ein Nachahmer von JAVA, sondern war auch ein Pionier für Spracherweiterungen, die es inzwischen auch in JAVA gibt: So gab es in C-Sharp von Anfang an sog. Attributes, die in JAVA in der Version 5 als Annotationen (was in jedem Fall der bessere Name ist) Einzug gehalten haben. C-Sharp hatte auch schon ab der Version 3.0 Lambda-Ausdrücke (ein Element funktionaler Programmiersprachen, in SMALLTALK — in Form von Blöcken — schon immer vorhanden und ein Grundelement der Sprache); JAVA ist erst mit Version 8 nachgezogen. Die Gefahr besteht jedoch darin, dass sich die beiden Sprachen gegenseitig übertrumpfen könnten — irgendwann wird jemand auf die Idee kommen, aus den besten Eigenschaften beider eine neue Sprache zu destillieren (KOTLIN mag hier ein erstes Beispiel sein). Vielleicht wird bei der Gelegenheit auch endlich mit dem C-Erbe aufgeräumt und die fürchterliche Syntax entsorgt.
 
-Frage: Welche Spracherweiterungen, die später in Java eingeführt wurden, gab es bereits in C-Sharp?
-Antwort: In C-Sharp gab es von Anfang an sogenannte "Attributes" (Attribute), die in Java in der Version 5 als "Annotationen" Einzug hielten. C-Sharp führte auch bereits ab Version 3.0 Lambda-Ausdrücke ein, während Java erst mit Version 8 nachzog.
+Frage: Welche Spracherweiterungen, die später in JAVA eingeführt wurden, gab es bereits in C-Sharp?
+Antwort: In C-Sharp gab es von Anfang an sogenannte "Attributes" (Attribute), die in JAVA in der Version 5 als "Annotationen" Einzug hielten. C-Sharp führte auch bereits ab Version 3.0 Lambda-Ausdrücke ein, während JAVA erst mit Version 8 nachzog.
 
-Frage: Was wird als mögliche Gefahr hinsichtlich der Entwicklung von C-Sharp und Java erwähnt?
+Frage: Was wird als mögliche Gefahr hinsichtlich der Entwicklung von C-Sharp und JAVA erwähnt?
 Antwort: Als mögliche Gefahr wird erwähnt, dass die beiden Sprachen sich gegenseitig übertrumpfen könnten. Es besteht die Möglichkeit, dass jemand auf die Idee kommt, die besten Eigenschaften beider Sprachen zu kombinieren und eine neue Sprache zu entwickeln. Dies könnte auch eine Gelegenheit sein, sich von den Syntax-Erben aus der C-Welt zu verabschieden.

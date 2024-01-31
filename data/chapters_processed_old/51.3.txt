@@ -12,11 +12,11 @@ Antwort: Das Friends-Konzept ist nützlich, wenn ein Teilproblem in der Programm
 Frage: Wie wird in C++ festgelegt, welche Klassen auf die privaten Elemente einer anderen Klasse zugreifen dürfen?
 Antwort: In C++ wird festgelegt, welche Klassen auf die privaten Elemente einer anderen Klasse zugreifen dürfen, indem man die betreffenden Klassen mit dem Schlüsselwort "friend" in der Zielsklasse deklariert. Zum Beispiel: friend class B; und friend class C;
 
-Frage: Welchen Nachteil hat die Verwendung von Paketen in Java für die Zusammenarbeit von Klassen?
-Antwort: In Java hatte man bis zur Version 8 die Möglichkeit, Klassen in ein Paket zu verfrachten, um die Zusammenarbeit von Klassen zu ermöglichen. Der Nachteil dabei ist, dass alle Klassen desselben Pakets dieselbe Schnittstelle jeder einzelnen enthaltenen Klasse haben, was die Aufteilung der Klassen auf Pakete einschränken kann.
+Frage: Welchen Nachteil hat die Verwendung von Paketen in JAVA für die Zusammenarbeit von Klassen?
+Antwort: In JAVA hatte man bis zur Version 8 die Möglichkeit, Klassen in ein Paket zu verfrachten, um die Zusammenarbeit von Klassen zu ermöglichen. Der Nachteil dabei ist, dass alle Klassen desselben Pakets dieselbe Schnittstelle jeder einzelnen enthaltenen Klasse haben, was die Aufteilung der Klassen auf Pakete einschränken kann.
 
 Frage: Gibt es in C++ die Möglichkeit, einzelne Member einer Klasse spezifisch an bestimmte Klassen zu exportieren?
 Antwort: Nein, in C++ ist es nicht möglich, einzelne Member einer Klasse spezifisch an bestimmte Klassen zu exportieren. Stattdessen erlaubt das Friends-Konzept, dass bestimmte Klassen auf alle privaten Elemente einer anderen Klasse zugreifen können.
 
-Frage: Wie wird das Friends-Konzept in Java angenähert?
-Antwort: Das Friends-Konzept wird in Java durch die Verwendung von Modulen und den dedizierten (qualifizierten) Export auf Ebene der Pakete angenähert. Dies ermöglicht eine kontrollierte Freigabe von Elementen an bestimmte Pakete.
+Frage: Wie wird das Friends-Konzept in JAVA angenähert?
+Antwort: Das Friends-Konzept wird in JAVA durch die Verwendung von Modulen und den dedizierten (qualifizierten) Export auf Ebene der Pakete angenähert. Dies ermöglicht eine kontrollierte Freigabe von Elementen an bestimmte Pakete.

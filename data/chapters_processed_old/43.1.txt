@@ -8,14 +8,14 @@ Die Zuweisung von Zeile 1051 ist übrigens nur gültig, wenn der (parametrisiert
 Der Compiler weiß nun aufgrund der Ersetzung des formalen Parameters E mit dem tatsächlichen Parameter Integer in Zeile 1051, dass die Elemente der Variable liste alle vom Typ Integer sind und dass eine Zuweisung der Form get(0) = 42; typkorrekt ist. Um das zu überprüfen, muss er nämlich nur den Wert des Typparameters in der Deklaration von liste, Integer, in die Variable E der Implementierung von get einsetzen. Er kann dann feststellen, dass der Rückgabetyp des Ausdrucks mit der Variable zuweisungskompatibel ist. Man beachte, dass ohne Typparameter in Zeile 1064 eine Typumwandlung von Object auf Integer (Downcast) notwendig wäre, die aber zu einem Laufzeitfehler führen kann (s. Abschnitt 44.1). Die Einführung von Generics erhöht hingegen die Typsicherheit statisch, also zur Übersetzungszeit, ein fundamentaler Gewinn.
 Nun wissen Sie ja bereits aus der Schilderung aus Kapitel 41, dass List<Integer> nicht unbedingt ein Subtyp von List<Object> sein sollte, selbst wenn Integer ein Subtyp von Object ist. Man hat den oben diskutierten Kompromiss offenbar nicht weiter fortführen wollen.
 
-Frage: Wie werden parametrische (generische) Typen in Java definiert?
-Antwort: Parametrische (generische) Typen in Java werden nicht separat definiert, sondern sind das Produkt parametrischer Klassen- bzw. Interfacedefinitionen. Die formalen Typparameter in der Klassendefinition können durch verschiedene Typen ersetzt werden.
+Frage: Wie werden parametrische (generische) Typen in JAVA definiert?
+Antwort: Parametrische (generische) Typen in JAVA werden nicht separat definiert, sondern sind das Produkt parametrischer Klassen- bzw. Interfacedefinitionen. Die formalen Typparameter in der Klassendefinition können durch verschiedene Typen ersetzt werden.
 
-Frage: Was ist die Hauptanwendung generischer Typen in Java?
-Antwort: Eine Hauptanwendung generischer Typen in Java ist die Arbeit mit Collections, um den Typ der Elemente in der Collection anzugeben und so die Typsicherheit zu erhöhen.
+Frage: Was ist die Hauptanwendung generischer Typen in JAVA?
+Antwort: Eine Hauptanwendung generischer Typen in JAVA ist die Arbeit mit Collections, um den Typ der Elemente in der Collection anzugeben und so die Typsicherheit zu erhöhen.
 
 Frage: Welche Konvention wird häufig verwendet, um Typparameter von Klassen- und Variablennamen zu unterscheiden?
 Antwort: Eine häufig verwendete Konvention ist es, einzelne Großbuchstaben für Typparameter zu wählen. Zum Beispiel steht "E" üblicherweise für den Elementtyp von Containern wie Collections.
 
-Frage: Warum führt die Zuweisung von List<Integer> zu List<Object> zu einem statischen Typfehler in Java?
-Antwort: Die Zuweisung von List<Integer> zu List<Object> führt zu einem statischen Typfehler in Java, weil bei generischen Typen nicht automatisch eine Zuweisungskompatibilität zwischen unterschiedlichen generischen Typen besteht, selbst wenn die Typen, die sie parametrisieren, zueinander in Beziehung stehen. Dies erhöht die Typsicherheit zur Übersetzungszeit.
+Frage: Warum führt die Zuweisung von List<Integer> zu List<Object> zu einem statischen Typfehler in JAVA?
+Antwort: Die Zuweisung von List<Integer> zu List<Object> führt zu einem statischen Typfehler in JAVA, weil bei generischen Typen nicht automatisch eine Zuweisungskompatibilität zwischen unterschiedlichen generischen Typen besteht, selbst wenn die Typen, die sie parametrisieren, zueinander in Beziehung stehen. Dies erhöht die Typsicherheit zur Übersetzungszeit.

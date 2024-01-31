@@ -3,8 +3,8 @@
 Wenn Ihnen das noch nicht kompliziert genug ist, geht es noch weiter: Tatsächlich würde auch "Comparable" selbst von einer Parametrisierung profitieren. In einem ersten Ansatz würde man verlangen, dass von zwei vergleichbaren Elementen beide vom gleichen Typ sein müssen.
 Bei genauerer Betrachtung des Beispiels stellt sich jedoch heraus, dass die Bedingung, dass die zu vergleichenden Elemente für eine Sortierung alle vom selben Typ sein müssen, zu restriktiv ist. Vielmehr würde es ausreichen, wenn die Objekte der sortierten Liste unter anderem mit Objekten desselben Typs vergleichbar wären – sie könnten auch mit Objekten von noch mehr Typen vergleichbar sein. Die Bedingung muss also lauten, dass der Parametertyp von "Comparable" mindestens "E" umfassen muss. Er kann jedoch auch allgemeiner sein, z. B. "Object" (für einen Vergleich beliebiger Objekte, wie auch immer dieser durchgeführt werden soll). Im gegebenen Fall muss es sich bei dem für das Wildcard einzusetzenden Typ um einen (direkten oder indirekten) Supertypen von "E" handeln (wobei "E" ja selbst eine Typvariable ist, die erst bei einer Variablendeklaration an einen konkreten Typ gebunden wird).
 
-Frage: Was ist rekursiv beschränkter parametrischer Polymorphismus in Java?
-Antwort: Rekursiv beschränkter parametrischer Polymorphismus in Java bezieht sich auf die Möglichkeit, Beschränkungen für Typparameter auf eine Weise zu definieren, die auf sich selbst oder andere Typparameter verweist.
+Frage: Was ist rekursiv beschränkter parametrischer Polymorphismus in JAVA?
+Antwort: Rekursiv beschränkter parametrischer Polymorphismus in JAVA bezieht sich auf die Möglichkeit, Beschränkungen für Typparameter auf eine Weise zu definieren, die auf sich selbst oder andere Typparameter verweist.
 
 Frage: Warum könnte eine Parametrisierung von "Comparable" vorteilhaft sein?
 Antwort: Eine Parametrisierung von "Comparable" könnte vorteilhaft sein, um die Flexibilität bei der Verwendung von Vergleichen zu erhöhen. Es ermöglicht, dass Objekte mit verschiedenen, aber kompatiblen Typen miteinander verglichen werden können.

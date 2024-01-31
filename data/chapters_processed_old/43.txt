@@ -1,0 +1,12 @@
+43 Generische Typen
+
+Analog zur Einführung von parametrisierten Typen in Kapitel 29 von Kurseinheit 3 abstrahieren die generischen Typen von JAVA von Typen, indem sie die Referenzierung eines oder mehrerer Typen innerhalb einer Typdefinition durch Typvariablen ersetzen. Anders als in STRONGTALK stehen die Typvariablen in JAVA jedoch nicht in eckigen, sondern in spitzen Klammern. Da es dadurch zu Verwechselungen mit metasyntaktischen Variablen kommen kann, werden wir in diesem Kapitel keine mehr verwenden.
+
+Frage: Was sind generische Typen in JAVA?
+Antwort: Generische Typen in JAVA sind Typdefinitionen, die Typvariablen verwenden, um die Referenzierung eines oder mehrerer Typen innerhalb der Definition zu abstrahieren.
+
+Frage: Wie werden Typvariablen in JAVA generischen Typen dargestellt?
+Antwort: In JAVA werden Typvariablen in generischen Typen in spitzen Klammern dargestellt.
+
+Frage: Warum werden in diesem Kapitel keine metasyntaktischen Variablen verwendet?
+Antwort: Metasyntaktische Variablen könnten aufgrund der Verwendung von spitzen Klammern für Typvariablen in JAVA zu Verwechselungen führen. Daher werden in diesem Kapitel keine metasyntaktischen Variablen verwendet.
