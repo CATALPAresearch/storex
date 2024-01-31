@@ -19,9 +19,9 @@ def topic_from_ke(ke):
         return "Systematik der objektorientierten Programmierung"
     if ke == KE.KE3.value:
         return "Typen in der objektorientierten Programmierung"
-    if ke == KE.KE4_5.value:
+    if ke == KE.KE4.value:
         return "Programmiermodelle von Java, C-Sharp, C++ und EIFFEl"
-    if ke == KE.KE6_7.value:
+    if ke == KE.KE6.value:
         return "Probleme der objektorientierten Programmierung und objektorientierter Programmierstil"
 
 
