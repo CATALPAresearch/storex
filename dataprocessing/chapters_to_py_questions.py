@@ -15,11 +15,9 @@ KE1_questions = [[], [], []]
 KE2_questions = [[], [], []]
 KE3_questions = [[], [], []]
 KE4_questions = [[], [], []]
-KE5_questions = [[], [], []]
 KE6_questions = [[], [], []]
-KE7_questions = [[], [], []]
 
-KE_questions = [KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE5_questions, KE6_questions, KE7_questions]
+KE_questions = [KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_questions]
 
 
 def sort_in_ke(question_answer, ke_index):
@@ -55,8 +53,8 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
                 if filename == "KE4":
                     ke = 3
                 if filename == "KE5":
-                    ke = 4
-                if filename == "KE7":
+                    ke = 3
+                if filename == "KE6":
                     ke = 5
             elif float(filename) < 6:
                 ke = 0
@@ -64,19 +62,15 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
                 ke = 1
             elif float(filename) < 33:
                 ke = 2
-            elif float(filename) < 49:
-                ke = 3
             elif float(filename) < 53:
-                ke = 4
-            elif float(filename) < 61:
-                ke = 5
+                ke = 3  # KE 4 until 49, then KE 5
             else:
-                ke = 6
+                ke = 4  # KE 6 until 61, then KE 7
             sort_in_ke(question_dict, ke)
 
 with open(OUTPUT_FILE, 'a') as py_file:
     for ke in range(len(KE_questions)):
-        py_file.write(f"KE{ke+1}_questions = [\n")
+        py_file.write(f"KE{ke+1}_questions = [\n") if ke <= 3 else py_file.write(f"KE{ke+2}_questions = [\n")
         for question_list in KE_questions[ke]:
             for question_dictionary in question_list:
                 if question_dictionary == question_list[0]:
