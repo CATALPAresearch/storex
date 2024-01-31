@@ -40,6 +40,14 @@ class FeedbackManager:
     def add_contradiction(self):
         self.contradiction_counter += 1
 
+    def remove_contradiction(self):
+        if self.contradiction_counter >= 1:
+            self.contradiction_counter -= 1
+
+    def remove_irrelevant(self):
+        if self.irrelevant_counter >= 1:
+            self.irrelevant_counter += 1
+
     def add_irrelevant(self):
         self.irrelevant_counter += 1
 
