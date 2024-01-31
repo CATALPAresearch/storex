@@ -56,13 +56,6 @@ class ExamManager:
         # Setup stopwords for preprocessing
         preprocessing.setup_word_lists()
 
-        # Check if vector store is loaded TODO: Not necessary?
-        directory = os.path.dirname(__file__)
-        if not os.path.exists(os.path.join(directory, 'data/vectorStore/index.faiss')):
-            from dataprocessing import process_vectorstore
-            logger.info("Loading vector store...")
-            process_vectorstore.process_vectorstore()
-
         # Set question manager and question models
         topic_manager = TopicManager()
         self.manager = QuestionManager(topic_manager)
@@ -232,11 +225,9 @@ class ExamManager:
         """Checks the microphone and greets the students."""
         # Greet the student and check the microphone
         mic_query = (
-            f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
-            Begrüße {self.student['accusative']} namens {self.student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+            f"""Begrüße {self.student['accusative']} namens {self.student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
             Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {self.student['name']} dafür gleich hineinsprechen soll.
-            Gib nur die Begrüßung zurück:[/INST]""")
-        logger.info(mic_query)
+            Gib nur die Begrüßung zurück:""")
         greeting = self.text_generator.get_text(mic_query)
         self.speak(greeting)
         mic_check = self.get_answer()
@@ -300,11 +291,10 @@ class ExamManager:
         self.time_manager.append_feedback()
         feedback_rules = self.feedback.construct_feedback(self.student['nominative'])
         feedback_query = (
-            f"""[INST] Du bist ein Professor an einer deutschen Universität.
-            Gib {self.student['dative']} ein konstruktives Feedback für {self.student['possessive']} Leistungen in einer mündlichen Prüfung.
+            f"""Gib {self.student['dative']} namens {self.student['name']} ein konstruktives Feedback in 3 Sätzen für {self.student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
             Nutze folgende Informationen zu {self.student['possessive']}n Leistungen:
             {feedback_rules}
-            Gib nur das Feedback zurück:[/INST]"""
+            Gib nur das Feedback zurück:"""
         )
         logger.info(feedback_query)
         goodbye = self.text_generator.get_text(feedback_query)
@@ -312,11 +302,9 @@ class ExamManager:
 
         # See the student off
         goodbye_query = (
-            f"""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
-            Verabschiede {self.student['accusative']} namens {self.student['name']} in 1 Satz nach einer mündlichen Prüfung.
-            Gib nur die Verabschiedung zurück:[/INST]"""
+            f"""Verabschiede {self.student['accusative']} namens {self.student['name']} in 1 Satz nach einer mündlichen Prüfung.
+            Gib nur die Verabschiedung zurück:"""
         )
-        logger.info(goodbye_query)
         goodbye = self.text_generator.get_text(goodbye_query)
         self.speak(goodbye)
 

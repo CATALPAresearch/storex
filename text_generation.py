@@ -9,13 +9,13 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 class TextGenerator:
     def __init__(self):
-        repo = "mistralai/Mixtral-8x7B-Instruct-v0.1"
-
-        template = ("Du bist ein Professor an einer deutschen Universität."
-                    "{query}")
+        template = (""""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
+                    {query}[/INST]""")
 
         prompt = PromptTemplate(template=template, input_variables=['query'])
-        llm = HuggingFaceHub(repo_id=repo)
+
+        llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
+                             model_kwargs={'max_new_tokens': 512, 'raw_response': True})
 
         self.llm_chain = LLMChain(prompt=prompt,
                                   llm=llm)
