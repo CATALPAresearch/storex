@@ -57,9 +57,11 @@ match args["module"]:
     case "generator":
         from questions.question_generation import QuestionGenerator
         from utils.preprocessing import setup_word_lists
+        from text_generation import TextGenerator
         setup_word_lists()
         test_keyword = "kapselung"
-        generator = QuestionGenerator()
+        text_gen = TextGenerator()
+        generator = QuestionGenerator(text_gen)
         # generator.generate_question(test_keyword)
         generator.generate_question_answer(test_keyword)
 
