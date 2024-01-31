@@ -10,7 +10,7 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 directory = os.path.dirname(os.path.dirname(__file__))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
-OUTPUT_PATH = os.path.join(directory, 'data/chapters_processed_auto/')
+OUTPUT_PATH = INPUT_PATH
 
 
 def read_txt(chapter_file):
@@ -294,21 +294,22 @@ files = glob.glob(INPUT_PATH + '*.txt')
 for file in files:
     file_name = Path(file).stem
     # Specifications for example with: if file_name.startswith('1') and file_name not in ['1']:
-    chapter, headline = read_txt(file)
-    # chapter_number = headline.split(' ', 1)[0]
-    chapter_with_questions = [headline]
-    for paragraph in chapter:
-        chapter_with_questions.append(paragraph)
-        questions = qa_generator.get_remember_question(paragraph).splitlines()
-        questions.extend(qa_generator.get_apply_question(paragraph).splitlines())
-        questions.extend(qa_generator.get_analyze_question(paragraph).splitlines())
-        i = 0
-        while i < len(questions):
-            if questions[i].startswith("Kontext:") or questions[i] == questions[i - 1]:
-                questions.pop(i)
-            else:
-                i += 1
-        chapter_with_questions.extend(questions)
-        chapter_with_questions.append('\n')
-    write_txt(chapter_with_questions, file_name)
-    print(f"File {file_name} done!")
+    if file_name in ['8', '9', '68.3']:
+        chapter, headline = read_txt(file)
+        # chapter_number = headline.split(' ', 1)[0]
+        chapter_with_questions = [headline]
+        for paragraph in chapter:
+            chapter_with_questions.append(paragraph)
+            questions = qa_generator.get_remember_question(paragraph).splitlines()
+            questions.extend(qa_generator.get_apply_question(paragraph).splitlines())
+            questions.extend(qa_generator.get_analyze_question(paragraph).splitlines())
+            i = 0
+            while i < len(questions):
+                if questions[i].startswith("Kontext:") or questions[i] == questions[i - 1]:
+                    questions.pop(i)
+                else:
+                    i += 1
+            chapter_with_questions.extend(questions)
+            chapter_with_questions.append('\n')
+        write_txt(chapter_with_questions, file_name)
+        print(f"File {file_name} done!")
