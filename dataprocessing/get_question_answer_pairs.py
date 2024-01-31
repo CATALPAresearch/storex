@@ -293,8 +293,7 @@ qa_generator = QuestionAnswerGenerator()
 files = glob.glob(INPUT_PATH + '*.txt')
 for file in files:
     file_name = Path(file).stem
-    # Specifications for example with: if file_name.startswith('1') and file_name not in ['1']:
-    if file_name in ['8', '9', '68.3']:
+    if file_name != "Einsendeaufgaben":
         chapter, headline = read_txt(file)
         # chapter_number = headline.split(' ', 1)[0]
         chapter_with_questions = [headline]
