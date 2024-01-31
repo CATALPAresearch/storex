@@ -8,10 +8,8 @@ class KE(IntEnum):
     KE1 = 0
     KE2 = 1
     KE3 = 2
-    KE4 = 3  # TODO: Combine KE 4 and 5 to "Programmiermodelle"
-    KE5 = 4
-    KE6 = 5
-    KE7 = 6
+    KE4 = 3  # Combination of both KE 4 and 5
+    KE6 = 4  # Combination of both KE 6 and 7
 
 
 def topic_from_ke(ke):
@@ -21,14 +19,10 @@ def topic_from_ke(ke):
         return "Systematik der objektorientierten Programmierung"
     if ke == KE.KE3.value:
         return "Typen in der objektorientierten Programmierung"
-    if ke == KE.KE4.value:
-        return "Die Programmiersprache JAVA"
-    if ke == KE.KE5.value:
-        return "Die Programmiersprachen C#, C++ und EIFFEl"
-    if ke == KE.KE6.value:
-        return "Probleme der objektorientierten Programmierung"
-    if ke == KE.KE7.value:
-        return "Objektorientierter Programmierstil"
+    if ke == KE.KE4_5.value:
+        return "Programmiermodelle von Java, C-Sharp, C++ und EIFFEl"
+    if ke == KE.KE6_7.value:
+        return "Probleme der objektorientierten Programmierung und objektorientierter Programmierstil"
 
 
 class Level(IntEnum):
