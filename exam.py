@@ -68,6 +68,7 @@ class ExamManager:
         self.manager = QuestionManager(topic_manager)
         self.last_question = None
         self.next_question = None
+        self.repeating_reason = None
         self.prepend_question = "Dann lassen Sie uns beginnen."
         self.paraphraser = QuestionParaphraser()
         self.question_generator = QuestionGenerator()
@@ -149,18 +150,21 @@ class ExamManager:
                 self.prepend_question = "Ich habe leider keine Antwort gehört."
                 if 'answer' in question:
                     self.next_question = QuestionType.REPEAT
+                    self.repeating_reason = EvaluationType.SILENCE
                 else:
                     self.next_question = QuestionType.PREDEFINE
 
             case 2:  # Off-topic answer
                 self.prepend_question = random.choice(questioning_sounds)
                 self.next_question = QuestionType.REPEAT
-                self.feedback.add_irrelevant()  # TODO: Don't count if question is repeated
+                self.repeating_reason = EvaluationType.OFF_TOPIC
+                self.feedback.add_irrelevant()
 
             case 3:  # Contradicting answer
                 self.prepend_question = random.choice(questioning_sounds)
                 self.next_question = QuestionType.REPEAT
-                self.feedback.add_contradiction()  # TODO: Don't count if question is repeated
+                self.repeating_reason = EvaluationType.CONTRADICTS
+                self.feedback.add_contradiction()
 
             case 4:  # Check the answer for missing topics
                 # Get missed topics and add them as targets and save the data for feedback
@@ -280,9 +284,14 @@ class ExamManager:
                     if repeated is False:
                         current_question = self.ask_repeating_question()
                         self.feedback.add_reiteration()
+                        if self.repeating_reason == EvaluationType.OFF_TOPIC:
+                            self.feedback.remove_irrelevant()
+                        elif self.repeating_reason == EvaluationType.CONTRADICTS:
+                            self.feedback.remove_contradiction()
+                        self.repeating_reason = None
                         repeated = True
                     else:
-                        self.next_question = QuestionType.PREDEFINE  # TODO: Generate or Predefine question?
+                        self.next_question = QuestionType.PREDEFINE
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
