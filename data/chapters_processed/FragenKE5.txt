@@ -435,8 +435,8 @@ Antwort: Die Entwicklung von C-Sharp wurde weniger als Versuch betrachtet, mit M
 Frage: In welchen wesentlichen Punkten unterscheidet sich das Typsystem von C-Sharp von dem von Java?
 Antwort: Das Typsystem von C-Sharp unterscheidet sich von Java in mehreren wesentlichen Punkten, darunter die Art der Unterscheidung von Wert- und Referenztypen, die angebotenen Typkonstruktoren für Wert- und Referenztypen und den Umgang mit Interfaces als Typen.
 
-Frage: Warum ist es wichtig, andere objektorientierte Programmiersprachen zu kennen?
-Antwort: Es ist wichtig, andere objektorientierte Programmiersprachen zu kennen, da Praktikerinnen und solche, die es werden wollen, die Programmiersprachen kennen müssen, die auf dem Markt gefragt sind. Dies ermöglicht es ihnen, in verschiedenen beruflichen Situationen flexibel zu sein und die am besten geeignete Sprache für bestimmte Aufgaben auszuwählen.
+Frage: Warum ist es wichtig, verschiedene objektorientierte Programmiersprachen zu kennen?
+Antwort: Es ist wichtig, verschiedene objektorientierte Programmiersprachen zu kennen, da Praktikerinnen und solche, die es werden wollen, die Programmiersprachen kennen müssen, die auf dem Markt gefragt sind. Dies ermöglicht es ihnen, in verschiedenen beruflichen Situationen flexibel zu sein und die am besten geeignete Sprache für bestimmte Aufgaben auszuwählen.
 
 Frage: Was ermöglicht Mehrfachvererbung in C++?
 Antwort: Mehrfachvererbung in C++ ermöglicht es, eine Klasse von mehreren anderen abzuleiten. Dadurch kann eine Klasse mehrere direkte Supertypen haben, einen pro direkte Superklasse.
