@@ -1,0 +1,157 @@
+
+INFO:root:Setting parameters: {'name': 'Luna', 'time': 5, 'female': False, 'male': False, 'mute': True, 'mic': True}
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
+ Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
+
+Ihre Antwort lautet (in etwa):
+ Test, Test, funktioniert das Mikrofon?
+INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
+Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Das Grundkonzept der objektorientierten Programmierung ist, dass ein Programm aus vielen Objekten besteht, welche miteinander in Beziehung stehen und sich Nachrichten senden, um ihr Verhalten bzw. ihren Zustand zu ändern.
+INFO:root:Answer took 27.514772 seconds.
+INFO:root:Remaining time: 272.485228 seconds (32.485228 seconds in this topic).
+INFO:root:Keywords from answer: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Mentioned terms: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Missing terms: []
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Predefined question: {'question': 'Welche zwei Ausdrücke sind wichtig?', 'answer': 'Zuweisungsausdrücke und Nachrichtenausdrücke sind wichtig. Sie ermöglichen es, Aktionen mit den repräsentierten Objekten auszuführen und damit ein Programm tatsächlich auszuführen.'}
+Welche zwei Ausdrücke sind wichtig?
+
+Ihre Antwort lautet (in etwa):
+ Ausdrücke, welche wichtig sind, sind die Nachrichtenausdrücke, welche es ermöglichen, dass sich Objekte gegenseitig Nachrichten schicken, sowie die Zuweisungsausdrücke, wobei ein Wert an eine Variable zugewiesen wird.
+INFO:root:Answer took 28.438154 seconds.
+INFO:root:Remaining time: 244.047073 seconds (4.047073 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.6383079290390015}]
+INFO:root:Similarity: tensor([[0.8282]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie werden Variablen für Beziehungen genutzt?', 'answer': 'Variablen enthalten Verweise. Wenn jemand Zugriff auf die Variable hat, kann er auch auf das referenzierte Objekt zugreifen und ist somit mit dem Objekt verknüpft. Es fehlt nur noch, Variablen den Objekten zuzuordnen, damit nur noch die Objekte darauf zugreifen können, und schon können Beziehungen auf einfache Weise ausgedrückt werden.'}
+Ok. Wie werden Variablen für Beziehungen genutzt?
+
+Ihre Antwort lautet (in etwa):
+ Variablen werden genutzt für Beziehungen, indem sie ein Objekt speichern, zu welchem das Objekt, das diese Variable speichert, in Beziehung steht.
+INFO:root:Answer took 24.221967 seconds.
+INFO:root:Remaining time: 219.825107 seconds (-20.174893 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9998015761375427}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:The next question should be: REPEAT
+INFO:root:Next topic KE2 for 54.956276655197144 seconds.
+INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Metaklasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'abstrakte Klasse', 'Superklasse', 'Subklasse', 'dynamisch Binden', 'Collection', 'Parallelität']}
+Hm? Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+
+Ihre Antwort lautet (in etwa):
+ Objektorientierte Programme lassen sich mittels Klassen strukturieren, indem Klassen sich gegenseitig vererben können und zum Beispiel in einer Spezialisierungsbeziehung zueinander stehen können.
+INFO:root:Answer took 28.323268 seconds.
+INFO:root:Remaining time: 191.501839 seconds (26.633009 seconds in this topic).
+INFO:root:Keywords from answer: ['Klasse', 'Metaklasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'abstrakte Klasse', 'Superklasse', 'Subklasse', 'dynamisch Binden', 'Collection', 'Parallelität']
+INFO:root:Mentioned terms: ['Klasse', 'Spezialisierung']
+INFO:root:Missing terms: ['Superklasse', 'dynamisch Binden', 'Collection', 'Parallelität', 'Generalisierung', 'Vererbung', 'Metaklasse', 'abstrakte Klasse', 'Subklasse']
+INFO:root:The next question should be: GENERATE
+INFO:root:Predefined question: {'question': 'Welche Programmiersprachen nutzen den Klassenansatz?', 'answer': 'Der Klassenansatz wird in Sprachen wie SMALLTALK, C++, EIFFEL, Java, C-Sharp, SCALA und vielen anderen mehr angewendet.'}
+Welche Programmiersprachen nutzen den Klassenansatz?
+
+Ihre Antwort lautet (in etwa):
+ den Klassenansatz nutzen eigentlich ja sehr viele abjektorientierte Sprachen wie Smalltalk, C++, Eiffel, Java und ja sehr viele mehr.
+INFO:root:Answer took 19.550308 seconds.
+INFO:root:Remaining time: 171.951531 seconds (7.082701 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997021555900574}]
+INFO:root:Similarity: tensor([[0.8513]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie wird Parallelverarbeitung in SMALLTALK implementiert, und warum werden keine aktiven Objekte verwendet?', 'answer': 'In SMALLTALK wird Parallelverarbeitung nicht in Form von aktiven Objekten, sondern in Form von parallelen Prozessen implementiert. Jeder dieser Prozesse führt zu einem Zeitpunkt eine Methode aus, wobei die Empfängerobjekte selbst passiv bleiben. Dies liegt daran, dass aktive Objekte, die asynchron Nachrichten verarbeiten, in der Praxis sehr aufwendig wären.'}
+Ok. Wie wird Parallelverarbeitung in SMALLTALK implementiert, und warum werden keine aktiven Objekte verwendet?
+
+Ihre Antwort lautet (in etwa):
+ Aktive Objekte gibt es in der Praxis nicht oder sie wären sehr aufwendig, weshalb häufig eine parallele Verarbeitung implementiert wird, indem die Prozesse sich über Cues gegenseitig abwechseln und gar nicht aktiv parallel sind.
+INFO:root:Answer took 32.788949 seconds.
+INFO:root:Remaining time: 139.162582 seconds (-25.706248 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9675735235214233}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:The next question should be: REPEAT
+INFO:root:Next topic KE3 for 46.38752738634745 seconds.
+INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Deklaration', 'Definition', 'Typdefinition', 'Zuweisungskompatibilität', 'Typäquivalenz', 'Typerweiterung', 'Typkonformität', 'Typeinschränkung', 'Subtyp', 'Inklusionspolymorphie', 'Typumwandlung', 'Generischer Typ', 'parametrischer Polymorphismus', 'Kovarianz', 'Typisierung']}
+Ah? Was sind Typen in der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Typen in der objektorientierten Programmierung sind Definitionsmechanismen, um Zuweisungskompatibilität zu gewähren.
+INFO:root:Answer took 20.608269 seconds.
+INFO:root:Remaining time: 118.554313 seconds (25.779258 seconds in this topic).
+INFO:root:Keywords from answer: ['Deklaration', 'Definition', 'Typdefinition', 'Zuweisungskompatibilität', 'Typäquivalenz', 'Typerweiterung', 'Typkonformität', 'Typeinschränkung', 'Subtyp', 'Inklusionspolymorphie', 'Typumwandlung', 'Generischer Typ', 'parametrischer Polymorphismus', 'Kovarianz', 'Typisierung']
+INFO:root:Mentioned terms: ['Definition']
+INFO:root:Missing terms: ['Generischer Typ', 'Typdefinition', 'Deklaration', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung', 'Typeinschränkung', 'Typumwandlung', 'Kovarianz', 'Typäquivalenz', 'Typerweiterung', 'Zuweisungskompatibilität', 'Subtyp', 'Typkonformität']
+INFO:root:The next question should be: GENERATE
+INFO:root:Predefined question: {'question': 'Welche weiteren Eigenschaften gelten für die Typäquivalenz?', 'answer': 'Die Typäquivalenz ist reflexiv, was bedeutet, dass jeder Typ zu sich selbst äquivalent ist. Sie ist auch transitiv, was bedeutet, dass wenn A äquivalent zu B ist und B äquivalent zu C ist, dann ist auch A äquivalent zu C.'}
+Welche weiteren Eigenschaften gelten für die Typäquivalenz?
+
+Ihre Antwort lautet (in etwa):
+ Für die Typ-Equivalenz gilt, dass sie reflexiv ist. Jeder Typ ist zu sich selbst equivalent. Und wenn a beispielsweise zu b equivalent ist und b zu c, dann ist auch a zu b equivalent. Also sie ist transitiv.
+INFO:root:Answer took 31.288377 seconds.
+INFO:root:Remaining time: 87.265936 seconds (-5.509119 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9995273351669312}]
+INFO:root:Similarity: tensor([[0.8666]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE4 for 43.632967948913574 seconds.
+INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten anderer Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'dynamische Typprüfung', 'Mehrfachvererbung']}
+Ok. Was sind die Besonderheiten anderer Programmiermodelle?
+
+Ihre Antwort lautet (in etwa):
+ Besonderheiten anderer Programmiermodelle, zum Beispiel in Java sind Interfaces zu nennen oder auch die generischen Typen, die über Wildcards implementiert werden. In C++ ist beispielsweise die Mehrfachvererbung möglich.
+INFO:root:Answer took 27.019563 seconds.
+INFO:root:Remaining time: 60.246373 seconds (16.613405 seconds in this topic).
+INFO:root:Keywords from answer: ['Interface', 'Generischer Typ', 'dynamische Typprüfung', 'Mehrfachvererbung']
+INFO:root:Mentioned terms: ['Interface', 'Mehrfachvererbung']
+INFO:root:Missing terms: ['Generischer Typ', 'dynamische Typprüfung']
+INFO:root:The next question should be: GENERATE
+INFO:root:Predefined question: {'question': 'Welche Art von Typumwandlung ist immer sicher?', 'answer': 'Ein Up cast ist immer sicher, da jedes Objekt neben seinem Typ auch den Typ all seiner Supertypen hat.'}
+Welche Art von Typumwandlung ist immer sicher?
+
+Ihre Antwort lautet (in etwa):
+ Ein Abcast ist immer sicher, weil jedes Objekt auch der Typ seines Supertypen hat.
+INFO:root:Answer took 20.187125 seconds.
+INFO:root:Remaining time: 40.059248 seconds (-3.573720 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997128844261169}]
+INFO:root:Similarity: tensor([[0.7908]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE6 for 40.059247970581055 seconds.
+INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
+Ok. Was sind Probleme der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Die Probleme der objektorientierten Programmierung, da gibt es einige, beispielsweise das Problem der mangelnden Kapselungen, das fragile base class Problem, das Problem der schlechten Tracebarkeit.
+INFO:root:Answer took 23.524003 seconds.
+INFO:root:Remaining time: 16.535245 seconds (16.535245 seconds in this topic).
+INFO:root:Keywords from answer: ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']
+INFO:root:Mentioned terms: ['Problem der schlechten Tracebarkeit', 'Problem der mangelnden Kapselung']
+INFO:root:Missing terms: ['Problem der mangelnden Eignung', 'Problem der mangelnden Skalierbarkeit', 'Problem der Substituierbarkeit', 'Problem der eindimensionalen Strukturierung', 'Fragile-base-class-Problem']
+INFO:root:The next question should be: GENERATE
+INFO:root:Predefined question: {'question': 'Welche beiden Lösungen werden vorgeschlagen, um das Problem der Aliasbildung und zusätzlicher Methodenaufrufe zu lösen?', 'answer': 'Es werden zwei Lösungen vorgeschlagen, um das Problem der Aliasbildung und zusätzlicher Methodenaufrufe zu lösen: Die erste Lösung besagt, dass das Verhalten eines Subtyps immer dann mit dem des Supertyps kompatibel ist, wenn sämtliches zusätzliche Verhalten des Subtyps durch das Verhalten des Supertyps simuliert werden kann. Dies bedeutet, dass für jede zusätzliche Methode des Subtyps eine Kombination von Methodenaufrufen des Supertyps existieren muss, die denselben Effekt wie die zusätzliche Methode hat. Die zweite Lösung erfordert von jedem Typ zusätzlich zur Verhaltensspezifikation der Methoden die Einhaltung von Verlaufseigenschaften, die die möglichen Zustandsänderungen der Objekte des Typs betreffen. Diese werden als Zustandswechselinvarianten bezeichnet und erfordern eine Art Spezifikation endlicher Automaten, die die Menge der möglichen Zustände und Zustandsübergänge beschreibt.'}
+Welche beiden Lösungen werden vorgeschlagen, um das Problem der Aliasbildung und zusätzlicher Methodenaufrufe zu lösen?
+
+Ihre Antwort lautet (in etwa):
+ Die erste Lösung, um das Problem der Aliasbildung zu lösen, ist, dass man grundsätzlich Alias verbietet. Dadurch könnte man allerdings manche Programme nicht mehr ausführen, weshalb es die zweite Lösung gibt, wobei jeder Typ Verhaltensspezifikation aktiv nennen muss.
+INFO:root:Answer took 47.073121 seconds.
+INFO:root:Remaining time: -30.537876 seconds (-30.537876 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9974349141120911}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:The next question should be: REPEAT
+INFO:root:Gib einem*r Studenten*in namens Luna mündliche ein konstruktives Feedback in 3 Sätzen für seine*ihre Leistungen im Anschluss an eine mündliche Prüfung.
+            Nutze folgende Informationen zu seine*ihren Leistungen:
+            der*die Student*in hat nie inhaltliche Fehler gemacht.
+der*die Student*in hat kaum irrelevante Antworten gegeben.
+der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+der*die Student*in benötigt nie Hilfestellungen.
+der*die Student*in hat nie unpräzise Antworten gegeben.
+der*die Student*in hat ein mittleres Leistungslevel erreicht.
+der*die Student*in war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+            Gib nur das Feedback zurück:
+ Luna, du hast während der Prüfung keine inhaltlichen Fehler gemacht und benötigte auch keine Hilfestellungen, das ist sehr positiv. Deine Antworten waren insgesamt gut considered, allerdings hätten sie etwas detaillierter und ausführlicher sein können, besonders bei dem Thema 'Typen in der objektorientierten Programmierung'. Deine Leistungen bei 'Grundkonzepten der objektorientierten Programmierung' waren am besten, du hast dein Wissen in diesem Bereich sehr gut präsentiert. Arbeite weiterhin an der Vertiefung deines Wissens und der Verbesserung der Qualität deiner Antworten, um dein Leistungsniveau zu erhöhen.
+ "Vielen Dank für Ihre Zeit und Ihre Antworten, Luna, ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen!"
