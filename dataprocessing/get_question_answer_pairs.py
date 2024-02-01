@@ -11,7 +11,7 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 directory = os.path.dirname(os.path.dirname(__file__))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
 OUTPUT_PATH = INPUT_PATH
-EXCLUDED_FILES = ["Einsendeaufgaben", "Weitere_Fragen"]
+EXCLUDED_FILES = ["Einsendeaufgaben", "FragenKE2", "FragenKE3", "FragenKE4", "FragenKE5", "FragenKE6", "FragenKE7"]
 
 
 def read_txt(chapter_file):
@@ -296,7 +296,6 @@ for file in files:
     file_name = Path(file).stem
     if file_name not in EXCLUDED_FILES:
         chapter, headline = read_txt(file)
-        # chapter_number = headline.split(' ', 1)[0]
         chapter_with_questions = [headline]
         for paragraph in chapter:
             chapter_with_questions.append(paragraph)
