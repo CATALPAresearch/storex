@@ -17,11 +17,10 @@ nltk.download("punkt")
 HfFolder.save_token("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")
 
 # Set model and database paths from the huggingface hub
-pretrained_model = "google/flan-t5-base"  # TODO: Try "google/flan-t5-large"
+pretrained_model = "google/flan-t5-base"
 finetuned_model = "LunaticTanuki/oop-de-qag-flan-t5-base"
-# database = "LunaticTanuki/oop-de-qg"  # Database for question generation
-database = "LunaticTanuki/oop-de-qag"  # Database for question and answer generation
-data_files = {'train': "chapters_qag.csv", 'validate': "validate_qag.csv"}
+database = "LunaticTanuki/oop-de-qg-v2"
+data_files = {'train': "train.csv", 'validate': "validate.csv"}
 
 
 def max_length(column):
@@ -30,7 +29,7 @@ def max_length(column):
     Longer sequences will be truncated and shorter sequences will be padded
     """
     datasets = [dataset['train'], dataset['validate']]
-    columns = ['paragraph', 'answer-question']
+    columns = ['answer', 'question']
     # Get the maximum total sequence length after tokenization
     tokenized = concatenate_datasets(datasets).map(
         lambda x: tokenizer(x[column], truncation=True), batched=True, remove_columns=columns)
@@ -44,11 +43,12 @@ def preprocess_function(sample, padding='max_length'):
     Preprocesses the dataset.
     """
     # Add a prefix to the input
-    inputs = ["Write an answer-question pair from this paragraph: " + item for item in sample['paragraph']]
+    inputs = [("Du bist ein Professor an einer deutschen Universität. "
+               "Erstelle eine einfache Prüfungsfrage zu dieser Antwort: ") + item for item in sample['answer']]
     # Tokenize inputs
     model_inputs = tokenizer(inputs, max_length=max_length_input, padding=padding, truncation=True)
     # Tokenize targets with the `text_target` keyword argument
-    labels = tokenizer(text_target=sample['answer-question'], max_length=max_length_output, padding=padding, truncation=True)
+    labels = tokenizer(sample['question'], text_target=sample['question'], max_length=max_length_output, padding=padding, truncation=True)
 
     # Pad and replace all tokenizer.pad_token_id in the labels with -100 to ignore padding in the loss
     if padding == 'max_length':
@@ -86,10 +86,13 @@ def compute_metrics(eval_preds):
     # Some simple post-processing
     decoded_preds, decoded_labels = postprocess_text(decoded_preds, decoded_labels)
 
-    result = metric.compute(predictions=decoded_preds, references=decoded_labels, use_stemmer=True)
-    result = {k: round(v * 100, 4) for k, v in result.items()}
+    result_rouge = metric_rouge.compute(predictions=decoded_preds, references=decoded_labels, use_stemmer=True)
+    result_rouge = {k: round(v * 100, 4) for k, v in result_rouge.items()}
     prediction_lens = [numpy.count_nonzero(pred != tokenizer.pad_token_id) for pred in preds]
-    result['gen_len'] = numpy.mean(prediction_lens)
+    result_rouge['gen_len'] = numpy.mean(prediction_lens)
+
+    result_bleu = metric_bleu.compute(predictions=decoded_preds, references=decoded_labels)
+    result = result_rouge | result_bleu
     return result
 
 
@@ -105,20 +108,17 @@ if __name__ == '__main__':
     print(f"Loading pre-trained model to {device}...")
     model = AutoModelForSeq2SeqLM.from_pretrained(pretrained_model).to(device)  # Same as T5ForConditionalGeneration
     tokenizer = AutoTokenizer.from_pretrained(pretrained_model)                 # and T5Tokenizer
-    # For answer and question dataset:
-    tokenizer.add_special_tokens(
-        {'additional_special_tokens': ['<answer>', '<question>']}
-    )
 
     print("Preparing dataset...")
-    max_length_input = max_length('paragraph')
-    max_length_output = max_length('answer-question')
+    max_length_input = max_length('answer')
+    max_length_output = max_length('question')
 
-    tokenized_dataset = dataset.map(preprocess_function, batched=True, remove_columns=['paragraph', 'answer-question'])
+    tokenized_dataset = dataset.map(preprocess_function, batched=True, remove_columns=['paragraph', 'question', 'answer'])
     print(f"Keys of tokenized dataset: {list(tokenized_dataset['train'].features)}")
 
     print("Initializing evaluation metric...")
-    metric = evaluate.load("rouge")  # TODO: BLEAU Scala
+    metric_rouge = evaluate.load("rouge")
+    metric_bleu = evaluate.load("bleu")
 
     print("Initializing data collector...")
     # Ignore tokenizer pad token in the loss
@@ -137,7 +137,9 @@ if __name__ == '__main__':
         output_dir=finetuned_model,
         per_device_train_batch_size=8,
         per_device_eval_batch_size=8,
+        gradient_accumulation_steps=4,
         predict_with_generate=True,
+        generation_max_length=max_length_output,
         fp16=False,  # True: Half-precision on colab, False: Overflows with fp16
         learning_rate=5e-5,
         num_train_epochs=8,
