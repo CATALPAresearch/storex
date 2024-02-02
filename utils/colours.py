@@ -39,7 +39,7 @@ def print_blue(*args):
         arg = str(arg)
         for a in arg:
             print(a, end='', flush=True)
-            time.sleep(0.05)
+            time.sleep(0.025)
     print(RESET)
 
 
