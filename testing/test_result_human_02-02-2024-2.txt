@@ -1,0 +1,729 @@
+INFO:root:Setting parameters: {'name': 'Luna', 'time': 25, 'female': False, 'male': False, 'mute': True, 'ai': False}
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
+ Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Hallo, Test, Test, Test.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
+Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Das Grundkonzept der objektorientierten Programmierung ist, dass Objekte miteinander in Beziehung stehen und das Programm nicht sequenziell abgearbeitet wird, sondern über dieses Objektgeflecht und Nachrichten, welche sich die Objekte gegenseitig senden, aufgebaut ist.
+INFO:root:Answer took 33.219787 seconds.
+INFO:root:Remaining time: 716.780213 seconds (116.780213 seconds in this topic).
+INFO:root:Keywords from answer: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Mentioned terms: ['Objekt', 'Beziehung']
+INFO:root:Missing terms: ['Zustand', 'Verhalten']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die beiden Kategorien von Instanzvariablen?', 'answer': 'Instanzvariablen können logischerweise in zwei Kategorien unterteilt werden: solche, die die Eigenschaften eines Objekts festhalten, und solche, die tatsächliche Beziehungen zwischen Objekten repräsentieren. Eigenschaften sind Attribute wie Farbe oder Name, die ihre Bedeutung verlieren, wenn sie isoliert betrachtet werden. Beziehungen hingegen repräsentieren Verbindungen zwischen Objekten und behalten ihre Bedeutung auch isoliert betrachtet.'}
+Was sind die beiden Kategorien von Instanzvariablen?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Die beiden Kategorien von Instanzvariabeln sind einmal solche, die Eigenschaften eines Objektes festhalten und solche, die die Beziehungen von Objekten repräsentieren.
+INFO:root:Answer took 22.919335 seconds.
+INFO:root:Remaining time: 693.860878 seconds (93.860878 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991986155509949}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 10.29it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 209.12it/s]
+INFO:root:Similarity: tensor([[0.8713]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie lässt sich der Zugriff auf Variablen einschränken?', 'answer': 'Um den Zugriff auf Variablen einzuschränken, gibt es den Begriff der Sichtbarkeit und Regeln für die Sichtbarkeit von Variablen.'}
+Ok. Wie lässt sich der Zugriff auf Variablen einschränken?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Der Zugriff auf Variablen lässt sich über die Sichtbarkeit der Variablen einschränken.
+INFO:root:Answer took 16.416010 seconds.
+INFO:root:Remaining time: 677.444868 seconds (77.444868 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997425675392151}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 127.52it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 181.54it/s]
+INFO:root:Similarity: tensor([[0.8660]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'In welcher Reihenfolge werden Ausdrücke in SMALLTALK ausgewertet?', 'answer': 'In SMALLTALK werden Ausdrücke normalerweise von links nach rechts ausgewertet.'}
+Ok. In welcher Reihenfolge werden Ausdrücke in SMALLTALK ausgewertet?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Ausdrücke werden von links nach rechts ausgewertet und weitere Präzedenzen können aber z.B. über Operatoren angegeben werden.
+INFO:root:Answer took 24.357812 seconds.
+INFO:root:Remaining time: 653.087056 seconds (53.087056 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9978986978530884}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['ausdruecke', 'smalltalk']
+INFO:root:Mentioned terms: ['ausdruecke']
+INFO:root:Missing terms: ['smalltalk']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: GENERATE
+INFO:root:Target: smalltalk
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 201.18it/s]
+INFO:root:Generated question: {'question': 'Erklären Sie den Unterschied zwischen globalen und lokalen Variablen in Smalltalk und nennen Sie Beispiele. Erläutern Sie außerdem, was man unter Schlüsselwörtern in Smalltalk versteht und welche Rolle sie spielen.', 'answer': 'In Smalltalk beginnen globale Variablen mit einem Großbuchstaben, während lokale Variablen mit einem Kleinbuchstaben anfangen. Beispiele für globale Variablen sind Smalltalk und Transcript. Lokale Variablen hingegen sind auf den Sichtbarkeitsbereich eines Objekts oder Teilen davon beschränkt.\n\nEs ist wichtig zu beachten, dass der Unterschied zwischen lokalen und globalen Variablen in Smalltalk nicht relativ ist, was bedeutet, dass es nur zwei verschiedene Programmabschnitte gibt.\n\nIm Gegensatz zu anderen Programmiersprachen gibt es in Smalltalk keine Schlüsselwörter, abgesehen von sogenannten Schlüsselwortnachrichten, die aber frei wählbar sind und somit keine Schlüsselwörter im eigentlichen Sinne sind. Stattdessen gibt es in Smalltalk einige Symbole mit spezieller Bedeutung, wie zum Beispiel die Zuweisung, Trennzeichen zwischen zwei Anweisungen, Dezimalpunkt für Gleitkommazahlen, Trennzeichen zum Kaskadieren von Nachrichten, Markierung von Parametern in Nachrichten und Blöcken, Klammerung von Ausdrücken zur Festlegung der Reihenfolge der Auswertung, Bildung von Blöcken, Trennzeichen zwischen den Parametern eines Blocks und seinen Anweisungen, Markierung von Kommentaren, Markierung von String-Literalen, Markierung von Zeichenliteralen, Markierung von Symbol- und Array-Literalen sowie den Rückgabe-Operator (Return).\n\nDie reservierten Namen true, false, nil, self und super sind Pseudovariablen, während alle anderen als Methoden in Smalltalk selbst definiert sind.'}
+Hmm. Erklären Sie den Unterschied zwischen globalen und lokalen Variablen in Smalltalk und nennen Sie Beispiele. Erläutern Sie außerdem, was man unter Schlüsselwörtern in Smalltalk versteht und welche Rolle sie spielen.
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Der Unterschied zwischen globalen und lokalen Variablen in Smalltalk ist die Sichtbarkeit. Globale Variablen sind ja auch global sichtbar, lokale Variablen nur in der Methode oder dem Blog, in welchem sie ausgewertet werden. Unter Schlüsselwörtern versteht man in Smalltalk Wörter, die reserviert sind, Pseudovariabeln.
+INFO:root:Answer took 51.315008 seconds.
+INFO:root:Remaining time: 601.772048 seconds (1.772048 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9980579018592834}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 59.95it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 98.61it/s]
+INFO:root:Similarity: tensor([[0.8840]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Warum ist die Identität von Objekten wichtig?', 'answer': 'Die Identität von Objekten ist wichtig, um festzustellen, ob zwei Namen oder Variablen dasselbe Objekt repräsentieren oder nicht.'}
+Ok. Warum ist die Identität von Objekten wichtig?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Die Identität von Objekten ist wichtig, da über sie festzustellen ist, ob Objekte das gleiche oder dasselbe repräsentieren.
+INFO:root:Answer took 22.561390 seconds.
+INFO:root:Remaining time: 579.210659 seconds (-20.789341 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991818070411682}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 69.32it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 127.62it/s]
+INFO:root:Similarity: tensor([[0.9202]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE2 for 144.8026646375656 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Metaklasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'abstrakte Klasse', 'Superklasse', 'Subklasse', 'dynamisch Binden', 'Collection', 'Parallelität']}
+Ok. Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ In der objektorientierten Programmierung lassen sich Programme über Klassen und Klassenhierarchien, in welchen diese Klassen in einer Vererbungsbeziehung stehen, strukturieren. Außerdem kann man auch Konzepte wie die Generalisierung und die Spezialisierung zur Strukturierung heranholen.
+INFO:root:Answer took 33.470278 seconds.
+INFO:root:Remaining time: 545.740381 seconds (111.332387 seconds in this topic).
+INFO:root:Keywords from answer: ['Klasse', 'Metaklasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'abstrakte Klasse', 'Superklasse', 'Subklasse', 'dynamisch Binden', 'Collection', 'Parallelität']
+INFO:root:Mentioned terms: ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung']
+INFO:root:Missing terms: ['Parallelität', 'Metaklasse', 'dynamisch Binden', 'Superklasse', 'Subklasse', 'Collection', 'abstrakte Klasse']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Genera in der objektorientierten Programmierung?', 'answer': 'Genera sind in der objektorientierten Praxis Generalisierungen, die keine eigenen, direkten Instanzen haben, sondern als abstrakte Objekte fungieren, die von konkreteren Klassen geerbt werden.'}
+Was sind Genera in der objektorientierten Programmierung?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ In der abjektorientierten Programmierung sind Generalisierungen
+INFO:root:Answer took 17.091870 seconds.
+INFO:root:Remaining time: 528.648511 seconds (94.240517 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997279047966003}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 129.30it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 161.26it/s]
+INFO:root:Similarity: tensor([[0.5438]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['abstrakt', 'generalisierung', 'instanz', 'klasse', 'objekt']
+INFO:root:Mentioned terms: ['generalisierung']
+INFO:root:Missing terms: ['abstrakt', 'klasse', 'objekt', 'instanz']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist ein Rollback?', 'answer': 'Ein Rollback ist eine Möglichkeit, den ursprünglichen Zustand eines Objekts oder Objektgeflechts wiederherzustellen, indem eine Kopie des Objekts vor der Durchführung einer Menge von Änderungen angelegt und das ursprüngliche Objekt durch die Kopie ersetzt wird.'}
+Was ist ein Rollback?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Ein Rollback ist eine Möglichkeit zu einem früheren Zustand zurückzusetzen, indem eine Kopie meistens dieses Objektes angefertigt wird.
+INFO:root:Answer took 25.607383 seconds.
+INFO:root:Remaining time: 503.041127 seconds (68.633133 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9877921938896179}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['kopie', 'objekt', 'objektgeflecht', 'zustand']
+INFO:root:Mentioned terms: ['kopie', 'objekt', 'zustand']
+INFO:root:Missing terms: ['objektgeflecht']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Welche Bedingungen müssen für eine zulässige Subklassenbeziehung erfüllt sein?', 'answer': 'Für eine zulässige Subklassenbeziehung müssen die Definitionen der Klassen bestimmte Bedingungen erfüllen. In SMALLTALK gilt dabei für neue, benannte Instanz- und Klassenvariablen, dass sie nicht dieselben Namen haben dürfen wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn die Superklasse solche hat, sie auch in der Subklasse vorhanden sein müssen. Methodendefinitionen hingegen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden.'}
+Ah? Welche Bedingungen müssen für eine zulässige Subklassenbeziehung erfüllt sein?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Für eine zulässige Subklassenbeziehung müssen die Definitionen der Klassen übereinstimmen, sodass die Subklasse passt.
+INFO:root:Answer took 32.199345 seconds.
+INFO:root:Remaining time: 470.841782 seconds (36.433788 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9992307424545288}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['benannt', 'definition', 'deklariert', 'indizierte instanzvariable', 'instanz', 'instanzvariable', 'klasse', 'klassenvariable', 'methode', 'methodendefinition', 'methodensignatur', 'name', 'smalltalk', 'subklasse', 'subklassenbeziehung', 'super', 'superklasse', 'ueberschreiben', 'variable']
+INFO:root:Mentioned terms: ['definition', 'klasse', 'subklasse', 'subklassenbeziehung']
+INFO:root:Missing terms: ['klassenvariable', 'super', 'indizierte instanzvariable', 'variable', 'smalltalk', 'methodendefinition', 'benannt', 'instanzvariable', 'instanz', 'methodensignatur', 'superklasse', 'name', 'methode', 'ueberschreiben', 'deklariert']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist Lazy Initialization?', 'answer': 'Lazy Initialization ist eine Technik, bei der die Initialisierung einer Variablen oder eines Objekts verzögert wird, bis sie tatsächlich benötigt wird. Diese Technik wird eingesetzt, um Ressourcen zu sparen und die Leistung zu verbessern.'}
+Was ist Lazy Initialization?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Analyse initialization ist eine Technik, bei der die Initialisierung verzögert wird, bis die Variable benötigt wird.
+INFO:root:Answer took 24.146303 seconds.
+INFO:root:Remaining time: 446.695479 seconds (12.287485 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991119503974915}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 73.35it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 216.11it/s]
+INFO:root:Similarity: tensor([[0.7403]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['initialisierung', 'lazy initialization', 'objekt', 'variable']
+INFO:root:Mentioned terms: ['initialisierung', 'variable']
+INFO:root:Missing terms: ['objekt', 'lazy initialization']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Konstruktoren in SMALLTALK?', 'answer': 'In SMALLTALK sind Konstruktoren ganz normale Klassenmethoden und daher an keine besonderen Konventionen gebunden. Sie können ein neues Objekt genau der Klasse zurückgeben, zu der sie gehören, aber auch nicht zwingend. Das ermöglicht die Verwendung sogenannter Factory-Methoden.'}
+Was sind Konstruktoren in SMALLTALK?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Konstruktoren sind Klassenmethoden.
+INFO:root:Answer took 13.215825 seconds.
+INFO:root:Remaining time: 433.479654 seconds (-0.928340 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996846914291382}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 157.52it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 168.66it/s]
+INFO:root:Similarity: tensor([[0.6880]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['klasse', 'klassenmethode', 'konstruktor', 'methode', 'objekt', 'smalltalk']
+INFO:root:Mentioned terms: ['klasse', 'klassenmethode', 'konstruktor']
+INFO:root:Missing terms: ['methode', 'objekt', 'smalltalk']
+INFO:root:The next question should be: GENERATE
+INFO:root:Next topic KE3 for 144.49321802457175 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Deklaration', 'Definition', 'Typdefinition', 'Zuweisungskompatibilität', 'Typäquivalenz', 'Typerweiterung', 'Typkonformität', 'Typeinschränkung', 'Subtyp', 'Inklusionspolymorphie', 'Typumwandlung', 'Generischer Typ', 'parametrischer Polymorphismus', 'Kovarianz', 'Typisierung']}
+Was sind Typen in der objektorientierten Programmierung?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Typen sind eine Möglichkeit zu definieren, welche Werte, Variablen und Objekte meiner Zuweisung zugewiesen werden können.
+INFO:root:Answer took 24.255747 seconds.
+INFO:root:Remaining time: 409.223907 seconds (120.237471 seconds in this topic).
+INFO:root:Keywords from answer: ['Deklaration', 'Definition', 'Typdefinition', 'Zuweisungskompatibilität', 'Typäquivalenz', 'Typerweiterung', 'Typkonformität', 'Typeinschränkung', 'Subtyp', 'Inklusionspolymorphie', 'Typumwandlung', 'Generischer Typ', 'parametrischer Polymorphismus', 'Kovarianz', 'Typisierung']
+INFO:root:Mentioned terms: []
+INFO:root:Missing terms: ['Typeinschränkung', 'Inklusionspolymorphie', 'Deklaration', 'Definition', 'parametrischer Polymorphismus', 'Kovarianz', 'Typerweiterung', 'Subtyp', 'Typumwandlung', 'Typäquivalenz', 'Typisierung', 'Zuweisungskompatibilität', 'Generischer Typ', 'Typdefinition', 'Typkonformität']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist Subtyping?', 'answer': 'Subtyping ist eine Art der Beschränkung des Wertebereichs von Typvariablen, bei der ein tatsächlicher Typparameter (der Wert der Typvariable) ein Subtyp eines bestimmten Typs sein muss, der die benötigten Eigenschaften umfasst. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps.'}
+Was ist Subtyping?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Subtyping ist eine Art, den Wertebereich zu beschränken.
+INFO:root:Answer took 17.694692 seconds.
+INFO:root:Remaining time: 391.529215 seconds (102.542779 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996204376220703}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 127.22it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 118.05it/s]
+INFO:root:Similarity: tensor([[0.8149]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie werden Typen in STRONGTALK definiert?', 'answer': 'In STRONGTALK werden Typen in tabellarischer Form definiert und mit einem Namen versehen. Die Typdefinition enthält keine Typdefinitionen, sondern Namen.'}
+Ok. Wie werden Typen in STRONGTALK definiert?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+INFO:root:Answer took 3.297132 seconds.
+INFO:root:Remaining time: 388.232083 seconds (99.245647 seconds in this topic).
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Wie werden Typen in STRONGTALK definiert?', 'answer': 'In STRONGTALK werden Typen in tabellarischer Form definiert und mit einem Namen versehen. Die Typdefinition enthält keine Typdefinitionen, sondern Namen.'}
+Ich habe leider keine Antwort gehört. Wie werden Typen in STRONGTALK definiert?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Typen werden in Strongtalk in tabellarischer Form definiert.
+INFO:root:Answer took 13.910330 seconds.
+INFO:root:Remaining time: 374.321753 seconds (85.335317 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9994600415229797}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 58.13it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 240.36it/s]
+INFO:root:Similarity: tensor([[0.6927]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['name', 'strongtalk', 'typ']
+INFO:root:Mentioned terms: ['strongtalk', 'typ']
+INFO:root:Missing terms: ['name']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: GENERATE
+INFO:root:Target: Typkonformität
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 205.44it/s]
+INFO:root:Generated question: {'question': 'Erklären Sie die Transitivität der Typäquivalenz und wie sich dieser Begriff auf Typkorrektheit und Wertebereiche von Typen bezieht.', 'answer': 'Die Transitivität der Typäquivalenz bedeutet, dass wenn Typ A äquivalent zu Typ B ist und Typ B wiederum äquivalent zu Typ C ist, dann folgt daraus, dass Typ A auch äquivalent zu Typ C ist. Diese Eigenschaft ist wichtig, um die Konsistenz der Typisierung in einem Programm sicherzustellen.\n\nTypkorrektheit hingegen bezieht sich auf die Einhaltung der Typeninvarianten während der Ausführung des Programms. Wenn Typannotationen die möglichen Werte einer Variablen beschränken, dann dürfen Zuweisungen nicht zu einer Verletzung dieser Invarianten führen. Wenn nun Zuweisungen von einem anderen Typen zugelassen werden, muss die Extension (der Wertebereich) des anderen Typs eine Teilmenge der Extension des Zieltyps sein.\n\nIm Fall von Typerweiterungen ist dies nicht automatisch gegeben, da die Erweiterung des Wertebereichs nicht zwangsläufig eine Untermenge des ursprünglichen Wertebereichs ist. Daher muss bei der Einführung von Typäquivalenz und Typkonformität auch der Zusammenhang der Wertebereiche der Typen berücksichtigt werden, um die Typkorrektheit zu gewährleisten.'}
+Erklären Sie die Transitivität der Typäquivalenz und wie sich dieser Begriff auf Typkorrektheit und Wertebereiche von Typen bezieht.
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Transitivität der Typ-Iquivalenz bedeutet, dass die Extension eine Teilmenge der Extension des Zieltyps sein muss. Der Wertebereich ist somit ausgedehnt.
+INFO:root:Answer took 28.471720 seconds.
+INFO:root:Remaining time: 345.850033 seconds (56.863597 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9998268485069275}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['eigenschaft', 'extension', 'invariante', 'typ', 'typaequivalenz', 'typannotation', 'typerweiterung', 'typisierung', 'typkonform', 'typkorrektheit', 'variable', 'wert', 'zuweisung']
+INFO:root:Mentioned terms: ['extension', 'typ', 'wert']
+INFO:root:Missing terms: ['eigenschaft', 'typaequivalenz', 'typkonform', 'typisierung', 'zuweisung', 'typerweiterung', 'typkorrektheit', 'typannotation', 'invariante', 'variable']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: GENERATE
+INFO:root:Target: variable
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 57.87it/s]
+INFO:root:Generated question: {'question': 'Erklären Sie den Unterschied zwischen Deklaration und Definition einer Variablen und nennen Sie die Bedeutung der Initialisierung.', 'answer': 'Die Deklaration einer Variablen gibt ihren Namen und den zugeordneten Speicherplatz an, während die Definition den Speicherplatz mit einem Anfangswert belegt, der Initialisierung. Die Initialisierung ist ein wichtiger Schritt, da sie sicherstellt, dass die Variable einen gültigen Wert hat, bevor sie verwendet wird. Im Gegensatz zur Definition, die immer notwendig ist, kann die Initialisierung auch zu einem späteren Zeitpunkt erfolgen. Die Sichtbarkeit einer Variablen bezieht sich auf den Programmcode-Abschnitt, in dem ihr Name verwendet werden kann, um auf das von diesem Namen bezeichnete Objekt zuzugreifen.'}
+Achso? Erklären Sie den Unterschied zwischen Deklaration und Definition einer Variablen und nennen Sie die Bedeutung der Initialisierung.
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Der Unterschied zwischen einer Deklaration und einer Definition ist, dass die Deklaration festlegt, was eine Variable sein kann, während die Definition sie tatsächlich initialisiert. Bei der Initialisierung ist der Schritt sichergestellt, dass die Variable einen gültigen Wert hat.
+INFO:root:Answer took 31.777469 seconds.
+INFO:root:Remaining time: 314.072564 seconds (25.086128 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997243285179138}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 79.92it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 92.87it/s]
+INFO:root:Similarity: tensor([[0.7830]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Warum ist es wichtig, Implementierungen von Klassen hinter Schnittstellen zu verbergen?', 'answer': 'Das Verbergen von Implementierungen hinter Schnittstellen ist wichtig, um das Geheimnisprinzip zu wahren und sicherzustellen, dass nur die für Benutzer einer Klasse vorgesehenen Elemente sichtbar sind.'}
+Ok. Warum ist es wichtig, Implementierungen von Klassen hinter Schnittstellen zu verbergen?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Es ist wichtig, Implementierungen von Klassen hinter Schnittstellen zu verbergen, um das Geheimnisprinzip zu wahren und sicherzustellen, dass eine Klasse nur benutzt wird, wenn dies auch vorgesehen ist.
+INFO:root:Answer took 24.021140 seconds.
+INFO:root:Remaining time: 290.051425 seconds (1.064989 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9994957447052002}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 70.73it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 220.28it/s]
+INFO:root:Similarity: tensor([[0.9098]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist der Unterschied zwischen einer parametrischen Typdefinition und einer normalen Typdefinition?', 'answer': 'Eine parametrische Typdefinition unterscheidet sich von einer normalen dadurch, dass in der Typdefinition verwendete, andere Typen durch Platzhalter, die Typparameter, vertreten werden können. Diese Platzhalter sind Variablen, deren Wert implizit auf Typen beschränkt ist. Diese Typvariablen werden erst bei der Verwendung eines parametrisierten Typs in der Deklaration eines anderen Programmelements mit einem Wert, also einem Typ, belegt.'}
+Ok. Was ist der Unterschied zwischen einer parametrischen Typdefinition und einer normalen Typdefinition?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Der Unterschied zwischen einer normalen Typdefinition und einer parametrischen Typdefinition ist, dass eine parametrische Typdefinition Typvariabeln als Platzhalter hat, welche dann von tatsächlichen Werten eingenommen werden können, wodurch ja die Typen wiederverwertbar sind, beziehungsweise die Programmteile wiederverwertbar sind, in denen diese Typen verwendet werden.
+INFO:root:Answer took 37.872802 seconds.
+INFO:root:Remaining time: 252.178623 seconds (-36.807813 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9994643330574036}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 68.50it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 164.70it/s]
+INFO:root:Similarity: tensor([[0.9101]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE4 for 126.08931136131287 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten anderer Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'dynamische Typprüfung', 'Mehrfachvererbung']}
+Ok. Was sind die Besonderheiten anderer Programmiermodelle?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Besonderheiten anderer Programmiermodelle sind zum Beispiel Interfaces in Java oder auch Wildcards in Java, die Mehrfachvererbung in C++ oder auch in Eifel.
+INFO:root:Answer took 23.861602 seconds.
+INFO:root:Remaining time: 228.317021 seconds (102.227709 seconds in this topic).
+INFO:root:Keywords from answer: ['Interface', 'Generischer Typ', 'dynamische Typprüfung', 'Mehrfachvererbung']
+INFO:root:Mentioned terms: ['Interface', 'Mehrfachvererbung']
+INFO:root:Missing terms: ['Generischer Typ', 'dynamische Typprüfung']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Typ-Wildcards in Java?', 'answer': 'Typ-Wildcards, auch als Typ-Joker oder Platzhalter bezeichnet, sind ein Konzept in Java, das eingeführt wurde, um das Problem der Instanziierung eines generischen Typs mit einem beliebigen Typ zu lösen. Sie können bei der Instanziierung eines generischen Typs den Platz des tatsächlichen Typparameters einnehmen und zunächst für einen beliebigen Typ stehen. Das Symbol für eine Typ-Wildcard ist das Fragezeichen: "List<?>" ist also ein Typ, mit dem Variablen (einschließlich formaler Parameter) deklariert werden können. Per Definition ist dieser Typ "List<?>" ein Supertyp aller Instanziierungen von "List<T>" - beispielsweise sind "List<Integer>" und "List<String>" mit "List<?>" zuweisungskompatibel.'}
+Was sind Typ-Wildcards in Java?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Typ Wildcards in Java sind ja Platzhalter, die jeden Typen zulassen. Sie sind mit einem Fragzeichen gekennzeichnet und anstelle des Fragezeichens kommt dann der tatsächliche Parameter, der tatsächliche Typparameter.
+INFO:root:Answer took 34.153433 seconds.
+INFO:root:Remaining time: 194.163588 seconds (68.074277 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9995280504226685}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 114.24it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 98.62it/s]
+INFO:root:Similarity: tensor([[0.8006]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie kann in C++ "Call by reference" erreicht werden?', 'answer': 'In C++ kann "Call by reference" erreicht werden, indem man den Zeigeroperator "&" verwendet und die formalen Parameter so deklariert, dass sie Zeiger auf Zeiger aufnehmen können.'}
+Ok. Wie kann in C++ "Call by reference" erreicht werden?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ In C++ kann Call-By-Reference über Zeiger-Operatoren verwendet werden, die dann Zeiger aufnehmen können.
+INFO:root:Answer took 22.894751 seconds.
+INFO:root:Remaining time: 171.268837 seconds (45.179526 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996644258499146}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 57.66it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 149.32it/s]
+INFO:root:Similarity: tensor([[0.8114]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was bedeutet es, eine Methode in Java zu redefinieren?', 'answer': 'In Java kann eine Subklasse eine Methode mit derselben Signatur (bestehend aus Methodennamen und formalen Parametertypen) wie eine Methode der Superklasse neu definieren, jedoch mit einer geänderten Implementierung. Die Methode kann auch den Rückgabetyp kovariant ändern, d.h., in Richtung Subtyp. Die Einhaltung der Typinvarianten, die mit ihren (geerbten) Parametern verbunden sind, über die hinaus die überschreibende Methode nichts tut, was mit der überschriebenen Methode inkompatibel ist, kann durch die Sprachdefinition von Java nicht erzwungen werden. In diesem Punkt liegt die Verantwortung beim Programmierer.'}
+Ok. Was bedeutet es, eine Methode in Java zu redefinieren?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Eine Methode in Java, re zu definieren, bedeutet sie in einer Subklasse neu zu definieren, also die Methode der Superklasse zu überschreiben.
+INFO:root:Answer took 24.448389 seconds.
+INFO:root:Remaining time: 146.820448 seconds (20.731137 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.705479085445404}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Wie kann eine Subklasse eine Methode in Java definieren?', 'answer': 'In Java kann eine Subklasse eine Methode mit derselben Signatur (bestehend aus Methodennamen und formalen Parametertypen) wie eine Methode der Superklasse neu definieren, jedoch mit einer geänderten Implementierung. Die Methode kann auch den Rückgabetyp kovariant ändern, d.h., in Richtung Subtyp. Die Einhaltung der Typinvarianten, die mit ihren (geerbten) Parametern verbunden sind, über die hinaus die überschreibende Methode nichts tut, was mit der überschriebenen Methode inkompatibel ist, kann durch die Sprachdefinition von Java nicht erzwungen werden. In diesem Punkt liegt die Verantwortung beim Programmierer.'}
+Hm? Wie kann eine Subklasse eine Methode in Java definieren?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Eine Subklasse kann eine Methode in Java definieren, indem sie einfach die Signatur definiert und schreibt und implementiert. So kann eben auch eine Methode der Superklasse überschrieben werden.
+INFO:root:Answer took 31.401657 seconds.
+INFO:root:Remaining time: 115.418791 seconds (-10.670520 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9887275695800781}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 67.25it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 145.54it/s]
+INFO:root:Similarity: tensor([[0.8775]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE6 for 115.4187912940979 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
+Ok. Was sind Probleme der objektorientierten Programmierung?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Probleme der objektorientierten Programmierung sind beispielsweise die mangelnde Kapselung, die mangelnde Skalierbarkeit, die mangelnde Eignung. Es gibt das Problem der Substituierbarkeit und das fragile base class Problem.
+INFO:root:Answer took 25.309150 seconds.
+INFO:root:Remaining time: 90.109642 seconds (90.109642 seconds in this topic).
+INFO:root:Keywords from answer: ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']
+INFO:root:Mentioned terms: ['Problem der Substituierbarkeit']
+INFO:root:Missing terms: ['Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Fragile-base-class-Problem', 'Problem der mangelnden Eignung', 'Problem der schlechten Tracebarkeit', 'Problem der mangelnden Skalierbarkeit']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist ein Entwurfsprinzip in der Programmierung?', 'answer': 'Ein Entwurfsprinzip in der Programmierung ist ein Grundsatz, der bei der Gestaltung von Software berücksichtigt wird. Im Gegensatz zu einem Programmierstil ist ein Entwurfsprinzip eher allgemein und weniger willkürlich. Es kann die Gestaltung von Software in Hinsicht auf Funktionalität, Wartbarkeit, Lesbarkeit und Effizienz beeinflussen.'}
+Was ist ein Entwurfsprinzip in der Programmierung?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Ein Entwurfsprinzip in der Programmierung ist ein Grundsatz der Gestaltung, also bestimmte Prinzipien für den Entwurf sind festgelegt. Ein Entwurfsprinzip ist allgemein gehalten und kann mithelfen, die Software funktional zu gestalten, aber auch die Effizienz zu beeinflussen oder auch die Lesbarkeit zu beeinflussen.
+INFO:root:Answer took 50.645419 seconds.
+INFO:root:Remaining time: 39.464223 seconds (39.464223 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996236562728882}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 60.84it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 157.91it/s]
+INFO:root:Similarity: tensor([[0.9563]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie kann die Analysephase eines Projekts zur Identifizierung der Klassen eines Systems beitragen?', 'answer': 'In der Analysephase eines Projekts können alle Substantive aus der Spezifikation extrahiert werden, um auf der Basis dieser Liste die Menge der Klassen eines Systems zu identifizieren. Dies ist eine vielzitierte objektorientierte Technik.'}
+Ok. Wie kann die Analysephase eines Projekts zur Identifizierung der Klassen eines Systems beitragen?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Die Analysephase eines Projekts kann zur Identifizierung der Klassen eines Systems beitragen, in dem bereits in der Analyse alle Substantive aufgeschrieben werden und deren Spezifikationen extrahiert werden. Aus dieser Liste der Substantive kann dann eine Liste an Klassen erstellt, identifiziert und erstellt werden.
+INFO:root:Answer took 37.501292 seconds.
+INFO:root:Remaining time: 1.962931 seconds (1.962931 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997450709342957}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 83.62it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 217.21it/s]
+INFO:root:Similarity: tensor([[0.9097]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was passiert, wenn die Verkettung von Nachrichtenausdrücken länger wird?', 'answer': 'Wenn die Verkettung von Nachrichtenausdrücken länger wird, wird das Protokoll der Klasse von "a" komplexer und muss mit entsprechenden Implementierungen versehen werden.'}
+Ok. Was passiert, wenn die Verkettung von Nachrichtenausdrücken länger wird?
+ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
+*** Recording started ***
+*** Recording ended ***
+Ihre Antwort lautet (in etwa):
+ Wenn die Verkettung von Nachrichten ausdrücken länger wird, dann wird das Protokoll der Klasse komplexer.
+INFO:root:Answer took 21.044870 seconds.
+INFO:root:Remaining time: -19.081939 seconds (-19.081939 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997921586036682}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 31.55it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 222.03it/s]
+INFO:root:Similarity: tensor([[0.8903]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:der*die Student*in hat nie inhaltliche Fehler gemacht.
+der*die Student*in hat nie irrelevante Antworten gegeben.
+der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+der*die Student*in benötigt nie Hilfestellungen.
+der*die Student*in hat nie unpräzise Antworten gegeben.
+der*die Student*in hat ein hohes Leistungslevel erreicht.
+der*die Student*in war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+der*die Student*in war am schlechtesten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+ Luna, herzlichen Glückwunsch zu deiner mündlichen Prüfung! Du hast durchgehend korrekte Antworten gegeben und dich nie in irrelevanten Details verloren. Allerdings könntest du daran arbeiten, deine Antworten bei der Systematik der objektorientierten Programmierung etwas ausführlicher und vertieft zu gestalten. Insgesamt hast du ein hohes Leistungsniveau erreicht, besonders hervorzuheben ist deine starke Performance bei den Grundkonzepten der objektorientierten Programmierung. Weiter so!
+ "Vielen Dank für Ihre Zeit und Ihre Antworten, Luna, ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen!"
+-------------------------End!-------------------------

@@ -18,7 +18,7 @@ class QuestionParaphraser:
                     "Erstelle eine einfache Prüfungsfrage zu dieser Antwort: {context}")
         prompt = PromptTemplate(template=template, input_variables=["context"])
         # Load question generation model TODO: Higher new tokens during training
-        llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base-v2', model_kwargs={'max_new_tokens': 250})
+        llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base-v6', model_kwargs={'max_new_tokens': 250})
         # Create chain for question generation
         self.llm_chain = LLMChain(prompt=prompt, llm=llm)
 

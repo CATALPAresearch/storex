@@ -162,9 +162,15 @@ class ExamManager:
 
             case 2:  # Off-topic answer
                 self.prepend_question = random.choice(questioning_sounds)
-                self.next_question = QuestionType.REPEAT
-                self.repeating_reason = EvaluationType.OFF_TOPIC
+
+                # Get missed topics and add them as targets and save the data for feedback
+                missed_topics, max_topics = self.evaluation.evaluate_keywords(question, student_answer)
+                self.targets.extend(missed_topics)
                 self.feedback.add_irrelevant()
+                if self.targets:
+                    self.next_question = QuestionType.GENERATE
+                else:
+                    self.next_question = QuestionType.PREDEFINE
 
             case 3:  # Contradicting answer
                 self.prepend_question = random.choice(questioning_sounds)
