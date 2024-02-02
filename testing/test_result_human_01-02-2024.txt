@@ -113,7 +113,7 @@ INFO:root:Predefined question: {'question': 'Welche Art von Typumwandlung ist im
 Welche Art von Typumwandlung ist immer sicher?
 
 Ihre Antwort lautet (in etwa):
- Ein Abcast ist immer sicher, weil jedes Objekt auch der Typ seines Supertypen hat.
+ Ein Upcast ist immer sicher, weil jedes Objekt auch der Typ seines Supertypen hat.
 INFO:root:Answer took 20.187125 seconds.
 INFO:root:Remaining time: 40.059248 seconds (-3.573720 seconds in this topic).
 INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997128844261169}]

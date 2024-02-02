@@ -1,0 +1,28 @@
+Trainingsprüfung von: 01-02-2024--16-17-47
+Modell: mistralai/Mixtral-8x7B-Instruct-v0.1
+Template: "[INST] Du eine durchschnittliche Studentin an einer deutschen Universität.
+        Du wirst in einer mündlichen Prüfungen zu objektorientierter Programmierung abgefragt.
+        Antworte auf die Frage in 2 Sätzen.
+        Die Frage lautet: {question}
+
+        Gib nur deine Antwort zurück:[/INST]
+
+[Exam:] Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+[AI:]  Objektorientierte Programmierung (OOP) ist ein Programmierparadigma, das auf dem Konzept von Objekten basiert, die Daten und Funktionen kapseln, um die Komplexität von Programmen zu reduzieren und die Wiederverwendung von Code zu fördern. Das Grundkonzept von OOP ist die Gruppierung von Daten und Funktionen, die auf diese Daten zugreifen können, in Objekten, die miteinander interagieren, um die gewünschte Funktionalität bereitzustellen.
+[Exam:] Was sind primitive Ausdrücke in SMALLTALK?
+[AI:]  In Smalltalk, primitive expressions are built-in messages that directly interact with the virtual machine, performing low-level operations such as arithmetic, memory access, or I/O. They are defined in the system's base image and are not typically user-defined.
+[Exam:] Ah? Was is die Zuweisung in SMALLTALK?
+[AI:]  In Smalltalk, assignment is performed using the ":" symbol, followed by the variable name and the value being assigned. For example: "x := 5" assigns the value 5 to the variable x.
+[Exam:] Hm? Was sind temporäre Variablen?
+[AI:]  Temporäre Variablen sind in der objektorientierten Programmierung Hilfsvariablen, die während der Ausführung eines Methoden- oder Funktionsaufrufs verwendet werden, um Zwischenergebnisse zu speichern. Sie sind lokal begrenzt und werden nach Beendigung des Methoden- oder Funktionsaufrufs wieder gelöscht.
+[Exam:] Ah? Was sind temporäre Variablen?
+[AI:]  Temporäre Variablen sind in der objektorientierten Programmierung Hilfsvariablen, die nur innerhalb einer Methode oder eines Blocks existieren und nach Beendigung des Prozesses wieder gelöscht werden. Sie werden meistens zur Zwischenspeicherung von Werten während der Berechnung verwendet und sind nicht über den gesamten Programmablauf verfügbar.
+[Exam:] Hm? Was sind primitive Methoden?
+[AI:]  In objektorientierter Programmierung versteht man unter primitiven Methoden solche, die direkt auf einem Objekt ausgeführt werden, ohne dass dabei eine neue Instanz erzeugt wird. Sie modifizieren also das Objekt, auf dem sie aufgerufen werden, oder geben Informationen über dieses Objekt zurück, ohne eine Kopie zu erstellen.
+[Exam:] Ah? What are primitive Methoden?
+[AI:]  In object-oriented programming, primitive methods are predefined methods that come built-in with certain classes and can be used to perform common operations on objects of those classes. For example, in Java, the String class has primitive methods like length() and charAt() that can be used to determine the length of a string and retrieve individual characters from it, respectively.
+[Exam:] Hmm. Was sind Attribute?
+[AI:]  Attribute in der objektorientierten Programmierung sind Merkmale oder Eigenschaften, die einem Objekt zugeordnet sind und seine Zustände beschreiben. Sie werden in Klassen definiert und können in Instanzen der Klasse Werte zugewiesen bekommen.
+[Exam:] Ok. Wie sind Instanzvariablen in SMALLTALK sichtbar?
+[AI:]  In Smalltalk sind Instanzvariablen für alle Methoden innerhalb desselben Objekts sichtbar, aber nicht für andere Objekte, selbst wenn sie von derselben Klasse abgeleitet sind. Instanzvariablen werden in Smalltalk üblicherweise über Zugriffsmethoden anstelle von direktem Zugriff manipuliert, um die Kapselung und Datenintegrität zu gewährleisten.
+[Exam:] Erklären Sie den Begriff der Teil-Ganzes-Beziehung und skizzieren Sie die daraus resultierenden Herausforderungen für die objektorientierte Programmierung.

@@ -1,0 +1,233 @@
+Trainingsprüfung von: 02-02-2024--11-20-48
+
+Modell: mistralai/Mixtral-8x7B-Instruct-v0.1
+Template: "[INST] Du eine durchschnittliche Studentin an einer deutschen Universität.
+        Du wirst in einer mündlichen Prüfungen zu objektorientierter Programmierung abgefragt.
+        Antworte auf die Frage in einem Satz.
+        Die Frage lautet: {question}
+
+        Gib nur deine Antwort zurück:[/INST]
+
+[Exam:]  Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+[AI:]  Das Grundkonzept der objektorientierten Programmierung ist die Gruppierung von Daten und Funktionen zu Objekten, die miteinander interagieren und so die Komplexität des Codes reduzieren.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Wie ist die Sichtbarkeit von Instanzvariablen in SMALLTALK begrenzt?
+[AI:]  In Smalltalk sind Instanzvariablen nicht von Natur aus begrenzt, ihre Sichtbarkeit kann durch den Einsatz von Accessor-Methoden oder durch den Kontext der Objektkommunikation beeinflusst werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Was ist die Sichtbarkeit von Instanzvariablen in SMALLTALK?
+[AI:]  In Smalltalk sind Instanzvariablen standardmäßig privat und können nur von der Klasse selbst und von Subklassen aus gesehen und geändert werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was sind Anweisungen?
+[AI:]  In the context of programming, instructions, also known as statements, are individual commands that a computer can execute within a larger program or function.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Welche Arten von Ausdrücken gibt es?
+[AI:]  In objektorientierter Programmierung gibt es Ausdrücke wie Zuweisungsausdrücke, Arithmetikausdrücke, Vergleichsausdrücke, Objektinstanzerzeugungsausdrücke und Aufrufausdrücke.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was sind atomare Objekte?
+[AI:]  Atomare Objekte sind in der Objektorientierten Programmierung die einfachsten, unteilbaren Einheiten, die keine anderen Objekte enthalten und eine klar definierte, einfache Funktionalität besitzen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Achso? Was sind atomare Objekte?
+[AI:]  Atomare Objekte in der Objektorientierten Programmierung sind unveränderliche Grundeinheiten, die nicht in kleinere Teile zerlegt werden können und die Atomarität in Transaktionen gewährleisten.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was sind temporäre Variablen?
+[AI:]  Temporäre Variablen sind in der objektorientierten Programmierung Hilfsvariablen, die innerhalb einer Methode oder eines Blocks definiert werden und nur während der Ausführung dieses Bereichs bestehen bleiben.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Achso? Was sind temporäre Variablen?
+[AI:]  Temporäre Variablen sind in der objektorientierten Programmierung Hilfsvariablen, die innerhalb einer Methode oder eines Blocks definiert werden und nur während der Ausführung dieses Bereichs bestehen bleiben.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Was ist eine Methodensignatur?
+[AI:]  In objektorientierter Programmierung bezeichnet eine Methodensignatur die eindeutige Kennzeichnung einer Methode durch ihren Namen, die Anzahl und Art der Parameter, aber ohne die eigentliche Implementierung.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was ist eine Methodensignatur?
+[AI:]  "Eine Methodensignatur in der objektorientierten Programmierung besteht aus dem Methodennamen, den Parameterlisten und dem Rückgabewert."
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Ist die Zuweisung kommutativ?
+[AI:]  Nein, die Zuweisung ist nicht kommutativ, da die Reihenfolge der Zuweisung bei Variablen in der objektorientierten Programmierung entscheidend ist.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Warum ist die Zuweisung nicht kommutativ?
+[AI:]  In object-oriented programming, assignment is not commutative because the left side of the assignment operator determines the variable to be modified, while the right side determines the value to be assigned, so swapping the left and right side would change the behavior of the assignment.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+[AI:]  Objektorientierte Programme lassen sich mithilfe der Konzepte Klassen, Objekte, Vererbung, Polymorphismus und Kapselung strukturieren.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ist das Entfernen von Instanzvariablen oder Methoden vereinbar mit einer Spezialisierung?
+[AI:]  Nein, das Entfernen von Instanzvariablen oder Methoden ist nicht vereinbar mit einer Spezialisierung in der objektorientierten Programmierung, da Spezialisierung durch Hinzufügen neuer Eigenschaften und Methoden zur Verfeinerung der abstrakten Klasse oder Schnittstelle erreicht wird, ohne bestehende Implementierungen zu ändern.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was ist die Bedeutung von Entfernen von Instanzvariablen oder Methoden in der Programmierung?
+[AI:]  Entfernen von Instanzvariablen oder Methoden in der objektorientierten Programmierung bedeutet, dass diese Variablen oder Methoden nicht mehr für neue Instanzen der Klasse verfügbar sind, aber bereits erstellte Instanzen können davon weiterhin betroffen sein.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Welche Bedingungen müssen für eine zulässige Subklassenbeziehung erfüllt sein?
+[AI:]  In einer zulässigen Subklassenbeziehung in objektorientierter Programmierung muss die Subklasse (der "Kind") alle Eigenschaften und Methoden der Superklasse (des "Elternteils") besitzen oder erweitern und darf keine strengeren Zugriffsrechte haben als diese.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hmm. Welche Bedingungen müssen erfüllt sein für eine zulässige Subklassenbeziehung?
+[AI:]  In einer zulässigen Subklassenbeziehung muss die Subklasse alle Eigenschaften und Methoden der Oberklasse besitzen sowie diese implementieren oder überschreiben können, wobei letzteres einer Liskov-Substitutionsprinzip genügen muss.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was sind Semaphoren?
+[AI:]  Semaphoren sind Synchronisationsmechanismen, die in der objektorientierten Programmierung eingesetzt werden, um den gleichzeitigen Zugriff von mehreren Threads auf eine gemeinsame Ressource zu steuern und so vor unerwünschten Zugriffen zu schützen.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was ist Spezialisierung in der Programmierung?
+[AI:]  Spezialisierung in der Programmierung bedeutet, dass eine abstrakte Klasse oder ein Interface in der objektorientierten Programmierung durch eine konkrete Klasse implementiert wird, die die notwendigen Attribute und Methoden definiert.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was ist Spezialisierung in der Programmierung?
+[AI:]  Spezialisierung in der Programmierung bedeutet, sich auf eine bestimmte Programmiersprache, Technologie oder Anwendungsbereich zu konzentrieren und Expertise in diesem Bereich zu entwickeln.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Was ist das Konzept der offenen Rekursion in SMALLTALK?
+[AI:]  Offene Rekursion in Smalltalk ist die Technik, bei der eine Methode sich selbst aufruft, bevor sie vollständig definiert ist, wodurch eine iterative oder rekursive Berechnung ermöglicht wird, noch bevor die Methode zu Ende deklariert wurde.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Was sind Typen in der objektorientierten Programmierung?
+[AI:]  In der objektorientierten Programmierung sind Typen Klassen oder Schnittstellen, die verwendet werden, um Objekte mit ähnlichen Eigenschaften und Verhaltensweisen zu kategorisieren und voneinander zu unterscheiden.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was ist der einzige Typkonstruktor in STRONGTALK?
+[AI:]  Der einzige Typkonstruktor in STRONGTALK ist "object:".
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Welches Problem möchte man mit dem beschränkten parametrischen Polymorphismus lösen?
+[AI:]  Der beschränkte parametrische Polymorphismus ermöglicht es, Typen in einem allgemeineren Kontext zu verwenden, um wiederverwendbaren Code zu erstellen, während gleichzeitig sichergestellt wird, dass nur kompatible Typen verwendet werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was möchte man mit dem beschränkten parametrischen Polymorphismus sicherstellen?
+[AI:]  Mit beschränktem parametrischen Polymorphismus in objektorientierter Programmierung stellt man sicher, dass ein Typ eines Parameters in einer Funktion auf bestimmte Klassen oder Schnittstellen beschränkt ist, um Typsicherheit zu gewährleisten und unerwartetes Verhalten zu vermeiden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Was bedeutet Zuweisungskompatibilität?
+[AI:]  Zuweisungskompatibilität in der objektorientierten Programmierung bedeutet, dass einem Objekt oder Variablen ein Wert eines anderen Datentyps zugewiesen werden kann, wenn der Quelltyp in einen Zieltyp konvertiert werden kann, ohne dass dabei Informationen verloren gehen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was bedeutet Zuweisungskompatibilität?
+[AI:]  Zuweisungskompatibilität in der objektorientierten Programmierung bedeutet, dass einem Objekt oder Variablen ein Wert eines anderen Datentyps zugewiesen werden kann, wenn der Quelltyp in einen Zieltyp konvertiert werden kann.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Was ist der Zweck der Typisierung in Programmiersprachen?
+[AI:]  Die Typisierung in Programmiersprachen dient dazu, die Variablen bereits beim Definieren auf einen bestimmten Datentyp festzulegen, um die Datenkonsistenz im Programm zu gewährleisten und Fehlerquellen zu reduzieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Was ist der Zweck der Typisierung in Programmiersprachen?
+[AI:]  Der Zweck der Typisierung in Programmiersprachen ist, die Art der Daten zu definieren und zu gewährleisten, dass nur gültige Operationen auf diesen Daten durchgeführt werden, um die Code-Korrektheit und Robustheit zu erhöhen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Was ist eine parametrische Typdefinition?
+[AI:]  Eine parametrische Typdefinition, auch Generics genannt, ist eine Möglichkeit in der objektorientierten Programmierung, Klassen oder Schnittstellen mit placeholder Typen zu definieren, die erst zur Laufzeit konkretisiert werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was ist eine parametrische Typdefinition?
+[AI:]  Eine parametrische Typdefinition, auch Generics genannt, ist eine Möglichkeit in der objektorientierten Programmierung, Klassen oder Schnittstellen mit placeholder Typen zu definieren, die erst zur Laufzeit konkretisiert werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Achso? Was ist Zuweisungskompatibilität unter Typerweiterung?
+[AI:]  Bei Zuweisungskompatibilität unter Typerweiterung in objektorientierter Programmierung ist es möglich, einer Variablen eines Basistyps ein Objekt eines abgeleiteten Typs zuzuweisen, da das abgeleitete Objekt alle Eigenschaften und Methoden des Basistyps besitzt.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Was sind die Besonderheiten anderer Programmiermodelle?
+[AI:]  Andere Programmiermodelle, wie z.B. prozedurale Programmierung, betonen das Ausführen von Befehlsfolgen und das Verarbeiten von Daten mit Hilfe von Funktionen, im Gegensatz zur objektorientierten Programmierung, die auf dem Konzept von Objekten mit Eigenschaften und Methoden basiert.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Welche Datentypen gibt es in C++?
+[AI:]  In C++ gibt es grundlegend die Datentypen void, bool, char, wchar\_t, short, int, long, float, double und long double, außerdem enumerationen (enum), Zeiger (pointer) und benutzerdefinierte Datentypen wie Klassen und Strukturen (struct).
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Wann werden Type casts in Java verwendet?
+[AI:]  Type casts in Java werden verwendet, um eine Variable eines bestimmten Datentyps in einen anderen Datentyp zu konvertieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hm? Wie werden Type casts in Java verwendet?
+[AI:]  In Java werden Type casts verwendet, um Objekte oder Werte einer Klasse in eine andere Klasse umzuwandeln, entweder implizit (automatisch) oder explizit (durch Angabe der gewünschten Ziel-Klasse).
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Was bedeutet die If-else-Anweisung in der Programmierung?
+[AI:]  Die If-else-Anweisung in der Programmierung ermöglicht es, eine bestimmte Anweisung oder Anweisungen auszuführen, wenn eine Bedingung wahr ist, und eine alternative Anweisung oder Anweisungen auszuführen, wenn diese Bedingung falsch ist.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was ist die If-else-Anweisung?
+[AI:]  Die If-else-Anweisung in der objektorientierten Programmierung ist eine bedingte Anweisung, die einem Programmteil entweder den Befehl "if" oder "else" gibt, abhängig davon, ob eine bestimmte Bedingung erfüllt ist oder nicht.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Warum wurde C-Sharp entwickelt?
+[AI:]  C-Sharp, auch bekannt als C#, wurde von Microsoft entwickelt, um ein modernes, typsicheres und objektorientiertes Programmiermodell für Anwendungen auf der .NET-Plattform bereitzustellen.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Was ist die Entwicklung von C-Sharp?
+[AI:]  Die Entwicklung von C-Sharp, auch bekannt als C#, wird von Microsoft geleitet und ist eine statically-typed, object-oriented programming language, die ursprünglich für .NET Framework entwickelt wurde.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Was ist der Unterschied zwischen Wert- und Referenztypen in EIFFEL?
+[AI:]  In Eiffel, value types are stored on the stack and include basic types like INTEGER, REAL, and CHAR, while reference types are stored on the heap and include objects, agents, and detachable objects, which can be manipulated through references or pointers.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Welche Unterschiede gibt es zwischen Wert- und Referenztypen in EIFFEL?
+[AI:]  In Eiffel, value types are stored on the stack and include basic types like INTEGER, REAL, and CHAR, while reference types are stored on the heap and include objects and classes, with references to them using pointers.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Achso? Was sind Probleme der objektorientierten Programmierung?
+[AI:]  Objektorientierte Programmierung kann zu engen Couplings und hoher Komplexität führen, was Wartung und Erweiterung des Codes erschweren kann.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Was ist strukturierte Programmierung?
+[AI:]  Strukturierte Programmierung ist eine Programmierparadigme, das auf der Verwendung von einfachen Kontrollstrukturen wie Sequenz, Auswahl und Iteration basiert, um das Programm in klar definierte und leicht verständliche Blöcke zu unterteilen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hmm. Was ist die strukturierte Programmierung?
+[AI:]  "Strukturierte Programmierung ist eine Programmierparadigme, das auf der Verwendung von einfachen, gut verständlichen und gut lesbaren Algorithmen und Datenstrukturen basiert, um die Wartbarkeit und Zuverlässigkeit von Code zu verbessern."
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ah? Was ist ein Entwurfsprinzip in der Programmierung?
+[AI:]  Ein Entwurfsprinzip in der Programmierung ist ein allgemein anerkannter und bewährter Grundsatz, der bei der Gestaltung von Softwarearchitektur und -design angewendet wird, um die Codequalität, Wartbarkeit und Erweiterbarkeit zu verbessern.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hmm. Was ist ein Entwurfsprinzip in der Programmierung?
+[AI:]  Ein Entwurfsprinzip in der Programmierung ist ein allgemein anerkannter Leitfaden zur Erstellung gut strukturierter, wiederverwendbarer und erweiterbarer Software, wie zum Beispiel das Prinzip der "Offenen-Sperr"-Schließfächer (Open-Closed Principle).
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Achso? Was ist ein Indikator dafür, dass eine Klasse nicht nur für eine Abstraktion der Anwendungsdomäne steht, sondern für mehrere?
+[AI:]  Ein Indikator dafür, dass eine Klasse nicht nur für eine Abstraktion der Anwendungsdomäne steht, sondern für mehrere, ist wenn sie Methoden oder Attribute besitzt, die in verschiedenen Kontexten oder für unterschiedliche Zwecke verwendet werden können.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hm? Was ist ein Indikator dafür, dass eine Objekt in der objektorientierten Programmierung eine wiederholte Vorkommen gleicher Fallunterscheidungen gibt?
+[AI:]  Ein Indikator dafür, dass ein Objekt in der objektorientierten Programmierung wiederholte Vorkommen gleicher Fallunterscheidungen aufweist, ist das Vorhandensein von vielen if- oder switch-Anweisungen, die auf der Klassen- oder Objektebene die gleichen Werte überprüfen und ähnliche Aktionen ausführen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Was sind Interfaces als Typen?
+[AI:]  Interfaces als Typen in der objektorientierten Programmierung definieren in Java oder C# einen Vertrag über Methoden, Eigenschaften und Ereignisse, die von Klassen implementiert werden müssen, ohne eine konkrete Implementierung vorzugeben.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hm? Was sind Interfaces als Typen?
+[AI:]  Interfaces als Typen in der objektorientierten Programmierung definieren in Java oder C# einen Vertrag über Methoden, Eigenschaften und Ereignisse, die von Klassen implementiert werden müssen, ohne eine konkrete Implementierung vorzugeben.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Was ist das Ziel der Objektorientierung?
+[AI:]  Das Ziel der Objektorientierung ist es, komplexe Systeme durch die Verwendung von Objekten, die Daten und Funktionen kombinieren, einfacher und organisierter zu gestalten.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] der*die Student*in hat nie inhaltliche Fehler gemacht.
+der*die Student*in hat viele irrelevante Antworten gegeben.
+der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+der*die Student*in benötigt einige Hilfestellungen.
+der*die Student*in hat nie unpräzise Antworten gegeben.
+der*die Student*in hat ein hohes Leistungslevel erreicht.
+der*die Student*in war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+der*die Student*in war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+[Exam:]  Luna, herzlichen Glückwunsch zu deiner mündlichen Prüfung und deinem erreichten Leistungsniveau. Du hast während der Prüfung keinerlei inhaltliche Fehler gemacht, was sehr positiv zu bewerten ist. Allerdings ist mir aufgefallen, dass du viele irrelevante und oberflächliche Antworten gegeben hast, was deine Leistung insgesamt beeinträchtigt hat. Deine Stärken hast du vor allem bei den Themen 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl' gezeigt, während du bei den 'Grundkonzepten der objektorientierten Programmierung' noch Schwierigkeiten hattest. Ich ermutige dich, dich in Zukunft stärker auf die Grundlagen zu konzentrieren und unnötige Ausführungen zu vermeiden, um dein Potenzial voll auszuschöpfen.
+[Exam:]  "Vielen Dank für das interessante Gespräch, Luna. Ich wünsche Ihnen alles Gute und viel Erfolg für Ihre zukünftigen Unternehmungen!"
