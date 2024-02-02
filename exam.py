@@ -89,7 +89,7 @@ class ExamManager:
         self.feedback = FeedbackManager()
 
         # Set time manager with the exam duration
-        duration = int(exam_parameters['time']) * 60
+        duration = (int(exam_parameters['time']) * 60) / 2
         self.time_manager = TimeManager(duration, topic_manager, self.feedback)
 
     def speak(self, text):
@@ -270,10 +270,13 @@ class ExamManager:
             self.last_question = current_question
             self.feedback.add_question()
 
-            # Set the question type to predefined if a new topic started or if there should be no generated questions
-            # at the current level or the maximum of hints is reached
-            if ((self.time_manager.check_topic()
-                 or (self.time_manager.check_level() and self.next_question == QuestionType.GENERATE))
+            # If a new topic started, clear the targets and set the question type to predefined
+            if self.time_manager.check_topic():
+                self.targets = []
+                self.next_question = QuestionType.PREDEFINE
+            # Set the question type to predefined if there should be no generated questions at the current level or the
+            # maximum of hints is reached
+            if ((self.time_manager.check_level() and self.next_question == QuestionType.GENERATE)
                     or (self.next_question == QuestionType.REPEAT and repeated is True)):
                 self.next_question = QuestionType.PREDEFINE
 
@@ -406,6 +409,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 2, "female": False, "male": False, "mute": True, "ai": True}
+    dev_parameters = {"name": "Luna", "time": 25, "female": False, "male": False, "mute": True, "ai": False}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

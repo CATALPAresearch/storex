@@ -52,7 +52,7 @@ def create_vector_db(documents):
     """
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=750, chunk_overlap=100,
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150,
                                                    separators=['\n\n', '\n', '.', ',', ' ', ''])
     split_text = text_splitter.split_documents(documents)
 

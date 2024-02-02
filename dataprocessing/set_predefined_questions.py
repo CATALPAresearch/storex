@@ -21,7 +21,8 @@ KE_questions = [KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_
 
 
 def sort_in_ke(question_answer, ke_index):
-    if question_answer['question'].startswith(("Was ist", "Was sind", "Welche")):
+    if (question_answer['question'].startswith(("Was ist", "Was sind", "Welche"))
+            and not re.search("(Vorteil|Nachteil|Unterschied)", question_answer['question'])):
         KE_questions[ke_index][0].append(question_answer)
     elif question_answer['question'].startswith(("Wie", "Wann")):
         KE_questions[ke_index][1].append(question_answer)
@@ -33,6 +34,8 @@ def sort_in_ke(question_answer, ke_index):
 for file in glob.glob(INPUT_PATH + '/*.txt'):
     filename = Path(file).stem
     filename = ".".join(filename.split(".", 2)[:2])
+    if filename == "Einsendeaufgaben":
+        continue
 
     with (open(file, 'r') as txt_file):
         lines = txt_file.readlines()
@@ -43,19 +46,17 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
             question = question.split(':', 1)[1].strip()
             question_dict = {'question': question, 'answer': answer}
 
-            if re.match("KE", filename):
+            if re.search("KE", filename):
                 if filename == "KE1":
                     ke = 0
-                if filename == "KE2":
+                if filename == "KE2" or filename == "FragenKE2":
                     ke = 1
-                if filename == "KE3":
+                if filename == "KE3" or filename == "FragenKE3":
                     ke = 2
-                if filename == "KE4":
+                if filename == "KE4" or filename == "FragenKE4" or filename == "KE5" or filename == "FragenKE5":
                     ke = 3
-                if filename == "KE5":
-                    ke = 3
-                if filename == "KE6":
-                    ke = 5
+                if filename == "FragenKE6" or filename == "KE7" or filename == "FragenKE7":
+                    ke = 4
             elif float(filename) < 6:
                 ke = 0
             elif float(filename) < 17:
