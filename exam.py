@@ -89,7 +89,7 @@ class ExamManager:
         self.feedback = FeedbackManager()
 
         # Set time manager with the exam duration
-        duration = (int(exam_parameters['time']) * 60) / 2
+        duration = (int(exam_parameters['time']) * 60)
         self.time_manager = TimeManager(duration, topic_manager, self.feedback)
 
     def speak(self, text):
@@ -122,8 +122,8 @@ class ExamManager:
                 answer = self.ai_student.get_answer(question['question'])
                 logger.info(f"AI answer: {answer}")
         else:
-            self.speak(question['question'])
             with self.time_manager:
+                self.speak(question['question'])
                 answer = self.get_answer()
         self.get_evaluation(question, answer)
 
@@ -168,7 +168,7 @@ class ExamManager:
                 self.targets.extend(missed_topics)
                 self.feedback.add_irrelevant()
                 if self.targets:
-                    self.next_question = QuestionType.GENERATE
+                    self.next_question = QuestionType.SELECTED
                 else:
                     self.next_question = QuestionType.PREDEFINE
 
@@ -242,6 +242,26 @@ class ExamManager:
 
         return repeating_question
 
+    def ask_selected_question(self):
+        """
+        Gets, asks and returns a generated question.
+        """
+        # Get a random target (higher probability with more occurrences)
+        target = random.choice(self.targets)
+
+        # Remove all occurrences of the selected target from the targets
+        self.targets = [t for t in self.targets if t != target]
+        logger.info(f"Target: {target}")
+
+        # Get selected question
+        selected_question = self.manager.select_question(target)
+        logger.info(f"Predefined question: {selected_question}")
+
+        # Get the students answer to the question and get feedback on the answer
+        self.ask_question(selected_question)
+
+        return selected_question
+
     def mic_test(self):
         """Checks the microphone and greets the students."""
         # Greet the student and check the microphone
@@ -280,11 +300,14 @@ class ExamManager:
             if self.time_manager.check_topic():
                 self.targets = []
                 self.next_question = QuestionType.PREDEFINE
-            # Set the question type to predefined if there should be no generated questions at the current level or the
+            # Set the question type to selected if there should be no generated questions at the current level or the
             # maximum of hints is reached
             if ((self.time_manager.check_level() and self.next_question == QuestionType.GENERATE)
                     or (self.next_question == QuestionType.REPEAT and repeated is True)):
-                self.next_question = QuestionType.PREDEFINE
+                if self.targets:
+                    self.next_question = QuestionType.SELECTED
+                else:
+                    self.next_question = QuestionType.PREDEFINE
 
             logger.info(f"The next question is: {self.next_question.name}")
             if self.ai_student:
@@ -310,6 +333,10 @@ class ExamManager:
                         self.feedback.remove_contradiction()
                     self.repeating_reason = None
                     repeated = True
+
+                case 3:  # Select a question from the predefined questions
+                    repeated = False
+                    current_question = self.ask_selected_question()
 
                 case _:
                     raise ValueError(f"Cannot assign {self.next_question}.")
