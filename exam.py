@@ -364,7 +364,7 @@ class ExamManager:
         )
         goodbye = self.text_generator.get_text(goodbye_query)
         self.speak(goodbye)
-        delimiter = "-" * 25
+        delimiter = "-" * 50
         print(f"{delimiter}End!{delimiter}")
         exit(0)
 
