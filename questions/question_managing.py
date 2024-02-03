@@ -3,6 +3,8 @@ Class for managing predefined questions.
 """
 import logging
 import random
+import re
+
 import questions.questions as questions
 
 from utils.helpers import KE, Level
@@ -25,20 +27,23 @@ class QuestionManager:
             self.topic_list.append(getattr(questions, ke_topic))
 
     def get_question(self):
-        ke_index = self.topic_manager.get_topic().value
-        ke_level = self.topic_manager.get_level().value
+        while True:
+            ke_index = self.topic_manager.get_topic().value
+            ke_level = self.topic_manager.get_level().value
 
-        # Check if the course units open question was already asked
-        open_question = self.topic_list[ke_index] if ke_level == 0 else ''
-        if open_question != '':
-            self.topic_list[self.topic_manager.get_topic().value] = ''
-            return open_question
+            # Check if the course units open question was already asked
+            open_question = self.topic_list[ke_index] if ke_level == 0 else ''
+            if open_question != '':
+                self.topic_list[self.topic_manager.get_topic().value] = ''
+                return open_question
 
-        # Check if there are predefined questions for the current course unit and level
-        if self.question_list[ke_index][ke_level] != '':
-            return self.random_question(ke_index, ke_level)
-        else:
-            self.topic_manager.increase_level()
+            # Check if there are predefined questions for the current course unit and level
+            if self.question_list[ke_index][ke_level] != '':
+                question = self.random_question(ke_index, ke_level)
+                break
+            else:
+                self.topic_manager.increase_level()
+        return question
 
     def random_question(self, ke_index, ke_level):
         """
@@ -46,6 +51,29 @@ class QuestionManager:
         """
         random_index = random.randrange(len(self.question_list[ke_index][ke_level]))
         question = self.question_list[ke_index][ke_level].pop(random_index)
+        return question
+
+    def select_question(self, keyword):
+        """
+        Select a question from the list of questions for the specified level in the specified course unit.
+        """
+        while True:
+            ke_index = self.topic_manager.get_topic().value
+            ke_level = self.topic_manager.get_level().value
+
+            # Check if there are predefined questions for the current course unit and level
+            if self.question_list[ke_index][ke_level] != '':
+                possible_questions = []
+                for question_dict in self.question_list[ke_index][ke_level]:
+                    if re.search(keyword, question_dict['question']) or re.search(keyword, question_dict['question']):
+                        possible_questions.append(question_dict)
+                if possible_questions:
+                    question = self.random_question(ke_index, ke_level)
+                else:
+                    question = self.get_question()
+                break
+            else:
+                self.topic_manager.increase_level()
         return question
 
 

@@ -35,6 +35,7 @@ class QuestionType(IntEnum):
     PREDEFINE = 0
     GENERATE = 1
     REPEAT = 2
+    SELECTED = 3
 
 
 class EvaluationType(IntEnum):
