@@ -52,7 +52,7 @@ class ExamManager:
         elif exam_parameters['male']:
             self.student['nominative'] = "der Student"
             self.student['accusative'] = "einen Studenten"
-            self.student['dative'] = "einen Studenten"
+            self.student['dative'] = "einem Studenten"
             self.student['possessive'] = "seine"
 
         # Setup stopwords for preprocessing
@@ -354,8 +354,8 @@ class ExamManager:
             {feedback_rules}
             Gib nur das Feedback zurück:"""
         )
-        goodbye = self.text_generator.get_text(feedback_query)
-        self.speak(goodbye)
+        feedback = self.text_generator.get_text(feedback_query)
+        self.speak(feedback)
 
         # See the student off
         goodbye_query = (

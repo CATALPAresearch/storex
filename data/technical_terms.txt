@@ -423,14 +423,14 @@ unaere nachricht
 unboxing
 unchecked exception
 ungarische notation
-unified modeling language
+[unified modeling language, UML]
 universalienstreit
 unsafe
 unsicher
 unveraenderliche objekt
 unzulaessige zuweisung
 up cast
-[use site variance, use-site variance]
+[use site variance, use-site variance, use-site-variance]
 variable
 variablendeklaration
 veraenderliches objekt
