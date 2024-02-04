@@ -11,7 +11,7 @@ import testing.ai_student
 from audio.speech_recognition import SpeechRecognition
 from audio.text_to_speech import TextToSpeech
 from evaluation import Evaluator
-from feedback_managing import FeedbackManager
+from feedback_managing import FeedbackManager, check_feedback
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
 from questions.question_managing import QuestionManager, TopicManager
@@ -355,6 +355,7 @@ class ExamManager:
             Gib nur das Feedback zurück:"""
         )
         feedback = self.text_generator.get_text(feedback_query)
+        feedback = check_feedback(feedback)
         self.speak(feedback)
 
         # See the student off
