@@ -88,8 +88,6 @@ def run_exam_realtime(command, student):
         print(f"An error occurred: {e}")
 
 
-
-
 if __name__ == "__main__":
     with open(OUTPUT_FILE, 'a', newline='') as file:
         file.write(f"Trainingsprüfung von: {date}\n\n")

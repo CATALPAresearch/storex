@@ -53,6 +53,7 @@ class FeedbackType(IntEnum):
     mehrere = 3
     einige = 4
     viele = 5
+    vermehrt = 6
 
 
 class FeedbackLevel(IntEnum):

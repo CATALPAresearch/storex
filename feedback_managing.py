@@ -1,22 +1,40 @@
 """
 Class for feedback managing.
 """
+import re
+
 from utils.helpers import FeedbackLevel, FeedbackType, KE, Level, topic_from_ke
 
 
 def get_grade(percentage):
-    if percentage > 0.85:
+    if percentage == 1:
         return FeedbackType(0).name
-    elif percentage > 0.70:
+    elif percentage > 0.85:
         return FeedbackType(1).name
-    elif percentage > 0.60:
+    elif percentage > 0.70:
         return FeedbackType(2).name
-    elif percentage > 0.50:
+    elif percentage > 0.60:
         return FeedbackType(3).name
-    elif percentage > 0.30:
+    elif percentage > 0.50:
         return FeedbackType(4).name
-    else:
+    elif percentage > 0.30:
         return FeedbackType(5).name
+    else:
+        return FeedbackType(6).name
+
+
+def check_feedback(text):
+    text = text.split('\n')
+    text = list(filter(None, text))
+    for i, line in reversed(list(enumerate(text))):
+        if re.search("Grüße", line):
+            text = text[:i]
+            break
+
+    greeting = text[0].strip().split(' ', 1)
+    text[0] = greeting[1] if "Liebe" in greeting[0] else text[0].strip()
+    text = ' '.join(text)
+    return text
 
 
 class FeedbackManager:

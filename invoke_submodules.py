@@ -1,20 +1,46 @@
 """
 Script for invoking the submodules as standalone functionalities for development and testing purposes.
 """
+import os
 import random
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+from datetime import datetime
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.disabled = False
 
+date = datetime.now().strftime("%d-%m-%Y--%H-%M-%S")
+directory = os.path.dirname(__file__)
+OUTPUT_FILE = os.path.join(directory, f"testing/test_results_submodule_{date}")
+
 
 # Parse command line arguments
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
 parser.add_argument("-m", "--module", help="Module name to test.")
 args = vars(parser.parse_args())
+
+students = [{'name': "Luna", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
+             'dative': "einer Studentin", 'possessive': "ihre"},
+            {'name': "Alice", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
+             'dative': "einer Studentin", 'possessive': "ihre"},
+            {'name': "Defne", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
+             'dative': "einer Studentin", 'possessive': "ihre"},
+            {'name': "Linus", 'nominative': "Der Student", 'accusative': 'einen Studenten',
+             'dative': "einem Studenten", 'possessive': "seine"},
+            {'name': "Kiano", 'nominative': "Der Student", 'accusative': 'einen Studenten',
+             'dative': "einem Studenten", 'possessive': "seine"},
+            {'name': "Baschar", 'nominative': "Der Student", 'accusative': 'einen Studenten',
+             'dative': "einem Studenten", 'possessive': "seine"},
+            {'name': "Niam", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
+             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
+            {'name': "Farah", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
+             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
+            {'name': "Charlie", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
+             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
+            ]
 
 # Check if a name was given
 if not args["module"]:
@@ -66,37 +92,95 @@ match args["module"]:
         generator.generate_question_answer(test_keyword)
 
     case "feedback":
-        from feedback_managing import FeedbackManager
+        from feedback_managing import FeedbackManager, check_feedback
         from utils.helpers import KE, Level
+        from text_generation import TextGenerator
 
-        feedback = FeedbackManager()
+        text_gen = TextGenerator()
+
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("Feedback Prompt Testing\n\n")
 
         question_no = 25
-        possible_value = []
-        for i in range(question_no):
-            possible_value.append(i)
-            feedback.add_question()
 
-        for _ in range(random.choice(possible_value)):
-            feedback.add_reiteration()
-        for _ in range(random.choice(possible_value)):
-            feedback.add_contradiction()
-            possible_value.pop()
-        for _ in range(random.choice(possible_value)):
-            feedback.add_irrelevant()
-            possible_value.pop()
-        for i in range(random.choice(possible_value)):
-            feedback.add_missed(random.choice([0, 1, 2, 3, 4, 5]), 5)
-            possible_value.pop()
+        for student in students:
+            possible_value = []
+            for _ in range(3):
+                feedback = FeedbackManager()
+                for i in range(question_no):
+                    possible_value.append(i)
+                    feedback.add_question()
+                for _ in range(random.choice(possible_value)):
+                    feedback.add_reiteration()
+                for _ in range(random.choice(possible_value)):
+                    feedback.add_contradiction()
+                    possible_value.pop()
+                for _ in range(random.choice(possible_value)):
+                    feedback.add_irrelevant()
+                    possible_value.pop()
+                for i in range(random.choice(possible_value)):
+                    feedback.add_missed(random.choice([0, 1, 2, 3, 4, 5]), 5)
+                    possible_value.pop()
+                ke_questions = []
+                for i in range(int(question_no / len(KE))):
+                    ke_questions.append(i)
+                for i in KE:
+                    feedback.add_feedback(random.choice(ke_questions), i, random.choice(list(Level)))
 
-        ke_questions = []
-        for i in range(int(question_no / len(KE))):
-            ke_questions.append(i)
+                feedback_rules = feedback.construct_feedback(student['nominative'])
+                feedback_query = (
+                    f"""Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
+                    Nutze folgende Informationen zu {student['possessive']}n Leistungen:
+                    {feedback_rules}
+                    Gib nur das Feedback zurück:"""
+                )
+                feedback = text_gen.get_text(feedback_query)
+                feedback = check_feedback(feedback)
+                with open(OUTPUT_FILE, 'a', newline='') as file:
+                    file.write(f"""Student: {student}
+                               Feedback rules: {feedback_rules}
 
-        for i in KE:
-            feedback.add_feedback(random.choice(ke_questions), i, random.choice(list(Level)))
+                               Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                               Du hältst online mündliche Prüfungen ab.
+                               {feedback_query}[/INST]
 
-        print(feedback.construct_feedback("Die Studentin"))
+                               Generiertes Feedback: {feedback}
+                               \n""")
+
+    case "greeting":
+        from text_generation import TextGenerator
+        text_gen = TextGenerator()
+
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("Greeting Prompt Testing\n\n")
+
+        for student in students:
+            greeting_query = (
+                f"""Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+                Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
+                Gib nur die Begrüßung zurück:""")
+            greeting = text_gen.get_text(greeting_query)
+            goodbye_query = (
+                f"""Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
+                Gib nur die Verabschiedung zurück:"""
+            )
+            goodbye = text_gen.get_text(goodbye_query)
+
+            with open(OUTPUT_FILE, 'a', newline='') as file:
+                file.write(f"""Student: {student}
+
+                               Begrüßungsprompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                               Du hältst online mündliche Prüfungen ab.
+                               {greeting_query}[/INST]
+
+                               Generierte Begrüßung: {greeting}
+
+                               Verabscheidugnsprompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                               Du hältst online mündliche Prüfungen ab.
+                               {goodbye_query}[/INST]
+
+                               Generierte Verabscheidung: {goodbye}
+                               \n""")
 
     case _:
         raise ValueError("Given module does not exist.")
