@@ -36,7 +36,7 @@ class QuestionAnswerGenerator:
             """<s>[INST] Du bist ein Professor an einer deutschen Universität.
             Erstelle einfache Frage-Antwort Paare für eine mündliche Prüfung.
             Nutze nur Informationen aus folgendem Text:
-            Kontext: {context}
+            {context}
             Gib nur das Frage-Antwort Paar zurück:[/INST]
             {question-answer}
             """)
@@ -128,7 +128,7 @@ class QuestionAnswerGenerator:
         r_prompt = FewShotPromptTemplate(
             examples=remember_examples,
             example_prompt=self.example_prompt,
-            suffix="Kontext: {input}",
+            suffix="{input}",
             input_variables=['input']
         )
         return r_prompt
@@ -193,7 +193,7 @@ class QuestionAnswerGenerator:
         ap_prompt = FewShotPromptTemplate(
             examples=apply_examples,
             example_prompt=self.example_prompt,
-            suffix="Kontext: {input}",
+            suffix="{input}",
             input_variables=['input']
         )
         return ap_prompt
@@ -275,7 +275,7 @@ class QuestionAnswerGenerator:
         an_prompt = FewShotPromptTemplate(
             examples=analyze_examples,
             example_prompt=self.example_prompt,
-            suffix="Kontext: {input}",
+            suffix="{input}",
             input_variables=['input']
         )
         return an_prompt

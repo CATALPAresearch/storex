@@ -21,7 +21,7 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 def get_query(context):
     query = f"""Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
     Nutze nur Informationen aus folgendem Text:
-    Kontext: {context}
+    {context}
 
     Passe die Ausgabe an folgendes Template an:
     Frage: [Prüfungsfrage]
@@ -33,7 +33,7 @@ def get_query(context):
 class QuestionGenerator:
     def __init__(self, text_generator):
         """
-        Initializes
+        Initializes the vector store and sets the text generation model.
         """
         # Load vectorstore embeddings
         directory = os.path.dirname(os.path.dirname(__file__))
@@ -45,20 +45,7 @@ class QuestionGenerator:
         self.db = FAISS.load_local(vectorstore, embedding_model)
 
         # Load question-answer model and create a question-answer chain
-        question_answer_template = """Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
-        Nutze nur Informationen aus folgendem Text:
-        Kontext: {Kontext}
-
-        Passe die Ausgabe an folgendes Template an:
-        Frage: [Prüfungsfrage]
-        Antwort: [Musterantwort]"""
-
         self.question_generator = text_generator
-
-        # question_answer_prompt = PromptTemplate(template=question_answer_template, input_variables=['context'])
-        # question_answer_llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
-        #                                      model_kwargs={'max_new_tokens': 512, 'raw_response': True})
-        # self.question_answer_chain = LLMChain(prompt=question_answer_prompt, llm=question_answer_llm)
 
     def generate_question_answer(self, keyword, k=2):
         """
