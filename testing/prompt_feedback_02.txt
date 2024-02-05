@@ -285,3 +285,12 @@ Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemach
                       Der*die Student*in war am besten bei dem Thema 'Typen in der objektorientierten Programmierung'.
                       Der*die Student*in war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
 Generiertes Feedback: Charlie, du hast heute in der mündlichen Prüfung ein beachtliches Niveau gezeigt und deine Begeisterung für die Thematik war deutlich spürbar. Es ist jedoch aufgefallen, dass du permanent inhaltliche Fehler im Bereich der Grundkonzepte der objektorientierten Programmierung gemacht hast. Um dein Leistungsniveau konstant hoch zu halten, empfehle ich dir, die Grundlagen noch einmal gründlich zu wiederholen und zu vertiefen. Besonders hervorzuheben ist deine Leistung bei dem Thema 'Typen in der objektorientierten Programmierung', in dem du sehr sicher und präzise geantwortet hast. Insgesamt hast du nur selten Hilfestellungen benötigt und irrelevante oder unvollständige Antworten gegeben. Ich bin mir sicher, dass du mit etwas mehr Übung im Bereich der Grundkonzepte dein bereits hohes Leistungsniveau weiter steigern kannst.
+
+Duzen:         15/27
+"inhaltlich":  23/27
+"relevant":    25/27
+"vollständig": 20/27
+"präzis":      20/27
+"Hilfe":       15/27
+"Leistung":    27/27
+"Thema":       19/27
