@@ -374,3 +374,12 @@ Generiertes Feedback: Lieber Charlie,
                       Insgesamt hast du heute eine gute Leistung gezeigt, aber es gibt noch Raum für Verbesserung. Ich bin mir sicher, dass du in der Lage bist, deine Fähigkeiten in diesem Bereich weiter auszubauen.
                       Beste Grüße,
                       Ihr Professor
+
+Duzen:         14/27
+"inhaltlich":  17/27
+"relevant":    20/27
+"vollständig": 18/27
+"präzis":      12/27
+"Hilfe":       10/27
+"Leistung":    23/27
+"Thema":       13/27

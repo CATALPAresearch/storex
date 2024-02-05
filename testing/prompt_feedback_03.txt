@@ -133,7 +133,6 @@ Feedback rules:       Der Student hat kaum inhaltliche Fehler gemacht.
 Generiertes Feedback: Linus, du hast die mündliche Prüfung mit einem hohen Leistungsniveau gemeistert und kaum inhaltliche Fehler gemacht, was sehr beeindruckend ist. Besonders hervorzuheben ist deine souveräne Beherrschung der Grundkonzepte der objektorientierten Programmierung. Bei zukünftigen Prüfungen wäre es jedoch hilfreich, wenn du dich stärker auf die Relevanz der Antworten konzentrieren und das Thema "Probleme der objektorientierten Programmierung und Programmierstil" besser vorbereiten könntest. Insgesamt bist du auf einem sehr guten Weg und ich bin sicher, dass du mit etwas mehr Fokus auf diesen Bereich noch bessere Leistungen erbringen kannst.
 
 Der Student:          Kiano
-
 Feedback rules:       Der Student hat viele inhaltliche Fehler gemacht.
                       Der Student hat viele irrelevante Antworten gegeben.
                       Der Student hat nie unvollständige oder oberflächliche Antworten gegeben.
@@ -287,3 +286,12 @@ Feedback rules:       Der*die Student*in hat viele inhaltliche Fehler gemacht.
                       Der*die Student*in war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
                       Der*die Student*in war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
 Generiertes Feedback: Charlie, trotz einiger inhaltlicher Fehler und irrelevanter Antworten möchte ich betonen, dass deine Ausführungen stets präzise und nie oberflächlich oder unvollständig waren. Du hast bewiesen, dass du ein hohes Leistungsniveau erreichst und besonders bei dem Thema 'Systematik der objektorientierten Programmierung' überzeugt. Um deine Leistungen in Zukunft weiter zu verbessern, empfehle ich dir, dich gezielter mit den 'Problemen der objektorientierten Programmierung und objektorientiertem Programmierstil' auseinanderzusetzen.
+
+Duzen:         8/27
+"inhaltlich":  27/27
+"relevant":    20/27
+"vollständig": 17/27
+"präzis":      16/27
+"Hilfe":       14/27
+"Leistung":    27/27
+"Thema":       21/27
