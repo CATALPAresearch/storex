@@ -432,7 +432,8 @@ class TimeManager:
     def check_level(self):
         # Check the level
         level = self.topic_manager.get_level()
-        if (level == Level.REMEMBER or level == Level.APPLY) and self.correct_answers >= 1:
+        if ((level == Level.REMEMBER and self.correct_answers >= 2) or
+                (level == Level.APPLY and self.correct_answers >= 1)):
             self.topic_manager.increase_level()
         elif level == Level.REMEMBER:
             return True
