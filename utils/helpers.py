@@ -50,10 +50,10 @@ class FeedbackType(IntEnum):
     nie = 0
     kaum = 1
     einzelne = 2
-    mehrere = 3
-    einige = 4
+    einige = 3
+    mehrere = 4
     viele = 5
-    vermehrt = 6
+    permanent = 6
 
 
 class FeedbackLevel(IntEnum):
