@@ -99,11 +99,20 @@ match args["module"]:
         text_gen = TextGenerator()
 
         with open(OUTPUT_FILE, 'a', newline='') as file:
-            file.write("Feedback Prompt Testing\n\n")
+            file.write("""Feedback Prompt Testing
+            
+            Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                             Du hältst online mündliche Prüfungen ab.
+                             Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
+                             Nutze folgende Informationen zu {student['possessive']}n Leistungen:
+                             {feedback_rules}
+                             Gib nur das Feedback zurück:[/INST]\n\n""")
 
         question_no = 25
 
         for student in students:
+            with open(OUTPUT_FILE, 'a', newline='') as file:
+                file.write(f"{student['nominativ']}:        {student['name']}")
             possible_value = []
             for _ in range(3):
                 feedback = FeedbackManager()
@@ -137,22 +146,27 @@ match args["module"]:
                 feedback = text_gen.get_text(feedback_query)
                 feedback = check_feedback(feedback)
                 with open(OUTPUT_FILE, 'a', newline='') as file:
-                    file.write(f"""Student: {student}
-                               Feedback rules: {feedback_rules}
-
-                               Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
-                               Du hältst online mündliche Prüfungen ab.
-                               {feedback_query}[/INST]
-
-                               Generiertes Feedback: {feedback}
-                               \n""")
+                    file.write(f"""
+                    Feedback rules:       {feedback_rules}
+                    Generiertes Feedback: {feedback}\n""")
 
     case "greeting":
         from text_generation import TextGenerator
         text_gen = TextGenerator()
 
         with open(OUTPUT_FILE, 'a', newline='') as file:
-            file.write("Greeting Prompt Testing\n\n")
+            file.write("""Begrüßung und Verabschiedung Prompt Testing
+
+            Prompt Begrüßung:      [INST] Du bist ein Professor an einer deutschen Universität.
+                                   Du hältst online mündliche Prüfungen ab.
+                                   Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+                                   Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
+                                   Gib nur die Begrüßung zurück:[/INST]
+
+            Prompt Verabschiedung: [INST] Du bist ein Professor an einer deutschen Universität.
+                                   Du hältst online mündliche Prüfungen ab.
+                                   Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
+                                   Gib nur die Verabschiedung zurück:[/INST]\n\n""")
 
         for student in students:
             greeting_query = (
@@ -167,20 +181,9 @@ match args["module"]:
             goodbye = text_gen.get_text(goodbye_query)
 
             with open(OUTPUT_FILE, 'a', newline='') as file:
-                file.write(f"""Student: {student}
-
-                               Begrüßungsprompt: [INST] Du bist ein Professor an einer deutschen Universität.
-                               Du hältst online mündliche Prüfungen ab.
-                               {greeting_query}[/INST]
-
-                               Generierte Begrüßung: {greeting}
-
-                               Verabscheidugnsprompt: [INST] Du bist ein Professor an einer deutschen Universität.
-                               Du hältst online mündliche Prüfungen ab.
-                               {goodbye_query}[/INST]
-
-                               Generierte Verabscheidung: {goodbye}
-                               \n""")
+                file.write(f"""{student['nominative']}:               {student['name']}
+                Generierte Begrüßung:      {greeting}
+                Generierte Verabschiedung: {goodbye}\n\n""")
 
     case _:
         raise ValueError("Given module does not exist.")

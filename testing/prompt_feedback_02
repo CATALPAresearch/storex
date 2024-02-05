@@ -1,0 +1,287 @@
+Feedback Prompt Testing with postprocessing
+
+Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                 Du hältst online mündliche Prüfungen ab.
+                 Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
+                 Nutze folgende Informationen zu {student['possessive']}n Leistungen:
+                 {feedback_rules}
+                 Gib nur das Feedback zurück:[/INST]
+
+Die Studentin:        Luna
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat nie irrelevante Antworten gegeben.
+                      Die Studentin hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt nie Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Generiertes Feedback: Luna, herzlichen Glückwunsch zu Ihrer mündlichen Prüfung. Ich habe festgestellt, dass Sie ein hohes Leistungsniveau erreicht haben und nie Hilfestellungen benötigen. Ihre Antworten waren stets relevant, präzise und ausführlich. Allerdings haben Sie permanent inhaltliche Fehler bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl' gemacht. Ihre Leistungen im Bereich 'Systematik der objektorientierten Programmierung' waren jedoch sehr beeindruckend. Ich empfehle Ihnen, sich auf die Themen zu konzentrieren, bei denen Sie Schwierigkeiten hatten, um Ihr Wissen in diesen Bereichen zu verbessern. Insgesamt haben Sie eine sehr gute Leistung gezeigt und ich bin zuversichtlich, dass Sie Ihre Kenntnisse weiter ausbauen werden.
+
+Feedback rules:       Die Studentin hat nie inhaltliche Fehler gemacht.
+                      Die Studentin hat permanent irrelevante Antworten gegeben.
+                      Die Studentin hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt permanent Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein mittleres Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Luna, du hast während der Prüfung keinerlei inhaltliche Fehler gemacht, was bereits ein großer Pluspunkt ist. Allerdings hätten deine Antworten insgesamt etwas fokussierter auf die gestellten Fragen eingehen können, da du permanent irrelevante Informationen gegeben hast. Besonders hervorzuheben ist dein Wissen zum Thema 'Systematik der objektorientierten Programmierung', hier hast du sehr gute und präzise Antworten gegeben. Um dein Leistungsniveau insgesamt zu erhöhen, wäre es hilfreich, wenn du dich in Zukunft stärker auf die Kernaspekte der Fragen konzentrierst und etwas weniger Hilfestellungen benötigst. Trotz Raum für Verbesserung hast du ein mittleres Leistungslevel erreicht. Mach weiter so und arbeite an den genannten Punkten!
+
+Feedback rules:       Die Studentin hat kaum inhaltliche Fehler gemacht.
+                      Die Studentin hat permanent irrelevante Antworten gegeben.
+                      Die Studentin hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt permanent Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Luna, du hast heute insgesamt ein hohes Leistungsniveau gezeigt und kaum inhaltliche Fehler gemacht, was sehr positiv zu bewerten ist. Allerdings hätten deine Antworten insbesondere bei den Grundkonzepten der objektorientierten Programmierung präziser und weniger oberflächlich ausfallen können. Zudem neigst du dazu, irrelevante Informationen einzubringen und benötigst häufiger Hilfestellungen. Deine Stärken hast du besonders bei den Programmiermodellen von Java, C-Sharp, C++ und EIFFEl gezeigt. Arbeite weiter an deiner Fähigkeit, die Relevanz von Informationen einzuschätzen und vertiefe dein Wissen in den Grundkonzepten der objektorientierten Programmierung.
+
+Die Studentin:        Alice
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat einzelne irrelevante Antworten gegeben.
+                      Die Studentin hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt mehrere Hilfestellungen.
+                      Die Studentin hat permanent unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+Generiertes Feedback: Alice, herzlichen Glückwunsch zu Ihrer mündlichen Prüfung! Trotz einiger Herausforderungen haben Sie insgesamt ein hohes Leistungsniveau erreicht. Insbesondere Ihre Beantwortungen zu 'Systematik der objektorientierten Programmierung' waren sehr kompetent und präzise. Es ist jedoch wichtig, dass Sie in Zukunft daran arbeiten, Ihre Antworten auf konkretere und inhaltlich korrekte Weise zu formulieren, um irrelevante und unvollständige Aussagen zu vermeiden. Achten Sie auch auf eine höhere Präzision in Ihren Antworten, um Verwirrung zu vermeiden. Wenn Sie sich auf die Themen 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil' besser vorbereiten, können Sie Ihre Leistungen in diesem Bereich sicherlich verbessern. Ich bin mir sicher, dass Sie mit etwas mehr Übung und Fokus auf diese Punkte in Zukunft noch erfolgreicher sein werden.
+
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat kaum irrelevante Antworten gegeben.
+                      Die Studentin hat einige unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt einzelne Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Generiertes Feedback: Alice, herzlichen Glückwunsch zu Ihrer Leistung in der mündlichen Prüfung. Insgesamt haben Sie ein hohes Niveau bewiesen und kaum irrelevante Antworten gegeben. Es ist jedoch aufgefallen, dass Sie permanent inhaltliche Fehler gemacht und einige unvollständige oder oberflächliche Antworten gegeben haben. Hier wäre es hilfreich, wenn Sie Ihr Wissen in Zukunft noch vertiefen und ausbauen könnten. Besonders hervorzuheben ist Ihre Expertise im Thema 'Typen in der objektorientierten Programmierung', in dem Sie sehr sicher und präzise geantwortet haben. Im Gegensatz dazu hatten Sie Schwierigkeiten mit dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'. Hier würde ich Ihnen empfehlen, sich gezielt mit diesen Themen auseinanderzusetzen und Ihr Wissen zu erweitern. Insgesamt haben Sie eine gute Leistung gezeigt und ich bin mir sicher, dass Sie mit etwas mehr Übung und Vertiefung Ihrer Kenntnisse in Zukunft noch erfolgreicher sein werden.
+
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat einzelne irrelevante Antworten gegeben.
+                      Die Studentin hat permanent unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt mehrere Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Alice, herzlichen Glückwunsch zu Ihrer mündlichen Prüfung! Ich habe Ihr hohes Leistungsniveau sehr geschätzt, insbesondere bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'. Es gibt jedoch einige Bereiche, in denen Sie sich verbessern können. Ich habe bemerkt, dass Sie permanent inhaltliche Fehler gemacht und einzelne irrelevante Antworten gegeben haben. Zudem waren Ihre Antworten oft unvollständig oder oberflächlich. Um Ihre Leistung in zukünftigen Prüfungen zu verbessern, empfehle ich Ihnen, sich genauer mit dem Thema 'Typen in der objektorientierten Programmierung' auseinanderzusetzen und sich auf die Beantwortung der Fragen mit präzisen und vollständigen Antworten zu konzentrieren. Ich stehe Ihnen gerne für weitere Unterstützung zur Verfügung.
+
+Die Studentin:        Defne
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat einige irrelevante Antworten gegeben.
+                      Die Studentin hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt einige Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Defne, herzlichen Glückwunsch zu Ihrer Leistung in der mündlichen Prüfung. Ich habe festgestellt, dass Sie ein hohes Leistungsniveau erreicht haben und bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl' besonders gut abgeschnitten haben. Es gibt jedoch einige Bereiche, die Sie in Zukunft verbessern können. Ich habe bemerkt, dass Sie permanent inhaltliche Fehler gemacht und einige irrelevante Antworten gegeben haben. Um Ihre Leistung zu verbessern, empfehle ich Ihnen, sich auf die Grundkonzepte der objektorientierten Programmierung zu konzentrieren und sicherzustellen, dass Ihre Antworten präzise und auf den Punkt sind. Trotz dieser Bereiche, in denen Sie sich verbessern können, möchte ich betonen, dass ich Ihre Anstrengungen und Ihr Engagement sehr geschätzt habe. Bitte zögern Sie nicht, mich bei Fragen oder Bedenken zu kontaktieren.
+
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat kaum irrelevante Antworten gegeben.
+                      Die Studentin hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt kaum Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein mittleres Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+Generiertes Feedback: Defne, herzlichen Dank für deine Teilnahme an der mündlichen Prüfung. Insgesamt hast du ein mittleres Leistungsniveau erreicht, was auf deine solide Grundlage in den Programmiermodellen von Java, C-Sharp, C++ und EIFFEl zurückzuführen ist. Hier hast du gezeigt, dass du kaum irrelevante oder unvollständige Antworten gibst und nur selten Hilfestellungen benötigst. Leider hast du permanent inhaltliche Fehler bei dem Thema "Probleme der objektorientierten Programmierung und objektorientierter Programmierstil" gemacht, was dein Ergebnis insgesamt beeinflusst hat. Ich ermutige dich, dich in diesem Bereich noch weiter zu vertiefen und unpräzise Antworten in Zukunft zu vermeiden. Ich bin mir sicher, dass du mit etwas mehr Übung und Fokus auf die Schwächen in Zukunft ein hervorragendes Ergebnis erzielen kannst.
+
+Feedback rules:       Die Studentin hat permanent inhaltliche Fehler gemacht.
+                      Die Studentin hat nie irrelevante Antworten gegeben.
+                      Die Studentin hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Die Studentin benötigt permanent Hilfestellungen.
+                      Die Studentin hat nie unpräzise Antworten gegeben.
+                      Die Studentin hat ein hohes Leistungslevel erreicht.
+                      Die Studentin war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+                      Die Studentin war am schlechtesten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+Generiertes Feedback: Defne, herzlichen Glückwunsch zu Ihrem hohen Leistungsniveau während der mündlichen Prüfung. Ihre Antworten waren stets relevant, präzise und ausführlich, was sehr beeindruckend war. Allerdings haben Sie permanent inhaltliche Fehler gemacht und benötigten häufigere Hilfestellungen, insbesondere beim Thema "Systematik der objektorientierten Programmierung". Ihre Leistungen im Bereich "Probleme der objektorientierten Programmierung und objektorientierter Programmierstil" waren jedoch hervorragend. Um Ihre Leistungen weiter zu verbessern, empfehle ich Ihnen, sich gezielt auf die Themen zu konzentrieren, bei denen Sie Schwierigkeiten hatten. Ich bin mir sicher, dass Sie mit etwas mehr Übung und Fokus Ihr Potenzial voll ausschöpfen und Ihre Leistungen weiter steigern können.
+
+Der Student:          Linus
+Feedback rules:       Der Student hat kaum inhaltliche Fehler gemacht.
+                      Der Student hat einzelne irrelevante Antworten gegeben.
+                      Der Student hat einige unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt einzelne Hilfestellungen.
+                      Der Student hat einzelne unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Linus, du hast die Prüfung insgesamt sehr gut gemeistert und hast kaum inhaltliche Fehler gemacht. Besonders hervorzuheben ist dein hohes Leistungsniveau bei den Typen in der objektorientierten Programmierung. In Zukunft wäre es jedoch hilfreich, wenn du dich stärker auf die Grundkonzepte der objektorientierten Programmierung konzentrieren würdest, um einzelne irrelevante und unpräzise Antworten vermeiden zu können. Auch bei einigen Fragen hättest du etwas detaillierter antworten können, um Unvollständigkeiten zu vermeiden. Insgesamt hast du eine sehr gute Leistung gezeigt und ich bin mir sicher, dass du mit etwas mehr Fokus auf die Grundkonzepte in Zukunft noch bessere Ergebnisse erzielen wirst.
+
+Feedback rules:       Der Student hat nie inhaltliche Fehler gemacht.
+                      Der Student hat mehrere irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt viele Hilfestellungen.
+                      Der Student hat nie unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Generiertes Feedback: Linus, du hast die Prüfung insgesamt mit einem hohen Leistungsniveau bestanden und hast dich besonders bei dem Thema 'Systematik der objektorientierten Programmierung' sehr gut geschlagen. Es ist jedoch aufgefallen, dass du bei einigen Fragen irrelevante und oberflächliche Antworten gegeben hast sowie viele Hilfestellungen benötigt hast. Um dein Potenzial voll auszuschöpfen, empfehle ich dir, dich gezielter auf die Themen vorzubereiten und dabei den Fokus auf präzise und vollständige Antworten zu legen.
+
+Feedback rules:       Der Student hat kaum inhaltliche Fehler gemacht.
+                      Der Student hat kaum irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt permanent Hilfestellungen.
+                      Der Student hat kaum unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+Generiertes Feedback: Linus, du hast die Prüfung insgesamt gut gemeistert und kaum inhaltliche Fehler gemacht. Deine Antworten waren überwiegend relevant und präzise. Allerdings hätten einige deiner Antworten vertiefter und ausführlicher ausfallen können, um ein noch höheres Leistungsniveau zu erreichen. Besonders hervorzuheben ist deine Leistung bei dem Thema 'Typen in der objektorientierten Programmierung', bei dem du sehr sicher und kompetent aufgetreten bist. Im Gegensatz dazu hattest du bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil' mehr Schwierigkeiten, was sich in unvollständigen und oberflächlichen Antworten gezeigt hat. Um dein Potenzial voll auszuschöpfen, empfehle ich dir, dich gezielt mit diesem Thema auseinanderzusetzen und dein Wissen zu vertiefen. Insgesamt hast du jedoch ein hohes Leistungsniveau erreicht und ich bin mir sicher, dass du auch in Zukunft erfolgreich sein wirst.
+
+Der Student:          Kiano
+Feedback rules:       Der Student hat nie inhaltliche Fehler gemacht.
+                      Der Student hat permanent irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt permanent Hilfestellungen.
+                      Der Student hat kaum unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Kiano, du hast gezeigt, dass du ein hohes Leistungsniveau erreichst und dich gut mit der Systematik der objektorientierten Programmierung auskennst. Um deine Leistung in der mündlichen Prüfung weiter zu verbessern, ist es wichtig, dass du dich auf die Relevanz deiner Antworten konzentrierst und unvollständige oder oberflächliche Ausführungen vermeidest. Zudem ist es ratsam, dass du unnötige Hilfestellungen reduzierst und deine Kenntnisse zu den Typen in der objektorientierten Programmierung vertiefst. Insgesamt hast du gute Arbeit geleistet, und ich bin mir sicher, dass du mit etwas Übung in allen Themenbereichen überzeugen wirst.
+
+Feedback rules:       Der Student hat einzelne inhaltliche Fehler gemacht.
+                      Der Student hat permanent irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt permanent Hilfestellungen.
+                      Der Student hat nie unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+                      Der Student war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Kiano, du hast insgesamt ein hohes Leistungsniveau gezeigt und warst bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil' besonders stark. Es ist jedoch wichtig, dass du in Zukunft darauf achtest, einzelne inhaltliche Fehler zu vermeiden und irrelevante Antworten zu minimieren. Um deine Leistung weiter zu verbessern, solltest du auch anstreben, vollständigere und tiefergehende Antworten zu geben und ohne größere Hilfestellungen auszukommen, insbesondere bei dem Thema 'Typen in der objektorientierten Programmierung'.
+
+Feedback rules:       Der Student hat nie inhaltliche Fehler gemacht.
+                      Der Student hat viele irrelevante Antworten gegeben.
+                      Der Student hat permanent unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt einzelne Hilfestellungen.
+                      Der Student hat nie unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Kiano, du hast gezeigt, dass du ein hohes Leistungsniveau erreichst und inhaltlich nie falsch liegst, was sehr beeindruckend ist. Allerdings hattest du Tendenz, unvollständige oder oberflächliche Antworten zu geben und viele irrelevante Informationen einzubringen. Bei zukünftigen Prüfungen ist es wichtig, dass du dich auf die Fragestellung konzentrierst und präzise Antworten lieferst. Du hast am besten bei den Grundkonzepten der objektorientierten Programmierung abgeschnitten, während du bei den Typen in der objektorientierten Programmierung noch Verbesserungspotential aufweist. Mit gezielterer Vorbereitung und Fokussierung auf die Kernaspekte der Themen kannst du deine Leistungen weiter steigern.
+
+Der Student:          Baschar
+Feedback rules:       Der Student hat kaum inhaltliche Fehler gemacht.
+                      Der Student hat einzelne irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt mehrere Hilfestellungen.
+                      Der Student hat einzelne unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+Generiertes Feedback: Baschar, du hast die Prüfung insgesamt gut gemeistert und kaum inhaltliche Fehler gemacht, was sehr positiv zu bewerten ist. Besonders hervorzuheben ist dein Wissen zu den Grundkonzepten der objektorientierten Programmierung. In Zukunft wäre es jedoch hilfreich, wenn du dich stärker auf die Relevanz deiner Antworten konzentrierst und unvollständige oder oberflächliche Aussagen vermeidest. Auch bei der Systematik der objektorientierten Programmierung kannst du noch etwas mehr Praxis und Vertiefung gebrauchen. Insgesamt hast du ein hohes Leistungsniveau erreicht und mit etwas mehr Präzision und Fokus auf die einzelnen Themenbereiche kannst du deine Leistungen weiter verbessern.
+
+Feedback rules:       Der Student hat permanent inhaltliche Fehler gemacht.
+                      Der Student hat permanent irrelevante Antworten gegeben.
+                      Der Student hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt permanent Hilfestellungen.
+                      Der Student hat nie unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+                      Der Student war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Generiertes Feedback: Baschar, herzlichen Glückwunsch zu Ihrer mündlichen Prüfung! Ich habe Ihr hohes Leistungsniveau sehr geschätzt, insbesondere bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'. Allerdings möchte ich Ihnen auch einige konstruktive Hinweise geben, um Ihre Leistungen in zukünftigen Prüfungen zu verbessern. Ich habe bemerkt, dass Sie permanent inhaltliche Fehler gemacht und irrelevante Antworten gegeben haben. Außerdem waren viele Ihrer Antworten unvollständig oder oberflächlich. Um Ihre Leistungen zu verbessern, empfehle ich Ihnen, sich genauer auf die Themen vorzubereiten und sicherzustellen, dass Ihre Antworten präzise und auf den Punkt sind. Ich bin mir sicher, dass Sie mit etwas mehr Übung und Fokussierung Ihr Potenzial voll ausschöpfen können. Vielen Dank für Ihre Bemühungen und herzlichen Glückwunsch noch einmal zu Ihrer Leistung!
+
+Feedback rules:       Der Student hat permanent inhaltliche Fehler gemacht.
+                      Der Student hat permanent irrelevante Antworten gegeben.
+                      Der Student hat einige unvollständige oder oberflächliche Antworten gegeben.
+                      Der Student benötigt permanent Hilfestellungen.
+                      Der Student hat kaum unpräzise Antworten gegeben.
+                      Der Student hat ein hohes Leistungslevel erreicht.
+                      Der Student war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Der Student war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Generiertes Feedback: Baschar, insgesamt hast du eine beachtliche Leistung in der mündlichen Prüfung erbracht, was auf ein hohes Niveau deines Wissens und Verständnisses hinweist. Es ist jedoch aufgefallen, dass du in einigen Bereichen, insbesondere bei den Programmiermodellen von Java, C-Sharp, C++ und EIFFEl, Schwierigkeiten hattest und unvollständige oder irrelevante Antworten gegeben hast. Um deine Leistung weiter zu verbessern, empfehle ich dir, dich auf die Bereiche zu konzentrieren, in denen du Schwierigkeiten hattest, und gezielt daran zu arbeiten, dein Wissen und Verständnis zu vertiefen. Nutze auch die Gelegenheit, um an deiner Fähigkeit zu arbeiten, präzise und relevante Antworten zu geben, um sicherzustellen, dass du das Beste aus deinem Potenzial machst. Besonders hervorheben möchte ich deine Leistung im Thema "Systematik der objektorientierten Programmierung", in dem du sehr gute und präzise Antworten gegeben hast. Dies zeigt, dass du in der Lage bist, dein Wissen erfolgreich anzuwenden und deine Fähigkeiten in diesem Bereich weiter auszubauen. Ich hoffe, dass mein Feedback hilfreich für dich ist und wünsche dir viel Erfolg bei deinen zukünftigen Studien und Prüfungen.
+
+Der*die Student*in:   Niam
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat mehrere irrelevante Antworten gegeben.
+                      Der*die Student*in hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt permanent Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein mittleres Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+Generiertes Feedback: Niam, ich möchte Ihnen zunächst einmal zu Ihrem Engagement und Ihrer Bereitschaft, Hilfestellungen anzunehmen, gratulieren. Diese Eigenschaften sind sehr wertvoll und werden Ihnen sicherlich in Ihrem weiteren Studienverlauf zugutekommen. Inhaltlich haben Sie jedoch permanent Fehler gemacht und irrelevante Antworten gegeben, was zu einer Beeinträchtigung Ihrer Gesamtnote geführt hat. Ich empfehle Ihnen, sich in Zukunft noch stärker auf die Kernfragen zu konzentrieren und Ihre Antworten sorgfältiger zu formulieren. Trotz dieser Schwierigkeiten haben Sie gezeigt, dass Sie in der Lage sind, tiefgründige und präzise Antworten zu geben, insbesondere im Bereich der Grundkonzepte der objektorientierten Programmierung. Wenn Sie diese Stärken gezielt einsetzen und Ihre inhaltlichen Schwächen ausgleichen, bin ich zuversichtlich, dass Sie Ihr Leistungsniveau weiter steigern können.
+
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat viele irrelevante Antworten gegeben.
+                      Der*die Student*in hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt permanent Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+Generiertes Feedback: Niam, herzlichen Glückwunsch zu Ihrem hohen Leistungsniveau während der mündlichen Prüfung. Ihre Antworten zu 'Programmiermodellen von Java, C-Sharp, C++ und EIFFEl' waren beeindruckend. Leider haben wir festgestellt, dass Sie permanent inhaltliche Fehler gemacht und viele irrelevante Antworten gegeben haben. Zudem haben Sie häufiger Hilfestellungen benötigt. Um Ihre Leistung in der Systematik der objektorientierten Programmierung zu verbessern, empfehle ich Ihnen, sich gezielt auf dieses Thema vorzubereiten und Ihre Antworten stärker auf die relevante Theorie und Praxis zu fokussieren. Ich bin mir sicher, dass Sie mit etwas mehr Übung und Fokussierung Ihr volles Potenzial entfalten können.
+
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat nie irrelevante Antworten gegeben.
+                      Der*die Student*in hat nie unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt kaum Hilfestellungen.
+                      Der*die Student*in hat einzelne unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+Generiertes Feedback: Niam, herzlichen Glückwunsch zu Ihrer hervorragenden Leistung während der mündlichen Prüfung. Ich habe festgestellt, dass Sie nur sehr selten irrelevante oder unvollständige Antworten gegeben haben und kaum Hilfestellungen benötigten. Allerdings haben Sie vereinzelt unpräzise Antworten gegeben und hatten mehrere inhaltliche Fehler, insbesondere beim Thema "Probleme der objektorientierten Programmierung und objektorientierter Programmierstil". Ich möchte Sie jedoch ermutigen, dass Sie bei dem Thema "Grundkonzepte der objektorientierten Programmierung" hervorragend abgeschnitten haben. Um Ihre Leistung weiter zu verbessern, empfehle ich Ihnen, sich auf die Feinheiten der Themen zu konzentrieren, die Sie schwächer beherrschen, und sich auf die Präzision Ihrer Antworten zu konzentrieren. Insgesamt haben Sie ein hohes Leistungsniveau erreicht, und ich bin sehr zufrieden mit Ihrer Leistung. Weiter so!
+
+Der*die Student*in:   Farah
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat einzelne irrelevante Antworten gegeben.
+                      Der*die Student*in hat permanent unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt mehrere Hilfestellungen.
+                      Der*die Student*in hat kaum unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Farah, herzlichen Glückwunsch zu Ihrer mündlichen Prüfung! Ich möchte Ihnen konstruktives Feedback zu Ihren Leistungen geben. Insgesamt haben Sie ein hohes Leistungsniveau erreicht, aber es gab einige Bereiche, in denen Verbesserungspotenzial besteht. Sie haben bei den Themen 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil' sehr gute und präzise Antworten gegeben. Leider haben Sie bei den Themen 'Typen in der objektorientierten Programmierung' einige unvollständige, irrelevante und inhaltlich falsche Antworten gegeben. Ich empfehle Ihnen, sich in Zukunft genauer mit diesem Thema auseinanderzusetzen und Ihre Antworten sorgfältiger zu überprüfen. Trotz einiger Schwierigkeiten haben Sie die Prüfung gut gemeistert und meine Hilfestellungen gut genutzt. Ich bin mir sicher, dass Sie mit etwas mehr Übung und Vertiefung Ihrer Kenntnisse in den schwierigeren Themenbereichen in Zukunft noch bessere Leistungen erbringen werden.
+
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat permanent irrelevante Antworten gegeben.
+                      Der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt permanent Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Farah, herzlichen Glückwunsch zu Ihrer Leistung in der mündlichen Prüfung. Ich habe festgestellt, dass Sie ein hohes Leistungsniveau erreicht haben und bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl' besonders gut abgeschnitten haben. In Zukunft möchte ich Sie jedoch ermutigen, sich auf die Relevanz Ihrer Antworten zu konzentrieren und inhaltliche Fehler zu minimieren. Ich habe bemerkt, dass Sie permanent irrelevante Antworten gegeben und unvollständige oder oberflächliche Antworten gegeben haben, insbesondere bei dem Thema 'Typen in der objektorientierten Programmierung'. Um Ihre Leistung weiter zu verbessern, empfehle ich Ihnen, sich auf die Präzision Ihrer Antworten zu konzentrieren und bei Bedarf Hilfestellungen anzunehmen, um Ihr Verständnis der Themen zu vertiefen. Ich bin mir sicher, dass Sie mit diesen Anpassungen in der Lage sein werden, Ihr Potenzial voll auszuschöpfen. Vielen Dank für Ihre Bemühungen und herzlichen Glückwunsch noch einmal zu Ihrer Leistung.
+
+Feedback rules:       Der*die Student*in hat nie inhaltliche Fehler gemacht.
+                      Der*die Student*in hat permanent irrelevante Antworten gegeben.
+                      Der*die Student*in hat permanent unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt permanent Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Farah, du hast die Prüfung insgesamt auf einem hohen Niveau bestanden und konntest dein Wissen in vielen Bereichen der Informatik sehr gut demonstrieren. Besonders hervorzuheben ist deine Expertise in den Programmiermodellen von Java, C-Sharp, C++ und EIFFEl. In Zukunft wäre es jedoch hilfreich, wenn du dich stärker auf die Grundkonzepte der objektorientierten Programmierung konzentrieren würdest, um irrelevante und unvollständige Antworten zu vermeiden. Auch benötigtest du in einigen Fällen Hilfestellungen, was darauf hindeuten könnte, dass du dir die Themen nicht ausreichend zu eigen gemacht hast. Insgesamt hast du aber gezeigt, dass du ein sehr gutes Verständnis der Informatik besitzt, und ich bin sicher, dass du mit etwas mehr Fokus auf die oben genannten Punkte in Zukunft noch bessere Leistungen erbringen wirst.
+
+Der*die Student*in:   Charlie
+Feedback rules:       Der*die Student*in hat viele inhaltliche Fehler gemacht.
+                      Der*die Student*in hat nie irrelevante Antworten gegeben.
+                      Der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt permanent Hilfestellungen.
+                      Der*die Student*in hat permanent unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein mittleres Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Charlie, trotz einiger Schwierigkeiten hast du die mündliche Prüfung erfolgreich absolviert. Du hast stets relevante Antworten gegeben und dich insbesondere im Thema 'Systematik der objektorientierten Programmierung' gut geschlagen. Um deine Leistungen weiter zu verbessern, empfehle ich dir, inhaltliche Fehler zu reduzieren und unvollständige oder oberflächliche Antworten zu vermeiden. Arbeite auch an deiner Präzision, um unklare Formulierungen zu minimieren. Mit gezielterem Üben in den Bereichen, in denen du noch Schwierigkeiten hast, kannst du dein mittleres Leistungsniveau weiter steigern.
+
+Feedback rules:       Der*die Student*in hat kaum inhaltliche Fehler gemacht.
+                      Der*die Student*in hat permanent irrelevante Antworten gegeben.
+                      Der*die Student*in hat viele unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt einzelne Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Generiertes Feedback: Charlie, herzlichen Glückwunsch zu deiner mündlichen Prüfung! Du hast insgesamt ein hohes Leistungsniveau erreicht und kaum inhaltliche Fehler gemacht, was sehr beeindruckend ist. Allerdings habe ich bemerkt, dass du permanent irrelevante Antworten gegeben hast und viele unvollständige oder oberflächliche Antworten geliefert hast. Bei zukünftigen Prüfungen solltest du darauf achten, enger am Thema zu bleiben und deine Antworten ausführlicher und präziser zu gestalten. Deine Stärken hast du besonders bei den Programmiermodellen von Java, C-Sharp, C++ und EIFFEl gezeigt, was sehr positiv hervorzuheben ist. Arbeite an deinen Schwächen, insbesondere bei den Typen in der objektorientierten Programmierung, und du wirst dein Potenzial voll ausschöpfen können. Ich bin mir sicher, dass du in Zukunft noch viel erreichen wirst.
+
+Feedback rules:       Der*die Student*in hat permanent inhaltliche Fehler gemacht.
+                      Der*die Student*in hat nie irrelevante Antworten gegeben.
+                      Der*die Student*in hat permanent unvollständige oder oberflächliche Antworten gegeben.
+                      Der*die Student*in benötigt kaum Hilfestellungen.
+                      Der*die Student*in hat nie unpräzise Antworten gegeben.
+                      Der*die Student*in hat ein hohes Leistungslevel erreicht.
+                      Der*die Student*in war am besten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+                      Der*die Student*in war am schlechtesten bei dem Thema 'Grundkonzepte der objektorientierten Programmierung'.
+Generiertes Feedback: Charlie, du hast heute in der mündlichen Prüfung ein beachtliches Niveau gezeigt und deine Begeisterung für die Thematik war deutlich spürbar. Es ist jedoch aufgefallen, dass du permanent inhaltliche Fehler im Bereich der Grundkonzepte der objektorientierten Programmierung gemacht hast. Um dein Leistungsniveau konstant hoch zu halten, empfehle ich dir, die Grundlagen noch einmal gründlich zu wiederholen und zu vertiefen. Besonders hervorzuheben ist deine Leistung bei dem Thema 'Typen in der objektorientierten Programmierung', in dem du sehr sicher und präzise geantwortet hast. Insgesamt hast du nur selten Hilfestellungen benötigt und irrelevante oder unvollständige Antworten gegeben. Ich bin mir sicher, dass du mit etwas mehr Übung im Bereich der Grundkonzepte dein bereits hohes Leistungsniveau weiter steigern kannst.
