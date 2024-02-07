@@ -31,15 +31,17 @@ def sort_in_ke(question_answer, ke_index):
         KE_questions[ke_index][2].append(question_answer)
 
 
-def delete_doubles(question_answer, ke_index):
+def delete_doubles():
     questions = []
     count = 0
-    for i, qa in enumerate(question_answer[ke_index]):
-        if qa['question'] not in questions:
-            questions.append(qa['question'])
-        else:
-            question_answer[ke_index].pop(i)
-            count += 1
+    for i in range(len(KE_questions)):
+        for j in range(len(KE_questions[i])):
+            for k, qa in enumerate(KE_questions[i][j]):
+                if qa['question'] not in questions:
+                    questions.append(qa['question'])
+                else:
+                    KE_questions[i][j].pop(k)
+                    count += 1
     print(f"Removed: {count}")
 
 
@@ -81,7 +83,8 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
             else:
                 ke = 4  # KE 6 until 61, then KE 7
             sort_in_ke(question_dict, ke)
-            delete_doubles(question_dict, ke)
+
+delete_doubles()
 
 with open(OUTPUT_FILE, 'a') as py_file:
     for ke in range(len(KE_questions)):

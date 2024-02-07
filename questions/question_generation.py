@@ -4,10 +4,7 @@ Class for generating questions.
 import os
 import torch
 
-from langchain.chains import LLMChain
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import PromptTemplate
 from langchain.vectorstores import FAISS
 
 import logging

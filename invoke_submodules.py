@@ -91,6 +91,31 @@ match args["module"]:
         # generator.generate_question(test_keyword)
         generator.generate_question_answer(test_keyword)
 
+    case "paraphrasing":
+        from questions.paraphrasing import QuestionParaphraser
+        from questions.questions import KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_questions
+
+        paraphraser = QuestionParaphraser()
+        question_answer = []
+        generations = []
+        for i in range(3):
+            question_answer.append(random.choice(KE1_questions[i]))
+            question_answer.append(random.choice(KE2_questions[i]))
+            question_answer.append(random.choice(KE3_questions[i]))
+            question_answer.append(random.choice(KE4_questions[i]))
+            question_answer.append(random.choice(KE6_questions[i]))
+        for answer in question_answer:
+            generations.append(paraphraser.paraphrase(answer['answer']))
+
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("""Paraphrasing / Help Testing
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'\n\n""")
+            for answer, generation in zip(question_answer, generations):
+                file.write(f"""Input (answer):      {answer['answer']}
+Output (generation): {generation}
+Previous question:   {answer['question']}\n\n""")
+
     case "feedback":
         from feedback_managing import FeedbackManager, check_feedback
         from utils.helpers import KE, Level
@@ -100,13 +125,13 @@ match args["module"]:
 
         with open(OUTPUT_FILE, 'a', newline='') as file:
             file.write("""Feedback Prompt Testing
-            
-            Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
-                             Du hältst online mündliche Prüfungen ab.
-                             Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
-                             Nutze folgende Informationen zu {student['possessive']}n Leistungen:
-                             {feedback_rules}
-                             Gib nur das Feedback zurück:[/INST]\n\n""")
+
+Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
+                 Du hältst online mündliche Prüfungen ab.
+                 Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
+                 Nutze folgende Informationen zu {student['possessive']}n Leistungen:
+                 {feedback_rules}
+                 Gib nur das Feedback zurück:[/INST]\n\n""")
 
         question_no = 25
 
@@ -137,18 +162,15 @@ match args["module"]:
                     feedback.add_feedback(random.choice(ke_questions), i, random.choice(list(Level)))
 
                 feedback_rules = feedback.construct_feedback(student['nominative'])
-                feedback_query = (
-                    f"""Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
-                    Nutze folgende Informationen zu {student['possessive']}n Leistungen:
-                    {feedback_rules}
-                    Gib nur das Feedback zurück:"""
-                )
+                feedback_query = (f"""Gib {student['dative']} namens {student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
+Nutze folgende Informationen zu {student['possessive']}n Leistungen:
+{feedback_rules}
+Gib nur das Feedback zurück:""")
                 feedback = text_gen.get_text(feedback_query)
                 feedback = check_feedback(feedback)
                 with open(OUTPUT_FILE, 'a', newline='') as file:
-                    file.write(f"""
-                    Feedback rules:       {feedback_rules}
-                    Generiertes Feedback: {feedback}\n""")
+                    file.write(f"""Feedback rules:       {feedback_rules}
+Generiertes Feedback: {feedback}\n""")
 
     case "greeting":
         from text_generation import TextGenerator
@@ -157,33 +179,30 @@ match args["module"]:
         with open(OUTPUT_FILE, 'a', newline='') as file:
             file.write("""Begrüßung und Verabschiedung Prompt Testing
 
-            Prompt Begrüßung:      [INST] Du bist ein Professor an einer deutschen Universität.
-                                   Du hältst online mündliche Prüfungen ab.
-                                   Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
-                                   Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
-                                   Gib nur die Begrüßung zurück:[/INST]
+Prompt Begrüßung:      [INST] Du bist ein Professor an einer deutschen Universität.
+                       Du hältst online mündliche Prüfungen ab.
+                       Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+                       Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
+                       Gib nur die Begrüßung zurück:[/INST]
 
-            Prompt Verabschiedung: [INST] Du bist ein Professor an einer deutschen Universität.
-                                   Du hältst online mündliche Prüfungen ab.
-                                   Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
-                                   Gib nur die Verabschiedung zurück:[/INST]\n\n""")
+Prompt Verabschiedung: [INST] Du bist ein Professor an einer deutschen Universität.
+                       Du hältst online mündliche Prüfungen ab.
+                       Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
+                       Gib nur die Verabschiedung zurück:[/INST]\n\n""")
 
         for student in students:
-            greeting_query = (
-                f"""Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
-                Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
-                Gib nur die Begrüßung zurück:""")
+            greeting_query = (f"""Begrüße {student['accusative']} namens {student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
+Sage in der Begrüßung, dass ihr als Erstes das Mikrofon testen müsst und {student['name']} dafür gleich hineinsprechen soll.
+Gib nur die Begrüßung zurück:""")
             greeting = text_gen.get_text(greeting_query)
-            goodbye_query = (
-                f"""Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
-                Gib nur die Verabschiedung zurück:"""
-            )
+            goodbye_query = (f"""Verabschiede {student['accusative']} namens {student['name']} in 1 Satz nach einer mündlichen Prüfung.
+Gib nur die Verabschiedung zurück:""")
             goodbye = text_gen.get_text(goodbye_query)
 
             with open(OUTPUT_FILE, 'a', newline='') as file:
                 file.write(f"""{student['nominative']}:               {student['name']}
-                Generierte Begrüßung:      {greeting}
-                Generierte Verabschiedung: {goodbye}\n\n""")
+Generierte Begrüßung:      {greeting}
+Generierte Verabschiedung: {goodbye}\n\n""")
 
     case _:
         raise ValueError("Given module does not exist.")
