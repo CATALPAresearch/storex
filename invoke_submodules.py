@@ -47,11 +47,6 @@ if not args["module"]:
     raise ValueError("No module given.")
 
 match args["module"]:
-    case "manager":
-        from questions.question_managing import QuestionManager
-        qm = QuestionManager()  # TODO: Topic manager parameter
-        print(qm.get_question())
-
     case "speech_recognition":
         from audio.speech_recognition import SpeechRecognition
         transcription = SpeechRecognition()
@@ -82,14 +77,26 @@ match args["module"]:
 
     case "generator":
         from questions.question_generation import QuestionGenerator
-        from utils.preprocessing import setup_word_lists
+        from utils import preprocessing
         from text_generation import TextGenerator
-        setup_word_lists()
-        test_keyword = "kapselung"
+
+        preprocessing.setup_word_lists()
         text_gen = TextGenerator()
         generator = QuestionGenerator(text_gen)
-        # generator.generate_question(test_keyword)
-        generator.generate_question_answer(test_keyword)
+
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("Question Answer Generation Testing\n\n")
+
+        for _ in range(30):
+            test_keyword = random.choice(preprocessing.technical_terms)
+            if isinstance(test_keyword, list):
+                test_keyword = test_keyword[0]
+
+            question_answer = generator.generate_question_answer(test_keyword)
+            with open(OUTPUT_FILE, 'a', newline='') as file:
+                file.write(f"""Keyword:  {test_keyword}
+Question: {question_answer['question']}
+Answer:   {question_answer['answer']}\n\n""")
 
     case "paraphrasing":
         from questions.paraphrasing import QuestionParaphraser

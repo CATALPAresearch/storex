@@ -1,0 +1,152 @@
+Question Answer Generation Testing mit Längenangabe 'kurz'
+
+Prompt: Erstelle eine Prüfungsfrage und ihre kurze Musterantwort für eine mündliche Prüfung.
+        Nutze nur Informationen aus folgendem Text:
+        {context}
+
+        Passe die Ausgabe an folgendes Template an:
+        Frage: [Prüfungsfrage]
+        Antwort: [Musterantwort]"""
+
+Keyword:  generisch
+Question: Erläutern Sie den Unterschied zwischen beschränktem und unbeschränktem parametrischen Polymorphismus in C# und nennen Sie ein Beispiel für die Verwendung von beschränktem parametrischen Polymorphismus.
+Answer:   In C# gibt es zwei Arten von parametrischen Polymorphismus
+
+Keyword:  zuweisung
+Question: Erklären Sie den Begriff "Zuweisungskompatibilität" und nennen Sie ein Beispiel für seine Anwendung.
+Answer:   Zuweisungskompatibilität ist eine Eigenschaft in der Programmierung, die angibt, ob eine Variable eines bestimmten Typs einer anderen Variablen zugewiesen werden kann. Laut der beschriebenen Konvention bedeutet "a ist zuweisungskompatibel mit b" (a ≔ b), dass die Zuweisung von b an a zulässig ist. Die umgekehrte Richtung (b ≔ a) kann ebenfalls zulässig sein, muss aber nicht. Diese Eigenschaft ist (in der Regel) transitiv, d. h., wenn a zuweisungskompatibel mit b ist und b zuweisungskompatibel mit c, dann ist auch a zuweisungskompatibel mit c.
+          Ein Beispiel für Zuweisungskompatibilität ist die Parameterübergabe in Methodenaufrufen. Wenn eine Methode einen Parameter erwartet, muss dieser mit dem tatsächlichen Parameter zuweisungskompatibel sein, um Typkorrektheit zu gewährleisten. Wenn die Methode Werte zurückgibt, muss der Typ dieser Werte auch mit der Variablen auf der linken Seite einer Zuweisung zuweisungskompatibel sein.
+
+Keyword:  typinvariante
+Question: Erklären Sie den Begriff "Typäquivalenz" und nennen Sie zwei Eigenschaften dieses Konzepts.
+Answer:   Typäquivalenz ist eine Eigenschaft, die beschreibt, ob zwei Typen (nominal oder strukturell) gleichwertig sind. Diese Eigenschaft ist symmetrisch, was bedeutet, dass wenn Typ A äquivalent zu Typ B ist, dann ist B auch äquivalent zu A. Darüber hinaus ist Typäquivalenz transitiv, d.h. wenn A äquivalent zu B ist und B gleichwertig zu C, dann ist auch A äquivalent zu C.
+
+Keyword:  interne iteration
+Question: Erläutern Sie den Unterschied zwischen Generalisierung/Spezialisierung und Vererbung im Objektorientierten Entwurf und nennen Sie ein Beispiel für Zu-n-Beziehungen.
+Answer:   Generalisierung/Spezialisierung und Vererbung sind zwei Konzepte im Objektorientierten Entwurf, die unterschiedliche Weltanschauungen widerspiegeln. Generalisierung/Spezialisierung stellt eine Ordnung eines Systems von Klassen dar und betont das Ganze (Client-Schnittstelle), während Vererbung die Pragmatik des Programmierens mit Fokus auf Wiederverwendung (Vererbungsschnittstelle) repräsentiert. Vererbung bringt Komplexität in ein System, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren.
+          Ein Beispiel für Zu-n-Beziehungen sind Beziehungen zwischen Objekten, die logisch gleichberechtigt neben Zu-1-Beziehungen stehen, aber in der Umsetzung besonderer Mechanismen bedürfen. Diese Beziehungen können durch Zwischenobjekte hergestellt werden, die über ihre indizierten Instanzvariablen solche Beziehungen - wenn auch nur indirekt - herstellen können. Ein Beispiel für Zu-n-Beziehungen sind Beziehungen zwischen mehreren Autoren und einem Buch. Ein Buch kann mehrere Autoren haben, und jeder Autor kann an mehreren Büchern arbeiten.
+
+Keyword:  klassenmethode
+Question: Erläutern Sie die Rolle der Klasse Class und Metaclass in der Vererbungshierarchie von SMALLTALK und wie die Klassenmethoden new und new
+Answer:   In der Vererbungshierarchie von SMALLTALK stehen die Klasse Class und Metaclass nebeneinander und erben von der Klasse Behavior. Die Klasse Behavior enthält Instanzmethoden wie new und new:, die in der Praxis immer an Klassen geschickt werden. Obwohl new und new
+
+Keyword:  implementationsgeheimnis
+Question: Erläutern Sie die Bedeutung und den Einsatz von Typisierung während der verschiedenen Phasen eines Softwareentwicklungsprozesses, wie in dem vorgegebenen Text beschrieben.
+Answer:   Typisierung ist ein wichtiges Konzept in der Softwareentwicklung, das bei der Definition der Programmstruktur, Implementierung von Methoden und Durchführung von Tests hilft. In der Entwurfsphase dient Typisierung dazu, abstrakte Datentypen und Schnittstellen zu spezifizieren, bevor die Implementierung beginnt. In der Implementierungsphase hilft Typisierung, die Eingabeparameter und Rückgabewerte der Methoden zu spezifizieren und die Korrektheit der Implementierung zu überprüfen. Sie trägt auch zur Gewährleistung der Konsistenz der Daten während der Ausführung des Programms bei. Während der Testphase ermöglicht Typisierung gezielte Tests, um sicherzustellen, dass das Programm die erwarteten Datentypen und Schnittstellen einhält. Darüber hinaus hilft Typisierung während der Implementierung, sicherzustellen, dass Variablen und Funktionen korrekt verwendet werden, indem Compiler und Entwicklungsumgebungen Typfehler frühzeitig erkennen und dem Entwickler Rückmeldungen geben.
+
+Keyword:  interfaceimplementierung
+Question: Erklären Sie, was es bedeutet, wenn eine Klasse in Java ein Interface implementiert und wie Interfaces seit Java 8 erweitert wurden.
+Answer:   Wenn eine Klasse in Java ein Interface implementiert, verpflichtet sie sich, alle im Interface angekündigten Methoden zu implementieren und öffentlich anzubieten. Eine Klasse kann mehrere Interfaces gleichzeitig implementieren, wodurch Instanzen der Klasse mit allen Variablen jedes der genannten Interfaces zuweisungskompatibel sind. Der Type checker garantiert, dass auf der Variable mit Namen „Variablenname“ nur die Methoden aufgerufen werden können, die im Interface mit Namen „Interfacename“ deklariert sind.
+          Interfaces haben in Java seit Version 8 einen Bedeutungswandel erfahren. Seit Java 8 können Interfaces die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür wurde das neue Schlüsselwort "default" eingeführt. Allerdings haben Interfaces immer noch keine Instanzvariablen, und entsprechend können Default-Methoden nur auf abstrakte Getter und Setter zugreifen. Diese Erweiterung war notwendig, um die Evolution von Software und die Erweiterung von Interfaces im Laufe der Zeit um zusätzliche Methoden zu ermöglichen, ohne dass die Klassen, die die Interfaces implementieren, nachgeführt werden müssen.
+
+Keyword:  attribut
+Question: Erklären Sie den Begriff "Attributwert" und nennen Sie die Vorteile der Verwendung von Properties in der Objektorientierten Programmierung.
+Answer:   Ein Attributwert ist ein Wert, der einem Attribut einer Klasse oder eines Objekts zugeordnet ist. In der Objektorientierten Programmierung haben Variablen, die Attribute repräsentieren, häufig eine Wertsemantik, das heißt, sie halten eigene Kopien eines Objekts oder verweisen darauf.
+          Die Verwendung von Properties bietet mehrere Vorteile:
+          1. Encapsulation
+
+Keyword:  exception chaining
+Question: Erklären Sie den Unterschied zwischen Checked und Unchecked Exceptions in Java und nennen Sie ein Beispiel für jeden Typ.
+Answer:   In Java gibt es zwei Arten von Exceptions
+
+Keyword:  attributwert
+Question: Erklären Sie die Auswertung eines kaskadierten Nachrichtenausdrucks in Smalltalk und geben Sie ein Beispiel für die Implementierung der Kontrollstruktur to:do:.
+Answer:   Ein kaskadierter Nachrichtenausdruck in Smalltalk wird zu dem Objekt ausgewertet, das als Antwort auf den letzten Nachrichtenausdruck in der Kaskade zurückgegeben wird. Dies ermöglicht eine flüssige Syntax, um mehrere Nachrichten an das gleiche Objekt zu senden, ohne dieses Objekt für jede Nachricht erneut angeben zu müssen.
+          Ein Beispiel für die Implementierung der Kontrollstruktur to:do
+
+Keyword:  rolle
+Question: Erläutern Sie anhand eines Beispiels eine Form der Typeinschränkung, die auf Zuweisungskompatibilität beruht und nicht auf Entfernen von Eigenschaften.
+Answer:   Angenommen, wir haben eine Typdefinition für ein Rechteck, das vier Kanten und vier Winkel hat, die alle gleich groß sind. Nun definieren wir ein Quadrat als eine speziellere Form eines Rechtecks, bei dem alle Kanten gleich lang sind. In diesem Fall haben wir eine Typdefinition durch Ersetzen des ursprünglichen Typs (Rechteck) mit einem spezielleren Typ (Quadrat) aktualisiert. Diese Form der Typeinschränkung ist auf Zuweisungskompatibilität ausgerichtet, da ein Quadrat die Anforderungen eines Rechtecks erfüllt. Daher kann ein Quadrat als Rechteck behandelt werden, da es die Eigenschaften des allgemeineren Typs besitzt. Diese Art der Typdefinition ist in Sprachen wie EIFFEL möglich, die die Substitutionsprinzipien unterstützen.
+
+Keyword:  generisch
+Question: Erläutern Sie den Unterschied zwischen beschränktem und unbeschränktem parametrischen Polymorphismus in C# und nennen Sie ein Beispiel für die Verwendung von beschränktem parametrischen Polymorphismus.
+Answer:   In C# gibt es zwei Arten von parametrischen Polymorphismus
+
+Keyword:  flache kopie
+Question: Erklären Sie den Begriff "Typerweiterung" und "Typbeschränkung" und nennen Sie ein Beispiel aus dem Text, das die Konsequenzen dieser Typmanipulationen verdeutlicht.
+Answer:   Typerweiterung und Typbeschränkung sind Konzepte in der Typentheorie, die sich auf die Beziehung zwischen zwei Typen beziehen. Typerweiterung tritt auf, wenn ein neuer Typ auf der Basis eines bestehenden Typs definiert wird, wobei der neue Typ eine Obermenge des Basistyps ist. Das heißt, der neue Typ enthält alle Attribute und Methoden des Basistyps und kann zusätzliche Attribute und Methoden haben. Im Gegensatz dazu beschreibt Typbeschränkung eine Untermenge des Basistyps, bei der der neue Typ nur einen Teil der Attribute und Methoden des Basistyps besitzt.
+          Ein Beispiel aus dem Text ist die Beziehung zwischen den Typen Dokument und Zeichnung. Der Typ Zeichnung ist eine Typerweiterung des Typs Dokument, da er zusätzliche Attribute und Methoden besitzt, die im Typ Dokument nicht enthalten sind. Diese Typerweiterung hat jedoch zur Folge, dass die Zuweisungskompatibilität verloren geht, da die Methodendeklaration im Protokoll des Typs Dokument als "druckenAuf
+
+Keyword:  monitor
+Question: Erläutern Sie die Rolle von Streams in Smalltalk und wie sie sich von der konventionellen Verwendung von Ein- und Ausgabeströmen unterscheiden.
+Answer:   In Smalltalk haben Streams eine andere Funktion als in konventioneller Programmierung. Im Gegensatz zur konventionellen Programmierung, in der Ein- und Ausgabeströme für die Eingabe und Ausgabe von Daten vom/zum Benutzer und/oder Dateisystem verwendet werden, werden Streams in Smalltalk hauptsächlich für den sequentiellen Zugriff auf Elemente in Collections verwendet. Dieser Zugriff ist zeitlich flexibel und ermöglicht es mehreren Objekten, gleichzeitig oder zeitlich versetzt auf die Elemente einer Collection zuzugreifen. Diese Verwendung von Streams in Smalltalk erleichtert das Debugging, da die dynamische Reihenfolge der Ausführung der Anweisungen im Programmtext klar ist und aus dem unmittelbaren Kontext hervorgeht.
+
+Keyword:  unveraenderliche objekt
+Question: Erklären Sie das Aliasing-Problem in der Objektorientierung und nennen Sie Beispiele für Repräsentationsobjekte.
+Answer:   Das Aliasing-Problem in der Objektorientierung tritt auf, wenn ein Objekt, das durch ein anderes Objekt gekapselt wird, einen weiteren Alias besitzt, der nicht selbst dem kapselnden Objekt gehört. Dies bedeutet, dass auf das gekapselte Objekt über den Alias zugegriffen werden kann, selbst wenn die Instanzvariable von außen unzugreifbar ist. Repräsentationsobjekte sind Objekte, die die Implementierung eines anderen Objekts ausmachen und hinter der Schnittstelle des Objekts verborgen werden sollen. Im Beispiel der Ampel sind die Leuchten Repräsentationsobjekte, da sie nur als Innereien der Ampel auftreten und nicht unabhängig verwendet werden. Andere Beispiele für Repräsentationsobjekte können je nach Anwendungsfall variieren.
+
+Keyword:  verhaltensbezogene subtyping
+Question: Erklären Sie den Begriff "Behavior Subtyping" und nennen Sie die Bedingungen, die erfüllt sein müssen, damit Objekte vom Typ S die Anforderungen für Objekte vom Typ T erfüllen.
+Answer:   Behavior Subtyping, auf Deutsch verhaltensbasiertes Subtyping, ist ein Prinzip, das besagt, dass sich Objekte eines Subtyps und seines Supertyps gleich verhalten sollten. Das heißt, wenn φ(x) eine über Objekte x des Typs T bewiesene Eigenschaft ist, sollte φ(y) für Objekte y des Typs S wahr sein, wobei S ein Subtyp von T ist. Damit Objekte vom Typ S die Anforderungen für Objekte vom Typ T erfüllen, müssen die Prädikate 𝑝𝑟𝑒𝑚S und 𝑝𝑟𝑒𝑚T sowie die Positionsprädikate 𝑝𝑜𝑠𝑡𝑚S und 𝑝𝑜𝑠𝑡𝑚T in einer bestimmten Beziehung zueinander stehen. Genauer gesagt, muss (54.4), das Verhalten von m in S, (54.3), das Verhalten von m in T angewandt auf Objekte aus S, folgen. Diese Forderung geht über die syntaktische Subtypenbeziehung hinaus, die sich auf die Kontrolle der Parametertypen beschränkt.
+
+Keyword:  wertzuweisung
+Question: Erklären Sie den Begriff "interne Iteration" in Smalltalk und vergleichen Sie ihn mit der "externen Iteration".
+Answer:   In Smalltalk bezeichnet "interne Iteration" eine Iterationsform, bei der die Iteration und die Überprüfung der Abbruchbedingung in der Collection, über die iteriert wird, implementiert ist. Der Programmierer muss sich nicht um die Laufvariable kümmern, die den Elementen der Collection zugewiesen wird. Im Gegensatz dazu muss bei der "externen Iteration" die Laufvariable selbst gesetzt und abgefragt werden. Ein Beispiel für interne Iteration in Smalltalk ist die Verwendung des "do:"-Konstrukts, mit dem über die Elemente eines Arrays iteriert werden kann, ohne eine Zählschleife zu verwenden.
+          Die interne Iteration spiegelt die Ordnung eines Systems von Klassen mit Blick von außen und für das Ganze wider, während die externe Iteration die Pragmatik des Programmierens mit Blick von innen und einem Fokus auf Wiederverwendung darstellt. Die interne Iteration führt keine Komplexität in ein System ein, sondern versucht, sie durch Strukturierung zu reduzieren.
+
+Keyword:  implementationsgeheimnis
+Question: Erläutern Sie die Bedeutung und den Einsatz von Typisierung während der verschiedenen Phasen eines Softwareentwicklungsprozesses, wie in dem vorgegebenen Text beschrieben.
+Answer:   Typisierung ist ein wichtiges Konzept in der Softwareentwicklung, das bei der Definition der Programmstruktur, Implementierung von Methoden und Durchführung von Tests hilft. In der Entwurfsphase dient Typisierung dazu, abstrakte Datentypen und Schnittstellen zu spezifizieren, bevor die Implementierung beginnt. In der Implementierungsphase hilft Typisierung, die Eingabeparameter und Rückgabewerte der Methoden zu spezifizieren und die Korrektheit der Implementierung zu überprüfen. Sie trägt auch zur Gewährleistung der Konsistenz der Daten während der Ausführung des Programms bei. Während der Testphase ermöglicht Typisierung gezielte Tests, um sicherzustellen, dass das Programm die erwarteten Datentypen und Schnittstellen einhält. Darüber hinaus hilft Typisierung während der Implementierung, sicherzustellen, dass Variablen und Funktionen korrekt verwendet werden, indem Compiler und Entwicklungsumgebungen Typfehler frühzeitig erkennen und dem Entwickler Rückmeldungen geben.
+
+Keyword:  protokollbeschreibung
+Question: Erklären Sie, wie Typen in Protokollen in Strongtalk verwendet werden und nennen Sie ein Beispiel für eine Typdefinition, die selbst Typen verwendet.
+Answer:   In Strongtalk werden Typen in Protokollen verwendet, um die Typen der formalen Parameter und die Typen der Ein- und Ausgabeobjekte zu spezifizieren. Die Typannotationen von formalen Parametern stehen in Strongtalk in spitzen Klammern hinter dem Parameternamen. Der Rückgabetyp einer Methode wird durch ein vorangestelltes Dach (^) gekennzeichnet und folgt auf den letzten Parameter. Es muss immer ein Rückgabetyp angegeben werden, auch wenn es der Typ selbst ist, in diesem Fall kann der Name Self verwendet werden.
+          Ein Beispiel für eine Typdefinition, die selbst Typen verwendet, ist folgende: methode
+
+Keyword:  lokalitaetsprinzip
+Question: Erläutern Sie den Unterschied zwischen Generalisierung/Spezialisierung und Vererbung im Objektorientierten Entwurf und nennen Sie ein Beispiel für Zu-n-Beziehungen.
+Answer:   Generalisierung/Spezialisierung und Vererbung sind zwei Konzepte im Objektorientierten Entwurf, die unterschiedliche Weltanschauungen widerspiegeln. Generalisierung/Spezialisierung stellt eine Ordnung eines Systems von Klassen dar und betont das Ganze (Client-Schnittstelle), während Vererbung die Pragmatik des Programmierens mit Fokus auf Wiederverwendung (Vererbungsschnittstelle) repräsentiert. Vererbung bringt Komplexität in ein System, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren.
+          Ein Beispiel für Zu-n-Beziehungen sind Beziehungen zwischen Objekten, die logisch gleichberechtigt neben Zu-1-Beziehungen stehen, aber in der Umsetzung besonderer Mechanismen bedürfen. Diese Beziehungen können durch Zwischenobjekte hergestellt werden, die über ihre indizierten Instanzvariablen solche Beziehungen - wenn auch nur indirekt - herstellen können. Ein Beispiel für Zu-n-Beziehungen sind Beziehungen zwischen mehreren Autoren und einem Buch. Ein Buch kann mehrere Autoren haben, und jeder Autor kann an mehreren Büchern arbeiten.
+
+Keyword:  abstrakt
+Question: Erklären Sie das Prinzip der "offenen Rekursion" in Smalltalk und nennen Sie ein Beispiel für dessen Verwendung.
+Answer:   In Smalltalk wird der Begriff "offene Rekursion" verwendet, um das Prinzip zu beschreiben, eine abstrakte, in der Klasse nicht implementierte Methode aus derselben Klasse heraus mit "self" als Empfänger aufzurufen. Dieses Muster ist nützlich, um auf ein Versäumnis hinzuweisen, falls eine Methode in einer Subklasse nicht implementiert wurde. Ein Beispiel für die Verwendung der offenen Rekursion ist das Dilemma von Quadrat und Rechteck. Wenn eine Klasse Quadrat eine abstrakte Klasse ist, die eine Methode area implementiert, und eine Klasse Rechteck, die von Quadrat erbt, die Methode area nicht implementiert, kann die offene Rekursion verwendet werden, um den Fehler zu erkennen. Wenn die Methode area in der Klasse Quadrat mit "self" als Empfänger aufgerufen wird, führt dies zu einem Aufruf von doesNotUnderstand und der Ausgabe einer entsprechenden Fehlermeldung, wenn die Methode in der Klasse Rechteck nicht implementiert wurde.
+
+Keyword:  allgemeinbegriff
+Question: Erläutern Sie die Unterschiede zwischen Vererbung und Generalisierung/Spezialisierung in objektorientiertem Entwurf und wie sie sich auf die Komplexität eines Systems auswirken.
+Answer:   Vererbung und Generalisierung/Spezialisierung sind zwei wichtige Konzepte im objektorientierten Entwurf, die jedoch unterschiedliche Perspektiven repräsentieren. Vererbung spiegelt die Pragmatik des Programmierens mit Blick von innen und einem Fokus auf Wiederverwendung wider, während Generalisierung/Spezialisierung für die Ordnung eines Systems von Klassen mit Blick von außen und für das Ganze steht. Vererbung bringt Komplexität in ein System, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren.
+          Die mengentheoretische Interpretation der Generalisierung als Obermengenbildung legt nahe, dass Instanzen von Mensch und Vogel (als Elemente der entsprechenden Extensionen) auch Instanzen von Zweibeiner sind. Jedoch sollte man zur notwendigen Unterscheidung von indirekten Instanzen sprechen, um Verwechslungen zu vermeiden.
+          Zusammenfassend lässt sich sagen, dass Vererbung und Generalisierung/Spezialisierung zwei verschiedene Weltansichten widerspiegeln und ihre Vereinigung die hohe Kunst des objektorientierten Entwurfs ist.
+
+Keyword:  seiteneffekt
+Question: Erläutern Sie den Unterschied zwischen Generalisierung/Spezialisierung und Vererbung im Kontext der objektorientierten Programmierung und nennen Sie je ein Beispiel für beide Konzepte.
+Answer:   Generalisierung und Spezialisierung sind Konzepte, die die Ordnung eines Systems von Klassen aus Sicht des Anwenders und des Gesamtsystems betrachten. Ein Beispiel für Generalisierung wäre die Klasse "Fahrzeug", die als Oberklasse für spezialisiertere Klassen wie "Auto", "Fahrrad" oder "Flugzeug" dient. Diese Spezialisierung erfolgt durch die Verwendung von Eigenschaften und Methoden, die für die jeweilige Unterklasse spezifisch sind.
+          Vererbung hingegen ist ein Konzept, das einen genetischen Zusammenhang zwischen Klassen herstellt und deren Entstehung aus Vorhandenem widerspiegelt. Vererbung führt Komplexität in ein System ein, während Generalisierung/Spezialisierung versucht, Komplexität durch Strukturierung zu reduzieren. Ein Beispiel für Vererbung wäre die Klasse "Auto", die als Unterklasse von "Fahrzeug" alle Eigenschaften und Methoden der Oberklasse erbt und zusätzliche, spezifische Eigenschaften und Methoden enthalten kann.
+
+Keyword:  klassenbasiert
+Question: Erklären Sie, wie die Vererbungshierarchie und die Beziehungen zwischen Objekten die Struktur von Klassen in der objektorientierten Programmierung beeinflussen.
+Answer:   In der objektorientierten Programmierung werden Klassen durch zwei Strukturen beeinflusst
+
+Keyword:  gleiche fallunterscheidung
+Question: Erklären Sie den Unterschied zwischen Extension und Intension eines Begriffs und wie diese miteinander zusammenhängen.
+Answer:   Extension eines Begriffs bezieht sich auf die Menge der Objekte, die unter einen Begriff fallen, während Intension die Summe der Merkmale ist, die den Begriff ausmachen und die die Objekte, die darunter fallen, charakterisieren. Aristoteles bemerkte, dass Intension und Extension in einem inversen Größenverhältnis zueinander stehen, was bedeutet, dass je umfangreicher die Charakterisierung einer Menge von Objekten ist, desto weniger Objekte erfüllen diese Bedingungen und desto kleiner ist die Menge.
+
+Keyword:  indexer
+Question: Erklären Sie, wie Indexer in C# funktionieren und was ihre Ähnlichkeiten und Unterschiede zu Properties sind.
+Answer:   Indexer in C# sind eine Möglichkeit, anscheinend unbenannte Instanzvariablen über einen Index zu adressieren. Dabei muss die indizierte Instanzvariable intern durch eine benannte Instanzvariable repräsentiert werden. Indexer ähneln Properties, da der Zugriff über einen Index auf entsprechende Get- und Set-Abbildungen umgeleitet wird, die wiederum auf eine benannte Instanzvariable zugreifen.
+          Der Unterschied zwischen Indexern und Properties liegt darin, dass Indexer überladen werden können, wodurch ein Objekt mehrere indizierte Instanzvariablen haben kann. Der Zugriff erfolgt über den Typ des Indexes, wobei jedoch die Einschränkung besteht, dass der Elementtyp (der Rückgabetyp beim Überladen) gleich bleiben muss.
+          Ein weiterer Unterschied ist, dass ein Indexer in C# nicht auf eine interne Instanzvariable zugreifen muss – alle Inhalte können berechnet werden, ähnlich wie bei Properties. Die Implementierung der Kontrollstruktur erfolgt selbst in C# und ist einfach zu handhaben.
+          Zusammenfassend lässt sich sagen, dass Indexer in C# eine Möglichkeit bieten, anscheinbar unbenannte Instanzvariablen über einen Index zu adressieren, wobei der Zugriff auf Get- und Set-Abbildungen umgeleitet wird. Indexer ähneln Properties, können aber überladen werden, um mehrere indizierte Instanzvariablen zu simulieren, und müssen nicht auf interne Instanzvariablen zugreifen.
+
+Keyword:  platzhalter
+Question: Erklären Sie den Unterschied zwischen Vererbung und Generalisierung/Spezialisierung in der objektorientierten Programmierung und nennen Sie die Sonderrolle der Teil-Ganzes-Beziehung.
+Answer:   Vererbung und Generalisierung/Spezialisierung sind zwei Konzepte in der objektorientierten Programmierung, die unterschiedliche Perspektiven repräsentieren. Vererbung ist eine Beziehung zwischen Klassen, die eine Art genetischen Zusammenhang zwischen ihnen darstellt und die Entstehung einer Klasse aus Vorhandenem widerspiegelt. Sie führt Komplexität in ein System ein. Generalisierung/Spezialisierung hingegen ist eine abstrakte Ordnung, die für die Ordnung eines Systems von Klassen von außen und für das Ganze (die sog. Client-Schnittstelle) steht. Sie dient dazu, Komplexität durch Strukturierung zu reduzieren.
+          Die Teil-Ganzes-Beziehung spielt eine Sonderrolle unter den Beziehungen. Sie bestimmt ganz wesentlich unsere Weltsicht, da alles, was wir anfassen oder betrachten können, aus kleineren Teilen zusammengesetzt ist. Leider ist der Begriff der Teil-Ganzes-Beziehung nicht so klar definiert, wie es auf den ersten Blick scheint. Es gibt verschiedene Arten von Zusammensetzungen, die unterschiedliche Wechselwirkungen zwischen dem Ganzen und seinen Teilen aufweisen. Zudem gibt es neben der physischen Teil-Ganzes-Beziehung auch eine logische, wie zum Beispiel der Deutsche Bundestag, der aus einer Anzahl von Abgeordneten zusammengesetzt ist.
+
+Keyword:  imperative programmierung
+Question: Erklären Sie den Unterschied zwischen dem deklarativen und imperativen Programmierstil in der objektorientierten Programmierung und nennen Sie ein Beispiel für beide Stile.
+Answer:   Der deklarative Programmierstil in der objektorientierten Programmierung beschäftigt sich mehr mit dem "Was" als mit dem "Wie". Das heißt, es wird mehr Wert darauf gelegt, was das Programm tun soll, statt wie es es tun soll. Ein Beispiel dafür wäre die Verwendung von Methoden, die nach dem benannt sind, was sie tun. Zum Beispiel könnte es in einer Klasse eine Methode geben, die "sortiereElemente" heißt und die Elemente der Klasse automatisch sortiert, ohne dass der Programmierer sich um die Implementierung kümmern muss.
+          Der imperative Programmierstil hingegen beschäftigt sich mehr mit dem "Wie". Der Programmierer gibt genau an, wie das Programm eine Aufgabe lösen soll. Ein Beispiel dafür wäre die Verwendung von Schleifen und Kontrollstrukturen, um Elemente einer Klasse zu durchsuchen und zu verarbeiten. Zum Beispiel könnte es in einer Klasse eine Methode geben, die "findeElement" heißt und die mithilfe einer Schleife ein Element durchsucht und verarbeitet.
+          Es ist auch möglich, beide Stile in einer Klasse zu kombinieren, indem man beispielsweise eine Methode "findeElement" hat, die intern eine Schleife verwendet, aber von außen deklarativ aufgerufen wird.
+
+Keyword:  mereologie
+Question: Erläutern Sie die Unterschiede zwischen Vererbung und Generalisierung/Spezialisierung in objektorientiertem Entwurf und wie sie sich auf die Komplexität eines Systems auswirken.
+Answer:   Vererbung und Generalisierung/Spezialisierung sind zwei wichtige Konzepte im objektorientierten Entwurf, die jedoch unterschiedliche Perspektiven repräsentieren. Vererbung spiegelt die Pragmatik des Programmierens mit Blick von innen und einem Fokus auf Wiederverwendung wider, während Generalisierung/Spezialisierung für die Ordnung eines Systems von Klassen mit Blick von außen und für das Ganze steht. Vererbung bringt Komplexität in ein System, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren.
+          Die mengentheoretische Interpretation der Generalisierung als Obermengenbildung legt nahe, dass Instanzen von Mensch und Vogel (als Elemente der entsprechenden Extensionen) auch Instanzen von Zweibeiner sind. Jedoch sollte man zur notwendigen Unterscheidung von indirekten Instanzen sprechen, um Verwechslungen zu vermeiden.
+          Zusammenfassend lässt sich sagen, dass Vererbung und Generalisierung/Spezialisierung zwei verschiedene Weltansichten widerspiegeln und ihre Vereinigung die hohe Kunst des objektorientierten Entwurfs ist.
+
+Keyword:  rekursiv
+Question: Erläutern Sie ein Beispiel für einen rekursiven Typ und nennen Sie zwei Probleme, die sich durch den Einsatz rekursiver Typen in der Programmierung ergeben können.
+Answer:   Ein Beispiel für einen rekursiven Typ ist der Typ Person, der Methoden enthält, die Person als Parameter- bzw. Rückgabetypen haben. Zwei Probleme, die sich durch den Einsatz rekursiver Typen in der Programmierung ergeben können, sind:
+          1. Die strukturelle Äquivalenz zweier rekursiver Typen festzustellen, ist nicht einfach, da die dazu notwendige Expansion rekursiver Typen unendlich große Definitionen ergeben kann.
+          2. In einer parametrischen Typdefinition den Typ eines Methodenarguments variabel halten zu wollen, erweist sich als schwierig, wenn dieser Typ der definierte Typ ist. Dies ist ein Problem, da es zu einem Eindruck von Beliebigkeit bei der Vererbungsrichtung führt, die für Generalisierung/Spezialisierung nicht existiert.

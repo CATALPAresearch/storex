@@ -1,0 +1,131 @@
+Question Answer Generation Testing mit Längenangabe '1 Satz'
+
+Prompt: Erstelle eine Prüfungsfrage und ihre kurze Musterantwort für eine mündliche Prüfung.
+        Schreibe die Musterantwort in 1 Satz.
+        Nutze nur Informationen aus folgendem Text:
+        {context}
+
+        Passe die Ausgabe an folgendes Template an:
+        Frage: [Prüfungsfrage]
+        Antwort: [Musterantwort]"""
+
+
+Keyword:  super
+Question: Erklären Sie den Begriff "interne Iteration" in Smalltalk und wie er sich von der "externen Iteration" unterscheidet.
+Answer:   In Smalltalk bezeichnet "interne Iteration" eine Iterationsform über eine Menge von beliebigen Objekten, bei der die Iteration in der Collection selbst implementiert ist und keine Zählvariable benötigt wird, im Gegensatz zur "externen Iteration", bei der die Laufvariable selbst gesetzt und abgefragt werden muss.
+
+Keyword:  strukturiertes objekt
+Question: Erklären Sie, was Repräsentationsobjekte in der Objektorientierten Programmierung sind und wie sie in der Programmiersprache Smalltalk behandelt werden.
+Answer:   Repräsentationsobjekte sind in der Objektorientierten Programmierung die Objekte, die die Implementierung eines anderen Objekts ausmachen und hinter dessen Schnittstelle verborgen werden sollen, wie beispielsweise die Leuchten in einer Ampel. In Smalltalk existiert ein mehrstufiges Zusammenspiel von Klassen und Instanzen, wobei auf der untersten Stufe, Ebene 0, sich konkrete, nicht instanziierbare Objekte befinden, die Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Eine Stufe darüber, auf Ebene 1, stehen die Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Diese Klassen repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit und stellen die Konzepte und Allgemeinbegriffe des Anwendungsbereichs dar.
+
+Keyword:  binaere nachricht
+Question: Erläutern Sie, wie mengentheoretische Interpretation von Generalisierung als Obermengenbildung Einfluss auf die Betrachtung von Instanzen in Zu-n-Beziehungen nimmt und welche Rolle dabei indizierte Instanzvariablen und Zwischenobjekte spielen.
+Answer:   In der mengentheoretischen Interpretation von Generalisierung als Obermengenbildung werden Instanzen von Mensch und Vogel, als Elemente der entsprechenden Extensionen, auch als Instanzen von Zweibeinern betrachtet, was die Notwendigkeit zur Unterscheidung von indirekten Instanzen (anstelle von direkten Instanzen) erfordert, wobei indizierte Instanzvariablen und Zwischenobjekte über ihre indizierten Instanzvariablen Zu-n-Beziehungen herstellen, die in der Umsetzung besondere Mechanismen erfordern und möglicherweise sogar die ursprüngliche Einführung indizierter Instanzvariablen motiviert haben.
+
+Keyword:  nominale typaequivalenz
+Question: Erklären Sie, welche Bedingung erfüllt sein muss, damit eine Zuweisung mit unterschiedlichen Typen zulässig ist.
+Answer:   Die Extension des Typs der Zuweisungsquelle muss eine Teilmenge der Extension des Typs der Zuweisungszielvariable sein.
+
+Keyword:  parametrische polymorphismus
+Question: Erläutern Sie den Kompromiss zwischen Typsicherheit und Flexibilität bei der Verwendung von parametrisch definierten Typen.
+Answer:   Die Verwendung von parametrisch definierten Typen ermöglicht eine erhöhte Typsicherheit außerhalb der Typdefinition, indem Typumwandlungen bei homogener Belegung der mit einem Typparameter typisierten Variablen entfallen, erkauft sich dies aber durch eine geringere Typsicherheit innerhalb der Typdefinition selbst, da die Definition eines parametrischen Typs nicht wissen kann, wie er hinterher verwendet wird und auf die Instanziierung mit addierbaren Objekttypen angewiesen ist.
+
+Keyword:  indirekte instanz
+Question: Erläutern Sie die Unterschiede zwischen Generalisierung/Spezialisierung und Vererbung in der objektorientierten Programmierung.
+Answer:   Generalisierung/Spezialisierung und Vererbung spiegeln zwei verschiedene Weltanschauungen in der objektorientierten Programmierung wider, wobei Generalisierung/Spezialisierung die Ordnung eines Systems von Klassen aus einer globalen Perspektive betrachtet und Vererbung die Pragmatik des Programmierens mit Blick auf Wiederverwendung und innere Zusammenhänge zwischen Klassen.
+
+Keyword:  metaklasse
+Question: Wie ist die Vererbungshierarchie der Metaklassen in Smalltalk angelegt und welche Beziehung besteht zwischen Metaklassen und ihren Instanzen?
+Answer:   Die Vererbungshierarchie der Metaklassen ist parallel zur Vererbungshierarchie der Klassen angelegt, wodurch Klassenvariablen und -methoden von einer Klasse auf ihre Subklassen vererbt werden. Jede Metaklasse ist automatisch Instanz von Object class, und zwischen Metaklassen und ihren Instanzen, den Klassen der Ebene 1, besteht eine 1-zu-1-Beziehung.
+
+Keyword:  optionales typsystem
+Question: Was ist der Zweck der Typisierung in der Programmierung und was versteht man unter Typkonformität?
+Answer:   Der Zweck der Typisierung in der Programmierung ist es, das Speicher-Layout zu regeln, die effizientere Ausführung eines Programms zu ermöglichen, die Lesbarkeit eines Programms zu erhöhen und logische Fehler automatisch zu finden. Typkonformität beschreibt eine Beziehung zwischen zwei Typen, bei der der eine Typ alle deklarierten Elemente des anderen Typs enthält. Diese Beziehung ist reflexiv, transitiv und meistens antisymmetrisch.
+
+Keyword:  primitive ausdruck
+Question: Erklären Sie die Begriffe "interne Iteration" und "externe Iteration" sowie ihren Unterschied in Smalltalk.
+Answer:   In Smalltalk bezeichnet "interne Iteration" eine Iterationsform, bei der die Iteration und Überprüfung der Abbruchbedingung in der Collection implementiert ist, während bei "externer Iteration" die Laufvariable selbst gesetzt und abgefragt werden muss.
+
+Keyword:  klassentyp
+Question: Was repräsentiert in Smalltalk eine Klassendefinition und wie unterscheidet sie sich in ihrer Struktur und Flexibilität von klassenbasierter objektorientierter Programmierung?
+Answer:   Eine Klassendefinition in Smalltalk besteht aus der Angabe eines eindeutigen Klassennamens, Instanzvariablen und Methodendefinitionen, wobei sie nicht in einer separaten Datei, sondern in einer dafür vorgesehenen Datenstruktur definiert wird, was zu weniger Konzepten und höherer Flexibilität führt, insbesondere bei der Anpassung einzelner Objekte, wie beispielsweise bei der Programmierung von grafischen Benutzeroberflächen mit JavaScript.
+
+Keyword:  speicherbereinigung
+Question: Erläutern Sie den Umgang mit Speicherverwaltung in Smalltalk, Java und C#.
+Answer:   Im Gegensatz zu Smalltalk und Java, die die Speicherbereinigung automatisch durch Garbage Collection handhaben, ermöglicht C# programmierenden Personen, den Speicherplatz für mit "new" erzeugte Objekte manuell wieder freizugeben, was jedoch bei Vergessen zu Speicherlecks führt und bei vorzeitiger Speicherfreigabe auf oder in andere Objekte verweisen kann, was eine Katastrophe darstellt. Zusätzlich hat C# das Hantieren mit Pointern aus Smalltalk und C wieder eingeführt, jedoch in unsichere Bereiche verbannt, die durch den Modifikator "unsafe" eingeleitet werden.
+
+Keyword:  typvariable
+Question: Erläutern Sie, wie man Variablenfehlbelegungen in Programmiersprachen verhindern kann und was man unter Typkorrektheit versteht.
+Answer:   Variablenfehlbelegungen können verhindert werden, indem man Variablen mit expliziten Typinvarianten versieht, die die Menge ihrer zulässigen Werte beschränken, und dann darüber wacht, dass diese Invarianten immer eingehalten werden. Eine einfache Möglichkeit, solche Invarianten zu spezifizieren, sind Typannotationen, also die Verbindung einer Variablen mit einem Typen, wobei der Typ eine Menge von Werten festlegt, die die Variable ausschließlich haben darf. Ein Programm, in dem alle Variablenbelegungen immer alle Typinvarianten erfüllen, heißt typkorrekt.
+
+Keyword:  intension
+Question: Erklären Sie, wie die nominale Konformität in Bezug auf Typen in der Programmierung funktioniert und nennen Sie ein Beispiel für ihre Filterfunktion.
+Answer:   Die nominale Konformität in der Typentheorie bedeutet, dass ein Typ sich auf einen anderen Typ beziehen muss, indem er diesen erweitert oder von ihm ableitet, wobei alle Elemente des ursprünglichen Typs im erweiterten Typ erhalten bleiben. Diese Konformität impliziert eine Filterfunktion, die sicherstellt, dass nur Objekte bestimmter Typen Variablen zugewiesen werden können, wenn die Programmiererin dies aufgrund semantischer Überlegungen beabsichtigt. Beispielsweise muss eine Klasse Rechteck die Instanzvariable breite hinzufügen, um von der Klasse Quadrat zu erben, und kann die Methoden zur Berechnung von Fläche und Umfang nicht mitgeerben, sodass diese in Rechteck neu definiert werden müssen.
+
+Keyword:  zustand
+Question: Erläutern Sie den Begriff der Teil-Ganzes-Beziehung und die sich daraus ergebenden Wechselwirkungen zwischen dem Ganzen und seinen Teilen.
+Answer:   Die Teil-Ganzes-Beziehung beschreibt, wie Dinge aus kleineren Teilen zusammengesetzt sind, die wiederum Zusammensetzungen sein können, bis hinunter zu den elementaren Bausteinen, wobei je nach Art der Zusammensetzung unterschiedliche Wechselwirkungen zwischen dem Ganzen und seinen Teilen entstehen können.
+
+Keyword:  typkonstruktor
+Question: Erklären Sie den Begriff "Typkonformität" und nennen Sie zwei Eigenschaften, die er besitzt.
+Answer:   Typkonformität ist ein Begriff in der Typentheorie, der bedeutet, dass die Definition eines Typs alle deklarierten Elemente der Definition eines anderen Typs enthält. Zwei Eigenschaften der Typkonformität sind Reflexivität und Transitivität.
+
+Keyword:  type erasure
+Question: Erläutern Sie, wie das Löschen von Eigenschaften in STRONGTALK als eine Form der Typeneinschränkung betrachtet werden kann.
+Answer:   Im Typsystem von STRONGTALK können Typen nicht primitiv, sondern müssen immer auf andere Typen zurückgeführt werden, was auch für die Typannotation von Variablen oder Rückgabewerten von Methoden gilt; das Löschen von Eigenschaften kann somit als eine spezielle Form der Typeneinschränkung verstanden werden, bei der der Wertebereich auf die leere Menge eingeschränkt wird, wodurch die Methode mit dem entsprechenden Parametertyp nicht mehr aufrufbar ist.
+
+Keyword:  temporaere variable
+Question: Erklären Sie, warum in SMALLTALK die Zuweisung in Zeile 1535 nicht zu einem neuen Zeitpunkt führt und welche alternativen Möglichkeiten es gibt, um temporäre Variablen zu verwenden.
+Answer:   Die Zuweisung in Zeile 1535 verändert den bestehenden Zeitpunkt, da "a" eine Verweisvariable ist und den Verweis auf das Objekt enthält, anstatt den Wert des Objekts; eine Möglichkeit, dies zu umgehen, ist die Verwendung von temporären Variablen, die zu Beginn der Methode deklariert und mit nil initialisiert werden, und die nach Abarbeitung der Methode wieder entfernt werden.
+
+Keyword:  passiv
+Question: Erläutern Sie den Unterschied zwischen aktiven und passiven Objekten in der objektorientierten Programmierung und nennen Sie ein Beispiel für ein passives Objekt.
+Answer:   Aktive Objekte verfügen über einen eigenen Prozess, der nur die eigenen Methoden ausführt und asynchron auf Nachrichten reagiert, während passive Objekte, wie beispielsweise die in prozeduraler Programmierung, nur aktiv sind, solange sie eine Methode ausführen.
+
+Keyword:  zusammengesetzte objekt
+Question: Erläutern Sie die Bedeutung von Zu-n-Beziehungen in Smalltalk und wie sie durch Zwischenobjekte realisiert werden.
+Answer:   Die Handhabung von Zu-n-Beziehungen in Smalltalk ist von großer Bedeutung für die Ausdrucksstärke der Sprache und die Produktivität der Programmierung, da sie über Zwischenobjekte realisiert werden, die vollwertige Objekte sind und beliebig gestaltet werden können, einschließlich Sortierreihenfolgen, ausgezeichneten Elementen und speziellen Zugriffsverfahren.
+
+Keyword:  tagging interface
+Question: Erklären Sie, was ein Tagging oder Marker Interface in Java ist und wie es funktioniert.
+Answer:   Ein Tagging oder Marker Interface in Java ist ein Interface, das keine eigenen Methodendeklarationen hat und lediglich der Filterung von Variablenwerte dient, wobei die Typisierung einer Variable mit dem Interface erzwingt, dass dieser Variable nur Instanzen solcher Klassen zugewiesen werden können, die das Interface implementieren, wie beispielsweise das Interface "Serializable", mit dessen Implementierung eine Klasse deklariert, dass ihre Instanzen serialisiert werden können.
+
+Keyword:  zuweisungsoperator
+Question: Erklären Sie den Unterschied zwischen Zuweisung und Test auf Gleichheit in Programmiersprachen und nennen Sie ein Beispiel für eine Sprache, die den Zuweisungsoperator := verwendet.
+Answer:   In Programmiersprachen ist die Zuweisung (z.B. :=) ein Operator, der einem Variablennamen einen Wert zuordnet, während der Test auf Gleichheit (z.B. = oder ==) überprüft, ob zwei Werte gleich sind. Ein Beispiel für eine Sprache, die den Zuweisungsoperator := verwendet, ist Smalltalk.
+
+Keyword:  konstruktor
+Question: Erläutern Sie den Unterschied zwischen dem deklarativen und imperativen Programmierstil in der objektorientierten Programmierung und nennen Sie ein Beispiel für die Verwendung von "Shortcut"-Varianten in der Klasse "Klausel".
+Answer:   Der deklarative Programmierstil in der objektorientierten Programmierung beschäftigt sich mehr mit dem "Was" als mit dem "Wie" und überlässt Effizienzfragen dem Compiler, während der imperative Stil sich eher auf die Befehlsabfolge und Kontrolle von Prozessen konzentriert. Ein Beispiel für "Shortcut"-Varianten in der Klasse "Klausel" wären spezielle Iterationsmethoden, die bei Bedarf die Iteration vorzeitig abbrechen.
+
+Keyword:  virtual function table
+Question: Erklären Sie, was RTTI in C++ ist und wie es genutzt werden kann.
+Answer:   RTTI, auch bekannt als "Runtime Type Information", ist eine in C++ hinzugefügte Bibliotheksfunktion, die es ermöglicht, für Objekte mit dynamisch gebundenen Methoden festzustellen, welcher Klasse sie angehören. Es kann durch die Verwendung der Funktion "typeid" auf einer Referenz aufgerufen werden, die auf Klassennamen überladen ist und eine Struktur zurückgibt, auf der "==" als Gleichheitstest definiert ist. Eine weitere nützliche Funktion, die RTTI verwendet, ist "dynamic\_cast<T>(x)", die ein Objekt mit dem angegebenen Typ zurückgibt, wenn die RTTI dies als korrekt erkennt, andernfalls gibt sie 0 zurück.
+
+Keyword:  lokale variable
+Question: Erklären Sie den Unterschied zwischen lokalen und globalen Variablen in Smalltalk und wie diese im Kontext von Programmabschnitten zu verstehen sind.
+Answer:   In Smalltalk beginnen globale Variablen mit einem Großbuchstaben und sind überall sichtbar, während lokale Variablen mit einem Kleinbuchstaben beginnen und auf den Sichtbarkeitsbereich eines Objekts beschränkt sind.
+
+Keyword:  getter
+Question: Erklären Sie, wie die Verwendung von Goto-Anweisungen das Verständnis von Quelltext beeinflusst und was als Alternative empfohlen wird.
+Answer:   Die Verwendung von Goto-Anweisungen verursacht ein hohes Maß an Nichtwissen beim Interpretieren von Quelltext, insbesondere beim Debugging von Programmen, da der Programmfluss nicht immer klar ist und das Ziel eines Sprungs außerhalb des gewählten Kontextes liegen kann. Als Alternative wird strukturierte Programmierung empfohlen, die neben der Sequenz von Anweisungen die Verzweigung, Wiederholung und den Unterprogrammaufruf umfasst, wobei letzterer das Lokalitätsprinzip durchbricht, aber unvermeidlich ist und durch die gezielte Rückkehr an den Aufrufplatz kompensiert wird.
+
+Keyword:  indirekte instanz
+Question: Erläutern Sie die Unterschiede zwischen Generalisierung/Spezialisierung und Vererbung in der objektorientierten Programmierung.
+Answer:   Generalisierung/Spezialisierung und Vererbung spiegeln zwei verschiedene Weltanschauungen in der objektorientierten Programmierung wider, wobei Generalisierung/Spezialisierung die Ordnung eines Systems von Klassen aus einer globalen Perspektive betrachtet und Vererbung die Pragmatik des Programmierens mit Blick auf Wiederverwendung und innere Zusammenhänge zwischen Klassen.
+
+Keyword:  passiv
+Question: Erläutern Sie den Unterschied zwischen aktiven und passiven Objekten in der objektorientierten Programmierung und nennen Sie ein Beispiel für ein passives Objekt.
+Answer:   Aktive Objekte verfügen über einen eigenen Prozess, der nur die eigenen Methoden ausführt und asynchron auf Nachrichten reagiert, während passive Objekte, wie beispielsweise die in prozeduraler Programmierung, nur aktiv sind, solange sie eine Methode ausführen.
+
+Keyword:  test
+Question: Erläutern Sie den Begriff "dynamische Typprüfung" und nennen Sie einen Vorteil und einen Nachteil dieses Verfahrens.
+Answer:   Dynamische Typprüfung ist ein Verfahren, bei dem zur Laufzeit vor einer Variablenzuweisung geprüft wird, ob der zuzuweisende Wert den von der Variablen geforderten Typ hat. Ein Vorteil dieses Verfahrens ist, dass es Fehler zu einem Zeitpunkt signalisiert, in dem man bereits nicht mehr viel anderes machen kann als den Fehler zu beheben. Ein Nachteil ist, dass diese Prüfung zu spät kommt und in der Praxis häufig nur zu einem Programmabbruch führt.
+
+Keyword:  supertyp
+Question: Erklären Sie, was man unter der umgekehrten, nur schreibenden Zugriff erlaubenden Art des Subtypings versteht und wie sich dies auf den Typ "List<? super Integer>" auswirkt.
+Answer:   Die umgekehrte, nur schreibenden Zugriff erlaubende Art des Subtypings ermöglicht die Verwendung von Supertypen mit der Beschränkung, dass nur Supertypen der Schranke eingesetzt werden dürfen, wodurch eine Zuweisungskompatibilität entsteht. Im Fall von "List<? super Integer>" ist es ein spezieller Supertyp von allen Instanzen von "List<E>", deren tatsächlicher Typparameter (also der für "E" eingesetzte Typ) ein Supertyp von "Integer" ist, mit der Einschränkung, dass der Zugriff auf die Elementtypen auf schreibenden beschränkt ist.
+
+Keyword:  zuweisungsausdruck
+Question: Erläutern Sie den Unterschied zwischen Generalisierung/Spezialisierung und Vererbung in der objektorientierten Programmierung und nennen Sie ein Beispiel für Zu-n-Beziehungen.
+Answer:   Generalisierung/Spezialisierung und Vererbung sind zwei verschiedene Konzepte in der objektorientierten Programmierung, wobei Generalisierung/Spezialisierung die Ordnung eines Systems von Klassen aus Sicht des Ganzen und der Client-Schnittstelle darstellt, während Vererbung die Pragmatik des Programmierens mit Fokus auf Wiederverwendung und Vererbungsschnittstelle betont, was Komplexität in ein System bringt, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren. Ein Beispiel für Zu-n-Beziehungen sind indizierte Instanzvariablen, die über Zwischenobjekte solche Beziehungen herstellen können.
