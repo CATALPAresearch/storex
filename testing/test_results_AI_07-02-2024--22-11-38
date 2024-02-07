@@ -1,0 +1,253 @@
+Trainingsprüfung von: 07-02-2024--22-11-38
+
+Modell: mistralai/Mixtral-8x7B-Instruct-v0.1
+Template: "[INST] Du eine durchschnittliche Studentin an einer deutschen Universität.
+        Du wirst in einer mündlichen Prüfungen zu objektorientierter Programmierung abgefragt.
+        Antworte auf die Frage in einem Satz.
+        Die Frage lautet: {question}
+
+        Gib nur deine Antwort zurück:[/INST]
+
+[Exam:]  Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+[AI:]  Das Grundkonzept der objektorientierten Programmierung ist die Gruppierung von Daten und Funktionen zu Objekten, die miteinander interagieren und so die Komplexität des Codes reduzieren.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was sind Closures?
+[AI:]  Closures sind anonyme Funktionen in einer Programmiersprache, die auf ihre umliegende Umgebung zugreifen und diese sogar nach ihrer Ausführung "einfangen" können.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Ah? Was sind Instanzvariablen?
+[AI:]  Instanzvariablen sind in der objektorientierten Programmierung Variablen, die direkt einer Klasseninstanz zugeordnet sind und für jedes Objekt der Klasse separate, unabhängige Werte speichern können.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Achso? Was sind Instanzvariablen?
+[AI:]  Instanzvariablen sind in der objektorientierten Programmierung Variablen, die direkt einer Klasseninstanz zugeordnet sind und für jede Instanz separate, unabhängige Werte speichern können.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hm? Welche zwei Ausdrücke ermöglichen die Programmausführung?
+[AI:]  In objektorientierter Programmierung ermöglichen Instanziierung und Ausführung einer Methode die Programmausführung.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist die Identität von Objekten?
+[AI:]  Die Identität von Objekten in der objektorientierten Programmierung wird durch ihre eindeutige Adresse im Speicher bestimmt.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was ist das Protokoll eines Objekts?
+[AI:]  Das Protokoll eines Objekts, auch Schnittstelle genannt, definiert die Methoden, die ein Objekt bereitstellen muss, ohne eine Implementierung vorzugeben.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Ah? Was sind primitive Methoden?
+[AI:]  Primitive Methoden sind in der objektorientierten Programmierung Methoden, die direkt auf einem Objekt ohne Berücksichtigung des Zustands anderer Objekte wirken.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was sind primitive Methoden?
+[AI:]  Primitive Methoden sind in der objektorientierten Programmierung Methoden, die direkt auf einem Objekt ohne Berücksichtigung des Zustands anderer Objekte wirken.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist dynamisches Binden?
+[AI:]  Dynamisches Binden ist ein Prozess, bei dem ein Objekt seine Methoden oder Eigenschaften erst zur Laufzeit und nicht bereits zur Kompilierzeit bestimmt.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Hmm. Was ist dynamische Binden?
+[AI:]  Dynamische Bindung ist ein Prozess, bei dem die Ausführung eines Objektmethodenaufrufs erst zur Laufzeit bestimmt wird, indem das Objekt auf seine Klasse überprüft und die entsprechende Methode aufgerufen wird.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hm? Was ist Kapselung?
+[AI:]  Kapselung ist ein Konzept der objektorientierten Programmierung, bei dem Daten und die Funktionen, die auf diese Daten zugreifen, in einer Einheit, der so genannten Klasse, zusammengefasst werden, um den Zugriff auf die Daten zu kontrollieren und die Komplexität des Codes zu reduzieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was sind Zwischenobjekte?
+[AI:]  Zwischenobjekte sind temporäre Objekte, die während der Laufzeit eines Programms erstellt werden, um die Kommunikation zwischen Objekten zu erleichtern und die Kopplung zwischen ihnen zu verringern.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+[AI:]  Objektorientierte Programme lassen sich mithilfe der Konzepte Klassen, Objekte, Vererbung, Polymorphismus und Kapselung strukturieren.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Welche Informationen können in einer Metaklasse definiert werden?
+[AI:]  In einer Metaklasse können Informationen über Klassen definiert werden, wie Attribute, Methoden und Vererbungshierarchien.
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Was ist die Aufgabe von Streams in SMALLTALK?
+[AI:]  In Smalltalk, Streams provide a way to read and write data sequentially, either from an input source like a file or keyboard input, or to an output destination like a file or screen display.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was sind Anwendungsklassen?
+[AI:]  Anwendungsklassen sind konkrete Klassen in der objektorientierten Programmierung, die für die Lösung spezifischer Probleme entwickelt werden und meist direkt mit dem Anwendungsfall interagieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist der Prototypenansatz in der objektorientierten Programmierung?
+[AI:]  Der Prototypenansatz in der objektorientierten Programmierung ist eine Art von Objekt-orientiertem Programmierstil, bei dem anstelle von Klassen Prototypen-Objekte verwendet werden, die als Grundlage für die Erstellung neuer Objekte dienen, indem ihre Eigenschaften und Methoden kopiert werden.
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Warum ist die Vererbung in der objektorientierten Programmierung problematisch?
+[AI:]  While inheritance in object-oriented programming allows for code reuse and a clear hierarchy, it can also lead to tight coupling, fragile base class problems, and difficulties in modifying or extending the program due to the rigid class hierarchy.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Ah? Was ist der Unterschied zwischen aktiven und passiven Objekten?
+[AI:]  In object-oriented programming, the difference between active and passive objects lies in their behavior: active objects have control over their own execution and can perform actions independently, while passive objects are controlled and manipulated by active objects, reacting to messages they receive but not actively initiating actions.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Mit welchen drei Ansätzen lassen sich Objekte erzeugen?
+[AI:]  Durch Konstruktoren, Klonierung und Objektinitialisierung mit Fabrikmethoden oder Builder-Patterns können Objekte in objektorientierter Programmierung erzeugt werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Ah? Wofür werden indizierte Instanzvariablen verwendet?
+[AI:]  Indizierte Instanzvariablen werden in objektorientierter Programmierung verwendet, um mehreren Werten denselben Variablennamen zuzuweisen und auf sie zuzugreifen, indem man einen Index verwendet, um den gewünschten Wert auszuwählen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Warum ist es möglich, in SMALLTALK mehrere alternative Konstruktoren für eine Klasse zu definieren?
+[AI:]  In Smalltalk können für eine Klasse mehrere alternative Konstruktoren definiert werden, um verschiedene Initialisierungs-Szenarien zu ermöglichen und die Objekterstellung flexibler zu gestalten.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Gibt es Einschränkungen bei der Spezialisierung von Klassen?
+[AI:]  Ja, es gibt Einschränkungen bei der Spezialisierung von Klassen, da eine spezialisierte Klasse (Unterklasse) nur von einer Basisklasse (Oberklasse) abgeleitet werden kann, die bereits existiert und nicht von einer anderen Unterklasse. Diese Einschränkung wird durch die Liskov-Substitutionsprinzip in der Objektorientierten Programmierung dargestellt.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hmm. Was sind Typen in der objektorientierten Programmierung?
+[AI:]  In der objektorientierten Programmierung sind Typen Klassen oder Schnittstellen, die verwendet werden, um Objekte mit ähnlichen Eigenschaften und Verhaltensweisen zu kategorisieren und voneinander zu unterscheiden.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist eine parametrische Typdefinition?
+[AI:]  Eine parametrische Typdefinition ist eine Möglichkeit, in der objektorientierten Programmierung allgemeine Datentypen zu definieren, die später durch konkrete Datentypen als Parameter spezifiziert werden können.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist die Bedingung für Typkompatibilität bei Zuweisungen in SMALLTALK?
+[AI:]  In Smalltalk ist die Bedingung für Typkompatibilität bei Zuweisungen, dass der Quell- und Zieltyp entweder derselbe ist oder dass der Quelltyp ein Untertyp des Zieltyps ist.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was sind Typannotationen?
+[AI:]  Sure, I'd be happy to help! Here's my answer to the question "Was sind Typannotationen?" in German:
+
+"Typannotationen sind Hinweise in Quellcode, die die Datentypen von Variablen oder Funktionsparametern festlegen, um die Typprüfung zur Kompilierzeit zu ermöglichen."
+
+I hope that helps! Let me know if you have any other questions.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Welche Art von Typfehler kann auftreten, wenn Inklusionspolymorphie verwendet wird?
+[AI:]  Ein typisches Beispiel für einen Typfehler bei der Verwendung von Inklusionspolymorphie ist das Aufrufen einer Methode auf einem Objekt mit einem kompatiblen, aber dennoch falschen Datentyp, was zu unerwartetem Verhalten führen kann.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was ist Zuweisungskompatibilität unter Typerweiterung?
+[AI:]  Sure, I'd be happy to help! In the context of type extension in object-oriented programming, assignment compatibility refers to the ability to assign an object of a derived class to a variable of its base class, as the derived class contains all the properties and methods of the base class plus potentially additional ones.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was sind Funktionsaufrufe?
+[AI:]  Funktionsaufrufe sind Befehle in der objektorientierten Programmierung, die eine Funktion oder Methode in einem Programm aufrufen und dessen Ablauf steuern.
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Was ist eine Schnittstelle in Bezug auf eine Klasse?
+[AI:]  Eine Schnittstelle in Bezug auf eine Klasse in der objektorientierten Programmierung ist in Java ein vollständig abstraktes Konstrukt, das nur aus Abstrakten Methoden und Konstanten besteht und von Klassen implementiert werden kann, um ein standardisiertes Verhalten zu garantieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was bedeutet es, wenn ein Typ reflexiv ist?
+[AI:]  Ein Typ ist reflexiv, wenn er ein Objekt seiner eigenen Klasse erstellen und manipulieren kann.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was ist eine Sicherheitslücke in der statischen Typprüfung, die durch die Inklusionspolymorphie entsteht?
+[AI:]  Ein Beispiel für eine Sicherheitslücke in der statischen Typprüfung, die durch die Inklusionspolymorphie entstehen kann, ist das "Null-Pointer-Exception"-Problem, bei dem ein Objekt vor der Überprüfung auf NULL-Werte aufgerufen wird.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Hm? Was sind die Besonderheiten anderer Programmiermodelle?
+[AI:]  Andere Programmiermodelle, wie z.B. das prozedurale oder funktionale Modell, unterscheiden sich von der objektorientierten Programmierung durch ihre anderen Denkweisen und Strukturen, wie beispielsweise die Trennung von Daten und Funktionen oder die Verwendung von Funktionen als erste-Klasse-Bürger.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Welche Arten von Werttypen gibt es in C-Sharp?
+[AI:]  In C# gibt es drei Arten von Werttypen: Ganzzahligen, Gleitkommawert und boolescher Wert.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist der qualifizierte Export in der Moduldefinition von Java?
+[AI:]  Der qualifizierte Export in der Moduldefinition von Java ist eine Möglichkeit, bestimmte Pakete und Klassen für den Zugriff von außerhalb des Moduls zu erlauben, indem man den vollqualifizierten Namen des Pakets oder der Klasse angibt.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was ist eine Typhierarchie in C-Sharp?
+[AI:]  In C#, a type hierarchy refers to the arrangement of classes and interfaces that are related to each other through inheritance and implementation, forming a hierarchical structure where a subclass can inherit properties and methods from a superclass, and an interface can be implemented by multiple classes.
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Was ist die Funktion von Default-Methoden in Java?
+[AI:]  Default-Methoden in Java ermöglichen es, neue Funktionalität zu einer bestehenden Schnittstelle hinzuzufügen, ohne die Implementierungen der Schnittstelle zu brechen.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hm? Was bedeutet es, eine Methode in Java zu redefinieren?
+[AI:]  In Java, to redefine a method means to override it in a subclass by creating a method with the same name, return type, and parameter list as the method in the superclass.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Wie kann eine Subklasse eine Methode in Java neu definieren?
+[AI:]  In Java, a subclass can redefine a method using the "override" keyword (keyword is "override" or "overrides" in newer versions of Java) before the method name in the subclass implementation.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was sind die konkreten Auswirkungen der Zugriffsbeschränkungen in Java?
+[AI:]  Zugriffsbeschränkungen in Java verhindern unbefugten Zugriff auf Klassenelemente, gewährleisten so Datenkapselung und erhöhen die Sicherheit und Qualität des Codes.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was ist ein Klient einer Instanz?
+[AI:]  A client of an object instance is a piece of code that interacts with the object by using its methods and properties.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was sind generische Typen in Java?
+[AI:]  Generische Typen in Java sind ein Feature, das es ermöglicht, Klassen und Methoden mit parametrisierten Typen zu definieren, wodurch Typsicherheit zur Compile-Zeit gewährleistet wird und der Code wiederverwendbarer wird.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was sind Attribute in C-Sharp?
+[AI:]  In C#, attributes are used to provide additional metadata about classes, methods, and other program elements.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] Question: REPEAT
+[Exam:] Ah? Was sind Attribute in C-Sharp und wie unterscheiden sie sich von Annotationen in Java?
+[AI:]  In C#, attributes are declared using the "attribute" keyword and provide additional metadata to classes, methods, and other program elements, whereas annotations in Java are similar to attributes but are used to provide additional information to the compiler and runtime environment, and are typically used for aspects such as data validation and serialization.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Achso? Was sind Probleme der objektorientierten Programmierung?
+[AI:]  Objektorientierte Programmierung kann zu engen Couplings und hoher Komplexität führen, was Wartung und Erweiterung des Codes erschweren kann.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist ein mögliches Problem, wenn man Bag als Subtyp von Set annimmt?
+[AI:]  Ein mögliches Problem, wenn man Bag als Subtyp von Set annimmt, ist, dass ein Bag mehrere Instanzen eines Elements enthalten kann, während ein Set nur ein einziges Vorkommen eines Elements zulässt.
+[Exam:] [Eval:] Result: CORRECT
+[Exam:] [Eval:] Question: PREDEFINE
+[Exam:] Ok. Was sind Coding Conventions?
+[AI:]  Coding Conventions sind Richtlinien und Vereinbarungen zur Formatierung und Strukturierung von Quellcode, um die Lesbarkeit und Wartbarkeit zu verbessern.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Welche Probleme ergeben sich bei der Verwendung dynamisch gebundener Unterprogrammaufrufe in der objektorientierten Programmierung?
+[AI:]  Bei der Verwendung dynamisch gebundener Unterprogrammaufrufe in der objektorientierten Programmierung können Probleme wie erhöhter Speicher- und Rechenaufwand, verringerte Ausführungsgeschwindigkeit und die Gefahr von ungewollten Methodenaufrufen auftreten.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist das Lokalitätsprinzip in Programmen?
+[AI:]  Das Lokalitätsprinzip in Programmen besagt, dass häufig verwendete Daten und Funktionen an einem Ort zusammengefasst werden sollten, um die Zugriffszeit und -effizienz zu optimieren.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Hmm. Was sind Invarianten?
+[AI:]  Invarianten in der objektorientierten Programmierung sind Eigenschaften oder Bedingungen, die für einen Objektzustand immer wahr sein müssen und bei jeder Änderung des Zustands überprüft werden.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Welche Probleme kann die Vererbung von Implementierung verursachen?
+[AI:]  Die Vererbung von Implementierung kann zu engen Kopplungen zwischen Klassen führen, was die Wartbarkeit und Erweiterbarkeit des Codes erschweren kann.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Welche Herausforderungen ergeben sich aus dem Fragile-Base-Class-Problem in verteilten Objektsystemen?
+[AI:]  The Fragile Base Class Problem in distributed object systems can lead to issues with maintaining the integrity and consistency of inherited classes, as modifications to the superclass can unintentionally affect the behavior of subclasses and cause unexpected errors.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was ist das Problem der schlechten Tracebarkeit?
+[AI:]  Die schlechte Tracebarkeit ist ein Problem in der objektorientierten Programmierung, da komplexe Abhängigkeiten und Vererbungshierarchien zwischen Objekten und Klassen die Fehlersuche und Verständlichkeit des Codes erschweren können.
+[Exam:] [Eval:] Result: OFF_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Achso? Was ist das Liskov-Substitutionsprinzip?
+[AI:]  Das Liskov-Substitutionsprinzip besagt, dass eine Unterklasse ohne Probleme durch ihre Oberklasse ersetzt werden kann, ohne dass sich die Richtigkeit des Programms ändert.
+[Exam:] [Eval:] Result: MISSING_TOPIC
+[Exam:] [Eval:] Question: SELECTED
+[Exam:] Was ist Behavior Subtyping?
+[AI:]  Behavior Subtyping beschreibt eine Beziehung zwischen Klassen oder Schnittstellen, bei der eine Unterklasse die Methoden ihrer Oberklasse implementiert und möglicherweise erweitert, wobei sie sicherstellt, dass die Semantik der Oberklasse erhalten bleibt.
+[Exam:] [Eval:] Result: CONTRADICTS
+[Exam:] [Eval:] der*die Student*in hat kaum inhaltliche Fehler gemacht.
+der*die Student*in hat viele irrelevante Antworten gegeben.
+der*die Student*in hat permanent unvollständige oder oberflächliche Antworten gegeben.
+der*die Student*in benötigt kaum Hilfestellungen.
+der*die Student*in hat nie unpräzise Antworten gegeben.
+der*die Student*in hat ein hohes Leistungslevel erreicht.
+der*die Student*in war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+der*die Student*in war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+[Exam:] Luna, herzlichen Glückwunsch zu deiner mündlichen Prüfung! Du hast kaum inhaltliche Fehler gemacht und hast nur selten Hilfestellungen benötigt, was deine gute Vorbereitung zeigt. Allerdings ist mir aufgefallen, dass du oft irrelevante Antworten gegeben hast und dauerhaft unvollständige oder oberflächliche Ausführungen geliefert wurden. Dein Leistungsniveau ist insgesamt hoch, insbesondere in dem Thema 'Systematik der objektorientierten Programmierung'. Bei 'Typen in der objektorientierten Programmierung' solltest du jedoch noch etwas nacharbeiten, um deine Kenntnisse in diesem Bereich zu verbessern.
+[Exam:]  "Vielen Dank für Ihre Zeit und Ihre Antworten, Luna, ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen!"
