@@ -21,13 +21,26 @@ KE_questions = [KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_
 
 
 def sort_in_ke(question_answer, ke_index):
-    if (question_answer['question'].startswith(("Was ist", "Was sind", "Welche"))
-            and not re.search("(Vorteil|Nachteil|Unterschied)", question_answer['question'])):
+    if (question_answer['question'].startswith(("Was ist", "Was sind", "Was bedeutet", "Welche"))
+            and not re.search("(Vorteil|Nachteil|Unterschied|Zweck|Grund|Beispiel)", question_answer['question'])):
         KE_questions[ke_index][0].append(question_answer)
-    elif question_answer['question'].startswith(("Wie", "Wann")):
+    elif (question_answer['question'].startswith(("Wie", "Wann", "Warum")) or
+          re.search("(Zweck|Grund|Beispiel)", question_answer['question'])):
         KE_questions[ke_index][1].append(question_answer)
-    else:  # ("Was unterscheidet", "Warum")
+    else:  # Vorteil|Nachteil|Unterschied
         KE_questions[ke_index][2].append(question_answer)
+
+
+def delete_doubles(question_answer, ke_index):
+    questions = []
+    count = 0
+    for i, qa in enumerate(question_answer[ke_index]):
+        if qa['question'] not in questions:
+            questions.append(qa['question'])
+        else:
+            question_answer[ke_index].pop(i)
+            count += 1
+    print(f"Removed: {count}")
 
 
 # Get text from txt files
@@ -68,6 +81,7 @@ for file in glob.glob(INPUT_PATH + '/*.txt'):
             else:
                 ke = 4  # KE 6 until 61, then KE 7
             sort_in_ke(question_dict, ke)
+            delete_doubles(question_dict, ke)
 
 with open(OUTPUT_FILE, 'a') as py_file:
     for ke in range(len(KE_questions)):
