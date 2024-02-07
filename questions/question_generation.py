@@ -17,6 +17,7 @@ os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 def get_query(context):
     query = f"""Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
+    Schreibe die Musterantwort in 1 Satz.
     Nutze nur Informationen aus folgendem Text:
     {context}
 
@@ -55,7 +56,6 @@ class QuestionGenerator:
         # Generate a question and answer from the context
         question_query = get_query(context)
         question_answer = self.question_generator.get_text(question_query)
-        logger.debug(f"Question and answer: {question_answer}")
 
         # Find the question and the answer in the model output
         question_line = question_answer.split('\n', 1)[0]
@@ -64,6 +64,8 @@ class QuestionGenerator:
         answer = answer_lines.split(': ')[1].strip()
 
         question_dict = {'question': question, 'answer': answer}
+        logger.debug(f"""Question: {question_dict['question']}
+                     Answer: {question_dict['answer']}""")
         return question_dict
 
     def get_context(self, query, k):
