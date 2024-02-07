@@ -48,7 +48,7 @@ Frage: Was ist der Unterschied zwischen Vererbung und Generalisierung?
 Antwort: Vererbung und Generalisierung sind zwei verschiedene Konzepte. Wenn man denkt, man hätte mit der Vererbung auch eine Generalisierungsbeziehung geschaffen, ist man auf dem Holzweg. Ein Beispiel: Die Menge der Quadrate enthält nicht die Menge der Rechtecke, was eine charakteristische Begleiterscheinung der Generalisierung gewesen wäre. Der Unterschied liegt in der Intension und Extension: Die Intension von Rechteck ist umfangreicher als die von Quadrat, da sie eine Instanzvariable mehr enthält. Die Intension von Quadrat ist aber trotzdem restriktiver als die von Rechteck, da sie eine zusätzliche Bedingung enthält.
 
 
-Das Problem mit der Vererbung ist nun, dass sie auf die oberflächliche Wiederverwendung von Elementen einer Klassendefinition ausgerichtet ist. Sie lässt dabei insbesondere den Zusammenhang der Extensionen der beteiligten Klassen, der für Generalisierung/Spezialisierung wesentlich ist, außer Acht. Diese Ignoranz hat jedoch weitreichende Konsequenzen, die wir in Kapitel 26 von Kurseinheit 3 noch kennenlernen werden.
+Das Problem mit der Vererbung ist nun, dass sie auf die oberflächliche Wiederverwendung von Elementen einer Klassendefinition ausgerichtet ist. Sie lässt dabei insbesondere den Zusammenhang der Extensionen der beteiligten Klassen, der für Generalisierung/Spezialisierung wesentlich ist, außer Acht. Diese Ignoranz hat jedoch weitreichende Konsequenzen.
 
 
 Frage: Was ist das Problem mit der Vererbung?

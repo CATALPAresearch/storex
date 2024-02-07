@@ -81,7 +81,7 @@ Frage: Was bedeutet Typäquivalenz?
 Antwort: Typäquivalenz ist ein Begriff in der Typentheorie, der angibt, dass zwei Typen gleichwertig sind. Es gibt zwei Formen von Typäquivalenz: nominale und strukturelle. Nominale Typäquivalenz bedeutet, dass zwei Typen den gleichen Namen haben, während strukturelle Typäquivalenz bedeutet, dass zwei Typen die gleiche Struktur haben, unabhängig von ihrem Namen. Typäquivalenz impliziert Typkonformität, d.h. zwei äquivalente Typen sind auch immer konform.
 
 
-Genau wie bei der Typäquivalenz hat die nominale Typkonformität zusätzlich zur Gewährleistung der Zuweisungskompatibilität und somit der Abwesenheit von Typfehlern (die ja auch bei einer strukturellen Typkonformität schon gegeben wäre) eine Filterfunktion: Es sind nur Objekte von solchen Typen Variablen zuweisbar, für die die Programmiererin aufgrund semantischer (inhaltlicher) Überlegungen ausdrücklich so vorgesehen hat. Auf diese Filterfunktion werden wir später im Zusammenhang mit sogenannten Tagging oder Marker Interfaces (in Kurseinheit 4, Kapitel 45) noch zurückkommen.
+Genau wie bei der Typäquivalenz hat die nominale Typkonformität zusätzlich zur Gewährleistung der Zuweisungskompatibilität und somit der Abwesenheit von Typfehlern (die ja auch bei einer strukturellen Typkonformität schon gegeben wäre) eine Filterfunktion: Es sind nur Objekte von solchen Typen Variablen zuweisbar, für die die Programmiererin aufgrund semantischer (inhaltlicher) Überlegungen ausdrücklich so vorgesehen hat. Auf diese Filterfunktion werden wir später im Zusammenhang mit sogenanntem Tagging oder Marker Interfaces noch zurückkommen.
 
 
 Frage: Was ist die Filterfunktion der nominalen Typkonformität?

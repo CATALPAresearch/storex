@@ -1,6 +1,6 @@
 36 Klassen
 
-Java ist (wie SMALLTALK und alle in der nächsten Kurseinheit behandelten Sprachen) klassenbasiert und nicht prototypenbasiert. Das bedeutet, dass man programmieren kann, indem man Klassendefinitionen angibt. Wie bereits in Kapitel 34 erwähnt, gibt es in Java keine Anweisungen außerhalb von Klassen (abgesehen von Import-Anweisungen).
+Java ist (wie SMALLTALK und alle in der nächsten Kurseinheit behandelten Sprachen) klassenbasiert und nicht prototypenbasiert. Das bedeutet, dass man programmieren kann, indem man Klassendefinitionen angibt. Wie bereits erwähnt, gibt es in Java keine Anweisungen außerhalb von Klassen (abgesehen von Import-Anweisungen).
 
 
 Frage: Was bedeutet es, dass Java klassenbasiert und nicht prototypenbasiert ist?

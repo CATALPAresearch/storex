@@ -20,7 +20,7 @@ Frage: Warum werden Metatypen in der Praxis nicht genutzt?
 Antwort: Metatypen werden in der Praxis nicht genutzt, da sie eine zusätzliche Komplexität in die Sprache einführen und die Sprache unnötig erschweren würden. Zudem gibt es andere Möglichkeiten, um Typbeschränkungen zu erreichen, wie zum Beispiel die Verwendung von generischen Typen oder die Verwendung von Interfaces.
 
 
-Stattdessen verwendet man eine Art der Beschränkung des Wertebereichs von Typvariablen, die auf Subtyping beruht. Wenn man nämlich erzwingen kann, dass ein tatsächlicher Typparameter (also der Wert der Typvariable) ein Subtyp eines bestimmten Typs ist, der die benötigten Eigenschaften (Methoden) umfasst, dann ist damit alles erreicht, was man benötigt. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps (siehe Kapitel 26).
+Stattdessen verwendet man eine Art der Beschränkung des Wertebereichs von Typvariablen, die auf Subtyping beruht. Wenn man nämlich erzwingen kann, dass ein tatsächlicher Typparameter (also der Wert der Typvariable) ein Subtyp eines bestimmten Typs ist, der die benötigten Eigenschaften (Methoden) umfasst, dann ist damit alles erreicht, was man benötigt. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps.
 
 
 Frage: Was ist Subtyping?

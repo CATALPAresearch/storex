@@ -27,7 +27,7 @@ Frage: Was sind Typ-Wildcards in Java?
 Antwort: Typ-Wildcards, auch als Typ-Joker oder Platzhalter bezeichnet, sind ein Konzept in Java, das eingeführt wurde, um das Problem der Instanziierung eines generischen Typs mit einem beliebigen Typ zu lösen. Sie können bei der Instanziierung eines generischen Typs den Platz des tatsächlichen Typparameters einnehmen und zunächst für einen beliebigen Typ stehen. Das Symbol für eine Typ-Wildcard ist das Fragezeichen: "List<?>" ist also ein Typ, mit dem Variablen (einschließlich formaler Parameter) deklariert werden können. Per Definition ist dieser Typ "List<?>" ein Supertyp aller Instanziierungen von "List<T>" - beispielsweise sind "List<Integer>" und "List<String>" mit "List<?>" zuweisungskompatibel.
 
 
-Wildcards sind jedoch keine Typvariablen und können nicht ersetzt werden. Sie werden bei der Verwendung an der Stelle definiert, an der sie benötigt werden. Dies nennt man Use-site-Variance im Gegensatz zur Declaration-site-Variance, wie sie beispielsweise in C-Sharp existiert (siehe Abschnitt 50.4.3 in Kurseinheit 5).
+Wildcards sind jedoch keine Typvariablen und können nicht ersetzt werden. Sie werden bei der Verwendung an der Stelle definiert, an der sie benötigt werden. Dies nennt man Use-site-Variance im Gegensatz zur Declaration-site-Variance, wie sie beispielsweise in C-Sharp existiert.
 
 
 Frage: Was ist der Unterschied zwischen Use-site-Variance und Declaration-site-Variance?
@@ -44,7 +44,7 @@ Frage: Was sind Wildcard-Typen in Java?
 Antwort: Wildcard-Typen wie "List<?>" und "ArrayList<?>" sind abstrakt und haben keine direkten Instanzen. Das Fragezeichen selbst ist kein Typ oder eine Typvariable.
 
 
-Per extends beschränkte Typ-Wildcards erlauben also eine spezielle Art des Subtypings, bei der Zuweisungen von Objekten eines Subtyps an Variablen eines Supertyps erlaubt sind, aber in der Folge schreibende Zugriffe auf Variablen, die mit dem Typparameter als Typ deklariert sind, verboten sind (lesende Zugriffe sind hingegen erlaubt). Diese Situation unterscheidet sich von der bei Arrays (Kapitel 41) lediglich dadurch, dass die Typprüfung statisch, also bereits zur Übersetzungszeit, durchgeführt wird. Dies stellt sicher, dass es niemals zu einem Laufzeitfehler, wie der Array Store Exception, kommt. Ein entsprechender dynamischer Typtest kann somit entfallen.
+Per extends beschränkte Typ-Wildcards erlauben also eine spezielle Art des Subtypings, bei der Zuweisungen von Objekten eines Subtyps an Variablen eines Supertyps erlaubt sind, aber in der Folge schreibende Zugriffe auf Variablen, die mit dem Typparameter als Typ deklariert sind, verboten sind (lesende Zugriffe sind hingegen erlaubt). Diese Situation unterscheidet sich von der bei Arrays lediglich dadurch, dass die Typprüfung statisch, also bereits zur Übersetzungszeit, durchgeführt wird. Dies stellt sicher, dass es niemals zu einem Laufzeitfehler, wie der Array Store Exception, kommt. Ein entsprechender dynamischer Typtest kann somit entfallen.
 
 
 Frage: Was sind per extends beschränkte Typ-Wildcards?

@@ -1,6 +1,6 @@
 36.2 Subklassenbeziehung
 
-In Java, wie auch in SMALLTALK, ist vorgesehen, dass alle Klassen außer Object von bereits existierenden Klassen ableiten können. Java verwendet dazu das Schlüsselwort "extends." Dadurch wird das Bestehen einer Subklassenbeziehung zwischen B und A deklariert. Die Verwendung von "extends" legt nahe, dass es sich dabei um eine Typerweiterung handelt, aus der (gemäß Kapitel 23) Zuweisungskompatibilität folgt, was tatsächlich der Fall ist.
+In Java, wie auch in SMALLTALK, ist vorgesehen, dass alle Klassen außer Object von bereits existierenden Klassen ableiten können. Java verwendet dazu das Schlüsselwort "extends." Dadurch wird das Bestehen einer Subklassenbeziehung zwischen B und A deklariert. Die Verwendung von "extends" legt nahe, dass es sich dabei um eine Typerweiterung handelt, aus der Zuweisungskompatibilität folgt, was tatsächlich der Fall ist.
 
 
 Frage: Was bedeutet es, wenn eine Java-Klasse von einer anderen Klasse ableitet?
@@ -40,7 +40,7 @@ Frage: Was bedeutet es, wenn eine Klasse als abstrakt markiert wird?
 Antwort: Wenn eine Klasse als abstrakt markiert wird, dürfen keine Instanzen mehr von dieser Klasse gebildet werden. Dieses Verbot gilt unabhängig davon, ob von der Klasse Instanzen erstellt werden könnten. Selbst wenn alles, was für das Funktionieren der Instanzen benötigt wird, in der Klasse vorhanden ist, darf sie nicht instanziiert werden.
 
 
-Man gibt dann hinter der Methodensignatur (also dem Namen und den Parametern) keine Implementierung (in geschweiften Klammern) an, sondern lediglich ein abschließendes Semikolon. Im Gegensatz dazu muss in SMALLTALK eine abstrakte Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet werden (s. Abschnitt 10.3 in Kurseinheit 2).
+Man gibt dann hinter der Methodensignatur (also dem Namen und den Parametern) keine Implementierung (in geschweiften Klammern) an, sondern lediglich ein abschließendes Semikolon. Im Gegensatz dazu muss in SMALLTALK eine abstrakte Methode durch einen Aufruf von "implementedBySubclass" o. ä. gekennzeichnet werden.
 
 
 Frage: Wie wird eine abstrakte Methode in SMALLTALK gekennzeichnet?
@@ -60,7 +60,7 @@ Frage: Was passiert, wenn man in Java eine abstrakte Klasse ableitet und die abs
 Antwort: Wenn man in Java eine abstrakte Klasse ableitet und die abstrakten Methoden nicht implementiert, erhält man vom Compiler eine entsprechende Aufforderung.
 
 
-Komplementär zur "abstract"-Deklaration gibt es in Java auch die Möglichkeit, zu verhindern, dass von einer Klasse abgeleitet wird. Man verwendet dafür einfach das Schlüsselwort "final." Das Gleiche gilt für einzelne Methoden, deren Überschreiben in einer Subklasse durch eine "final"-Deklaration verhindert werden kann. Eine einfache, goldene Regel der objektorientierten Programmierung besagt übrigens, dass man alle Klassen entweder als abstrakt oder als final deklarieren sollte. Dies fördert das Prinzip der abstrakten Generalisierung und vermeidet die Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien (Kapitel 9 in Kurseinheit 2 und 69 in Kurseinheit 6).
+Komplementär zur "abstract"-Deklaration gibt es in Java auch die Möglichkeit, zu verhindern, dass von einer Klasse abgeleitet wird. Man verwendet dafür einfach das Schlüsselwort "final." Das Gleiche gilt für einzelne Methoden, deren Überschreiben in einer Subklasse durch eine "final"-Deklaration verhindert werden kann. Eine einfache, goldene Regel der objektorientierten Programmierung besagt übrigens, dass man alle Klassen entweder als abstrakt oder als final deklarieren sollte. Dies fördert das Prinzip der abstrakten Generalisierung und vermeidet die Probleme von ausschließlich vererbungsgetriebenen Klassenhierarchien.
 
 
 Frage: Was bedeutet es, wenn eine Klasse in Java als "final" deklariert wird?

@@ -1,6 +1,6 @@
 47.2 Exception Handling
 
-Wie Sie bereits in den Anweisungen in Kapitel 38 gesehen haben, bietet Java ein sogenanntes Exception Handling. Beim Exception Handling handelt es sich um eine Möglichkeit, bei der Spezifikation des Kontrollflusses eines Programms zunächst mögliche Ausnahmesituationen und deren Behandlung unberücksichtigt zu lassen und so zu tun, als würde immer alles gutgehen. Da dies normalerweise der Fall sein sollte, erlaubt es sowohl der Autorin als auch dem Leser eines Programms, sich auf die Hauptfunktion zu konzentrieren, mit dem Motto "Zu den Ausnahmen kommen wir später!"
+Wie Sie bereits in den Anweisungen gesehen haben, bietet Java ein sogenanntes Exception Handling. Beim Exception Handling handelt es sich um eine Möglichkeit, bei der Spezifikation des Kontrollflusses eines Programms zunächst mögliche Ausnahmesituationen und deren Behandlung unberücksichtigt zu lassen und so zu tun, als würde immer alles gutgehen. Da dies normalerweise der Fall sein sollte, erlaubt es sowohl der Autorin als auch dem Leser eines Programms, sich auf die Hauptfunktion zu konzentrieren, mit dem Motto "Zu den Ausnahmen kommen wir später!"
 
 
 Frage: Was ist Exception Handling in Java?

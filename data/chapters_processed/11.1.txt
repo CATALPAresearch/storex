@@ -52,7 +52,7 @@ Frage: Was muss bei der Definition einer Subklasse in SMALLTALK beachtet werden?
 Antwort: In SMALLTALK müssen bei der Definition einer Subklasse neue, benannte Instanz- und Klassenvariablen andere Namen als Variablen in Superklassen haben und indizierte Instanzvariablen müssen vorhanden sein, wenn die Superklasse solche hat. Methodendefinitionen mit derselben Signatur überschreiben einfach die geerbten Methoden.
 
 
-Da die Subklassenbeziehung auch in SMALLTALK nicht reflexiv ist, muss es mindestens eine Klasse geben, die keine Subklasse ist (und entsprechend keine Superklasse hat). Dies ist die Klasse "Object", die oberste aller Superklassen. In ihr sind die Definitionen angelegt, die den Instanzen aller Klassen zugutekommen sollen (z. B. die Methode "printString"). Diese Methoden werden per Vererbung auf alle anderen Klassen übertragen, wodurch sie deren Instanzen zur Verfügung stehen. Eine ganze Reihe nützlicher Methoden, die in "Object" definiert sind, werden wir in Kapitel 14 kennenlernen.
+Da die Subklassenbeziehung auch in SMALLTALK nicht reflexiv ist, muss es mindestens eine Klasse geben, die keine Subklasse ist (und entsprechend keine Superklasse hat). Dies ist die Klasse "Object", die oberste aller Superklassen. In ihr sind die Definitionen angelegt, die den Instanzen aller Klassen zugutekommen sollen (z. B. die Methode "printString"). Diese Methoden werden per Vererbung auf alle anderen Klassen übertragen, wodurch sie deren Instanzen zur Verfügung stehen.
 
 
 Frage: Was ist die Klasse "Object" in SMALLTALK?

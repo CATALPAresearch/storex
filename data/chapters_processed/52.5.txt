@@ -13,7 +13,7 @@ Frage: Was unterscheidet EIFFEL von SMALLTALK und C-Sharp in Bezug auf das Typsy
 Antwort: EIFFEL hat ein einheitliches Typsystem, das keine separate Unterscheidung zwischen Referenz- und Werttypen macht, im Gegensatz zu C-Sharp. Im Gegensatz zu SMALLTALK, das sich auf Referenztypen festgelegt hat, unterstützt EIFFEL auch Werttypen.
 
 
-Zu den prominentesten Eigenschaften des Typsystems von EIFFEL zählen: Mehrfachvererbung. Generizität (genauer: beschränkter parametrischer Polymorphismus; siehe Abschnitt 29.4 in Kurseinheit 3). Das Unterdrücken von Instanzvariablen und Methoden in Subklassen (Löschen von Methoden; siehe dazu auch Abschnitt 11.3 in Kurseinheit 1). Kovariante Redefinition, unterstützt durch sog. "verankerte Typen" (engl. "anchored types"; so gut wie ein Alleinstellungsmerkmal von EIFFEL).
+Zu den prominentesten Eigenschaften des Typsystems von EIFFEL zählen: Mehrfachvererbung. Generizität (genauer: beschränkter parametrischer Polymorphismus). Das Unterdrücken von Instanzvariablen und Methoden in Subklassen (Löschen von Methoden). Kovariante Redefinition, unterstützt durch sog. "verankerte Typen" (engl. "anchored types"; so gut wie ein Alleinstellungsmerkmal von EIFFEL).
 
 
 Frage: Was sind die prominentesten Eigenschaften des Typsystems von EIFFEL?
@@ -23,7 +23,7 @@ Frage: Was ist Mehrfachvererbung in EIFFEL?
 Antwort: Mehrfachvererbung in EIFFEL ist eine Eigenschaft des Typsystems, die es ermöglicht, dass eine Klasse von mehreren übergeordneten Klassen erben kann. Das bedeutet, dass eine Klasse Merkmale und Eigenschaften von mehreren Elternklassen erben kann, was die Wiederverwendung von Code und die Flexibilität bei der Gestaltung von Klassenhierarchien erhöht.
 
 
-In gewisser Weise kann man das Unterdrücken von Methoden eines Typs in seinen Subtypen in EIFFEL als einen Spezialfall der kovarianten Redefinition ansehen, nämlich einen, in dem die Menge der möglichen Parameterobjekte auf die leere Menge eingeschränkt wird, so dass es keinen gültigen Aufruf gibt (vgl. Kapitel in Kurseinheit 3). Auch sind die Probleme, die kovariante Redefinition und Unterdrückung verursachen, ähnlich. Deshalb beschränken wir uns bei der Motivation (der Erklärung, warum EIFFEL über diese Eigenschaften verfügt), auf ein Beispiel für kovariante Redefinition.
+In gewisser Weise kann man das Unterdrücken von Methoden eines Typs in seinen Subtypen in EIFFEL als einen Spezialfall der kovarianten Redefinition ansehen, nämlich einen, in dem die Menge der möglichen Parameterobjekte auf die leere Menge eingeschränkt wird, sodass es keinen gültigen Aufruf gibt. Auch sind die Probleme, die kovariante Redefinition und Unterdrückung verursachen, ähnlich. Deshalb beschränken wir uns bei der Motivation (der Erklärung, warum EIFFEL über diese Eigenschaften verfügt), auf ein Beispiel für kovariante Redefinition.
 
 
 Frage: Was ist kovariante Redefinition in EIFFEL?

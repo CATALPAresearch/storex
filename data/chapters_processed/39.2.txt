@@ -27,7 +27,7 @@ Frage: Warum sind zirkuläre Abhängigkeiten in Java-Modulen verboten?
 Antwort: Zirkuläre Abhängigkeiten sind in Java-Modulen verboten, um eine enge Kopplung zwischen Modulen zu vermeiden und eine sorgfältige Planung der Modularisierung zu erzwingen.
 
 
-Vererbungsabhängigkeiten zwischen Klassen, die in Java durch die Verwendung des Zugriffsmodifikators protected und der Annotation @Override zumindest angedeutet werden (mehr dazu in Kurseinheit 6, Kapitel 55), sind naturgemäß nicht zirkulär. Bei der Ausdehnung der Abhängigkeit von Klassen auf Pakete können jedoch auch zirkuläre Abhängigkeiten entstehen.
+Vererbungsabhängigkeiten zwischen Klassen, die in Java durch die Verwendung des Zugriffsmodifikators protected und der Annotation @Override zumindest angedeutet werden, sind naturgemäß nicht zirkulär. Bei der Ausdehnung der Abhängigkeit von Klassen auf Pakete können jedoch auch zirkuläre Abhängigkeiten entstehen.
 
 
 Frage: Was sind zirkuläre Abhängigkeiten zwischen Paketen?

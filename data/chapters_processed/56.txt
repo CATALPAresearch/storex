@@ -84,7 +84,7 @@ Frage: Warum ist es wichtig, jede Teilfunktion der Klasse zuzuordnen, deren Date
 Antwort: Es ist wichtig, jede Teilfunktion der Klasse zuzuordnen, deren Daten sie manipuliert, um das Vermeiden von doppeltem Code sowie die stufenweise Verfeinerung zu gewährleisten und die Implementierung größerer Funktionen in kleinere Unterprogramme aufzuteilen. Diese Disziplin hilft, den Überblick über das Programm zu behalten, auch wenn die Unterprogrammaufrufe in so kurzer Folge erfolgen, dass man schnell den Kontextwechsel verlieren kann.
 
 
-Nun ergibt sich aber mit der Einführung von dynamisch gebundenen Unterprogrammaufrufen, wie sie ja für die objektorientierte Programmierung prägend sind, das Problem, dass aus dem Programmtext nicht unmittelbar ersichtlich ist, wohin der Sprung geht: Wie bereits in Kurseinheit 1, Abschnitt 4.3.2 bemerkt, verbindet das dynamische Binden den Unterprogrammaufruf mit der Verzweigung.
+Nun ergibt sich aber mit der Einführung von dynamisch gebundenen Unterprogrammaufrufen, wie sie ja für die objektorientierte Programmierung prägend sind, das Problem, dass aus dem Programmtext nicht unmittelbar ersichtlich ist, wohin der Sprung geht: Wie bereits bemerkt, verbindet das dynamische Binden den Unterprogrammaufruf mit der Verzweigung.
 
 
 Frage: Was ist das Problem mit dynamisch gebundenen Unterprogrammaufrufen in der objektorientierten Programmierung?

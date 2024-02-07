@@ -10,7 +10,7 @@ Frage: Wozu werden rekursive Typen verwendet?
 Antwort: Rekursive Typen werden verwendet, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu definieren. Sie sind ein wichtiges Instrument der Programmierung, bringen aber auch Probleme mit sich, wie zum Beispiel die Schwierigkeit, die strukturelle Äquivalenz zweier rekursiver Typen festzustellen.
 
 
-Ein weiteres Problem ergibt sich, wenn man in einer parametrischen Typdefinition den Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel halten möchte, dieser Typ jedoch der definierte Typ ist (eine binäre Methode; siehe Fußnote 21 in Kapitel 4.3). So möchte man beispielsweise den Test auf Gleichheit so definieren, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
+Ein weiteres Problem ergibt sich, wenn man in einer parametrischen Typdefinition den Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel halten möchte, dieser Typ jedoch der definierte Typ ist. So möchte man beispielsweise den Test auf Gleichheit so definieren, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.
 
 
 Frage: Was ist das Problem bei der Variabilität des Typs eines Methodenarguments in einer parametrischen Typdefinition?

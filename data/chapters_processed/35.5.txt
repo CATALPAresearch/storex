@@ -1,6 +1,6 @@
 35.5 Zuweisungskompatibilität
 
-In Java ist die Typkonformität und damit die Zuweisungskompatibilität unter Referenztypen an Subtyping gebunden. Damit Ausdrücke von einem Typ Variablen eines anderen zugeordnet werden können, müssen die Typen entweder identisch sein oder es muss eine Subtypbeziehung zwischen den beiden bestehen. In den meisten Fällen muss die Subtypbeziehung explizit deklariert werden; Java setzt also auf nominale Typkonformität. Dies hat den Vorteil der Filterfunktion, wie in Abschnitt 22.2 von Kurseinheit 3 beschrieben, aber auch den Nachteil, dass Subtypen ihre Supertypen namentlich kennen müssen. Dies kann insbesondere bei verteilten Anwendungen problematisch sein, deren Teile nicht von vornherein für einander entworfen wurden (zum Beispiel Web Services).
+In Java ist die Typkonformität und damit die Zuweisungskompatibilität unter Referenztypen an Subtyping gebunden. Damit Ausdrücke von einem Typ Variablen eines anderen zugeordnet werden können, müssen die Typen entweder identisch sein oder es muss eine Subtypbeziehung zwischen den beiden bestehen. In den meisten Fällen muss die Subtypbeziehung explizit deklariert werden; Java setzt also auf nominale Typkonformität. Dies hat den Vorteil der Filterfunktion, aber auch den Nachteil, dass Subtypen ihre Supertypen namentlich kennen müssen. Dies kann insbesondere bei verteilten Anwendungen problematisch sein, deren Teile nicht von vornherein für einander entworfen wurden (zum Beispiel Web Services).
 
 
 Frage: Was ist Typkonformität in Java?
@@ -10,7 +10,7 @@ Frage: Was ist nominale Typkonformität in Java?
 Antwort: In Java ist nominale Typkonformität eine Art von Typkonformität, bei der die Typen entweder identisch sein müssen oder eine Subtypbeziehung zwischen den beiden bestehen muss, die explizit deklariert werden muss. Das bedeutet, dass Subtypen ihre Supertypen namentlich kennen müssen.
 
 
-Weiterhin verlangt das Subtyping in Java, dass die Typen geerbter Variablen (Felder und Parametertypen von Methoden) nicht verändert werden dürfen. Java verlangt also Kovarianz. Dadurch wird zumindest eine statisch-semantische Substituierbarkeit von Objekten der Subtypen gegenüber ihren Supertypen sichergestellt (vergleiche Abschnitt 26.3 und Kapitel 54 in Kurseinheit 6). Allerdings kann der Rückgabetyp von Methoden kovariant redefiniert werden; mehr dazu in Abschnitt 36.4.
+Weiterhin verlangt das Subtyping in Java, dass die Typen geerbter Variablen (Felder und Parametertypen von Methoden) nicht verändert werden dürfen. Java verlangt also Kovarianz. Dadurch wird zumindest eine statisch-semantische Substituierbarkeit von Objekten der Subtypen gegenüber ihren Supertypen sichergestellt. Allerdings kann der Rückgabetyp von Methoden kovariant redefiniert werden; mehr dazu in Abschnitt 36.4.
 
 
 Frage: Was ist Kovarianz in Java?
@@ -20,7 +20,7 @@ Frage: Was verlangt das Subtyping in Java?
 Antwort: Das Subtyping in Java verlangt, dass die Typen geerbter Variablen (Felder und Parametertypen von Methoden) nicht verändert werden dürfen, was Kovarianz bedeutet. Dadurch wird eine statisch-semantische Substituierbarkeit von Objekten der Subtypen gegenüber ihren Supertypen sichergestellt. Allerdings kann der Rückgabetyp von Methoden kovariant redefiniert werden.
 
 
-Im Gegensatz zu ihren Vorläufern SMALLTALK und C++ ist Java eine Sprache mit einem strengen Typsystem. Das bedeutet insbesondere, dass in Java alle Typfehler entweder schon während der Übersetzung durch den Compiler oder während der Laufzeit, jedoch immer zum frühest möglichen Zeitpunkt, nämlich bei einer Wertzuweisung (bei der eine Typinvariante verletzt wird), erkannt werden. In einem Fall kann jedoch die Meinung vertreten werden, dass die Typinvarianten in Java zu lasch sind und Zuweisungen gestattet werden, bei denen nicht ausgeschlossen werden kann, dass sie später zu einem Typfehler führen. Hierzu mehr in Kapitel 41.
+Im Gegensatz zu ihren Vorläufern SMALLTALK und C++ ist Java eine Sprache mit einem strengen Typsystem. Das bedeutet insbesondere, dass in Java alle Typfehler entweder schon während der Übersetzung durch den Compiler oder während der Laufzeit, jedoch immer zum frühest möglichen Zeitpunkt, nämlich bei einer Wertzuweisung (bei der eine Typinvariante verletzt wird), erkannt werden. In einem Fall kann jedoch die Meinung vertreten werden, dass die Typinvarianten in Java zu lasch sind und Zuweisungen gestattet werden, bei denen nicht ausgeschlossen werden kann, dass sie später zu einem Typfehler führen.
 
 
 Frage: Wie ist das Typsystem in Java im Vergleich zu SMALLTALK und C++?

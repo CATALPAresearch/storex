@@ -20,7 +20,7 @@ Frage: Was repräsentieren die Instanzvariablennamen in SMALLTALK?
 Antwort: Die Instanzvariablennamen in SMALLTALK sind eine Liste von Symbolen, die die Namen der Instanzvariablen der neuen Klasse repräsentieren.
 
 
-Durch Ausführung dieser Methode wird eine neue Klasse und gleichzeitig ihre Metaklasse erstellt. Dem Kommentar kann entnommen werden, dass die neue Klasse eine Subklasse des Empfängers (einer Klasse) werden soll. Die Bedeutung dieses Vorgangs wird im Kapitel 11 näher erläutert. An dieser Stelle möchten wir uns eher der Frage widmen, welche Klassen die mit erzeugten Metaklassen als Instanzen haben.
+Durch Ausführung dieser Methode wird eine neue Klasse und gleichzeitig ihre Metaklasse erstellt. Dem Kommentar kann entnommen werden, dass die neue Klasse eine Subklasse des Empfängers (einer Klasse) werden soll. An dieser Stelle möchten wir uns eher der Frage widmen, welche Klassen die mit erzeugten Metaklassen als Instanzen haben.
 
 
 Frage: Welche Klassen haben die erzeugten Metaklassen als Instanzen?

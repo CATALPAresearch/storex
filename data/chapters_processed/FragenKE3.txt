@@ -381,9 +381,6 @@ Antwort: Upcasts sind immer typsicher, da sie von einem spezielleren Typ zu eine
 Frage: Warum sollte man versuchen, Typumwandlungen zu vermeiden?
 Antwort: Typumwandlungen sollten vermieden werden, da sie potenziell unsicher sind und die Programmlogik komplexer machen können. Wenn Typumwandlungen unvermeidbar sind, sollten sie mit einem Typtest abgesichert werden, um sicherzustellen, dass das Objekt zur Laufzeit den gewünschten Typ hat.
 
-Frage: Warum wurde in dieser Kurseinheit bisher nur über Typen gesprochen und Klassen ignoriert?
-Antwort: Typen und Klassen werden getrennt behandelt, da Klassen die Implementierung von Objekten festlegen, während Typdefinitionen frei von Implementierungsaspekten sind.
-
 Frage: Was unterscheidet Typen und Klassen, wenn es um die Einschränkung des Wertebereichs von Variablen und die Angabe des Protokolls von Objekten geht?
 Antwort: Typen sind abstrakte Spezifikationen, die den Wertebereich von Variablen und das Protokoll von Objekten festlegen. Klassen hingegen sind Konstrukte, die Objekte bilden und mit Implementierung versehen.
 
@@ -417,9 +414,6 @@ Antwort: Typisierung in objektorientierten Programmiersprachen bedeutet, dass be
 Frage: Warum könnte es sinnvoll sein, das Typsystem einer Programmiersprache von ihrem Rest zu isolieren?
 Antwort: Das Isolieren des Typsystems einer Programmiersprache ermöglicht es, das Typsystem auszutauschen oder zu verbessern, ohne die gesamte Sprachdefinition ändern zu müssen. Dies kann besonders nützlich sein, wenn man eine Sprache an spezifische Anforderungen anpassen möchte.
 
-Frage: Warum wird in dieser Kurseinheit das Typsystem am Beispiel von STRONGTALK behandelt?
-Antwort: Diese Kurseinheit behandelt das Typsystem am Beispiel von STRONGTALK, einer SMALLTALK-Erweiterung um ein optionales Typsystem. Dies geschieht, um die Konzepte schrittweise und verständlich einzuführen. Das Ziel ist, dass die Leserinnen und Leser Typsysteme als Möglichkeiten zur Spezifikation redundanter Informationen verstehen, die die Qualität von Programmen erhöhen sollen.
-
 Frage: Warum ist die direkte Deklaration des Gleichheitstests in Object problematisch?
 Antwort: Die direkte Deklaration des Gleichheitstests in Object wäre problematisch, da sie zu einer kovarianten Redefinition führen würde, was zu bekannten Problemen führt.
 
@@ -437,9 +431,6 @@ Antwort: Es ist wichtig, dass ein Typfehler bereits bei der Verwendung der param
 
 Frage: Wo wird der Rückgabetyp für Blöcke in STRONGTALK angegeben?
 Antwort: Der Rückgabetyp für Blöcke in STRONGTALK wird im selben Segment wie die formalen Parameter angegeben, und zwar vor dem Trennzeichen.
-
-Frage: Gibt es eine Verbindung zwischen Typen und Klassen in der objektorientierten Programmierung?
-Antwort: Ja, es gibt eine Verbindung zwischen Typen und Klassen in der objektorientierten Programmierung. Der Zusammenhang wird jedoch vorerst zurückgestellt und wird in Kapitel 28 erklärt.
 
 Frage: Was unterscheidet statische und dynamische Typprüfung?
 Antwort: Statische Typprüfung erfolgt zur Übersetzungszeit und gewährleistet, dass die Typkorrektheit eines Programms vor der Ausführung sichergestellt wird. Dynamische Typprüfung erfolgt zur Laufzeit und prüft, ob der zuzuweisende Wert den geforderten Typ hat. Statische Typprüfung erfordert Typenannotationen bei der Variablendeklaration, während dynamische Typprüfung dies zur Laufzeit überprüft.

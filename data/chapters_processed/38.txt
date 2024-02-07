@@ -1,6 +1,6 @@
 38 Anweisungen, Blöcke und Kontrollstrukturen
 
-Genau wie in SMALLTALK werden in Java Ausdrücke im Rahmen der Ausführung von Anweisungen ausgewertet. Anders als in SMALLTALK gibt es in Java jedoch eine Vielzahl von Schlüsselwörtern, die Anweisungen einleiten. Dennoch ist es auch in Java möglich, bestimmte Ausdrücke zu Anweisungen zu machen: Man schließt einfach einen betreffenden Ausdruck durch ein Semikolon ab. Insbesondere werden so Variablendeklarationen, Wertzuweisungen, Methodenaufrufe und Klasseninstanziierungen (siehe Kapitel 37) direkt zu Anweisungen. Man beachte, dass, anders als das Semikolon in PASCAL oder der Punkt in SMALLTALK, das Semikolon in Java kein Trennzeichen ist, sondern Teil der Anweisung.
+Genau wie in SMALLTALK werden in Java Ausdrücke im Rahmen der Ausführung von Anweisungen ausgewertet. Anders als in SMALLTALK gibt es in Java jedoch eine Vielzahl von Schlüsselwörtern, die Anweisungen einleiten. Dennoch ist es auch in Java möglich, bestimmte Ausdrücke zu Anweisungen zu machen: Man schließt einfach einen betreffenden Ausdruck durch ein Semikolon ab. Insbesondere werden so Variablendeklarationen, Wertzuweisungen, Methodenaufrufe und Klasseninstanziierungen direkt zu Anweisungen. Man beachte, dass, anders als das Semikolon in PASCAL oder der Punkt in SMALLTALK, das Semikolon in Java kein Trennzeichen ist, sondern Teil der Anweisung.
 
 
 Frage: Wie werden Ausdrücke in Java zu Anweisungen?

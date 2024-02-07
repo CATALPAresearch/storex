@@ -1,6 +1,6 @@
 35.1 Literale
 
-In Java gibt es Literale für Zahlen, Zeichen und Strings. Für Arrays gibt es, da sie nicht aus Literalen zusammengesetzt sein müssen, etwas Ähnliches, nämlich die sogenannten Array-Initialisierer; sie werden in Kapitel 41 behandelt. Ob "true" und "false" bzw. "null" in Java Literale oder Schlüsselwörter sind, hängt vom Standpunkt ab: Die meisten Syntaxeditoren behandeln sie wie Schlüsselwörter, gemäß der Sprachdefinition handelt es sich jedoch um Literale, die die beiden booleschen Wahrheitswerte "wahr" und "falsch" bzw. den Wert des Nulltypen (UndefinedObject in SMALLTALK, in Java umbenannt) repräsentieren.
+In Java gibt es Literale für Zahlen, Zeichen und Strings. Für Arrays gibt es, da sie nicht aus Literalen zusammengesetzt sein müssen, etwas Ähnliches, nämlich die sogenannten Array-Initialisierer. Ob "true" und "false" bzw. "null" in Java Literale oder Schlüsselwörter sind, hängt vom Standpunkt ab: Die meisten Syntaxeditoren behandeln sie wie Schlüsselwörter, gemäß der Sprachdefinition handelt es sich jedoch um Literale, die die beiden booleschen Wahrheitswerte "wahr" und "falsch" bzw. den Wert des Nulltypen (UndefinedObject in SMALLTALK, in Java umbenannt) repräsentieren.
 
 
 Frage: Was sind Literale in Java?

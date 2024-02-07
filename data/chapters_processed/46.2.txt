@@ -1,6 +1,6 @@
 46.2 Interne Iteration
 
-Von SMALLTALK kennen Sie bereits die Möglichkeit, Iterationen als Methoden der Collection-Klassen zu definieren (die interne Iteration; siehe Abschnitt 4.6.4 in Kurseinheit 1 und Kapitel 13 in Kurseinheit 2). Mit Version 8 wurden nun auch in Java (anonyme) Funktionen (die sog. Lambda-Ausdrücke) eingeführt, die interne Iterationen à la SMALLTALK erlauben. Allerdings wurde für die Implementierung der Methoden forEach, filter, map und reduce (entsprechend SMALLTALKs do, select, collect und inject) ein eigenes Framework geschaffen: die sog. Streams.
+Von SMALLTALK kennen Sie bereits die Möglichkeit, Iterationen als Methoden der Collection-Klassen zu definieren (die interne Iteration). Mit Version 8 wurden nun auch in Java (anonyme) Funktionen (die sog. Lambda-Ausdrücke) eingeführt, die interne Iterationen à la SMALLTALK erlauben. Allerdings wurde für die Implementierung der Methoden forEach, filter, map und reduce (entsprechend SMALLTALKs do, select, collect und inject) ein eigenes Framework geschaffen: die sog. Streams.
 
 
 Frage: Was sind Streams in Java?
