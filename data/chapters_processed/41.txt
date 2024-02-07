@@ -81,7 +81,7 @@ Frage: Warum haben Array-Variablen in Java immer Referenzsemantik?
 Antwort: Array-Variablen haben in Java immer Referenzsemantik, weil Array-Kopieroperationen sehr teuer sind und zudem selten benötigt werden. Dies hat den Hintergrund, dass bei der Zuweisung an die Variable f lediglich ein Pointer darauf übergeben wird, anstatt ein ganzes Array als Kopie.
 
 
-Die bemerkte mangelnde Zuweisungskompatibilität von Object[] und float[] wirft natürlich sofort die Frage auf, ob denn auch die Zuweisung einer Variable vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] unzulässig ist. Wir hatten ja in Abschnitt 29.3 von Kurseinheit 3 am Beispiel zweier Instanzen eines parametrischen Typs bemerkt, dass dies zu einem nicht ganz offensichtlichen Problem führt, das sich analog auf Arrays übertragen lässt. Die Überraschung folgt hier auf den Fuß: Die Zuweisung ist in Java zulässig.
+Die bemerkte mangelnde Zuweisungskompatibilität von Object[] und float[] wirft natürlich sofort die Frage auf, ob denn auch die Zuweisung einer Variable vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] unzulässig ist. Wir hatten ja am Beispiel zweier Instanzen eines parametrischen Typs bemerkt, dass dies zu einem nicht ganz offensichtlichen Problem führt, das sich analog auf Arrays übertragen lässt. Die Überraschung folgt hier auf den Fuß: Die Zuweisung ist in Java zulässig.
 
 
 Frage: Ist die Zuweisung einer Variablen vom Typ A[], wobei A ein Referenztyp sei und damit automatisch ein Subtyp von Object, an eine Variable vom Typ Object[] in Java zulässig?

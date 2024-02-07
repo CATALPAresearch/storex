@@ -62,7 +62,7 @@ Frage: Was bedeutet Novarianz?
 Antwort: Novarianz bedeutet, dass die Parametertypen unveränderlich sein müssen, um die Integrität der Objekte zu gewährleisten. Diese Unveränderlichkeit wird auch als Invarianz bezeichnet.
 
 
-Obige analytischen Überlegungen führen also, mit der eben gemachten Einschränkung, zur Regel von den kontravarianten Parameter- und den kovarianten Rückgabetypredefinitionen. Es gibt aber noch einen zweiten Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen, die diese Betrachtung deutlich in Frage stellen. Dazu soll (wie schon in Kapitel 25) die Interpretation von Methoden als Relationen bzw., da hier der Rückgabetyp mit berücksichtigt wird, als Funktionen oder Abbildungen herhalten. Der hier zweistellige Definitionsbereich (Empfängertyp plus Parametertyp) der Funktion steht dabei stellvertretend für beliebige Stellenzahl, also für Methoden mit beliebig vielen Parametern. Der Wertebereich ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
+Obige analytischen Überlegungen führen also, mit der eben gemachten Einschränkung, zur Regel von den kontravarianten Parameter- und den kovarianten Rückgabetypredefinitionen. Es gibt aber noch einen zweiten Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen, die diese Betrachtung deutlich infrage stellen. Dazu soll die Interpretation von Methoden als Relationen bzw., da hier der Rückgabetyp mit berücksichtigt wird, als Funktionen oder Abbildungen herhalten. Der hier zweistellige Definitionsbereich (Empfängertyp plus Parametertyp) der Funktion steht dabei stellvertretend für beliebige Stellenzahl, also für Methoden mit beliebig vielen Parametern. Der Wertebereich ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
 
 
 Frage: Wie können Methoden als Relationen interpretiert werden?
@@ -75,7 +75,7 @@ Frage: Was ist der zweite Ansatz zur Klärung der Frage nach der richtigen Varia
 Antwort: Der zweite Ansatz zur Klärung der Frage nach der richtigen Varianz der Parametertypen redefinierter Funktionen ist die Interpretation von Methoden als Relationen bzw. als Funktionen oder Abbildungen. Hier steht der zweistellige Definitionsbereich (Empfängertyp plus Parametertyp) der Funktion stellvertretend für beliebige Stellenzahl, also für Methoden mit beliebig vielen Parametern. Der Wertebereich ist hingegen immer einstellig, da eine Methode stets nur einen Wert zurückgibt.
 
 
-Wenn man nun die Anzahl der Empfängerobjekte einschränkt (was ja beim Übergang zu einem Subtypen geschieht), dann schrumpft damit nicht nur der Wertebereich der Funktion (wie in Kapitel 25 schon illustriert), sondern auch die Menge der möglichen Eingabewerte (der zweite und alle weiteren Definitionsbereiche), die mit der bereits eingeschränkten Menge der Empfänger gemeinsam auftreten können. Es verhalten sich also nicht nur die Ergebnistypen, sondern auch die Parametertypen kovariant.
+Wenn man nun die Anzahl der Empfängerobjekte einschränkt (was ja beim Übergang zu einem Subtypen geschieht), dann schrumpft damit nicht nur der Wertebereich der Funktion, sondern auch die Menge der möglichen Eingabewerte (der zweite und alle weiteren Definitionsbereiche), die mit der bereits eingeschränkten Menge der Empfänger gemeinsam auftreten können. Es verhalten sich also nicht nur die Ergebnistypen, sondern auch die Parametertypen kovariant.
 
 
 Frage: Was bedeutet es, wenn Parametertypen kovariant sind?
@@ -85,7 +85,7 @@ Frage: Was bedeutet kovariant?
 Antwort: Kovariant bedeutet, dass die Parametertypen sich entsprechend der Variation der Ergebnistypen verhalten. Wenn also der Ergebnistyp eingeschränkt wird, werden auch die Parametertypen entsprechend eingeschränkt.
 
 
-Dieses Ergebnis ist gewissermaßen frustrierend, da es die soeben hergeleitete Kontravarianzregel für Parametertypen infrage stellt: Was programmiertechnisch möglich und sinnvoll erscheint, hat in der Realität (der Interpretation oder Semantik) keine Bedeutung. Auf der anderen Seite erklärt es aber, warum kontravariante Parameterredefinitionen in der Programmierpraxis nicht benötigt werden. Kovarianz für Parametertypen zuzulassen, so sinnvoll es auch zu sein scheint, erlaubt jedoch typinkorrekte Programme; Sie werden im Kontext der Programmiersprache EIFFEL (Kurseinheit 5, Abschnitt 52.5) noch ausführlicher auf das Problem und eine mögliche Lösung hingewiesen.
+Dieses Ergebnis ist gewissermaßen frustrierend, da es die soeben hergeleitete Kontravarianzregel für Parametertypen infrage stellt: Was programmiertechnisch möglich und sinnvoll erscheint, hat in der Realität (der Interpretation oder Semantik) keine Bedeutung. Auf der anderen Seite erklärt es aber, warum kontravariante Parameterredefinitionen in der Programmierpraxis nicht benötigt werden. Kovarianz für Parametertypen zuzulassen, so sinnvoll es auch zu sein scheint, erlaubt jedoch typinkorrekte Programme; Sie werden im Kontext der Programmiersprache EIFFEL noch ausführlicher auf das Problem und eine mögliche Lösung hingewiesen.
 
 
 Frage: Was bedeutet die Kontravarianzregel für Parametertypen?

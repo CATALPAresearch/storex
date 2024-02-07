@@ -1,6 +1,6 @@
 54.3 Verhaltensbasiertes Subtyping
 
-Die Regeln des Subtypings aus Kapitel 26 und die damit verbundene Regelung der Zuweisungskompatibilität bezogen sich lediglich auf die Elemente einer Typdeklaration und somit auf rein statische Informationen. Um nun auch das Verhalten der Objekte eines Typs zu berücksichtigen, greift man auf eine Idee aus der formalen Programmverifikation zurück, nämlich die Überführung von Vorbedingungen in Nachbedingungen, ähnlich wie in (54.1).
+Die Regeln des Subtypings und die damit verbundene Regelung der Zuweisungskompatibilität bezogen sich lediglich auf die Elemente einer Typdeklaration und somit auf rein statische Informationen. Um nun auch das Verhalten der Objekte eines Typs zu berücksichtigen, greift man auf eine Idee aus der formalen Programmverifikation zurück, nämlich die Überführung von Vorbedingungen in Nachbedingungen, ähnlich wie in (54.1).
 
 
 Frage: Was ist die Idee hinter der Überführung von Vorbedingungen in Nachbedingungen?
@@ -36,11 +36,11 @@ Frage: Was ist der Zweck der Nachbedingung in der objektorientierten Programmier
 Antwort: Der Zweck der Nachbedingung in der objektorientierten Programmierung ist es, die Korrektheit der Implementierung zu gewährleisten. Die Nachbedingung wird aus der Vorbedingung abgeleitet und gilt für die Implementierung einer Methode in der zugehörigen Klasse. Der Beweis für die Nachbedingung muss nicht geführt werden, da es hier um die Austauschbarkeit von Implementierungen abhängig vom Verwendungskontext geht.
 
 
-Uns interessiert, ob eine umfassende Substituierung möglich ist. Konkret: Wir möchten eine verhaltensbasierte Subtypenrelation betrachten, das heißt, wir möchten die Bedingungen verstehen, die potenzielle Subtypen erfüllen müssen, damit sie die Spezifikation des Supertyps erfüllen und als verhaltenskonform betrachtet werden können. Dabei handelt es sich um eine Subtypenbeziehung, wie sie in Kapitel 26 beschrieben wird. Dies ist dann der Fall, wenn die obige Implikation auch für Objekte des potenziellen Subtypen S gilt.
+Uns interessiert, ob eine umfassende Substituierung möglich ist. Konkret: Wir möchten eine verhaltensbasierte Subtypenrelation betrachten, das heißt, wir möchten die Bedingungen verstehen, die potenzielle Subtypen erfüllen müssen, damit sie die Spezifikation des Supertyps erfüllen und als verhaltenskonform betrachtet werden können. Dabei handelt es sich um eine Subtypenbeziehung. Dies ist dann der Fall, wenn die obige Implikation auch für Objekte des potenziellen Subtypen S gilt.
 
 
 Frage: Was ist eine verhaltensbasierte Subtypenrelation?
-Antwort: Eine verhaltensbasierte Subtypenrelation ist eine Beziehung zwischen potenziellen Subtypen und Supertypen, bei der die Bedingungen betrachtet werden, die erfüllt sein müssen, damit die potenziellen Subtypen die Spezifikation des Supertyps erfüllen und als verhaltenskonform betrachtet werden können. Diese Beziehung wird in Kapitel 26 beschrieben.
+Antwort: Eine verhaltensbasierte Subtypenrelation ist eine Beziehung zwischen potenziellen Subtypen und Supertypen, bei der die Bedingungen betrachtet werden, die erfüllt sein müssen, damit die potenziellen Subtypen die Spezifikation des Supertyps erfüllen und als verhaltenskonform betrachtet werden können.
 
 
 Man spricht dann von einem Behavior Subtyping, was am besten als verhaltensbasiertes Subtyping wiedergegeben wird.

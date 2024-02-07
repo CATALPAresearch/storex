@@ -1,6 +1,6 @@
 64 Kurze Methoden
 
-Wer sich den Quellcode objektorientierter Programme ansieht, wird feststellen, dass die Methoden im Durchschnitt ziemlich kurz sind. Wie bereits in Kurseinheit 6, Kapitel 56 erwähnt, ist dies eine Folge des Umstandes, dass in der objektorientierten Programmierung die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Sobald eine Funktion verschiedene Arten von Daten manipuliert (also Objekte, die Instanzen verschiedener Klassen sind), ist es wahrscheinlich, dass diese Funktion nicht vollständig in einer Methode implementiert wird.
+Wer sich den Quellcode objektorientierter Programme ansieht, wird feststellen, dass die Methoden im Durchschnitt ziemlich kurz sind. Wie bereits erwähnt, ist dies eine Folge des Umstandes, dass in der objektorientierten Programmierung die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Sobald eine Funktion verschiedene Arten von Daten manipuliert (also Objekte, die Instanzen verschiedener Klassen sind), ist es wahrscheinlich, dass diese Funktion nicht vollständig in einer Methode implementiert wird.
 
 
 Frage: Warum sind Methoden in objektorientierter Programmierung im Durchschnitt kurz?

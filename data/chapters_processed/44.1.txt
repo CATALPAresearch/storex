@@ -7,7 +7,7 @@ Frage: Was ist ein Type cast?
 Antwort: Ein Type cast ist der Vorgang, bei dem einem Programmelement ein anderer Typ aufgezwungen wird als der, mit dem es deklariert wurde. Type casts werden auf Variablen und Methodenausdrücke angewendet, um Zuweisungskompatibilität herzustellen oder auf Methoden zuzugreifen, die der deklarierte Typ nicht anbietet.
 
 
-Wie schon in Kapitel 27, so unterscheiden wir auch hier in Abhängigkeit davon, wie die beteiligten Typen, der Ausgangstyp und der Zieltyp eines Type casts, miteinander in Beziehung stehen, drei Arten von Typumwandlungen: Up casts: Der Zieltyp ist ein Supertyp des Ausgangstyps. Down casts: Der Zieltyp ist ein Subtyp des Ausgangstyps. Cross casts: Zieltyp und Ausgangstyp stehen in keiner Subtypenbeziehung zueinander, stehen also gewissermaßen nebeneinander.
+Wir unterscheiden auch hier in Abhängigkeit davon, wie die beteiligten Typen, der Ausgangstyp und der Zieltyp eines Type casts, miteinander in Beziehung stehen, drei Arten von Typumwandlungen: Up casts: Der Zieltyp ist ein Supertyp des Ausgangstyps. Down casts: Der Zieltyp ist ein Subtyp des Ausgangstyps. Cross casts: Zieltyp und Ausgangstyp stehen in keiner Subtypenbeziehung zueinander, stehen also gewissermaßen nebeneinander.
 
 
 Frage: Was sind Up casts, Down casts und Cross casts?

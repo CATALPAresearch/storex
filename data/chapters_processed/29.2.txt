@@ -4,13 +4,13 @@ Eine wichtige Gruppe von Klassen, die Sie in den letzten beiden Kurseinheiten ke
 
 
 Frage: Was sind Collection-Klassen?
-Antwort: Collection-Klassen sind eine wichtige Gruppe von Klassen, die Sie in den letzten beiden Kurseinheiten kennengelernt haben. Sie bilden jeweils einen Typ, so dass Variablen, die auf eine Collection verweisen, mit diesem Typ deklariert werden können.
+Antwort: Collection-Klassen sind eine wichtige Gruppe von Klassen, die Sie in den letzten beiden Kurseinheiten kennengelernt haben. Sie bilden jeweils einen Typ, sodass Variablen, die auf eine Collection verweisen, mit diesem Typ deklariert werden können.
 
 Frage: Was ist die Zuweisung in der objektorientierten Programmierung?
 Antwort: Die Zuweisung ist ein elementares Konstrukt der objektorientierten Programmierung, das eine Variable mit einem Wert oder einem Verweis auf ein Objekt verbindet. Sie kann explizit durch den Zuweisungsoperator oder implizit bei Methodenaufrufen erfolgen.
 
 
-Nun dienen Collections ja u. a. dem Zweck, n-Beziehungen zwischen einem Objekt und mehreren anderen zu ermöglichen, indem sie dafür Zwischenobjekte zur Verfügung stellen (s. Kurseinheit 2, Kapitel 13). Und so bilden die mit den Collection-Klassen assoziierten Typen auch nur die Typen für die Zwischenobjekte. Was man jedoch eigentlich bei der Deklaration von n-wertigen Attributen angeben (deklarieren) möchte, ist der Typ der in Beziehung stehenden Objekte.
+Nun dienen Collections ja u. a. dem Zweck, n-Beziehungen zwischen einem Objekt und mehreren anderen zu ermöglichen, indem sie dafür Zwischenobjekte zur Verfügung stellen. Und so bilden die mit den Collection-Klassen assoziierten Typen auch nur die Typen für die Zwischenobjekte. Was man jedoch eigentlich bei der Deklaration von n-wertigen Attributen angeben (deklarieren) möchte, ist der Typ der in Beziehung stehenden Objekte.
 
 
 Frage: Wie kann man den Typ der in Beziehung stehenden Objekte bei der Deklaration von n-wertigen Attributen angeben?
@@ -43,7 +43,7 @@ Frage: Was ist ein Dictionary in der Programmierung?
 Antwort: Ein Dictionary ist eine parametrische Definition einer Collection, bei der sowohl der Element- als auch der Schlüsseltyp variabel gehalten wird. Es ist eine Datenstruktur, die Werte mit Schlüsseln verbindet, um eine schnelle Suche und Zugriff auf die Werte zu ermöglichen. In einigen Programmiersprachen wird Dictionary auch als Map oder Hashtable bezeichnet.
 
 
-Dabei ist der parametrische Typ Dictionary ein Subtyp des ebenfalls parametrischen Typs Collection. Man beachte, dass der Typparameter E hier bereits in der Supertypdeklaration verwendet wird. Ein Dictionary, in dem Integer auf beliebige Objekte abgebildet werden, erhält man dann durch die Instanziierung Dictionary[Integer, Object]. Es ist mit einer Variable vom Typ Collection[Object] zuweisungskompatibel. Auf die Einzelheiten des Subtypings bei parametrischen Typen wird in Kapitel 30 eingegangen.
+Dabei ist der parametrische Typ Dictionary ein Subtyp des ebenfalls parametrischen Typs Collection. Man beachte, dass der Typparameter E hier bereits in der Supertypdeklaration verwendet wird. Ein Dictionary, in dem Integer auf beliebige Objekte abgebildet werden, erhält man dann durch die Instanziierung Dictionary[Integer, Object]. Es ist mit einer Variable vom Typ Collection[Object] zuweisungskompatibel.
 
 
 Frage: Was ist ein parametrischer Typ in der Programmierung?

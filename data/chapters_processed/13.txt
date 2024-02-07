@@ -1,6 +1,6 @@
 13 Programmieren mit Collections
 
-In Kapitel 2 von Kurseinheit 1 waren wir bereits auf Zu-n-Beziehungen eingegangen, die logisch gleichberechtigt neben Zu-1-Beziehungen stehen, die aber in der Umsetzung besonderer Mechanismen bedürfen. Als Basis der Umsetzung hatten Sie bereits Zwischenobjekte kennengelernt, die über ihre indizierten Instanzvariablen solche Beziehungen — wenn auch nur indirekt — herstellen können. Tatsächlich könnte man, wenn man sich der Häufigkeit des Vorkommens von Zu-n-Beziehungen in der Programmierung bewusst ist, vermuten, dass indizierte Instanzvariablen speziell für diesen Zweck eingeführt wurden. Auf den ersten Blick bedauerlich ist nur, dass dafür eben diese Zwischenobjekte notwendig sind.
+Wir waren bereits auf Zu-n-Beziehungen eingegangen, die logisch gleichberechtigt neben Zu-1-Beziehungen stehen, die aber in der Umsetzung besonderer Mechanismen bedürfen. Als Basis der Umsetzung hatten Sie bereits Zwischenobjekte kennengelernt, die über ihre indizierten Instanzvariablen solche Beziehungen — wenn auch nur indirekt — herstellen können. Tatsächlich könnte man, wenn man sich der Häufigkeit des Vorkommens von Zu-n-Beziehungen in der Programmierung bewusst ist, vermuten, dass indizierte Instanzvariablen speziell für diesen Zweck eingeführt wurden. Auf den ersten Blick bedauerlich ist nur, dass dafür eben diese Zwischenobjekte notwendig sind.
 
 
 Frage: Wofür werden indizierte Instanzvariablen verwendet?

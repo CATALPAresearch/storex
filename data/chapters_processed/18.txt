@@ -1,6 +1,6 @@
 18 Hintergrund
 
-Sie kennen vielleicht aus anderen Programmiersprachen, dass Variablen und anderen Programmelementen bei ihrer Deklaration (Kapitel 19) ein Typ zugeordnet wird. Dieser Typ schränkt die möglichen Werte der deklarierten Elemente ein. So lassen sich beispielsweise in einer Variable vom Typ Boolean nur Wahrheitswerte, in einer vom Typ String nur Zeichenketten speichern.
+Sie kennen vielleicht aus anderen Programmiersprachen, dass Variablen und anderen Programmelementen bei ihrer Deklaration ein Typ zugeordnet wird. Dieser Typ schränkt die möglichen Werte der deklarierten Elemente ein. So lassen sich beispielsweise in einer Variable vom Typ Boolean nur Wahrheitswerte, in einer vom Typ String nur Zeichenketten speichern.
 
 
 Frage: Was ist der Zweck der Typisierung in Programmiersprachen?
@@ -17,20 +17,17 @@ Frage: Was ist der Unterschied zwischen Intension und Extension eines Typs?
 Antwort: Die Intension eines Typs entspricht seiner Definition, während die Extension dem Wertebereich des Typs entspricht, also der Menge der Elemente (Objekte), die zu dem Typ gehören.
 
 
-Ihnen fällt wahrscheinlich sofort die Ähnlichkeit zum Konstrukt der Klasse, wie es in der letzten Kurseinheit eingeführt wurde, auf. Tatsächlich gibt es hier auch einen Zusammenhang. Um Sie aber nicht gleich in für diese Kurseinheit eher schädliche Denkmuster verfallen zu lassen, soll dieser Zusammenhang zunächst zurückgestellt werden. Eine Aufklärung erfolgt dann in Kapitel 28.
+Ihnen fällt wahrscheinlich sofort die Ähnlichkeit zum Konstrukt der Klasse, wie es in der letzten Kurseinheit eingeführt wurde, auf. Tatsächlich gibt es hier auch einen Zusammenhang. Um Sie aber nicht gleich in für diese Kurseinheit eher schädliche Denkmuster verfallen zu lassen, soll dieser Zusammenhang zunächst zurückgestellt werden.
 
-
-Frage: Wie hängen Klassen und temporäre Variablen zusammen?
-Antwort: Es gibt eine Ähnlichkeit zwischen Klassen und temporären Variablen, die in der letzten Kurseinheit eingeführt wurde. Der Zusammenhang wird in Kapitel 28 aufgeklärt.
 
 Frage: Was ist der Zusammenhang zwischen Objekt und Klasse?
 Antwort: Objekt und Klasse sind eng verwandt, aber nicht dasselbe. Eine Klasse ist eine Art Bauplan oder Schablone, die beschreibt, wie ein Objekt aussehen sollte und was es können sollte. Ein Objekt ist eine konkrete Instanz einer Klasse, die einen bestimmten Zustand und ein bestimmtes Verhalten aufweist.
 
 Frage: Warum sollte der Zusammenhang zwischen Objekt und Klasse zurückgestellt werden?
-Antwort: Der Zusammenhang zwischen Objekt und Klasse sollte zurückgestellt werden, um den Schülern nicht in Denkmuster zu verfallen, die für das Verständnis der aktuellen Kurseinheit eher schädlich sind. Eine Aufklärung erfolgt dann in Kapitel 28.
+Antwort: Der Zusammenhang zwischen Objekt und Klasse sollte zurückgestellt werden, um den Schülern nicht in Denkmuster zu verfallen, die für das Verständnis der aktuellen Kurseinheit eher schädlich sind.
 
 
-Ein Typsystem umfasst Typausdrücke, Objekt- oder Wertausdrücke, Regeln, die Wertausdrücken Typen zuordnen, und Regeln, die von Wertausdrücken einzuhalten sind (zusammen die Typregeln). Wertausdrücke (bzw. schlicht Ausdrücke, wenn es nicht um die Abgrenzung von Typausdrücken geht) kennen Sie schon: In SMALLTALK sind es die in Kurseinheit 1, Kapitel 4.1 aufgeführten. Mit den anderen Konzepten werden Sie in den nachfolgenden Kapiteln vertraut gemacht, allerdings in weniger formaler Form, als Sie das nach dieser Definition vielleicht befürchten.
+Ein Typsystem umfasst Typausdrücke, Objekt- oder Wertausdrücke, Regeln, die Wertausdrücken Typen zuordnen, und Regeln, die von Wertausdrücken einzuhalten sind (zusammen die Typregeln). Wertausdrücke (bzw. schlicht Ausdrücke, wenn es nicht um die Abgrenzung von Typausdrücken geht) kennen Sie schon.
 
 
 Frage: Was ist ein Typsystem?
@@ -67,7 +64,7 @@ Frage: Warum ist es vorteilhaft, wenn man den Typ einer Variablen kennt?
 Antwort: Wenn man den Typ einer Variablen kennt, kann der Compiler bestimmte Optimierungen durchführen, wie z.B. die Ganzzahladdition oder die Inkrement-Anweisung des Prozessors verwenden. Wenn der Compiler den Typ nicht kennt, muss das Programm vor der Ausführung der Addition erst prüfen, von welchem Typ der Wert von x ist, was zu Laufzeitverzögerungen führen kann.
 
 
-Zu 3.: In der Vergangenheit hatten Variablen eher kurze, wenig selbsterklärende Namen (vgl. dazu auch Kapitel 62 in Kurseinheit 7). Es ist dann sinnvoll, wenigstens an der Stelle der ersten Erwähnung der Variablen (in der Regel deren Deklaration) einen Hinweis darauf zu haben, wofür (für welche Menge von Objekten) die Variable steht. Dies kann über einen Kommentar erfolgen, aber auch durch die Assoziation mit einem Typen, die aussagt, welcher Art die Werte der Variable sein müssen. Doch nicht nur Variablen-, auch Methodennamen können für sich genommen wenig aussagekräftig sein und durch die Verknüpfung mit Typen aussagekräftiger gemacht werden: Eine Deklaration der Methode next etwa, die ListElement als Typ des Ein- und Ausgabeparameters deklariert, legt nahe, dass sie das in einer Liste auf den Eingabeparameter folgende Element zurückliefert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, die ihre Implementation nicht kennt, schon über ihren Zweck spekulieren. Dem mag man freilich entgegenhalten, dass man stattdessen ja auch selbsterklärende Namen für Variablen und Methoden vergeben könnte (mehr dazu in Kurseinheit 7, Kapitel 62).
+Zu 3.: In der Vergangenheit hatten Variablen eher kurze, wenig selbsterklärende Namen. Es ist dann sinnvoll, wenigstens an der Stelle der ersten Erwähnung der Variablen (in der Regel deren Deklaration) einen Hinweis darauf zu haben, wofür (für welche Menge von Objekten) die Variable steht. Dies kann über einen Kommentar erfolgen, aber auch durch die Assoziation mit einem Typen, die aussagt, welcher Art die Werte der Variable sein müssen. Doch nicht nur Variablen-, auch Methodennamen können für sich genommen wenig aussagekräftig sein und durch die Verknüpfung mit Typen aussagekräftiger gemacht werden: Eine Deklaration der Methode next etwa, die ListElement als Typ des Ein- und Ausgabeparameters deklariert, legt nahe, dass sie das in einer Liste auf den Eingabeparameter folgende Element zurückliefert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, die ihre Implementation nicht kennt, schon über ihren Zweck spekulieren. Dem mag man freilich entgegenhalten, dass man stattdessen ja auch selbsterklärende Namen für Variablen und Methoden vergeben könnte.
 
 
 Frage: Warum ist es sinnvoll, temporären Variablen einen Hinweis auf den Typ der Werte zu geben?
@@ -226,7 +223,7 @@ Frage: Was ist das STRONGTALK-Typsystem?
 Antwort: Das STRONGTALK-Typsystem ist ein Typsystem, das eine erwähnenswerte Ausnahme von den meisten heute in der Praxis verwendeten Typsystemen darstellt, die auf einer statischen und dynamischen Komponente basieren.
 
 
-Ein weiterer Kompromiss betrifft die Ausdruckskraft des Typsystems. Je ausdruckskräftiger ein Typsystem ist, desto mehr Informationen kann es in einer Typannotation unterbringen und desto mehr Typfehler lassen sich aufdecken. Allerdings steigt mit der Ausdruckskraft auch die Komplexität des Typsystems und damit die Wahrscheinlichkeit, dass es in einem konkreten Fall notwendig ist, eine aufwändige (und unter Umständen nicht einmal terminierende) Typprüfung durchzuführen. Besonders anspruchsvolle Typsysteme können außerdem die Gestaltung von Schnittstellen (Interfaces, siehe Kapitel 62) deutlich erschweren, so dass die beteiligten Programme nicht ohne weiteres zusammenarbeiten können (dies ist in der objektorientierten Programmierung ein schwer wiegendes Manko, da das gemeinsame Arbeiten von Klassen aus verschiedenen Bibliotheken die Regel ist).
+Ein weiterer Kompromiss betrifft die Ausdruckskraft des Typsystems. Je ausdruckskräftiger ein Typsystem ist, desto mehr Informationen kann es in einer Typannotation unterbringen und desto mehr Typfehler lassen sich aufdecken. Allerdings steigt mit der Ausdruckskraft auch die Komplexität des Typsystems und damit die Wahrscheinlichkeit, dass es in einem konkreten Fall notwendig ist, eine aufwändige (und unter Umständen nicht einmal terminierende) Typprüfung durchzuführen. Besonders anspruchsvolle Typsysteme können außerdem die Gestaltung von Schnittstellen (Interfaces) deutlich erschweren, sodass die beteiligten Programme nicht ohne weiteres zusammenarbeiten können (dies ist in der objektorientierten Programmierung ein schwer wiegendes Manko, da das gemeinsame Arbeiten von Klassen aus verschiedenen Bibliotheken die Regel ist).
 
 
 Frage: Was ist ein Typsystem und wie wirkt sich seine Ausdruckskraft auf die Komplexität aus?

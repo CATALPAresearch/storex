@@ -1,6 +1,6 @@
 43.3 Beschränkter parametrischer Polymorphismus in Java
 
-Wie bereits in Kurseinheit 3, Abschnitt 29.4 erwähnt, erwirbt man mit einfachem parametrischem Polymorphismus außerhalb der Typdefinition Typsicherheit auf Kosten der fehlenden Typsicherheit innerhalb. Solange man keine Aussagen über den konkreten Typ machen kann, der für einen Typparameter eingesetzt wird, kann man bei der Implementierung einer Klasse, die den parametrischen Typ definiert, auch keine Eigenschaften der Objekte voraussetzen, die von dem (unbekannten) Typ sein sollen. Was man stattdessen benötigt, ist beschränkter parametrischer Polymorphismus. Natürlich gibt es diesen auch in Java.
+Wie bereits erwähnt, erwirbt man mit einfachem parametrischem Polymorphismus außerhalb der Typdefinition Typsicherheit auf Kosten der fehlenden Typsicherheit innerhalb. Solange man keine Aussagen über den konkreten Typ machen kann, der für einen Typparameter eingesetzt wird, kann man bei der Implementierung einer Klasse, die den parametrischen Typ definiert, auch keine Eigenschaften der Objekte voraussetzen, die von dem (unbekannten) Typ sein sollen. Was man stattdessen benötigt, ist beschränkter parametrischer Polymorphismus. Natürlich gibt es diesen auch in Java.
 
 
 Frage: Was ist beschränkter parametrischer Polymorphismus?

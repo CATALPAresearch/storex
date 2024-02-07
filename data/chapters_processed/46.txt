@@ -1,6 +1,6 @@
 46 Interne und externe Iteration über Collections
 
-Genau wie in der SMALLTALK-Programmierung kommt man in der Java-Programmierung häufig in die Verlegenheit, Zu-n-Beziehungen umsetzen zu müssen. Wie in SMALLTALK geschieht dies auch in Java mit Hilfe von Zwischenobjekten. Anders als in SMALLTALK wird hier aber grundsätzlich zwischen zwei Arten von Zwischenobjekten unterschieden: den Arrays und den Collections. Da Java-Arrays in ihrer Funktionalität beschränkt sind (siehe Kapitel 41: keine eigenen Methoden zur Unterstützung des Zugriffs, kein dynamisches Wachstum, dazu die etwas verkorkste Situation beim Subtyping), werden Arrays vornehmlich dort eingesetzt.
+Genau wie in der SMALLTALK-Programmierung kommt man in der Java-Programmierung häufig in die Verlegenheit, Zu-n-Beziehungen umsetzen zu müssen. Wie in SMALLTALK geschieht dies auch in Java mit Hilfe von Zwischenobjekten. Anders als in SMALLTALK wird hier aber grundsätzlich zwischen zwei Arten von Zwischenobjekten unterschieden: den Arrays und den Collections. Da Java-Arrays in ihrer Funktionalität beschränkt sind (keine eigenen Methoden zur Unterstützung des Zugriffs, kein dynamisches Wachstum, dazu die etwas verkorkste Situation beim Subtyping), werden Arrays vornehmlich dort eingesetzt.
 
 
 Frage: Wie werden Zu-n-Beziehungen in Java umgesetzt?

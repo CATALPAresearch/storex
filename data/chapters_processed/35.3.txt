@@ -23,7 +23,7 @@ Frage: Was ist der Unterschied zwischen Zuweisungen an Variablen primitiver Type
 Antwort: Bei Zuweisungen an Variablen primitiver Typen wird der Wert selbst kopiert, während bei Zuweisungen an Variablen anderer Typen eine Referenz auf das Objekt kopiert wird.
 
 
-In Java ist es nicht möglich, Pointervariablen explizit zu deklarieren. Daher gibt es insbesondere beim Methodenaufruf (und den damit verbundenen impliziten Zuweisungen) kein "Call by reference" in Java, sondern nur ein "Call by value". Dies ändert sich auch nicht, wenn Variablen, die mit Referenztypen deklariert sind, Referenzsemantik haben. Bei den impliziten Zuweisungen eines Methodenaufrufs wird immer eine Kopie des Zeigers an die formalen Parameter übergeben. Weitere Informationen finden Sie auch in den Bemerkungen in Abschnitt 4.3.2 (Kurseinheit 1) und Kapitel 37.
+In Java ist es nicht möglich, Pointervariablen explizit zu deklarieren. Daher gibt es insbesondere beim Methodenaufruf (und den damit verbundenen impliziten Zuweisungen) kein "Call by reference" in Java, sondern nur ein "Call by value". Dies ändert sich auch nicht, wenn Variablen, die mit Referenztypen deklariert sind, Referenzsemantik haben. Bei den impliziten Zuweisungen eines Methodenaufrufs wird immer eine Kopie des Zeigers an die formalen Parameter übergeben.
 
 
 Frage: Wie funktioniert die Parameterübergabe in Java?
@@ -36,7 +36,7 @@ Frage: Gibt es in Java "Call by reference"?
 Antwort: Nein, in Java gibt es kein "Call by reference", sondern nur "Call by value". Bei Methodenaufrufen mit impliziten Zuweisungen wird immer eine Kopie des Zeigers an die formalen Parameter übergeben, auch wenn Variablen, die mit Referenztypen deklariert sind, Referenzsemantik haben.
 
 
-Seit Java 5 können Werte primitiven Typs direkt Variablen der entsprechenden Wrapper-Typen zugewiesen werden und umgekehrt. Dies nennt man "Auto boxing" bzw. "Auto unboxing". Dabei können jedoch, ähnlich wie bei der Handhabung bestimmter Werte als Objekte in SMALLTALK (siehe Abschnitt 1.4 in Kurseinheit 1), unerwartete Phänomene auftreten: Zwei Objekte, die den gleichen Wert repräsentieren, sind zwar immer gleich, müssen aber nicht identisch sein. Daher ist es wichtig, in Java sorgfältig zu überlegen, ob man die equals-Methode oder den Test auf Identität (==) verwenden sollte. Andernfalls können schwer zu findende Programmierfehler auftreten.
+Seit Java 5 können Werte primitiven Typs direkt Variablen der entsprechenden Wrapper-Typen zugewiesen werden und umgekehrt. Dies nennt man "Auto boxing" bzw. "Auto unboxing". Dabei können jedoch, ähnlich wie bei der Handhabung bestimmter Werte als Objekte in SMALLTALK, unerwartete Phänomene auftreten: Zwei Objekte, die den gleichen Wert repräsentieren, sind zwar immer gleich, müssen aber nicht identisch sein. Daher ist es wichtig, in Java sorgfältig zu überlegen, ob man die equals-Methode oder den Test auf Identität (==) verwenden sollte. Andernfalls können schwer zu findende Programmierfehler auftreten.
 
 
 Frage: Was ist der Unterschied zwischen der equals-Methode und dem Test auf Identität (==) in Java?

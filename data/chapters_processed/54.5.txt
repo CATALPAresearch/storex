@@ -49,7 +49,7 @@ Frage: Was passiert, wenn ein Objekt nicht typkonform ist?
 Antwort: Wenn ein Objekt nicht typkonform ist, kann es nicht die gewünschten Funktionen erfüllen und kann zu Fehlern im Programm führen.
 
 
-Diese doppelte Sichtweise auf Typen, sowohl aus Sicht der Nutzerin als auch aus Sicht der Anbieterin, beginnt sich erst langsam durchzusetzen. Die Programmiersprachen Java und später auch C-Sharp bieten immerhin das Konzept von "Interfaces als Typen" an (siehe Kapitel 40 in Kurseinheit 4 und Abschnitt 50.4.2 in Kurseinheit 5), mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. In der Praxis wird diese Möglichkeit jedoch in beiden Sprachen selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen. Möglicherweise wird dies in Zukunft anders gehandhabt.
+Diese doppelte Sichtweise auf Typen, sowohl aus Sicht der Nutzerin als auch aus Sicht der Anbieterin, beginnt sich erst langsam durchzusetzen. Die Programmiersprachen Java und später auch C-Sharp bieten immerhin das Konzept von "Interfaces als Typen" an, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. In der Praxis wird diese Möglichkeit jedoch in beiden Sprachen selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen. Möglicherweise wird dies in Zukunft anders gehandhabt.
 
 
 Frage: Was ist der Unterschied zwischen der Sicht der Nutzerin und der Sicht der Anbieterin auf Typen?

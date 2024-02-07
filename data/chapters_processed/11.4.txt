@@ -1,6 +1,6 @@
 11.4 Subklassenhierarchie und Vererbung unter Metaklassen
 
-Vererbung ist nicht auf die Klassen der Ebene 1 beschränkt — in SMALLTALK können vielmehr auch Metaklassen, die ja ebenfalls Klassen sind (s. Kapitel 8), voneinander erben. Da Metaklassen aber bei der Erzeugung von Klassen automatisch angelegt werden (und auch keine eigenen Namen haben), hat die Programmiererin auch keinen direkten Einfluss auf die Vererbungshierarchie der Metaklassen. Vielmehr wird diese automatisch parallel zur Vererbungshierarchie der Klassen, die Instanzen der Metaklassen sind, angelegt. Dies hat zur Folge, dass in SMALLTALK neben den Instanzvariablen und -methoden auch die Klassenvariablen und -methoden von einer Klasse auf ihre Subklassen vererbt werden.
+Vererbung ist nicht auf die Klassen der Ebene 1 beschränkt — in SMALLTALK können vielmehr auch Metaklassen, die ja ebenfalls Klassen sind, voneinander erben. Da Metaklassen aber bei der Erzeugung von Klassen automatisch angelegt werden (und auch keine eigenen Namen haben), hat die Programmiererin auch keinen direkten Einfluss auf die Vererbungshierarchie der Metaklassen. Vielmehr wird diese automatisch parallel zur Vererbungshierarchie der Klassen, die Instanzen der Metaklassen sind, angelegt. Dies hat zur Folge, dass in SMALLTALK neben den Instanzvariablen und -methoden auch die Klassenvariablen und -methoden von einer Klasse auf ihre Subklassen vererbt werden.
 
 
 Frage: Kann Vererbung in SMALLTALK auch auf Metaklassen angewendet werden?

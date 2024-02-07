@@ -54,7 +54,7 @@ Frage: Wann sollte self class und wann self species in Smalltalk verwendet werde
 Antwort: Wenn man eine Kopie oder Konvertierung durchführen möchte und kein Objekt des gleichen Typs zurückgegeben werden darf, sollte man self species anstelle von self class verwenden.
 
 
-Die Methode species war uns schon einmal begegnet, und zwar in Kurseinheit 1, Abschnitt 4.6.4, Zeile 244. Sie gibt standardmäßig die Klasse des Empfängerobjekts zurück und kann überschrieben werden, wenn eine andere Klasse angegeben werden soll. Dies ist z. B. bei der Methode collect:, ausgeführt auf einer Instanz von Interval, sinnvoll, da collect: hier kein Intervall zurückgeben kann. So kann beispielsweise die von species zurückgegebene Collection von Strings nicht als Intervall dargestellt werden. Entsprechend ist in der Klasse Interval die Methode species als implementiert.
+Die Methode species war uns schon einmal begegnet. Sie gibt standardmäßig die Klasse des Empfängerobjekts zurück und kann überschrieben werden, wenn eine andere Klasse angegeben werden soll. Dies ist z. B. bei der Methode collect:, ausgeführt auf einer Instanz von Interval, sinnvoll, da collect: hier kein Intervall zurückgeben kann. So kann beispielsweise die von species zurückgegebene Collection von Strings nicht als Intervall dargestellt werden. Entsprechend ist in der Klasse Interval die Methode species als implementiert.
 
 
 Frage: Was macht die Methode species?

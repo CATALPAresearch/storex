@@ -10,7 +10,7 @@ Frage: Was unterscheidet Konstruktoren in Java im Vergleich zu SMALLTALK?
 Antwort: Im Gegensatz zu SMALLTALK sind Konstruktoren in Java keine Klassenmethoden, sondern stehen zwischen Klassen- und Instanzmethoden. Sie verhalten sich wie Instanzmethoden, da sie im Inneren auf alle Felder und Methoden der neu erzeugten Instanz zugreifen können. In diesem Sinne können Konstruktoren als Instanzmethoden betrachtet werden, die auf der neu erzeugten Instanz aufgerufen werden.
 
 
-Konstruktoren können somit alle Anweisungen enthalten, die in SMALLTALK durch die spezielle Methode "initialize" notwendig waren (vgl. Abschnitt 8.2 in Kurseinheit 2). Allerdings sind Konstruktoren auch wie Klassenmethoden, da sie nicht auf einer Instanz, sondern auf der Klasse aufgerufen werden. In Java wird dafür jedoch kein spezieller Methodenname wie "new" wie in SMALLTALK verwendet, sondern der Klassennamen selbst.
+Konstruktoren können somit alle Anweisungen enthalten, die in SMALLTALK durch die spezielle Methode "initialize" notwendig waren. Allerdings sind Konstruktoren auch wie Klassenmethoden, da sie nicht auf einer Instanz, sondern auf der Klasse aufgerufen werden. In Java wird dafür jedoch kein spezieller Methodenname wie "new" wie in SMALLTALK verwendet, sondern der Klassennamen selbst.
 
 
 Frage: Wie werden Konstruktoren in Java definiert?
@@ -48,7 +48,7 @@ Frage: Wird der Standardkonstruktor einer Klasse beim Erzeugen einer Instanz ein
 Antwort: Ja, der Standardkonstruktor einer Klasse wird beim Erzeugen einer Instanz einer ihrer Subklassen automatisch aufgerufen.
 
 
-In Java ist es übrigens auch möglich, Konstruktoren für die Objekterzeugung mit Klassenmethoden zu verwenden. In diesem Fall muss die Klassenmethode im Rumpf einen Konstruktor aufrufen, wie es in Zeile 1006 geschieht. Solche Klassenmethoden werden auch als Factory-Methoden bezeichnet (vgl. Abschnitt 8.3 in Kurseinheit 2). Sie können auch Instanzen eines anderen Typs als den deklarierten zurückgeben.
+In Java ist es übrigens auch möglich, Konstruktoren für die Objekterzeugung mit Klassenmethoden zu verwenden. In diesem Fall muss die Klassenmethode im Rumpf einen Konstruktor aufrufen, wie es in Zeile 1006 geschieht. Solche Klassenmethoden werden auch als Factory-Methoden bezeichnet. Sie können auch Instanzen eines anderen Typs als den deklarierten zurückgeben.
 
 
 Frage: Was sind Factory-Methoden in Java?

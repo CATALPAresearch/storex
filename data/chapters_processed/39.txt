@@ -1,6 +1,6 @@
 39 Module
 
-Ein Modul ist eine Einheit von Programmelementen, die (bzw. deren Funktion) von außen (also z. B. von anderen Modulen) nur über die Schnittstelle des Moduls zugänglich sind. Damit behält ein Modul einen Teil seiner Implementierung für sich — es hütet quasi ein Implementationsgeheimnis. Der Teil, den es (über seine Schnittstelle) nach außen trägt, gilt gemeinhin als öffentlich. Die „Öffentlichkeit“ kann dabei durchaus beschränkt sein (siehe dazu auch Abschnitt 52.2 in Kurseinheit 5).
+Ein Modul ist eine Einheit von Programmelementen, die (bzw. deren Funktion) von außen (also z. B. von anderen Modulen) nur über die Schnittstelle des Moduls zugänglich sind. Damit behält ein Modul einen Teil seiner Implementierung für sich — es hütet quasi ein Implementationsgeheimnis. Der Teil, den es (über seine Schnittstelle) nach außen trägt, gilt gemeinhin als öffentlich. Die „Öffentlichkeit“ kann dabei durchaus beschränkt sein.
 
 
 Frage: Was ist ein Modul in der Programmierung?

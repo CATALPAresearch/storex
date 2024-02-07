@@ -1,6 +1,6 @@
 66 Der Bibliotheksgedanke
 
-Ein Großteil des Erfolgs der objektorientierten Programmierung hängt von der Verfügbarkeit und der systematischen Verwendung von Bibliotheken ab. In SMALLTALK ist das selbstverständlich, da hier Sprache und Bibliothek praktisch nicht zu trennen sind. Aber auch in Java ist ein Teil der Sprachdefinition in bestimmte, spezielle Klassen wie "Object", "Thread" und "Throwable" verlagert (vgl. Kapitel 47). Auch kommt praktisch kein Java-Programm ohne die Verwendung bestimmter Bibliotheksklassen aus – man denke nur an die allgegenwärtige Verwendung des Collection-Frameworks, ohne das Programmierer zur ständigen Abfassung ewig gleichen Codes verdammt wären.
+Ein Großteil des Erfolgs der objektorientierten Programmierung hängt von der Verfügbarkeit und der systematischen Verwendung von Bibliotheken ab. In SMALLTALK ist das selbstverständlich, da hier Sprache und Bibliothek praktisch nicht zu trennen sind. Aber auch in Java ist ein Teil der Sprachdefinition in bestimmte, spezielle Klassen wie "Object", "Thread" und "Throwable" verlagert. Auch kommt praktisch kein Java-Programm ohne die Verwendung bestimmter Bibliotheksklassen aus – man denke nur an die allgegenwärtige Verwendung des Collection-Frameworks, ohne das Programmierer zur ständigen Abfassung ewig gleichen Codes verdammt wären.
 
 
 Frage: Warum sind Bibliotheken wichtig für die objektorientierte Programmierung?

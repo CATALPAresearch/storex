@@ -1,6 +1,6 @@
 12.1 Nachrichten an self
 
-In SMALLTALK muss das Empfängerobjekt eines Nachrichtenversands immer explizit angegeben werden, selbst wenn sich die dazu passende Methode in derselben Klasse befindet. So kann also insbesondere self nicht (wie beispielsweise this in Java) weggelassen werden, wenn ein Objekt eine Nachricht an sich selbst senden möchte. Wie bereits in Abschnitt 4.3.1 erwähnt, bezeichnet die Pseudovariable self immer den Empfänger der Nachricht, also dasjenige Objekt, auf dem die Methode, in deren Definition die Variable self vorkommt, gerade ausgeführt wird, und dessen Instanzvariablen zugreifbar sind. (Die einzige Ausnahme hiervon bilden Blöcke, in denen self sich auf den Empfänger des Home-Kontexts bezieht; siehe Abschnitt 4.4.1 in Kurseinheit 1).
+In SMALLTALK muss das Empfängerobjekt eines Nachrichtenversands immer explizit angegeben werden, selbst wenn sich die dazu passende Methode in derselben Klasse befindet. So kann also insbesondere self nicht (wie beispielsweise this in Java) weggelassen werden, wenn ein Objekt eine Nachricht an sich selbst senden möchte. Wie bereits in Abschnitt 4.3.1 erwähnt, bezeichnet die Pseudovariable self immer den Empfänger der Nachricht, also dasjenige Objekt, auf dem die Methode, in deren Definition die Variable self vorkommt, gerade ausgeführt wird, und dessen Instanzvariablen zugreifbar sind. (Die einzige Ausnahme hiervon bilden Blöcke, in denen self sich auf den Empfänger des Home-Kontexts bezieht.
 
 
 Frage: Wie wird das Empfängerobjekt eines Nachrichtenversands in SMALLTALK angegeben?
@@ -39,7 +39,7 @@ Frage: Was versteht man unter Kopieren-und-Einfügen-Semantik bei Vererbung?
 Antwort: Bei der Kopieren-und-Einfügen-Semantik bei Vererbung wird die Implementierung der übergeordneten Klasse in die Unterklasse kopiert und kann dann in der Unterklasse gegebenenfalls angepasst werden. Wenn man die Implementierung von sagMirWasDuBist aus Super in Sub wiederholt hätte, hätte man das gleiche Ergebnis erzielt.
 
 
-Während offene Rekursion im gegebenen Beispiel durchaus erwünscht ist und ihr Effekt wohl auch den Erwartungen der Programmiererin entspricht, ergeben sich doch immer wieder Konstellationen, in denen man unangenehm überrascht wird. Das Problem ist unter dem Namen "Fragile-base-class-Problem" bekannt geworden; es wird in Kapitel 55 (Kurseinheit 6) ausführlicher behandelt. Fragile-base-class-Probleme entstehen durch die Möglichkeit der offenen Rekursion.
+Während offene Rekursion im gegebenen Beispiel durchaus erwünscht ist und ihr Effekt wohl auch den Erwartungen der Programmiererin entspricht, ergeben sich doch immer wieder Konstellationen, in denen man unangenehm überrascht wird. Das Problem ist unter dem Namen "Fragile-base-class-Problem" bekannt geworden. Fragile-base-class-Probleme entstehen durch die Möglichkeit der offenen Rekursion.
 
 
 Frage: Wann sollte man offene Rekursion nicht verwenden?

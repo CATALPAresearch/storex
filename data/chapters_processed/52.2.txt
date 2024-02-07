@@ -65,7 +65,7 @@ Frage: Gibt es in EIFFEL die Möglichkeit Klassendefinitionen zu schachteln?
 Antwort: Nein, in EIFFEL gibt es keine Möglichkeit, Klassendefinitionen zu schachteln (es gibt keine inneren Klassen).
 
 
-In EIFFEL gibt es keine Zugriffsmodifikatoren wie in Java/C-Sharp/C++. Wenn nichts weiter vermerkt wird, sind alle Features öffentlich zugänglich. Da Attribute jedoch nur über Zugriffsmethoden zugänglich sind, ist der Zustand eines Objekts automatisch gekapselt (im Sinne der Belegung von Instanzvariablen, siehe Kurseinheit 1, Kapitel 3). Zugriffsmethoden müssen in EIFFEL nicht spezifiziert werden, es sei denn, die entsprechenden Abfragen und Befehle sind Teil der Schnittstelle und kein Geheimnis.
+In EIFFEL gibt es keine Zugriffsmodifikatoren wie in Java/C-Sharp/C++. Wenn nichts weiter vermerkt wird, sind alle Features öffentlich zugänglich. Da Attribute jedoch nur über Zugriffsmethoden zugänglich sind, ist der Zustand eines Objekts automatisch gekapselt (im Sinne der Belegung von Instanzvariablen). Zugriffsmethoden müssen in EIFFEL nicht spezifiziert werden, es sei denn, die entsprechenden Abfragen und Befehle sind Teil der Schnittstelle und kein Geheimnis.
 
 
 Frage: Wie ist die Zugriffsmodellierung in EIFFEL?

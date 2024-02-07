@@ -60,7 +60,7 @@ Frage: Was ist der Zweck der Verwendung von Generics in Java?
 Antwort: Der Zweck der Verwendung von Generics in Java ist es, die Typsicherheit statisch, also zur Übersetzungszeit, zu erhöhen und die Notwendigkeit von Typumwandlungen (Downcast) zu verringern, die zu Laufzeitfehlern führen können.
 
 
-Nun wissen Sie ja bereits aus der Schilderung aus Kapitel 41, dass List<Integer> nicht unbedingt ein Subtyp von List<Object> sein sollte, selbst wenn Integer ein Subtyp von Object ist. Man hat den oben diskutierten Kompromiss offenbar nicht weiter fortführen wollen.
+Nun wissen Sie ja bereits, dass List<Integer> nicht unbedingt ein Subtyp von List<Object> sein sollte, selbst wenn Integer ein Subtyp von Object ist. Man hat den oben diskutierten Kompromiss offenbar nicht weiter fortführen wollen.
 
 
 Frage: Warum sollte List<Integer> nicht unbedingt ein Subtyp von List<Object> sein?

@@ -13,7 +13,7 @@ Frage: Was ist der Unterschied zwischen klassenbasierter und prototypenbasierter
 Antwort: In der klassenbasierten Form der objektorientierten Programmierung ist die Vererbung an Klassen gebunden, während in prototypenbasierten objektorientierten Programmiersprachen, in denen es ja keine Klassen gibt, die Vererbung vollständig zwischen Objekten definiert ist.
 
 
-Auf den ersten Blick scheint es so, als sei dies sogar der natürlichere Weg der Vererbung: Schließlich findet in der Natur Vererbung ja auch ausschließlich zwischen Individuen statt, ja genaugenommen gibt es so etwas wie biologische Klassen (Arten etc.) in der Natur überhaupt nicht. Denn es differenzieren sich ständig einzelne „Arten“ zu neuen, und es ist nicht ausgeschlossen, dass einmal ausdifferenzierte Arten irgendwann wieder verschmelzen. Abgesehen davon ist, wie bereits in Kapitel 7 erwähnt, die reale Existenz von Allgemeinbegriffen strittig (der Universalienstreit).
+Auf den ersten Blick scheint es so, als sei dies sogar der natürlichere Weg der Vererbung: Schließlich findet in der Natur Vererbung ja auch ausschließlich zwischen Individuen statt, ja genaugenommen gibt es so etwas wie biologische Klassen (Arten etc.) in der Natur überhaupt nicht. Denn es differenzieren sich ständig einzelne „Arten“ zu neuen, und es ist nicht ausgeschlossen, dass einmal ausdifferenzierte Arten irgendwann wieder verschmelzen. Abgesehen davon ist die reale Existenz von Allgemeinbegriffen strittig (der Universalienstreit).
 
 
 Frage: Wie verhält sich die Vererbung in der Natur?
@@ -42,7 +42,7 @@ Frage: Warum ist die Übertragung der Vererbung auf Klassen nicht vollkommen unn
 Antwort: Die Übertragung der Vererbung auf Klassen ist nicht vollkommen unnatürlich, weil Programmierer in objektorientierten Programmen Klassen entwerfen, die die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben. Zudem sind objektorientierte Programme nicht für die Ewigkeit gemacht, sondern unterliegen der ständigen Anpassung und somit sind auch Klassendefinitionen im ständigen Wandel.
 
 
-Nicht zuletzt muss man auch erkennen, dass viele Anwendungsdomänen, für die programmiert wird, aus massenhaft gleichen Objekten bestehen, die durch den klassenbasierten Ansatz besser abgedeckt werden als durch den prototypenbasierten. Und so macht denn auch die Vererbung unter Instanzen das Nachvollziehen (und Debuggen) eines Programms eher noch schwieriger als die Vererbung unter Klassen ohnehin schon (s. Kapitel 56 in Kurseinheit 6).
+Nicht zuletzt muss man auch erkennen, dass viele Anwendungsdomänen, für die programmiert wird, aus massenhaft gleichen Objekten bestehen, die durch den klassenbasierten Ansatz besser abgedeckt werden als durch den prototypenbasierten. Und so macht denn auch die Vererbung unter Instanzen das Nachvollziehen (und Debuggen) eines Programms eher noch schwieriger als die Vererbung unter Klassen ohnehin schon.
 
 
 Frage: Was ist der Unterschied zwischen klassenbasiertem und prototypenbasiertem Ansatz in der Programmierung?
