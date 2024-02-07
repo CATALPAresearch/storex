@@ -1,0 +1,64 @@
+Paraphrasing / Help Testing with Vectorstore Similarity Search
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'
+
+Input (answer):      Gleichheit bezieht sich in der Regel auf das Erscheinungsbild oder die Bedeutung von Objekten und wird in SMALLTALK durch den Gleichheitsoperator getestet.
+Output (generation): Wie wird in Java zwischen Gleichheit und Identität von Objekten unterschieden?
+Previous question:   Was ist die Gleichheit von Objekten?
+
+Input (answer):      Die einfachste Form des Kopierens eines Objekts in SMALLTALK ist das Erzeugen eines Objekts derselben Klasse mit denselben Variablenbelegungen. Dies wird durch die Methode "shallowCopy" ermöglicht.
+Output (generation): Was ist eine der vielleicht interessantesten Methoden in SMALLTALK?
+Previous question:   Was ist die einfachste Form des Kopierens eines Objekts in SMALLTALK?
+
+Input (answer):      Strukturelle Typäquivalenz ist ein Verfahren, um festzustellen, ob zwei Typen gleich sind. Dabei werden die Definitionen der beteiligten Typen rekursiv expandiert, was bedeutet, dass in einer Typdefinition vorkommende Namen anderer Typen durch ihre Struktur ersetzt werden.
+Output (generation): Was ist der Zweck von strukturelle Typäquivalenz?
+Previous question:   Was ist strukturelle Typäquivalenz?
+
+Input (answer):      Neben dem Lesen und Setzen von Instanzvariablen können Zugriffsmethoden in EIFFEL auch andere Aufgaben erfüllen, wie das Festlegen von Vor- und Nachbedingungen für den Zugriff auf Instanzvariablen.
+Output (generation): Was ist der Zweck von Zugriffsmethoden in EIFFEL?
+Previous question:   Welche Aufgaben können Zugriffsmethoden in EIFFEL erfüllen?
+
+Input (answer):      In typlosen Sprachen wie Smalltalk werden die Anforderungen an die Parameterobjekte mithilfe von Vor- und Nachbedingungen formuliert. Vorbedingungen beschreiben die Bedingungen, die vor der Ausführung einer Methode erfüllt sein müssen, während Nachbedingungen die Bedingungen beschreiben, die nach der Ausführung der Methode erfüllt sein müssen. Die Menge der ausgelösten Ausnahmen ist Teil der Nachbedingungen.
+Output (generation): Was ist der Unterschied zwischen der Verwendung von Methoden in S und der Verwendung von Methoden in objektorientierten Programmierung?
+Previous question:   Was sind Vor- und Nachbedingungen in typlosen Sprachen?
+
+Input (answer):      Verweissemantik wird in der objektorientierten Programmierung häufig verwendet, da sie einen speicher- und recheneffizienten Umgang mit Objekten ermöglicht und unterschiedliche Objekte unterschiedlich viel Speicherplatz belegen.
+Output (generation): Was ist der Zweck von Objekten im Speicher abgelegten Daten?
+Previous question:   Warum wird in der objektorientierten Programmierung häufig Verweissemantik verwendet?
+
+Input (answer):      Wenn super als Nachrichtenempfänger in einer Methodendefinition verwendet wird, beginnt die Suche nach der zur Nachricht passenden Methodendefinition in der (direkten) Superklasse der Klasse, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet. Anders als bei self ist die Suche unabhängig von der Klasse des Objekts, für das super steht. Das bedeutet, dass super immer eine von der Klasse des konkreten Empfängerobjekts losgelöste Suche auslöst, die in der Superklasse der Klasse beginnt, in der super verwendet wird, und nicht in der Superklasse der Klasse, von der das (durch super bezeichnete) Empfängerobjekt eine direkte Instanz ist.
+Output (generation): Was passiert, wenn die Methode gefunden wird?
+Previous question:   Wie funktioniert die Verwendung von super in SMALLTALK?
+
+Input (answer):      Parametrische Typen werden auch als generische Typen oder Generics bezeichnet, weil sie die Idee verfolgen, aus einer Typdefinition generisch (theoretisch für beliebig viele Typen) viele Typen zu erzeugen, je nach Bedarf. Sie ermöglichen eine gewisse Generizität in der Typsicherung.
+Output (generation): Was ist die Idee des parametrischen Polymorphismus?
+Previous question:   Warum nennt man parametrische Typen auch generische Typen oder Generics?
+
+Input (answer):      Interfaces ermöglichen es, verschiedene Implementierungen eines Interfaces zu verwenden, ohne den zugrunde liegenden Klassentyp zu spezifizieren. Dies verbessert die Austauschbarkeit von Klassen, da verschiedene Klassen, die dasselbe Interface implementieren, in derselben Weise verwendet werden können.
+Output (generation): Was ist der Zweck von Interfaces in Java?
+Previous question:   Wie können Interfaces in Java dazu beitragen, die Austauschbarkeit von Klassen zu verbessern?
+
+Input (answer):      Der Zweck der Nachbedingung in der objektorientierten Programmierung ist es, die Korrektheit der Implementierung zu gewährleisten. Die Nachbedingung wird aus der Vorbedingung abgeleitet und gilt für die Implementierung einer Methode in der zugehörigen Klasse. Der Beweis für die Nachbedingung muss nicht geführt werden, da es hier um die Austauschbarkeit von Implementierungen abhängig vom Verwendungskontext geht.
+Output (generation): Was ist der Zweck der objektorientierung in Bezug auf die Subtypings aus Kapitel 26 und die damit verbundene Regelung der Zuweisungskompatibilität?
+Previous question:   Was ist der Zweck der Nachbedingung in der objektorientierten Programmierung?
+
+Input (answer):      Die Methodensignatur ist das Gegenstück zum Nachrichtenselektor.
+Output (generation): Was ist die Funktion der Methodensignatur in SMALLTALK?
+Previous question:   Was unterscheidet eine Methodensignatur und einen Nachrichtenselektor?
+
+Input (answer):      Ja, man kann eine Instanzvariable löschen, die von einer übergeordneten Klasse geerbt wurde. Allerdings muss man dann auch die Methoden, die diese Instanzvariable verwenden, überschreiben.
+Output (generation): Was ist der Zweck eine überschreibende Methode?
+Previous question:   Kann man eine Instanzvariable löschen, die von einer übergeordneten Klasse geerbt wurde?
+
+Input (answer):      Ja, in der Regel ist Zuweisungskompatibilität eine transitive Eigenschaft. Wenn a zuweisungskompatibel mit b ist und b zuweisungskompatibel mit c ist, dann ist auch a zuweisungskompatibel mit c.
+Output (generation): Was ist Zuweisungskompatibilität zwischen verschiedenen Typen?
+Previous question:   Ist Zuweisungskompatibilität eine transitive Eigenschaft?
+
+Input (answer):      Typvariablen können sowohl in Typdefinitionen als auch in Methodendefinitionen in Java verwendet werden.
+Output (generation): Was ist der Unterschied zwischen Formal und Methodendefinitionen?
+Previous question:   Wo können Typvariablen (formale Typparameter) in Java verwendet werden?
+
+Input (answer):      Objekte können mithilfe der Teil-Ganzes-Beziehung rekursiv aufgebaut werden, während Klassen nicht hierarchisch strukturiert werden können. Objekte sind einzelne Exemplare (Instanzen) und können Teile haben, während Klassen Typen von Objekten sind und nicht immer Teile von anderen Klassen sind.
+Output (generation): Was ist der Unterschied zwischen der Vererbung in prototypenbasierten objektorientierten Programmierung und der Vererbung in prototypenbasierten objektorientierten Programmiersprachen?
+Previous question:   Was ist der Unterschied zwischen Objekten und Klassen in Bezug auf die Teil-Ganzes-Beziehung?
+
