@@ -1,0 +1,64 @@
+Paraphrasing / Help Testing with Vectorstore Similarity Search
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'
+
+Input (answer):      Zuweisungsausdrücke bestehen aus einer Variablen auf der linken Seite und einem Ausdruck auf der rechten Seite. Sie bewirken den Zustandswechsel von Objekten und sind die einzigen Ausdrücke, die dies tun.
+Output (generation): Was sind Zuweisungsausdrücke?
+Previous question:   Was sind Zuweisungsausdrücke?
+
+Input (answer):      Spezialisierung ist das Prinzip, bei dem Eigenschaften hinzugefügt oder bereits vorhandene spezialisiert werden, im Gegensatz zur Generalisierung, bei der Eigenschaften weggelassen oder generalisiert werden. Jede Klasse ist eine Spezialisierung ihrer Generalisierungen, sofern sie welche hat.
+Output (generation): Wie kann man das Prinzip der Generalisierung umkehren?
+Previous question:   Was ist eine Spezialisierung?
+
+Input (answer):      Mit dem beschränkten parametrischen Polymorphismus möchte man sicherstellen, dass die Typvariable innerhalb der mit ihr parametrisierten Typdefinition selbst wertbeschränkt ist und nur bestimmte, benötigte Protokolle für die als Werte zulässigen Typen erlaubt.
+Output (generation): Was ist Inklusionspolymorphie?
+Previous question:   Welches Problem möchte man mit dem beschränkten parametrischen Polymorphismus lösen?
+
+Input (answer):      Typ-Wildcards, auch als Typ-Joker oder Platzhalter bezeichnet, sind ein Konzept in Java, das eingeführt wurde, um das Problem der Instanziierung eines generischen Typs mit einem beliebigen Typ zu lösen. Sie können bei der Instanziierung eines generischen Typs den Platz des tatsächlichen Typparameters einnehmen und zunächst für einen beliebigen Typ stehen. Das Symbol für eine Typ-Wildcard ist das Fragezeichen: "List<?>" ist also ein Typ, mit dem Variablen (einschließlich formaler Parameter) deklariert werden können. Per Definition ist dieser Typ "List<?>" ein Supertyp aller Instanziierungen von "List<T>" - beispielsweise sind "List<Integer>" und "List<String>" mit "List<?>" zuweisungskompatibel.
+Output (generation): Was ist das Problem der Typ-Wildcards in Java?
+Previous question:   Was sind Typ-Wildcards in Java?
+
+Input (answer):      Demeters Gesetz führt faktisch eine neue, kontextabhängige Zugriffsregel ein: Eigenschaften von Objekten, die ein Objekt nicht selbst kennt, sind für das Objekt gleichgestellt mit denen von Objekten, die es zwar selbst kennt, auf die es aber nicht zugreifen darf. Dies führt zu einer klaren Trennung zwischen direkten und indirekten Beziehungen zwischen Objekten.
+Output (generation): Was ist das Gesetz Demeters?
+Previous question:   Welche Art von Zugriffsregel führt Demeters Gesetz ein?
+
+Input (answer):      Zusammengesetzte Objekte könnten veränderbar sein, da es sinnvoll sein kann, eine Komponente durch eine andere zu ersetzen.
+Output (generation): Was passiert, wenn die Substituierbarkeit in einem Programm interessant ist?
+Previous question:   Warum können zusammengesetzte Objekte veränderbar sein?
+
+Input (answer):      Aliase entstehen in Smalltalk immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.
+Output (generation): Was ist SMALLTALK in Bezug auf die Sprache?
+Previous question:   Wann entstehen Aliase in Smalltalk?
+
+Input (answer):      Die Typeinschränkung kann die Zuweisungskompatibilität beeinträchtigen, da sie die Parameter-Typen in Methoden neu definiert und dadurch potenziell Konflikte bei der Zuweisung von Objekten unterschiedlicher Typen verursachen kann. Dies führt dazu, dass nicht alle Zuweisungen, die bei Typerweiterung basierend auf Typkonformität zulässig wären, bei Typeinschränkung ebenfalls zulässig sind.
+Output (generation): Was ist der Unterschied zwischen Typäquivalenz und Typkonformität?
+Previous question:   Warum führt die Typeinschränkung zur Problematik der Zuweisungskompatibilität?
+
+Input (answer):      Mehrfachvererbung kann aus verschiedenen Gründen sinnvoll sein: Eine Klasse kann von mehreren vollständig abstrakten Klassen erben und damit mehrere Interfaces implementieren. In Aufgabenstellungen, in denen eine Klasse Eigenschaften von mehreren anderen Klassen benötigt, erlaubt Mehrfachvererbung, alle benötigten Eigenschaften zu erben, anstatt sich für eine einzige Superklasse entscheiden zu müssen.
+Output (generation): Was ist ein weiteres Kennzeichen der objektorientierten Programmierung?
+Previous question:   Warum kann Mehrfachvererbung in C++ sinnvoll sein?
+
+Input (answer):      In SMALLTALK ist die automatische Überprüfung des Gesetzes Demeters nicht möglich, da Ausdrücke in SMALLTALK nicht typisiert sind. Daher können Checker nicht feststellen, ob die Art und Weise, wie auf Objekte zugegriffen wird, dem Gesetz Demeters entspricht.
+Output (generation): Was ist das Gesetz in SMALLTALK?
+Previous question:   Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?
+
+Input (answer):      Wenn ein Methodenaufruf ins Leere läuft, wird er in einen Aufruf der Methode "doesNotUnderstand:" des ursprünglichen Empfängers umgewandelt. Diese Methode reagiert standardmäßig mit einer Fehlermeldung, die besagt, dass das Objekt die Nachricht nicht versteht. Diese Standardreaktion kann jedoch geändert werden, um auf Fehlermeldungen anders zu reagieren.
+Output (generation): Was passiert, wenn ein Methodenaufruf ins Leere läuft?
+Previous question:   Was passiert, wenn ein Methodenaufruf in SMALLTALK ins Leere läuft?
+
+Input (answer):      Der Unterschied zwischen einer Metaklasse und einer normalen Klasse besteht darin, dass Metaklassen keine indizierten Instanzvariablen enthalten dürfen und der Klassenname nicht frei angegeben werden kann.
+Output (generation): Was ist der Unterschied zwischen Vererbung und Subklassen in SMALLTALK?
+Previous question:   Was ist der Unterschied zwischen einer Metaklasse und einer normalen Klasse?
+
+Input (answer):      Typerweiterung erfolgt durch Hinzufügen von Eigenschaften (Methoden) zu einem bestehenden Typen, während Typeinschränkung durch Entfernen von Eigenschaften (Methoden) von einem bestehenden Typen erfolgt. Typerweiterung führt zur Zuweisungskompatibilität, während Typeinschränkung nicht dazu führt.
+Output (generation): Was ist der Zweck bei der Typerweiterung?
+Previous question:   Was ist der Unterschied zwischen Typerweiterung und Typeinschränkung?
+
+Input (answer):      In C-Sharp werden primitiven Typen als Werttypen implementiert, die auf dem Stack abgelegt und bei der Übergabe an eine Methode kopiert werden. Referenztypen werden dagegen auf dem Heap abgelegt und bei der Übergabe an eine Methode nur der Verweis kopiert.
+Output (generation): Was ist der Preis der Einfachheit?
+Previous question:   Was ist der Unterschied zwischen Wert- und Referenztypen in C-Sharp?
+
+Input (answer):      Der Vorteil von Unterprogrammen ist, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umgekehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall aufgerufen wird.
+Output (generation): Was ist der zweite Punkt?
+Previous question:   Was ist der Vorteil von Unterprogrammen?
+

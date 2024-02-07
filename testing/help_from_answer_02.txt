@@ -1,0 +1,63 @@
+Paraphrasing / Help Testing from previous answer
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'
+
+Input (answer):      Instanzvariablen sind lokale Variablen, die einem Objekt zugeordnet sind und dazu verwendet werden, Informationen zu speichern, die spezifisch für dieses Objekt sind. Sie bestimmen die Struktur zusammengesetzter Objekte.
+Output (generation): Was sind Instanzvariablen?
+Previous question:   Was sind Instanzvariablen?
+
+Input (answer):      In SMALLTALK gibt es mehrere Ebenen im Zusammenhang mit Klassen und Instanzen: Ebene 0: Konkrete Objekte, die nicht instanziierbar sind und Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Ebene 1: Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Ebene 2: Metaklassen, die die Klassen auf Ebene 1 definieren. Jede Metaklasse hat genau eine Instanz. Ebene 3: Die Klasse "Metaclass", von der alle Metaklassen Instanzen sind.
+Output (generation): Welche Ebenen gibt es im Zusammenhang mit Klassen und Instanzen in SMALLTALK?
+Previous question:   Welche Ebenen gibt es in SMALLTALK im Zusammenhang mit Klassen und Instanzen?
+
+Input (answer):      Typerweiterung ist eine Möglichkeit, eine neue Unterklasse von einer bestehenden Klasse abzuleiten, indem neue Attribute und Methoden hinzugefügt werden. Es bereitet keine technischen Probleme, weil es keine Typfehler verursacht, da die Unterklasse alle Merkmale der Oberklasse erbt und zusätzliche Merkmale hinzufügen kann. Das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind, kann nicht immer vermieden werden, aber es ist kein technisches Problem.
+Output (generation): Was ist Typerweiterung und wie bereitet es keine technischen Probleme?
+Previous question:   Was ist Typerweiterung und warum bereitet sie keine technischen Probleme?
+
+Input (answer):      In C-Sharp ist eine Typhierarchie eine Vererbungshierarchie, die die Beziehungen zwischen den verschiedenen Datentypen definiert. Alle Typen, einschließlich primitiver Typen, gelten als von Object (genauer: System.Object) abgeleitet. Diese Hierarchie ermöglicht es, Objekte verschiedener Typen zu behandeln, als ob sie vom gleichen Typ wären, was Polymorphie ermöglicht.
+Output (generation): Was ist eine Typhierarchie in C-Sharp?
+Previous question:   Was ist eine Typhierarchie in C-Sharp?
+
+Input (answer):      Verhaltensbasiertes Subtyping, auch bekannt als Behavior Subtyping, ist ein Prinzip in der objektorientierten Programmierung, bei dem ein Untertyp die gleichen Methoden wie sein Obertyp haben muss, aber nicht unbedingt die gleichen Attribute. Das bedeutet, dass ein Objekt eines Untertyps die gleichen Methoden wie ein Objekt des Obertyps aufrufen kann, aber nicht umgekehrt.
+Output (generation): Was ist Verhaltensbasiertes Subtyping?
+Previous question:   Was ist verhaltensbasiertes Subtyping?
+
+Input (answer):      In SMALLTALK werden Protokolle nicht auf Objektebene, sondern auf Klassenebene spezifiziert. Dies bedeutet, dass eine Klasse ein bestimmtes Protokoll implementiert und die Objekte dieser Klasse dieses Protokoll erben. In STRONGTALK, einer Erweiterung von SMALLTALK, werden Protokolle zu Typen erhoben und ähneln Interfaces in Java.
+Output (generation): Was ist der Unterschied zwischen SMALLTALK und Klassenebene in Bezug auf Protokolle?
+Previous question:   Wie werden Protokolle in SMALLTALK spezifiziert?
+
+Input (answer):      In SMALLTALK erfolgt die Erkennung, dass eine abstrakte Klasse instanziiert wurde, zur Laufzeit, wenn versucht wird, eine nicht implementierte Methode aufzurufen. Um zu verhindern, dass Instanzen einer abstrakten Klasse überhaupt erzeugt werden, könnte man die Konstruktoren, insbesondere "new" und "new:", entsprechend überschreiben. Dies würde jedoch auch die Instanziierung der Klassen verhindern, die von der abstrakten Klasse erben, was oft nicht akzeptabel ist.
+Output (generation): Was passiert, wenn eine abstrakte Klasse in SMALLTALK instanziiert wird?
+Previous question:   Wie kann in SMALLTALK verhindert werden, dass Instanzen einer abstrakten Klasse erzeugt werden?
+
+Input (answer):      In der Testphase kann die Typisierung dazu verwendet werden, die Art der Daten zu überprüfen, die an Methoden übergeben werden.
+Output (generation): Wie kann die Typisierung in der Testphase verwendet werden?
+Previous question:   Wozu kann die Typisierung in der Testphase verwendet werden?
+
+Input (answer):      Mehrdimensionale Arrays in Java werden als Arrays von Arrays deklariert.
+Output (generation): Wie werden Mehrdimensionale Arrays in Java deklariert?
+Previous question:   Wie werden mehrdimensionale Arrays in Java deklariert?
+
+Input (answer):      Man sollte sich zur Angewohnheit machen, automatische Codeformatierer einzusetzen, um Energieverschwendung zu vermeiden, Codierungs-konventionen umzusetzen, sich nicht zu weit von dem, was allgemein üblich ist, zu entfernen und sich auf die Entwicklung des persönlichen Programmierstils zu konzentrieren.
+Output (generation): Warum sollte man sich zur Angewohnheit machen, automatische Codeformatierer einzusetzen?
+Previous question:   Warum sollte man sich zur Angewohnheit machen, automatische Codeformatierer einzusetzen?
+
+Input (answer):      Das Protokoll beschreibt das Interface eines Objekts und umfasst die Methodensignaturen und dazugehörigen Kommentare. Die Implementierung hingegen besteht aus den tatsächlichen Methodenrümpfen und den Instanzvariablen, die das Implementationsgeheimnis eines Objekts bilden. Das Protokoll dient dazu, das Verhalten eines Objekts zu beschreiben, während die Implementierung die Details der Umsetzung enthält.
+Output (generation): Was ist der Unterschied zwischen das Protokoll und die Implementierung?
+Previous question:   Was unterscheidet Protokoll und Implementierung in SMALLTALK?
+
+Input (answer):      Ein entscheidender Vorteil der Verwendung von Zwischenobjekten in Bezug auf Zu-n-Beziehungen ist die Möglichkeit, verschiedene Arten von solchen Beziehungen zu definieren und diesen jeweils spezifisches Verhalten zuzuweisen, das auf die Art der Beziehung abgestimmt ist. Dies ermöglicht es, mengenwertige Beziehungen oder sortierte Beziehungen zu erstellen und Operationen wie das Hinzufügen oder Entfernen von Objekten individuell anzupassen.
+Output (generation): Was ist ein entscheidender Vorteil der Verwendung von Zwischenobjekten in Bezug auf Zu-n-Beziehungen?
+Previous question:   Welcher Vorteil ergibt sich aus der Verwendung von Zwischenobjekten in Zu-n-Beziehungen?
+
+Input (answer):      Der Verlust der Zuweisungskompatibilität kann aus der impliziten Allquantifiziertheit von Typinvarianten resultieren. Typsysteme mit solchen Invarianten sind nicht in der Lage, Aussagen über Wertebereiche zu treffen, die nicht implizit allquantifiziert sind.
+Output (generation): Was ist der Verlust der Zuweisungskompatibilität?
+Previous question:   Warum kann es trotz der Harmonie von Typerweiterung und -einschränkung zu einem Verlust der Zuweisungskompatibilität kommen?
+
+Input (answer):      Lokale Variablen sind Variablen, die innerhalb einer Methode deklariert werden und nur innerhalb dieser Methode sichtbar sind. Instanzvariablen sind Variablen, die in einer Klasse deklariert werden und für alle Instanzen dieser Klasse gültig sind. Instanzvariablen werden initialisiert, wenn ein Objekt erzeugt wird und behalten ihren Wert zwischen verschiedenen Methodenaufrufen bei.
+Output (generation): Was ist der Unterschied zwischen lokalen Variablen und Instanzvariablen?
+Previous question:   Was ist der Unterschied zwischen lokalen Variablen und Instanzvariablen in Java?
+
+Input (answer):      Der Vorteil von Unterprogrammen ist, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umgekehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall aufgerufen wird.
+Output (generation): Was ist der Vorteil von Unterprogrammen?
+Previous question:   Was ist der Vorteil von Unterprogrammen?

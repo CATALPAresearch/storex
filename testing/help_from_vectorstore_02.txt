@@ -1,0 +1,64 @@
+Paraphrasing / Help Testing with Vectorstore Similarity Search
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'
+
+Input (answer):      Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.
+Output (generation): Was ist ein Literal?
+Previous question:   Was ist ein Literal?
+
+Input (answer):      In einer Metaklasse können Informationen wie Instanzvariablen und Methoden für die zugehörige Klasse definiert werden. Dies ermöglicht es, das Verhalten und die Eigenschaften der Klasse individuell anzupassen.
+Output (generation): Was ist der Unterschied zwischen Klassen und Metaklassen in SMALLTALK?
+Previous question:   Welche Informationen können in einer Metaklasse definiert werden?
+
+Input (answer):      Bei der Verwendung parametrischer Typen geht man einen Kompromiss ein, bei dem die erhöhte Typsicherheit außerhalb der Typdefinition durch eine geringere Typsicherheit innerhalb der Typdefinition erkauft wird.
+Output (generation): Was ist der Unterschied zwischen Typäquivalenz und Typkonformität?
+Previous question:   Welchen Kompromiss geht man bei der Verwendung parametrischen Typen ein?
+
+Input (answer):      Klassen in Java dienen als Vorlagen für die Erzeugung von Objekten, liefern Typen für ein Programm und dienen der Modularisierung.
+Output (generation): Was sind die Funktionen von Klassen und Paketen in Java?
+Previous question:   Welche Funktionen haben Klassen in Java?
+
+Input (answer):      Goto-Anweisungen können den Programmfluss beeinflussen, indem sie den Kontext verlassen und zu einer anderen Stelle im Programm springen. Das Ziel des Sprungs ist nicht immer eindeutig aus dem Kontext erkennbar, und es kann unklar sein, welche Anweisungen vorher ausgeführt wurden.
+Output (generation): Was ist der Unterschied zwischen den betrachteten Anweisungen und den betrachteten Anweisungen?
+Previous question:   Was ist die Auswirkung von Goto-Anweisungen auf den Programmfluss?
+
+Input (answer):      Die Teil-Ganzes-Beziehung ist in der objektorientierten Programmierung wichtig, da sie es ermöglicht, komplexe Software-Systeme aus Teilen aufzubauen, wobei jeder Teil seine eigene interne Struktur kapselt. Dies hilft dabei, sicherzustellen, dass keine Aliasnamen für Teile existieren und Änderungen an einem Teil nicht unabsichtlich andere Teile beeinflussen. Dieses Konzept ist entscheidend für die Entwicklung komplexer und intakter Software-Systeme.
+Output (generation): Warum ist es mit der Einführung von Komponenten in objektorientierte Programmiersprachen bislang noch nicht besonders weit?
+Previous question:   Warum ist die Teil-Ganzes-Beziehung in der objektorientierten Programmierung von Bedeutung?
+
+Input (answer):      Eine SortedCollection ist eine Collection-Klasse in SMALLTALK, die eine Subklasse von OrderedCollection ist. Im Gegensatz zu anderen Collection-Klassen wird die Reihenfolge der Elemente in einer SortedCollection nicht von außen, durch Angabe eines Indexes oder die Reihenfolge der Einfügung, festgelegt. Stattdessen wird die Reihenfolge von innen durch eine Qualität der eingefügten Objekte bestimmt. Dies ermöglicht es, die in Beziehung stehenden Objekte in einer bestimmten Reihenfolge zu halten, unabhängig von der Reihenfolge, in der sie der Collection hinzugefügt wurden.
+Output (generation): Was ist der Zweck von SortedCollection in der objektorientierten Programmierung?
+Previous question:   Wie unterscheidet sich die SortedCollection in SMALLTALK von anderen Collection-Klassen?
+
+Input (answer):      In STRONGTALK sind formale Parameter in Klassendefinitionen typisiert, während in Java oder C++ Instanzvariablen nicht Teil einer Typdefinition sein können.
+Output (generation): Was ist der Unterschied zwischen STRONGTALK und STRONGTALK in Java?
+Previous question:   Wie unterscheidet sich die Verwendung von Klassendefinitionen in STRONGTALK von anderen Sprachen wie Java oder C++?
+
+Input (answer):      In Konstruktordefinitionen in Java ist die Angabe des Rückgabetyps nicht erforderlich, weil der Typ der erzeugten Instanz immer ein Exemplar der Klasse ist, in der der Konstruktor definiert ist. Somit ist der Typ der Instanz bereits festgelegt und muss nicht explizit angegeben werden.
+Output (generation): Wie können Methoden in Java unterteilt werden?
+Previous question:   Warum ist die Angabe des Rückgabetyps in Konstruktordefinitionen in Java nicht erforderlich?
+
+Input (answer):      Der Name ist etwas irreführend, da nicht unbedingt die Basisklassen, sondern eher die abgeleiteten Klassen als "anfällig" oder "zerbrechlich" gelten.
+Output (generation): Was ist der Unterschied zwischen SMALLTALK und Typdefinitionen in Bezug auf die Ähnlichkeit von Klassendefinitionen?
+Previous question:   Warum ist der Name Fragile-Base-Class-Problem etwas irreführend?
+
+Input (answer):      Symbole dürfen im Gegensatz zu Strings keine Leerzeichen enthalten. Zudem ist die Erzeugung eines Objekts anhand eines Symbolliterals technisch aufwendiger als die Erzeugung eines Objekts anhand eines String-Literals.
+Output (generation): Was sind Ausdrücke in einem objektorientierten Programm?
+Previous question:   Was unterscheidet Symbole und Strings in SMALLTALK?
+
+Input (answer):      In der dynamischen Bindung, wie sie in SMALLTALK verwendet wird, erfolgt die Auswahl der Methode zur Laufzeit und hängt von der Art des Empfängerobjekts ab. In der statischen Typisierung, wie sie in statisch typgeprüften Sprachen wie Java, C-Sharp und C++ verwendet wird, erfolgt die Typüberprüfung zur Übersetzungszeit und nicht zur Laufzeit. Statisch typisierte Sprachen erfordern in der Regel, dass der Programmierer den Datentyp der Objekte und deren Methoden im Voraus festlegt, während dynamisch typisierte Sprachen mehr Flexibilität bieten, da die Typüberprüfung erst zur Laufzeit erfolgt. Allerdings erhöht die dynamische Bindung das Risiko von Laufzeitfehlern, die in statisch typisierten Sprachen vermieden werden können, indem explizite Typüberprüfungen durchgeführt werden.
+Output (generation): Was ist der Umstand, dass das dynamische Binden wirklich vollkommen dynamisch ist?
+Previous question:   Was unterscheidet dynamische und statische Typisierung in Bezug auf das dynamische Binden?
+
+Input (answer):      Ein Vorteil von Typsystemen ist die dadurch entstehende Modularisierung von Programmen, wenn ein Typ zugleich eine Schnittstelle oder ein Interface ausdrückt.
+Output (generation): Was ist der Zweck eines Interfaces in Java?
+Previous question:   Was ist ein Vorteil von Typsystemen?
+
+Input (answer):      Ein Methodenambiguitätsfehler wird verursacht, wenn bei der Suche nach einer Methode zur Übersetzungszeit nach dem oben beschriebenen Algorithmus (Schritt 4) eine oder mehrere andere Methodendefinitionen gleich weit von der aufgerufenen Methode entfernt sind und der Compiler dadurch nicht eindeutig bestimmen kann, welche Methode aufgerufen werden soll.
+Output (generation): Was passiert, wenn man erst einmal damit abgefunden hat, dass man als Programmiererin Methoden schreibt, die ausschließlich dem Zweck dienen, sich selbst oder eine Kollegin auf Programmierfehler hinzuweisen?
+Previous question:   Was verursacht einen Methodenambiguitätsfehler?
+
+Input (answer):      Die Spezifikation eines Programms beschreibt, was das Programm tun soll, während das Verhalten des Programms beschreibt, was das Programm tatsächlich tut. Die Spezifikation ist eine Art Blaupause oder Anleitung für das Programm, während das Verhalten das Ergebnis der Ausführung des Programms ist.
+Output (generation): Was sind Deklaration und Definition?
+Previous question:   Was ist der Unterschied zwischen Verhalten des Programms und seiner Spezifikation?
+

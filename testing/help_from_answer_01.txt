@@ -1,0 +1,63 @@
+Paraphrasing / Help Testing from previous answer
+
+Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'
+
+Input (answer):      Primitive Methoden sind primitive Operationen, die auf native Implementierungen zurückgreifen. Diese Methoden sind durch Nummern identifiziert und sollen nicht direkt von Programmierern verwendet werden.
+Output (generation): Was sind primitive Methoden?
+Previous question:   Was sind primitive Methoden?
+
+Input (answer):      Eine implizite Zuweisung ist eine Zuweisung, die bei Methodenaufrufen vorgenommen wird.
+Output (generation): Was ist eine implizite Zuweisung?
+Previous question:   Was ist eine implizite Zuweisung?
+
+Input (answer):      Dynamische Typprüfung ist eine Methode zur Gewährleistung von Typkorrektheit, bei der zur Laufzeit vor einer Variablenzuweisung geprüft wird, ob der zuzuweisende Wert den von der Variablen geforderten Typ hat. Der Nachteil ist, dass diese Prüfung zu spät kommt und häufig nur zu einem Programmabbruch führt.
+Output (generation): Was ist dynamische Typprüfung?
+Previous question:   Was ist dynamische Typprüfung?
+
+Input (answer):      In EIFFEL bestehen Anweisungen aus Zuweisungen, Methodenaufrufen, Konstruktoraufrufen und den üblichen Kontrollstrukturen zur Verzweigung und Wiederholung. Jede Kontrollstruktur hat genau einen Eingang und einen Ausgang. EIFFEL bietet ein Exception Handling, das sich angenehm von dem in Java/C-Sharp/C++ unterscheidet.
+Output (generation): Was sind Anweisungen in EIFFEL?
+Previous question:   Was sind die Anweisungen in EIFFEL?
+
+Input (answer):      Coding Conventions sind Vereinbarungen über die Formatierung von Quellcode, die neben Namenskonventionen und anderen Richtlinien dazu dienen, den Code lesbarer zu gestalten. Sie regeln Dinge wie Einrückungen, Zeilenumbrüche, Leerzeilen und Leerzeichen.
+Output (generation): Was sind Coding Conventions?
+Previous question:   Was sind Coding Conventions?
+
+Input (answer):      In SMALLTALK werden Protokolle nicht auf Objektebene, sondern auf Klassenebene spezifiziert. Dies bedeutet, dass eine Klasse ein bestimmtes Protokoll implementiert und die Objekte dieser Klasse dieses Protokoll erben. In STRONGTALK, einer Erweiterung von SMALLTALK, werden Protokolle zu Typen erhoben und ähneln Interfaces in Java.
+Output (generation): Was ist der Unterschied zwischen SMALLTALK und Klassenebene in Bezug auf Protokolle?
+Previous question:   Wie werden Protokolle in SMALLTALK spezifiziert?
+
+Input (answer):      Die tatsächlichen Parameter spielen eine Rolle bei der Methodenauswahl, wenn eine Methode für verschiedene Datentypen unterschiedlich implementiert ist, wie zum Beispiel bei arithmetischen Operatoren.
+Output (generation): Welche Rolle spielen die tatsächlichen Parameter bei der Methodenauswahl?
+Previous question:   Wann spielen die tatsächlichen Parameter eine Rolle bei der Methodenauswahl?
+
+Input (answer):      In der Entwurfsphase kann die Typisierung dazu verwendet werden, abstrakte Datentypen und Schnittstellen zu spezifizieren, bevor die Implementierung beginnt.
+Output (generation): Wie kann die Typisierung in der Entwurfsphase verwendet werden?
+Previous question:   Wozu kann die Typisierung in der Entwurfsphase verwendet werden?
+
+Input (answer):      In C-Sharp sind alle Variablen typisiert. Anders als in Java wird zunächst nicht zwischen Wert- (primitiven) und Referenztypen unterschieden: Alle Typen, auch die primitiven, gelten als von Object (genauer: System.Object) abgeleitet.
+Output (generation): Was ist der Unterschied zwischen Wert- und Referenztypen in C-Sharp?
+Previous question:   Wie ist die Typenhierarchie in C-Sharp aufgebaut?
+
+Input (answer):      Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
+Output (generation): Wie kann das Geheimnisprinzip umgangen werden?
+Previous question:   Wie kann das Geheimnisprinzip umgangen werden?
+
+Input (answer):      Die Garbage Collection verhindert vorzeitige Entfernung von Objekten, die noch in Verwendung sind, und stellt sicher, dass Variablen auf gültige Objekte verweisen. Dies trägt zur Stabilität und Sicherheit von Programmen bei.
+Output (generation): Was ist die Funktion der Garbage Collection in der Programmierung?
+Previous question:   Was sind die Vorteile einer Garbage Collection?
+
+Input (answer):      Die Begriffe Superklasse und Subklasse können in verschiedenen Programmiersprachen unterschiedliche Bedeutungen haben. In einigen Sprachen bezeichnet Superklasse die Oberklasse und Subklasse die Unterklasse, während in anderen Sprachen die Bedeutungen vertauscht sind. Daher werden in diesem Kurs die Begriffe Generalisierung und Spezialisierung verwendet, um die Beziehung zwischen Ober- und Unterklassen zu beschreiben.
+Output (generation): Welche Bedeutung haben die Begriffe Superklasse und Subklasse in verschiedenen Programmiersprachen?
+Previous question:   Was ist der Unterschied zwischen Superklasse und Subklasse?
+
+Input (answer):      Die Namensäquivalenz ist wichtig, da sie sicherstellt, dass einer Variable nur Werte gleicher Bedeutung zugewiesen werden können. Sie verhindert Zuweisungen zwischen Typen, die zwar strukturell gleich sind, aber unterschiedliche Bedeutungen haben. Dies ist entscheidend, um logische Programmierfehler zu vermeiden, die sonst schwer zu entdecken wären.
+Output (generation): Warum ist die Namensäquivalenz wichtig?
+Previous question:   Warum ist die Namensäquivalenz als Bedingung der Zuweisungskompatibilität wichtig?
+
+Input (answer):      Anders als in C-Sharp unterscheidet EIFFEL nicht zwischen Wert- und Referenztypen auf der Ebene von Typkonstruktoren. Stattdessen kann es für jeden Typ sowohl Wertsemantik als auch Referenzsemantik geben.
+Output (generation): Was unterscheidet Wert- und Referenztypen in EIFFEL?
+Previous question:   Was unterscheidet Werttypen und Referenztypen in EIFFEL?
+
+Input (answer):      In SMALLTALK ist die automatische Überprüfung des Gesetzes Demeters nicht möglich, da Ausdrücke in SMALLTALK nicht typisiert sind. Daher können Checker nicht feststellen, ob die Art und Weise, wie auf Objekte zugegriffen wird, dem Gesetz Demeters entspricht.
+Output (generation): Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?
+Previous question:   Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?
