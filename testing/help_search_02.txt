@@ -1,0 +1,67 @@
+Question Selection Testing
+
+_____Kurseinheit 1_____
+
+Keyword:  attribut
+Question: Was sind Attribute?
+Answer:   Attribute sind Instanzvariablen, die die Eigenschaften eines Objekts festhalten.
+
+Keyword:  objekt
+Question: Was sind atomare Objekte?
+Answer:   Atomare Objekte sind Zeichenobjekte und Zahlobjekte, die nicht aus anderen Objekten bestehen.
+
+Keyword:  zuweisung
+Question: Was sind Zuweisungsausdrücke?
+Answer:   Zuweisungsausdrücke bestehen aus einer Variablen auf der linken Seite und einem Ausdruck auf der rechten Seite. Sie bewirken den Zustandswechsel von Objekten und sind die einzigen Ausdrücke, die dies tun.
+
+_____Kurseinheit 2_____
+
+Keyword:  smalltalk
+Question: Welche Ebenen gibt es in SMALLTALK im Zusammenhang mit Klassen und Instanzen?
+Answer:   In SMALLTALK gibt es mehrere Ebenen im Zusammenhang mit Klassen und Instanzen: Ebene 0: Konkrete Objekte, die nicht instanziierbar sind und Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Ebene 1: Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Ebene 2: Metaklassen, die die Klassen auf Ebene 1 definieren. Jede Metaklasse hat genau eine Instanz. Ebene 3: Die Klasse "Metaclass", von der alle Metaklassen Instanzen sind.
+
+Keyword:  direkte instanz
+Question: Wie funktioniert die Verwendung von super in SMALLTALK?
+Answer:   Wenn super als Nachrichtenempfänger in einer Methodendefinition verwendet wird, beginnt die Suche nach der zur Nachricht passenden Methodendefinition in der (direkten) Superklasse der Klasse, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet. Anders als bei self ist die Suche unabhängig von der Klasse des Objekts, für das super steht. Das bedeutet, dass super immer eine von der Klasse des konkreten Empfängerobjekts losgelöste Suche auslöst, die in der Superklasse der Klasse beginnt, in der super verwendet wird, und nicht in der Superklasse der Klasse, von der das (durch super bezeichnete) Empfängerobjekt eine direkte Instanz ist.
+
+Keyword:  objekt
+Question: Welche Art von Methoden bietet die Klasse "Object" den Objekten an?
+Answer:   Die Klasse "Object" bietet eine Vielzahl von Methoden an, die grundlegende Typtests und andere gemeinsame Operationen für Objekte ermöglichen. Dazu gehören Methoden wie isNil, notNil, isInteger, isFloat und viele andere. Diese Methoden erlauben es, Eigenschaften von Objekten abzufragen und deren Typ zu überprüfen.
+
+_____Kurseinheit 3_____
+
+Keyword:  typsystem
+Question: Was ist ein ausdruckskräftiges Typsystem?
+Answer:   Ein ausdruckskräftiges Typsystem ist ein Typsystem, das in einer Typannotation mehr Informationen unterbringen und damit mehr Typfehler aufdecken kann. Allerdings steigt mit der Ausdruckskraft auch die Komplexität des Typsystems und damit die Wahrscheinlichkeit, dass eine aufwändige Typprüfung notwendig ist. Besonders anspruchsvolle Typsysteme können außerdem die Gestaltung von Schnittstellen erschweren, so dass die beteiligten Programme nicht ohne weiteres zusammenarbeiten können.
+
+Keyword:  implizit
+Question: Was sind implizite Zuweisungen?
+Answer:   Implizite Zuweisungen treten bei Funktionsaufrufen auf, bei denen die Funktion eine Kopie des Objekts erhält, auf das die Funktionsargument-Variable verweist.
+
+Keyword:  rekursiv
+Question: Was sind rekursive Typen?
+Answer:   Rekursive Typen sind Typen, die sich in ihrer Definition selbst referenzieren. Sie sind ein wichtiges Instrument der Programmierung, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu ermöglichen. Allerdings bringen sie auch Probleme mit sich, wie zum Beispiel die Feststellung der strukturellen Äquivalenz zweier rekursiver Typen, die aufgrund der notwendigen Expansion unendlich große Definitionen ergeben kann.
+
+_____Kurseinheit 4_____
+
+Keyword:  super
+Question: Was ist der Supertyp aller Referenztypen in Java?
+Answer:   Object ist der Supertyp aller Referenztypen in Java.
+
+Keyword:  parallele ausfuehrung
+Question: Was sind Threads in Java und wie unterscheiden sie sich von Prozessen?
+Answer:   Threads in Java sind parallele Ausführungsstränge, während Prozesse in der Regel eigenständige Programme mit separater Ressourcenallokation sind. Threads sind leichtgewichtiger und teilen sich Ressourcen innerhalb eines Prozesses. Bei Threads müssen die Synchronisationsmechanismen selbst implementiert werden, während Prozesse in Betriebssystemen über die Inter-Prozess-Kommunikation reguliert werden.
+
+Keyword:  variable
+Question: Welche Besonderheiten gibt es bei Zuweisungen von Pointervariablen in C++?
+Answer:   Bei Zuweisungen von Pointervariablen muss man sich in C++ genau überlegen, ob man Pointer oder die Werte, auf die die Pointer zeigen, zuweisen möchte. C++ verwendet standardmäßig "Call by value" für Methodenaufrufe, was bedeutet, dass Kopien von Parametern übergeben werden.
+
+_____Kurseinheit 6_____
+
+Keyword:  objekt
+Question: Was ist das Problem mit der Substituierbarkeit von Objekten?
+Answer:   Das Problem ist, dass ein Objekt vom Typ S, das von einem Klienten als Typ T betrachtet wird, von einem anderen Klienten als Typ S (oder als ein anderer Supertyp als T) betrachtet werden kann. Dadurch können Methoden auf dem Objekt aufgerufen werden, die Zustandsänderungen verursachen, die nicht durch die mit T verbundenen Methodenspezifikationen (Vor- und Nachbedingungen) abgedeckt sind. Dieses Verhalten ist nicht mit dem von T kompatibel und für Benutzer, die das Objekt als T betrachten, nicht akzeptabel.
+
+Keyword:  methode
+Question: Was ist funktionale Äquivalenz?
+Answer:   Funktionale Äquivalenz bedeutet, dass zwei Objekte, die zu verschiedenen Typen gehören, aber innerhalb derselben Gruppe sind, die gleichen Funktionen erfüllen und die gleichen Methoden aufrufen können. Sie können sich jedoch im Aussehen und Verhalten unterscheiden.

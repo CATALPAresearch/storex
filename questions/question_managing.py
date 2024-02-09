@@ -8,6 +8,7 @@ import re
 import questions.questions as questions
 
 from utils.helpers import KE, Level
+from utils.preprocessing import extract_keywords, preprocess_text
 
 logger = logging.getLogger()
 
@@ -57,28 +58,33 @@ class QuestionManager:
         """
         Select a question from the list of questions for the knowledge level in the specified course unit.
         """
-        ke_level = 0
-        first = True
-        while True:
-            ke_index = self.topic_manager.get_topic().value
+        ke_index = self.topic_manager.get_topic().value
+        question = ''
 
-            # Check if there are predefined questions for the current course unit and level
+        for ke_level in range(3):
+            # Check if there are predefined questions for the current course unit and increasing level
             if self.question_list[ke_index][ke_level] != '':
                 possible_questions = []
+                # Search in questions
                 for question_dict in self.question_list[ke_index][ke_level]:
-                    if re.search(keyword, question_dict['question']) or re.search(keyword, question_dict['question']):
+                    if re.search(keyword, preprocess_text(question_dict['question'])):
                         possible_questions.append(question_dict)
+                print("Found in questions:", len(possible_questions))
+                # Search in answers, if no questions were found
+                if not possible_questions:
+                    for question_dict in self.question_list[ke_index][ke_level]:
+                        if re.search(keyword, preprocess_text(question_dict['answer'])):
+                            possible_questions.append(question_dict)
+                    print("Found in answers:", len(possible_questions))
+                # Select question and break increasing the level
                 if possible_questions:
-                    question = self.random_question(ke_index, ke_level)
-                else:
-                    question = self.get_question()
-                break
-            else:
-                if first:
-                    ke_level = self.topic_manager
-                    first = False
-                else:
-                    self.topic_manager.increase_level()
+                    question_index = random.choice(list(range(len(possible_questions))))
+                    question = possible_questions[question_index]
+                    self.question_list[ke_index][ke_level].remove(question)
+                    logger.debug(f"Found: {question} for keyword '{keyword}'")
+                    break
+        if question == '':
+            question = self.get_question()
         return question
 
 
@@ -100,7 +106,7 @@ class TopicManager:
         if self.topic.value < (len(KE) - 1):
             self.topic = KE(self.topic.value + 1)
             self.level = Level.REMEMBER
-            logger.debug(f"Increased topic to {self.topic} at level {self.level}!")
+            logger.debug(f"Increased topic to {self.topic.name} at level {self.level.name}!")
 
     def increase_level(self):
         if self.level.value < (len(Level) - 1):
