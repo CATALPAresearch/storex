@@ -111,27 +111,26 @@ class FeedbackManager:
         feedback_string += f"{student} hat {concise_grade} unpräzise Antworten gegeben.\n"
 
         # Construct feedback strings from information per KE
-        max_level = max(self.completed_level)
-        level = FeedbackLevel(max_level).name
+        average = sum(self.completed_level) / len(self.completed_level)
+        level = FeedbackLevel(round(average)).name
         feedback_string += f"{student} hat ein {level} Leistungslevel erreicht.\n"
 
-        highest_level = [i for i, j in enumerate(self.completed_level) if j == max_level]
-        if len(highest_level) > 1:
-            answers = [self.correct_answers[i] for i in highest_level]
-            best_level = highest_level[answers.index(max(answers))]
-        else:
-            best_level = highest_level[0]
-        topic = topic_from_ke(best_level)
-        feedback_string += f"{student} war am besten bei dem Thema '{topic}'.\n"
-
+        highest_level = [i for i, j in enumerate(self.completed_level) if j == max(self.completed_level)]
         lowest_level = [i for i, j in enumerate(self.completed_level) if j == min(self.completed_level)]
-        if len(lowest_level) > 1:
-            answers = [self.correct_answers[i] for i in lowest_level]
-            worst_level = lowest_level[answers.index(max(answers))]
-        else:
-            worst_level = lowest_level[0]
-        topic = topic_from_ke(worst_level)
-        feedback_string += f"{student} war am schlechtesten bei dem Thema '{topic}'."
+        optima = [highest_level, lowest_level]
+        topics = []
+
+        for optimum in optima:
+            if len(optimum) > 1:
+                answers = [self.correct_answers[i] for i in optimum]
+                most_level = optimum[answers.index(max(answers))]
+            else:
+                most_level = optimum[0]
+            topic = topic_from_ke(most_level)
+            topics.append(topic)
+
+        feedback_string += f"{student} war am besten bei dem Thema '{topics[0]}'.\n"
+        feedback_string += f"{student} war am schlechtesten bei dem Thema '{topics[1]}'."
 
         return feedback_string
 

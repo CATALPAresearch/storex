@@ -24,7 +24,7 @@ def sort_in_ke(question_answer, ke_index):
     if (question_answer['question'].startswith(("Was ist", "Was sind", "Was bedeutet", "Welche"))
             and not re.search("(Vorteil|Nachteil|Unterschied|Zweck|Grund|Beispiel)", question_answer['question'])):
         KE_questions[ke_index][0].append(question_answer)
-    elif (question_answer['question'].startswith(("Wie", "Wann", "Warum")) or
+    elif (question_answer['question'].startswith(("Wie", "Wann", "Warum", "Erklären")) or
           re.search("(Zweck|Grund|Beispiel)", question_answer['question'])):
         KE_questions[ke_index][1].append(question_answer)
     else:  # Vorteil|Nachteil|Unterschied

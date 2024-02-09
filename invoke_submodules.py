@@ -144,7 +144,7 @@ Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
 
         for student in students:
             with open(OUTPUT_FILE, 'a', newline='') as file:
-                file.write(f"{student['nominativ']}:        {student['name']}")
+                file.write(f"{student['nominative']}:        {student['name']}")
             possible_value = []
             for _ in range(3):
                 feedback = FeedbackManager()
