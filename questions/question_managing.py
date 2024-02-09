@@ -59,6 +59,7 @@ class QuestionManager:
         Select a question from the list of questions for the knowledge level in the specified course unit.
         """
         ke_index = self.topic_manager.get_topic().value
+        keyword = preprocess_text(keyword)
         question = ''
 
         for ke_level in range(3):
