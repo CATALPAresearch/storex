@@ -3,6 +3,7 @@ Script for invoking the submodules as standalone functionalities for development
 """
 import os
 import random
+import re
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from datetime import datetime
@@ -75,7 +76,7 @@ match args["module"]:
         # evaluator.get_missing_keys(test_correct, test_student)
         evaluator.evaluate_keywords(test_keywords, test_student)
 
-    case "generator":
+    case "qa_generating":
         from questions.question_generation import QuestionGenerator
         from utils import preprocessing
         from text_generation import TextGenerator
@@ -89,8 +90,8 @@ match args["module"]:
 
         for _ in range(30):
             test_keyword = random.choice(preprocessing.technical_terms)
-            if isinstance(test_keyword, list):
-                test_keyword = test_keyword[0]
+            if test_keyword.startswith('['):
+                test_keyword = (re.split(' ', test_keyword)[0])[1:1]
 
             question_answer = generator.generate_question_answer(test_keyword)
             with open(OUTPUT_FILE, 'a', newline='') as file:
