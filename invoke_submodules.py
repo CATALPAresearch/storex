@@ -92,12 +92,52 @@ match args["module"]:
             test_keyword = random.choice(preprocessing.technical_terms)
             if test_keyword.startswith('['):
                 test_keyword = (re.split(' ', test_keyword)[0])[1:1]
-
             question_answer = generator.generate_question_answer(test_keyword)
             with open(OUTPUT_FILE, 'a', newline='') as file:
                 file.write(f"""Keyword:  {test_keyword}
 Question: {question_answer['question']}
 Answer:   {question_answer['answer']}\n\n""")
+
+    case "qa_selecting":
+        from questions.question_managing import QuestionManager, TopicManager
+        from questions.questions import KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_questions
+        from utils import preprocessing
+
+        preprocessing.setup_word_lists()
+        topic_manager = TopicManager()
+        qa_manager = QuestionManager(topic_manager)
+        evaluated = [[], [], [], [], []]
+
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("""Question Selection Testing\n\n""")
+
+        for i in range(3):
+            evaluated[0].append(random.choice(KE1_questions[i]))
+            evaluated[1].append(random.choice(KE2_questions[i]))
+            evaluated[2].append(random.choice(KE3_questions[i]))
+            evaluated[3].append(random.choice(KE4_questions[i]))
+            evaluated[4].append(random.choice(KE6_questions[i]))
+
+        for i in range(len(evaluated)):
+            # Remove open question
+            qa_manager.get_question()
+            with open(OUTPUT_FILE, 'a', newline='') as file:
+                file.write(f"_____Kurseinheit {i + 1}_____\n\n")
+            for question in evaluated[i]:
+                keywords = preprocessing.extract_keywords(question['answer'])
+                if not keywords:
+                    continue
+                test_keyword = random.choice(keywords)
+                if test_keyword.startswith('['):
+                    test_keyword = (re.split(' ', test_keyword)[0])[1:1]
+                logger.debug(f"Test Keyword: {test_keyword}")
+                selected_question = qa_manager.select_question(test_keyword)
+                with open(OUTPUT_FILE, 'a', newline='') as file:
+                    file.write(f"""Keyword:  {test_keyword}
+Question: {selected_question['question']}
+Answer:   {selected_question['answer']}\n\n""")
+
+            topic_manager.increase_topic()
 
     case "paraphrasing":
         from questions.paraphrasing import QuestionParaphraser

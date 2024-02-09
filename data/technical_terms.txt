@@ -131,9 +131,7 @@ funktionale programmierung
 garbage collection
 geheimnisprinzip
 generalisierung
-generalisierungspezialisierung
-generic
-generisch
+[generisch, generic]
 generischer typ
 genus et differentiae
 getter
@@ -163,7 +161,7 @@ indirekter subtyp
 indizierte instanzvariable
 information hiding
 initialisierung
-inklusionspolymorphie
+[inklusionspolymorphie, subtyppolymorphie]
 inlining
 innere klasse
 instanz
@@ -325,8 +323,8 @@ rechte seite der zuweisung
 redefinition
 redundanz
 refactoring
-referenz
-referenzsemantik
+[referenz, verweis]
+[referenzsemantik, verweissemantik]
 reflection
 reflektiver zugriff
 rekursiv
@@ -380,7 +378,6 @@ subtyp
 subtypenbeziehung
 subtypenhierarchie
 subtyping
-subtyppolymorphie
 super
 superklasse
 supertyp
@@ -443,11 +440,10 @@ verhalten
 [verhaltensbasierte subtyping, behavioural subtyping]
 verhaltensbezogene subtyping
 versteckte fallunterscheidung
-verweis
-verweissemantik
 virtual function table
 wachsende objekt
 wert
+wertsemantik
 wertsemantik
 wertzuweisung
 wiederverwendung

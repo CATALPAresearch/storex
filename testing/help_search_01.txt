@@ -1,0 +1,67 @@
+Question Selection Testing
+
+_____Kurseinheit 1_____
+
+Keyword:  variable
+Question: Welche Semantik haben Variablen, die Attribute repräsentieren?
+Answer:   Variablen, die Attribute repräsentieren, haben in der Regel eine Wertsemantik. Das bedeutet, sie halten eigene Kopien eines Objekts (oder verweisen darauf, je nach Implementierung der Sprache). Dies ermöglicht es, dass Änderungen an einem Attributwert nicht automatisch andere Objekte mit dem gleichen Attributwert beeinflussen.
+
+Keyword:  methodenaufruf
+Question: Was ist ein Methodenaufruf?
+Answer:   Ein Methodenaufruf ist die Auswertung eines Nachrichtenausdrucks, da diese zur Ausführung der Anweisungen im Rumpf einer Methode führt.
+
+Keyword:  methodenaufruf
+Question: Was ist ein Methodenaufruf?
+Answer:   Ein Methodenaufruf ist die Auswertung eines Nachrichtenausdrucks, da diese zur Ausführung der Anweisungen im Rumpf einer Methode führt.
+
+_____Kurseinheit 2_____
+
+Keyword:  eigenschaft
+Question: Was sind abstrakte Klassen?
+Answer:   Abstrakte Klassen in der objektorientierten Programmierung sind Klassen, die selbst keine Instanzen haben und daher nicht instanziierbar sind. Sie werden oft verwendet, um gemeinsame Eigenschaften und Methoden für ihre Subklassen bereitzustellen, aber sie sind in der Regel unvollständig definiert und können zu Laufzeitfehlern führen, wenn sie direkt instanziiert werden.
+
+Keyword:  eigenschaft
+Question: Was ist die Funktion von Generalisierungen in der objektorientierten Programmierung?
+Answer:   Die Funktion von Generalisierungen in der objektorientierten Programmierung ist es, Eigenschaften zu definieren, die automatisch auch für alle Klassen gelten, von denen die Generalisierung abstrahiert. Diese Klassen müssen dann nur noch die Unterschiede definieren, die sie von der Generalisierung und voneinander unterscheiden.
+
+Keyword:  ueberschreiben
+Question: Was ist Überschreiben?
+Answer:   Überschreiben bedeutet, dass eine abgeleitete Klasse dieselben Methoden wie die Basisklasse besitzt, aber die Methoden anders implementiert. Das ist häufig Voraussetzung dafür, Vererbung sinnvoll einzusetzen.
+
+_____Kurseinheit 3_____
+
+Keyword:  objekt
+Question: Was ist die Funktion von Typen in der objektorientierten Programmierung?
+Answer:   Typen dienen in der objektorientierten Programmierung nicht nur dazu, Objekte zu klassifizieren, sondern auch dazu, das Implementationsgeheimnis der Klassen zu wahren und die Einhaltung der Schnittstellen durch den Compiler zu gewährleisten. Diese Funktion von Typen wurde mit der Programmiersprache Java und ihrem Interface-als-Typ-Konzept weiterentwickelt, was zur interfacebasierten Programmierung führte.
+
+Keyword:  typ
+Question: Was ist die Bedeutung von Typparametern in einer parametrisierten Typdefinition?
+Answer:   Typparameter in einer parametrisierten Typdefinition sind Platzhalter für konkrete Typen, die bei der Instanziierung des Typs eingesetzt werden können. Sie ermöglichen es, den gleichen Code für verschiedene Typen wiederzuverwenden und die Typsicherheit zu erhalten.
+
+Keyword:  eigenschaft
+Question: Welche Eigenschaften gelten für die Typäquivalenz?
+Answer:   Die Typäquivalenz ist reflexiv, was bedeutet, dass jeder Typ zu sich selbst äquivalent ist. Sie ist auch transitiv, was bedeutet, dass wenn A äquivalent zu B ist und B äquivalent zu C ist, dann ist auch A äquivalent zu C.
+
+_____Kurseinheit 4_____
+
+Keyword:  supertyp
+Question: Was ist der Supertyp aller Referenztypen in Java?
+Answer:   Object ist der Supertyp aller Referenztypen in Java.
+
+Keyword:  ausdruecke
+Question: Welche Typisierungsanforderungen gelten für Ausdrücke in Java?
+Answer:   In Java müssen alle Ausdrücke korrekt typisiert sein. Das bedeutet, dass der Typ jedes Ergebnisses eines inneren Ausdrucks mit dem Typ des äußeren Ausdrucks übereinstimmen muss, an der Stelle, an der er eingesetzt wird.
+
+Keyword:  cast
+Question: Was ist eine ClassCastException in Java?
+Answer:   Eine ClassCastException in Java ist eine Laufzeittypfehlermeldung, die geworfen wird, wenn ein Down oder Cross cast zu einem Objekt durchgeführt wird, das nicht den Zieltyp oder einen Subtyp davon hat.
+
+_____Kurseinheit 6_____
+
+Keyword:  abgeleitet
+Question: Welche Probleme kann die Vererbung von Implementierung verursachen?
+Answer:   Die Vererbung von Implementierung kann viele Probleme in einem verteilten, sich weiterentwickelnden Objektsystem verursachen, da sie die Kopplung zwischen Komponenten erhöht und die Änderungen in der Basiskomponente Auswirkungen auf die abgeleiteten Komponenten haben können.
+
+Keyword:  klasse
+Question: Welche Herausforderung besteht hinsichtlich der Strukturierung von Klassen in der objektorientierten Programmierung?
+Answer:   Eine Herausforderung besteht darin, dass die hierarchische Struktur objektorientierter Systeme auf Klassenebene nicht immer vorschreibbar ist. Objekte einer Klasse sind nicht immer Teile von Objekten anderer Klassen, sondern können auch einzelne Exemplare (Instanzen) sein und selbst Teile haben können. Es fehlen Konstrukte zur Definition von Komponenten als separate strukturbildende Einheiten neben Klassen und Objekten.

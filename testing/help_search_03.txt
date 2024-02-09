@@ -1,0 +1,71 @@
+Question Selection Testing
+
+_____Kurseinheit 1_____
+
+Keyword:  wert
+Question: Welche Variablen haben in SMALLTALK Wertsemantik?
+Answer:   In den meisten SMALLTALK-Implementationen haben Variablen, die Zeichen, kleine Zahlen und boolesche Werte bezeichnen, Wertsemantik, um Speicherplatz zu sparen, obwohl der Begriff der Identität für diese Objekte verloren geht. Die mehrfache Existenz identischer Objekte im Speicher hat in der Regel keine große Bedeutung, da Gleichheit an die Stelle der Identität treten kann.
+
+Keyword:  explizit
+Question: Welche Funktion hat die Return-Anweisung?
+Answer:   Die Return-Anweisung ermöglicht eine explizite Beendigung der Methode und die Rückgabe eines anderen Objekts als des Empfängers. Die Return-Anweisung kann an beliebigen Stellen innerhalb der Methode auftreten und beeinflusst den Kontrollfluss des Programms.
+
+Keyword:  literal
+Question: Was sind Array-Literale in SMALLTALK ?
+Answer:   Array-Literale repräsentieren Objekte, die aus einer Folge beliebiger anderer Objekte bestehen.
+
+_____Kurseinheit 2_____
+
+Keyword:  metaklasse
+Question: Was ist die Beziehung zwischen Klassen und Metaklassen in Smalltalk?
+Answer:   In Smalltalk besteht eine 1-zu-1-Beziehung zwischen Klassen und Metaklassen, die nicht getrennt voneinander definiert werden, sondern in einem gemeinsamen Schema. Jede Klassendefinition verfügt über Abschnitte für die Deklaration der Instanzvariablen, Definition der Methoden, Angabe der Klassenvariablen und -methoden.
+
+Keyword:  klasse
+Question: Was ist die Rolle der Metaklasse "Metaclass" in SMALLTALK?
+Answer:   Die Metaklasse "Metaclass" in SMALLTALK ist eine gemeinsame Metaklasse, von der alle Metaklassen Instanzen sind. Sie wird verwendet, um die Instanzvariablen und Methoden für Metaklassen bereitzustellen, da es nicht notwendig ist, jeder Metaklasse eigene Instanzvariablen und Methoden zuzuweisen.
+
+Keyword:  klasse
+Question: Was ist eine Klassenvariable?
+Answer:   Eine Klassenvariable ist eine Variable, die einer Klasse gehört und allen Instanzen dieser Klasse gemeinsam ist. In diesem Fall gehört die Klassenvariable "Pi" der Klasse "Float" und ist allen Instanzen dieser Klasse zugeordnet.
+
+_____Kurseinheit 3_____
+
+Keyword:  typerweiterung
+Question: Was ist Typerweiterung?
+Answer:   Typerweiterung ist ein Konzept in der objektorientierten Programmierung, bei dem eine Unterklasse eine Oberklasse erweitert, indem sie neue Attribute und Methoden hinzufügt oder bestehende Methoden überschreibt.
+
+Keyword:  typkonform
+Question: Was ist strukturelle Typkonformität?
+Answer:   Strukturelle Typkonformität bedeutet, dass der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält.
+
+Keyword:  redefinition
+Question: Was ist Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie?
+Answer:   Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie ist eine Technik in der objektorientierten Programmierung, bei der ein Subtyp eine Methode seines Obertyps mit einem spezifischeren Rückgabetyp neu definieren kann, während er gleichzeitig die Liskov-Substitutionsprinzip einhält. Diese Technik kann jedoch nicht mit parametrischen Typen erreicht werden.
+
+_____Kurseinheit 4_____
+
+Keyword:  java
+Question: Was sind Aufzählungstypen in Java?
+Answer:   Aufzählungstypen in Java sind mit Java 1.5 hinzugekommen und stellen eine Unterart der Klassentypen dar. Sie werden mit dem Schlüsselwort enum definiert und können Elemente, Felder und Methoden enthalten. Die Elemente einer Aufzählung werden zu Konstanten, also zu lebenslang gültigen Namen für Objekte einer Klasse, die den Aufzählungstyp repräsentiert.
+
+Keyword:  deklariert
+Question: Was ist nominale Typkonformität in Java?
+Answer:   In Java ist nominale Typkonformität eine Art von Typkonformität, bei der die Typen entweder identisch sein müssen oder eine Subtypbeziehung zwischen den beiden bestehen muss, die explizit deklariert werden muss. Das bedeutet, dass Subtypen ihre Supertypen namentlich kennen müssen.
+
+Keyword:  interface
+Question: Was ist die Besonderheit von Javas Interfaces?
+Answer:   Javas Interfaces sind eigenständige Konstrukte, die über die ursprüngliche Bedeutung hinausgehen und weitreichende Möglichkeiten zur Definition von Schnittstellen und zur Entwicklung objektorientierter Programmiersprachen bieten.
+
+_____Kurseinheit 6_____
+
+Keyword:  attribut
+Question: Was ist Behavior Subtyping?
+Answer:   Behavior Subtyping, auch verhaltensbasiertes Subtyping genannt, ist eine Art von Subtyping, bei der ein Untertyp die gleichen Methoden wie sein Obertyp haben muss, aber nicht unbedingt die gleichen Attribute.
+
+Keyword:  klasse
+Question: Welche Herausforderung besteht hinsichtlich der Strukturierung von Klassen in der objektorientierten Programmierung?
+Answer:   Eine Herausforderung besteht darin, dass die hierarchische Struktur objektorientierter Systeme auf Klassenebene nicht immer vorschreibbar ist. Objekte einer Klasse sind nicht immer Teile von Objekten anderer Klassen, sondern können auch einzelne Exemplare (Instanzen) sein und selbst Teile haben können. Es fehlen Konstrukte zur Definition von Komponenten als separate strukturbildende Einheiten neben Klassen und Objekten.
+
+Keyword:  instanz
+Question: Was ist die strengste Auslegung des Begriffs der Substituierbarkeit?
+Answer:   In der strengsten Auslegung des Begriffs der Substituierbarkeit kann ein Objekt ein anderes nur dann substituieren, wenn sich das auf den Programmablauf in keiner Weise auswirkt. Dazu müsste das ersetzende Objekt nicht nur gleich implementiert sein wie das ersetzte (also Instanz derselben Klasse), sondern sich auch noch (zum Zeitpunkt der Substituierung) im selben Zustand wie das substituierte befinden.
