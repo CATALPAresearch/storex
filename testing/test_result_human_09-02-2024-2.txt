@@ -1,0 +1,302 @@
+INFO:root:Setting parameters: {'name': 'Luna', 'time': 10, 'female': True, 'male': False, 'mute': True, 'ai': False}
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
+ Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie einfach kurz etwas hinein, damit wir sichergehen können, dass alles funktioniert.
+
+Ihre Antwort lautet (in etwa):
+ Test, Test, funktioniert das Mikrofon?
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
+Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Das Grundkonzept der objektorientierten Programmierung ist, dass ein Programm als ein Geflecht von Objekten dargestellt wird, welche miteinander in Beziehungen stehen und sich Nachrichten senden können, in deren Reaktion sie den Zustand zum Beispiel verändern können.
+INFO:root:Answer took 35.041428 seconds.
+INFO:root:Remaining time: 564.958572 seconds (84.958572 seconds in this topic).
+INFO:root:Keywords from answer: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Mentioned terms: ['objekt', 'beziehung', 'zustand']
+INFO:root:Missing terms: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Beziehung
+Found in questions: 2
+INFO:root:Predefined question: {'question': 'Was ist die Teil-Ganzes-Beziehung?', 'answer': 'Die Teil-Ganzes-Beziehung bestimmt die Weltansicht, dass alles aus kleineren Teilen zusammengesetzt ist, die selbst wieder Zusammensetzungen (Aggregate, Komposita) sind, bis hinunter zu den elementaren, unteilbaren Bausteinen.'}
+Was ist die Teil-Ganzes-Beziehung?
+
+Ihre Antwort lautet (in etwa):
+ Die Teil-Ganzes-Beziehung ist eine bestimmte Ansicht, in der alles aus kleineren Teilen zusammengesetzt ist, die dann selbst wieder aus kleineren Teilen zusammengesetzt sind, was hinuntergeht bis zu den elementaren und teilbaren Bausteinen. Und somit sind Ganzes immer Kompositor von Teilen.
+INFO:root:Answer took 44.170982 seconds.
+INFO:root:Remaining time: 520.787591 seconds (40.787591 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9994999170303345}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 10.06it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 204.04it/s]
+INFO:root:Similarity: tensor([[0.8778]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist Verweis- oder Referenzsemantik?', 'answer': 'Bei Verweis- oder Referenzsemantik haben Variablen nur Verweise die Speicherstellen, an denen die Objekte abgelegt sind.'}
+Ok. Was ist Verweis- oder Referenzsemantik?
+
+Ihre Antwort lautet (in etwa):
+ Verweis oder auch Referenzsemantik. Unter Verweis oder Referenzsemantik haben Variablen nur ein Verweis oder eine Referenz auf die Speicherstelle, an denen das Objekt abgelegt ist und nicht das Objekt selber.
+INFO:root:Answer took 31.129238 seconds.
+INFO:root:Remaining time: 489.658352 seconds (9.658352 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9912145137786865}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 70.77it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 130.44it/s]
+INFO:root:Similarity: tensor([[0.8920]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Warum ist der Begriff "Lebenszyklus" eines Objekts irreführend?', 'answer': 'Der Begriff "Lebenszyklus" würde implizieren, dass das Objekt nach seinem Ende wiederverwendet wird, was nicht der Fall ist. Objekte werden nicht recycelt, sondern nur der von ihnen belegte Speicherplatz wird möglicherweise wiederverwendet.'}
+Ok. Warum ist der Begriff "Lebenszyklus" eines Objekts irreführend?
+
+Ihre Antwort lautet (in etwa):
+ Der Begriff Lebenszyklus für Objekte ist etwas irreführend, da ein Objekt nach seinem Ende nicht wiederverwendet wird, sondern einfach weg ist.
+INFO:root:Answer took 23.180726 seconds.
+INFO:root:Remaining time: 466.477627 seconds (-13.522373 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.6709796786308289}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['lebenszyklus', 'objekt']
+INFO:root:Mentioned terms: ['lebenszyklus', 'objekt']
+INFO:root:Missing terms: []
+INFO:root:The next question should be: SELECTED
+INFO:root:Next topic KE2 for 116.61940664052963 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']}
+Ah? Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+
+Ihre Antwort lautet (in etwa):
+ Objektorientierte Programme lassen sich mit Klassen strukturieren, die in einer Färbungs-Hierarchie miteinander stehen.
+INFO:root:Answer took 19.200912 seconds.
+INFO:root:Remaining time: 447.276714 seconds (97.418494 seconds in this topic).
+INFO:root:Keywords from answer: ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']
+INFO:root:Mentioned terms: ['klasse']
+INFO:root:Missing terms: ['Generalisierung', 'Spezialisierung', 'Vererbung', 'Klasse', 'dynamisch Binden']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Klasse
+Found in questions: 30
+INFO:root:Predefined question: {'question': 'Welche Informationen können in einer Metaklasse definiert werden?', 'answer': 'In einer Metaklasse können Informationen wie Instanzvariablen und Methoden für die zugehörige Klasse definiert werden. Dies ermöglicht es, das Verhalten und die Eigenschaften der Klasse individuell anzupassen.'}
+Welche Informationen können in einer Metaklasse definiert werden?
+
+Ihre Antwort lautet (in etwa):
+ Informationen. In einer Mittagsklasse können Informationen wie Instanzvariablen und Methoden für die Klassen, welche sie definieren, definiert werden. Ja, das ermöglicht dann das Verhalten bzw. Eigenschaften der Klasse anzupassen individuell.
+INFO:root:Answer took 33.783314 seconds.
+INFO:root:Remaining time: 413.493400 seconds (63.635180 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996612071990967}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 60.61it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 157.79it/s]
+INFO:root:Similarity: tensor([[0.8324]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Anwendungsklassen?', 'answer': 'Anwendungsklassen sind Klassen, die zur Laufzeit des Programms für die Erzeugung von Anwendungsobjekten genutzt werden.'}
+Ok. Was sind Anwendungsklassen?
+
+Ihre Antwort lautet (in etwa):
+ Anwendungsklassen sind die Klassen, die dann zur Laufzeit des Programms für die Erzeugung von Objekten genutzt werden.
+INFO:root:Answer took 19.382979 seconds.
+INFO:root:Remaining time: 394.110420 seconds (44.252201 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9987449645996094}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 94.49it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 208.91it/s]
+INFO:root:Similarity: tensor([[0.9826]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wann entstehen Aliase in Smalltalk?', 'answer': 'Aliase entstehen in Smalltalk immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.'}
+Ok. Wann entstehen Aliase in Smalltalk?
+
+Ihre Antwort lautet (in etwa):
+ Alias entstehen in Smalltalk immer bei der Zuweisung einer Variable auf der linken Seite der Zuweisung, wenn diese Variable Verweissemantik hat.
+INFO:root:Answer took 26.366163 seconds.
+INFO:root:Remaining time: 367.744258 seconds (17.886038 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.9260406494140625}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Was passiert bei Aliase in Smalltalk?', 'answer': 'Aliase entstehen in Smalltalk immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat.'}
+Hm? Was passiert bei Aliase in Smalltalk?
+
+Ihre Antwort lautet (in etwa):
+ Bei Aliassen verweisen mehrere Variablen auf das selbe Objekt, ohne dies zu wissen.
+INFO:root:Answer took 21.643122 seconds.
+INFO:root:Remaining time: 346.101136 seconds (-3.757084 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.8309808373451233}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['smalltalk', 'variable', 'zuweisung']
+INFO:root:Mentioned terms: ['variable']
+INFO:root:Missing terms: ['smalltalk', 'zuweisung']
+INFO:root:The next question should be: SELECTED
+INFO:root:Next topic KE3 for 115.36704524358113 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']}
+Hmm. Was sind Typen in der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Typen in der objektorientierten Programmierung sind Bezeichnungen, welche die Zuweisungskompatibilität von Variablen gewährleisten sollen. Ein Typ hat eine Definition wie eine Klasse auch und es kann auch eine Vererbungs-Hierarchie existieren, wo es dann Subtypen gibt.
+INFO:root:Answer took 46.167280 seconds.
+INFO:root:Remaining time: 299.933856 seconds (69.199765 seconds in this topic).
+INFO:root:Keywords from answer: ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']
+INFO:root:Mentioned terms: ['zuweisungskompatibilitaet', 'subtyp']
+INFO:root:Missing terms: ['Subtyp', 'Typisierung', 'parametrischer Polymorphismus', 'Zuweisungskompatibilität', 'Typdefinition', 'Inklusionspolymorphie']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: parametrischer Polymorphismus
+Found in questions: 1
+INFO:root:Predefined question: {'question': 'Was ist parametrischer Polymorphismus?', 'answer': 'Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird. Dadurch wird die Typsicherheit gewährleistet.'}
+Was ist parametrischer Polymorphismus?
+
+Ihre Antwort lautet (in etwa):
+ Parametrischer Polymorphismus ist eine Technik, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Und diese Typvariable kann dann bei der Verwendung, bei der Instanzierung der Typdefinition durch den tatsächlichen Typparameter, also einen konkreten Typ, ersetzt werden.
+INFO:root:Answer took 35.215003 seconds.
+INFO:root:Remaining time: 264.718853 seconds (33.984762 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9995150566101074}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 68.90it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 100.61it/s]
+INFO:root:Similarity: tensor([[0.9640]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Protokolle?', 'answer': 'Protokolle sind eine Art von Typdefinition, die die Methoden und Eigenschaften beschreiben, die ein Objekt haben muss, um eine bestimmte Rolle zu erfüllen. Variablen spielen in Protokollen eine Rolle, indem sie als formale Parameter in Methoden auftauchen und als Typen für die Ein- und Ausgabeobjekte spezifiziert werden.'}
+Ok. Was sind Protokolle?
+
+Ihre Antwort lautet (in etwa):
+ Protokolle sind eine Art Typdefinition, in der beschrieben wird, welche Methoden und Eigenschaften ein Objekt haben muss, um eine Rolle zu erfüllen.
+INFO:root:Answer took 21.866342 seconds.
+INFO:root:Remaining time: 242.852511 seconds (12.118421 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9995684027671814}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 58.41it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 85.82it/s]
+INFO:root:Similarity: tensor([[0.9683]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie wird der Typ einer parametrischen Typdefinition konkretisiert?', 'answer': 'Die Typdefinition wird durch Instanziierung der parametrischen Typdefinition mit einem konkreten Typen konkretisiert. Dieser Vorgang ergibt sich automatisch und muss nicht explizit hingeschrieben werden.'}
+Ok. Wie wird der Typ einer parametrischen Typdefinition konkretisiert?
+
+Ihre Antwort lautet (in etwa):
+ Der Typ einer parametrischen Typdefinition wird automatisch konkretisiert und zwar bei der Verwendung mit dem konkreten Typ.
+INFO:root:Answer took 23.432064 seconds.
+INFO:root:Remaining time: 219.420447 seconds (-11.313643 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996951818466187}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 97.90it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 219.63it/s]
+INFO:root:Similarity: tensor([[0.9170]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE4 for 109.71022355556488 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten anderer Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'Mehrfachvererbung']}
+Ok. Was sind die Besonderheiten anderer Programmiermodelle?
+
+Ihre Antwort lautet (in etwa):
+ Andere Programmiermodelle sind zum Beispiel Java, C-Shop, C++ oder auch Eiffel. Zum Beispiel in Java sind Interfaces besonders und in C++ ist beispielsweise die Mehrfachvererbung als besonders anzusehen.
+INFO:root:Answer took 26.638753 seconds.
+INFO:root:Remaining time: 192.781694 seconds (83.071470 seconds in this topic).
+INFO:root:Keywords from answer: ['Interface', 'Generischer Typ', 'Mehrfachvererbung']
+INFO:root:Mentioned terms: ['interface', 'mehrfachvererbung']
+INFO:root:Missing terms: ['Mehrfachvererbung', 'Interface', 'Generischer Typ']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Generischer Typ
+Found in questions: 1
+INFO:root:Predefined question: {'question': 'Was ist die Hauptanwendung generischer Typen in Java?', 'answer': 'Eine Hauptanwendung generischer Typen in Java ist die Arbeit mit Collections, um den Typ der Elemente in der Collection anzugeben und so die Typsicherheit zu erhöhen.'}
+Was ist die Hauptanwendung generischer Typen in Java?
+
+Ihre Antwort lautet (in etwa):
+ Die Hauptanwendung generischer Typen in Java ist es, mit Collections zu arbeiten, da über generische Typen dann die Elemente der Collections angegeben werden können, also verschiedene Elemente, die dann in der Collection gespeichert werden können.
+INFO:root:Answer took 32.102818 seconds.
+INFO:root:Remaining time: 160.678876 seconds (50.968652 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.603222131729126}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 96.94it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 159.15it/s]
+INFO:root:Similarity: tensor([[0.9466]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist beschränkter parametrischer Polymorphismus in Java?', 'answer': 'Beschränkter parametrischer Polymorphismus in Java bezieht sich auf die Einschränkung der möglichen Typen, die für einen Typparameter einer generischen Klasse verwendet werden können. Dies geschieht durch das Festlegen von Beschränkungen oder Bedingungen für den Typparameter.'}
+Ok. Was ist beschränkter parametrischer Polymorphismus in Java?
+
+Ihre Antwort lautet (in etwa):
+ Der beschränkte parametrische Polymorphismus in Java bezieht sich auf den parametrischen Polymorphismus, der dann durch eine Festlegung von Beschränkungen oder Bedingungen für die Typparameter definiert wird.
+INFO:root:Answer took 27.134647 seconds.
+INFO:root:Remaining time: 133.544229 seconds (23.834005 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996707439422607}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 56.58it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 126.60it/s]
+INFO:root:Similarity: tensor([[0.9289]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie werden Features in EIFFEL exportiert?', 'answer': 'In EIFFEL können Features gezielt exportiert werden, indem die Klassen genannt werden, die darauf zugreifen können sollen. Dies schließt auch die Möglichkeit ein, dass keine andere Klasse diese Features sehen kann, was private in anderen Sprachen entspricht. Diese Klassen müssen die angebotenen Features nicht explizit importieren.'}
+Ok. Wie werden Features in EIFFEL exportiert?
+
+Ihre Antwort lautet (in etwa):
+ Features in Eifel werden gezielt exportiert, indem die Klasse genannt wird, die darauf zugreifen soll.
+INFO:root:Answer took 24.485936 seconds.
+INFO:root:Remaining time: 109.058293 seconds (-0.651931 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9993925094604492}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 128.34it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 218.76it/s]
+INFO:root:Similarity: tensor([[0.7937]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE6 for 109.0582926273346 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
+Ok. Was sind Probleme der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Probleme der objektorientierten Programmierung sind zum Beispiel die Substituierbarkeit, aber auch das virtual base class Problem oder das Problem der mangelnden Eignung.
+INFO:root:Answer took 22.929745 seconds.
+INFO:root:Remaining time: 86.128548 seconds (86.128548 seconds in this topic).
+INFO:root:Keywords from answer: ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']
+INFO:root:Mentioned terms: ['problem der mangelnden eignung']
+INFO:root:Missing terms: ['Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Eignung']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Problem der schlechten Tracebarkeit
+Found in questions: 1
+INFO:root:Predefined question: {'question': 'Was ist das Problem der schlechten Tracebarkeit?', 'answer': 'Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das Verstehen und Debuggen von Programmen.'}
+Was ist das Problem der schlechten Tracebarkeit?
+
+Ihre Antwort lautet (in etwa):
+ Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmapplauf. Wenn beispielsweise Go-To-Anweisungen das Rumspringen erlauben oder durch dynamisches Binden das Lokalitätsprinzip von Programmen verletzt wird. Was heißt, dass die Anweisungen im Programmtext, die zusammen ausgeführt werden, nicht beieinander stehen. Dann kann das zu dem Problem der schlechten Tracebarkeit führen, also eben, dass das Programm unübersichtlich ist und schwer zu verstehen ist, dass das Debuggen erschwert wird, weil eben dieses Rumspringen im Programm existiert.
+INFO:root:Answer took 62.372164 seconds.
+INFO:root:Remaining time: 23.756384 seconds (23.756384 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.999567449092865}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 123.88it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 178.92it/s]
+INFO:root:Similarity: tensor([[0.8681]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was bedeutet es, wenn ein Objekt typkonform ist?', 'answer': 'Wenn ein Objekt typkonform ist, bedeutet das, dass es die Eigenschaften und Verhaltensweisen besitzt, die von einem Objekt seines Typs erwartet werden. Es erfüllt also die Anforderungen, die an Objekte dieses Typs gestellt werden.'}
+Ok. Was bedeutet es, wenn ein Objekt typkonform ist?
+
+Ihre Antwort lautet (in etwa):
+ Wenn ein Objekt typkonform ist, dann bedeutet das, dass die Eigenschaften und Verhaltensweisen, dass die Eigenschaften und Verhaltensweisen, die das Objekt besitzt, die Anforderungen erfüllen, die an Objekte von diesem Typ gestellt sind.
+INFO:root:Answer took 35.227984 seconds.
+INFO:root:Remaining time: -11.471600 seconds (-11.471600 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991059899330139}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 100.31it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 123.97it/s]
+INFO:root:Similarity: tensor([[0.9847]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:die Studentin hat nie inhaltliche Fehler gemacht.
+die Studentin hat kaum irrelevante Antworten gegeben.
+die Studentin hat permanent unvollständige oder oberflächliche Antworten gegeben.
+die Studentin benötigt kaum Hilfestellungen.
+die Studentin hat nie unpräzise Antworten gegeben.
+die Studentin hat ein mittleres Leistungslevel erreicht.
+die Studentin war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+die Studentin war am schlechtesten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+Luna, du hast während der Prüfung keine inhaltlichen Fehler gemacht und benötigst kaum Hilfestellungen, was sehr positiv zu bewerten ist. Deine Antworten waren jedoch meist unvollständig oder oberflächlich, was dein Leistungsniveau insgesamt mittleres erscheinen lässt. Besonders hervorzuheben ist deine Leistung im Thema 'Systematik der objektorientierten Programmierung', in dem du sehr gute und präzise Antworten gegeben hast. Im Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil' hingegen solltest du in Zukunft mehr ins Detail gehen und vertiefte Antworten liefern.
+ "Vielen Dank für das konstruktive Gespräch, Luna. Ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen."
+--------------------------------------------------End!--------------------------------------------------

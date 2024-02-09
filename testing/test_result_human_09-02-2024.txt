@@ -1,0 +1,335 @@
+INFO:root:Setting parameters: {'name': 'Luna', 'time': 10, 'female': True, 'male': False, 'mute': True, 'ai': False}
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
+ Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie einfach kurz etwas hinein, damit wir sichergehen können, dass alles funktioniert.
+
+Ihre Antwort lautet (in etwa):
+ Test, Test funktioniert das Mikrofon.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
+Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Das Grundkonzept der objektorientierten Programmierung besteht darin, dass ein Programm ein System miteinander kooperierender Objekte ist. Diese stehen in Beziehung und können sich gegenseitig Nachrichten senden, auf die sie dann reagieren, zum Beispiel indem sie ihren Zustand verändern.
+INFO:root:Answer took 32.870898 seconds.
+INFO:root:Remaining time: 567.129102 seconds (87.129102 seconds in this topic).
+INFO:root:Keywords from answer: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Mentioned terms: ['Objekt', 'Beziehung', 'Zustand']
+INFO:root:Missing terms: ['Verhalten']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Verhalten
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+INFO:root:Predefined question: {'question': 'Was ist ein Nachrichtenausdruck?', 'answer': 'Ein Nachrichtenausdruck besteht aus einem Empfängerobjekt, einem Nachrichtenselektor und einer Anzahl von Argumentausdrücken. Der Ausdruck als Ganzes repräsentiert das Ergebnis der Nachrichtenauswertung durch den Empfänger.'}
+Was ist ein Nachrichtenausdruck?
+
+Ihre Antwort lautet (in etwa):
+ Ein Nachrichtenausdruck ist ein Ausdruck, der von einem Objekt an ein Empfängerobjekt gesendet wird. Er besteht aus den eigentlichen Anweisungen, die der Empfänger dann auswertet, sowie dem Nachrichtenselektor, durch welchen das Empfängerobjekt ausgewählt wird.
+INFO:root:Answer took 43.798858 seconds.
+INFO:root:Remaining time: 523.330244 seconds (43.330244 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9952465891838074}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['ausdruck', 'nachricht', 'nachrichtenausdruck', 'nachrichtenselektor']
+INFO:root:Mentioned terms: ['ausdruck', 'nachricht', 'nachrichtenausdruck', 'nachrichtenselektor']
+INFO:root:Missing terms: []
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Variablen?', 'answer': 'Variablen sind Namen, die zu verschiedenen Zeitpunkten verschiedene Objekte bezeichnen können.'}
+Hmm. Was sind Variablen?
+
+Ihre Antwort lautet (in etwa):
+ Variablen sind Namen, die Objekte bezeichnen und die können auch verändern, welche Objekte sie bezeichnen.
+INFO:root:Answer took 21.283606 seconds.
+INFO:root:Remaining time: 502.046638 seconds (22.046638 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.999686598777771}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 10.45it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 218.32it/s]
+INFO:root:Similarity: tensor([[0.8627]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Welche Variablen haben in SMALLTALK Wertsemantik?', 'answer': 'In den meisten SMALLTALK-Implementationen haben Variablen, die Zeichen, kleine Zahlen und boolesche Werte bezeichnen, Wertsemantik, um Speicherplatz zu sparen, obwohl der Begriff der Identität für diese Objekte verloren geht. Die mehrfache Existenz identischer Objekte im Speicher hat in der Regel keine große Bedeutung, da Gleichheit an die Stelle der Identität treten kann.'}
+Ok. Welche Variablen haben in SMALLTALK Wertsemantik?
+
+Ihre Antwort lautet (in etwa):
+ In Smalltalk haben ja literale Verbsemantik. Das sind kleine Zahlen, Zeichen und Symbole.
+INFO:root:Answer took 24.619653 seconds.
+INFO:root:Remaining time: 477.426985 seconds (-2.573015 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991146922111511}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 68.29it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 96.75it/s]
+INFO:root:Similarity: tensor([[0.4242]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['bool', 'identitaet', 'implementation', 'objekt', 'smalltalk', 'variable', 'wert', 'wertsemantik', 'wertsemantik']
+INFO:root:Mentioned terms: ['smalltalk']
+INFO:root:Missing terms: ['wert', 'variable', 'identitaet', 'wertsemantik', 'bool', 'objekt', 'implementation']
+INFO:root:The next question should be: GENERATE
+INFO:root:Next topic KE2 for 119.35674625635147 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']}
+Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+
+Ihre Antwort lautet (in etwa):
+ Objektorientierte Programme lassen sich mit Klassen strukturieren, die in einer Vererbung miteinander stehen können und dann wird die jeweilige Subklasse zur Laufzeit ausgewählt.
+INFO:root:Answer took 23.409773 seconds.
+INFO:root:Remaining time: 454.017212 seconds (95.946973 seconds in this topic).
+INFO:root:Keywords from answer: ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']
+INFO:root:Mentioned terms: ['Klasse', 'Vererbung']
+INFO:root:Missing terms: ['dynamisch Binden', 'Generalisierung', 'Spezialisierung']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Generalisierung
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+INFO:root:Predefined question: {'question': 'Was ist die Klasse Dictionary in SMALLTALK?', 'answer': 'Die Klasse Dictionary in SMALLTALK realisiert sogenannte Assoziativspeicher, bei denen auf eine Speicherzelle nicht durch Angabe einer Speicheradresse, sondern durch Assoziation mit dem Inhalt zugegriffen wird. Sie wird im SMALLTALK-System selbst häufig verwendet, zum Beispiel für das Hinterlegen von Methoden in Dictionaries.'}
+Was ist die Klasse Dictionary in SMALLTALK?
+
+Ihre Antwort lautet (in etwa):
+ Die Klasse Dictionary in Smalltalk realisiert den sogenannten Assoziativspeicher und ja, durch Angabe einer Speicheradresse, nein, durch die Angabe von Assoziationen kann auf diesen Inhalt zurückgegriffen werden, eben nicht durch die Angabe einer Speicheradresse.
+INFO:root:Answer took 37.039366 seconds.
+INFO:root:Remaining time: 416.977845 seconds (58.907607 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9644576907157898}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 78.01it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 169.41it/s]
+INFO:root:Similarity: tensor([[0.8731]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist eine Klassifikation?', 'answer': 'Eine Klassifikation ist eine Zuordnung von Individuen oder Objekten zu bestimmten Allgemeinbegriffen oder Klassen. Diese Klassifikation ermöglicht eine Strukturierung der Anwendungsdomäne, indem bestimmte Aussagen und Eigenschaften nur noch für die Klassen im Allgemeinen getroffen werden müssen, anstatt für jedes einzelne Objekt. Statt also Eigenschaften und Methoden direkt Objekten zuzuweisen, verbindet man sie mit Klassen und legt fest, dass sie die einzelnen Objekte, die zu dieser Klasse gehören, beschreiben.'}
+Ok. Was ist eine Klassifikation?
+
+Ihre Antwort lautet (in etwa):
+ Eine Klassifikation ist ein Allgemeinbegriff, welcher Individuen oder Objekten bestimmten Klassen oder Allgemeinbegriffen zuordnet, was eine Strukturierung ermöglicht.
+INFO:root:Answer took 27.832563 seconds.
+INFO:root:Remaining time: 389.145283 seconds (31.075044 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9986444115638733}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 69.38it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 93.15it/s]
+INFO:root:Similarity: tensor([[0.9561]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Warum ist die Vererbung in der objektorientierten Programmierung problematisch?', 'answer': 'Die Vererbung in der objektorientierten Programmierung ist problematisch, weil sie oft fälschlicherweise als ein Zeichen für eine Generalisierung/Spezialisierung interpretiert wird. Es ist jedoch möglich, dass eine Klasse Eigenschaften einer anderen Klasse erbt, ohne dass sie eine Spezialisierung der vererbenden Klasse ist. Ein klassisches Beispiel hierfür ist die Ableitung der Klasse Rechteck von der Klasse Quadrat, was zu unangenehmen Folgen führen kann.'}
+Ok. Warum ist die Vererbung in der objektorientierten Programmierung problematisch?
+
+Ihre Antwort lautet (in etwa):
+ Die Vererbung in objektorientierten Programmen kann problematisch sein, da sie ja teilweise eine oberflächliche Beziehung darstellt, die oft als Generalisierung und Spezialisierungsbeziehung interpretiert wird, obwohl sie dies nicht ist.
+INFO:root:Answer took 28.058260 seconds.
+INFO:root:Remaining time: 361.087023 seconds (3.016784 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997292160987854}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 58.03it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 106.84it/s]
+INFO:root:Similarity: tensor([[0.7278]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['eigenschaft', 'generalisierung', 'klasse', 'objekt', 'spezialisierung', 'vererbung']
+INFO:root:Mentioned terms: ['generalisierung', 'objekt', 'spezialisierung', 'vererbung']
+INFO:root:Missing terms: ['eigenschaft', 'klasse']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: GENERATE
+INFO:root:Target: klasse
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 148.32it/s]
+INFO:root:Generated question: {'question': 'Erläutern Sie anhand des Beispiels von MEYER das Prinzip der motivierten kovarianten Redefinition und verankerter Typen.', 'answer': 'Die motivierte kovariante Redefinition und verankerten Typen nach MEYER werden deutlich durch das Beispiel der sich zu zweit ein Zimmer teilenden jugendlichen Skifahrerinnen, wobei die Klasse "Skier" mit einer rekursiven Instanzvariable "roommate" definiert ist, die in jeder Subklasse einen anderen Typ zuordnet, was wiederum für den Parameter von "share" gilt, und dies entspricht den Zu-n-Beziehungen, die neben Zu-1-Beziehungen logisch gleichberechtigt stehen, aber besondere Mechanismen in der Umsetzung erfordern, wie indizierte Instanzvariablen, die über ihre indizierten Instanzvariablen solche Beziehungen herstellen, was auf die Häufigkeit von Zu-n-Beziehungen in der Programmierung hinweist und die Notwendigkeit von Zwischenobjekten bedingt.'}
+Erläutern Sie anhand des Beispiels von MEYER das Prinzip der motivierten kovarianten Redefinition und verankerter Typen.
+
+Ihre Antwort lautet (in etwa):
+ Das Beispiel von Maier, das wäre, das weiß ich leider nicht, welches genaue Beispiel gemeint ist, aber die Kurvariante-Redefinition meint, dass Kurvarianz redefiniert wird.
+INFO:root:Answer took 37.711553 seconds.
+INFO:root:Remaining time: 323.375470 seconds (-34.694769 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9986761212348938}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['beziehung', 'indizierte instanzvariable', 'instanz', 'instanzvariable', 'klasse', 'kovariante redefinition', 'redefinition', 'rekursiv', 'subklasse', 'typ', 'zwischenobjekt']
+INFO:root:Mentioned terms: ['redefinition']
+INFO:root:Missing terms: ['instanzvariable', 'subklasse', 'kovariante redefinition', 'zwischenobjekt', 'beziehung', 'indizierte instanzvariable', 'typ', 'rekursiv', 'instanz', 'klasse']
+INFO:root:The next question should be: SELECTED
+INFO:root:Next topic KE3 for 107.79182330767314 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']}
+Was sind Typen in der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Typen in der abjektorientierten Programmierung sind Definitionen, welche die Zuweisungskompatibilität zwischen Variablen, Parametern, Regeln und durch Typen wird ein Programm typisiert.
+INFO:root:Answer took 32.619796 seconds.
+INFO:root:Remaining time: 290.755674 seconds (75.172027 seconds in this topic).
+INFO:root:Keywords from answer: ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']
+INFO:root:Mentioned terms: []
+INFO:root:Missing terms: ['Typisierung', 'Inklusionspolymorphie', 'Typdefinition', 'parametrischer Polymorphismus', 'Subtyp', 'Zuweisungskompatibilität']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: parametrischer Polymorphismus
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+INFO:root:Predefined question: {'question': 'Was ist Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie?', 'answer': 'Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie ist eine Technik in der objektorientierten Programmierung, bei der ein Subtyp eine Methode seines Obertyps mit einem spezifischeren Rückgabetyp neu definieren kann, während er gleichzeitig die Liskov-Substitutionsprinzip einhält. Diese Technik kann jedoch nicht mit parametrischen Typen erreicht werden.'}
+Was ist Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie?
+
+Ihre Antwort lautet (in etwa):
+ Die Covariante-Redefinition ist eine Technik, bei der ein Subtyp eine Methode seines Obertyps mit einem spezifischen Rückgabetypen neu definieren kann. Dabei wird das Substitutionsprinzip eingehalten.
+INFO:root:Answer took 38.668457 seconds.
+INFO:root:Remaining time: 252.087217 seconds (36.503570 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991586208343506}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 69.33it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 103.99it/s]
+INFO:root:Similarity: tensor([[0.7578]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist Kontravarianz und Kovarianz?', 'answer': 'Kontravarianz und Kovarianz sind zwei Begriffe, die die Richtung der Variation von Parametern bei der Redefinition von Methoden beschreiben. Kontravarianz bezieht sich auf die Eingabeparameter, die gegenläufig zum Empfängertyp variieren, während Kovarianz sich auf den Ausgabeparameter bezieht, der gleichgerichtet zum Empfängertyp variiert.'}
+Ok. Was ist Kontravarianz und Kovarianz?
+
+Ihre Antwort lautet (in etwa):
+ Covariance und Kontravariance geben die Richtung der Variation von Parametern bei der Rediffinition an. Covariance bezieht sich darauf, dass die Eingabeparameter gegenläufig zum Empfängertyp variieren und Covariance bezieht sich darauf, dass die Ausgabeparameter gleichgerichtet zum Empfängertipp variieren.
+INFO:root:Answer took 45.293800 seconds.
+INFO:root:Remaining time: 206.793416 seconds (-8.790230 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9939486980438232}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 69.91it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 154.28it/s]
+INFO:root:Similarity: tensor([[0.5895]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['kontravarianz', 'kovarianz', 'methode', 'redefinition']
+INFO:root:Mentioned terms: []
+INFO:root:Missing terms: ['kontravarianz', 'kovarianz', 'methode', 'redefinition']
+INFO:root:The next question should be: GENERATE
+INFO:root:Next topic KE4 for 103.39670813083649 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten anderer Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'Mehrfachvererbung']}
+Was sind die Besonderheiten anderer Programmiermodelle?
+
+Ihre Antwort lautet (in etwa):
+ Die Besonderheiten von Programme Modellen in Java wären beispielsweise die Interfaces oder auch generische Typen.
+INFO:root:Answer took 22.154645 seconds.
+INFO:root:Remaining time: 184.638772 seconds (81.242063 seconds in this topic).
+INFO:root:Keywords from answer: ['Interface', 'Generischer Typ', 'Mehrfachvererbung']
+INFO:root:Mentioned terms: ['Interface']
+INFO:root:Missing terms: ['Generischer Typ', 'Mehrfachvererbung']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Mehrfachvererbung
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+INFO:root:Predefined question: {'question': 'Welche Gemeinsamkeiten gibt es zwischen C-Sharp und Java?', 'answer': 'C-Sharp und Java weisen in Bezug auf Objekte, Variablen und Ausdrücke, Anweisungen, Blöcke und Kontrollstrukturen viele Gemeinsamkeiten auf. Die grundlegende Syntax und Struktur der beiden Sprachen sind ähnlich. In beiden Sprachen werden Klassen verwendet, um Objekte zu erstellen, Variablen und Ausdrücke zu definieren, Anweisungen auszuführen und Kontrollstrukturen zu steuern.'}
+Welche Gemeinsamkeiten gibt es zwischen C-Sharp und Java?
+
+Ihre Antwort lautet (in etwa):
+ Zwischen C-Sharp und Java gibt es einige Gemeinsamkeiten, wie beispielsweise Objekte, Variablen, Ausdrücke und Kontrollstrukturen und einiges mehr realisiert sind. Die grundlegende Syntax und Struktur ist relativ ähnlich. Klassen werden verwendet, Typen werden verwendet.
+INFO:root:Answer took 38.450195 seconds.
+INFO:root:Remaining time: 146.188576 seconds (42.791868 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997418522834778}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 85.64it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 161.05it/s]
+INFO:root:Similarity: tensor([[0.9308]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist die Sonderstellung von EIFFEL unter den hier behandelten Sprachen?', 'answer': 'EIFFEL ist eine Sprache für objektorientierte Analyse und Design, eine Sprache für kommerzielle Programmierung und eine akademische Lehrsprache.'}
+Ok. Was ist die Sonderstellung von EIFFEL unter den hier behandelten Sprachen?
+
+Ihre Antwort lautet (in etwa):
+ Die Sonderstellung von Eifel ist, dass es eine akademische Lehrsprache ist, die nicht wirklich als kommerzielle Programmiersprache verwendet wird.
+INFO:root:Answer took 23.942172 seconds.
+INFO:root:Remaining time: 122.246404 seconds (18.849696 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.7904655933380127}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Was ist EIFFEL?', 'answer': 'EIFFEL ist eine Sprache für objektorientierte Analyse und Design, eine Sprache für kommerzielle Programmierung und eine akademische Lehrsprache.'}
+Hm? Was ist EIFFEL?
+
+Ihre Antwort lautet (in etwa):
+ Eifel ist eine akademische Lehrsprache, die für objektorientierte Analysen und Designs entwickelt worden.
+INFO:root:Answer took 20.973630 seconds.
+INFO:root:Remaining time: 101.272774 seconds (-2.123934 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9993277788162231}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 44.05it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 226.43it/s]
+INFO:root:Similarity: tensor([[0.8983]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Next topic KE6 for 101.27277398109436 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
+Ok. Was sind Probleme der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Probleme der objektorientierten Programmierung sind beispielsweise die Substitutüberbarkeit, das Fragile-Base-Class-Problem ist ein Problem, die mangelnde Eignung stellt ebenfalls ein Problem dar.
+INFO:root:Answer took 24.221168 seconds.
+INFO:root:Remaining time: 77.051606 seconds (77.051606 seconds in this topic).
+INFO:root:Keywords from answer: ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']
+INFO:root:Mentioned terms: ['Fragile-base-class-Problem']
+INFO:root:Missing terms: ['Problem der Substituierbarkeit', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der schlechten Tracebarkeit']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Problem der mangelnden Kapselung
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 0
+INFO:root:Predefined question: {'question': 'Was ist ein Refactoring?', 'answer': 'Refactoring ist eine semantikerhaltende Umstrukturierung von Code, bei der der Verhaltensumfang der Methode nicht verändert wird, sondern nur die innere Struktur der Methode.'}
+Was ist ein Refactoring?
+
+Ihre Antwort lautet (in etwa):
+ Ein Refactoring ist eine semantikerhaltende Umstrukturierung von Code. Die ganze Funktionsweise und das Verhalten des Programms werden dabei nicht verändert, sondern die innere Struktur des Programms wird verändert, aufgeräumt.
+INFO:root:Answer took 31.914697 seconds.
+INFO:root:Remaining time: 45.136909 seconds (45.136909 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.9492937326431274}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Was ist Refactoring?', 'answer': 'Refactoring ist eine semantikerhaltende Umstrukturierung von Code, bei der der Verhaltensumfang der Methode nicht verändert wird, sondern nur die innere Struktur der Methode.'}
+Ah? Was ist Refactoring?
+
+Ihre Antwort lautet (in etwa):
+ Refactoring ist eine Umstrukturierung von Code, die die Semantik erhält, wobei der Funktion, der Verhaltensumfang nicht verändert wird.
+INFO:root:Answer took 23.819349 seconds.
+INFO:root:Remaining time: 21.317560 seconds (21.317560 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996100068092346}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 69.70it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 186.60it/s]
+INFO:root:Similarity: tensor([[0.9487]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist das Ziel der Objektorientierung?', 'answer': 'Das Ziel der Objektorientierung ist es, die Komplexität von Software zu reduzieren, indem sie die Software in kleinere, leichter zu verstehende Einheiten aufteilt, die Objekte genannt werden und Instanzen von Klassen sind.'}
+Ok. Was ist das Ziel der Objektorientierung?
+
+Ihre Antwort lautet (in etwa):
+ Das Ziel der objektorientierten Programmierung ist es, dass die Komplexität von Software reduziert wird und einzelne Einheiten, die wiederverwendet werden können, definiert werden. Das sind die Objekte. Durch die Klassen wird Blueprint erstellt anhand der diese Objekte erstellt werden können, somit eine gewisse Wiederverwendung des Codes herrscht.
+INFO:root:Answer took 46.105402 seconds.
+INFO:root:Remaining time: -24.787842 seconds (-24.787842 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9989438652992249}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['instanz', 'klasse', 'objekt', 'objektorientierung']
+INFO:root:Mentioned terms: ['klasse', 'objekt']
+INFO:root:Missing terms: ['objektorientierung', 'instanz']
+INFO:root:The next question should be: SELECTED
+INFO:root:die Studentin hat nie inhaltliche Fehler gemacht.
+die Studentin hat einzelne irrelevante Antworten gegeben.
+die Studentin hat permanent unvollständige oder oberflächliche Antworten gegeben.
+die Studentin benötigt kaum Hilfestellungen.
+die Studentin hat nie unpräzise Antworten gegeben.
+die Studentin hat ein niedriges Leistungslevel erreicht.
+die Studentin war am besten bei dem Thema 'Systematik der objektorientierten Programmierung'.
+die Studentin war am schlechtesten bei dem Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+Luna, du hast während der Prüfung durchgehend gezeigt, dass du keine inhaltlichen Fehler machst und kaum Hilfestellungen benötigst. Besonders hervorzuheben ist deine gute Leistung im Thema 'Systematik der objektorientierten Programmierung'. Allerdings ist dein Leistungsniveau insgesamt niedrig, was auf einige irrelevante und unvollständige Antworten zurückzuführen ist. Um deine Leistung zu verbessern, empfehle ich dir, dich stärker auf die Relevanz deiner Antworten zu konzentrieren und diese ausführlicher und präziser zu gestalten, insbesondere im Thema 'Programmiermodelle von Java, C-Sharp, C++ und EIFFEl'.
+ "Vielen Dank für das konstruktive Gespräch, Luna. Ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen."
+--------------------------------------------------End!--------------------------------------------------

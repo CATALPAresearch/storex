@@ -61,6 +61,7 @@ def extract_keywords(text, terms=None):
         terms = technical_terms
 
     for term in terms:
+        term = preprocess_text(term)
         # Check synonym lists
         if isinstance(term, list):
             for word in term:
