@@ -97,13 +97,13 @@ class TopicManager:
         return self.level
 
     def increase_topic(self):
-        if self.topic.value < len(KE):
+        if self.topic.value < (len(KE) - 1):
             self.topic = KE(self.topic.value + 1)
             self.level = Level.REMEMBER
             logger.debug(f"Increased topic to {self.topic} at level {self.level}!")
 
     def increase_level(self):
-        if self.level.value < len(Level):
+        if self.level.value < (len(Level) - 1):
             self.level = Level(self.level.value + 1)
             logger.debug(f"Increased level to {self.level}!")
         else:
