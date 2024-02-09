@@ -68,6 +68,7 @@ def extract_keywords(text, terms=None):
                 matches = re.findall(pattern, words)
                 if matches:
                     technical_words.append(term)
+                    break
         # Create a regular expression pattern allowing for different grammatical endings
         else:
             pattern = re.compile(fr"\b{re.escape(term)}(?:\b|\w*en\b|\w*em\b|\w*es\b|\w*s\b|)?", re.IGNORECASE)

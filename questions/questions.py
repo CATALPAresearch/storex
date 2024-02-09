@@ -6,23 +6,14 @@ KE1_topics = {'question': "Was ist das Grundkonzept der objektorientierten Progr
               'keywords': ["Objekt", "Beziehung", "Zustand", "Verhalten"]}
 
 KE2_topics = {'question': "Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?",
-              'keywords': ["Klasse", "Metaklasse", "Generalisierung", "Spezialisierung", "Vererbung",
-                           "abstrakte Klasse", "Superklasse", "Subklasse", "dynamisch Binden", "Collection",
-                           "Parallelität"]}
+              'keywords': ["Klasse", "Generalisierung", "Spezialisierung", "Vererbung", "dynamisch Binden"]}
 
 KE3_topics = {'question': "Was sind Typen in der objektorientierten Programmierung?",
-              'keywords': ["Deklaration", "Definition", "Typdefinition", "Zuweisungskompatibilität", "Typäquivalenz",
-                           "Typerweiterung", "Typkonformität", "Typeinschränkung", "Subtyp", "Inklusionspolymorphie",
-                           "Typumwandlung", "Generischer Typ", "parametrischer Polymorphismus", "Kovarianz",
-                           "Typisierung"]}
+              'keywords': ["Typdefinition", "Zuweisungskompatibilität", "Subtyp", "Inklusionspolymorphie",
+                           "parametrischer Polymorphismus", "Typisierung"]}
 
-# KE4_topics = {'question': "Was sind die Besonderheiten von Java?",
-#               'keywords': ["Programmiermodell", "Objekt", "Typ", "Klasse", "Ausdruck", "Anweisung", "Block",
-#                            "Kontrollstruktur", "Modul", "Interface", "Array", "Aufzählungstyp", "Generischer Typ",
-#                            "dynamische Typprüfung", "interne Iteration", "externe Iteration", "spezielle Klasse"]}
-
-KE4_topics = {'question': "Was sind die Besonderheiten anderer Programmiermodelle?",
-              'keywords': ["Interface", "Generischer Typ", "dynamische Typprüfung", "Mehrfachvererbung"]}  # "Java", "C-Sharp", "C++", "EIFFEL"
+KE4_topics = {'question': "Was sind die Besonderheiten anderer Programmiermodelle?",  # Java, C-Sharp, C++, EIFFEL
+              'keywords': ["Interface", "Generischer Typ", "Mehrfachvererbung"]}
 
 KE6_topics = {'question': "Was sind Probleme der objektorientierten Programmierung?",
               'keywords': ["Problem der Substituierbarkeit",
@@ -32,10 +23,6 @@ KE6_topics = {'question': "Was sind Probleme der objektorientierten Programmieru
                            "Problem der mangelnden Kapselung",
                            "Problem der mangelnden Skalierbarkeit",
                            "Problem der mangelnden Eignung"]}
-
-# KE7_topics = {'question': "Was ist guter objektorientierter Stil?",
-#               'keywords': ["Namen", "Formatierung", "kurze Methoden", "deklarativ", "Bibliothek", "Verteilung",
-#                            "Gesetz Demeters", "Klassenhierarchie"]}
 
 KE1_questions = [
     [{'question': 'Was ist ein Literal?', 'answer': 'Ein Literal ist eine Repräsentation eines Objekts, die in der Syntax der Programmiersprache ausgedrückt wird. Literale sind somit textuelle Spezifikationen von Objekten.'},
@@ -617,7 +604,8 @@ KE3_questions = [
      {'question': 'Warum nennt man parametrische Typen auch generische Typen oder Generics?', 'answer': 'Parametrische Typen werden auch als generische Typen oder Generics bezeichnet, weil sie die Idee verfolgen, aus einer Typdefinition generisch (theoretisch für beliebig viele Typen) viele Typen zu erzeugen, je nach Bedarf. Sie ermöglichen eine gewisse Generizität in der Typsicherung.'},
      {'question': 'Warum ist die Kovarianz für Parametertypen in der Praxis nicht notwendig und kann sogar zu typinkorrekten Programmen führen?', 'answer': 'Obwohl Kovarianz für Parametertypen auf den ersten Blick sinnvoll erscheint, kann sie in der Praxis zu typinkorrekten Programmen führen. Dies liegt daran, dass die Anzahl der möglichen Eingabewerte in einem Subtyp reduziert wird, wenn die Menge der Empfängerobjekte eingeschränkt wird. Dies führt dazu, dass die Parametertypen tatsächlich kontravariant sind. Kovarianz für Parametertypen würde typinkorrekte Programme ermöglichen.'},
      {'question': 'Warum ist es vorteilhaft, wenn man den Typ einer Variablen kennt?', 'answer': 'Wenn man den Typ einer Variablen kennt, kann der Compiler bestimmte Optimierungen durchführen, wie z.B. die Ganzzahladdition oder die Inkrement-Anweisung des Prozessors verwenden. Wenn der Compiler den Typ nicht kennt, muss das Programm vor der Ausführung der Addition erst prüfen, von welchem Typ der Wert von x ist, was zu Laufzeitverzögerungen führen kann.'},
-     {'question': 'Warum ist es sinnvoll, Variablen und Methoden mit Typen zu assoziieren?', 'answer': 'Es ist sinnvoll, Variablen und Methoden mit Typen zu assoziieren, um die Bedeutung der Variablen und Methoden für den Nutzer zu verdeutlichen. Zum Beispiel kann eine Deklaration der Methode next, die ListElement als Typ des Ein- und Ausgabeparameters deklariert, nahelegen, dass sie das in einer Liste auf den Eingabeparameter folgende Element zurückliefert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, die ihre Implementation nicht kennt, schon über ihren Zweck spekulieren.'}
+     {'question': 'Warum ist es sinnvoll, Variablen und Methoden mit Typen zu assoziieren?', 'answer': 'Es ist sinnvoll, Variablen und Methoden mit Typen zu assoziieren, um die Bedeutung der Variablen und Methoden für den Nutzer zu verdeutlichen. Zum Beispiel kann eine Deklaration der Methode next, die ListElement als Typ des Ein- und Ausgabeparameters deklariert, nahelegen, dass sie das in einer Liste auf den Eingabeparameter folgende Element zurückliefert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, die ihre Implementation nicht kennt, schon über ihren Zweck spekulieren.'},
+     {'question': 'Erklären Sie Kovarianz und Kontravarianz in Bezug auf Redefinition von Methodenaufrufen im Subtyping?', 'answer': 'Bei der Redefinition von Methodenaufrufen im Subtyping müssen die Parametertypen kontravariant und die Rückgabetypen kovariant sein. Dies bedeutet, dass die Eingabeparameter des Subtyps genereller sein dürfen als die des Supertyps, während der Subtyp mehr Werte zurückgeben kann als der Supertyp.'}
      ],
     [{'question': 'Was versteht man unter parametrisierter Typdefinition?', 'answer': 'Eine parametrisierte Typdefinition ist eine Möglichkeit, einen Typ in der Programmierung zu definieren, der einen oder mehrere Typparameter enthält. Diese Typparameter können bei der Instanziierung des Typs durch konkrete Typen ersetzt werden, um einen konkreten Typ zu erzeugen. Durch die Verwendung parametrisierter Typdefinitionen kann Code wiederverwendet werden, und die Typsicherheit wird erhalten.'},
      {'question': 'Was ist der Nachteil der einfachen Form des parametrischen Polymorphismus?', 'answer': 'Der Nachteil der einfachen Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung ist, dass die Typvariablen selbst nicht typisiert sind, und man daher innerhalb der Typdefinition keine Aussagen über den Typ treffen kann.'},
@@ -699,7 +687,6 @@ KE3_questions = [
      {'question': 'Welchen Vorteil bietet der parametrische Polymorphismus gegenüber der Inklusionspolymorphie?', 'answer': 'Der parametrische Polymorphismus bietet den Vorteil einer erhöhten Typsicherheit, da Typfehler bereits zur Instanziierung des parametrischen Typs erkannt werden können.'},
      {'question': 'Was geschieht bei der Festlegung von Strukturäquivalenz?', 'answer': 'Bei der Feststellung von Strukturäquivalenz werden die Definitionen der beteiligten Typen rekursiv expandiert, wobei Namen anderer Typen durch ihre Struktur ersetzt werden. Diese Strukturäquivalenz ermöglicht es, Typen zu vergleichen, indem ihre Strukturen miteinander verglichen werden.'},
      {'question': 'Was ermöglicht der parametrische Polymorphismus?', 'answer': 'Der parametrische Polymorphismus ermöglicht die Definition eines nicht parametrischen Typs als Subtyp eines parametrisierten Typs, wodurch die gewünschte Rekursion indirekt hergestellt werden kann.'},
-     {'question': 'Erklären Sie Kovarianz und Kontravarianz in Bezug auf Redefinition von Methodenaufrufen im Subtyping?', 'answer': 'Bei der Redefinition von Methodenaufrufen im Subtyping müssen die Parametertypen kontravariant und die Rückgabetypen kovariant sein. Dies bedeutet, dass die Eingabeparameter des Subtyps genereller sein dürfen als die des Supertyps, während der Subtyp mehr Werte zurückgeben kann als der Supertyp.'},
      {'question': 'Wozu dient die Typisierung in den verschiedenen Phasen des Programmentwicklungsprozesses?', 'answer': 'In der Entwurfsphase hilft die Typisierung, die Struktur des Programms zu definieren, indem sie abstrakte Datentypen und Schnittstellen spezifiziert. In der Implementierungsphase wird sie verwendet, um die Eingabeparameter und Rückgabewerte der Methoden zu spezifizieren und die Korrektheit der Implementierung zu überprüfen. In der Testphase kann die Typisierung dazu verwendet werden, die Testfälle zu definieren und die Ergebnisse zu überprüfen.'},
      {'question': 'Wozu kann die Typisierung in der Implementierungsphase verwendet werden?', 'answer': 'In der Implementierungsphase kann die Typisierung dazu verwendet werden, die richtigen Methoden für die richtigen Objekte aufzurufen.'},
      {'question': 'Wozu kann die Typisierung in der Wartungsphase verwendet werden?', 'answer': 'In der Wartungsphase kann die Typisierung dazu verwendet werden, die Auswirkungen von Änderungen zu verstehen und zu kontrollieren.'}

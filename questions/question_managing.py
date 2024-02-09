@@ -55,11 +55,12 @@ class QuestionManager:
 
     def select_question(self, keyword):
         """
-        Select a question from the list of questions for the specified level in the specified course unit.
+        Select a question from the list of questions for the knowledge level in the specified course unit.
         """
+        ke_level = 0
+        first = True
         while True:
             ke_index = self.topic_manager.get_topic().value
-            ke_level = self.topic_manager.get_level().value
 
             # Check if there are predefined questions for the current course unit and level
             if self.question_list[ke_index][ke_level] != '':
@@ -73,7 +74,11 @@ class QuestionManager:
                     question = self.get_question()
                 break
             else:
-                self.topic_manager.increase_level()
+                if first:
+                    ke_level = self.topic_manager
+                    first = False
+                else:
+                    self.topic_manager.increase_level()
         return question
 
 
