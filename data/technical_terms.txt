@@ -93,9 +93,7 @@ down cast
 dynamisch
 dynamische typpruefung
 dynamisch binden
-eiffel
-eifel
-eigenschaft
+[eiffel, eifel]
 einfachvererbung
 endrekursion
 event
@@ -238,7 +236,6 @@ lokalitaetsprinzip
 mehrfachhierarchie
 mehrfachvererbung
 member
-mereologie
 message dispatching
 message pattern
 metaklasse
@@ -258,7 +255,6 @@ modularisierung
 monitor
 [multi dispatch, multi-dispatch]
 [multi methode, multi-methode]
-multiplizitaet
 nachricht
 nachrichtenausdruck
 nachrichtenkategorie
@@ -398,7 +394,6 @@ typaequivalenz
 typannotation
 type branding
 type cast
-type erasure
 typerweiterung
 typexpansion
 typfehler
