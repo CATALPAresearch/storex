@@ -61,7 +61,7 @@ class Evaluator:
         #     accuracy = self.check_accuracy(missing_keys, student_answer)
         #     # Add missing topics under the threshold of accuracy
         #     for topic in accuracy:
-        #         if topic[1] < 0.75:  # TODO: What is a good threshold for accuracy?
+        #         if topic[1] < 0.75:
         #             missing_topics.append(topic[0])
 
         logger.info(f"Missing terms: {missing_words}")
@@ -73,7 +73,6 @@ class Evaluator:
         Returns feedback.
         """
         feedback = None
-        # TODO: Understand sentences like "Ich weiß es nicht." oder "Sinnfreie Frage."
 
         # Check the congruity of the answer via text classification (MNLI)
         congruity = self.check_congruity(correct_answer, student_answer)
@@ -88,13 +87,11 @@ class Evaluator:
 
         # Check the similarity with similarity search LLM
         similarity = self.check_similarity(correct_answer, student_answer)
-        if similarity > 0.75:  # TODO: What similarity is similar??
+        if similarity > 0.75:
             feedback = EvaluationType.CORRECT
         else:
             feedback = EvaluationType.MISSING_TOPIC
         return feedback
-
-        # TODO: Identify concrete mistakes (factual inaccuracy, missing information, structural issues)
 
     def check_similarity(self, correct_answer, student_answer):
         """

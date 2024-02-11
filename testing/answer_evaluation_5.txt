@@ -1,0 +1,410 @@
+Answer Evaluation Testing with Similarity set to 0.5
+
+Correct answer:    EIFFEL ist eine Sprache für objektorientierte Analyse und Design, eine Sprache für kommerzielle Programmierung und eine akademische Lehrsprache.
+Student answer:    Die Sonderstellung von Eiffel ist, dass es eine akademische Lehrsprache ist, die nicht wirklich als kommerzielle Programmiersprache verwendet wird.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte sind im Speicher abgelegt Daten. Sie speichern Informationen und führen Aktionen aus. Verschiedene Objekte können untereinander in Beziehung stehen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte sind die grundlegenden Bausteine, aus denen objektorientierte Programme aufgebaut sind. Sie sind im Speicher abgelegt. Ein Objekt repräsentiert eine Instanz einer Klasse, die sowohl Daten als auch Methoden enthält, um diese Daten zu verarbeiten. Objekte stehen miteinander in Beziehung und können sich Nachrichten senden.
+Expected result:   CORRECT
+Evaluation result: OFF_TOPIC
+Match:             no
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte speichern Informationen und führen Aktionen aus.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte sind im Speicher abgelegt Daten.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte können keine Daten speichern.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte repräsentieren Instanzen einer Klasse.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
+Student answer:    Objekte repräsentieren Dinge aus der realen Welt.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
+Student answer:    Zu-n-Beziehungen können direkt über indizierte Instanzvariablen oder über Zwischenobjekte umgesetzt werden, welche mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu n Objekten herzustellen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
+Student answer:    Zu-n-Beziehungen werden immer über eine benannte Instanzvariable umgesetzt, welche eine Referenz auf ein Objekt enthält.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
+Student answer:    Eine zu-eins-Beziehung wird über eine benannte Instanzvariable umgesetzt, welche eine Referenz auf ein Objekt enthält.
+Expected result:   OFF_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
+Student answer:    Zu-n-Beziehungen können über indizierte Instanzvariablen umgesetzt werden.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.
+Student answer:    Bei Zuweisungen unter Wertsemantik wird eine Kopie des Objekts angefertigt, da die Variable das Objekt speichert. Bei Zuweisungen unter Verweissemantik wird der Verweis auf das Objekt kopiert und der Verweis in der Variable gespeichert. Aliase entstehen somit bei der Zuweisung unter Verweissemantik.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.
+Student answer:    Zuweisungen unter Wertsemantik und unter Verweissemantik unterscheiden sich nicht.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.
+Student answer:    Bei Zuweisungen unter Wertsemantik wird eine Kopie des Objekts angefertigt, da die Variable das Objekt speichert.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Bei Zuweisungen unter Wertsemantik muss eine Kopie des Objekts angefertigt werden, da die Variable das Objekt selbst speichert. Bei Zuweisungen unter Verweissemantik wird nur der Verweis auf das Objekt kopiert und in der Variable gespeichert. Dies hat Auswirkungen darauf, ob Änderungen an einem Objekt in einer Variable sich auf dasselbe Objekt in einer anderen Variable auswirken.
+Student answer:    Bei Zuweisungen unter Verweissemantik wird der Verweis auf das Objekt kopiert und in der Variable gespeichert.
+Expected result:   MISSING_TOPIC
+Evaluation result: CONTRADICTS
+Match:             no
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    Eine Metaklasse ist die Klasse einer Klasse. Metaklassen sind für die Erstellung von Klassen verantwortlich und definieren diese.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    Eine Metaklasse ist eine Instanz einer Klasse.
+Expected result:   CONTRADICTS
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    Klassen können in einer Vererbungshierarchie stehen.
+Expected result:   OFF_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    In Smalltalk gibt es Metaklassen.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    Eine Metaklasse ist für Klassen verantwortlich.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Der Zweck der Vererbung ist es, die Definition einer Superklasse auf eine Subklasse zu übertragen, um die Wiederverwendung von Code zu erhöhen und die Wartbarkeit des Codes zu verbessern.
+Student answer:    Vererbung soll die Wiederverwendbarkeit und die Wartbarkeit von Code verbessern. Dafür vererben Superklasse Definitionen an ihre Subklassen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Der Zweck der Vererbung ist es, die Definition einer Superklasse auf eine Subklasse zu übertragen, um die Wiederverwendung von Code zu erhöhen und die Wartbarkeit des Codes zu verbessern.
+Student answer:    Vererbung hat nur Nachteile.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Der Zweck der Vererbung ist es, die Definition einer Superklasse auf eine Subklasse zu übertragen, um die Wiederverwendung von Code zu erhöhen und die Wartbarkeit des Codes zu verbessern.
+Student answer:    Mehrfachvererbung ist beispielsweise in EIFFEL umgesetzt.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Der Zweck der Vererbung ist es, die Definition einer Superklasse auf eine Subklasse zu übertragen, um die Wiederverwendung von Code zu erhöhen und die Wartbarkeit des Codes zu verbessern.
+Student answer:    Superklassen vererben Definitionen an ihre Subklassen.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    Nein, die Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit Spezialisierungen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    Ja, Spezialisierungen können Instanzvariablen oder Methoden entfernen.
+Expected result:   CONTRADICTS
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    In Java können Instanzvariablen oder Methoden von Subklassen gelöscht werden.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    Generalisierungen können das.
+Expected result:   OFF_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    Spezialisierungen können das nicht.
+Expected result:   MISSING_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             no
+
+Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
+Student answer:    Bei Parametrischem Polymorphismus wird in einer Typdefinition eine Typvariable verwendet, um diese variabel zu halten. Bei der Instanziierung wird die Typvariable dann durch einen konkreten Typ ersetzt.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
+Student answer:    Parametrischem Polymorphismus wird über Typvariablen realisiert.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
+Student answer:    Parametrischem Polymorphismus ist eine konkrete Typdefinition.
+Expected result:   CONTRADICTS
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
+Student answer:    Ein parametrischer Typ wird im Gleichheitstest verwendet.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
+Student answer:    Bei der Instanziierung wird die Typvariable durch einen konkreten Typ ersetzt.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
+Student answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch oder typäquivalent sind.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
+Student answer:    Zwei Typen sind zuweisungskompatibel, wenn sie sich sehr stark voneinander unterscheiden.
+Expected result:   CONTRADICTS
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
+Student answer:    Gleichheit und Identität ist nicht das gleiche.
+Expected result:   OFF_TOPIC
+Evaluation result: MISSING_TOPIC
+Match:             no
+
+Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
+Student answer:    Es gibt strukturelle und nominale Typkonformität.
+Expected result:   MISSING_TOPIC
+Evaluation result: MISSING_TOPIC
+Match:             yes
+
+Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
+Student answer:    Zwei Typen sind zuweisungskompatibel, wenn sie komplett identisch sind.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität besteht, wenn eine Übereinstimmung der Typnamen besteht.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Nominale Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Strukturelle Typkonformität heißt, dass die Typnamen übereinstimmen.
+Expected result:   CONTRADICTS
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Es gibt strukturelle und nominale Typkonformität.
+Expected result:   OFF_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Nominale Typkonformität besteht, wenn eine Übereinstimmung der Typnamen besteht.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
+Student answer:    Interfaces in Java schaffen Schnittstellen, die von Klassen implementiert werden können.Sie ermöglichen Code-Wiederverwendung, können als Verträge zwischen Klassen betrachtet werdenund stellen sicher, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
+Student answer:    Interfaces in Java sind mit abstrakten Klassen gleichzusetzen.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
+Student answer:    In Java gibt es keine Mehrfachvererbung.
+Expected result:   OFF_TOPIC
+Evaluation result: CONTRADICTS
+Match:             no
+
+Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
+Student answer:    Interfaces in Java ermöglichen die Wiederverwendung von Code.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    In Java gewähren Klassen sich untereinander privilegierten Zugriff, während nach außen nur öffentlich deklarierte Programmelemente sichtbar sind.
+Student answer:    In Java gewähren Klassen sich untereinander privilegierten Zugriff, während nach außen nur öffentlich deklarierte Programmelemente sichtbar sind.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    In Java gewähren Klassen sich untereinander privilegierten Zugriff, während nach außen nur öffentlich deklarierte Programmelemente sichtbar sind.
+Student answer:    In Java haben Klassen keinen Zugriff aufeinander.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    In Java gewähren Klassen sich untereinander privilegierten Zugriff, während nach außen nur öffentlich deklarierte Programmelemente sichtbar sind.
+Student answer:    In Java gibt es Zugriffskontrollmodifikatoren.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
+Student answer:    Ja, C++ unterstützt objektorierte Programmierung. C++ bietet neben structs auch Klassen mit Feldern und Methoden an.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
+Student answer:    Nein, a, C++ unterstützt Objektorientierung nicht.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
+Student answer:    Java unterstützt die Mehrfachvererbung nicht.
+Expected result:   OFF_TOPIC
+Evaluation result: CONTRADICTS
+Match:             no
+
+Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
+Student answer:    Objektorientierung wird unterstützt.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
+Student answer:    Das Fragile-Base-Class-Problem kann auftreten, wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften eine hohe Abhängigkeiten besteht. Änderungen an der Basisklasse können zu unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
+Student answer:    Das Fragile-Base-Class-Problem ist das Problem, fragiler Basisklassen.
+Expected result:   CONTRADICTS
+Evaluation result: OFF_TOPIC
+Match:             no
+
+Correct answer:    Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
+Student answer:    Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
+Student answer:    Das Fragile-Base-Class-Problem ist das Problem, dass unerwarteten Ergebnissen auftreten.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
+Match:             no
+
+Correct answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
+Student answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
+Student answer:    Das Geheimnisprinzip kann nicht umgangen werden.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
+Student answer:    Demeters Gesetz besagt, "Sprich nicht mit Fremden".
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
+Student answer:    Das Geheimnisprinzip kann durch Aliase umgangen werden.
+Expected result:   MISSING_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             no
+
+Correct answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung.
+Student answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist. Das LSP lässt sich nicht automatisch überprüfen und weist auch funktionierende Programme zurück.
+Expected result:   CORRECT
+Evaluation result: CORRECT
+Match:             yes
+
+Correct answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung.
+Student answer:    Das Liskov-Substitutionsprinzip ist gut geeignet, um die Funktionalität von Programmen zu überprüfen.
+Expected result:   CONTRADICTS
+Evaluation result: CONTRADICTS
+Match:             yes
+
+Correct answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung.
+Student answer:    Die Frage der Substituierbarkeit bezieht sich darauf, ob ein Objekt durch ein anderes Objekt ersetzt werden kann.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung.
+Student answer:    Das LSP lässt sich nicht automatisiert überprüfen.
+Expected result:   MISSING_TOPIC
+Evaluation result: MISSING_TOPIC
+Match:             yes
+

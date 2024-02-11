@@ -7,6 +7,7 @@ import re
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from datetime import datetime
+from testing.test_data import students, evaluation_data
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -20,28 +21,16 @@ OUTPUT_FILE = os.path.join(directory, f"testing/test_results_submodule_{date}")
 
 # Parse command line arguments
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-parser.add_argument("-m", "--module", help="Module name to test.")
+parser.add_argument("-m", "--module", help="""Name of one of the following modules:
+    'speech_recognition',
+    'text_to_speech'
+    'evaluation'
+    'qa_generation'
+    'qa_selection'
+    'paraphrasing'
+    'feedback'
+    'other_prompts'""")
 args = vars(parser.parse_args())
-
-students = [{'name': "Luna", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
-             'dative': "einer Studentin", 'possessive': "ihre"},
-            {'name': "Alice", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
-             'dative': "einer Studentin", 'possessive': "ihre"},
-            {'name': "Defne", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
-             'dative': "einer Studentin", 'possessive': "ihre"},
-            {'name': "Linus", 'nominative': "Der Student", 'accusative': 'einen Studenten',
-             'dative': "einem Studenten", 'possessive': "seine"},
-            {'name': "Kiano", 'nominative': "Der Student", 'accusative': 'einen Studenten',
-             'dative': "einem Studenten", 'possessive': "seine"},
-            {'name': "Baschar", 'nominative': "Der Student", 'accusative': 'einen Studenten',
-             'dative': "einem Studenten", 'possessive': "seine"},
-            {'name': "Niam", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
-             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
-            {'name': "Farah", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
-             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
-            {'name': "Charlie", 'nominative': "Der*die Student*in", 'accusative': 'eine*n Studenten*in',
-             'dative': "einem*r Studenten*in", 'possessive': "seine*ihre"},
-            ]
 
 # Check if a name was given
 if not args["module"]:
@@ -59,24 +48,24 @@ match args["module"]:
         audio = TextToSpeech()
         audio.get_audio(text_input)
 
-    case "evaluation":  # TODO: Broken
+    case "evaluation":
         from evaluation import Evaluator
 
-        # Sample student answer, correct answer and keywords
-        test_student = "Das Problem der schlechten Tracebarkeit entsteht durch das Brechen des Lokalitätsprinzips."
-        test_correct = ("Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die "
-                        "Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und "
-                        "bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im "
-                        "Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im"
-                        "Programmtext und erschwerte das Verstehen und Debuggen von Programmen.")
-        test_keywords = {'terms': ['dynamisch', 'Goto', 'Lokalitätsprinzip', 'Binden', 'Debuggen'],
-                         'common': ['Unterprogramm']}
-
         evaluator = Evaluator()
-        # evaluator.get_missing_keys(test_correct, test_student)
-        evaluator.evaluate_keywords(test_keywords, test_student)
+        with open(OUTPUT_FILE, 'a', newline='') as file:
+            file.write("Answer Evaluation Testing\n\n")
 
-    case "qa_generating":
+        for answers in evaluation_data:
+            result = evaluator.evaluate_answer(answers['correct_answer'], answers['student_answer'])
+            match = 'yes' if result == answers['expected'] else 'no'
+            with open(OUTPUT_FILE, 'a', newline='') as file:
+                file.write(f"""Correct answer:    {answers['correct_answer']}
+Student answer:    {answers['student_answer']}
+Expected result:   {answers['expected'].name}
+Evaluation result: {result.name}
+Match:             {match}\n\n""")
+
+    case "qa_generation":
         from questions.question_generation import QuestionGenerator
         from utils import preprocessing
         from text_generation import TextGenerator
@@ -98,7 +87,7 @@ match args["module"]:
 Question: {question_answer['question']}
 Answer:   {question_answer['answer']}\n\n""")
 
-    case "qa_selecting":
+    case "qa_selection":
         from questions.question_managing import QuestionManager, TopicManager
         from questions.questions import KE1_questions, KE2_questions, KE3_questions, KE4_questions, KE6_questions
         from utils import preprocessing
@@ -220,7 +209,7 @@ Gib nur das Feedback zurück:""")
                     file.write(f"""Feedback rules:       {feedback_rules}
 Generiertes Feedback: {feedback}\n""")
 
-    case "greeting":
+    case "other_prompts":
         from text_generation import TextGenerator
         text_gen = TextGenerator()
 
