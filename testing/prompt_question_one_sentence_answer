@@ -1,6 +1,6 @@
 Question Answer Generation Testing mit Längenangabe '1 Satz'
 
-Prompt: Erstelle eine Prüfungsfrage und ihre kurze Musterantwort für eine mündliche Prüfung.
+Prompt: Erstelle eine Prüfungsfrage und ihre Musterantwort für eine mündliche Prüfung.
         Schreibe die Musterantwort in 1 Satz.
         Nutze nur Informationen aus folgendem Text:
         {context}
