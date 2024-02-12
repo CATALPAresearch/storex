@@ -138,10 +138,10 @@ class ExamManager:
         # Get evaluation by comparing the students answer to the correct answer.
         elif 'answer' in question:
             result = self.evaluation.evaluate_answer(question['answer'], student_answer)
-            logger.info(f"Result: {result.name}")
         # Only check keywords for topic questions
         else:
             result = EvaluationType.MISSING_TOPIC
+        logger.info(f"Result: {result.name}")
 
         questioning_sounds = ["Ah?", "Achso?", "Hmm.", "Hm?", '']
 
@@ -444,6 +444,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 25, "female": False, "male": False, "mute": True, "ai": False}
+    dev_parameters = {"name": "Luna", "time": 25, "female": True, "male": False, "mute": True, "ai": False}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

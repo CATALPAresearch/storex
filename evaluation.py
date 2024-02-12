@@ -87,7 +87,7 @@ class Evaluator:
 
         # Check the similarity with similarity search LLM
         similarity = self.check_similarity(correct_answer, student_answer)
-        if similarity > 0.75:
+        if similarity > 0.85:
             feedback = EvaluationType.CORRECT
         else:
             feedback = EvaluationType.MISSING_TOPIC

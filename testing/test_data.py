@@ -83,9 +83,9 @@ evaluation_data = [
                        'sind. Sie sind im Speicher abgelegt. Ein Objekt repräsentiert eine Instanz einer Klasse, die '
                        'sowohl Daten als auch Methoden enthält, um diese Daten zu verarbeiten. Objekte stehen '
                        'miteinander in Beziehung und können sich Nachrichten senden.'},
-    {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke1_1,
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke1_1,
      'student_answer': 'Objekte speichern Informationen und führen Aktionen aus.'},
-    {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke1_1,
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke1_1,
      'student_answer': 'Objekte sind im Speicher abgelegt Daten.'},
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke1_1,
      'student_answer': 'Objekte können keine Daten speichern.'},
@@ -100,9 +100,11 @@ evaluation_data = [
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke1_2,
      'student_answer': 'Zu-n-Beziehungen werden immer über eine benannte Instanzvariable umgesetzt, welche eine '
                        'Referenz auf ein Objekt enthält.'},
-    {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke1_2,
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke1_2,
      'student_answer': 'Eine zu-eins-Beziehung wird über eine benannte Instanzvariable umgesetzt, welche eine Referenz '
                        'auf ein Objekt enthält.'},
+    {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke1_2,
+     'student_answer': 'Objekte können Variablen speichern.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke1_2,
      'student_answer': 'Zu-n-Beziehungen können über indizierte Instanzvariablen umgesetzt werden.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke1_3,
@@ -124,7 +126,9 @@ evaluation_data = [
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke2_1,
      'student_answer': 'Eine Metaklasse ist eine Instanz einer Klasse.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke2_1,
-     'student_answer': 'Klassen können in einer Vererbungshierarchie stehen.'},  # TODO
+     'student_answer': 'Die Klasse Object ist die Wurzel der Vererbungshierarchie.'},
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke2_1,
+     'student_answer': 'Metalassen können in einer Vererbungshierarchie stehen.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke2_1,
      'student_answer': 'In Smalltalk gibt es Metaklassen.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke2_1,
@@ -145,7 +149,9 @@ evaluation_data = [
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke2_3,
      'student_answer': 'In Java können Instanzvariablen oder Methoden von Subklassen gelöscht werden.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke2_3,
-     'student_answer': 'Generalisierungen können das.'},
+     'student_answer': 'Vererbungshierarchien können von den Programmierenden frei erstellt werden.'},
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke2_3,
+     'student_answer': 'Generalisierungen können Instanzvariablen entfernen.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke2_3,
      'student_answer': 'Spezialisierungen können das nicht.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke3_1,
@@ -165,7 +171,7 @@ evaluation_data = [
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke3_2,
      'student_answer': 'Zwei Typen sind zuweisungskompatibel, wenn sie sich sehr stark voneinander unterscheiden.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke3_2,
-     'student_answer': 'Gleichheit und Identität ist nicht das gleiche.'},  # TODO
+     'student_answer': 'Gleichheit und Identität von Objekten ist nicht das gleiche.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_2,
      'student_answer': 'Es gibt strukturelle und nominale Typkonformität.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_2,
@@ -178,6 +184,8 @@ evaluation_data = [
      'student_answer': 'Nominale Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er '
                        'konform sein soll, enthält. Strukturelle Typkonformität heißt, dass die Typnamen übereinstimmen.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke3_3,
+     'student_answer': 'In Java gibt es Wildcards.'},
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_3,
      'student_answer': 'Es gibt strukturelle und nominale Typkonformität.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_3,
      'student_answer': 'Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er '
@@ -188,10 +196,10 @@ evaluation_data = [
      'student_answer': 'Interfaces in Java schaffen Schnittstellen, die von Klassen implementiert werden können.'
                        'Sie ermöglichen Code-Wiederverwendung, können als Verträge zwischen Klassen betrachtet werden'
                        'und stellen sicher, dass eine Klasse eine bestimmte Funktionalität bereitstellt.'},
-    {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke4_1,  # TODO
+    {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke4_1,
      'student_answer': 'Interfaces in Java sind mit abstrakten Klassen gleichzusetzen.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke4_1,
-     'student_answer': 'In Java gibt es keine Mehrfachvererbung.'},  # TODO
+     'student_answer': 'C++ erlaubt Mehrfachvererbung.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke4_1,
      'student_answer': 'Interfaces in Java ermöglichen die Wiederverwendung von Code.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke4_2,
@@ -206,20 +214,20 @@ evaluation_data = [
                        'Feldern und Methoden an.'},
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke4_3,
      'student_answer': 'Nein, a, C++ unterstützt Objektorientierung nicht.'},
-    {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke4_3,  # TODO
-     'student_answer': 'Java unterstützt die Mehrfachvererbung nicht.'},
+    {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke4_3,
+     'student_answer': 'EIFFEL unterstützt Mehrfachvererbung.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke4_3,
      'student_answer': 'Objektorientierung wird unterstützt.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke6_1,
      'student_answer': 'Das Fragile-Base-Class-Problem kann auftreten, wenn zwischen einer Klasse und ihren Subklassen '
                        'aufgrund der Vererbung von Eigenschaften eine hohe Abhängigkeiten besteht. Änderungen an der '
                        'Basisklasse können zu unerwünschten Auswirkungen in der abgeleiteten Klasse führen.'},
-    {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke6_1,  # TODO
+    {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke6_1,
      'student_answer': 'Das Fragile-Base-Class-Problem ist das Problem, fragiler Basisklassen.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke6_1,
      'student_answer': 'Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf.'},
-    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke6_1,  # TODO
-     'student_answer': 'Das Fragile-Base-Class-Problem ist das Problem, dass unerwarteten Ergebnissen auftreten.'},
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke6_1,
+     'student_answer': 'Das Fragile-Base-Class-Problem ist das Problem, dass unerwartete Ergebnissen auftreten.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke6_2,
      'student_answer': 'Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen '
                        'werden sollen, noch andere Namen besitzen.'},
@@ -228,7 +236,7 @@ evaluation_data = [
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke6_2,
      'student_answer': 'Demeters Gesetz besagt, "Sprich nicht mit Fremden".'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke6_2,
-     'student_answer': 'Das Geheimnisprinzip kann durch Aliase umgangen werden.'},  # TODO
+     'student_answer': 'Das Geheimnisprinzip kann umgangen werden.'},
     {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke6_3,
      'student_answer': 'Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu '
                        'restriktiv erweist. Das LSP lässt sich nicht automatisch überprüfen und weist auch '
