@@ -20,15 +20,15 @@ Match:             no
 
 Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
 Student answer:    Objekte speichern Informationen und führen Aktionen aus.
-Expected result:   CORRECT
+Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
-Match:             yes
+Match:             no
 
 Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
 Student answer:    Objekte sind im Speicher abgelegt Daten.
-Expected result:   CORRECT
+Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
-Match:             yes
+Match:             no
 
 Correct answer:    Objekte sind in der objektorientierten Programmierung Daten, die im Speicher abgelegt sind und in der Lage sind, Informationen zu speichern und Aktionen auszuführen. Sie repräsentieren Dinge aus der realen Welt und können miteinander in Beziehung stehen.
 Student answer:    Objekte können keine Daten speichern.
@@ -62,9 +62,15 @@ Match:             yes
 
 Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
 Student answer:    Eine zu-eins-Beziehung wird über eine benannte Instanzvariable umgesetzt, welche eine Referenz auf ein Objekt enthält.
-Expected result:   OFF_TOPIC
+Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
 Match:             no
+
+Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
+Student answer:    Objekte können Variablen speichern.
+Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
 
 Correct answer:    Zu-n-Beziehungen werden meistens über Zwischenobjekte umgesetzt, deren Aufgabe es ist, mittels ihrer indizierten Instanzvariablen jeweils eine Beziehung zu mehreren anderen Objekten herzustellen.
 Student answer:    Zu-n-Beziehungen können über indizierte Instanzvariablen umgesetzt werden.
@@ -109,10 +115,16 @@ Evaluation result: CORRECT
 Match:             no
 
 Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
-Student answer:    Klassen können in einer Vererbungshierarchie stehen.
+Student answer:    Die Klasse Object ist die Wurzel der Vererbungshierarchie.
 Expected result:   OFF_TOPIC
-Evaluation result: CORRECT
-Match:             no
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
+Student answer:    Metalassen können in einer Vererbungshierarchie stehen.
+Expected result:   MISSING_TOPIC
+Evaluation result: MISSING_TOPIC
+Match:             yes
 
 Correct answer:    Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern.
 Student answer:    In Smalltalk gibt es Metaklassen.
@@ -169,9 +181,15 @@ Evaluation result: OFF_TOPIC
 Match:             yes
 
 Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
-Student answer:    Generalisierungen können das.
+Student answer:    Vererbungshierarchien können von den Programmierenden frei erstellt werden.
 Expected result:   OFF_TOPIC
-Evaluation result: MISSING_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
+Student answer:    Generalisierungen können Instanzvariablen entfernen.
+Expected result:   MISSING_TOPIC
+Evaluation result: CORRECT
 Match:             no
 
 Correct answer:    Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte.
@@ -223,7 +241,7 @@ Evaluation result: CORRECT
 Match:             no
 
 Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
-Student answer:    Gleichheit und Identität ist nicht das gleiche.
+Student answer:    Gleichheit und Identität von Objekten ist nicht das gleiche.
 Expected result:   OFF_TOPIC
 Evaluation result: MISSING_TOPIC
 Match:             no
@@ -253,8 +271,14 @@ Evaluation result: CORRECT
 Match:             no
 
 Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
-Student answer:    Es gibt strukturelle und nominale Typkonformität.
+Student answer:    In Java gibt es Wildcards.
 Expected result:   OFF_TOPIC
+Evaluation result: OFF_TOPIC
+Match:             yes
+
+Correct answer:    Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht.
+Student answer:    Es gibt strukturelle und nominale Typkonformität.
+Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
 Match:             no
 
@@ -283,10 +307,10 @@ Evaluation result: CONTRADICTS
 Match:             yes
 
 Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
-Student answer:    In Java gibt es keine Mehrfachvererbung.
+Student answer:    C++ erlaubt Mehrfachvererbung.
 Expected result:   OFF_TOPIC
-Evaluation result: CONTRADICTS
-Match:             no
+Evaluation result: OFF_TOPIC
+Match:             yes
 
 Correct answer:    Interfaces in Java spielen eine wichtige Rolle bei der Abstraktion und der Schaffung von Schnittstellen, die von mehreren Klassen implementiert werden können. Sie ermöglichen es, die Abhängigkeiten zwischen Klassen zu verringern und die Code-Wiederverwendung zu erhöhen. Interfaces können auch als Verträge zwischen Klassen betrachtet werden, die sicherstellen, dass eine Klasse eine bestimmte Funktionalität bereitstellt.
 Student answer:    Interfaces in Java ermöglichen die Wiederverwendung von Code.
@@ -325,10 +349,10 @@ Evaluation result: CONTRADICTS
 Match:             yes
 
 Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
-Student answer:    Java unterstützt die Mehrfachvererbung nicht.
+Student answer:    EIFFEL unterstützt Mehrfachvererbung.
 Expected result:   OFF_TOPIC
-Evaluation result: CONTRADICTS
-Match:             no
+Evaluation result: OFF_TOPIC
+Match:             yes
 
 Correct answer:    Ja, C++ unterstützt Objektorientierung, indem es neben den aus C übernommenen Strukturen (structs) auch Klassen anbietet. Diese beinhalten, genau wie in SMALLTALK und Java, neben Feldern (Instanzvariablen) auch Methoden. Klassenfelder und -methoden werden mit dem Schlüsselwort static in einer Klasse eingeführt.
 Student answer:    Objektorientierung wird unterstützt.
@@ -355,7 +379,7 @@ Evaluation result: OFF_TOPIC
 Match:             yes
 
 Correct answer:    Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.
-Student answer:    Das Fragile-Base-Class-Problem ist das Problem, dass unerwarteten Ergebnissen auftreten.
+Student answer:    Das Fragile-Base-Class-Problem ist das Problem, dass unerwartete Ergebnissen auftreten.
 Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
 Match:             no
@@ -379,10 +403,10 @@ Evaluation result: OFF_TOPIC
 Match:             yes
 
 Correct answer:    Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter.
-Student answer:    Das Geheimnisprinzip kann durch Aliase umgangen werden.
+Student answer:    Das Geheimnisprinzip kann umgangen werden.
 Expected result:   MISSING_TOPIC
-Evaluation result: OFF_TOPIC
-Match:             no
+Evaluation result: MISSING_TOPIC
+Match:             yes
 
 Correct answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung.
 Student answer:    Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist. Das LSP lässt sich nicht automatisch überprüfen und weist auch funktionierende Programme zurück.
