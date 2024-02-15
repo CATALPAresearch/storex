@@ -445,6 +445,6 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger.disabled = False
 
-    dev_parameters = {"name": "Luna", "time": 25, "female": True, "male": False, "mute": True, "ai": False}
+    dev_parameters = {"name": "Luna", "time": 10, "female": True, "male": False, "mute": True, "ai": False}
     exam = ExamManager(dev_parameters)
     exam.start_exam()
