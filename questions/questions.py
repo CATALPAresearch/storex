@@ -12,7 +12,7 @@ KE3_topics = {'question': "Was sind Typen in der objektorientierten Programmieru
               'keywords': ["Typdefinition", "Zuweisungskompatibilität", "Subtyp", "Inklusionspolymorphie",
                            "parametrischer Polymorphismus", "Typisierung"]}
 
-KE4_topics = {'question': "Was sind die Besonderheiten einier Programmiermodelle?",  # Java, C-Sharp, C++, EIFFEL
+KE4_topics = {'question': "Was sind die Besonderheiten einiger Programmiermodelle?",  # Java, C-Sharp, C++, EIFFEL
               'keywords': ["Interface", "Generischer Typ", "Mehrfachvererbung"]}
 
 KE6_topics = {'question': "Was sind Probleme der objektorientierten Programmierung?",

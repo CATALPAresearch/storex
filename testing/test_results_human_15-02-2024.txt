@@ -1,0 +1,448 @@
+INFO:root:Setting parameters: {'name': 'Luna', 'time': 10, 'female': True, 'male': False, 'mute': True, 'ai': False}
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
+ Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
+
+Ihre Antwort lautet (in etwa):
+ Test, Test.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
+Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Das Grundkonzept objektorientierter Programmierung sind miteinander in Verbindung stehende Objekte.
+INFO:root:Answer took 17.517671 seconds.
+INFO:root:Remaining time: 582.482329 seconds (102.482329 seconds in this topic).
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']
+INFO:root:Mentioned terms: ['objekt']
+INFO:root:Missing terms: ['Objekt', 'Verhalten', 'Zustand', 'Beziehung']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Verhalten
+Found in questions: 0
+Found in answers: 1
+INFO:root:Predefined question: {'question': 'Was sind Blöcke?', 'answer': 'Blöcke in SMALLTALK werden in anderen Programmiersprachen oft als (lexikalische) Closures bezeichnet. Sie werden für sogenannte Lambda-Ausdrücke verwendet, die anonyme Funktionen repräsentieren und als Objekte oder Werte behandelt werden können. Closures erlauben es, Funktionen aus ihrem Kontext herauszulösen und in andere Kontexte zu übertragen. Die Verwendung und das Verhalten von Closures können sich jedoch zwischen verschiedenen Programmiersprachen erheblich unterscheiden.'}
+Was sind Blöcke?
+
+Ihre Antwort lautet (in etwa):
+ Blöcke sind in der Sprache noch closure genannt, werden für Lambdaausdrücke verwendet.
+INFO:root:Answer took 18.360403 seconds.
+INFO:root:Remaining time: 564.121926 seconds (84.121926 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9993906021118164}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.68it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 214.99it/s]
+INFO:root:Similarity: tensor([[0.7179]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['ausdruecke', 'closure', 'objekt', 'smalltalk', 'verhalten', 'wert']
+INFO:root:Mentioned terms: ['closure']
+INFO:root:Missing terms: ['objekt', 'ausdruecke', 'smalltalk', 'verhalten', 'wert']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: wert
+Found in questions: 2
+INFO:root:Predefined question: {'question': 'Was ist Wertsemantik?', 'answer': 'Bei Wertsemantik macht das bezeichnete Objekt tatsächlich den Inhalt der Variable aus.'}
+Was ist Wertsemantik?
+
+Ihre Antwort lautet (in etwa):
+ Wertsemantik macht das bezeichnende Objekt den Inhalt seiner Variable.
+INFO:root:Answer took 17.098736 seconds.
+INFO:root:Remaining time: 547.023190 seconds (67.023190 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.99950110912323}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 108.44it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 139.61it/s]
+INFO:root:Similarity: tensor([[0.9305]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Increased level to 1!
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Wie werden Methoden in SMALLTALK gespeichert?', 'answer': 'Methoden werden in SMALLTALK nicht in Dateien gespeichert, sondern in einer Datenstruktur von SMALLTALK, nämlich in Form von Objekten. Dies bedeutet, dass der Großteil eines jeden SMALLTALK-Programms aus Methodendefinitionen besteht, die im SMALLTALK-System als Objekte gespeichert sind.'}
+Ok. Wie werden Methoden in SMALLTALK gespeichert?
+
+Ihre Antwort lautet (in etwa):
+ Methoden werden ins MolTalk gespeichert als Objekte.
+INFO:root:Answer took 19.456480 seconds.
+INFO:root:Remaining time: 527.566710 seconds (47.566710 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.6589776873588562}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 126.66it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 131.24it/s]
+INFO:root:Similarity: tensor([[0.6195]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['methode', 'methodendefinition', 'objekt', 'smalltalk']
+INFO:root:Mentioned terms: ['methode', 'objekt']
+INFO:root:Missing terms: ['methodendefinition', 'smalltalk']
+INFO:root:The next question should be: GENERATE
+INFO:root:Increased level to 2!
+INFO:root:The next question is: GENERATE
+INFO:root:Target: Beziehung
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 212.47it/s]
+INFO:root:Generated question: {'question': 'Erklären Sie, was man unter einer Zu-1-Beziehung und einer Zu-n-Beziehung in der Daten- und Softwaremodellierung versteht.', 'answer': 'Eine Zu-1-Beziehung beschreibt die Beziehung eines Objekts zu genau einem anderen Objekt, während eine Zu-n-Beziehung die Beziehung eines Objekts zu beliebig vielen anderen Objekten darstellt.'}
+Erklären Sie, was man unter einer Zu-1-Beziehung und einer Zu-n-Beziehung in der Daten- und Softwaremodellierung versteht.
+
+Ihre Antwort lautet (in etwa):
+ Unter zu 1 und zu N Beziehung versteht man in der Softwaremodellierung
+INFO:root:Answer took 23.669183 seconds.
+INFO:root:Remaining time: 503.897527 seconds (23.897527 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9998311996459961}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['beziehung', 'objekt']
+INFO:root:Mentioned terms: ['beziehung']
+INFO:root:Missing terms: ['objekt']
+INFO:root:The next question should be: SELECTED
+INFO:root:The next question is: SELECTED
+INFO:root:Target: verhalten
+Found in questions: 0
+Found in answers: 0
+Found in questions: 0
+Found in answers: 1
+INFO:root:Predefined question: {'question': 'Warum ist die Zuordnung von Methoden zu Objekten wichtig?', 'answer': 'Die Zuordnung von Methoden zu Objekten ermöglicht es den Methoden, auf die Instanzvariablen des jeweiligen Objekts zuzugreifen und somit das Verhalten des Objekts zu spezifizieren und zu beeinflussen.'}
+Ah? Warum ist die Zuordnung von Methoden zu Objekten wichtig?
+
+Ihre Antwort lautet (in etwa):
+ Die Zerordnung von Methoden ist wichtig, weil so enthielt wird, ob ein Objekt darauf zugreifen kann.
+INFO:root:Answer took 25.414288 seconds.
+INFO:root:Remaining time: 478.483239 seconds (-1.516761 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9996960163116455}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['instanz', 'instanzvariable', 'methode', 'objekt', 'verhalten']
+INFO:root:Mentioned terms: ['methode', 'objekt']
+INFO:root:Missing terms: ['instanz', 'instanzvariable', 'verhalten']
+INFO:root:The next question should be: SELECTED
+INFO:root:Increased topic to KE2 at level REMEMBER!
+INFO:root:Next topic KE2 for 119.620809674263 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']}
+Hm? Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+
+Ihre Antwort lautet (in etwa):
+ Objektorientierte Programme lassen sich mit Klassen strukturieren.
+INFO:root:Answer took 15.909619 seconds.
+INFO:root:Remaining time: 462.573620 seconds (103.711191 seconds in this topic).
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']
+INFO:root:Mentioned terms: ['klasse']
+INFO:root:Missing terms: ['Generalisierung', 'Vererbung', 'Spezialisierung', 'dynamisch Binden', 'Klasse']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Vererbung
+Found in questions: 6
+INFO:root:Predefined question: {'question': 'Was ist die Vererbung?', 'answer': 'Die Vererbung ist ein Mechanismus, der es ermöglicht, die Definition einer Klasse (der Superklasse) auf eine andere Klasse (die Subklasse) zu übertragen. Dabei wird die gesamte Definition der Superklasse auf die Subklasse kopiert.'}
+Was ist die Vererbung?
+
+Ihre Antwort lautet (in etwa):
+ Vererbung ist ein Mechanismus, das ermöglicht, die Definition einer Klasse auf eine andere zu übertragen.
+INFO:root:Answer took 18.927360 seconds.
+INFO:root:Remaining time: 443.646260 seconds (84.783831 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9996675252914429}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 55.15it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 182.42it/s]
+INFO:root:Similarity: tensor([[0.7633]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['definition', 'klasse', 'kopie', 'subklasse', 'super', 'superklasse', 'vererbung']
+INFO:root:Mentioned terms: ['definition', 'klasse', 'vererbung']
+INFO:root:Missing terms: ['superklasse', 'kopie', 'subklasse', 'super']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Spezialisierung
+Found in questions: 5
+INFO:root:Predefined question: {'question': 'Was ist Generalisierung und Spezialisierung in Bezug auf objektorientierte Programmierung?', 'answer': 'Generalisierung und Spezialisierung sind Prinzipien in der objektorientierten Programmierung. Dabei wird eine allgemeine Klasse (Generalisation) erstellt, die dann durch eine spezifischere Klasse (Spezialisation) erweitert wird. In diesem Fall wird die Klasse Rechteck als allgemeine Klasse angesehen und Quadrat als spezifischere Klasse, die von Rechteck erbt.'}
+Was ist Generalisierung und Spezialisierung in Bezug auf objektorientierte Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Generalisierung und Spezialisierung in Bezug auf Objektorientierung ist das Prinzip, in dem Alkoholiklassgeneralisierung sind unspezifische Klassen Spezialisierungen, was eben die Generalisierung erweitert.
+INFO:root:Answer took 34.768229 seconds.
+INFO:root:Remaining time: 408.878031 seconds (50.015602 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9833037853240967}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['generalisierung', 'klasse', 'objekt', 'spezialisierung']
+INFO:root:Mentioned terms: ['generalisierung', 'klasse', 'objekt', 'spezialisierung']
+INFO:root:Missing terms: []
+INFO:root:The next question should be: SELECTED
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Generalisierung
+Found in questions: 6
+INFO:root:Predefined question: {'question': 'Was ist eine Generalisierungshierarchie?', 'answer': 'Eine Generalisierungshierarchie ist eine hierarchische Struktur, in der Klassen nach ihrer Allgemeinheit geordnet sind. Dabei gilt, dass eine allgemeinere Klasse eine speziellere Klasse als Unterklasse enthält. Die Generalisierungshierarchie ist eine wichtige Konzept in der objektorientierten Programmierung, da sie die Beziehung zwischen Klassen und Objekten definiert.'}
+Ah? Was ist eine Generalisierungshierarchie?
+
+Ihre Antwort lautet (in etwa):
+ Generalisierungs-Hierarchie ist die Struktur, in der nach Allgemeinheit geordnet wird von generellen Klasse zu speziellen Klassen.
+INFO:root:Answer took 25.491183 seconds.
+INFO:root:Remaining time: 383.386847 seconds (24.524418 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997078776359558}]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 106.01it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 106.09it/s]
+INFO:root:Similarity: tensor([[0.9381]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Increased level to 1!
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist der Zweck von Konstruktoren in der objektorientierten Programmierung?', 'answer': 'Konstruktoren sind spezielle Methoden in der objektorientierten Programmierung, die verwendet werden, um neue Objekte einer Klasse zu initialisieren. Sie werden aufgerufen, wenn ein neues Objekt erstellt wird und werden verwendet, um die Anfangswerte der Attribute des Objekts festzulegen. In dem gegebenen Beispiel, werden zwei alternative Konstruktoren für die Klasse "Time" definiert, die die neuen Objekte jeweils unterschiedlich initialisieren.'}
+Ok. Was ist der Zweck von Konstruktoren in der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Bezirk von Konstruktoren in der Apekt orientierten Programmierung ist es, dass spezielle Methoden der Programmierung verwendet werden, um neue Objekte in der Klasse zu initialisieren.
+INFO:root:Answer took 25.040259 seconds.
+INFO:root:Remaining time: 358.346588 seconds (-0.515841 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997063279151917}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 62.85it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 87.21it/s]
+INFO:root:Similarity: tensor([[0.7573]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['attribut', 'klasse', 'konstruktor', 'methode', 'objekt']
+INFO:root:Mentioned terms: ['klasse', 'konstruktor', 'methode', 'objekt']
+INFO:root:Missing terms: ['attribut']
+INFO:root:The next question should be: GENERATE
+INFO:root:Increased topic to KE3 at level REMEMBER!
+INFO:root:Next topic KE3 for 119.44886263211568 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']}
+Was sind Typen in der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Die Typen sind, ja, die sind altibisierte Programme, bestimmt.
+INFO:root:Answer took 19.731217 seconds.
+INFO:root:Remaining time: 338.615371 seconds (99.717646 seconds in this topic).
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']
+INFO:root:Mentioned terms: []
+INFO:root:Missing terms: ['parametrischer Polymorphismus', 'Inklusionspolymorphie', 'Typdefinition', 'Typisierung', 'Zuweisungskompatibilität', 'Subtyp']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Typdefinition
+Found in questions: 4
+INFO:root:Predefined question: {'question': 'Was ist das Problem bei der Verwendung von variablen Typen in einer parametrischen Typdefinition?', 'answer': 'Das Problem ist, dass der Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel sein soll, aber der Typ bereits definiert ist. Dies tritt auf, wenn man beispielsweise den Test auf Gleichheit so definieren möchte, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte.'}
+Was ist das Problem bei der Verwendung von variablen Typen in einer parametrischen Typdefinition?
+
+Ihre Antwort lautet (in etwa):
+ Das Problem bei der Verwendung von Variablen in der parametrischen Typdefinition ist, dass Methodenargumente, auf welche die verschiedenen Variablen treffen, dadurch größer werden.
+INFO:root:Answer took 31.117899 seconds.
+INFO:root:Remaining time: 307.497472 seconds (68.599747 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9998290538787842}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['methode', 'objekt', 'test', 'typ']
+INFO:root:Mentioned terms: ['methode', 'typ']
+INFO:root:Missing terms: ['objekt', 'test']
+INFO:root:The next question should be: SELECTED
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Subtyp
+Found in questions: 8
+INFO:root:Predefined question: {'question': 'Was ist Typerweiterung als Basis des Subtyping?', 'answer': 'Typerweiterung als Basis des Subtyping bedeutet, dass ein neuer Typ, der ein Supertyp ist, zusätzliche Eigenschaften und Methoden enthalten kann, aber die Eigenschaften und Methoden des Supertyps haben muss. Dadurch sind Typfehler ausgeschlossen, und es bleibt lediglich das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind.'}
+Ah? Was ist Typerweiterung als Basis des Subtyping?
+
+INFO:root:Answer took 4.573033 seconds.
+INFO:root:Remaining time: 302.924439 seconds (64.026714 seconds in this topic).
+INFO:root:Result: SILENCE
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Was ist Typerweiterung als Basis des Subtyping?', 'answer': 'Typerweiterung als Basis des Subtyping bedeutet, dass ein neuer Typ, der ein Supertyp ist, zusätzliche Eigenschaften und Methoden enthalten kann, aber die Eigenschaften und Methoden des Supertyps haben muss. Dadurch sind Typfehler ausgeschlossen, und es bleibt lediglich das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind.'}
+Ich habe leider keine Antwort gehört. Was ist Typerweiterung als Basis des Subtyping?
+
+Ihre Antwort lautet (in etwa):
+ Du hast keine Antwort gehört. Die Teamerweiterung als Subtyping bezeichnet die Generalisierungs- und Spezialisierungsbeziehungen.
+INFO:root:Answer took 25.016496 seconds.
+INFO:root:Remaining time: 277.907944 seconds (39.010218 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.9998337030410767}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Zuweisungskompatibilität
+Found in questions: 8
+INFO:root:Predefined question: {'question': 'Was bedeutet Zuweisungskompatibilität?', 'answer': 'Zuweisungskompatibilität bedeutet, dass Objekte eines Subtyps überall auftauchen dürfen, wo Objekte seines Supertyps erwartet werden. Ein Subtyp ist also per Definition mit seinem Supertyp zuweisungskompatibel.'}
+Was bedeutet Zuweisungskompatibilität?
+
+Ihre Antwort lautet (in etwa):
+ Zur Wesungskompatibilität bedeutet, dass ein Objekt überall auftreten kann, wo sein Supertyp erwartet wird.
+INFO:root:Answer took 21.719323 seconds.
+INFO:root:Remaining time: 256.188621 seconds (17.290896 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9997574687004089}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 66.64it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 137.65it/s]
+INFO:root:Similarity: tensor([[0.7868]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['definition', 'objekt', 'subtyp', 'super', 'supertyp', 'zuweisung', 'zuweisungskompatibilitaet']
+INFO:root:Mentioned terms: ['objekt', 'super', 'supertyp']
+INFO:root:Missing terms: ['zuweisungskompatibilitaet', 'zuweisung', 'subtyp', 'definition']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: parametrischer Polymorphismus
+Found in questions: 1
+INFO:root:Predefined question: {'question': 'Was ist parametrischer Polymorphismus?', 'answer': 'Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.'}
+Was ist parametrischer Polymorphismus?
+
+Ihre Antwort lautet (in etwa):
+ Parametrischer Polymorphismus ist eine Technik, bei der Typvariablen innerhalb einer Typdefinition verwendet werden. Diese Typvariablen können dann durch konkrete Typen ersetzt werden.
+INFO:root:Answer took 22.748037 seconds.
+INFO:root:Remaining time: 233.440584 seconds (-5.457141 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9934831261634827}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 42.78it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 113.53it/s]
+INFO:root:Similarity: tensor([[0.9657]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Increased topic to KE4 at level REMEMBER!
+INFO:root:Next topic KE4 for 116.72029197216034 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten einier Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'Mehrfachvererbung']}
+Was sind die Besonderheiten einier Programmiermodelle?
+
+Ihre Antwort lautet (in etwa):
+ Die Besonderheiten einer einiger Programmiermodelle sind interfaces, generische Typen und Mehrfachverwendung.
+INFO:root:Answer took 25.284954 seconds.
+INFO:root:Remaining time: 208.155630 seconds (91.435338 seconds in this topic).
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['Interface', 'Generischer Typ', 'Mehrfachvererbung']
+INFO:root:Mentioned terms: ['interface']
+INFO:root:Missing terms: ['Generischer Typ', 'Mehrfachvererbung', 'Interface']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Mehrfachvererbung
+Found in questions: 5
+INFO:root:Predefined question: {'question': 'Was ist die Folge der Mehrfachvererbung für das Typsystem?', 'answer': 'Die Folge der Mehrfachvererbung für das Typsystem ist, dass ein von einer Klasse abgeleiteter Typ beliebig viele direkte Supertypen haben kann (nämlich einen pro direkte Superklasse).'}
+Was ist die Folge der Mehrfachvererbung für das Typsystem?
+
+Ihre Antwort lautet (in etwa):
+ Was ist die Frage? Die Folgen der Mehrfachvererbung. Die Folgen der Mehrfachvererbung sind, dass das Typsystem von einem Klasseabgeleiteten Typ beliebig viel und direkt nehmen kann.
+INFO:root:Answer took 33.792004 seconds.
+INFO:root:Remaining time: 174.363626 seconds (57.643334 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.999703586101532}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 54.78it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 165.76it/s]
+INFO:root:Similarity: tensor([[0.6004]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['abgeleitet', 'direkte superklasse', 'klasse', 'mehrfachvererbung', 'super', 'superklasse', 'supertyp', 'typ', 'typsystem']
+INFO:root:Mentioned terms: ['klasse', 'mehrfachvererbung', 'typ', 'typsystem']
+INFO:root:Missing terms: ['direkte superklasse', 'abgeleitet', 'superklasse', 'supertyp', 'super']
+INFO:root:The next question should be: GENERATE
+INFO:root:The next question is: SELECTED
+INFO:root:Target: Generischer Typ
+Found in questions: 1
+INFO:root:Predefined question: {'question': 'Was ist die Hauptanwendung generischer Typen in Java?', 'answer': 'Eine Hauptanwendung generischer Typen in Java ist die Arbeit mit Collections, um den Typ der Elemente in der Collection anzugeben und so die Typsicherheit zu erhöhen.'}
+Was ist die Hauptanwendung generischer Typen in Java?
+
+Ihre Antwort lautet (in etwa):
+ Die Hauptanwendung generischer Typen ist es, dass sie nicht eingesetzt werden.
+INFO:root:Answer took 20.204958 seconds.
+INFO:root:Remaining time: 154.158668 seconds (37.438376 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.9998180270195007}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Was ist eine Hauptanwendung generischer Typen in Java?', 'answer': 'Eine Hauptanwendung generischer Typen in Java ist die Arbeit mit Collections, um den Typ der Elemente in der Collection anzugeben und so die Typsicherheit zu erhöhen.'}
+Was ist eine Hauptanwendung generischer Typen in Java?
+
+Ihre Antwort lautet (in etwa):
+ Die Habtanwendung habe ich doch bereits erläutert. Es ist eine schlechte Habtanwendung.
+INFO:root:Answer took 20.415943 seconds.
+INFO:root:Remaining time: 133.742725 seconds (17.022433 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9997351765632629}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['generischer typ', 'java', 'typ']
+INFO:root:Mentioned terms: []
+INFO:root:Missing terms: ['java', 'typ', 'generischer typ']
+INFO:root:The next question should be: SELECTED
+INFO:root:The next question is: SELECTED
+INFO:root:Target: super
+Found in questions: 2
+INFO:root:Predefined question: {'question': 'Welche Art von Subtyping wird bei "super" beschränkten Wildcard-Typen verwendet?', 'answer': '"super" beschränkte Wildcard-Typen verwenden kontravariantes Subtyping.'}
+Ah? Welche Art von Subtyping wird bei "super" beschränkten Wildcard-Typen verwendet?
+
+Ihre Antwort lautet (in etwa):
+ Welche Art von Subtyping wird beschränkt? Jene, die mit White Cuts beschränkt sind.
+INFO:root:Answer took 23.549450 seconds.
+INFO:root:Remaining time: 110.193275 seconds (-6.527017 seconds in this topic).
+INFO:root:Congruity: [{'label': 'NEUTRAL', 'score': 0.9987323880195618}]
+INFO:root:Result: OFF_TOPIC
+INFO:root:Keywords from answer: ['subtyp', 'subtyping', 'super', 'typ', 'wildcard']
+INFO:root:Mentioned terms: ['subtyp', 'subtyping']
+INFO:root:Missing terms: ['typ', 'wildcard', 'super']
+INFO:root:The next question should be: SELECTED
+INFO:root:Increased topic to KE6 at level REMEMBER!
+INFO:root:Next topic KE6 for 110.193274974823 seconds.
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
+Hm? Was sind Probleme der objektorientierten Programmierung?
+
+INFO:root:Answer took 4.815586 seconds.
+INFO:root:Remaining time: 105.377689 seconds (105.377689 seconds in this topic).
+INFO:root:Result: SILENCE
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind Coding Conventions?', 'answer': 'Coding Conventions sind Vereinbarungen über die Formatierung von Quellcode, die neben Namenskonventionen und anderen Richtlinien dazu dienen, den Code lesbarer zu gestalten. Sie regeln Dinge wie Einrückungen, Zeilenumbrüche, Leerzeilen und Leerzeichen.'}
+Ich habe leider keine Antwort gehört. Was sind Coding Conventions?
+
+Ihre Antwort lautet (in etwa):
+ Coding Conventions sind Vereinbarungen über die Formatierung des Quercodes und deren Richtlinien angegeben werden.
+INFO:root:Answer took 21.164557 seconds.
+INFO:root:Remaining time: 84.213132 seconds (84.213132 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9995511174201965}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 70.22it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 216.02it/s]
+INFO:root:Similarity: tensor([[0.9450]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:Increased level to 1!
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?', 'answer': 'In SMALLTALK ist die automatische Überprüfung des Gesetzes Demeters nicht möglich, da Ausdrücke in SMALLTALK nicht typisiert sind. Daher können Checker nicht feststellen, ob die Art und Weise, wie auf Objekte zugegriffen wird, dem Gesetz Demeters entspricht.'}
+Ok. Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?
+
+INFO:root:Answer took 5.610301 seconds.
+INFO:root:Remaining time: 78.602830 seconds (78.602830 seconds in this topic).
+INFO:root:Result: SILENCE
+INFO:root:The next question should be: REPEAT
+INFO:root:Increased level to 2!
+INFO:root:The next question is: REPEAT
+INFO:root:Generated reiteration: {'question': 'Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?', 'answer': 'In SMALLTALK ist die automatische Überprüfung des Gesetzes Demeters nicht möglich, da Ausdrücke in SMALLTALK nicht typisiert sind. Daher können Checker nicht feststellen, ob die Art und Weise, wie auf Objekte zugegriffen wird, dem Gesetz Demeters entspricht.'}
+Ich habe leider keine Antwort gehört. Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?
+
+Ihre Antwort lautet (in etwa):
+ Die automatische Überprüfung des Gesetzes Dimitres ins Moltox ist nicht möglich. In Grennersprache ist das möglich, da man nicht checken kann, ob Aliase entstehen.
+INFO:root:Answer took 26.810009 seconds.
+INFO:root:Remaining time: 51.792821 seconds (51.792821 seconds in this topic).
+INFO:root:Congruity: [{'label': 'CONTRADICTION', 'score': 0.9902045726776123}]
+INFO:root:Result: CONTRADICTS
+INFO:root:The next question should be: REPEAT
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was sind die Nachteile der objektorientierten Programmierung?', 'answer': 'Die Nachteile der objektorientierten Programmierung sind, dass die Organisation der Funktionen auf der Strecke bleibt und dass die Daten hin- und hergeschickt werden müssen.'}
+Ah? Was sind die Nachteile der objektorientierten Programmierung?
+
+Ihre Antwort lautet (in etwa):
+ Die Nachteile der objektorientierten Programmierung sind, dass die Organisationen der Funktionen auf der Strecke bleiben und dass die Daten hin und her geschickt werden müssen.
+INFO:root:Answer took 21.857526 seconds.
+INFO:root:Remaining time: 29.935295 seconds (29.935295 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9991710186004639}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 70.77it/s]
+Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 220.25it/s]
+INFO:root:Similarity: tensor([[0.9809]], device='cuda:0')
+INFO:root:Result: CORRECT
+INFO:root:The next question should be: PREDEFINE
+INFO:root:The next question is: PREDEFINE
+INFO:root:Predefined question: {'question': 'Was ist der Unterschied zwischen Subtypen und austauschbaren Typen?', 'answer': 'Subtypen sind im Allgemeinen nicht gegeneinander austauschbar, während austauschbare Typen es sind. Ein Beispiel für einen Subtyp, der nicht gegen einen anderen Subtyp austauschbar ist, ist eine Aktion, für die "rückgängig machen" nicht definiert ist, während eine Aktion, für die "rückgängig machen" definiert ist, gegen eine Aktion austauschbar ist, für die "rückgängig machen" leer implementiert ist.'}
+Was ist der Unterschied zwischen Subtypen und austauschbaren Typen?
+
+Ihre Antwort lautet (in etwa):
+ Die Unterschied zwischen Subtypen und austauschbaren Typen ist, dass Subtypen im allgemeinen gegeneinander nicht austauschbar sind, während austauschbare Typen austauschbar sind.
+INFO:root:Answer took 31.588483 seconds.
+INFO:root:Remaining time: -1.653188 seconds (-1.653188 seconds in this topic).
+INFO:root:Congruity: [{'label': 'ENTAILMENT', 'score': 0.9970539808273315}]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 65.52it/s]
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 83.64it/s]
+INFO:root:Similarity: tensor([[0.8300]], device='cuda:0')
+INFO:root:Result: MISSING_TOPIC
+INFO:root:Keywords from answer: ['subtyp', 'typ']
+INFO:root:Mentioned terms: ['subtyp', 'typ']
+INFO:root:Missing terms: []
+INFO:root:The next question should be: PREDEFINE
+INFO:root:die Studentin hat nie inhaltliche Fehler gemacht.
+die Studentin hat einzelne irrelevante Antworten gegeben.
+die Studentin hat viele unvollständige oder oberflächliche Antworten gegeben.
+die Studentin benötigt kaum Hilfestellungen.
+die Studentin hat kaum unpräzise Antworten gegeben.
+die Studentin hat ein mittleres Leistungslevel erreicht.
+die Studentin war am besten bei dem Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'.
+die Studentin war am schlechtesten bei dem Thema 'Typen in der objektorientierten Programmierung'.
+Luna, du hast während der Prüfung stets korrekte und fehlerfreie Aussagen getroffen, was sehr positiv zu bewerten ist. Allerdings hätten einige deiner Antworten etwas ausführlicher und substanzieller sein können, insbesondere bei Fragen zu Typen in der objektorientierten Programmierung. Deine Stärke lag eindeutig im Thema 'Probleme der objektorientierten Programmierung und objektorientierter Programmierstil'. Um dein Leistungsniveau weiter zu steigern, empfehle ich, dich gezielt auf die Vertiefung der Themenbereiche zu konzentrieren, in denen du noch Unsicherheiten zeigst. Insgesamt hast du ein mittleres Leistungsniveau erreicht, und mit gezielterem Üben kannst du dich sicherlich noch verbessern.
+ "Vielen Dank für das konstruktive Gespräch, Luna. Ich wünsche Ihnen viel Erfolg für Ihre zukünftigen Unternehmungen und hoffe, Sie bald wieder an unserer Universität begrüßen zu dürfen."
+--------------------------------------------------End!--------------------------------------------------
