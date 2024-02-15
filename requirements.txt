@@ -5,6 +5,7 @@ langchain
 torch
 numpy
 nltk
+faiss-cpu  # Or: faiss-gpu
 
 # Optimization
 accelerate
@@ -14,12 +15,10 @@ optimum
 simpleaudio
 pyaudio
 
-# Data processing and vector store creation
-faiss-cpu  # Or: faiss-gpu
+# Data processing
 PyPDF2  # For splitPDF.py
-spacy  # For processQuAD.py
-tqdm  # For processQuAD.py
 
 # Finetuning
 evaluate
 rouge_score
+tqdm  # For T5
