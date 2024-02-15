@@ -5,33 +5,13 @@ INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device: cuda
  Herzlich willkommen, Luna, zu Ihrer mündlichen Prüfung! Als Erstes möchte ich mit Ihnen gemeinsam das Mikrofon testen. Bitte sprechen Sie ein paar Worte hinein, damit wir sichergehen können, dass alles funktioniert.
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Testtest funktioniert das Mikrofon.
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was ist das Grundkonzept der objektorientierten Programmierung?', 'keywords': ['Objekt', 'Beziehung', 'Zustand', 'Verhalten']}
 Dann lassen Sie uns beginnen. Was ist das Grundkonzept der objektorientierten Programmierung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Das Grundkonzept der objektorientierten Programmierung ist, dass Objekte in Beziehung zueinander stehen und einen Programmierkonstrukt bilden.
 INFO:root:Answer took 20.507925 seconds.
@@ -47,17 +27,7 @@ Found in questions: 0
 Found in answers: 1
 INFO:root:Predefined question: {'question': 'Was sind Blöcke?', 'answer': 'Blöcke in SMALLTALK werden in anderen Programmiersprachen oft als (lexikalische) Closures bezeichnet. Sie werden für sogenannte Lambda-Ausdrücke verwendet, die anonyme Funktionen repräsentieren und als Objekte oder Werte behandelt werden können. Closures erlauben es, Funktionen aus ihrem Kontext herauszulösen und in andere Kontexte zu übertragen. Die Verwendung und das Verhalten von Closures können sich jedoch zwischen verschiedenen Programmiersprachen erheblich unterscheiden.'}
 Was sind Blöcke?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Blöcke sind oft auch als Closures bezeichnet und sie repräsentieren eigene Funktionsabschnitte.
 INFO:root:Answer took 25.594361 seconds.
@@ -76,17 +46,7 @@ INFO:root:Target: objekt
 Found in questions: 12
 INFO:root:Predefined question: {'question': 'Was ist das Protokoll eines Objekts?', 'answer': 'Das Protokoll eines Objekts ist der Katalog von Methoden, über den ein Objekt verfügt und auf den es entsprechend reagieren kann.'}
 Was ist das Protokoll eines Objekts?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Ein Protokoll eines Objektes ist der Katalog von Methoden, über das das Objekt verfügt.
 INFO:root:Answer took 21.973596 seconds.
@@ -100,17 +60,7 @@ INFO:root:The next question should be: PREDEFINE
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was sind reservierte Namen in SMALLTALK?', 'answer': 'In SMALLTALK gibt es einige reservierte Namen, die als Pseudovariablen dienen. Diese reservierten Namen sind: true, false, nil, self and super. Alle anderen Schlüsselwörter, die in anderen Programmiersprachen üblich sind, werden in SMALLTALK als Methoden definiert.'}
 Was sind reservierte Namen in SMALLTALK?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Reservierte Namen in Smalltalk sind beispielsweise true, false, nil, self oder auch super. Das sind Pseudovariabeln. In anderen Programmiersprachen sind das Schlüsselwörter.
 INFO:root:Answer took 26.584793 seconds.
@@ -125,17 +75,7 @@ INFO:root:Increased level to 1!
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Warum ist die Identität von Objekten wichtig?', 'answer': 'Die Identität von Objekten ist wichtig, um festzustellen, ob zwei Namen oder Variablen dasselbe Objekt repräsentieren oder nicht.'}
 Ok. Warum ist die Identität von Objekten wichtig?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Die Identität von Objekten ist wichtig, da über die Identität festgestellt werden kann, ob es sich bei zwei Objekten um dasselbe Objekt handelt oder nur um zwei Namen oder Variablen.
 INFO:root:Answer took 31.401440 seconds.
@@ -151,17 +91,7 @@ INFO:root:Next topic KE2 for 118.48447132110596 seconds.
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?', 'keywords': ['Klasse', 'Generalisierung', 'Spezialisierung', 'Vererbung', 'dynamisch Binden']}
 Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 5.362145 seconds.
 INFO:root:Remaining time: 468.575740 seconds (113.122326 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -169,17 +99,7 @@ INFO:root:The next question should be: PREDEFINE
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was ist Lazy Initialization?', 'answer': 'Lazy Initialization ist eine Technik, bei der die Initialisierung einer Variablen oder eines Objekts verzögert wird, bis sie tatsächlich benötigt wird. Diese Technik wird eingesetzt, um Ressourcen zu sparen und die Leistung zu verbessern.'}
 Ich habe leider keine Antwort gehört. Was ist Lazy Initialization?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 4.930470 seconds.
 INFO:root:Remaining time: 463.645270 seconds (108.191856 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -187,17 +107,7 @@ INFO:root:The next question should be: REPEAT
 INFO:root:The next question is: REPEAT
 INFO:root:Generated reiteration: {'question': 'Was ist Lazy Initialization?', 'answer': 'Lazy Initialization ist eine Technik, bei der die Initialisierung einer Variablen oder eines Objekts verzögert wird, bis sie tatsächlich benötigt wird. Diese Technik wird eingesetzt, um Ressourcen zu sparen und die Leistung zu verbessern.'}
 Ich habe leider keine Antwort gehört. Was ist Lazy Initialization?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Vielen Dank.
 INFO:root:Answer took 10.800583 seconds.
@@ -215,17 +125,7 @@ Found in answers: 0
 Found in questions: 1
 INFO:root:Predefined question: {'question': 'Wann kann eine Lazy initialization sinnvoll sein?', 'answer': '"Lazy initialization" ist eine Technik, bei der die Initialisierung von Instanzvariablen zu einem späteren Zeitpunkt nach der Instanziierung durchgeführt wird. Dies kann sinnvoll sein, wenn die Initialisierung aufwendig ist und die Abfrage des Anfangswerts selten erfolgt. Die Initialisierung wird verschoben, um den Preis der Initialisierung im Programmablauf zu sparen, wenn sie nie notwendig wird.'}
 Hmm. Wann kann eine Lazy initialization sinnvoll sein?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Eine lazy initialization kann sinnvoll sein, wenn die Initialisierung von Instanzvariablen zu einem späteren Zeitpunkt nach der Instanzierung durchgeführt wird.
 INFO:root:Answer took 28.002599 seconds.
@@ -239,17 +139,7 @@ INFO:root:The next question should be: PREDEFINE
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Welche Art von Methoden bietet die Klasse "Object" den Objekten an?', 'answer': 'Die Klasse "Object" bietet eine Vielzahl von Methoden an, die grundlegende Typtests und andere gemeinsame Operationen für Objekte ermöglichen. Dazu gehören Methoden wie isNil, notNil, isInteger, isFloat und viele andere. Diese Methoden erlauben es, Eigenschaften von Objekten abzufragen und deren Typ zu überprüfen.'}
 Welche Art von Methoden bietet die Klasse "Object" den Objekten an?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Die Klasse Object bietet den Objekten verschiedene Methoden für Typ-Tests, gemeinsame Operationen auf Objekte an.
 INFO:root:Answer took 25.595583 seconds.
@@ -264,17 +154,7 @@ INFO:root:Increased level to 1!
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Warum benötigen Klassen in SMALLTALK ihre eigenen Metaklassen?', 'answer': 'Klassen in SMALLTALK benötigen ihre eigenen Metaklassen, damit sie ihre eigenen Instanzvariablen und Methoden definieren können, ohne die Definitionen anderer Klassen zu beeinflussen. Dies ermöglicht eine hohe Flexibilität und erlaubt es den Programmierern, das Verhalten von Klassen individuell anzupassen.'}
 Warum benötigen Klassen in SMALLTALK ihre eigenen Metaklassen?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Klassen in Smalltalk benötigen ihre eigenen Meta-Klassen, was eine hohe Flexibilität ermöglicht.
 INFO:root:Answer took 20.383319 seconds.
@@ -294,17 +174,7 @@ INFO:root:Target: variable
 Batches: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 152.83it/s]
 INFO:root:Generated question: {'question': 'Erklären Sie den Unterschied zwischen Deklaration und Definition einer Variablen und ihrem Zusammenhang zur Sichtbarkeit von Variablen.', 'answer': 'Die Deklaration einer Variablen gibt ihre Signatur bekannt, also ihren Namen und die Liste der formalen Parameter, während ihre Definition dem Variablennamen der Speicherplatz zuweist, um den Wert der Variablen aufzunehmen, und der Sichtbarkeit einer Variablen entspricht, dass man ihren Namen verwenden kann, um auf das von diesem Namen bezeichnete Objekt zuzugreifen, wobei sich die Sichtbarkeit immer auf einen Abschnitt von Programmcode bezieht.'}
 Erklären Sie den Unterschied zwischen Deklaration und Definition einer Variablen und ihrem Zusammenhang zur Sichtbarkeit von Variablen.
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Deklaration und Definition einer Variabel unterscheiden sich in ihrem Zusammenhang zur Sichtbarkeit von Variablen darunter, dass man sie jeweils mit einer Sichtbarkeit deklarieren kann.
 INFO:root:Answer took 31.073653 seconds.
@@ -323,17 +193,7 @@ INFO:root:Next topic KE3 for 115.92984422047932 seconds.
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was sind Typen in der objektorientierten Programmierung?', 'keywords': ['Typdefinition', 'Zuweisungskompatibilität', 'Subtyp', 'Inklusionspolymorphie', 'parametrischer Polymorphismus', 'Typisierung']}
 Was sind Typen in der objektorientierten Programmierung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Typen in der objektorientierten Programmierung sind ganz toll.
 INFO:root:Answer took 16.375410 seconds.
@@ -348,17 +208,7 @@ INFO:root:Target: Inklusionspolymorphie
 Found in questions: 5
 INFO:root:Predefined question: {'question': 'Was ist Inklusionspolymorphie?', 'answer': 'Inklusionspolymorphie, auch bekannt als Subtyping oder Subtyp-Polymorphie, ist eine Form der Polymorphie, bei der ein Objekt eines Untertyps an einer Stelle verwendet werden kann, an der ein Objekt des Supertyps erwartet wird. Das bedeutet, dass eine Collection, die Objekte eines bestimmten Typs enthält, auch Objekte eines Untertyps dieses Typs enthalten kann.'}
 Was ist Inklusionspolymorphie?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Inklusionspolymorphie ist auch bekannt als Subtyping und passt die Frage in den Prüfungsverlauf an.
 INFO:root:Answer took 24.479089 seconds.
@@ -375,17 +225,7 @@ Found in questions: 0
 Found in answers: 14
 INFO:root:Predefined question: {'question': 'Was ist das Problem bei der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren?', 'answer': 'Das Problem ist, dass wenn das Eingabe-Objekt und das Ausgabe-Objekt identisch sind, nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden kann, da der Subtyp mehr Eigenschaften verlangt als der Supertyp garantiert.'}
 Hmm. Was ist das Problem bei der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 6.221849 seconds.
 INFO:root:Remaining time: 300.713185 seconds (68.853497 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -393,17 +233,7 @@ INFO:root:The next question should be: REPEAT
 INFO:root:The next question is: REPEAT
 INFO:root:Generated reiteration: {'question': 'Was ist das Problem bei der identischen Verzehrung?', 'answer': 'Das Problem ist, dass wenn das Eingabe-Objekt und das Ausgabe-Objekt identisch sind, nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden kann, da der Subtyp mehr Eigenschaften verlangt als der Supertyp garantiert.'}
 Ich habe leider keine Antwort gehört. Was ist das Problem bei der identischen Verzehrung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Das Problem bei der identischen Verzerrung ist die Eingabe eines Objekts anhand einer Ausgabe.
 INFO:root:Answer took 20.620008 seconds.
@@ -422,17 +252,7 @@ INFO:root:Target: Typdefinition
 Found in questions: 4
 INFO:root:Predefined question: {'question': 'Was ist die Bedeutung von Typparametern in einer parametrisierten Typdefinition?', 'answer': 'Typparameter in einer parametrisierten Typdefinition sind Platzhalter für konkrete Typen, die bei der Instanziierung des Typs eingesetzt werden können. Sie ermöglichen es, den gleichen Code für verschiedene Typen wiederzuverwenden und die Typsicherheit zu erhalten.'}
 Was ist die Bedeutung von Typparametern in einer parametrisierten Typdefinition?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Die Bedeutung von Typparametern in einer Typparameterdefinition hat bestimmt etwas mit Polymorphismus zu tun.
 INFO:root:Answer took 27.904637 seconds.
@@ -448,17 +268,7 @@ INFO:root:Target: Typisierung
 Found in questions: 8
 INFO:root:Predefined question: {'question': 'Was ist der einzige Weg, eine mit der Typisierung einer Variablen ausgedrückte Invariante zu verletzen?', 'answer': 'Der einzige Weg, eine mit der Typisierung einer Variablen ausgedrückte Invariante zu verletzen, ist per Wertzuweisung an die Variable.'}
 Hmm. Was ist der einzige Weg, eine mit der Typisierung einer Variablen ausgedrückte Invariante zu verletzen?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Eine Typisierung einer Variable kann verletzt werden, indem ein falscher Wert eingegeben wird.
 INFO:root:Answer took 21.375326 seconds.
@@ -477,17 +287,7 @@ INFO:root:Next topic KE4 for 115.40660750865936 seconds.
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was sind die Besonderheiten einier Programmiermodelle?', 'keywords': ['Interface', 'Generischer Typ', 'Mehrfachvererbung']}
 Was sind die Besonderheiten einier Programmiermodelle?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Besonderheiten von Programmiermodellen finden sich in Java, C-Sharp und C++.
 INFO:root:Answer took 16.732968 seconds.
@@ -502,17 +302,7 @@ INFO:root:Target: Mehrfachvererbung
 Found in questions: 5
 INFO:root:Predefined question: {'question': 'Was ist Mehrfachvererbung?', 'answer': 'Mehrfachvererbung ist eine Konstruktion in der objektorientierten Programmierung, bei der eine Klasse von mehreren anderen Klassen erben kann. Sie wird häufig von Programmiererinnen gewünscht, bringt aber praktische Probleme mit sich, wie zum Beispiel die Frage, was zu tun ist, wenn eine Klasse von mehreren anderen Klassen verschiedene Definitionen desselben Elements erbt.'}
 Was ist Mehrfachvererbung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 3.947188 seconds.
 INFO:root:Remaining time: 210.133059 seconds (94.726451 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -520,17 +310,7 @@ INFO:root:The next question should be: REPEAT
 INFO:root:The next question is: REPEAT
 INFO:root:Generated reiteration: {'question': 'Was ist Mehrfachvererbung?', 'answer': 'Mehrfachvererbung ist eine Konstruktion in der objektorientierten Programmierung, bei der eine Klasse von mehreren anderen Klassen erben kann. Sie wird häufig von Programmiererinnen gewünscht, bringt aber praktische Probleme mit sich, wie zum Beispiel die Frage, was zu tun ist, wenn eine Klasse von mehreren anderen Klassen verschiedene Definitionen desselben Elements erbt.'}
 Ich habe leider keine Antwort gehört. Was ist Mehrfachvererbung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 4.872100 seconds.
 INFO:root:Remaining time: 205.260958 seconds (89.854351 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -540,17 +320,7 @@ INFO:root:Target: Interface
 Found in questions: 11
 INFO:root:Predefined question: {'question': 'Welche Verpflichtung ergibt sich in Java daraus, wenn eine Klasse ein Interface implementiert?', 'answer': 'Eine Klasse gibt an, dass sie ein Interface implementiert, indem sie das Schlüsselwort "implements" verwendet, gefolgt vom Namen des Interfaces. Die Klasse verpflichtet sich, alle im Interface angekündigten Methoden zu implementieren und öffentlich anzubieten.'}
 Ich habe leider keine Antwort gehört. Welche Verpflichtung ergibt sich in Java daraus, wenn eine Klasse ein Interface implementiert?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  In Java gibt sich die Verpflichtung daraus von einer Klasse einen Interface implementiert.
 INFO:root:Answer took 19.377192 seconds.
@@ -567,17 +337,7 @@ Found in questions: 0
 Found in answers: 8
 INFO:root:Predefined question: {'question': 'Was ist die Funktion von Default-Methoden in Java?', 'answer': 'In Java 8 können Interfaces die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür wurde das Schlüsselwort "default" eingeführt. Default-Methoden können allenfalls auf abstrakte Getter und Setter zugreifen, da Interfaces keine Instanzvariablen haben.'}
 Achso? Was ist die Funktion von Default-Methoden in Java?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 4.729809 seconds.
 INFO:root:Remaining time: 181.153958 seconds (65.747350 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -585,17 +345,7 @@ INFO:root:The next question should be: REPEAT
 INFO:root:The next question is: REPEAT
 INFO:root:Generated reiteration: {'question': 'Wie können Interfaces in Java 8 die Implementierung einer Methode vorgeben?', 'answer': 'In Java 8 können Interfaces die Implementierung einer Methode vorgeben, die dann an implementierende Klassen (oder per "extends" abgeleitete Interfaces) vererbt wird. Dafür wurde das Schlüsselwort "default" eingeführt. Default-Methoden können allenfalls auf abstrakte Getter und Setter zugreifen, da Interfaces keine Instanzvariablen haben.'}
 Ich habe leider keine Antwort gehört. Wie können Interfaces in Java 8 die Implementierung einer Methode vorgeben?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Interfaces können in Java 8 die Implementierung einer Methode vorgeben, da sie mehrfach vererbt werden können.
 INFO:root:Answer took 23.887202 seconds.
@@ -611,17 +361,7 @@ INFO:root:Target: setter
 Found in questions: 2
 INFO:root:Predefined question: {'question': 'Was ist eine Setter-Funktion?', 'answer': 'Eine Setter-Funktion ist eine Funktion, die mit einem Parameter aufgerufen wird und üblicherweise einen Wert setzt.'}
 Hm? Was ist eine Setter-Funktion?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Eine Setup-Funktion ist eine Funktion, die mit einem Parameter aufgerufen wird und einen Wert zurückgibt.
 INFO:root:Answer took 19.038337 seconds.
@@ -641,17 +381,7 @@ Found in questions: 0
 Found in answers: 10
 INFO:root:Predefined question: {'question': 'Was ist Operatorüberladung in C-Sharp?', 'answer': 'In C-Sharp ist es möglich, Operatoren wie +, -, ==, new, ( ), ||, &&, = etc. zu überladen. Dies wird durch das Schlüsselwort "operator" in einer Operatordefinition erreicht, die der Definition einer Methode ähnelt.'}
 Was ist Operatorüberladung in C-Sharp?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Die Apparateüberladung ist das Überladen eines Apparaturs.
 INFO:root:Answer took 14.829137 seconds.
@@ -667,17 +397,7 @@ INFO:root:Target: getter
 Found in questions: 2
 INFO:root:Predefined question: {'question': 'Was ist eine Getter-Funktion?', 'answer': 'Eine Getter-Funktion ist eine Funktion, die einen Wert zurückgibt und üblicherweise mit einer Zuweisung an eine Variable verwendet wird.'}
 Was ist eine Getter-Funktion?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 INFO:root:Answer took 4.094192 seconds.
 INFO:root:Remaining time: 119.305090 seconds (3.898483 seconds in this topic).
 INFO:root:Result: SILENCE
@@ -685,17 +405,7 @@ INFO:root:The next question should be: REPEAT
 INFO:root:The next question is: REPEAT
 INFO:root:Generated reiteration: {'question': 'Was ist eine Getter-Funktion?', 'answer': 'Eine Getter-Funktion ist eine Funktion, die einen Wert zurückgibt und üblicherweise mit einer Zuweisung an eine Variable verwendet wird.'}
 Ich habe leider keine Antwort gehört. Was ist eine Getter-Funktion?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Eine Geta-Funktion ist umgekehrt zur Setter-Funktion, eine Funktion, die den Wert zurückgibt.
 INFO:root:Answer took 18.253248 seconds.
@@ -714,17 +424,7 @@ INFO:root:Next topic KE6 for 101.05184197425842 seconds.
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was sind Probleme der objektorientierten Programmierung?', 'keywords': ['Problem der Substituierbarkeit', 'Fragile-base-class-Problem', 'Problem der schlechten Tracebarkeit', 'Problem der eindimensionalen Strukturierung', 'Problem der mangelnden Kapselung', 'Problem der mangelnden Skalierbarkeit', 'Problem der mangelnden Eignung']}
 Was sind Probleme der objektorientierten Programmierung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Probleme der abjektorientierten Programmierung sind zum Beispiel das ADAS-Problem, das Problem der Substituierbarkeit oder das Regile Base Class-Problem.
 INFO:root:Answer took 20.055424 seconds.
@@ -739,17 +439,7 @@ INFO:root:Target: Fragile-base-class-Problem
 Found in questions: 3
 INFO:root:Predefined question: {'question': 'Was ist das Fragile-Base-Class-Problem?', 'answer': 'Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen.'}
 Was ist das Fragile-Base-Class-Problem?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Das fragile base class problem bezieht sich darauf, dass die Basis Klasse durch Änderungen an der Basis Klasse Änderungen an der jeweiligen Subklasse auftreten können, die unerwünscht sind.
 INFO:root:Answer took 30.470721 seconds.
@@ -763,17 +453,7 @@ INFO:root:The next question should be: PREDEFINE
 INFO:root:The next question is: PREDEFINE
 INFO:root:Predefined question: {'question': 'Was ist das Problem der mangelnden Kapselung?', 'answer': 'Die Vererbung in der objektorientierten Programmierung beeinträchtigt die Kapselung von Klassen auf unangenehme Weise. Vererbung führte zu starken Abhängigkeiten zwischen Klassen und ihren Subklassen, einschließlich der Implementierungsdetails. Diese Abhängigkeiten führten dazu, dass Teile der Ausdrucksstärke und Flexibilität der objektorientierten Programmierung aufgegeben werden mussten. Das Aliasing-Problem tritt auf, wenn ein Objekt, das von einem anderen Objekt gekapselt wird, auch einen Alias besitzt, der nicht selbst dem kapselnden Objekt gehört. Dies bedeutet, dass von außen auf das gekapselte Objekt zugegriffen werden kann, indem man den Alias verwendet. Dies stellt eine Herausforderung für die Kapselung dar, da es die Geheimhaltung der Implementierung durchbrechen kann.'}
 Ok. Was ist das Problem der mangelnden Kapselung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Das Problem der mangelnden Kapselung besteht darin, dass wenn ein Objekt von einem anderen Objekt gekapselt wird, es dann noch auch ein Alias besitzen kann, das nicht gekapselt ist und auf das von außen zugegriffen werden kann. Was eine Herausforderung für die Kapselung darstellt, da ist dann nicht das Geheimnisprinzip implementiert.
 INFO:root:Answer took 48.230059 seconds.
@@ -789,17 +469,7 @@ INFO:root:Target: Problem der eindimensionalen Strukturierung
 Found in questions: 1
 INFO:root:Predefined question: {'question': 'Was ist das Problem der eindimensionalen Strukturierung?', 'answer': 'Bei größeren Programmen kann das Bedürfnis entstehen, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren, da verschiedene Vererbungshierarchien oder andere Strukturierungskriterien gleichzeitig relevant sein können. Die Trennung der Belange, auch als Separation of Concerns bekannt, wird in der objektorientierten Programmierung als unzureichend unterstützt angesehen, da es schwer ist, verschiedene Aspekte eines Systems sauber voneinander zu trennen.'}
 Hm? Was ist das Problem der eindimensionalen Strukturierung?
-ALSA lib pcm_dsnoop.c:601:(snd_pcm_dsnoop_open) unable to open slave
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
-ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
-ALSA lib pcm_dmix.c:1032:(snd_pcm_dmix_open) unable to open slave
-*** Recording started ***
-*** Recording ended ***
+
 Ihre Antwort lautet (in etwa):
  Das Problem der eindimensionalen Strukturierung ist das bei größerem Problem. Das Bedürfnis entstehen kann, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren.
 INFO:root:Answer took 26.832339 seconds.

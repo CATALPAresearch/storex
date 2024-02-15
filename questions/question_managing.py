@@ -13,7 +13,6 @@ from utils.preprocessing import extract_keywords, preprocess_text
 logger = logging.getLogger()
 
 
-# TODO: Predefine questions and their probabilities
 class QuestionManager:
     def __init__(self, topic_manager):
         self.topic_manager = topic_manager
@@ -107,11 +106,11 @@ class TopicManager:
         if self.topic.value < (len(KE) - 1):
             self.topic = KE(self.topic.value + 1)
             self.level = Level.REMEMBER
-            logger.debug(f"Increased topic to {self.topic.name} at level {self.level.name}!")
+            logger.info(f"Increased topic to {self.topic.name} at level {self.level.name}!")
 
     def increase_level(self):
         if self.level.value < (len(Level) - 1):
             self.level = Level(self.level.value + 1)
-            logger.debug(f"Increased level to {self.level}!")
+            logger.info(f"Increased level to {self.level}!")
         else:
             self.increase_topic()
