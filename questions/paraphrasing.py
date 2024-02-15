@@ -1,17 +1,17 @@
-import os
+"""
+Class for paraphrasing questions.
+"""
+import hf_token
 
 from langchain.chains import LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 
-# TODO: Remove Token
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
-
 
 class QuestionParaphraser:
     def __init__(self):
         """
-        Initializes
+        Initializes the question paraphraser.
         """
         # Load prompt from template
         template = ("Du bist ein Professor an einer deutschen Universität. "

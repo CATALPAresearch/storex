@@ -8,7 +8,7 @@ from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 
 
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = 'hf_xxx'
 
 date = datetime.now().strftime("%d-%m-%Y--%H-%M-%S")
 directory = os.path.dirname(__file__)

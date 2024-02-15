@@ -1,6 +1,7 @@
 """
 Class for generating questions.
 """
+import hf_token
 import os
 import torch
 
@@ -9,10 +10,6 @@ from langchain.vectorstores import FAISS
 
 import logging
 logger = logging.getLogger()
-
-
-# TODO: Remove api token
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
 
 
 def get_query(context):

@@ -6,7 +6,8 @@ from langchain.llms import HuggingFaceHub
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
 from pathlib import Path
 
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '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'
+
+os.environ['HUGGINGFACEHUB_API_TOKEN'] = 'hf_xxx'
 
 directory = os.path.dirname(os.path.dirname(__file__))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
