@@ -14,6 +14,9 @@ logger = logging.getLogger()
 
 
 class QuestionManager:
+    """
+    Class for a question manager.
+    """
     def __init__(self, topic_manager):
         self.topic_manager = topic_manager
         self.question_list = []

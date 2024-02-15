@@ -1,3 +1,6 @@
+"""
+Class of a text generator.
+"""
 import hf_token
 
 from langchain.chains import LLMChain
@@ -6,6 +9,9 @@ from langchain.prompts import PromptTemplate
 
 
 class TextGenerator:
+    """
+    Class of a text generator.
+    """
     def __init__(self):
         template = (""""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
                     {query}[/INST]""")
