@@ -47,7 +47,6 @@ def remove_stopwords(text):
     text_words = text.split()
     text_words = [word for word in text_words if word not in stop_words]
     # result_text = ' '.join(text_words)
-    # TODO: Stemming/ Lemmatization?
     return text_words
 
 
@@ -82,7 +81,7 @@ def extract_keywords(text, terms=None):
 
 def extract_common_words(text, n=5):
     """
-    Extract the n most common words from a paragraph. TODO: How many keywords?
+    Extract the n most common words from a paragraph.
     """
     words = preprocess_text(text)
     words = remove_stopwords(words)

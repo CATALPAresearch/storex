@@ -1,9 +1,0 @@
-31 Grenzen der Typisierung
-
-Wie Sie sehen, ist das Problem der kovarianten Redefinition ziemlich hartnäckig. Man muss aber gar nicht so weit gehen, um an die praktischen Grenzen der Typisierung zu gelangen. Nun könnte man einen Typ NotZero definieren und x als von diesem Typ deklarieren, womit der obige Ausdruck kein Problem mehr wäre. Selbst wenn es Typsysteme gibt, die das können, so sind diese kaum praxistauglich.
-
-Frage: Welches Problem wird in diesem Abschnitt "Grenzen der Typisierung" angesprochen?
-Antwort: In diesem Abschnitt wird das Problem der praktischen Grenzen der Typisierung diskutiert, insbesondere im Kontext von Typfehlern und der Einschränkung bei der Überprüfung von Zuweisungen.
-
-Frage: Warum werden bestimmte Typsysteme als kaum praxistauglich bezeichnet?
-Antwort: Bestimmte Typsysteme, die in der Lage sind, solche Einschränkungen zu überprüfen, werden als kaum praxistauglich bezeichnet, da sie die Flexibilität und die praktische Anwendbarkeit in realen Programmiersituationen stark einschränken. Sie können zu komplexen und schwer wartbaren Code führen.

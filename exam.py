@@ -19,7 +19,6 @@ from text_generation import TextGenerator
 from utils import colours, preprocessing
 from utils.helpers import EvaluationType, KE, Level, QuestionType
 
-# TODO: Remove once langchain updated to InferenceClient
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -153,7 +152,7 @@ class ExamManager:
                 self.next_question = QuestionType.PREDEFINE
                 self.time_manager.increase_correct_answers()
 
-            case 1:  # No answer given TODO: Feedback?
+            case 1:  # No answer given
                 self.prepend_question = "Ich habe leider keine Antwort gehört."
                 if 'answer' in question:
                     self.next_question = QuestionType.REPEAT
