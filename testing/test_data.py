@@ -158,7 +158,7 @@ evaluation_data = [
      'student_answer': 'Bei Parametrischem Polymorphismus wird in einer Typdefinition eine Typvariable verwendet, um '
                        'diese variabel zu halten. Bei der Instanziierung wird die Typvariable dann durch einen '
                        'konkreten Typ ersetzt.'},
-    {'expected': EvaluationType.CORRECT, 'correct_answer': answer_ke3_1,
+    {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_1,
      'student_answer': 'Parametrischem Polymorphismus wird über Typvariablen realisiert.'},
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke3_1,
      'student_answer': 'Parametrischem Polymorphismus ist eine konkrete Typdefinition.'},
@@ -171,7 +171,7 @@ evaluation_data = [
     {'expected': EvaluationType.CONTRADICTS, 'correct_answer': answer_ke3_2,
      'student_answer': 'Zwei Typen sind zuweisungskompatibel, wenn sie sich sehr stark voneinander unterscheiden.'},
     {'expected': EvaluationType.OFF_TOPIC, 'correct_answer': answer_ke3_2,
-     'student_answer': 'Gleichheit und Identität von Objekten ist nicht das gleiche.'},
+     'student_answer': 'Gleichheit und Identität von Objekten ist nicht das Gleiche.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_2,
      'student_answer': 'Es gibt strukturelle und nominale Typkonformität.'},
     {'expected': EvaluationType.MISSING_TOPIC, 'correct_answer': answer_ke3_2,
