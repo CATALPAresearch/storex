@@ -199,7 +199,7 @@ if __name__ == "__main__":
         callbacks=[EarlyStopping(monitor="val_loss")]
     )
     print('Run learning rate finder...')
-    tuner = pytorch_lightning.pytorch.tuner.Tuner(trainer)  # TODO: With tuner possible?
+    tuner = pytorch_lightning.pytorch.tuner.Tuner(trainer)
     lr_finder = tuner.lr_find(model)
     args.learning_rate = lr_finder.suggestion()
     print('Suggested lr: ', lr_finder.suggestion())

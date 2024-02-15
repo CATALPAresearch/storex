@@ -1,6 +1,5 @@
 """
 Script to split the content od the course text into files for each chapter.
-TODO: Make the script generally applicable, try facebook/nougat
 """
 import os
 import PyPDF2
@@ -89,7 +88,6 @@ def get_chapters(document):
 
 
 def format_paragraph(paragraph):
-    # TODO: Change uninformative titles 1.5.1 zu Title + "von 1.5"
     global code_number
     global footnote_number
     for i in reversed(range(len(paragraph))):
@@ -99,13 +97,12 @@ def format_paragraph(paragraph):
             number = paragraph[i].split(' ', 1)[0]
             if any(punctuation in [',', '.', '!', ':', ')', '(', '>', '<'] for punctuation in number):
                 pass
-            # Remove lines with code TODO: dealing with footnotes?
+            # Remove lines with code
             else:
                 paragraph.pop(i)
 
             # # Change code lines to markdown representation
             # elif int(number) == code_number:
-            #     # TODO: Replacing doesn't work
             #     paragraph[i].replace(str(number), '   ')
             #     code_number -= 1
             #     # Code in removed chapters
@@ -123,7 +120,7 @@ def format_paragraph(paragraph):
             #         footnote_number -= 1
 
         elif re.search('Selbsttestaufgabe', paragraph[i]):
-            pass  # TODO Remove "Selbsttestaufgaben"
+            pass
 
     return paragraph
 
@@ -134,7 +131,7 @@ def output_chapters(text, content_table):
         if content_table and re.search("Kurseinheit", content_table[-1]):
             if re.search(content_table[-1][:14], text[i]):
                 chapter = content_table.pop()
-                paragraph = text[i:]  # TODO: Function from here (also called in elif clause)
+                paragraph = text[i:]
                 chapter_no = chapter.split(':', 1)[0]
                 outpath = OUTPUT_PATH + chapter_no + '.txt'
                 with open(outpath, 'w') as outfile:
@@ -149,7 +146,7 @@ def output_chapters(text, content_table):
             if chapter[0].isdigit() and not re.search('Lösungen zu den Selbsttestaufgaben', chapter) \
                     and not re.search('Fazit', chapter) and not re.search('Zusammenfassung', chapter):
                 paragraph = text[i:]
-                # Deal with long chapter names (29.2 and 52.6) TODO: chapter 12.2
+                # Deal with long chapter names (29.2 and 52.6)
                 if chapter[-1] == '$':
                     chapter = chapter[:-1]
                     paragraph[1] = chapter

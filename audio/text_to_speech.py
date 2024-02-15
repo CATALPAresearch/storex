@@ -13,14 +13,6 @@ from transformers import AutoProcessor, BarkModel
 import logging
 logger = logging.getLogger()
 
-# TODO Remove: "The BetterTransformer implementation does not support padding during training, as the fused
-#  kernels do not support attention masks. Beware that passing padded batched data during training may result in
-#  unexpected outputs. Please refer to https://huggingface.co/docs/optimum/bettertransformer/overview for more details."
-# TODO Remove: The attention mask and the pad token id were not set. As a consequence, you may observe unexpected
-#  behavior. Please pass your input's `attention_mask` to obtain reliable results.
-#  Setting `pad_token_id` to `eos_token_id`:10000 for open-end generation.
-
-
 class TextToSpeech:
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -45,8 +37,7 @@ class TextToSpeech:
         """
         inputs = self.processor(input_text, voice_preset=self.voice_preset).to(self.device)  # , return_tensors="pt")
 
-        # TODO: Voice sometimes continues after sentence with some weird sounds
-        audio_array = self.model.generate(**inputs, pad_token_id=10000)  # TODO: Remove hardcoded pad_id_token. do_sample=True?
+        audio_array = self.model.generate(**inputs, pad_token_id=10000)
         audio_array = audio_array.cpu().numpy().squeeze()
         sampling_rate = self.model.generation_config.sample_rate
 

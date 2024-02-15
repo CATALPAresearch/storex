@@ -1,9 +1,0 @@
-4.5.2 Dynamisch gebundener Methodenaufruf
-
-Hinter dem Nachrichtenversand in SMALLTALK verbirgt sich der Methodenaufruf. Wann immer ein Objekt eine Nachricht an ein Empfängerobjekt verschickt, wechselt der Kontrollfluss damit zum Empfängerobjekt, genauer gesagt zur Methode des Empfängerobjekts, die zur Reaktion auf die Nachricht vorgesehen ist. Nach der Abarbeitung der Methode kehrt der Kontrollfluss an das sendende Objekt (genauer: zur Methode, aus der die Nachricht versandt wurde) zurück und setzt seine Arbeit dort fort. Bei der Rückkehr wird auch das Ergebnis der Methode (eine Referenz auf) ein Objekt geliefert, das dann an der Stelle des Nachrichtenausdrucks, der den Methodenaufruf bewirkt hat, eingesetzt wird.
-
-Frage: Was ist der Nachrichtenversand in SMALLTALK?
-Antwort: Hinter dem Nachrichtenversand in SMALLTALK verbirgt sich der Methodenaufruf. Wenn ein Objekt eine Nachricht an ein Empfängerobjekt sendet, wird der Kontrollfluss zur Methode des Empfängerobjekts verschoben, die zur Reaktion auf die Nachricht vorgesehen ist. Nach der Abarbeitung dieser Methode kehrt der Kontrollfluss an das sendende Objekt zurück und setzt seine Arbeit dort fort.
-
-Frage: Was passiert nach einer Methode in SMALLTALK?
-Antwort: Bei der Rückkehr nach der Abarbeitung einer Methode in SMALLTALK wird das Ergebnis der Methode (eine Referenz auf) ein Objekt geliefert, das dann an der Stelle des Nachrichtenausdrucks, der den Methodenaufruf bewirkt hat, eingesetzt wird. Dies ermöglicht die Weiterverarbeitung des Ergebnisses im Kontext des aufrufenden Objekts.

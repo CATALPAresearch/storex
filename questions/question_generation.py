@@ -76,7 +76,6 @@ class QuestionGenerator:
         # Get context for query
         context_docs = self.db.similarity_search(query, k=k)
         context_docs = [docs for docs in context_docs if not docs.page_content[0].isdigit()]
-        # TODO: Process context?
 
         context = ' '.join([doc.page_content for doc in context_docs])
         return context

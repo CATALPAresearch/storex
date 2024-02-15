@@ -1,9 +1,0 @@
-14 Verhalten für alle Objekte
-
-In der Klasse Object ist das Protokoll definiert, das allen Objekten gemeinsam ist, d. h., für das alle Klassen Methodendefinitionen haben, und zwar entweder eigene oder geerbte. Object gibt zu diesem Zweck Standardimplementierungen vor, die von den meisten Objekten direkt übernommen werden können (und nur von den wenigen überschrieben werden müssen). Dazu zählen z. B. die bereits mehrfach erwähnten isNil und notNil (die nur von UndefinedObject überschrieben werden) sowie zahlreiche weitere Typtests (isInteger, isFloat usw.). Daneben gibt es auch noch eine ganze Reihe anderer Methoden, deren Kenntnis sich lohnt.
-
-Frage: In welcher Klasse ist das Protokoll definiert, das allen Objekten gemeinsam ist, und warum ist es wichtig?
-Antwort: Das Protokoll, das allen Objekten gemeinsam ist, ist in der Klasse "Object" definiert. Es ist wichtig, weil es Methodendefinitionen enthält, die von allen Klassen entweder geerbt oder in den meisten Fällen direkt übernommen werden können. Diese Methoden sind grundlegende Funktionen, die für alle Objekte verfügbar sind und von den meisten Objekten nicht überschrieben werden müssen.
-
-Frage: Welche Art von Methoden bietet die Klasse "Object" den Objekten an?
-Antwort: Die Klasse "Object" bietet eine Vielzahl von Methoden an, die grundlegende Typtests und andere gemeinsame Operationen für Objekte ermöglichen. Dazu gehören Methoden wie isNil, notNil, isInteger, isFloat und viele andere. Diese Methoden erlauben es, Eigenschaften von Objekten abzufragen und deren Typ zu überprüfen.
