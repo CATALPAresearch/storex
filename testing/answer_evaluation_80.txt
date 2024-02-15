@@ -206,7 +206,7 @@ Match:             yes
 
 Correct answer:    Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird.
 Student answer:    Parametrischem Polymorphismus wird über Typvariablen realisiert.
-Expected result:   CORRECT
+Expected result:   MISSING_TOPIC
 Evaluation result: CORRECT
 Match:             yes
 
@@ -241,7 +241,7 @@ Evaluation result: MISSING_TOPIC
 Match:             no
 
 Correct answer:    Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind.
-Student answer:    Gleichheit und Identität von Objekten ist nicht das gleiche.
+Student answer:    Gleichheit und Identität von Objekten ist nicht das Gleiche.
 Expected result:   OFF_TOPIC
 Evaluation result: MISSING_TOPIC
 Match:             no

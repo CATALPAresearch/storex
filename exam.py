@@ -144,11 +144,12 @@ class ExamManager:
         logger.info(f"Result: {result.name}")
 
         questioning_sounds = ["Ah?", "Achso?", "Hmm.", "Hm?", '']
+        accepting_sound = ["Ok.", '']
 
         # Set next question type
         match result.value:
             case 0:  # Correct answer
-                self.prepend_question = "Ok."
+                self.prepend_question = random.choice(accepting_sound)
                 self.next_question = QuestionType.PREDEFINE
                 self.time_manager.increase_correct_answers()
 
