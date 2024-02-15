@@ -1,10 +1,8 @@
-import os
+import hf_token
 
 from langchain.chains import LLMChain
 from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
-
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = '***REMOVED***'
 
 
 class TextGenerator:
