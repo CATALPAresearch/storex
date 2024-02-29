@@ -13,6 +13,7 @@ from transformers import AutoProcessor, BarkModel
 import logging
 logger = logging.getLogger()
 
+
 class TextToSpeech:
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
