@@ -39,6 +39,9 @@ The following arguments are optional:
 
 An example is the following: `start_exam -n Luna -f`
 
+After starting the exam, answer each question, when the red text ***start_recording*** appears.
+Each recording stops, after three seconds of silence or with a keyboard interrupt.
+
 ### Content of the repository
 - The main folder contains the start script ***start_exam***, the exam manager, the evaluation manager, the feedback manager, the text generation component and the test script ***invoke_submodules.py***.
 - The ***audio*** folder contains the Input Decoder and Output Decoder components
@@ -98,6 +101,9 @@ Die folgenden Argumente sind optional:
 ```
 
 Ein Beispielaufruf lautet `start_exam -n Luna -f`
+
+Nach Beginn der Prüfung kann jede Frage beantwortet werden, sobald der Text ***start_recording*** erscheint.
+Jede Aufnahme stoppt nach drei Sekunden der Stille oder durch ein Keyboard Interrupt.
 
 ### Inhalt des Repositories
 - Im Hauptordner befindet sich das startscript ***start_exam***, der Prüfungsmanager, der Evaluierungsmanager, der Feedbackmanager, die Komponente der Textgenerierung und das Testscript ***invoke_submodules.py***.
