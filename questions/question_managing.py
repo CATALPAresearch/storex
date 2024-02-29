@@ -72,13 +72,13 @@ class QuestionManager:
                 for question_dict in self.question_list[ke_index][ke_level]:
                     if re.search(keyword, preprocess_text(question_dict['question'])):
                         possible_questions.append(question_dict)
-                print("Found in questions:", len(possible_questions))
+                logger.info("Found in questions:", len(possible_questions))
                 # Search in answers, if no questions were found
                 if not possible_questions:
                     for question_dict in self.question_list[ke_index][ke_level]:
                         if re.search(keyword, preprocess_text(question_dict['answer'])):
                             possible_questions.append(question_dict)
-                    print("Found in answers:", len(possible_questions))
+                    logger.info("Found in answers:", len(possible_questions))
                 # Select question and break increasing the level
                 if possible_questions:
                     question_index = random.choice(list(range(len(possible_questions))))

@@ -25,4 +25,9 @@ class TextGenerator:
                                   llm=llm)
 
     def get_text(self, query):
-        return self.llm_chain.run(query)
+        text = self.llm_chain.run(query)
+        index = text.find("[/INST]")
+
+        if index != -1:
+            text = text[index + 8:]
+        return text

@@ -1,24 +1,24 @@
-transformers
-sentence_transformers
-datasets
-langchain
-torch
-numpy
-nltk
-faiss-cpu  # Or: faiss-gpu
+transformers==4.38.1
+sentence_transformers==2.2.2
+datasets==2.14.6
+langchain==0.0.352
+torch==2.0.1
+numpy==1.26.1
+nltk==3.8.1
+faiss-cpu==1.7.4  # Or: faiss-gpu
 
 # Optimization
-accelerate
-optimum
+accelerate==0.24.1
+optimum==1.16.1
 
 # Audio Input and Output
-simpleaudio
-pyaudio
+simpleaudio==1.0.4
+pyaudio==0.2.13
 
 # Data processing
-PyPDF2  # For splitPDF.py
+PyPDF2==3.0.1  # For splitPDF.py
 
 # Finetuning
-evaluate
-rouge_score
-tqdm  # For T5
+evaluate==0.4.1
+rouge_score==0.1.2
+tqdm==4.66.1  # For T5
