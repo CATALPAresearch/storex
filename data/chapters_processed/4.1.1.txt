@@ -1,9 +1,0 @@
-4.1.1 Zuweisungsausdrücke
-
-Zuweisungsausdrücke setzen sich aus einer Variablen auf der linken Seite und einem Ausdruck auf der rechten Seite zusammen. Wie bereits erwähnt, bewirken Zuweisungen als einzige Ausdrücke den Zustandswechsel von Objekten. Da eine Zuweisung selbst ein Ausdruck ist, kann sie auch auf der rechten Seite einer anderen Zuweisung erscheinen.
-
-Frage: Was sind Zuweisungsausdrücke?
-Antwort: Zuweisungsausdrücke bestehen aus einer Variablen auf der linken Seite und einem Ausdruck auf der rechten Seite. Sie bewirken den Zustandswechsel von Objekten und sind die einzigen Ausdrücke, die dies tun.
-
-Frage: Welche Auswirkung haben Zuweisungsausdrücke auf Objekte?
-Antwort: Zuweisungsausdrücke ändern den Zustand von Objekten, indem sie neue Werte in Variablen zuweisen.
