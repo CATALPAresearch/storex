@@ -1,0 +1,5 @@
+.DS_Store
+data/chapters_raw/*
+data/chapters_processed/*
+data/pdf/*
+*.pdf
