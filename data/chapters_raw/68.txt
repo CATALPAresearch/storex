@@ -1,5 +1,0 @@
-68 Das Gesetz Demeters (Law of Demeter)
-Eine der klassischen Arbeiten zum Thema objektorientierter Programmierstil ist die zum sog.
-Law of Demeter von Lieberherr, Holland und Riel . DEMETER ist ein CASE -Werkzeug, das
-selbst kaum weiter Verbreitung gefunden hat und das wohl heute weitgehend unbekannt
-wäre, wenn nicht eben dieses Gesetz Demeters es zu einiger Bekanntheit gebracht hätte .

@@ -1,7 +1,0 @@
-44.2 Typtests
-Laufzeitfehler der obigen Art vermeidet man in JAVA mit Hilfe sogenannter Typtests, die
-man vor einer Typumwand lung durchführt. Das dazugehörige Schlüsselwort heißt
-instanceof :
-bilden die typsichere Variante der Typumwandlung. Es bleibt allerdings an der Programmie-
-rerin hängen, zu sagen, was passieren soll, wenn der Wert von o nicht den geforderten Typ
-(hier String ) hat.

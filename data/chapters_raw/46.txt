@@ -1,9 +1,0 @@
-46 Interne und externe Iteration über Collections
-Genau wie in der SMALLTALK -Programmierung kommt man in der JAVA-Program mierung
-häufig in die Verlegenheit, : n-Beziehungen umsetzen zu müssen. Wie in SMALLTALK ge-
-schieht dies auch in JAVA mit Hilfe von Zwischenobjekten . Anders als in SMALLTALK wird hier
-aber zwischen zwei Arten von Zwischenobjekten grundsätzlich unterschieden: den Arrays
-und den Collections.74 Da JAVA-Arrays in ihrer Funktionalität beschränkt sind (s. Kapitel 41:
-keine eigene n Methoden zur Unterstützung des Zugriffs, kein dynamisches Wachstum, dazu
-die etwas verkorkste Situation beim Subtyping), werden Arrays vornehmlich dort eingesetzt,
-wo es um Effizienz (geringer Speicherverbrauch und schneller Zugriff) geht.

@@ -1,7 +1,0 @@
-4.5.1 Sequenz
-Die Sequenz als Kontrollstruktur besagt lediglich, dass textuell aufeinanderfolgende Anwei-
-sungen ein es Programms (einer Methode) auch zeitlich nacheinander ausgeführt werden.
-Die zeitliche Sequenz aufeinander folgender Anweisungen kann lediglich durch andere Kon-
-trollstrukturen (in SMALLTALK nur durch den Methodenaufruf; s. u.) unterbrochen werden.
-Dies g ilt auch für parallele Ausführung , die man sich wie die gleichzeitige Abarbeitung
-zweier sequentieller Programme auf denselben Objekten vorstellen kann (s. Kapitel 16).

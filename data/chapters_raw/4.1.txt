@@ -1,9 +1,0 @@
-4.1 Ausdrücke
-In einem objektorientierten Programm können Objekte nicht nur durch Literale (Ab-
-schnitt 1.2) und Variablen (Abschnitt 1.5) repräsentier t werden, sondern auch durch Aus-
-drücke . Tatsächlich sind Literale und Variablen primitive Ausdrücke , also solche, die nicht
-aus anderen zusammengesetzt sind. Damit mit den Objekten aber etwas geschehen und
-ein Programm somit etwas tun kann, brauchen wir noch andere Ausdrücke, namentlich
-Zuweisungsausdrücke und Nachrichtenausdrücke . Auch sie stehen jeweils für ein Objek t
-und können deswegen überall da auftreten, wo Objekte verlangt werden. Sie können ins-
-besondere auch geschachtelt werden.

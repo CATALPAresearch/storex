@@ -1,9 +1,0 @@
-51.6 Der ganze Rest
-C++ ist eine sehr komplexe Sprache. Sie zu lernen dauert Jahre, selbst bei täglichem Um-
-gang mit ihr; sie zu lehren erscheint fast aussichtslos. Selbst wenn man die zahlreichen Kon-
-strukte der Sprache der Reihe nach durchginge, so ergibt sich die eigentliche Komplexität
-erst aus deren kombinierter Verwendung, und die Zahl der Möglichkeiten ist den Gesetzen
-der Kombinatorik folgend hoch. Entsprechend groß ist a uch die Zahl der Idiome (Wendun-
-gen), die es für C++ gibt . Auch wenn längst nicht alle Beiträge zur Komplexität von C++ in
-Zusammenhang mit der Objektorientierung stehen, so ist es doch schwierig, sie davon zu
-trennen. Deshalb soll es an dieser Stelle auch genug damit sein.

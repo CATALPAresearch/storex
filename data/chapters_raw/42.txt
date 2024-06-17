@@ -1,7 +1,0 @@
-42 Aufzählungstypen
-Bis JAVA 1.4 waren class , interface und [] (Array) die einzigen Typkonstruktoren; mit
-JAVA 1.5 ist auch noch enum für Aufzählungstypen hinzugekommen, wobei diese unter die
-Klassentypen fallen: Neben der Angabe der Elemente der Aufzählung kann man auch noch
-Felder und Methoden angeben, die auf ihnen definiert sind. Damit werden die Elemente
-einer Aufzählung gewissermaß en zu konstanten, also zu lebenslang gültigen, Namen für
-Objekte einer Klasse, die den Aufzählungstyp repräsentiert.

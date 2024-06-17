@@ -1,7 +1,0 @@
-43 Generische Typen
-Analog zu der Einführung von parametrisierten Typen in Kapitel 29 von Kurseinheit 3 abs-
-trahieren die generischen Typen JAVAs von Typen, indem sie die Referenzierung eines oder
-mehrerer Typen innerhalb einer Typdefinition durch Typvariablen zu ersetzen erlauben. An-
-ders als in STRONG TALK stehen die Typvariablen in JAVA jedoch nicht in eckigen, sondern in
-spitzen Klammern. Da es dadurch zu Verwechselungen mit metasyntaktischen Variablen
-kommen kann, werden wir in diesem Kapitel keine mehr verwenden.
