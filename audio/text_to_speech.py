@@ -36,16 +36,17 @@ class TextToSpeech:
 
         :param input_text: Text to be converted into speech.
         """
+        
         inputs = self.processor(input_text, voice_preset=self.voice_preset).to(self.device)  # , return_tensors="pt")
-
+        
         audio_array = self.model.generate(**inputs, pad_token_id=10000)
         audio_array = audio_array.cpu().numpy().squeeze()
         sampling_rate = self.model.generation_config.sample_rate
-
+        
         # Play audio. To save audio to disk: scipy.io.wavfile.write("bark_generation.wav", sampling_rate, audio_array)
         num_channels = 1
         bytes_per_sample = 4  # float32
         play_obj = simpleaudio.play_buffer(audio_array, num_channels, bytes_per_sample, sampling_rate)
-
+        
         # Wait for playback to finish before exiting
         play_obj.wait_done()

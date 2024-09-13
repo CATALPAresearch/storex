@@ -56,5 +56,6 @@ logging.info("Starting...")
 # Run exam with set arguments
 exam = ExamManager(args)
 exam.start_exam()
+#exam.mic_test()
 
 logging.info("Finished!")

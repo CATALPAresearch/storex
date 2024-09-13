@@ -18,7 +18,7 @@ logger = logging.getLogger()
 CHUNK_SIZE = 1024  # Number of frames that signals are split into
 FORMAT = pyaudio.paInt16  # Sound is stored in a signed 16-bit binary string
 CHANNELS = 1  # Samples per frame
-RATE = 16000  # Or: 44100? Sampling rate (frames per second)
+RATE = 44100  # Or: 16000 44100? Sampling rate (frames per second)
 MIN_VOLUME = 100  # Threshold intensity that defines silence and noise signal
 SILENCE_LIMIT = 3  # Max amount of seconds, where only silence is recorded
 BUF_MAX_SIZE = CHUNK_SIZE * 10  # If the recording thread can't consume fast enough, the listener will start discarding
@@ -96,7 +96,8 @@ class SpeechRecognition:
         device = 'cpu'  # Loading to cpu, due to torch.cuda.OutOfMemoryErrors
 
         # Load processor and tokenizer
-        model_name = "openai/whisper-medium"
+        # model_name = "openai/whisper-medium"
+        model_name = "openai/whisper-base"
         processor = WhisperProcessor.from_pretrained(model_name)
         tokenizer = WhisperTokenizer.from_pretrained(model_name, language="german")
 
