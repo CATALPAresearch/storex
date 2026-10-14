@@ -14,17 +14,18 @@ import shutil
 
 from flask import Flask, jsonify, request, send_from_directory
 
-import llm
-import models
-import tts
+import courselib
+from oral_exam import llm
+from oral_exam import models
+from oral_exam.audio import synthesis
 
-from web.session import SessionRegistry, SessionsBusy
+from oral_exam.web.session import SessionRegistry, SessionsBusy
 
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"),
                     format="%(asctime)s %(levelname)-8s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
 
-STATIC_DIRECTORY = os.path.join(os.path.dirname(__file__), "static")
+STATIC_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
 
 app = Flask(__name__, static_folder=None)
 # Whisper runs inside the request, so an oversized upload would occupy a worker
@@ -65,8 +66,26 @@ def health():
         "retained": sessions.total(),
         # The transcription pipeline decodes browser audio with ffmpeg
         "ffmpeg": shutil.which("ffmpeg") is not None,
-        "tts": tts.engine(),
+        "tts": synthesis.engine(),
         "llm_configured": bool(llm.BASE_URL) or llm.is_disabled(),
+        "courses": [course.id for course in courselib.all_courses()],
+        "course_errors": courselib.errors(),
+    })
+
+
+@app.route("/api/courses")
+def list_courses():
+    """The courses an exam can be started for."""
+    return jsonify({
+        "default": courselib.default_course_id(),
+        "courses": [{
+            "id": course.id,
+            "title": course.title,
+            "description": course.description,
+            "language": course.language,
+            "units": len(course.units),
+            "questions": course.question_count,
+        } for course in courselib.all_courses()],
     })
 
 
@@ -88,6 +107,12 @@ def create_exam():
     if not 10 <= minutes <= 60:
         return jsonify({"error": "Die Trainingsprüfung kann 10 bis 60 Minuten dauern."}), 400
 
+    course_id = (data.get("course") or courselib.default_course_id() or "").strip()
+    try:
+        course = courselib.get(course_id)
+    except courselib.UnknownCourse:
+        return jsonify({"error": f"Unbekannter Kurs '{course_id}'."}), 400
+
     gender = (data.get("gender") or "").lower()
     parameters = {
         "name": name,
@@ -95,6 +120,7 @@ def create_exam():
         "female": gender == "female",
         "male": gender == "male",
         "mute": True,  # audio is played by the browser, never by the server process
+        "course": course.id,
     }
 
     try:
@@ -102,8 +128,9 @@ def create_exam():
     except SessionsBusy as error:
         return jsonify({"error": str(error)}), 503
 
-    logger.info("Started exam %s for %s (%s minutes)", session.id, name, minutes)
-    return jsonify({"exam_id": session.id, "tts": tts.engine()}), 201
+    logger.info("Started exam %s for %s (%s, %s minutes)", session.id, name, course.id, minutes)
+    return jsonify({"exam_id": session.id, "tts": synthesis.engine(),
+                    "course": course.id, "course_title": course.title}), 201
 
 
 @app.route("/api/events")
@@ -176,7 +203,7 @@ def speak(exam_id, seq):
     session, error = _require_session(exam_id)
     if error:
         return error
-    if not tts.is_server_side():
+    if not synthesis.is_server_side():
         return jsonify({"error": "Server side speech synthesis is disabled."}), 404
 
     if seq not in session.audio_cache:
@@ -184,7 +211,7 @@ def speak(exam_id, seq):
                           if event["seq"] == seq and event["type"] == "say"), None)
         if utterance is None:
             return jsonify({"error": "unknown utterance"}), 404
-        audio = tts.synthesize(utterance.get("text", ""))
+        audio = synthesis.synthesize(utterance.get("text", ""))
         if audio is None:
             return jsonify({"error": "Die Sprachsynthese ist fehlgeschlagen."}), 500
         session.audio_cache[seq] = audio
@@ -214,9 +241,24 @@ def transcript(exam_id):
     return jsonify({"exam_id": exam_id, "transcript": session.transcript()})
 
 
+# Read the course content first: a broken course is logged and left out rather
+# than taking the whole application down.
+courselib.load_all()
+for broken_id, problems in courselib.errors().items():
+    logger.error("Course '%s' was skipped: %s", broken_id, "; ".join(problems))
+_available = courselib.all_courses()
+logger.info("Courses available: %s", ", ".join(course.id for course in _available) or "none")
+
+if not _available:
+    startup_error = ("Es konnte kein Kurs geladen werden. Prüfen Sie die Manifeste mit "
+                     "'docker compose run --rm validate'.")
+elif courselib.errors() and os.getenv("COURSE_STRICT", "false").lower() == "true":
+    startup_error = ("Mindestens ein Kurs ist fehlerhaft und COURSE_STRICT=true: "
+                     + "; ".join(sorted(courselib.errors())))
+
 # Loading the models takes minutes, so it happens at import time rather than
 # inside the first request.
-if os.getenv("WARMUP", "true").lower() == "true":
+if startup_error is None and os.getenv("WARMUP", "true").lower() == "true":
     try:
         models.warmup(speech=True)
     except Exception as error:  # noqa: BLE001 - must not crash loop without a hint

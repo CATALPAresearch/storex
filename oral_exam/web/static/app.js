@@ -29,6 +29,9 @@ const element = (id) => document.getElementById(id);
 
 const dom = {
   setup: element('setup'),
+  subject: element('subject'),
+  courseField: element('course-field'),
+  course: element('course'),
   startForm: element('start-form'),
   setupError: element('setup-error'),
   exam: element('exam'),
@@ -43,6 +46,32 @@ const dom = {
   meter: element('meter'),
   meterLevel: element('meter-level'),
 };
+
+/* ---------------------------------------------------------------- courses */
+
+async function loadCourses() {
+  const response = await fetch('/api/courses');
+  if (!response.ok) throw new Error('Die Kursliste konnte nicht geladen werden.');
+  const payload = await response.json();
+  if (!payload.courses.length) throw new Error('Es ist kein Kurs eingerichtet.');
+
+  dom.course.replaceChildren(...payload.courses.map((course) => {
+    const option = document.createElement('option');
+    option.value = course.id;
+    option.textContent = `${course.title} (${course.units} Einheiten, ${course.questions} Fragen)`;
+    option.selected = course.id === payload.default;
+    return option;
+  }));
+
+  const showSubject = () => {
+    const chosen = payload.courses.find((course) => course.id === dom.course.value);
+    dom.subject.textContent = chosen ? chosen.title : '';
+  };
+  showSubject();
+  dom.course.addEventListener('change', showSubject);
+  // With a single course there is nothing to choose, but the value is still sent
+  dom.courseField.hidden = payload.courses.length < 2;
+}
 
 /* ---------------------------------------------------------------- helpers */
 
@@ -287,6 +316,7 @@ dom.startForm.addEventListener('submit', async (submitEvent) => {
         name: element('name').value,
         gender: element('gender').value,
         minutes: Number(element('minutes').value),
+        course: dom.course.value,
       }),
     });
     const payload = await response.json();
@@ -335,6 +365,12 @@ dom.cancel.addEventListener('click', async () => {
   setState('Prüfung abgebrochen.');
   dom.stop.hidden = true;
   dom.textForm.hidden = true;
+});
+
+loadCourses().catch((error) => {
+  dom.setupError.textContent = error.message;
+  dom.setupError.hidden = false;
+  element('start').disabled = true;
 });
 
 window.addEventListener('beforeunload', () => {

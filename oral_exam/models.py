@@ -20,7 +20,8 @@ logger = logging.getLogger(__name__)
 # German text with this model. It used to be loaded twice.
 EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"
 CLASSIFIER_MODEL = "symanto/xlm-roberta-base-snli-mnli-anli-xnli"
-PARAPHRASE_MODEL = "LunaticTanuki/oop-de-qg-flan-t5-base-v6"
+# The question generation model used for hints is course specific and is named
+# in the course manifest, see courselib.
 
 # Reentrant on purpose: building one model may ask for another, for example the
 # similarity model and the vector store both reuse the embedding model.
@@ -41,15 +42,15 @@ def _singleton(key, factory):
     return _cache[key]
 
 
-def get_embeddings():
+def get_embeddings(model_name=EMBEDDING_MODEL):
     """Langchain embedding wrapper used for the FAISS context search."""
     def build():
         import torch
         from langchain.embeddings import HuggingFaceEmbeddings
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": device})
+        return HuggingFaceEmbeddings(model_name=model_name, model_kwargs={"device": device})
 
-    return _singleton("embeddings", build)
+    return _singleton(f"embeddings:{model_name}", build)
 
 
 def get_similarity_model():
@@ -78,20 +79,36 @@ def get_congruity_pipeline():
     return _singleton("congruity_pipeline", build)
 
 
-def get_vectorstore():
-    """FAISS index over the teaching material, read-only."""
-    def build():
-        from langchain.vectorstores import FAISS
-        directory = os.path.dirname(__file__)
-        return FAISS.load_local(os.path.join(directory, "data/vectorStore"), get_embeddings())
+def get_vectorstore(course):
+    """
+    FAISS index over the teaching material of one course, read-only.
 
-    return _singleton("vectorstore", build)
+    Returns None when the course declares no vector store or the index cannot
+    be read. None is cached like any other value, so a course without one does
+    not retry on every generated question; the exam falls back to predefined
+    questions.
+    """
+    def build():
+        path = course.materials.vector_store_path
+        if not path:
+            logger.info("Course %s has no vector store; questions are not generated from "
+                        "the teaching material.", course.id)
+            return None
+        from langchain.vectorstores import FAISS
+        try:
+            return FAISS.load_local(path, get_embeddings(course.materials.embedding_model
+                                                         or EMBEDDING_MODEL))
+        except Exception as error:  # noqa: BLE001 - a broken index must not end the exam
+            logger.error("Course %s: the vector store cannot be read (%s).", course.id, error)
+            return None
+
+    return _singleton(f"vectorstore:{course.id}", build)
 
 
 def get_evaluator():
     """Answer evaluator, see evaluation.Evaluator."""
     def build():
-        from evaluation import Evaluator
+        from oral_exam.evaluation import Evaluator
         return Evaluator()
 
     return _singleton("evaluator", build)
@@ -100,35 +117,50 @@ def get_evaluator():
 def get_speech_recognition():
     """Whisper based transcription, see audio.speech_recognition.SpeechRecognition."""
     def build():
-        from audio.speech_recognition import SpeechRecognition
+        from oral_exam.audio.transcription import SpeechRecognition
         return SpeechRecognition()
 
     return _singleton("speech_recognition", build)
 
 
-def get_paraphraser_pipeline():
-    """The fine-tuned question generation model from the paper, run locally."""
+def get_paraphraser_pipeline(model_name):
+    """A fine-tuned question generation model, run locally to phrase hints."""
     def build():
         from transformers import pipeline
-        return pipeline("text2text-generation", model=PARAPHRASE_MODEL)
+        return pipeline("text2text-generation", model=model_name)
 
-    return _singleton("paraphraser", build)
+    return _singleton(f"paraphraser:{model_name}", build)
 
 
-def warmup(speech=True, paraphrase=True):
+def warmup(speech=True, paraphrase=True, course_list=None):
     """
     Load the models needed to run an exam.
 
+    The shared models are loaded first, then whatever each course brings. A
+    course whose material cannot be loaded is logged and skipped: one broken
+    course must not keep the others from being examined.
+
     :param speech: also load transcription, needed by the web app and the CLI.
-    :param paraphrase: also load the local paraphrasing model, see PARAPHRASE_ENGINE.
+    :param paraphrase: also load the local paraphrasing models, see PARAPHRASE_ENGINE.
     """
     get_embeddings()
     get_similarity_model()
     get_congruity_pipeline()
-    get_vectorstore()
     get_evaluator()
     if speech:
         get_speech_recognition()
-    if paraphrase and os.getenv("PARAPHRASE_ENGINE", "local").lower() == "local":
-        get_paraphraser_pipeline()
+
+    # Imported here, not at module level, to keep models free of a course import
+    import courselib
+
+    local_hints = os.getenv("PARAPHRASE_ENGINE", "local").lower() == "local"
+    for course in (courselib.all_courses() if course_list is None else course_list):
+        get_vectorstore(course)
+        if paraphrase and local_hints and course.materials.paraphrase_model:
+            try:
+                get_paraphraser_pipeline(course.materials.paraphrase_model)
+            except Exception as error:  # noqa: BLE001 - hints fall back to the backend
+                logger.error("Course %s: the paraphrase model %s is unavailable (%s); "
+                             "hints will come from the text generation backend.",
+                             course.id, course.materials.paraphrase_model, error)
     logger.info("Model warmup complete.")

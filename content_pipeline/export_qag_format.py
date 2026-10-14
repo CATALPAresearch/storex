@@ -1,4 +1,12 @@
 """
+NOT CURRENTLY RUNNABLE - kept for reference.
+
+Its input directory 'data/processed' has never existed in this repository, so
+this script cannot run as written. It converts a question generation CSV into
+the question-answer-generation format used while fine-tuning. Point PATH at a
+directory holding such CSVs to use it.
+
+
 Script for changing csv datasets from having separate answer and question columns ot having one answer-question column.
 """
 import csv

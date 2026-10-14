@@ -6,10 +6,6 @@ __pycache__/
 # Local configuration, holds the API key
 .env
 
-# Generated transcripts
-output/
+# Throwaway output of local runs; published results live in docs/evaluation/
+runs/
 
-data/chapters_raw/*
-data/chapters_processed/*
-data/pdf/*
-*.pdf

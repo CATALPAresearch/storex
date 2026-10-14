@@ -1,0 +1,22 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Wozu dient die SELECT-Anweisung in SQL?",
+      "answer": "Die SELECT-Anweisung liest Daten aus einer oder mehreren Relationen und gibt das Ergebnis selbst wieder als Relation zurück."
+    },
+    {
+      "question": "Was bewirkt die WHERE-Klausel in einer SQL-Abfrage?",
+      "answer": "Die WHERE-Klausel schränkt die Ergebnismenge auf die Tupel ein, die eine angegebene Bedingung erfüllen. Das entspricht der Selektion der relationalen Algebra."
+    },
+    {
+      "question": "Was ist ein JOIN?",
+      "answer": "Ein JOIN verknüpft Tupel aus zwei Relationen anhand einer Bedingung, üblicherweise der Gleichheit von Fremdschlüssel und Primärschlüssel."
+    },
+    {
+      "question": "Wozu dient die GROUP-BY-Klausel?",
+      "answer": "GROUP BY fasst Tupel mit gleichen Werten in den angegebenen Attributen zu Gruppen zusammen, damit Aggregatfunktionen je Gruppe berechnet werden können."
+    }
+  ],
+  "APPLY": [],
+  "ANALYZE": []
+}

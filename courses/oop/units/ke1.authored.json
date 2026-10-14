@@ -1,0 +1,17 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Woran erkennen Sie, ob zwei Variablen dasselbe Objekt bezeichnen?",
+      "answer": "Zwei Variablen bezeichnen dasselbe Objekt, wenn sie identisch sind, also auf dieselbe Stelle im Speicher verweisen. Gleichheit genügt dafür nicht: zwei verschiedene Objekte können denselben Zustand haben, ohne identisch zu sein.",
+      "keywords": ["Identität", "Gleichheit", "Verweis"]
+    }
+  ],
+  "APPLY": [
+    {
+      "question": "Erläutern Sie an einem Beispiel, warum ein Alias zu schwer auffindbaren Fehlern führen kann.",
+      "answer": "Ein Alias ist ein zweiter Name für dasselbe Objekt. Wird das Objekt über den einen Namen verändert, ändert sich auch, was über den anderen Namen sichtbar ist. Wer nur eine der beiden Stellen im Blick hat, sieht eine Zustandsänderung, die er sich nicht erklären kann.",
+      "keywords": ["Alias", "Zuweisung", "Verweissemantik"]
+    }
+  ],
+  "ANALYZE": []
+}

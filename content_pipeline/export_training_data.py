@@ -1,13 +1,35 @@
 """
-Script to write the paragraph, questions and answers from the processed chapters into a CSV file.
+Optional: export the chapters of a course as a fine-tuning data set.
+
+    python content_pipeline/export_training_data.py --course oop
+
+Writes paragraph, question and answer of every annotated chapter into a CSV.
+This is not part of the exam pipeline; it only feeds the scripts under
+finetuning/, which train a question generation model. Those load their data
+from the Hugging Face Hub, so the CSV written here is the source that was
+uploaded, not something read at training time.
 """
+import argparse
 import csv
 import glob
 import os
+import sys
 
-directory = os.path.dirname(os.path.dirname(__file__))
-INPUT_PATH = os.path.join(directory, 'data/chapters_processed')
-OUTPUT_FILE = os.path.join(directory, 'data/dataset/train.csv')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from _course import source_path  # noqa: E402
+
+_parser = argparse.ArgumentParser(description="Export a course as fine-tuning data.")
+_parser.add_argument("-c", "--course", required=True, help="Id of the course.")
+_parser.add_argument("--chapters", help="Override the chapter directory from the manifest.")
+_parser.add_argument("--output", help="Override the CSV to write.")
+_args = _parser.parse_args()
+
+INPUT_PATH = source_path(_args.course, "chapters", _args.chapters)
+OUTPUT_FILE = _args.output or os.path.join(
+    source_path(_args.course, "dataset"), "train.csv")
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+print(f"{INPUT_PATH} -> {OUTPUT_FILE}")
 
 
 count = 0

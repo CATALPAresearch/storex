@@ -4081,4 +4081,4 @@ cli = ["pyaudio", "simpleaudio"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.12"
-content-hash = "d468daa1747aea86b5ba07fc10ba7edd4b7b9522b8c0ab5a9365bf5f0a75b77a"
+content-hash = "060edb04a72eff9ef41ba533d64dd7283c8488c7f777c1050ab0338f734a9df8"

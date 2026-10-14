@@ -21,6 +21,10 @@ services:
       - PIPER_VOICE=${PIPER_VOICE:-de_DE-thorsten-high}
       # local runs the fine-tuned question generation model, kiconnect uses the backend
       - PARAPHRASE_ENGINE=${PARAPHRASE_ENGINE:-local}
+      # Course shown first in the picker; every course under courses/ is offered
+      - DEFAULT_COURSE=${DEFAULT_COURSE:-oop}
+      # true refuses to start when any course manifest is broken
+      - COURSE_STRICT=${COURSE_STRICT:-false}
       - MAX_SESSIONS=${MAX_SESSIONS:-2}
       - ANSWER_TIMEOUT=${ANSWER_TIMEOUT:-120}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
@@ -34,7 +38,7 @@ services:
     volumes:
       # Without this the models are downloaded again on every start
       - hf-cache:/cache/huggingface
-      - ./output:/app/output
+      - ./runs:/app/runs
     healthcheck:
       test: ["CMD", "curl", "-fsS", "http://localhost:5000/api/health"]
       interval: 30s
@@ -59,7 +63,15 @@ services:
       - TTS_ENGINE=${TTS_ENGINE:-browser}
     volumes:
       - hf-cache:/cache/huggingface
-    command: python warmup.py
+    command: python -m oral_exam.warmup
+
+  # One-off: checks every course manifest against its files.
+  #   docker compose run --rm validate
+  validate:
+    build: .
+    image: oral-exam-simulation:latest
+    profiles: ["validate"]
+    command: python -m courselib.validate --strict
 
 volumes:
   hf-cache:

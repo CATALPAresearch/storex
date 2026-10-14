@@ -108,7 +108,7 @@ class SpeechRecognition:
         Returns the transcribed recording, or None if only silence was recorded.
         """
         # Imported here so that the web app never needs PortAudio
-        from audio import microphone
+        from oral_exam.audio import microphone
 
         audio_frames, sample_size, silence = microphone.record_speech()
         if silence:

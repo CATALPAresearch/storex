@@ -10,40 +10,46 @@ import sys
 
 from datetime import datetime
 
-import llm
+from oral_exam import llm
 
-from utils.paths import output_file
+from oral_exam.utils.paths import run_file
 
 logger = logging.getLogger(__name__)
 
 TEMPLATE = """Du bist eine durchschnittliche Studentin an einer deutschen Universität.
-Du wirst in einer mündlichen Prüfung zu objektorientierter Programmierung abgefragt.
+Du wirst in einer mündlichen Prüfung zum Thema {subject} abgefragt.
 Antworte auf die Frage in einem Satz.
 Die Frage lautet: {question}
 
 Gib nur deine Antwort zurück:"""
 
-date = datetime.now().strftime("%d-%m-%Y--%H-%M-%S")
-OUTPUT_FILE = output_file(f"test_results_AI_{date}.txt")
-
-
-def write_output(output):
-    with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as test_file:
-        test_file.write(f"[Exam:] {output}\n")
-
-
 class Student:
-    def __init__(self):
-        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as test_file:
-            test_file.write(f"Trainingsprüfung von: {date}\n\n"
-                            f"Modell: {llm.MODEL}\n"
-                            f"Template: {TEMPLATE}\n\n")
+    """
+    Answers exam questions in place of a person, for testing without a
+    microphone. Everything it is asked and answers is written to a transcript
+    in the run directory, named after the course.
+    """
+    def __init__(self, course):
+        self.subject = course.title
+        started = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+        self.transcript = run_file(f"ai-student_{started}.txt", course.id)
+        self.write(f"Trainingsprüfung von: {started}\n\n"
+                   f"Kurs: {course.title}\n"
+                   f"Modell: {llm.MODEL}\n"
+                   f"Template: {TEMPLATE}\n")
+
+    def write(self, text):
+        with open(self.transcript, 'a', encoding='utf-8', newline='') as handle:
+            handle.write(f"{text}\n")
+
+    def log(self, output):
+        """Records something the examiner said or decided."""
+        self.write(f"[Exam:] {output}")
 
     def get_answer(self, question):
-        answer = llm.chat(TEMPLATE.format(question=question))
-        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as test_file:
-            test_file.write(f"[Exam:] {question}\n")
-            test_file.write(f"[AI:] {answer}\n")
+        answer = llm.chat(TEMPLATE.format(subject=self.subject, question=question))
+        self.write(f"[Exam:] {question}")
+        self.write(f"[AI:] {answer}")
         return answer
 
 
@@ -62,14 +68,12 @@ def run_exam_realtime(command, student):
             if not question:
                 continue
             print(f"Exam: {question}")
-            write_output(question)
+            student.log(question)
 
             # Generate an answer
             if question.endswith('?'):
                 answer = student.get_answer(question)
                 print(f"AI: {answer}")
-                with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as test_file:
-                    test_file.write(f"[AI:] {answer}\n")
 
                 process.stdin.write(f"{answer}\n")
                 process.stdin.flush()
@@ -82,8 +86,8 @@ def run_exam_realtime(command, student):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
-        file.write(f"Trainingsprüfung von: {date}\n\n")
-
-    exam_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "start_exam")
-    run_exam_realtime([sys.executable, exam_script, "-n", "Luna", "-f", "--mute"], Student())
+    import courselib
+    repository = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    run_exam_realtime([sys.executable, os.path.join(repository, "start_exam"),
+                       "-n", "Luna", "-f", "--mute"],
+                      Student(courselib.get(courselib.default_course_id())))

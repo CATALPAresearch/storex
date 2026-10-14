@@ -5,10 +5,10 @@ import logging
 
 from sentence_transformers import util
 
-import models
+from oral_exam import models
 
-from utils import preprocessing
-from utils.helpers import EvaluationType
+from oral_exam.utils import preprocessing
+from oral_exam.utils.helpers import EvaluationType
 
 logger = logging.getLogger(__name__)
 
@@ -26,13 +26,17 @@ class Evaluator:
         self.similarity_model = models.get_similarity_model()
         self.congruity_pipeline = models.get_congruity_pipeline()
 
-    def evaluate_keywords(self, question, student_answer):
+    def evaluate_keywords(self, question, student_answer, terms=()):
         """
         Checks if the given students answer contains the given keywords and returns the missing topics.
+
+        :param terms: the technical terms of the course being examined. They are
+            passed in rather than read from a global, so that two exams on
+            different courses cannot score each other's vocabulary.
         """
         # Get keywords from predefined and generated answers
         if 'keywords' not in question:
-            keywords = preprocessing.extract_keywords(question['answer'])
+            keywords = preprocessing.extract_keywords(question['answer'], terms)
         else:
             keywords = question['keywords']
         logger.info("Keywords from answer: %s", keywords)

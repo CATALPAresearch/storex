@@ -3,7 +3,7 @@ Class for feedback managing.
 """
 import re
 
-from utils.helpers import FeedbackLevel, FeedbackType, KE, topic_from_ke
+from oral_exam.utils.helpers import FeedbackLevel, FeedbackType
 
 
 def get_grade(percentage):
@@ -46,7 +46,13 @@ class FeedbackManager:
     """
     Class which collects and constructs performance data.
     """
-    def __init__(self):
+    def __init__(self, unit_titles):
+        """
+        :param unit_titles: titles of the units of the course being examined,
+            in order. They size the per-unit counters and name the topics in
+            the feedback, where the course used to be hard coded.
+        """
+        self.unit_titles = list(unit_titles)
         self.all_questions = 0  # Counter for the amount of questions that were asked
         self.contradiction_counter = 0  # Counter for contradicting, wrong answer
         self.irrelevant_counter = 0  # Counter for off-topic, irrelevant answers
@@ -54,9 +60,9 @@ class FeedbackManager:
         self.reiteration_counter = 0  # Counter for the amount of help that was given in form of reiteration
         self.non_concise_counter = 0  # Counter for non-concise answers
 
-        self.correct_answers = []  # Counter for correctly answered questions per KE
-        self.completed_level = []  # Level reached per KE
-        for _ in KE:
+        self.correct_answers = []  # Counter for correctly answered questions per unit
+        self.completed_level = []  # Level reached per unit
+        for _ in self.unit_titles:
             self.correct_answers.append(0)
             self.completed_level.append(0)
 
@@ -78,6 +84,11 @@ class FeedbackManager:
         self.irrelevant_counter += 1
 
     def add_missed(self, missed_count, all_count):
+        # A course without technical terms yields no keywords at all. Counting
+        # that as a non-concise answer would tell every student of such a course
+        # that they answered imprecisely throughout.
+        if not all_count:
+            return
         if missed_count:
             self.missed_term_counter[0] += missed_count
             self.missed_term_counter[1] += all_count
@@ -121,7 +132,7 @@ class FeedbackManager:
         concise_grade = get_grade(concise_value)
         feedback_string += f"{student} hat {concise_grade} unpräzise Antworten gegeben.\n"
 
-        # Construct feedback strings from information per KE
+        # Construct feedback strings from information per unit
         average = sum(self.completed_level) / len(self.completed_level)
         level = FeedbackLevel(round(average)).name
         feedback_string += f"{student} hat ein {level} Leistungslevel erreicht.\n"
@@ -137,8 +148,7 @@ class FeedbackManager:
                 most_level = optimum[answers.index(max(answers))]
             else:
                 most_level = optimum[0]
-            topic = topic_from_ke(most_level)
-            topics.append(topic)
+            topics.append(self.unit_titles[most_level])
 
         feedback_string += f"{student} war am besten bei dem Thema '{topics[0]}'.\n"
         feedback_string += f"{student} war am schlechtesten bei dem Thema '{topics[1]}'."

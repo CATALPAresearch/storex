@@ -1,0 +1,31 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Was ist eine Relation im relationalen Datenmodell?",
+      "answer": "Eine Relation ist eine Tabelle, deren Zeilen Tupel und deren Spalten Attribute sind. Jedes Tupel beschreibt ein Objekt der Realwelt."
+    },
+    {
+      "question": "Was ist ein Primärschlüssel?",
+      "answer": "Ein Primärschlüssel ist ein Attribut oder eine Attributkombination, die jedes Tupel einer Relation eindeutig identifiziert."
+    },
+    {
+      "question": "Was ist ein Fremdschlüssel?",
+      "answer": "Ein Fremdschlüssel ist ein Attribut, das auf den Primärschlüssel einer anderen Relation verweist und so eine Beziehung zwischen zwei Relationen herstellt."
+    },
+    {
+      "question": "Was bedeutet referentielle Integrität?",
+      "answer": "Referentielle Integrität bedeutet, dass jeder Fremdschlüsselwert tatsächlich auf ein existierendes Tupel der referenzierten Relation verweist."
+    }
+  ],
+  "APPLY": [
+    {
+      "question": "Warum sollte eine Relation normalisiert werden?",
+      "answer": "Die Normalisierung beseitigt Redundanzen und damit Anomalien beim Einfügen, Ändern und Löschen, weil jede Information nur noch an einer Stelle gespeichert wird."
+    },
+    {
+      "question": "Wie wird eine n-zu-m-Beziehung im relationalen Modell abgebildet?",
+      "answer": "Eine n-zu-m-Beziehung wird über eine zusätzliche Relation abgebildet, die die Primärschlüssel beider beteiligten Relationen als Fremdschlüssel aufnimmt."
+    }
+  ],
+  "ANALYZE": []
+}

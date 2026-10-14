@@ -12,7 +12,7 @@ import wave
 import numpy
 import pyaudio
 
-from utils import colours
+from oral_exam.utils import colours
 
 logger = logging.getLogger(__name__)
 

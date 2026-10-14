@@ -8,15 +8,16 @@ import random
 import threading
 import time
 
-import models
+import courselib
+from oral_exam import models
 
-from feedback_managing import FeedbackManager, check_feedback
-from questions.paraphrasing import QuestionParaphraser
-from questions.question_generation import QuestionGenerator
-from questions.question_managing import NoQuestionsLeft, QuestionManager, TopicManager
-from text_generation import TextGenerator
-from utils import colours, preprocessing
-from utils.helpers import EvaluationType, KE, Level, QuestionType
+from oral_exam.feedback import FeedbackManager, check_feedback
+from oral_exam.questions.paraphrasing import QuestionParaphraser
+from oral_exam.questions.generation import QuestionGenerator
+from oral_exam.questions.managing import NoQuestionsLeft, QuestionManager, TopicManager
+from oral_exam.text_generation import TextGenerator
+from oral_exam.utils import colours
+from oral_exam.utils.helpers import EvaluationType, Level, QuestionType
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -69,6 +70,14 @@ class ExamManager:
         """
         self.channel = channel
         self.ai_student = False
+
+        # The course supplies the units, the questions and the material. An
+        # exam started without one falls back to the default course rather than
+        # failing, so older call sites keep working.
+        self.course = courselib.get(exam_parameters.get('course') or courselib.default_course_id())
+        self.terms = self.course.materials.technical_terms
+        logger.info("Course: %s (%s units, %s questions)",
+                    self.course.id, len(self.course.units), self.course.question_count)
         # Set student parameters like name and gender
         logger.info("Setting parameters: %s", exam_parameters)
         self.student = {
@@ -88,21 +97,18 @@ class ExamManager:
             self.student['dative'] = "einem Studenten"
             self.student['possessive'] = "seine"
 
-        # Setup stopwords for preprocessing
-        preprocessing.setup_word_lists()
-
         # Set text generation model
         self.text_generator = TextGenerator()
 
         # Set question manager and question models
-        topic_manager = TopicManager()
-        self.manager = QuestionManager(topic_manager)
+        topic_manager = TopicManager(self.course)
+        self.manager = QuestionManager(topic_manager, self.course)
         self.last_question = None
         self.next_question = None
         self.repeating_reason = None
         self.prepend_question = "Dann lassen Sie uns beginnen."
-        self.paraphraser = QuestionParaphraser()
-        self.question_generator = QuestionGenerator(self.text_generator)
+        self.paraphraser = QuestionParaphraser(self.course)
+        self.question_generator = QuestionGenerator(self.text_generator, self.course)
 
         # Set specific topics to be targeted for questions
         self.targets = []
@@ -114,13 +120,13 @@ class ExamManager:
         self.transcription = None
         if self.channel is None and not self.mute:
             try:
-                from audio.text_to_speech import TextToSpeech
+                from oral_exam.audio.playback import TextToSpeech
             except ImportError as error:
                 raise AudioUnavailable() from error
             self.audio = TextToSpeech()
         if exam_parameters.get('ai'):
-            from testing.ai_student import Student
-            self.ai_student = Student()
+            from oral_exam.ai_student import Student
+            self.ai_student = Student(self.course)
         elif self.channel is None:
             # Fail here rather than at the first question, when the microphone
             # module would be imported for the recording
@@ -132,7 +138,7 @@ class ExamManager:
 
         # Set evaluator and feedback manager
         self.evaluation = models.get_evaluator()
-        self.feedback = FeedbackManager()
+        self.feedback = FeedbackManager(self.course.unit_titles)
 
         # Set time manager with the exam duration
         duration = (int(exam_parameters['time']) * 60)
@@ -143,8 +149,7 @@ class ExamManager:
         if self.channel is not None:
             self.channel.say(text)
         elif self.ai_student:
-            import testing.ai_student
-            testing.ai_student.write_output(text)
+            self.ai_student.log(text)
         else:
             print_thread = threading.Thread(target=colours.print_blue, args=(text,))
             print_thread.start()
@@ -221,7 +226,7 @@ class ExamManager:
                 self.prepend_question = random.choice(questioning_sounds)
 
                 # Get missed topics and add them as targets and save the data for feedback
-                missed_topics, _ = self.evaluation.evaluate_keywords(question, student_answer)
+                missed_topics, _ = self.evaluation.evaluate_keywords(question, student_answer, self.terms)
                 self.targets.extend(missed_topics)
                 self.feedback.add_irrelevant()
                 # Reiterate the question once, the same way a contradiction is
@@ -243,7 +248,7 @@ class ExamManager:
 
             case 4:  # Check the answer for missing topics
                 # Get missed topics and add them as targets and save the data for feedback
-                missed_topics, max_topics = self.evaluation.evaluate_keywords(question, student_answer)
+                missed_topics, max_topics = self.evaluation.evaluate_keywords(question, student_answer, self.terms)
                 self.targets.extend(missed_topics)
                 self.feedback.add_missed(len(missed_topics), max_topics)
                 if self.targets:
@@ -255,8 +260,7 @@ class ExamManager:
                 raise ValueError(f"Cannot assign {result}.")
 
         if self.ai_student:
-            import testing.ai_student
-            testing.ai_student.write_output(f"[Eval:] Result: {result.name}")
+            self.ai_student.log(f"[Eval:] Result: {result.name}")
         logger.info("The next question should be: %s", self.next_question.name)
 
     def ask_predefined_question(self):
@@ -389,8 +393,7 @@ class ExamManager:
 
             logger.info("The next question is: %s", self.next_question.name)
             if self.ai_student:
-                import testing.ai_student
-                testing.ai_student.write_output(f"[Eval:] Question: {self.next_question.name}")
+                self.ai_student.log(f"[Eval:] Question: {self.next_question.name}")
 
             # Match the question type for the next question
             try:
@@ -429,8 +432,7 @@ class ExamManager:
         feedback_rules = self.feedback.construct_feedback(self.student['nominative'])
         logger.info(feedback_rules)
         if self.ai_student:
-            import testing.ai_student
-            testing.ai_student.write_output(f"[Eval:] {feedback_rules}")
+            self.ai_student.log(f"[Eval:] {feedback_rules}")
 
         feedback_query = (
             f"""Gib {self.student['dative']} namens {self.student['name']} mündlich ein konstruktives Feedback in 3 Sätzen für {self.student['possessive']} Leistungen im Anschluss an eine mündliche Prüfung.
@@ -462,8 +464,9 @@ class TimeManager:
     def __init__(self, duration, topic_manager, feedback, turn_cap=TURN_CAP):
         self.remaining_time = duration
         self.topic_manager = topic_manager
+        self.unit_count = topic_manager.unit_count()
         self.last_known_topic = topic_manager.get_topic()
-        self.topic_time = duration / len(KE)
+        self.topic_time = duration / self.unit_count
         self.correct_answers = 0
         self.feedback = feedback
         self.turn_cap = turn_cap
@@ -502,7 +505,7 @@ class TimeManager:
         # Check if topic got increased or time for topic ran out. The last course
         # unit has no successor, so it never triggers a topic change.
         topic = self.topic_manager.get_topic()
-        is_last_topic = self.last_known_topic.value >= len(KE) - 1
+        is_last_topic = self.last_known_topic >= self.unit_count - 1
         if topic != self.last_known_topic or (self.topic_time <= 0 and not is_last_topic):
             self.append_feedback()
 
@@ -512,9 +515,10 @@ class TimeManager:
                 topic = self.topic_manager.get_topic()
 
             # Set new time for topic
-            remaining_topics = len(KE) - topic.value
+            remaining_topics = self.unit_count - topic
             self.topic_time = self.remaining_time / remaining_topics
-            logger.info("Next topic %s for %s seconds.", topic.name, self.topic_time)
+            logger.info("Next topic %s for %s seconds.",
+                        self.topic_manager.current_unit().id, self.topic_time)
 
             self.last_known_topic = topic
             self.correct_answers = 0
@@ -535,6 +539,7 @@ class TimeManager:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
-    dev_parameters = {"name": "Luna", "time": 10, "female": True, "male": False, "mute": True, "ai": False}
+    dev_parameters = {"name": "Luna", "time": 10, "female": True, "male": False,
+                      "mute": True, "ai": False, "course": "oop"}
     exam = ExamManager(dev_parameters)
     exam.start_exam()

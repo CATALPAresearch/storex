@@ -3,8 +3,8 @@
 - [x] Anzahl Modelle reduzieren
 - [x] Docker image bauen
 - [x] build UI
-- [ ] separate content form application
-- [ ] enable running exams from multiple courses
+- [x] separate content form application
+- [x] enable running exams from multiple courses
 
 Later:
 

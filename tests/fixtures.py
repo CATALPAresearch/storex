@@ -1,4 +1,4 @@
-from utils.helpers import EvaluationType
+from oral_exam.utils.helpers import EvaluationType
 
 students = [{'name': "Luna", 'nominative': "Die Studentin", 'accusative': 'eine Studentin',
              'dative': "einer Studentin", 'possessive': "ihre"},

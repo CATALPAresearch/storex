@@ -23,6 +23,10 @@ faiss-cpu = "1.7.4"
 # Used for FAISS.load_local and HuggingFaceEmbeddings only - no remote inference.
 langchain = "0.0.352"
 
+# --- Course content -------------------------------------------------------
+# Course manifests are YAML so that they stay readable and can carry comments
+pyyaml = "^6.0"
+
 # --- Web app --------------------------------------------------------------
 flask = "3.0.3"
 gunicorn = "^22.0.0"
@@ -61,7 +65,6 @@ sentencepiece = "^0.2.0"
 
 [tool.ruff]
 line-length = 120
-exclude = ["questions/questions.py"]
 
 [build-system]
 requires = ["poetry-core"]

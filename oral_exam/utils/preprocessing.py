@@ -1,9 +1,12 @@
+import functools
 import os
 import re
 
-
-stop_words = []
-technical_terms = []
+# The stop word list and the matching rules below are German: the endings in
+# extract_keywords and the umlaut transliteration in preprocess_text are German
+# morphology, not course content. The technical terms, in contrast, belong to a
+# course and are passed in by the caller, see courselib.
+STOP_WORD_FILE = 'resources/stop_words_de.txt'
 
 
 def parse_term(line):
@@ -21,21 +24,24 @@ def parse_term(line):
     return line
 
 
-def setup_word_lists():
+@functools.lru_cache(maxsize=1)
+def stop_words():
     """
-    Set up the list of german stopwords and the list of technical terms from file.
+    The german stop word list. Shared, because it describes the language and
+    not a course.
     """
-    directory = os.path.dirname(os.path.dirname(__file__))
-    stop_word_file = (os.path.join(directory, 'data/german_stop_words.txt'))
-    technical_term_file = (os.path.join(directory, 'data/technical_terms.txt'))
+    package = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    with open(os.path.join(package, STOP_WORD_FILE), 'r', encoding='utf-8') as file:
+        return tuple(word.strip() for word in file if word.strip())
 
-    with open(stop_word_file, 'r', encoding='utf-8') as file:
-        global stop_words
-        stop_words = [word.strip() for word in file.readlines() if word.strip()]
 
-    with open(technical_term_file, 'r', encoding='utf-8') as file:
-        global technical_terms
-        technical_terms = [parse_term(line) for line in file.readlines() if line.strip()]
+def load_terms(path):
+    """
+    Reads a list of technical terms. Used by the course loader; the result
+    belongs to one course and is handed to extract_keywords explicitly.
+    """
+    with open(path, 'r', encoding='utf-8') as file:
+        return tuple(parse_term(line) for line in file if line.strip())
 
 
 def preprocess_text(text):
@@ -56,7 +62,7 @@ def preprocess_text(text):
 def remove_stopwords(text):
     # Remove stopwords
     text_words = text.split()
-    text_words = [word for word in text_words if word not in stop_words]
+    text_words = [word for word in text_words if word not in stop_words()]
     # result_text = ' '.join(text_words)
     return text_words
 
@@ -73,15 +79,17 @@ def term_label(term):
     return preprocess_text(spellings[0])
 
 
-def extract_keywords(text, terms=None):
+def extract_keywords(text, terms=()):
     """
     Extract the used technical terms.
-    Terms are returned preprocessed, see term_label.
+
+    :param terms: the technical terms of a course, see courselib. Passing them
+        in rather than reading a module global is what keeps two exams on
+        different courses from scoring each other's vocabulary.
+    :return: the terms found, preprocessed, see term_label.
     """
     words = preprocess_text(text)
     technical_words = []
-    if terms is None:
-        terms = technical_terms
 
     for term in terms:
         # A term is either a single spelling or a list of synonyms

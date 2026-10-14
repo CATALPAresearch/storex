@@ -1,0 +1,124 @@
+# Questions under units/*.generated.json are written by
+# content_pipeline/03_collect_questions.py and overwritten on every run.
+# Files named *.authored.json are written by hand and never touched by it.
+# A unit may list several files; their questions are merged per level.
+id: oop
+title: Objektorientierte Programmierung
+language: de
+description: Trainingsprüfung zum Kurs Objektorientierte Programmierung der FernUniversität in Hagen.
+units:
+- id: ke1
+  title: Grundkonzepte der objektorientierten Programmierung
+  questions:
+  - units/ke1.generated.json
+  - units/ke1.authored.json
+  levels:
+  - REMEMBER
+  - APPLY
+  - ANALYZE
+  open_question:
+    question: Was ist das Grundkonzept der objektorientierten Programmierung?
+    keywords:
+    - Objekt
+    - Beziehung
+    - Zustand
+    - Verhalten
+  chapters:
+    files:
+    - KE1
+    numbers_below: 6
+- id: ke2
+  title: Systematik der objektorientierten Programmierung
+  questions: units/ke2.generated.json
+  levels:
+  - REMEMBER
+  - APPLY
+  - ANALYZE
+  open_question:
+    question: Mittels welcher Konzepte lassen sich objektorientierte Programme strukturieren?
+    keywords:
+    - Klasse
+    - Generalisierung
+    - Spezialisierung
+    - Vererbung
+    - dynamisch Binden
+  chapters:
+    files:
+    - KE2
+    - FragenKE2
+    numbers_below: 17
+- id: ke3
+  title: Typen in der objektorientierten Programmierung
+  questions: units/ke3.generated.json
+  levels:
+  - REMEMBER
+  - APPLY
+  - ANALYZE
+  open_question:
+    question: Was sind Typen in der objektorientierten Programmierung?
+    keywords:
+    - Typdefinition
+    - Zuweisungskompatibilität
+    - Subtyp
+    - Inklusionspolymorphie
+    - parametrischer Polymorphismus
+    - Typisierung
+  chapters:
+    files:
+    - KE3
+    - FragenKE3
+    numbers_below: 33
+- id: ke4
+  title: Programmiermodelle von Java, C-Sharp, C++ und EIFFEl
+  questions: units/ke4.generated.json
+  levels:
+  - REMEMBER
+  - APPLY
+  - ANALYZE
+  open_question:
+    question: Was sind die Besonderheiten einiger Programmiermodelle?
+    keywords:
+    - Interface
+    - Generischer Typ
+    - Mehrfachvererbung
+  chapters:
+    files:
+    - KE4
+    - FragenKE4
+    - KE5
+    - FragenKE5
+    numbers_below: 53
+- id: ke6
+  title: Probleme der objektorientierten Programmierung und objektorientierter Programmierstil
+  questions: units/ke6.generated.json
+  levels:
+  - REMEMBER
+  - APPLY
+  - ANALYZE
+  open_question:
+    question: Was sind Probleme der objektorientierten Programmierung?
+    keywords:
+    - Problem der Substituierbarkeit
+    - Fragile-base-class-Problem
+    - Problem der schlechten Tracebarkeit
+    - Problem der eindimensionalen Strukturierung
+    - Problem der mangelnden Kapselung
+    - Problem der mangelnden Skalierbarkeit
+    - Problem der mangelnden Eignung
+  chapters:
+    files:
+    - FragenKE6
+    - KE6
+    - KE7
+    - FragenKE7
+materials:
+  technical_terms: materials/technical_terms.txt
+  vector_store:
+    path: materials/vectorstore
+    embedding_model: paraphrase-multilingual-MiniLM-L12-v2
+  paraphrase_model: LunaticTanuki/oop-de-qg-flan-t5-base-v6
+source:
+  document: source/Kurstext_OOP.pdf
+  chapters_raw: source/chapters_raw
+  chapters: source/chapters
+  dataset: source/dataset

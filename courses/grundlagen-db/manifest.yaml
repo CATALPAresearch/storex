@@ -1,0 +1,28 @@
+# A small hand written course, used to test running several courses at once.
+#
+# It declares no materials on purpose: no technical terms and no vector store.
+# That makes it the reference for how the system degrades - it falls back to
+# predefined questions and skips the keyword check instead of failing.
+id: grundlagen-db
+title: Grundlagen von Datenbanken
+language: de
+description: >
+  Kleiner Demonstrationskurs zum relationalen Datenmodell und zu SQL.
+  Dient als Vorlage für eigene Kurse und als Test für den Mehrkursbetrieb.
+
+units:
+  - id: relationales-modell
+    title: Das relationale Datenmodell
+    questions: units/relationales-modell.json
+    levels: [REMEMBER, APPLY]
+    open_question:
+      question: Wie werden Daten im relationalen Modell strukturiert?
+      keywords: [Relation, Tupel, Attribut, Primärschlüssel]
+
+  - id: sql
+    title: Abfragen mit SQL
+    questions: units/sql.json
+    levels: [REMEMBER]
+    open_question:
+      question: Wozu dient die Abfragesprache SQL?
+      keywords: [Abfrage, Projektion, Selektion]

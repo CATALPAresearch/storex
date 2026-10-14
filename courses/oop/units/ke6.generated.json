@@ -1,0 +1,748 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Was ist das Ziel von \"guter Programmierung\"?",
+      "answer": "Das Ziel von \"guter Programmierung\" ist es, die Diskrepanz zwischen statischem, linearem Programmtext und dynamischem, stark verzweigendem und sich wiederholendem Programmablauf zu minimieren. Eine gute Programmiererin schreibt ihre Programme so, dass die statische Struktur des Programms möglichst viele Rückschlüsse auf seinen dynamischen Ablauf zulässt."
+    },
+    {
+      "question": "Was ist das Lokalitätsprinzip in Programmen?",
+      "answer": "Das Lokalitätsprinzip in Programmen besagt, dass Dinge, die zusammengehören, auch im Programmtext beieinander stehen sollten. Dadurch wird die Lesbarkeit und Nachvollziehbarkeit des Programms verbessert."
+    },
+    {
+      "question": "Was ist die Auswirkung von Goto-Anweisungen auf den Programmfluss?",
+      "answer": "Goto-Anweisungen können den Programmfluss beeinflussen, indem sie den Kontext verlassen und zu einer anderen Stelle im Programm springen. Das Ziel des Sprungs ist nicht immer eindeutig aus dem Kontext erkennbar, und es kann unklar sein, welche Anweisungen vorher ausgeführt wurden."
+    },
+    {
+      "question": "Was ist strukturierte Programmierung?",
+      "answer": "Die strukturierte Programmierung ist eine Programmiermethode, die neben der Sequenz von Anweisungen, die Verzweigung, die Wiederholung und den Unterprogrammaufruf vorsieht. Sie behält das Lokalitätsprinzip bei, solange man den Kontext auf den Umfang der Fallunterscheidung bzw. Schleife ausdehnt."
+    },
+    {
+      "question": "Was sind die Kriterien für die Aufteilung in Unterprogramme bei der objektorientierten Programmierung?",
+      "answer": "Bei der objektorientierten Programmierung sind die Kriterien für die Aufteilung in Unterprogramme das Vermeiden von doppeltem Code, die stufenweise Verfeinerung, das Zuordnen jeder Teilfunktion der Klasse, deren Daten sie manipuliert, und die Disziplin, die Implementierung größerer Funktionen zu verteilen."
+    },
+    {
+      "question": "Was ist ein Entwurfsprinzip in der Programmierung?",
+      "answer": "Ein Entwurfsprinzip in der Programmierung ist ein Grundsatz, der bei der Gestaltung von Software berücksichtigt wird. Im Gegensatz zu einem Programmierstil ist ein Entwurfsprinzip eher allgemein und weniger willkürlich. Es kann die Gestaltung von Software in Hinsicht auf Funktionalität, Wartbarkeit, Lesbarkeit und Effizienz beeinflussen."
+    },
+    {
+      "question": "Was ist die wichtigste Programmierrichtlinie zur Vererbung?",
+      "answer": "Die wichtigste Programmierrichtlinie zur Vererbung ist: Mache alle Superklassen abstrakt."
+    },
+    {
+      "question": "Was sind Formatierungskonventionen?",
+      "answer": "Formatierungskonventionen sind Vereinbarungen über die Formatierung von Quellcode, die neben Namenskonventionen dazu dienen, den Code lesbarer zu gestalten. Sie regeln Dinge wie Einrückungen und an welchen Stellen Zeilenumbrüche, Leerzeilen und Leerzeichen einzufügen sind."
+    },
+    {
+      "question": "Was sind Coding Conventions?",
+      "answer": "Coding Conventions sind Vereinbarungen über die Formatierung von Quellcode, die neben Namenskonventionen und anderen Richtlinien dazu dienen, den Code lesbarer zu gestalten. Sie regeln Dinge wie Einrückungen, Zeilenumbrüche, Leerzeilen und Leerzeichen."
+    },
+    {
+      "question": "Was ist Substituierbarkeit?",
+      "answer": "Substituierbarkeit in der Programmierung ist ein Begriff, der unabhängig von der Typkonformität betrachtet wird. Er bezieht sich darauf, ob eine Zuweisung automatisch und ohne Probleme durch den Compiler beantwortet werden kann."
+    },
+    {
+      "question": "Was ist die strengste Auslegung des Begriffs der Substituierbarkeit?",
+      "answer": "In der strengsten Auslegung des Begriffs der Substituierbarkeit kann ein Objekt ein anderes nur dann substituieren, wenn sich das auf den Programmablauf in keiner Weise auswirkt. Dazu müsste das ersetzende Objekt nicht nur gleich implementiert sein wie das ersetzte (also Instanz derselben Klasse), sondern sich auch noch (zum Zeitpunkt der Substituierung) im selben Zustand wie das substituierte befinden."
+    },
+    {
+      "question": "Was ist die Frage der Substituierbarkeit?",
+      "answer": "Die Frage der Substituierbarkeit bezieht sich darauf, ob ein Objekt durch ein anderes Objekt ersetzt werden kann, ohne dass sich das Verhalten des Gesamtsystems ändert. Diese Frage wird interessant, wenn die Objekte nicht derselben Klasse angehören und wenn man eine gewisse Abweichung im Verhalten von zu substituierenden Objekten zulässt. Diese Abweichungen können sowohl funktional als auch nichtfunktional sein."
+    },
+    {
+      "question": "Was ist funktionale Äquivalenz?",
+      "answer": "Funktionale Äquivalenz bedeutet, dass zwei Objekte, die zu verschiedenen Typen gehören, aber innerhalb derselben Gruppe sind, die gleichen Funktionen erfüllen und die gleichen Methoden aufrufen können. Sie können sich jedoch im Aussehen und Verhalten unterscheiden."
+    },
+    {
+      "question": "Was ist das Problem der schlechten Tracebarkeit?",
+      "answer": "Das Problem der schlechten Tracebarkeit entsteht durch den dynamischen Programmablauf. Die Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das Verstehen und Debuggen von Programmen."
+    },
+    {
+      "question": "Welche Probleme ergeben sich bei der Verwendung dynamisch gebundener Unterprogrammaufrufe in der objektorientierten Programmierung?",
+      "answer": "Bei der Verwendung dynamisch gebundener Unterprogrammaufrufe in der objektorientierten Programmierung ergibt sich das Problem, dass aus dem Programmtext nicht unmittelbar ersichtlich ist, wohin der Sprung geht. Dies führt zu einer Unsicherheit darüber, welcher Code tatsächlich ausgeführt wird, insbesondere beim Tracen oder Debuggen von Programmen."
+    },
+    {
+      "question": "Welches Konzept bieten Programmiersprachen wie Java und C-Sharp, um die doppelte Sichtweise auf Typen zu unterstützen?",
+      "answer": "Programmiersprachen wie Java und C-Sharp bieten das Konzept von \"Interfaces als Typen\" an, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. Dies ermöglicht es den Nutzerinnen, ihre eigenen Anforderungen als Typen zu definieren. Allerdings wird diese Möglichkeit in der Praxis oft nicht genutzt, um Anwenderinnen ihre eigenen Typen definieren zu lassen. Es wird jedoch darauf hingewiesen, dass dies in Zukunft anders gehandhabt werden könnte."
+    },
+    {
+      "question": "Was ist das Fragile-Base-Class-Problem?",
+      "answer": "Das Fragile-Base-Class-Problem bezieht sich auf eine Gruppe von Problemen in der Vererbung von Klassen. Wenn zwischen einer Klasse und ihren Subklassen aufgrund der Vererbung von Eigenschaften starke Abhängigkeiten bestehen, können Änderungen an der Basisklasse zu unerwarteten und unerwünschten Auswirkungen in der abgeleiteten Klasse führen."
+    },
+    {
+      "question": "Welche Herausforderungen ergeben sich aus dem Fragile-Base-Class-Problem in verteilten Objektsystemen?",
+      "answer": "In verteilten Objektsystemen wird das Problem komplexer, da Änderungen an einer Komponente unerwartete Auswirkungen auf verwandte Komponenten haben können. Die Schnittstellen und Beziehungen zwischen Komponenten müssen klar und stabil sein, um unerwartetes Verhalten zu verhindern. Das Problem wird noch schwerwiegender, wenn verschiedene Anbieter Komponenten entwickeln, da Änderungen an einer Komponente die Funktionalität anderer Komponenten beeinträchtigen könnten."
+    },
+    {
+      "question": "Welche Ansätze werden zur Bewältigung des Fragile-Base-Class-Problems vorgeschlagen?",
+      "answer": "Ein Ansatz besteht darin, explizite Vererbungsinterfaces einzuführen, um die Beziehungen zwischen Klassen in einer Vererbungshierarchie klarer zu definieren. Ein weiterer Ansatz ist die Verwendung von Zugriffsmodifikatoren und Schlüsselwörtern wie \"protected,\" \"virtual\" und \"override,\" um die Überschreibbarkeit von Methoden zu steuern und das Verhalten in Subklassen zu dokumentieren. Jedoch gibt es keine universelle Lösung für das Problem."
+    },
+    {
+      "question": "Welche Herausforderung besteht hinsichtlich der Strukturierung von Klassen in der objektorientierten Programmierung?",
+      "answer": "Eine Herausforderung besteht darin, dass die hierarchische Struktur objektorientierter Systeme auf Klassenebene nicht immer vorschreibbar ist. Objekte einer Klasse sind nicht immer Teile von Objekten anderer Klassen, sondern können auch einzelne Exemplare (Instanzen) sein und selbst Teile haben können. Es fehlen Konstrukte zur Definition von Komponenten als separate strukturbildende Einheiten neben Klassen und Objekten."
+    },
+    {
+      "question": "Was ist das Problem der eindimensionalen Strukturierung?",
+      "answer": "Bei größeren Programmen kann das Bedürfnis entstehen, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren, da verschiedene Vererbungshierarchien oder andere Strukturierungskriterien gleichzeitig relevant sein können. Die Trennung der Belange, auch als Separation of Concerns bekannt, wird in der objektorientierten Programmierung als unzureichend unterstützt angesehen, da es schwer ist, verschiedene Aspekte eines Systems sauber voneinander zu trennen."
+    },
+    {
+      "question": "Was ist das Problem der mangelnden Kapselung?",
+      "answer": "Die Vererbung in der objektorientierten Programmierung beeinträchtigt die Kapselung von Klassen auf unangenehme Weise. Vererbung führte zu starken Abhängigkeiten zwischen Klassen und ihren Subklassen, einschließlich der Implementierungsdetails. Diese Abhängigkeiten führten dazu, dass Teile der Ausdrucksstärke und Flexibilität der objektorientierten Programmierung aufgegeben werden mussten. Das Aliasing-Problem tritt auf, wenn ein Objekt, das von einem anderen Objekt gekapselt wird, auch einen Alias besitzt, der nicht selbst dem kapselnden Objekt gehört. Dies bedeutet, dass von außen auf das gekapselte Objekt zugegriffen werden kann, indem man den Alias verwendet. Dies stellt eine Herausforderung für die Kapselung dar, da es die Geheimhaltung der Implementierung durchbrechen kann."
+    },
+    {
+      "question": "Welche Möglichkeiten zur Kontrolle von Aliasing gibt es?",
+      "answer": "Es gibt verschiedene Ansätze zur Kontrolle von Aliasing in objektorientierten Programmiersprachen. Ein Ansatz besteht darin, die Teil-Ganzes-Beziehung zwischen Repräsentationsobjekten und dem Objekt zu definieren, sodass die Teile dem Ganzen gehören und nicht gleichzeitig Teile anderer Objekte sein können. Ein anderer Ansatz ist die Verwendung von Wertobjekten, die keine Referenzen auf andere Objekte zulassen. Ein dritter Ansatz besteht darin, Mechanismen zur Aliaskontrolle in die Programmiersprache zu integrieren, wobei viele dieser Mechanismen noch in der Entwicklung sind."
+    },
+    {
+      "question": "Was ist die Idee hinter der Überführung von Vorbedingungen in Nachbedingungen?",
+      "answer": "Die Idee hinter der Überführung von Vorbedingungen in Nachbedingungen stammt aus der formalen Programmverifikation und wird genutzt, um auch das Verhalten der Objekte eines Typs zu berücksichtigen. Dabei werden Vorbedingungen in Nachbedingungen überführt, um die Zuweisungskompatibilität zu regeln."
+    },
+    {
+      "question": "Was sind Vor- und Nachbedingungen in der Objektorientierung?",
+      "answer": "In der Objektorientierung ist eine Vorbedingung eine Bedingung, die vor der Ausführung einer Methode erfüllt sein muss. Die Nachbedingung ist eine Bedingung, die nach der Ausführung einer Methode erfüllt sein muss. Ein Typ gilt als korrekt implementiert, wenn für jede Methode gezeigt werden kann, dass aus der Vorbedingung die Nachbedingung folgt."
+    },
+    {
+      "question": "Was sind Invarianten?",
+      "answer": "Invarianten sind Bedingungen, die für alle Zustände eines Objekts gelten müssen."
+    },
+    {
+      "question": "Was ist eine verhaltensbasierte Subtypenrelation?",
+      "answer": "Eine verhaltensbasierte Subtypenrelation ist eine Beziehung zwischen potenziellen Subtypen und Supertypen, bei der die Bedingungen betrachtet werden, die erfüllt sein müssen, damit die potenziellen Subtypen die Spezifikation des Supertyps erfüllen und als verhaltenskonform betrachtet werden können."
+    },
+    {
+      "question": "Was ist verhaltensbasiertes Subtyping?",
+      "answer": "Verhaltensbasiertes Subtyping, auch bekannt als Behavior Subtyping, ist ein Prinzip in der objektorientierten Programmierung, bei dem ein Untertyp die gleichen Methoden wie sein Obertyp haben muss, aber nicht unbedingt die gleichen Attribute. Das bedeutet, dass ein Objekt eines Untertyps die gleichen Methoden wie ein Objekt des Obertyps aufrufen kann, aber nicht umgekehrt."
+    },
+    {
+      "question": "Was ist Behavior Subtyping?",
+      "answer": "Behavior Subtyping, auch verhaltensbasiertes Subtyping genannt, ist eine Art von Subtyping, bei der ein Untertyp die gleichen Methoden wie sein Obertyp haben muss, aber nicht unbedingt die gleichen Attribute."
+    },
+    {
+      "question": "Was ist das Problem mit der Substituierbarkeit von Objekten?",
+      "answer": "Das Problem ist, dass ein Objekt vom Typ S, das von einem Klienten als Typ T betrachtet wird, von einem anderen Klienten als Typ S (oder als ein anderer Supertyp als T) betrachtet werden kann. Dadurch können Methoden auf dem Objekt aufgerufen werden, die Zustandsänderungen verursachen, die nicht durch die mit T verbundenen Methodenspezifikationen (Vor- und Nachbedingungen) abgedeckt sind. Dieses Verhalten ist nicht mit dem von T kompatibel und für Benutzer, die das Objekt als T betrachten, nicht akzeptabel."
+    },
+    {
+      "question": "Was ist ein Indikator dafür, dass eine Klasse in mehrere Subklassen aufgeteilt werden sollte?",
+      "answer": "Ein guter Indikator dafür ist das wiederholte Vorkommen gleicher Fallunterscheidungen, insbesondere dann, wenn diese Fallunterscheidungen die Art der Objekte betreffen."
+    },
+    {
+      "question": "Was ist ein Indikator dafür, dass eine Klasse in mehrere Spezialisierungen aufgeteilt werden sollte?",
+      "answer": "Ein guter Indikator dafür ist das wiederholte Vorkommen gleicher Fallunterscheidungen, insbesondere dann, wenn diese Fallunterscheidungen die Art der Objekte betreffen."
+    },
+    {
+      "question": "Was ist die ungarische Notation?",
+      "answer": "Die ungarische Notation ist eine Namenskonvention, bei der Bezeichner, die für ein Objekt oder einen Wert stehen, den Typ dieses Objekts oder Werts widerspiegeln. Es gibt verschiedene Auslegungen der ungarischen Notation, eine davon verlangt, dass alle Variablen, die Strings bezeichnen, mit \"str\" beginnen. Eine sinnvollere Auslegung ist, Variablen um die Verwendung ihres so bezeichneten Inhalts zu ergänzen, was in der objektorientierten Programmierung auch durch die Verwendung eines Interfaces anstelle einer Klasse als Typ bei der Deklaration der Variable ausgedrückt werden kann."
+    },
+    {
+      "question": "Was ist die Voraussetzung dafür, dass Objekte ihre Rolle spielen können?",
+      "answer": "Die einzige Voraussetzung dafür ist, dass sie typkonform sind."
+    },
+    {
+      "question": "Was ist die Voraussetzung dafür, dass Objekte typkonform sind?",
+      "answer": "Die Voraussetzung dafür, dass Objekte typkonform sind, ist, dass sie die Eigenschaften und Verhaltensweisen besitzen, die von einem Objekt seines Typs erwartet werden."
+    },
+    {
+      "question": "Was sind Interfaces als Typen?",
+      "answer": "Interfaces als Typen sind ein Konzept in Programmiersprachen wie Java und C-Sharp, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. Diese Möglichkeit wird jedoch selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen."
+    },
+    {
+      "question": "Was ist ein Refactoring?",
+      "answer": "Refactoring ist eine semantikerhaltende Umstrukturierung von Code, bei der der Verhaltensumfang der Methode nicht verändert wird, sondern nur die innere Struktur der Methode."
+    },
+    {
+      "question": "Was ist die Vererbung von Implementierung?",
+      "answer": "Die Vererbung von Implementierung ist eine Technologie zum Erstellen von Anwendungen, bei der eine Komponente von einer anderen Komponente abgeleitet wird oder Teile ihrer Funktionalität erbt."
+    },
+    {
+      "question": "Welche Probleme kann die Vererbung von Implementierung verursachen?",
+      "answer": "Die Vererbung von Implementierung kann viele Probleme in einem verteilten, sich weiterentwickelnden Objektsystem verursachen, da sie die Kopplung zwischen Komponenten erhöht und die Änderungen in der Basiskomponente Auswirkungen auf die abgeleiteten Komponenten haben können."
+    },
+    {
+      "question": "Was ist ein explizites Vererbungsinterface?",
+      "answer": "Ein explizites Vererbungsinterface ist eine Schnittstelle zwischen einer Klasse und ihren Subklassen, die die Eigenschaften definiert, auf die man über die Variablen self oder super zugreifen kann. Im Gegensatz zu anderen Schnittstellen handelt es sich hierbei nicht um eine Abhängigkeit zu anderen Objekten, sondern um eine Schnittstelle, die das Verhalten zwischen einer Klasse und ihren Subklassen regelt."
+    },
+    {
+      "question": "Was ist ein deklarativer Programmierstil?",
+      "answer": "Ein deklarativer Programmierstil in der objektorientierten Programmierung bemüht sich mehr um das \"Was\" als um das \"Wie\". Er ist typisch für die objektorientierte Programmierung und geht einher mit kurzen Methoden und aussagekräftigen Bezeichnern. Der Effizienzgedanke ist dabei sekundär – mögliche Optimierungen werden dem Compiler überlassen und ansonsten für später aufgehoben, wenn sich herausstellen sollte, dass die Abarbeitung einer deklarativ formulierten Lösung zu ineffizient ist."
+    },
+    {
+      "question": "Was ist die Bedeutung von Zusicherungen (Assertions) in der Programmierung?",
+      "answer": "Zusicherungen (Assertions) sind in der Programmierung eine Möglichkeit, die Richtigkeit von Bedingungen zu einem bestimmten Zeitpunkt während der Ausführung eines Programms zu überprüfen. Wenn die Sprache dies zulässt, können sie auch dazu verwendet werden, dem Aufrufer der Methode zu zeigen, wie er selbst prüfen kann, ob die Vorbedingung eingehalten ist."
+    },
+    {
+      "question": "Was sind Komponenten in objektorientierter Programmierung?",
+      "answer": "In objektorientierter Programmierung werden Komponenten als wiederverwendbare, selbstbeschreibende und austauschbare Einheiten angesehen, die eine bestimmte Funktionalität bereitstellen. Sie werden in der Regel zur Laufzeit, per Aggregation von Objekten, zusammengebaut. Leider ist es mit der Einführung von Komponenten in objektorientierten Programmiersprachen noch nicht besonders weit, da keine weit verbreitete objektorientierte Programmiersprache das Schlüsselwort \"component\" verwendet oder reserviert. Stattdessen werden Programmierer dazu veranlasst, alles in Form von Klassen zu definieren. Konzepte wie Pakete (Java) oder Assemblies (C-Sharp) können einen Komponentenbegriff nicht ersetzen, da sie lediglich Klassen gruppieren und dabei ignorieren, dass dieselbe Klasse Instanzen für Komponenten verschiedener Typen liefern kann. Es wird vermutet, dass in den nächsten Jahren in diesem Bereich noch der größte Fortschritt erzielt werden kann."
+    },
+    {
+      "question": "Was ist die Faustregel für eine gute Namenswahl?",
+      "answer": "Als Faustregel wird genannt, dass ein Name dann gut gewählt ist, wenn man alle Ausdrücke, in denen er vorkommt, schnell und klar verstehen kann. Ein gut gewählter Name sollte keine falschen Assoziationen oder Vermutungen hervorrufen und sollte somit leicht verständlich sein. Es ist ratsam, sich Zeit für die Auswahl eines passenden Namens zu nehmen, da dies eine sorgfältige Überlegung erfordert und die Lesbarkeit des Codes erheblich verbessern kann."
+    },
+    {
+      "question": "Welche Rolle spielen Bibliotheken in der objektorientierten Programmierung?",
+      "answer": "Bibliotheken spielen eine entscheidende Rolle in der objektorientierten Programmierung. Sie sind ein wesentlicher Bestandteil des objektorientierten Programmierstils und tragen maßgeblich zum Erfolg dieses Ansatzes bei."
+    },
+    {
+      "question": "Welche Art von Zugriffsregel führt Demeters Gesetz ein?",
+      "answer": "Demeters Gesetz führt faktisch eine neue, kontextabhängige Zugriffsregel ein: Eigenschaften von Objekten, die ein Objekt nicht selbst kennt, sind für das Objekt gleichgestellt mit denen von Objekten, die es zwar selbst kennt, auf die es aber nicht zugreifen darf. Dies führt zu einer klaren Trennung zwischen direkten und indirekten Beziehungen zwischen Objekten."
+    },
+    {
+      "question": "Was ist Substituierbarkeit in Bezug auf Typerweiterung und Typeinschränkung?",
+      "answer": "Substituierbarkeit bedeutet, dass ein Objekt eines Typs durch ein Objekt eines anderen Typs ersetzt werden kann, ohne dass die Korrektheit des Programms beeinträchtigt wird. Wenn eine Typerweiterung vorliegt, ist die Substituierbarkeit in der Regel unproblematisch. Wenn jedoch eine Typeinschränkung vorliegt, kann die Substituierbarkeit fraglich sein, da das ersetzende Objekt möglicherweise nicht die gleichen Eigenschaften und Methoden aufweist wie das ursprüngliche Objekt."
+    },
+    {
+      "question": "Was ist ein mögliches Problem, wenn man Bag als Subtyp von Set annimmt?",
+      "answer": "Wenn man Bag als Subtyp von Set annimmt, kann dies dazu führen, dass die für Set charakteristische Eigenschaft verletzt wird, nämlich dass nach dem Entfernen eines Elements dieses nicht mehr in der Menge enthalten ist. Programme, die darauf basieren, dass diese Eigenschaft garantiert wird und die stattdessen eine Multimenge erhalten, funktionieren nicht mehr korrekt. Je nach Standpunkt kann dies als Typfehler angesehen werden."
+    },
+    {
+      "question": "Was ist das Ziel des Gesetzes Demeters?",
+      "answer": "Das Ziel des Gesetzes Demeters ist es, die Kopplung und damit die Entwurfsabhängigkeiten zwischen Klassen zu verringern. Wenn das Gesetz Demeters verletzt wird, kann die Änderung (des Protokolls) einer Klasse dazu führen, dass auch Klassen angepasst werden müssen, die selbst in keiner unmittelbaren Beziehung zu der Klasse stehen."
+    },
+    {
+      "question": "Welche Probleme ergeben sich aus Subtyping?",
+      "answer": "Das Problem, das sich aus Subtyping ergibt, ist, dass aufgrund des dynamischen Bindens von Methodenaufrufen bei Vorliegen des Programmfragments selbst bei Kenntnis des Typs T nicht vorhergesagt werden kann, welchen Effekt der Aufruf der Methode m in Zeile 1509 hat. In einer statischen, lokalen Betrachtung befinden wir uns in einem Zustand völliger Unsicherheit."
+    },
+    {
+      "question": "Was ist das Problem der formalen Programmverifikation?",
+      "answer": "Das Problem der formalen Programmverifikation ist die Beziehung P {e m} Q, bei der vor der Ausführung des Methodenaufrufs e m die Bedingung P gilt und nach seiner Ausführung die Bedingung Q erfüllt sein muss. Ein solcher Beweis erfordert genaue Kenntnisse über die Implementierung der Methode."
+    },
+    {
+      "question": "Was ist weniger geeignet für die objektorientierte Programmierung?",
+      "answer": "Probleme, die einen hohen algorithmischen Anteil und vergleichsweise einfache Datenstrukturen verlangen, sind weniger geeignet für die objektorientierte Programmierung."
+    },
+    {
+      "question": "Was ist das Ziel der Objektorientierung?",
+      "answer": "Das Ziel der Objektorientierung ist es, die Komplexität von Software zu reduzieren, indem sie die Software in kleinere, leichter zu verstehende Einheiten aufteilt, die Objekte genannt werden und Instanzen von Klassen sind."
+    },
+    {
+      "question": "Was ist das Liskov-Substitutionsprinzip?",
+      "answer": "Das Liskov-Substitutionsprinzip ist eine ausreichende Bedingung für die Subtypenbeziehung zwischen zwei Typen. Es besagt, dass ein Typ B, der als Subtyp eines Typs A deklariert ist, in einem Programm an allen Stellen, an denen ein Objekt vom Typ A erwartet wird, durch ein Objekt vom Typ B ersetzt werden kann, ohne dass das Programm dadurch in seiner Funktionalität beeinträchtigt wird."
+    },
+    {
+      "question": "Was ist die Subtypenbeziehung?",
+      "answer": "Die Subtypenbeziehung ist eine Beziehung zwischen zwei Typen, bei der der Untertyp alle Eigenschaften des Obertyps erfüllt. Das bedeutet, dass ein Objekt des Untertyps auch als Objekt des Obertyps behandelt werden kann. Diese Beziehung wird oft durch eine Hierarchie von Klassen dargestellt, bei der eine Unterklasse eine spezifischere Version einer Oberklasse ist."
+    },
+    {
+      "question": "Was sind Vor- und Nachbedingungen in typlosen Sprachen?",
+      "answer": "In typlosen Sprachen wie Smalltalk werden die Anforderungen an die Parameterobjekte mithilfe von Vor- und Nachbedingungen formuliert. Vorbedingungen beschreiben die Bedingungen, die vor der Ausführung einer Methode erfüllt sein müssen, während Nachbedingungen die Bedingungen beschreiben, die nach der Ausführung der Methode erfüllt sein müssen. Die Menge der ausgelösten Ausnahmen ist Teil der Nachbedingungen."
+    },
+    {
+      "question": "Was sind Zustandswechselinvarianten?",
+      "answer": "Zustandswechselinvarianten sind Verlaufseigenschaften, die die möglichen Zustandsänderungen von Objekten betreffen. Sie werden benötigt, um eine weniger restriktive Lösung für die Spezifikation von Methoden zu ermöglichen, die neben Vor- und Nachbedingungen auch die Zustandsänderungen von Objekten berücksichtigt. Dazu ist eine Art Spezifikation endlicher Automaten erforderlich, die die Menge der möglichen Zustände und Zustandsübergänge beschreibt. Um den Zustandsraum kombinatorisch zu vermeiden, werden bei den historischen Zustandswechseln lediglich zwei beliebige, zeitlich nicht notwendigerweise aufeinanderfolgende Zustände betrachtet, für die eine Bedingung formuliert wird, die eingehalten werden muss."
+    },
+    {
+      "question": "Was ist die Trennung der Belange (Separation of Concerns) in der objektorientierten Programmierung?",
+      "answer": "Die Trennung der Belange, auch Separation of Concerns genannt, ist ein Prinzip in der objektorientierten Programmierung, das die Aufgaben und Verantwortlichkeiten von Objekten und Komponenten klar trennen soll. Es ist jedoch unzureichend unterstützt und kann die Komplexität nur in das Zusammenführen der Sichten verschieben."
+    },
+    {
+      "question": "Was ist das Aliasing-Problem?",
+      "answer": "Das Aliasing-Problem ist ein Problem in der Objektorientierung, bei dem ein Objekt, das durch ein anderes Objekt gekapselt wird, einen weiteren Alias besitzt, der nicht selbst dem kapselnden Objekt gehört. Dadurch kann man auf das gekapselte Objekt zugegriffen werden, auch wenn die Instanzvariable von außen unzugreifbar ist."
+    },
+    {
+      "question": "Was sind Repräsentationsobjekte?",
+      "answer": "Repräsentationsobjekte sind Objekte, die die Implementierung eines anderen Objekts ausmachen und die hinter der Schnittstelle des Objekts verborgen werden sollen. Sie kommen lediglich als „Innereien“ der Objekte vor, deren Repräsentation sie ausmachen."
+    },
+    {
+      "question": "Was ist Aliasing?",
+      "answer": "Aliasing bedeutet, dass mehrere Variablen auf das gleiche Objekt verweisen. Dies kann zu Problemen führen, wenn die Kapselung von Objekten (das Geheimnisprinzip) Gegenstand der Spezifikation eines Programms ist, da Aliase von außen auf diese Objekte als geheime Daten- oder Funktionsträger zugreifen können. Dies ist bei sicherheitskritischen Anwendungen der Fall, bei denen Daten geschützt werden müssen oder Funktionen nur durch autorisierte Benutzer ausgeführt werden dürfen. Am Programmverhalten ist dies jedoch nicht zu erkennen."
+    },
+    {
+      "question": "Was bedeutet \"gute Programmierung\"?",
+      "answer": "Laut dem Kurstext bedeutet \"gute Programmierung\", dass der Programmtext und der Programmablauf einander möglichst ähnlich sind, genauer gesagt, dass die (statische) Struktur des Programms möglichst viele Rückschlüsse auf seinen (dynamischen) Ablauf zulässt."
+    },
+    {
+      "question": "Was bedeutet es, wenn ein Objekt typkonform ist?",
+      "answer": "Wenn ein Objekt typkonform ist, bedeutet das, dass es die Eigenschaften und Verhaltensweisen besitzt, die von einem Objekt seines Typs erwartet werden. Es erfüllt also die Anforderungen, die an Objekte dieses Typs gestellt werden."
+    },
+    {
+      "question": "Was bedeutet funktional äquivalent?",
+      "answer": "Funktional äquivalent bedeutet, dass zwei Ausdrücke das gleiche Ergebnis liefern, wenn sie mit den gleichen Eingabewerten ausgeführt werden."
+    }
+  ],
+  "APPLY": [
+    {
+      "question": "Wie wird das Lokalitätsprinzip durch dynamisches Binden aufgeweicht?",
+      "answer": "Das Lokalitätsprinzip besagt, dass die Bedeutung eines Namens durch die unmittelbare Umgebung bestimmt wird, in der er deklariert ist. Durch dynamisches Binden wird das Lokalitätsprinzip aufgeweicht, da die Bedeutung eines Namens, der auf eine Methode verweist, nicht nur durch die unmittelbare Umgebung bestimmt wird, sondern auch durch die Klasse des Empfängerobjekts, auf dem die Methode aufgerufen wurde. Diese Information ist in der Regel nicht lokal bestimmbar und erfordert eine vollständige Programmanalyse."
+    },
+    {
+      "question": "Wie lässt sich das Problem der schlechten Tracebarkeit lösen?",
+      "answer": "Man versuchte, das Problem der schlechten Tracebarkeit durch das Vermeiden von Goto-Anweisungen zu lösen. Stattdessen setzte man auf strukturierte Programmierung, die Verzweigung, Wiederholung und Unterprogrammaufrufe verwendete, um den Programmfluss zu steuern."
+    },
+    {
+      "question": "Wie kann man das Fragile-Base-Class-Problem verhindern?",
+      "answer": "Eine Möglichkeit zur Vermeidung des Problems besteht darin, explizite Schnittstellen oder Vererbungsinterfaces einzuführen, die genau definieren, welche Eigenschaften und Methoden von Subklassen erwartet werden. Ein weiterer Ansatz ist die Verwendung von Zugriffsmodifikatoren und Schlüsselwörtern wie \"virtual\" und \"override,\" um die Überschreibbarkeit und das Verhalten von Methoden in der Vererbungshierarchie zu steuern."
+    },
+    {
+      "question": "Wie wird die Prüfung der Substituierbarkeit in der Praxis durchgeführt?",
+      "answer": "In der Praxis wird die Prüfung der Substituierbarkeit durch Typüberprüfungsverfahren, insbesondere die Prüfung der Typkonformität, angenähert. Dabei wird jedoch betont, dass nicht einmal eine Substituierbarkeit ausgeschlossen werden kann, wenn mangelnde Typkonformität vorliegt. Substituierbarkeit erfordert auch eine Betrachtung des Verhaltens der Objekte."
+    },
+    {
+      "question": "Wie können Programmierer ihre Erwartungen an Objekte ausdrücken?",
+      "answer": "Programmierer können ihre Erwartungen an Objekte ausdrücken, indem sie selbst einen Typen definieren, der nur die Eigenschaften umfasst, die sie benötigen. Ein solcher Typ spezifiziert gewissermaßen die Rolle, die die Objekte im Kontext der Verwendung spielen sollen."
+    },
+    {
+      "question": "Wie beeinflusst die Ausdrucksweise einer Programmiersprache die Qualität eines Programms?",
+      "answer": "Die Ausdrucksweise einer Programmiersprache beeinflusst die Qualität eines Programms, indem sie die Effizienz der Problemlösung und die Verständlichkeit der Formulierung beeinflusst. Dies hängt von Faktoren wie Schreibstil, Mode und Ästhetik ab."
+    },
+    {
+      "question": "Wie kann die Analysephase eines Projekts zur Identifizierung der Klassen eines Systems beitragen?",
+      "answer": "In der Analysephase eines Projekts können alle Substantive aus der Spezifikation extrahiert werden, um auf der Basis dieser Liste die Menge der Klassen eines Systems zu identifizieren. Dies ist eine vielzitierte objektorientierte Technik."
+    },
+    {
+      "question": "Wie wird das Gesetz Demeters oft zusammengefasst?",
+      "answer": "Das Gesetz Demeters wird oft in folgender Phrase zusammengefasst: \"Sprich nicht mit Fremden.\" In Bezug auf SMALLTALK bedeutet dies, dass Methodenaufrufe zwar geschachtelt, aber nicht verkettet erfolgen dürfen."
+    },
+    {
+      "question": "Wann wird das Gesetz Demeters typischerweise verletzt?",
+      "answer": "Das Gesetz Demeters wird typischerweise verletzt, wenn Nachrichten an Objekte gesendet werden, die selbst nur als Ergebnis eines Nachrichtenausdrucks vorliegen, wie zum Beispiel bei Kettenaufrufen oder über eine zwischenzeitliche Zuweisung zu einer temporären Variablen."
+    },
+    {
+      "question": "Wie kann das Problem der Aliasbildung gelöst werden?",
+      "answer": "Das Problem der Aliasbildung kann durch zwei Lösungen gelöst werden: Die Aliasbildung wird vermieden, indem die Objekte, die als Argumente übergeben werden, kopiert werden. Dadurch wird sichergestellt, dass die Methode nur auf eine Kopie des Objekts zugreift und nicht auf das Original. Oder die Aliasbildung wird zugelassen, aber die Methodenaufrufe werden begrenzt, was bedeutet, dass die Methode nur auf die Objekte zugreifen kann, die ihr als Argumente übergeben werden, und nicht auf die Objekte, auf die diese Objekte verweisen."
+    },
+    {
+      "question": "Wie können Klassen strukturiert werden?",
+      "answer": "Die Menge der Module und damit das Programm werden durch die Vererbungshierarchie weiter strukturiert. Parallel dazu gibt es noch eine Struktur, die durch das Bestehen von Beziehungen zwischen Klassen geprägt ist. Diese ist jedoch nicht hierarchisch und insgesamt eher unorganisiert. Die Klassenhierarchie stellt also insbesondere keine Form der hierarchischen Modularisierung dar."
+    },
+    {
+      "question": "Wie wirkt sich Vererbung auf die Kapselung von Klassen aus?",
+      "answer": "Vererbung kann die Kapselung von Klassen auf unangenehme Weise aufbrechen, indem sie starke Abhängigkeiten zwischen Klassen und ihren Subklassen erzeugt. Diese Abhängigkeiten explizit zu machen, kann zwar vor Programmierfehlern schützen, aber die Abhängigkeiten nicht beseitigen. Die Abhängigkeiten zu beschränken, bedeutet, einen Teil der Ausdrucksstärke und Flexibilität der objektorientierten Programmierung aufzugeben."
+    },
+    {
+      "question": "Wie kann man sicherstellen, dass eine Methode in einer Klasse keine Aliase anlegt und verwendet?",
+      "answer": "Um sicherzustellen, dass eine Methode in einer Klasse keine Aliase anlegt und verwendet, kann man die Implementierung der Klasse überprüfen und sicherstellen, dass sie keine Aliase erstellt oder verwendet. Zusätzlich kann man die Sprache und die Laufzeitumgebung überprüfen, um sicherzustellen, dass sie keine Aliase automatisch erzeugen."
+    },
+    {
+      "question": "Wie kann das Geheimnisprinzip umgangen werden?",
+      "answer": "Das Geheimnisprinzip kann umgangen werden, indem Repräsentationsobjekte, deren Namen verborgen werden sollen, noch andere Namen besitzen, zum Beispiel wenn ein Objekt seine Repräsentationsobjekte bei seiner Erzeugung von außen geliefert bekommt oder wenn das Objekt selbst eine Referenz auf ein Repräsentationsobjekt herausgibt, beispielsweise durch einen Getter."
+    },
+    {
+      "question": "Wie kann man verhindern, dass Objekte von anderen Objekten referenziert werden können?",
+      "answer": "Eine Möglichkeit, dies zu verhindern, ist, aus den Objekten Wertobjekte zu machen und die verwendete Programmiersprache keine Zeiger auf Wertobjekte erlaubt. Dies ist jedoch nur in einigen Programmiersprachen möglich, wie zum Beispiel in C-Sharp im Safe mode, wenn die „Klasse“ der Teil-Objekte per \"struct\" definiert wurde. Diese Vorgehensweise ist jedoch nur selten ohne unerwünschte Nebenwirkungen, da alle Objekte dieser „Klasse“ nur Wertobjekte sein und keine Referenzen haben dürfen, was die Anwendungsdomäne in der Regel nicht korrekt abbildet."
+    },
+    {
+      "question": "Wie geht EIFFEL mit Referenz- und Wertvariablen um?",
+      "answer": "EIFFEL erlaubt, auf Wertobjekte Referenzen zu haben, aber bei der Zuweisung einer Referenzvariable an eine Wertvariable wird immer eine (aliasfreie) Kopie des referenzierten Objekts erzeugt und zugewiesen, sodass kein Alias in die Repräsentation hinein entstehen kann. Umgekehrt wird bei der Zuweisung eines Wertobjekts an eine Referenzvariable immer eine Kopie des Wertobjekts erzeugt und die Referenz darauf angelegt. Somit sind Wertobjekte in EIFFEL aliasfrei."
+    },
+    {
+      "question": "Wie hängt der Substituierbarkeitsbegriff mit der Übersetzungszeit zusammen?",
+      "answer": "Der Substituierbarkeitsbegriff ist ein Begriff, der unabhängig vom konkreten Zustand der Objekte sein muss. Wenn man die Betrachtung von Substituierbarkeit von der Laufzeit auf die Übersetzungszeit verlagert, ist das Verhalten aller Objekte einer Klasse gleich spezifiziert, so dass eine gegenseitige Substituierbarkeit von Objekten derselben Klasse automatisch gegeben ist."
+    },
+    {
+      "question": "Was ist der Zweck von abstrakten Typen?",
+      "answer": "Abstrakte Typen werden verwendet, um Objekte verschiedener konkreter Typen zu repräsentieren, die eine gemeinsame Schnittstelle haben, aber ein unterschiedliches Verhalten aufweisen. Die Objekte sind austauschbar, da sie die gleichen Methoden besitzen, aber das konkrete Verhalten dieser Methoden kann unterschiedlich sein. Abstrakte Typen werden verwendet, um eine allgemeine Klasse von Objekten zu definieren, ohne sich auf eine bestimmte Implementierung festzulegen."
+    },
+    {
+      "question": "Wie kann das Verhalten von Objekten in der Subtypenbeziehung berücksichtigt werden?",
+      "answer": "Die Idee aus der formalen Programmverifikation besteht darin, Vorbedingungen in Nachbedingungen zu überführen, um das Verhalten von Objekten eines Typs zu berücksichtigen. Dies wird verwendet, um sicherzustellen, dass die Implementierung eines Typs korrekt ist und dass aus Vorbedingungen die entsprechenden Nachbedingungen folgen."
+    },
+    {
+      "question": "Was ist der Zweck der Nachbedingung in der objektorientierten Programmierung?",
+      "answer": "Der Zweck der Nachbedingung in der objektorientierten Programmierung ist es, die Korrektheit der Implementierung zu gewährleisten. Die Nachbedingung wird aus der Vorbedingung abgeleitet und gilt für die Implementierung einer Methode in der zugehörigen Klasse. Der Beweis für die Nachbedingung muss nicht geführt werden, da es hier um die Austauschbarkeit von Implementierungen abhängig vom Verwendungskontext geht."
+    },
+    {
+      "question": "Was ist der Zweck des Gesetzes Demeters?",
+      "answer": "Der Sinn und Zweck des Gesetzes Demeters ist es, die Kopplung und die Entwurfsabhängigkeiten zwischen Klassen zu verringern. Wenn das Gesetz Demeters verletzt wird, kann eine Änderung des Protokolls einer Klasse dazu führen, dass auch Klassen angepasst werden müssen, die selbst in keiner unmittelbaren Beziehung zur Klasse stehen, was vermieden werden sollte."
+    },
+    {
+      "question": "Was ist der Zweck der Substituierbarkeit?",
+      "answer": "Der Zweck der Substituierbarkeit in der objektorientierten Programmierung ist es, die Gewissheit zu haben, dass eine lokale, \"modulare\" Betrachtung ausreicht und man nicht jedes Mal eine Analyse des gesamten Programms durchführen muss, um zu entschlüsseln, was ein Methodenaufruf bewirken könnte."
+    },
+    {
+      "question": "Warum wird dynamisches Binden in der objektorientierten Programmierung kritisiert?",
+      "answer": "Kritikerinnen der objektorientierten Programmierung haben das dynamische Binden als eine Art Goto der 90er Jahre betrachtet. Dieser Vergleich ist jedoch nicht ganz fair, weil die Aufruferin nicht wissen muss, welche genauen Anweisungen als Antwort darauf ausgeführt werden müssen. Es reicht zu wissen, welchen Vertrag die aufgerufene Methode erfüllt."
+    },
+    {
+      "question": "Warum sollten nur die Blätter der Klassenhierarchie instanziierbar sein?",
+      "answer": "Die Blätter der Klassenhierarchie sollten instanziierbar sein, weil man die Implementierung einer Klasse ändern will, ohne die Implementierung der Superklasse ändern zu müssen. Wenn man mit der Funktionalität einer Klasse nicht zufrieden ist, will man die Implementierung der Klasse ändern, ohne die Implementierung der Superklasse ändern zu müssen."
+    },
+    {
+      "question": "Warum sollte man sich zur Angewohnheit machen, automatische Codeformatierer einzusetzen?",
+      "answer": "Man sollte sich zur Angewohnheit machen, automatische Codeformatierer einzusetzen, um Energieverschwendung zu vermeiden, Codierungs-konventionen umzusetzen, sich nicht zu weit von dem, was allgemein üblich ist, zu entfernen und sich auf die Entwicklung des persönlichen Programmierstils zu konzentrieren."
+    },
+    {
+      "question": "Warum sind gemeinsame Konventionen in der Softwareentwicklung wichtig?",
+      "answer": "Gemeinsame Konventionen in der Softwareentwicklung sind wichtig, weil ein großer Teil des Aufwands bei der Softwareentwicklung darin besteht, bestehende Software zu lesen und sicherzustellen, dass andere das Geschriebene leicht verstehen können. Individuelle Eigenheiten sind nicht hilfreich, während gemeinsame Konventionen allen Entwicklern helfen."
+    },
+    {
+      "question": "Warum ist die Unabhängigkeit vom konkreten Zustand der Objekte wichtig im Zusammenhang mit der Substituierbarkeit?",
+      "answer": "Die Unabhängigkeit vom konkreten Zustand der Objekte ermöglicht es, die Substituierbarkeit von der Laufzeit auf die Übersetzungs- oder Entwurfszeit zu verlagern. Auf dieser Ebene ist das Verhalten aller Objekte einer Klasse gleich, da sie durch dieselbe Klassendefinition spezifiziert sind."
+    },
+    {
+      "question": "Warum reicht eine methodenweise Betrachtung von Bedingungen für die Substituierbarkeit nicht aus?",
+      "answer": "Eine methodenweise Betrachtung von Bedingungen für die Substituierbarkeit reicht nicht aus, da Aliasings in der objektorientierten Programmierung dazu führen kann, dass ein Objekt vom Typ S von verschiedenen Klienten unterschiedliche Typen hat und Methodenaufrufe auf dem Objekt Zustandsänderungen verursachen können, die nicht durch die mit T verbundenen Methodenspezifikationen abgedeckt sind. Daher muss eine umfassendere Betrachtung erfolgen, die die Auswirkungen des Verhaltens auf den Zustand und die Spezifikation des Typs berücksichtigt."
+    },
+    {
+      "question": "Warum ist der Name Fragile-Base-Class-Problem etwas irreführend?",
+      "answer": "Der Name ist etwas irreführend, da nicht unbedingt die Basisklassen, sondern eher die abgeleiteten Klassen als \"anfällig\" oder \"zerbrechlich\" gelten."
+    },
+    {
+      "question": "Warum ist es wichtig, aussagekräftige Bezeichner in Programmen zu verwenden?",
+      "answer": "Die Verwendung von aussagekräftigen Bezeichnern in Programmen trägt zur Verständlichkeit des Codes bei. Gut gewählte Bezeichner drücken im Kontext ihre Bedeutung aus, sodass Kommentare zur Erklärung der Programmelemente oft unnötig werden. Dies erleichtert anderen Entwicklerinnen das Verständnis des Codes und erhöht die Lesbarkeit und Wartbarkeit des Programms."
+    },
+    {
+      "question": "Warum können Konzepte wie Pakete (Java) oder Assemblies (C-Sharp) den Begriff der Komponente nicht ersetzen?",
+      "answer": "Pakete (Java) oder Assemblies (C-Sharp) gruppieren lediglich Klassen und berücksichtigen nicht, dass dieselbe Klasse Instanzen für Komponenten verschiedener Typen liefern kann. Sie können den Begriff der Komponente daher nicht vollständig ersetzen."
+    },
+    {
+      "question": "Warum kann die Unterdrückung von Eigenschaften bei abgeleiteten Typen in Java problematisch sein?",
+      "answer": "In Java ist die Unterdrückung von Eigenschaften bei abgeleiteten Typen problematisch, da sie dazu führen kann, dass an Stellen im Programm, an denen ein Objekt des Supertyps erwartet wird, ein Objekt des Subtyps auftaucht. Dies kann zu schwerwiegenden Programmierfehlern führen, da die erwarteten Funktionen des Supertyps möglicherweise nicht verfügbar sind."
+    },
+    {
+      "question": "Warum sind nicht alle Aufgaben gleichermaßen zur Lösung per objektorientierter Programmierung geeignet?",
+      "answer": "Nicht alle Aufgaben sind gleichermaßen zur Lösung per objektorientierter Programmierung geeignet, da einige Aufgaben besser mit anderen Programmierparadigmen wie funktionale oder logische Programmiersprachen gelöst werden können. Auch Batch- und Scripting-Probleme, die einen imperativ-prozeduralen Charakter haben, eignen sich möglicherweise nicht optimal für die objektorientierte Programmierung."
+    },
+    {
+      "question": "Warum stellt die Klassenhierarchie keine Form der hierarchischen Modularisierung dar?",
+      "answer": "Die Klassenhierarchie stellt keine Form der hierarchischen Modularisierung dar, da das Herauslösen eines Teilbaums der Vererbungshierarchie praktisch immer Beziehungen zwischen Mitgliedern des Teilbaums und anderen trennt. Somit werden Beziehungen zwischen Klassenmitgliedern gestört."
+    },
+    {
+      "question": "Warum wird die Trennung der Belange in der objektorientierten Programmierung als unzureichend unterstützt angesehen?",
+      "answer": "Die Trennung der Belange, auch als Separation of Concerns bekannt, wird in der objektorientierten Programmierung als unzureichend unterstützt angesehen, da es schwer ist, verschiedene Aspekte eines Systems sauber voneinander zu trennen. Ansätze wie das Subject- oder Aspect-oriented Programming wurden zwar diskutiert, haben jedoch keine breite Akzeptanz gefunden. Die Gründe dafür können vielfältig sein, aber letztendlich ist es schwierig, die essentielle Komplexität eines Problems durch programmiersprachliche Mittel vollständig zu beseitigen."
+    },
+    {
+      "question": "Warum kann das Verbot von Aliasing in einigen Programmiersprachen nicht immer eine geeignete Lösung sein?",
+      "answer": "Das Verbot von Aliasing in einigen Programmiersprachen kann nicht immer eine geeignete Lösung sein, da es zahlreiche Anwendungsfälle gibt, in denen die Verwendung von Aliasing notwendig oder sinnvoll ist. Zum Beispiel können bestimmte Datenstrukturen oder Container von Natur aus Aliase erfordern, um effizient zu arbeiten."
+    },
+    {
+      "question": "Warum ist es vorteilhaft, existierende Bibliotheken in der objektorientierten Programmierung zu verwenden?",
+      "answer": "Es ist vorteilhaft, existierende Bibliotheken in der objektorientierten Programmierung zu verwenden, da die Implementierungen in der Regel korrekt sind, die Wartung und Anpassung übernommen wird, die Funktionalität bekannt ist und die eigene Arbeit klein und überschaubar bleibt."
+    },
+    {
+      "question": "Warum ist die Implementierungsvererbung nicht für ein Systemobjektmodell geeignet, das eine Architektur für Komponentensoftware definiert?",
+      "answer": "Die Implementierungsvererbung ist nicht für ein Systemobjektmodell geeignet, das eine Architektur für Komponentensoftware definiert, weil sie implizit und mehrdeutig ist. Wenn die Eltern- oder Kindkomponente unerwartet ihr Verhalten ändert, kann dies zu undefiniertem Verhalten verwandter Komponenten führen. Diese Unsicherheit ist nicht akzeptabel in einem System, das von vielen verschiedenen Programmierern entwickelt wird, die nicht alle gleichzeitig Updates an allen Komponenten vornehmen können."
+    },
+    {
+      "question": "Warum ist es wichtig, dass die Schnittstelle einer Komponente für beide Parteien kristallklar ist?",
+      "answer": "Damit der Komponentenanbieter sicherstellen kann, dass er die Schnittstelle beibehält und somit die bestehenden Clients nicht stört."
+    },
+    {
+      "question": "Warum sollte man bei Optimierungen vorsichtig sein?",
+      "answer": "Man sollte bei Optimierungen vorsichtig sein, weil nicht sichergestellt ist, dass die optimierte Version funktional äquivalent ist und dasselbe Ergebnis liefert. Zum Beispiel könnte \"auswerten\" für \"Literale\" einen Seiteneffekt haben, was die optimierten Versionen ungleich machen würde."
+    },
+    {
+      "question": "Warum sollte man den langen Namen einer Variablen bevorzugen, wenn sie nicht nur in ihrer unmittelbaren Umgebung sichtbar ist?",
+      "answer": "Der lange Name einer Variablen sollte bevorzugt werden, wenn sie nicht nur in ihrer unmittelbaren Umgebung sichtbar ist, um die Lesbarkeit und Verständlichkeit des Codes zu erhöhen. Ein aussagekräftiger und beschreibender Name hilft anderen Programmierern und auch dem zukünftigen Selbst, den Zweck und die Funktion der Variablen besser zu verstehen."
+    },
+    {
+      "question": "Warum ist die Verwendung aussagekräftiger Variablennamen wichtig?",
+      "answer": "Die Verwendung aussagekräftiger Variablennamen ist wichtig, um das Verständnis des Programms zu erleichtern. Wenn Variablennamen wie \"i\" verwendet werden, ist es schwieriger zu verstehen, wofür die Variablen stehen. Durch die Verwendung aussagekräftiger Variablennamen wie \"r\", \"m\" oder \"w\" in diesem Beispiel wird das Programm jedoch leichter verständlich."
+    },
+    {
+      "question": "Warum sollten Klassen nicht zu groß sein?",
+      "answer": "Klassen sollten nicht zu groß sein, da dies als schlechter Stil gilt und die Anwendungsdomäne nicht angemessen widerspiegelt. Stattdessen sollten große Dinge in einfachere zusammengesetzt werden, die, wenn sie selbst eine gewisse Komplexität haben, selbst wieder aus kleineren zusammengesetzt sind. Diese Art der Strukturierung findet man auch in anderen Ingenieursdisziplinen wie dem Bauwesen."
+    },
+    {
+      "question": "Warum sind innere Klassen in Java nicht besonders nützlich?",
+      "answer": "Obwohl in Java innere Klassen genutzt werden können, um Klassen zu strukturieren, wird davon relativ wenig Gebrauch gemacht. Dies liegt daran, dass Objekte einer Klasse nicht immer Teile von Objekten anderer Klassen sind und vielmehr einzelne Exemplare (Instanzen) sein und vielleicht sogar selbst Teile haben können. Einzelne Instanzen können nicht durch innere Klassen beschrieben werden, weshalb sie als ein nicht besonders nützlicher Mechanismus angesehen werden."
+    },
+    {
+      "question": "Warum ist die Vererbung ein Aushängeschild und gleichzeitig ein Problem in der objektorientierten Programmierung?",
+      "answer": "Die Vererbung ist ein Aushängeschild und gleichzeitig ein Problem in der objektorientierten Programmierung, weil sie einerseits ein mächtiges Konzept zur Wiederverwendung von Code und zur Erstellung von Klassenhierarchien darstellt, andererseits aber auch dazu führen kann, dass Änderungen an einer Klasse sich auf alle davon abgeleiteten Klassen auswirken. Dies kann die Wartbarkeit und Erweiterbarkeit des Codes beeinträchtigen und zu unerwartetem Verhalten führen."
+    },
+    {
+      "question": "Warum sind Formatierungskonventionen in der Programmierung wichtig?",
+      "answer": "Formatierungskonventionen in der Programmierung sind wichtig, da sie die Lesbarkeit des Codes verbessern. Sie regeln Dinge wie Einrückungen, Zeilenumbrüche, Leerzeichen und Leerzeilen, um den Code übersichtlicher zu gestalten."
+    },
+    {
+      "question": "Warum sind die Methoden in objektorientierten Programmen im Durchschnitt ziemlich kurz?",
+      "answer": "Die Methoden in objektorientierten Programmen sind im Durchschnitt ziemlich kurz, weil in der objektorientierten Programmierung die Funktionalität auf Basis der Daten, von denen sie abhängt, aufgebrochen und aufgeteilt wird. Wenn eine Funktion verschiedene Arten von Daten manipuliert, wird die Funktionalität wahrscheinlich nicht vollständig in einer Methode implementiert."
+    },
+    {
+      "question": "Warum ist die automatische Überprüfung des Gesetzes Demeters in SMALLTALK nicht möglich?",
+      "answer": "In SMALLTALK ist die automatische Überprüfung des Gesetzes Demeters nicht möglich, da Ausdrücke in SMALLTALK nicht typisiert sind. Daher können Checker nicht feststellen, ob die Art und Weise, wie auf Objekte zugegriffen wird, dem Gesetz Demeters entspricht."
+    },
+    {
+      "question": "Warum ist das Gesetz Demeters umstritten und nicht allgemein anerkannt?",
+      "answer": "Das Gesetz Demeters ist umstritten und nicht allgemein anerkannt, weil es in einigen Fällen schwer umsetzbar sein kann und zu unpraktischem Code führen kann. Es erfordert, dass Verkettungen von Nachrichten vermieden werden, was in einigen Fällen zu einer unnötigen Fragmentierung des Codes führen kann. Einige Entwickler sehen das Gesetz Demeters als zu restriktiv an und argumentieren, dass es in bestimmten Situationen vernünftiger ist, Verkettungen von Nachrichten zu verwenden, um den Code lesbarer und effizienter zu gestalten. Dennoch ist es wichtig, das Gesetz Demeters zu verstehen und in Betracht zu ziehen, da es in vielen Fällen dazu beitragen kann, die Kopplung zwischen Klassen zu verringern und den Code wartbarer zu machen."
+    },
+    {
+      "question": "Warum ist die objektorientierte Programmierung nicht gut für GUI-Programmierung geeignet?",
+      "answer": "Objektorientierte Programmierung ist nicht gut für GUI-Programmierung geeignet, weil sich die Instanzen einer Klasse alle Methoden teilen, was es nicht möglich macht, für verschiedene Objekte derselben Klasse verschiedene Implementierungen einer Methode anzugeben. Um dies zu erreichen, muss eine Indirektion eingebaut werden, wie zum Beispiel in Smalltalk über einen Block, in Java über anonyme innere Klassen, in C++ und C-Sharp über Funktionszeiger (Delegates in C-Sharp). Die prototypenbasierte Variante der objektorientierten Programmierung, wie sie in JavaScript verwendet wird, scheint hier besser geeignet zu sein."
+    },
+    {
+      "question": "Warum erweist sich das Liskov-Substitutionsprinzip in der Praxis als zu restriktiv?",
+      "answer": "Das Liskov-Substitutionsprinzip erweist sich in der Praxis als zu restriktiv, weil es eine Typüberprüfung darstellt, die gültige Programme ablehnt. Zum Beispiel, wenn eine Methode in einem Subtyp kontravariant im Eingabeparameter und nicht kovariant im Ausgabeparameter ist, erfüllt sie nicht die Bedingungen des LSP, aber sie kann trotzdem an jeder Stelle, an der die Methode im Basistyp erwartet wird, ohne Probleme verwendet werden. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung."
+    },
+    {
+      "question": "Warum wird die Trennung der Belange in der objektorientierten Programmierung nur unzureichend unterstützt?",
+      "answer": "Die Trennung der Belange wird in der objektorientierten Programmierung nur unzureichend unterstützt, weil die Ansätze wie das Subject- oder Aspect-oriented Programming zwar hoch gehandelt wurden, aber noch nicht im Mainstream angekommen sind. Die Gründe dafür sind vielfältig, aber letztlich ist es illusorisch, die essentielle Komplexität, die einem Problem innewohnt, durch programmiersprachliche Mittel beseitigen zu wollen. Die getrennte Spezifikation eines Systems aus verschiedenen Sichten verlagert die Komplexität nur in das Zusammenführen der Sichten. Unsere heutigen Softwaresysteme sind die kompliziertesten technischen Artefakte, die die Menschheit jemals hervorgebracht hat, und wer hier Einfachheit verspricht, sollte sich schämen."
+    },
+    {
+      "question": "Warum können Aliase ein Problem sein?",
+      "answer": "Aliase sind Variablen, die auf das gleiche Objekt verweisen. Sie können schlecht sein, weil sie zu unerwarteten Nebenwirkungen führen können, wenn man nicht vorsichtig ist. Wenn man beispielsweise den Zustand eines Objekts über eine Variable ändert, kann dies auch den Zustand über eine andere Variable beeinflussen, die auf dasselbe Objekt verweist. Dies kann zu Verwirrung und Fehlern führen. Einige Programmiersprachen bieten die Möglichkeit, Klassen als Werttypen zu definieren, um das Entstehen von Aliase zu vermeiden."
+    },
+    {
+      "question": "Warum können Aliase ein Problem bei sicherheitskritischen Anwendungen darstellen?",
+      "answer": "Aliase können ein Problem bei sicherheitskritischen Anwendungen darstellen, da sie mit der Spezifikation nicht vereinbar wären. Wenn es Aliase von außen auf geheime Daten- oder Funktionsträger gibt, ist die Spezifikation nicht erfüllt."
+    }
+  ],
+  "ANALYZE": [
+    {
+      "question": "Warum wird die Verwendung von Goto-Anweisungen im Programmieren nicht empfohlen?",
+      "answer": "Die Verwendung von Goto-Anweisungen verursacht ein hohes Maß an Nichtwissen bei der Interpretation von Quelltext, insbesondere beim Debugging von Programmen ist der Blick in den Quelltext des Programms nur bedingt von Nutzen."
+    },
+    {
+      "question": "Welche Vorteile bietet ein Unterprogrammaufruf gegenüber der Duplizierung von Code?",
+      "answer": "Durch den Unterprogrammaufruf wird die Duplizierung von Code vermieden, was die Notwendigkeit beseitigt, die Anweisungen des Unterprogramms im Aufrufkontext zu halten, wenn es mehrere solche Aufrufkontexte gibt. Dies erleichtert die Unterteilung von Programmen in Abschnitte, die getrennt untersucht und verstanden werden können."
+    },
+    {
+      "question": "Was ist der Vorteil von lokalen Variablen in Unterprogrammen?",
+      "answer": "Der Vorteil von lokalen Variablen in Unterprogrammen ist, dass die Programmiererin das Unterprogramm korrekt benutzen kann, ohne in das Unterprogramm hineinschauen zu müssen. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt."
+    },
+    {
+      "question": "Was ist der Vorteil von Unterprogrammen?",
+      "answer": "Der Vorteil von Unterprogrammen ist, dass die Programmiererin nicht in das Unterprogramm hineinschauen muss, um es korrekt benutzen zu können. Sie muss also nicht die Anweisungen des Unterprogramms inspizieren, wenn ihr eigentliches Interesse dem Kontext der Aufrufstelle gilt. Umgekehrt muss sie, wenn sie das Unterprogramm interessiert, nicht wissen, von wo es überall aufgerufen wird."
+    },
+    {
+      "question": "Was passiert, wenn man die Klasse des Empfängerobjekts nicht kennt?",
+      "answer": "Wenn man die Klasse des Empfängerobjekts nicht kennt, ist es nicht möglich, an der Stelle der betrachteten Anweisung zu bestimmen, von woher der in der Anweisung zuvor angestoßene Unterprogrammaufruf zurückkehrt. Das Lokalitätsprinzip wird also durch das dynamische Binden weiter aufgeweicht als durch den Unterprogrammaufruf allein."
+    },
+    {
+      "question": "Warum werden objektorientierte Programme als schwerer zu tracen und zu debuggen angesehen als prozedurale?",
+      "answer": "Objektorientierte Programme werden als schwerer zu tracen und zu debuggen angesehen als prozedurale, weil sie dynamisch gebundene Unterprogrammaufrufe verwenden, was die Nachverfolgung von Programmabläufen erschweren kann."
+    },
+    {
+      "question": "Warum kann eine Änderung am Verhalten einer Klasse Auswirkungen auf andere Klassen haben?",
+      "answer": "Eine Änderung am Verhalten einer Klasse kann Auswirkungen auf andere Klassen haben, weil wenn die Klasse, deren Verhalten man ändern möchte, selbst Subklassen hat, jede Änderung sich auf diese Subklassen ausbreiten und den Vertrag dieser Klassen mit ihren Klienten brechen kann. Auch wenn die Designerin sicher ist, dass die Änderung innerhalb der Bibliothek keine anderen als die gewünschten Auswirkungen hat, kann sie nicht sicher sein, dass irgendeine Verwenderin ihrer Bibliothek von der Klasse, die sie gerade geändert hat, erbt und somit eine Verhaltensänderung erfährt, mit der sie nicht leben kann."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Subtypen und austauschbaren Typen?",
+      "answer": "Subtypen sind im Allgemeinen nicht gegeneinander austauschbar, während austauschbare Typen es sind. Ein Beispiel für einen Subtyp, der nicht gegen einen anderen Subtyp austauschbar ist, ist eine Aktion, für die \"rückgängig machen\" nicht definiert ist, während eine Aktion, für die \"rückgängig machen\" definiert ist, gegen eine Aktion austauschbar ist, für die \"rückgängig machen\" leer implementiert ist."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen austauschbaren und nicht austauschbaren Typen?",
+      "answer": "Austauschbare Typen sind solche, bei denen eine Funktion, die in dem auszutauschenden Typen definiert ist, in dem austauschenden Typ vorhanden ist und die gleiche Funktionalität aufweist. Nicht austauschbare Typen hingegen sind solche, bei denen eine Funktion, die in dem auszutauschenden Typen definiert ist, in dem austauschenden Typ fehlt oder eine andere Funktionalität aufweist. Ein Beispiel für nicht austauschbare Typen ist eine Aktion, für die \"rückgängig machen\" nicht definiert ist, wie beispielsweise Speichern. Es ist diskutierbar, ob es ausreicht, die Funktion \"rückgängig machen\" in Speichern leer zu implementieren, die Benutzerin ist vermutlich zerknittert, aber das Programm würde immerhin weiterlaufen. Die formale Spezifikation, nämlich die Aktion (das Speichern) rückgängig zu machen, würde freilich nicht erfüllt; Objekte vom Typ Speichern sind damit strenggenommen nicht gegen andere Objekte vom Typ Aktion austauschbar."
+    },
+    {
+      "question": "Wozu dienen Namenskonventionen?",
+      "answer": "Namenskonventionen erleichtern die Bezeichnerwahl, indem sie die schöpferische Freiheit der Programmiererin einschränken und das Lesen von Code, indem sie die Bedeutung des Bezeichners bzw. des dahinterstehenden Programmelements leichter entschlüsseln."
+    },
+    {
+      "question": "Warum wurde die Goto-Anweisung als Hauptverursacher für schlechte Programmierung identifiziert?",
+      "answer": "Die Goto-Anweisung erlaubt Sprünge von beliebigen Stellen eines Programms zu anderen Stellen und bricht dabei das Lokalitätsprinzip von Programmen, bei dem zusammengehörende Anweisungen im Programmtext nahe beieinander stehen. Dies führte zu einer Unübersichtlichkeit im Programmtext und erschwerte das Verstehen und Debuggen von Programmen."
+    },
+    {
+      "question": "Warum könnten funktional äquivalente, aber verschiedene Typen ausgetauscht werden?",
+      "answer": "Funktional äquivalente, aber verschiedene Typen können ausgetauscht werden, wenn Unterschiede im Verhalten toleriert oder sogar gewünscht werden. Ein Beispiel dafür ist die plattformunabhängige GUI-Programmierung, bei der GUI-Elemente funktional äquivalent sein können, sich jedoch im Aussehen und Detailverhalten unterscheiden."
+    },
+    {
+      "question": "Warum hängt die Substituierbarkeit von Typen von ihrer jeweiligen Verwendung ab?",
+      "answer": "Die Substituierbarkeit von Typen hängt von ihrer jeweiligen Verwendung ab, da verschiedene Anwendungsfälle unterschiedliche Anforderungen an Typen und deren Objekte haben können. Ein Typ kann in einem bestimmten Kontext problemlos durch einen anderen Typen ersetzt werden, während dies in einem anderen Kontext nicht der Fall sein kann. Die Substituierbarkeit ist daher relativ zur Verwendung der Typen."
+    },
+    {
+      "question": "Warum ist es schwierig, das Fragile-Base-Class-Problem zu erkennen?",
+      "answer": "Es ist schwer zu erkennen, da die Basisklasse auf den ersten Blick korrekt erscheint. Das Problem besteht darin, dass die Subklasse von bestimmtem Verhalten der Basisklasse abhängt, ohne dass dies in der Basisklasse explizit dokumentiert ist."
+    },
+    {
+      "question": "Warum werden große Klassen in der objektorientierten Programmierung in der Regel vermieden?",
+      "answer": "Große Klassen gelten in der Regel als schlechter Stil, da sie die Anwendungsdomäne nicht angemessen widerspiegeln. In der Anwendungsdomäne sind komplexe Dinge normalerweise aus einfacheren Teilen zusammengesetzt, die selbst wieder aus kleineren Teilen bestehen."
+    },
+    {
+      "question": "Warum ist die Substituierbarkeit fraglich, wenn keine Typerweiterung vorliegt?",
+      "answer": "Die Substituierbarkeit ist fraglich, wenn keine Typerweiterung vorliegt, insbesondere wenn es sich um eine Typeinschränkung handelt. Dies führt zu Problemen, wenn Objekte eines Subtyps an Stellen verwendet werden, an denen Objekte des Supertyps erwartet werden."
+    },
+    {
+      "question": "Warum reicht die Typkonformität allein nicht aus, um Substituierbarkeit sicherzustellen?",
+      "answer": "Die Typkonformität allein reicht nicht aus, um Substituierbarkeit sicherzustellen, da auch das Verhalten der Objekte betrachtet werden muss. Typkonformität bedeutet nicht automatisch Substituierbarkeit. Substituierbarkeit erfordert eine Betrachtung des Verhaltens der Objekte."
+    },
+    {
+      "question": "Warum wird bei der Verwendung von relationalen Datenbanken in Verbindung mit objektorientierter Programmierung oft von einem Impedanzmismatch gesprochen?",
+      "answer": "Bei der Verwendung von relationalen Datenbanken in Verbindung mit objektorientierter Programmierung besteht häufig ein Impedanzmismatch, da relationale Datenbanken wertbasiert sind, während objektorientierte Programme zeigerbasiert sind. Die beiden Ansätze verwenden unterschiedliche Mittel zur Darstellung von Beziehungen und Datenstrukturen."
+    },
+    {
+      "question": "Warum kann bei größeren Programmen das Bedürfnis entstehen, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren?",
+      "answer": "Bei größeren Programmen kann das Bedürfnis entstehen, ein Programm nach mehreren Kriterien gleichzeitig zu strukturieren, da verschiedene Vererbungshierarchien oder andere Strukturierungskriterien gleichzeitig relevant sein können, ähnlich wie in der Biologie, wo Arten nach verschiedenen Gesichtspunkten klassifiziert werden. Dies erfordert jedoch, dass die verschiedenen Darstellungen getrennt gepflegt werden und keine Inkonsistenzen oder ungewollten Interferenzen entstehen."
+    },
+    {
+      "question": "Warum können private Instanzvariablen allein das Aliasing-Problem nicht lösen?",
+      "answer": "Private Instanzvariablen können allein das Aliasing-Problem nicht lösen, da sie lediglich Namen verbergen und nicht verhindern können, dass Repräsentationsobjekte (Implementierungsdetails) Aliasen ausgesetzt sind."
+    },
+    {
+      "question": "Was bedeutet es, wenn ein Typ als korrekt implementiert gilt?",
+      "answer": "Ein Typ wird als korrekt implementiert betrachtet, wenn für jede Methode gezeigt werden kann, dass aus der Vorbedingung der Methode die Nachbedingung folgt und dass die Invarianten des Typs höchstens temporär während der Methodenausführung verletzt werden."
+    },
+    {
+      "question": "Warum ist die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte, wichtig?",
+      "answer": "Die Sichtweise der Programmiererin, die die Typen für einen bestimmten Zweck verwenden möchte, ist wichtig, weil sie genau weiß, welche Erwartungen sie an einen Typen hat und welche Typen in ihrem speziellen Anwendungsfall gegeneinander austauschbar sind."
+    },
+    {
+      "question": "Warum ist es wichtig, dass Objekte typkonform sind?",
+      "answer": "Es ist wichtig, dass Objekte typkonform sind, weil sie nur dann die ihnen zugewiesene Rolle spielen können. Wenn Objekte nicht typkonform sind, können sie nicht die gewünschten Funktionen erfüllen und können zu Fehlern im Programm führen."
+    },
+    {
+      "question": "Was passiert, wenn ein Objekt nicht typkonform ist?",
+      "answer": "Wenn ein Objekt nicht typkonform ist, kann es nicht die gewünschten Funktionen erfüllen und kann zu Fehlern im Programm führen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen der Sicht der Nutzerin und der Sicht der Anbieterin auf Typen?",
+      "answer": "Die Sicht der Nutzerin auf Typen ist, wie sie in einem Programm verwendet werden, während die Sicht der Anbieterin sich auf die Implementierung des Typs bezieht. Die Programmiersprachen Java und C-Sharp bieten das Konzept von \"Interfaces als Typen\" an, mit dem es möglich ist, partielle Ansichten auf Typen in einem Programm zu definieren. In der Praxis wird diese Möglichkeit jedoch selten genutzt, um Anwenderinnen ihre eigenen Anforderungen als Typen definieren zu lassen."
+    },
+    {
+      "question": "Warum ist es wichtig, dass die Schnittstelle einer Komponente für den Anbieter und den Client klar definiert ist?",
+      "answer": "Damit der Komponentenanbieter sein Produkt revidieren, aktualisieren und verteilen (oder neu verteilen) kann, ohne den bestehenden Code auf dem Feld zu beeinträchtigen, der die vorherige Revision oder Revisionen seiner Komponente verwendet."
+    },
+    {
+      "question": "Warum wurde die Vererbung von Implementierung in Microsofts Component Object Model (COM) verbannt?",
+      "answer": "Die Vererbung von Implementierung wurde in COM verbannt, weil der Vertrag zwischen den Klassen in einer Vererbungshierarchie nicht klar definiert ist. Wenn Super- oder Subklassen ihr Verhalten unerwartet ändern, kann dies zu undefiniertem Verhalten in verwandten Klassen führen."
+    },
+    {
+      "question": "Was ist der Vorteil von Interfaces gegenüber der Vererbung von Implementierung?",
+      "answer": "Der Vorteil von Interfaces gegenüber der Vererbung von Implementierung ist, dass sie den Vertrag zwischen Klassen klar definiert und das dynamische Binden ermöglicht, ohne sich um die Implementierungsdetails kümmern zu müssen."
+    },
+    {
+      "question": "Was ist der Nachteil von Interfaces gegenüber der Vererbung von Implementierung?",
+      "answer": "Der Nachteil von Interfaces gegenüber der Vererbung von Implementierung ist, dass sie keine gemeinsam genutzten Implementierungen ermöglicht und die Code-Duplizierung erhöhen kann."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen der Schnittstelle, die einem Client einer Klasse angeboten wird und der Schnittstelle zwischen einer Klasse und ihren Subklassen?",
+      "answer": "Die Schnittstelle, die einem Client einer Klasse angeboten wird, ist die Schnittstelle, die der Client nutzt, indem er Variablen mit dem zur Klasse gehörenden Typ deklariert und somit auf Instanzen der Klasse zugreifen kann. Die Schnittstelle zwischen einer Klasse und ihren Subklassen hingegen ist eine etwas anders geartete Schnittstelle, die lediglich zwei Variablen, self (oder this) und super, umfasst und nicht explizit typisiert ist. Die Schnittstelle zwischen einer Klasse und ihren Subklassen muss man selbst zusammensuchen und ist nicht mit Information Hiding und dem Verbergen von Implementationsdetails zu tun."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen statischer und dynamischer Bindung?",
+      "answer": "Statische Bindung findet zur Übersetzungszeit statt und ist damit schneller, während dynamische Bindung zur Laufzeit erfolgt und damit etwas langsamer ist. Statische Bindung wird verwendet, wenn der Compiler die Methodenaufrufe bereits zur Übersetzungszeit auflösen kann, während dynamische Bindung verwendet wird, wenn der Compiler die Methodenaufrufe nicht auflösen kann und sie daher zur Laufzeit auflösen muss."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einem deklarativen und einem imperativen Programmierstil?",
+      "answer": "Ein deklarativer Programmierstil beschäftigt sich mehr mit dem \"Was\" als mit dem \"Wie\" und beschreibt, was das Programm tun soll, während ein imperativer Programmierstil sich mehr auf die Anweisungen und die Reihenfolge der Befehle konzentriert, die das Programm ausführen soll, um ein bestimmtes Ergebnis zu erzielen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen imperativer und deklarativer Programmierung?",
+      "answer": "Imperative Programmierung ist eine Programmierparadigme, bei der der Programmierer explizit die Schritte angibt, die der Computer ausführen soll, um ein Problem zu lösen. Deklarative Programmierung hingegen ist eine Programmierparadigme, bei der der Programmierer lediglich die gewünschte Lösung angibt, ohne die Schritte zur Lösung des Problems zu spezifizieren. In der objektorientierten Programmierung ist es durchaus üblich, einzelne Schleifen aus einem Methodenrumpf in eine eigene Methode zu verschieben und durch einen entsprechenden Methodenaufruf zu ersetzen, um das Programm deklarativer zu gestalten, aber es ist immer noch imperativ."
+    },
+    {
+      "question": "Was sollte man bei vermeintlichen Abkürzungen beachten?",
+      "answer": "Man sollte sicherstellen, dass die Abkürzung funktional äquivalent ist, d.h. dasselbe Ergebnis liefert, bevor man solche Optimierungen vornimmt. Wenn beispielsweise \"auswerten\" für \"Literale\" einen Seiteneffekt hat, wären die optimierten Versionen nicht mehr äquivalent."
+    },
+    {
+      "question": "Wozu können Zusicherungen in der objektorientierten Programmierung eingesetzt werden?",
+      "answer": "Zusicherungen können in der objektorientierten Programmierung eingesetzt werden, um die Laufzeitverifikation zu ermöglichen und dem Aufrufer der Methode zu zeigen, wie er prüfen kann, ob die Vorbedingung eingehalten ist."
+    },
+    {
+      "question": "Sind Abkürzungen in der Programmierung zu vermeiden?",
+      "answer": "Abkürzungen sind nicht grundsätzlich zu vermeiden. Wenn sie etabliert sind und man davon ausgehen darf, dass eine Leserin des Programms sie kennt, ist ihre Verwendung sogar angezeigt. Man sollte jedoch auf hausgemachte Abkürzungen verzichten, deren Bedeutung nur von einem selbst bekannt ist."
+    },
+    {
+      "question": "Warum spielt die Ausdrucksweise in Programmiersprachen eine Rolle?",
+      "answer": "Die Ausdrucksweise in Programmiersprachen bestimmt nicht den Inhalt des Programms, sondern seine Qualität. Sie beeinflusst, wie effizient ein gegebenes Problem gelöst wird oder wie verständlich die Formulierung der Lösung für die Betrachterin ist. Besonders die Verständlichkeit hat viel mit Schreibstil zu tun, aber auch andere Faktoren wie Mode und Ästhetik (Eleganz) spielen eine Rolle."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einem mathematisch prägnanten Stil und einem prosaisch-verbosen Stil in der Programmierung?",
+      "answer": "Ein mathematisch prägnanter Stil in der Programmierung zeichnet sich durch eine kompakte und präzise Schreibweise aus, während ein prosaisch-verboser Stil durch eine ausführliche und detaillierte Schreibweise gekennzeichnet ist."
+    },
+    {
+      "question": "Was versteht man unter einem mathematisch prägnanten Stil in der Programmierung?",
+      "answer": "Ein mathematisch prägnanter Stil in der Programmierung zeichnet sich durch eine kompakte, präzise und logische Schreibweise aus, die an die mathematische Notation erinnert. Er vermeidet unnötige Wiederholungen und nutzt stattdessen abstrakte Konzepte und Funktionen, um die Absicht des Programmcodes klar und eindeutig auszudrücken. Diese Art der Programmierung wird oft als \"sauber\" und \"elegant\" angesehen, da sie die Komplexität reduziert und die Wartbarkeit des Codes verbessert."
+    },
+    {
+      "question": "Warum sind Kommentare in einem Programm nicht immer notwendig?",
+      "answer": "Heutzutage ist es üblich, Bezeichner in einem Programm so zu wählen, dass Kommentare zur Bedeutung der jeweiligen Programmelemente unnötig sind, da die Bezeichner ihre Bedeutung bereits im Kontext ausdrücken. Ein gut geschriebenes objektorientiertes Programm benötigt daher eigentlich keine Kommentare."
+    },
+    {
+      "question": "Was passiert, wenn die Verkettung von Nachrichtenausdrücken länger wird?",
+      "answer": "Wenn die Verkettung von Nachrichtenausdrücken länger wird, wird das Protokoll der Klasse von \"a\" komplexer und muss mit entsprechenden Implementierungen versehen werden."
+    },
+    {
+      "question": "Wozu dienen feingranulare Klassen in der objektorientierten Programmierung?",
+      "answer": "Feingranulare Klassen in der objektorientierten Programmierung sind nützlich, um die Anwendungsdomäne angemessen abzubilden und die Komplexität der Klassen zu reduzieren. Sie ermöglichen eine bessere Strukturierung der Klassen und erleichtern die Wartung und Weiterentwicklung des Codes."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Objekten und Klassen in Bezug auf die Teil-Ganzes-Beziehung?",
+      "answer": "Objekte können mithilfe der Teil-Ganzes-Beziehung rekursiv aufgebaut werden, während Klassen nicht hierarchisch strukturiert werden können. Objekte sind einzelne Exemplare (Instanzen) und können Teile haben, während Klassen Typen von Objekten sind und nicht immer Teile von anderen Klassen sind."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Komponenten und Klassen in objektorientierten Programmiersprachen?",
+      "answer": "Im Gegensatz zu Klassen, die in objektorientierten Programmiersprachen verwendet werden, um Objekte zu definieren, werden Komponenten verwendet, um Objekte zur Laufzeit zusammenzubauen. Leider ist der Begriff \"Komponente\" in objektorientierten Programmiersprachen noch nicht weit verbreitet und wird oft durch andere Konzepte wie Pakete oder Assemblies ersetzt, die lediglich Klassen gruppieren."
+    },
+    {
+      "question": "Welche Vorteile haben Namenskonventionen in der Programmierung?",
+      "answer": "Namenskonventionen in der Programmierung haben mehrere Vorteile. Sie erleichtern die Bezeichnerwahl, begrenzen die schöpferische Freiheit der Programmiererin, was als Entlastung empfunden werden kann, und machen das Lesen von Code einfacher, da Entwicklerinnen, die die Konventionen kennen, die Bedeutung der Bezeichner schneller entschlüsseln können und sich somit schneller zurechtfinden."
+    },
+    {
+      "question": "Welche Vorteile ergeben sich aus kurzen Methoden in der objektorientierten Programmierung?",
+      "answer": "Kurze Methoden in der objektorientierten Programmierung fördern die Lesbarkeit und den objektorientierten Stil. Sie erlauben es, Teile einer Methode in separate, klar benannte Methoden auszulagern, was die Lesbarkeit und Wartbarkeit des Codes verbessert. Dieser Stil fördert auch die Verwendung von aussagekräftigen Bezeichnern und trägt zur besseren Dokumentation des Codes bei."
+    },
+    {
+      "question": "Was wird durch die Deklaration von Klassen als abstrakt oder final erreicht?",
+      "answer": "Das Deklarieren von Klassen als abstrakt oder final ermöglicht es, Änderungen an der Funktionalität der Klasse auf sichere Weise durchzuführen. Wenn eine Klasse als abstrakt deklariert ist, können Änderungen in den abgeleiteten Subklassen vorgenommen werden, ohne die anderen Klassen in der Hierarchie zu beeinflussen. Wenn eine Klasse als final deklariert ist, kann sie nicht abgeleitet werden, was bedeutet, dass ihre Funktionalität nicht geändert werden kann. Dies ermöglicht es, den Vertrag zwischen der Klasse und ihren Klienten zu schützen und unerwartete Verhaltensänderungen zu verhindern."
+    },
+    {
+      "question": "Warum werden Interfaces oft mit Substantiven oder Adjektiven bezeichnet?",
+      "answer": "Interfaces sind wie Klassen Typen, aber sie bezeichnen keine Allgemeinbegriffe, sondern eher Rollen, die die Objekte spielen können. Diese Rollen werden häufig durch Substantive oder Adjektive bezeichnet. Zum Beispiel enden viele Interfacenamen im Englischen auf „able“ oder „ible“, wie \"Serializable.\""
+    },
+    {
+      "question": "Was kennzeichnet den deklarativen Programmierstil in der objektorientierten Programmierung?",
+      "answer": "Der deklarative Programmierstil in der objektorientierten Programmierung legt mehr Wert auf das \"Was\" als auf das \"Wie\". Er betont die Ausdrucksform und verschiebt mögliche Optimierungen auf den Compiler oder später in der Entwicklung. Das bedeutet, dass die Programmiererin sich auf das Beschreiben dessen konzentriert, was erreicht werden soll, anstatt detaillierte Anweisungen zur Durchführung zu geben."
+    },
+    {
+      "question": "Ist es möglich, die Einhaltung des Gesetzes Demeters automatisch zu überprüfen?",
+      "answer": "Die automatische Überprüfung des Gesetzes Demeters gestaltet sich schwierig, da das Gesetz in Bezug auf Objekte formuliert ist und die Auswertung von konkreten Zuweisungen und dynamischen Programmfluss erfordern würde, was mechanisch extrem aufwendig oder sogar unmöglich ist. Stattdessen überprüfen automatische Checker des Gesetzes Demeters in der Regel die Variablendeklarationen und ob alle Methodenaufrufe einer Klasse nur auf Ausdrücken erfolgen, die den Typ einer Instanzvariable oder eines formalen Parameters haben."
+    },
+    {
+      "question": "Warum muss man bei der Verwendung von Collections als Zwischenobjekte immer eine Ausnahme von Demeters Gesetz machen?",
+      "answer": "Bei der Verwendung von Collections als Zwischenobjekte muss man eine Ausnahme von Demeters Gesetz machen, weil die Verwendung von Iteratoren und Methoden wie \"detect:\" eine Verkettung von Nachrichten erzeugt, die in direktem Widerspruch zum Gesetz Demeters steht. Dies liegt daran, dass die Klausel \"detect:\" auf einer Kollektion nicht dem Prinzip des Gesetzes Demeters entspricht, bei dem Nachrichten nur an Objekte gesendet werden dürfen, die der Sender selbst kennt oder erzeugt."
+    },
+    {
+      "question": "Warum können in Java abgeleitete Typen keine Eigenschaften unterdrücken?",
+      "answer": "In Java können abgeleitete Typen keine Eigenschaften unterdrücken, weil es in Java nicht möglich ist, die öffentlich zugängliche Schnittstelle eines abgeleiteten Typs von der des Basistyps zu unterscheiden. Wenn ein Objekt vom Typ Stack in einem Programmabschnitt erwartet wird, in dem ein Objekt vom Typ Vector auftauchen kann, kann das Programm nicht fortgesetzt werden, wenn es auf ein Element zugreifen will, wenn stattdessen ein Stack vorliegt. Eine solche Prüfung muss zur Laufzeit erfolgen, und wenn sie vergessen wird, kann dies zu einem schwerwiegenden Programmierfehler führen. Solche Fehler lassen sich einfach vermeiden, indem man abgeleiteten Typen verbietet, Eigenschaften zu unterdrücken."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Typkonformität und Substituierbarkeit?",
+      "answer": "Typkonformität bedeutet, dass ein Objekt dem erwarteten Typ entspricht, während Substituierbarkeit bedeutet, dass ein Objekt anstelle eines anderen Objekts verwendet werden kann, ohne dass sich das Verhalten des Programms ändert. Typkonformität ist eine notwendige, aber nicht hinreichende Bedingung für Substituierbarkeit."
+    },
+    {
+      "question": "Was sind die Nachteile der objektorientierten Programmierung?",
+      "answer": "Die Nachteile der objektorientierten Programmierung sind, dass die Organisation der Funktionen auf der Strecke bleibt und dass die Daten hin- und hergeschickt werden müssen."
+    },
+    {
+      "question": "Was sind die Vorteile von Sprachen, die eine Mischung mehrerer Programmierparadigmen erlauben?",
+      "answer": "Die Vorteile von Sprachen, die eine Mischung mehrerer Programmierparadigmen erlauben, sind, dass sie eine größere Auswahl an Konstrukten bieten und eine unüberschaubare Anzahl von Alternativen, wie man ein einzelnes Problem lösen kann."
+    },
+    {
+      "question": "Warum ist es nicht möglich, für verschiedene Instanzen einer Klasse verschiedene Implementierungen einer Methode anzugeben?",
+      "answer": "Da sich die Instanzen einer Klasse alle Methoden teilen, ist es nicht möglich, für verschiedene Instanzen derselben Klasse verschiedene Implementierungen einer Methode anzugeben."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Verhalten des Programms und seiner Spezifikation?",
+      "answer": "Die Spezifikation eines Programms beschreibt, was das Programm tun soll, während das Verhalten des Programms beschreibt, was das Programm tatsächlich tut. Die Spezifikation ist eine Art Blaupause oder Anleitung für das Programm, während das Verhalten das Ergebnis der Ausführung des Programms ist."
+    },
+    {
+      "question": "Was ist der Nachteil des Liskov-Substitutionsprinzips?",
+      "answer": "Der Nachteil des Liskov-Substitutionsprinzips ist, dass es sich in der Praxis als zu restriktiv erweist und eine Typüberprüfung darstellt, die gültige Programme ablehnt. Die Tatsache, dass die Einhaltung des LSP im Allgemeinen nicht automatisch überprüft werden kann, ist ein recht hoher Preis für die strenge Anforderung."
+    },
+    {
+      "question": "Warum ist es wichtig, verschiedene Vererbungshierarchien in einem Programm getrennt voneinander zu pflegen?",
+      "answer": "Es ist wichtig, verschiedene Vererbungshierarchien in einem Programm getrennt voneinander zu pflegen, um Inkonsistenzen im Code und ungewollte Interferenzen zu vermeiden."
+    },
+    {
+      "question": "Was sind die Nachteile der Vererbung in objektorientierter Programmierung?",
+      "answer": "Die Vererbung in objektorientierter Programmierung kann die Kapselung von Klassen auf unangenehme Weise aufbrechen und starke Abhängigkeiten zwischen Klassen und ihren Subklassen erzeugen. Diese Abhängigkeiten explizit zu machen, kann zwar vor Programmierfehlern schützen, aber sie nicht beseitigen. Die Abhängigkeiten zu beschränken, bedeutet, einen Teil der Ausdrucksstärke und Flexibilität der objektorientierten Programmierung aufzugeben."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einem Alias und einem Wert?",
+      "answer": "Ein Alias ist eine Referenz auf ein Objekt, während ein Wert eine eigene Kopie des Objekts ist. Wenn man einen Alias ändert, dann ändert man das Originalobjekt, während man bei einem Wert nur die Kopie ändert. Im Beispiel von \"jetzt\" und \"Time now\" sind beide Alias auf das gleiche Zeitobjekt, und wenn man das Zeitobjekt ändert, dann ändert sich auch die Erzeugungszeit von \"a\"."
+    },
+    {
+      "question": "Was sind die Nachteile, wenn Aliase in Programmiersprachen verboten werden?",
+      "answer": "Wenn Aliase in Programmiersprachen verboten werden, schränkt man sich selbst nur wieder zahlreicher Möglichkeiten ein. Ein Beispiel dafür ist die Verwendung von Klassen als Werttypen in Programmiersprachen wie C-Sharp, C++ und EIFFEL, bei der bei Zuweisungen nicht automatisch Aliase entstehen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einer Kopie und einem Zeiger auf Objekte?",
+      "answer": "In Bezug auf Objekte ist eine Kopie eine unabhängige Instanz des Objekts, während ein Zeiger auf das originale Objekt verweist. In Sprachen ohne Referenzsemantik ist es nicht möglich, Zeiger zu verwenden, während Sprachen mit Referenzsemantik dies ermöglichen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Namensschutz und Geheimnisprinzip?",
+      "answer": "Namensschutz (name protection) verhindert, dass andere Klassen von der Existenz bestimmter Instanzvariablen abhängen, indem es ihre Namen verbirgt. Das Geheimnisprinzip (information hiding) hingegen verhindert, dass andere Klassen von der Implementierung eines Objekts abhängen, indem es die Möglichkeit schafft, die Implementierung ohne Auswirkungen auf andere Klassen zu ändern."
+    },
+    {
+      "question": "Was wird durch den Namensschutz verhindert?",
+      "answer": "Der Namensschutz verhindert, dass andere Klassen von der Existenz bestimmter Instanzvariablen abhängen, sodass diese problemlos geändert werden können."
+    },
+    {
+      "question": "Beschreiben Sie das Problem, das im Zusammenhang mit Subtyping und dynamischem Methodenaufruf auftritt?",
+      "answer": "Das Problem besteht darin, dass aufgrund des dynamischen Bindens von Methodenaufrufen nicht vorhergesagt werden kann, welchen Effekt ein Aufruf der Methode in einem bestimmten Programmfragment haben wird, selbst wenn der Typ des Empfängerobjekts bekannt ist. Es ist schwer zu bestimmen, welcher Subtyp des Typs des Empfängerobjekts tatsächlich betroffen ist."
+    },
+    {
+      "question": "Kann man die Kapselung als Ausdruck des Bestehens einer Teil-Ganzes-Beziehung beschreiben?",
+      "answer": "Man kann das Bestreben nach Kapselung als Ausdruck des Bestehens einer Teil-Ganzes-Beziehung zwischen den Repräsentationsobjekten und dem Objekt, dessen Repräsentation sie ausmachen, verstehen. Die Teile sollen dabei dem Ganzen gehören in dem Sinne, dass sie nicht zugleich auch Teile anderer Objekte sein können, und darüber hinaus auch nicht von anderen Objekten referenziert werden können."
+    }
+  ]
+}

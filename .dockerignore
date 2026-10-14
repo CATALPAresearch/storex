@@ -6,17 +6,19 @@ __pycache__
 .DS_Store
 .claude
 
-# Only the vector store, the stop words and the technical terms are read at
-# runtime. The raw material and the training data belong to the data processing
-# and fine-tuning scripts.
-data/pdf
-data/chapters_raw
-data/chapters_processed
-data/dataset
+# Build-time course material: the exam reads units/ and materials/, never source/
+courses/*/source
 
-# Generated transcripts, mounted at runtime
-output
-testing/test_result*
+# Published evaluation of the paper, and the output of local runs
+docs/evaluation
+runs
+
+# Not needed to run an exam, and heavy to train with.
+finetuning
+
+# content_pipeline/ and tests/ stay in the image: a teacher using Docker has to
+# be able to onboard a course, and tests/ holds the fixtures the component
+# runner uses. Step 01 still needs the research extra (PyPDF2).
 
 # Local configuration must not end up in an image layer
 .env

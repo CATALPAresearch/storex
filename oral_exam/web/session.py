@@ -13,7 +13,7 @@ import threading
 import time
 import uuid
 
-from exam import ANSWER_TIMEOUT, ExamAborted
+from oral_exam.exam import ANSWER_TIMEOUT, ExamAborted
 
 logger = logging.getLogger(__name__)
 
@@ -175,7 +175,7 @@ class ExamSession:
         self.audio_cache = {}
 
     def start(self):
-        from web.runner import run_exam
+        from oral_exam.web.runner import run_exam
         self.thread = threading.Thread(target=run_exam, args=(self,),
                                        name=f"exam-{self.id[:8]}", daemon=True)
         self.thread.start()

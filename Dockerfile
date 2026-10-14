@@ -27,10 +27,10 @@ COPY . .
 ENV PYTHONPATH=/app \
     PYTHONUNBUFFERED=1 \
     HF_HOME=/cache/huggingface \
-    OUTPUT_DIR=/app/output \
+    RUNS_DIR=/app/runs \
     OMP_NUM_THREADS=2
 
-RUN mkdir -p /cache/huggingface /app/output
+RUN mkdir -p /cache/huggingface /app/runs
 
 EXPOSE 5000
 
@@ -38,7 +38,7 @@ EXPOSE 5000
 # memory, so a second worker would duplicate several GB of weights and would not
 # find the sessions of the first. Threads serve the concurrent long-polls.
 # The timeout has to exceed POLL_TIMEOUT.
-CMD ["gunicorn", "app:app", \
+CMD ["gunicorn", "oral_exam.web.app:app", \
      "--bind", "0.0.0.0:5000", \
      "--workers", "1", \
      "--threads", "8", \

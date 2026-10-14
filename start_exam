@@ -11,9 +11,11 @@ import sys
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
-from exam import AudioUnavailable, ExamManager, MicrophoneUnavailable
-from llm import LLMError
-from utils import colours
+import courselib
+
+from oral_exam.exam import AudioUnavailable, ExamManager, MicrophoneUnavailable
+from oral_exam.llm import LLMError
+from oral_exam.utils import colours
 
 MIN_DURATION = 10
 MAX_DURATION = 60
@@ -28,6 +30,10 @@ def parse_arguments():
                         help="Form of address 'Frau' will be used during the training exam.")
     parser.add_argument("-m", "--male", action='store_true',
                         help="Form of address 'Herr' will be used during the training exam.")
+    parser.add_argument("-c", "--course", default=None,
+                        help="Id of the course to be examined. Default: the first course.")
+    parser.add_argument("--list-courses", action='store_true',
+                        help="List the available courses and exit.")
     parser.add_argument("--ai", action='store_true',
                         help="Let a simulated student answer instead of you. Implies --mute and needs no microphone.")
     parser.add_argument("--log", action='store_true',
@@ -36,6 +42,26 @@ def parse_arguments():
                         help="If set, there will be no text-to-speech audio output. This can be set to increase the"
                              " performance.")
     args = vars(parser.parse_args())
+
+    # Listing the courses needs no other argument
+    if args["list_courses"]:
+        for course in courselib.all_courses():
+            print(course.summary())
+        for broken_id, problems in courselib.errors().items():
+            print(f"{broken_id}  BROKEN: {'; '.join(problems)}", file=sys.stderr)
+        sys.exit(0)
+
+    # Check that the course exists
+    args["course"] = args["course"] or courselib.default_course_id()
+    if args["course"] is None:
+        sys.exit("No course could be loaded. Check the manifests with "
+                 "'python -m courselib.validate'.")
+    try:
+        courselib.get(args["course"])
+    except courselib.UnknownCourse:
+        available = ", ".join(course.id for course in courselib.all_courses())
+        sys.exit(f"Unknown course '{args['course']}'. Available: {available}\n"
+                 "Type --list-courses to see them with their size.")
 
     # Check if a name was given
     if not args["name"]:

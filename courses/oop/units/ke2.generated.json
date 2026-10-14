@@ -1,0 +1,904 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Was ist eine Metaklasse in der Programmierung?",
+      "answer": "Eine Metaklasse ist eine Klasse, die für die Erstellung von Klassen verantwortlich ist. Sie ist eine Klasse der Klassen und ermöglicht es, die Verhaltensweisen von Klassen zu ändern oder zu erweitern."
+    },
+    {
+      "question": "Was ist die Aufgabe von Metaklassen in der Programmierung?",
+      "answer": "Metaklassen sind eine Ebene oberhalb von Klassen und werden verwendet, um die Verhaltensweisen von Klassen zu definieren. Sie können auch geändert werden, um die Erstellung von Klassen zu ändern, wie zum Beispiel das automatische Generieren von Zugriffsmethoden für alle benannten Instanzvariablen einer Klasse."
+    },
+    {
+      "question": "Was ist eine Metaklasse in Smalltalk?",
+      "answer": "In Smalltalk ist eine Metaklasse eine Klasse, die dazu dient, andere Klassen zu definieren und zu erstellen."
+    },
+    {
+      "question": "Was ist Klonen oder Kopieren?",
+      "answer": "Klonen oder Kopieren ist eine Methode, um neue Instanzen von Klassen zu erzeugen, bei der ein bestehendes Objekt kopiert wird, um eine exakte Kopie des Objekts zu erstellen, die eigenständig und nicht mit dem Original verbunden ist. Es gibt zwei Arten von Kopien: Shallow Copy und Deep Copy."
+    },
+    {
+      "question": "Was ist die Rolle der Klasse \"Class\" in Smalltalk?",
+      "answer": "Die Klasse \"Class\" ist in Smalltalk die Superklasse aller Metaklassen. Jede Instanz dieser Klasse ist eine Klasse. Die Klasse von Class ist Class class und erst Class class eine Metaklasse."
+    },
+    {
+      "question": "Was ist der Klassenansatz in der objektorientierten Programmierung?",
+      "answer": "Der Klassenansatz ist ein Ansatz in der objektorientierten Programmierung, bei dem alle Objekte als Instanzen von bestimmten Vorlagen, die entweder selbst keine Objekte oder Objekte auf einer anderen Ebene sind, erzeugt werden. Diese Vorlagen werden als Klassen bezeichnet."
+    },
+    {
+      "question": "Was ist der Prototypenansatz in der objektorientierten Programmierung?",
+      "answer": "Der Prototypenansatz ist ein Ansatz in der objektorientierten Programmierung, bei dem ein schon existierendes Objekt samt seiner Instanzvariablen und Methoden geklont wird. Ein Klon kann bei Bedarf um weitere Instanzvariablen und Methoden ergänzt werden oder geklonte können abgeändert oder entfernt werden."
+    },
+    {
+      "question": "Welche praktische Bedeutung haben Metaklassen für die Programmierung in SMALLTALK?",
+      "answer": "Metaklassen haben in SMALLTALK die praktische Bedeutung, dass sie die Definition von Klassen steuern und die Struktur des Programms beeinflussen. Sie ermöglichen es, Klassen dynamisch zu erzeugen und zu verändern. Zum Beispiel können Sie an der Ebene der Metaklassen Methoden hinzufügen, um das Verhalten von Klassen zu ändern, ohne die Klassen selbst zu ändern."
+    },
+    {
+      "question": "Was ist die einfachste Form des Kopierens eines Objekts in SMALLTALK?",
+      "answer": "Die einfachste Form des Kopierens eines Objekts in SMALLTALK ist das Erzeugen eines Objekts derselben Klasse mit denselben Variablenbelegungen. Dies wird durch die Methode \"shallowCopy\" ermöglicht."
+    },
+    {
+      "question": "Welche Programmiersprachen nutzen den Klassenansatz?",
+      "answer": "Der Klassenansatz wird in Sprachen wie SMALLTALK, C++, EIFFEL, Java, C-Sharp, SCALA und vielen anderen mehr angewendet."
+    },
+    {
+      "question": "Was sind Konstruktoren in SMALLTALK?",
+      "answer": "In SMALLTALK sind Konstruktoren Methoden, die, wenn sie auf einer Klasse aufgerufen werden, eine neue Instanz dieser Klasse erstellen und zurückgeben. Sie sind Klassenmethoden, die dazu dienen, neue Objekte zu erzeugen."
+    },
+    {
+      "question": "Welche Rolle spielen Ein- und Ausgabeströme in der objektorientierten Programmierung?",
+      "answer": "Ein- und Ausgabeströme spielen in der objektorientierten Programmierung eine wichtige Rolle, da sie den Zugriff auf Eingabe- und Ausgabedaten im System ermöglichen. Sie dienen dazu, Daten sowohl von/zu Benutzern als auch von/zu Dateisystemen zu lesen und zu schreiben."
+    },
+    {
+      "question": "Welche Informationen können in einer Metaklasse definiert werden?",
+      "answer": "In einer Metaklasse können Informationen wie Instanzvariablen und Methoden für die zugehörige Klasse definiert werden. Dies ermöglicht es, das Verhalten und die Eigenschaften der Klasse individuell anzupassen."
+    },
+    {
+      "question": "Welche Bedeutung hat die Generalisierung in der objektorientierten Programmierung?",
+      "answer": "Die Generalisierung ermöglicht es, mehrere Klassen, deren Definitionen inhaltlich verwandt sind, zu abstrahieren und zusammenzufassen. Dies führt zur Bildung einer Generalisierungsklasse, die die gemeinsamen Eigenschaften (Instanzvariablen und Methoden) der generalisierten Klassen enthält. Die Generalisierung erlaubt es, Gemeinsamkeiten zwischen Klassen auf höherer Abstraktionsebene darzustellen und die Wiederverwendung von Code zu fördern."
+    },
+    {
+      "question": "Was ist eine Klassendefinition?",
+      "answer": "Eine Klassendefinition liefert die Intension oder Beschreibung einer Klasse. Sie besteht aus dem Namen der Klasse, der Liste der benannten Instanzvariablen, Angaben zu indizierten Instanzvariablen, Informationen zur Atomarität, und einer Liste von Instanzmethoden."
+    },
+    {
+      "question": "Was sind Instanzen einer Klasse?",
+      "answer": "Eine Instanz der Klasse ist das Objekt, das zur Extension der Klasse gehört. Jede Instanz belegt den Satz an Instanzvariablen individuell. Alle Instanzen einer Klasse verstehen dieselben Nachrichten und verwenden dieselben Methodendefinitionen, um auf die Nachrichten zu reagieren."
+    },
+    {
+      "question": "Was sind indizierte Instanzvariablen?",
+      "answer": "Indizierten Instanzvariablen enthalten binäre Repräsentationen."
+    },
+    {
+      "question": "Was sind globale Pseudovariablen in SMALLTALK?",
+      "answer": "In SMALLTALK wird jede Klasse nach ihrer Erzeugung durch eine globale Pseudovariable repräsentiert, deren Name dem Namen der Klasse entspricht. Diese globale Pseudovariable ist notwendig, um auf die Klasse und ihre Methoden zugreifen zu können. Klassennamen sind global und von überall aus im Code zugreifbar."
+    },
+    {
+      "question": "Welche beiden Rollen gibt es in einer Subklassenbeziehung?",
+      "answer": "Die beiden Enden der Subklassenbeziehung haben die Rollen \"Superklasse\" und \"Subklasse\". Diese Rollen legen nahe, dass die Subklassenbeziehung eine Hierarchie von Klassen aufbaut, in der die Superklassen über den Subklassen stehen. Die Superklasse ist die allgemeinere Klasse, von der die Subklasse erbt, während die Subklasse die speziellere Klasse ist, die die Eigenschaften der Superklasse erbt und möglicherweise erweitert oder anpasst."
+    },
+    {
+      "question": "Was ist das Konzept der offenen Rekursion in SMALLTALK?",
+      "answer": "Das Konzept der offenen Rekursion in SMALLTALK bedeutet, dass die Methode, die durch eine Nachricht an self aufgerufen wird, nicht zwangsläufig die in derselben Klasse definierte Methode ist. Stattdessen kann die passende Methode in einer Subklasse gefunden werden, wenn die aufrufende Methode selbst erst im Rahmen der Suche in der Kette der Superklassen gefunden wurde. Dies kann zu überraschenden Ergebnissen führen, wenn nicht erwartet wird, dass die Methode in einer Subklasse überschrieben wurde."
+    },
+    {
+      "question": "Welche Ebenen gibt es in SMALLTALK im Zusammenhang mit Klassen und Instanzen?",
+      "answer": "In SMALLTALK gibt es mehrere Ebenen im Zusammenhang mit Klassen und Instanzen: Ebene 0: Konkrete Objekte, die nicht instanziierbar sind und Dinge aus dem Anwendungsbereich eines Programms repräsentieren. Ebene 1: Klassen, die die Definition (Instanzvariablen und -methoden) dieser Objekte liefern und anhand derer die Objekte auf Ebene 0 durch Instanziierung erstellt werden. Ebene 2: Metaklassen, die die Klassen auf Ebene 1 definieren. Jede Metaklasse hat genau eine Instanz. Ebene 3: Die Klasse \"Metaclass\", von der alle Metaklassen Instanzen sind."
+    },
+    {
+      "question": "Welche Gemeinsamkeiten haben die Klassen \"Set\" und \"Bag\" in SMALLTALK?",
+      "answer": "Die Gemeinsamkeit zwischen den Klassen \"Set\" und \"Bag\" besteht darin, dass beide ungeordnete Collections repräsentieren. In diesen Collections darf jedes Element höchstens einmal vorkommen. Sie unterscheiden sich jedoch darin, dass in einem Set die Elemente eindeutig sind und keine Duplikate enthalten, während in einer Bag Elemente mehrmals vorhanden sein können."
+    },
+    {
+      "question": "Was ist Spezialisierung in der objektorientierten Programmierung?",
+      "answer": "Spezialisierung ist das Gegenteil von Generalisierung in der objektorientierten Programmierung. Während bei der Generalisierung Eigenschaften weggelassen oder verallgemeinert werden, fügt die Spezialisierung Eigenschaften hinzu oder spezialisiert bereits vorhandene Eigenschaften von Klassen. Es bedeutet, dass eine Klasse eine Spezialisierung ihrer Generalisierungen sein kann, wenn sie zusätzliche Merkmale oder Verhaltensweisen hinzufügt."
+    },
+    {
+      "question": "Was ist Instanziierung?",
+      "answer": "Instanziierung ist der Prozess, bei dem ein neues Objekt einer bestimmten Klasse erstellt wird. Das neue Objekt wird eine Instanz dieser Klasse genannt und hat die Eigenschaften (Instanzvariablen und Methoden), die durch die Definition (Intension) der Klasse festgelegt sind."
+    },
+    {
+      "question": "Welche Alternative gibt es zur Instanziierung?",
+      "answer": "Eine Alternative zur Instanziierung ist das Klonen."
+    },
+    {
+      "question": "Was ist das Klonen?",
+      "answer": "Das Klone ist ein Prozess, bei dem ein neues Objekt auf der Basis eines bereits existierenden Objekts erstellt wird. Der Klon ist eine Kopie des Originalobjekts. Beim Klonen muss festgelegt werden, wie tief die Kopie gehen soll, dh ob nur das Objekt oder auch seine Attributobjekte und die, zu denen es in Beziehung steht, kopiert werden sollen. Während das Klonen in klassenbasierten objektorientierten Programmiersprachen in der Regel durch Instanziierung und Übertragung von Inhaltsdaten der Instanzvariablen erzeugt wird, erfolgt das Klonen in prototypenbasierten objektorientierten Programmiersprachen, die das Konzept der Klasse nicht kennen, durch einfaches Kopieren. In SMALLTALK wird die Instanziierung normalerweise bevorzugt, da es sich um eine klassenbasierte Sprache handelt."
+    },
+    {
+      "question": "Welche Bedingungen müssen erfüllt sein, damit eine Subklassenbeziehung zwischen zwei Klassen in SMALLTALK zulässig ist?",
+      "answer": "Damit eine Subklassenbeziehung zwischen zwei Klassen in SMALLTALK zulässig ist, müssen deren Definitionen bestimmte Bedingungen erfüllen: Benannte Instanz- und Klassenvariablen dürfen nicht dieselben Namen haben wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Wenn die Superklasse indizierte Instanzvariablen hat, müssen diese auch in der Subklasse vorhanden sein. Methodendefinitionen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden."
+    },
+    {
+      "question": "Was sind Factory-Methoden?",
+      "answer": "Factory-Methoden sind spezielle Klassenmethoden, die ähnlich wie Konstruktoren neue Instanzen erstellen. Allerdings können sie die Klasse der Instanz basierend auf anderen Faktoren als nur der Klasse, zu der die Methode gehört, festlegen."
+    },
+    {
+      "question": "Welches Prinzip geht der Vererbung voraus?",
+      "answer": "Die Prinzipien von Generalisierung und Spezialisierung gehen der Vererbung voraus. Generalisierung und Spezialisierung sind eng mit der Vererbung verbunden, da Vererbung oft verwendet wird, um diese Prinzipien umzusetzen. Generalisierung ist die Bildung von allgemeineren Klassen aus spezifischeren Klassen, während Spezialisierung die Bildung spezifischerer Klassen aus allgemeineren Klassen ist."
+    },
+    {
+      "question": "Was ist eine Klassifikation?",
+      "answer": "Eine Klassifikation ist eine Zuordnung von Individuen oder Objekten zu bestimmten Allgemeinbegriffen oder Klassen. Diese Klassifikation ermöglicht eine Strukturierung der Anwendungsdomäne, indem bestimmte Aussagen und Eigenschaften nur noch für die Klassen im Allgemeinen getroffen werden müssen, anstatt für jedes einzelne Objekt. Statt also Eigenschaften und Methoden direkt Objekten zuzuweisen, verbindet man sie mit Klassen und legt fest, dass sie die einzelnen Objekte, die zu dieser Klasse gehören, beschreiben."
+    },
+    {
+      "question": "Was ist die Extension?",
+      "answer": "Die Extension (Ausdehnung) ist die Menge der Objekte, die zu dieser Klasse gehören."
+    },
+    {
+      "question": "Was ist die Intension?",
+      "answer": "Die Intension ist die Summe der Merkmale oder Eigenschaften, die den Begriff ausmachen und die Objekte charakterisieren, die zu dieser Klasse gehören. Die Intension ist gewissermaßen das Auswahlprädikat oder die charakteristische Funktion, die entscheidet, ob ein beliebiges Element unter den Begriff fällt."
+    },
+    {
+      "question": "Was sind abstrakte Klassen?",
+      "answer": "Abstrakte Klassen in der objektorientierten Programmierung sind Klassen, die selbst keine Instanzen haben und daher nicht instanziierbar sind. Sie werden oft verwendet, um gemeinsame Eigenschaften und Methoden für ihre Subklassen bereitzustellen, aber sie sind in der Regel unvollständig definiert und können zu Laufzeitfehlern führen, wenn sie direkt instanziiert werden."
+    },
+    {
+      "question": "Welche Art von Methoden bietet die Klasse \"Object\" den Objekten an?",
+      "answer": "Die Klasse \"Object\" bietet eine Vielzahl von Methoden an, die grundlegende Typtests und andere gemeinsame Operationen für Objekte ermöglichen. Dazu gehören Methoden wie isNil, notNil, isInteger, isFloat und viele andere. Diese Methoden erlauben es, Eigenschaften von Objekten abzufragen und deren Typ zu überprüfen."
+    },
+    {
+      "question": "Welche Rolle spielen Zwischenobjekte in der Umsetzung von Zu-n-Beziehungen?",
+      "answer": "Zwischenobjekte spielen eine Rolle in der Umsetzung von Zu-n-Beziehungen. Sie ermöglichen es, solche Beziehungen indirekt über ihre indizierten Instanzvariablen herzustellen."
+    },
+    {
+      "question": "Was ist die Aufgabe von Streams in SMALLTALK?",
+      "answer": "In SMALLTALK erlauben Streams einen sequentiellen Zugriff auf einzelne Elemente in beliebigen zeitlichen Abständen und den gleichzeitigen bzw. zeitlich abwechselnden Zugriff auf (die Elemente einer) Collection durch mehrere andere Objekte."
+    },
+    {
+      "question": "Was ist die Funktion von Streams in einer Collection?",
+      "answer": "Die Funktion von Streams in einer Collection ist es, Positionszeiger in die Collection hineinzuliefern."
+    },
+    {
+      "question": "Was ist eine Instanz?",
+      "answer": "Eine Instanz ist ein konkretes Exemplar einer Klasse."
+    },
+    {
+      "question": "Was ist eine explizite Zuweisung?",
+      "answer": "Eine explizite Zuweisung ist eine Zuweisung, die durch den Zuweisungsoperator vorgenommen wird."
+    },
+    {
+      "question": "Was ist eine implizite Zuweisung?",
+      "answer": "Eine implizite Zuweisung ist eine Zuweisung, die bei Methodenaufrufen vorgenommen wird."
+    },
+    {
+      "question": "Was ist die Beziehung zwischen Klassen und Metaklassen in Smalltalk?",
+      "answer": "In Smalltalk besteht eine 1-zu-1-Beziehung zwischen Klassen und Metaklassen, die nicht getrennt voneinander definiert werden, sondern in einem gemeinsamen Schema. Jede Klassendefinition verfügt über Abschnitte für die Deklaration der Instanzvariablen, Definition der Methoden, Angabe der Klassenvariablen und -methoden."
+    },
+    {
+      "question": "Was sind Klassenvariablen und Klassenmethoden?",
+      "answer": "Klassenvariablen und Klassenmethoden sind Variablen und Methoden, die allen Instanzen einer Klasse gemeinsam sind. Klassenvariablen werden mit einem Doppelpunkt und dem Klassennamen deklariert, Klassenmethoden mit einem Pluszeichen und dem Klassennamen. Sie können von allen Instanzen der Klasse aus aufgerufen werden. Ein Beispiel für eine Klassenvariable ist \"Dependents Fields\" in der Klasse \"Object\", eins für eine Klassenmethode ist \"pi\" in der Klasse \"Float\"."
+    },
+    {
+      "question": "Was ist eine Klassenvariable?",
+      "answer": "Eine Klassenvariable ist eine Variable, die einer Klasse gehört und allen Instanzen dieser Klasse gemeinsam ist. In diesem Fall gehört die Klassenvariable \"Pi\" der Klasse \"Float\" und ist allen Instanzen dieser Klasse zugeordnet."
+    },
+    {
+      "question": "Was ist ein Rollback?",
+      "answer": "Ein Rollback ist eine Möglichkeit, den ursprünglichen Zustand eines Objekts oder Objektgeflechts wiederherzustellen, indem eine Kopie des Objekts vor der Durchführung einer Menge von Änderungen angelegt und das ursprüngliche Objekt durch die Kopie ersetzt wird."
+    },
+    {
+      "question": "Was ist die Funktion von Generalisierungen in der objektorientierten Programmierung?",
+      "answer": "Die Funktion von Generalisierungen in der objektorientierten Programmierung ist es, Eigenschaften zu definieren, die automatisch auch für alle Klassen gelten, von denen die Generalisierung abstrahiert. Diese Klassen müssen dann nur noch die Unterschiede definieren, die sie von der Generalisierung und voneinander unterscheiden."
+    },
+    {
+      "question": "Was ist die Aufgabe der Klassen, die von einer Generalisierung abstrahiert?",
+      "answer": "Die Aufgabe der Klassen, die von einer Generalisierung abstrahiert, ist es, nur noch die Unterschiede zu definieren, die sie von der Generalisierung und voneinander unterscheiden. Sie müssen nicht die Eigenschaften wiederholen, die der Generalisierung zugeordnet sind, da diese per Definition automatisch auch für sie gelten."
+    },
+    {
+      "question": "Was sind Genera in der objektorientierten Programmierung?",
+      "answer": "Genera sind in der objektorientierten Praxis Generalisierungen, die keine eigenen, direkten Instanzen haben, sondern als abstrakte Objekte fungieren, die von konkreteren Klassen geerbt werden."
+    },
+    {
+      "question": "Was ist Generalisierung bei Attributen?",
+      "answer": "Bei der Generalisierung von Attributen wird ihr Wertebereich von einem spezielleren (kleineren) zu einem allgemeineren (größeren) erweitert. Zum Beispiel würde das Attribut \"Aufenthaltsort\" bei der Generalisierung von Mensch zu Zweibeiner von Punkten auf der Erdoberfläche zu Punkten einschließlich des Luftraums darüber generalisiert. In SMALLTALK gibt es jedoch keine Möglichkeit, Attributen durch Deklaration Wertebereiche zuzuweisen."
+    },
+    {
+      "question": "Was ist eine Generalisierungshierarchie?",
+      "answer": "Eine Generalisierungshierarchie ist eine hierarchische Struktur, in der Klassen nach ihrer Allgemeinheit geordnet sind. Dabei gilt, dass eine allgemeinere Klasse eine speziellere Klasse als Unterklasse enthält. Die Generalisierungshierarchie ist eine wichtige Konzept in der objektorientierten Programmierung, da sie die Beziehung zwischen Klassen und Objekten definiert."
+    },
+    {
+      "question": "Was ist das Model-View-Controller-Entwurfsmuster (MVC-Pattern)?",
+      "answer": "Das MVC-Pattern ist ein Entwurfsmuster, das in SMALLTALK eingeführt wurde und sich heute noch großer Beliebtheit erfreut. Es gibt verschiedene Ansichten auf ein logisches Modell, und Änderungen im Modell können potenziell alle Sichten betreffen. Daher muss jede Änderung alle Sichten darüber unterrichten, was eine Eins-zu-viele-Kommunikation erfordert, die nicht durch den normalen Nachrichtenversand abgedeckt wird."
+    },
+    {
+      "question": "Was ist Lazy Initialization?",
+      "answer": "Lazy Initialization ist eine Technik, bei der die Initialisierung einer Variablen oder eines Objekts verzögert wird, bis sie tatsächlich benötigt wird. Diese Technik wird eingesetzt, um Ressourcen zu sparen und die Leistung zu verbessern."
+    },
+    {
+      "question": "Was ist eine Subklassenbeziehung?",
+      "answer": "Die Subklassenbeziehung ist eine Beziehung zwischen Klassen, bei der die Subklasse eine spezialisiertere Form der Superklasse ist. Die Subklassenbeziehung ist transitiv, d.h. wenn A eine Subklasse von B ist und B eine von C, dann ist A auch eine Subklasse von C. Eine Klasse kann nicht gleichzeitig Superklasse und Subklasse einer anderen Klasse sein."
+    },
+    {
+      "question": "Was ist die Funktion der Pseudovariablen „super“ in SMALLTALK?",
+      "answer": "Die Pseudovariable „super“ in SMALLTALK wird verwendet, um die überschriebene Methode aufzurufen, wenn eine überschreibende Methode lediglich modifizieren möchte, aber das grundlegende Verhalten beibehalten muss."
+    },
+    {
+      "question": "Was ist die Bedeutung von self in Smalltalk?",
+      "answer": "In Smalltalk bezieht sich self auf das Objekt, auf das die gerade ausgeführte Methode angewendet wird. Die Klasse des durch self bezeichneten Objekts muss nicht unbedingt dieselbe sein, in der die Methode definiert ist, sondern kann durchaus eine Superklasse sein. Die zu einer an self geschickten Nachricht passende Methode ist nicht automatisch die, die in derselben Klasse definiert ist, sondern kann durchaus in einer ihrer Subklassen gefunden werden."
+    },
+    {
+      "question": "Was sind aktive Objekte?",
+      "answer": "Aktive Objekte sind Objekte, die über einen eigenen Prozess verfügen, der nur die eigenen Methoden ausführt. Sie arbeiten Nachrichten ab, sobald sie die Zeit dazu haben, was zu einem asynchronen Kommunikationsablauf führt."
+    },
+    {
+      "question": "Was sind Semaphoren?",
+      "answer": "Semaphoren in SMALLTALK sind Objekte, die zur Synchronisation von parallelen Prozessen verwendet werden. Sie verfügen über zwei Methoden, \"wait\" und \"signal\", und eine Instanzvariable, die für jedes Empfangen von \"signal\" um 1 erhöht und für jedes Empfangen von \"wait\" um 1 verringert wird. Wenn der Semaphor den Wert 0 hat, wird der ausführende Prozess in den Schlaf versetzt. Andernfalls läuft er weiter. Erhält der Semaphor die Nachricht \"signal\" und es gibt noch Prozesse, die schlafen, dann kann ein Prozess, der an dem Semaphor wartet, aufgeweckt werden und weitermachen."
+    },
+    {
+      "question": "Was ist eine SharedQueue?",
+      "answer": "SharedQueue ist eine Unterklasse von OrderedCollection, die Objekte aufnimmt und eine Synchronisation über \"next\" und \"nextPut:\" erlaubt."
+    },
+    {
+      "question": "Was ist ein dynamisch gebundener Methodenaufruf?",
+      "answer": "Ein dynamisch gebundener Methodenaufruf ist eine Methode, bei der die Auswahl der Methode nicht nur vom Nachrichtenselektor, sondern auch vom Empfängerobjekt abhängig ist."
+    },
+    {
+      "question": "Was ist das Methodenwörterbuch in Smalltalk?",
+      "answer": "Das Methodenwörterbuch in Smalltalk ist eine Tabelle, die alle Methoden enthält, die zu einer bestimmten Klasse gehören. Wenn eine Methode auf einem Empfängerobjekt aufgerufen wird, wird zunächst geprüft, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist."
+    },
+    {
+      "question": "Was ist die Rolle der Metaklasse \"Metaclass\" in SMALLTALK?",
+      "answer": "Die Metaklasse \"Metaclass\" in SMALLTALK ist eine gemeinsame Metaklasse, von der alle Metaklassen Instanzen sind. Sie wird verwendet, um die Instanzvariablen und Methoden für Metaklassen bereitzustellen, da es nicht notwendig ist, jeder Metaklasse eigene Instanzvariablen und Methoden zuzuweisen."
+    },
+    {
+      "question": "Was ist die Metaklasse von Metaclass?",
+      "answer": "Die Metaklasse von Metaclass ist selbst nur eine einfache Metaklasse und wird als Instanz von Metaclass betrachtet."
+    },
+    {
+      "question": "Was ist die Funktion von Arrays?",
+      "answer": "Arrays werden in der Programmierung häufig verwendet, insbesondere wegen der Möglichkeit der einfachen literalen Definition. Sie ermöglichen es, einfach über die Elemente einer beliebigen, ad hoc spezifizierten Aufzählung zu iterieren. Zum Beispiel kann man den Laufparameter eines Blocks, \"element\", nacheinander die Elemente des literalen Arrays zuweisen."
+    },
+    {
+      "question": "Was ist die Abstraktionshierarchie in Smalltalk?",
+      "answer": "Eine Abstraktionshierarchie in Smalltalk ist eine Hierarchie, die auf dem Konzept der Klassifikation aufbaut und mit der Sprachdefinition festgelegt ist."
+    },
+    {
+      "question": "Was sind Anwendungsklassen?",
+      "answer": "Anwendungsklassen sind Klassen, die zur Laufzeit des Programms für die Erzeugung von Anwendungsobjekten genutzt werden."
+    },
+    {
+      "question": "Was sind Anwendungsobjekte?",
+      "answer": "Anwendungsobjekte sind Objekte, die zur Laufzeit des Programms aus Anwendungsklassen erzeugt werden."
+    },
+    {
+      "question": "Was ist die Klasse \"Collection\" in SMALLTALK?",
+      "answer": "Die Klasse \"Collection\" ist eine abstrakte Klasse in SMALLTALK, die eine Hierarchie von spezielleren, instanziierbaren (konkreten) Collection-Klassen umfasst, die für unterschiedlichste Zwecke eingesetzt werden können. Dazu gehören zum Beispiel \"Set\" für ungeordnete Collections, in denen jedes Element höchstens einmal vorkommen darf, und \"Bag\" für Collections, in denen die letzte Einschränkung aufgehoben ist. \"Set\" und \"Bag\" haben gemeinsam, dass die Elemente in beiden nicht über einen Index zugreifbar sind."
+    },
+    {
+      "question": "Was ist die Vererbung?",
+      "answer": "Die Vererbung ist ein Mechanismus, der es ermöglicht, die Definition einer Klasse (der Superklasse) auf eine andere Klasse (die Subklasse) zu übertragen. Dabei wird die gesamte Definition der Superklasse auf die Subklasse kopiert."
+    },
+    {
+      "question": "Was ist eine Spezialisierung?",
+      "answer": "Spezialisierung ist das Prinzip, bei dem Eigenschaften hinzugefügt oder bereits vorhandene spezialisiert werden, im Gegensatz zur Generalisierung, bei der Eigenschaften weggelassen oder generalisiert werden. Jede Klasse ist eine Spezialisierung ihrer Generalisierungen, sofern sie welche hat."
+    },
+    {
+      "question": "Was ist Spezialisierung in der Programmierung?",
+      "answer": "Spezialisierung in der Programmierung ist der Prozess der Erstellung einer neuen Klasse, die auf einer bestehenden Klasse basiert und diese erweitert oder verändert, um spezifischere Funktionalitäten bereitzustellen. Die neue Klasse wird als spezialisiertere Version der ursprünglichen Klasse angesehen, da sie die gleichen allgemeinen Merkmale und Verhalten besitzt, aber zusätzliche Merkmale und Verhalten hinzufügt, um ihre Funktionalität zu erweitern."
+    },
+    {
+      "question": "Welche Bedingungen müssen für eine zulässige Subklassenbeziehung erfüllt sein?",
+      "answer": "Für eine zulässige Subklassenbeziehung müssen die Definitionen der Klassen bestimmte Bedingungen erfüllen. In SMALLTALK gilt dabei für neue, benannte Instanz- und Klassenvariablen, dass sie nicht dieselben Namen haben dürfen wie Variablen, die bereits in (direkten oder indirekten) Superklassen deklariert wurden. Für indizierte Instanzvariablen gilt, dass wenn die Superklasse solche hat, sie auch in der Subklasse vorhanden sein müssen. Methodendefinitionen hingegen, die dieselbe Methodensignatur verwenden, überschreiben einfach die geerbten Methoden."
+    },
+    {
+      "question": "Was ist die Klasse \"Object\" in SMALLTALK?",
+      "answer": "Die Klasse \"Object\" ist die oberste Superklasse in SMALLTALK, von der alle anderen Klassen abgeleitet sind. Sie enthält Definitionen, die den Instanzen aller Klassen zugutekommen sollen, wie zum Beispiel die Methode \"printString\". Diese Methoden werden durch Vererbung auf alle anderen Klassen übertragen, wodurch sie deren Instanzen zur Verfügung stehen."
+    },
+    {
+      "question": "Was ist die Problematik bei der Vererbung in SMALLTALK?",
+      "answer": "Die Problematik bei der Vererbung in SMALLTALK ist, dass man davon ausgeht, dass Vererbung etwas mit der auf Generalisierung bzw. Spezialisierung beruhenden Abstraktionshierarchie zu tun hat. Dies ist jedoch nicht immer der Fall, wie das Beispiel der Ableitung der Klasse Rechteck von der Klasse Quadrat zeigt. Diese vererbungsorientierte Vorgehensweise kann zu unangenehmen Folgen führen."
+    },
+    {
+      "question": "Was ist Überschreiben?",
+      "answer": "Überschreiben bedeutet, dass eine abgeleitete Klasse dieselben Methoden wie die Basisklasse besitzt, aber die Methoden anders implementiert. Das ist häufig Voraussetzung dafür, Vererbung sinnvoll einzusetzen."
+    },
+    {
+      "question": "Was ist das Problem mit der Vererbung?",
+      "answer": "Das Problem mit der Vererbung ist, dass sie auf die oberflächliche Wiederverwendung von Elementen einer Klassendefinition ausgerichtet ist und dabei den Zusammenhang der Extensionen der beteiligten Klassen außer Acht lässt, was für Generalisierung/Spezialisierung wesentlich ist. Diese Ignoranz hat weitreichende Konsequenzen."
+    },
+    {
+      "question": "Was ist Generalisierung und Spezialisierung in Bezug auf objektorientierte Programmierung?",
+      "answer": "Generalisierung und Spezialisierung sind Prinzipien in der objektorientierten Programmierung. Dabei wird eine allgemeine Klasse (Generalisation) erstellt, die dann durch eine spezifischere Klasse (Spezialisation) erweitert wird. In diesem Fall wird die Klasse Rechteck als allgemeine Klasse angesehen und Quadrat als spezifischere Klasse, die von Rechteck erbt."
+    },
+    {
+      "question": "Was ist die Klasse Dictionary in SMALLTALK?",
+      "answer": "Die Klasse Dictionary in SMALLTALK realisiert sogenannte Assoziativspeicher, bei denen auf eine Speicherzelle nicht durch Angabe einer Speicheradresse, sondern durch Assoziation mit dem Inhalt zugegriffen wird. Sie wird im SMALLTALK-System selbst häufig verwendet, zum Beispiel für das Hinterlegen von Methoden in Dictionaries."
+    },
+    {
+      "question": "Was ist Delegation in der objektorientierten Programmierung?",
+      "answer": "Delegation ist eine Technik in der objektorientierten Programmierung, bei der eine Instanz eine andere Instanz als Sklavin hält, die für sie den Dienst verrichtet. Sie wird oft genutzt, um die Funktion der Vererbung zu übernehmen, da sie dynamisch eingerichtet werden kann und nicht an Fragen der Generalisierung/Spezialisierung gebunden ist."
+    },
+    {
+      "question": "Was sind Allgemeinbegriffe?",
+      "answer": "Allgemeinbegriffe sind die Vorbilder für Klassen in der objektorientierten Programmierung. In SMALLTALK werden Allgemeinbegriffe in Form von Klassen repräsentiert. Klassen sind die Vorbilder für Objekte in der objektorientierten Programmierung. Jede Klasse kann Instanzvariablen und Methoden haben, die das Verhalten und die Eigenschaften der Objekte beschreiben, die zu dieser Klasse gehören."
+    },
+    {
+      "question": "Was ist offene Rekursion?",
+      "answer": "Offene Rekursion ist ein Muster in der objektorientierten Programmierung, bei dem eine abstrakte, in der Klasse nicht implementierte Methode aus derselben Klasse heraus mit \"self\" als Empfänger aufgerufen wird. Dieses Muster wird verwendet, um die Implementierung der Methode in einer erbenden Klasse zu ermöglichen."
+    },
+    {
+      "question": "Was ist Parametrische Polymorphie?",
+      "answer": "Parametrische Polymorphie ist eine Art der Polymorphie, bei der die Auswahl einer Methode von den tatsächlichen Parametern abhängt. Wenn die Methode, die für eine bestimmte Nachricht vorgesehen ist, nicht für alle möglichen Parameter geeignet ist, muss eine alternative Methode ausgewählt werden, die besser zu den tatsächlichen Parametern passt."
+    },
+    {
+      "question": "Was ist Double Dispatch und wofür wird es verwendet?",
+      "answer": "Double Dispatch ist eine Technik, bei der eine Methode gleicher Bedeutung unter Vertauschung von Sender und Empfänger aufgerufen wird. Diese Technik wird verwendet, um die dynamische Bindung zweimal hintereinander durchzuführen. Double Dispatch wurde erstmals von Dan Ingalls am Beispiel von Smalltalk beschrieben und findet auch in anderen Sprachen mit Single Dispatch Anwendung. In Sprachen, bei denen bei der dynamischen Methodenauswahl die Parametertypen berücksichtigt werden, wird Double Dispatch nicht benötigt."
+    },
+    {
+      "question": "Was ist ein Objekt in Bezug auf Klassen?",
+      "answer": "Ein Objekt ist eine Instanz einer Klasse."
+    },
+    {
+      "question": "Welches Problem kann bei der Vererbung auftreten, wenn sie nicht in Einklang mit den Prinzipien von Generalisierung und Spezialisierung angewendet wird?",
+      "answer": "Ein Problem bei der Vererbung tritt auf, wenn sie oberflächlich zur Wiederverwendung von Elementen einer Klassendefinition verwendet wird, ohne die Prinzipien von Generalisierung und Spezialisierung zu berücksichtigen. Dies kann dazu führen, dass die Beziehung zwischen den Extensionen der beteiligten Klassen nicht angemessen berücksichtigt wird und zu unerwarteten Konsequenzen führt."
+    },
+    {
+      "question": "Was bedeutet es, dass Objekte passiv sind?",
+      "answer": "Objekte sind passiv, was bedeutet, dass sie nur aktiv sind, solange sie gerade eine Methode ausführen. Im Wesentlichen sind Objekte in der objektorientierten Programmierung nicht anders als Variablen in prozeduralen Programmiersprachen. Sie enthalten Daten und können auf diese Daten zugreifen, aber sie können nicht von sich aus Aktionen ausführen. Stattdessen müssen ihnen Nachrichten gesendet werden, um sie zu aktivieren und sie dazu zu bringen, eine Methode auszuführen."
+    },
+    {
+      "question": "Was bedeutet es, wenn man von einer Klasse spezialisiert?",
+      "answer": "Wenn man von einer Klasse spezialisiert, erweitert man diese Klasse um neue Eigenschaften und Verhaltensweisen. Die spezialisierte Klasse ist eine Unterklasse der ursprünglichen Klasse und erbt alle Eigenschaften und Verhaltensweisen von dieser."
+    },
+    {
+      "question": "Was sind die Schwierigkeiten bei einer Vererbung unter Instanzen?",
+      "answer": "Die Vererbung unter Instanzen kann das Nachvollziehen und Debuggen eines Programms schwieriger machen, da die Vererbungshierarchie nicht so einfach zu verfolgen ist wie bei der Vererbung unter Klassen. Die Vererbung unter Klassen ist üblicherweise hierarchisch und bietet eine klare Struktur, während die Vererbung unter Instanzen eher netzartig sein kann und daher schwieriger nachzuvollziehen ist."
+    }
+  ],
+  "APPLY": [
+    {
+      "question": "Wann kann eine Lazy initialization sinnvoll sein?",
+      "answer": "\"Lazy initialization\" ist eine Technik, bei der die Initialisierung von Instanzvariablen zu einem späteren Zeitpunkt nach der Instanziierung durchgeführt wird. Dies kann sinnvoll sein, wenn die Initialisierung aufwendig ist und die Abfrage des Anfangswerts selten erfolgt. Die Initialisierung wird verschoben, um den Preis der Initialisierung im Programmablauf zu sparen, wenn sie nie notwendig wird."
+    },
+    {
+      "question": "Wie sieht die Abstraktionshierarchie in SMALLTALK aus?",
+      "answer": "In SMALLTALK gibt es eine Abstraktionshierarchie, bei der von konkreten Objekten der Ebene 0 über Allgemeinbegriffe oder Konzepte der Ebene 1 zu den Definitionen dieser Konzepte auf Ebene 2 und schließlich zur Fassung von Definitionen auf Ebene 3 fortgeschritten wird."
+    },
+    {
+      "question": "Wie lässt sich die Vererbung von Superklassen auf Subklassen umsetzen?",
+      "answer": "Es gibt verschiedene Möglichkeiten, den Mechanismus der Vererbung von Superklassen auf Subklassen umzusetzen. Zwei dieser Möglichkeiten wurden im Text angedeutet: Kopieren und Einfügen: Eine Möglichkeit wäre, die Definition einer Superklasse per Kopieren und Einfügen auf ihre Subklassen zu übertragen. Dies würde die Semantik der Vererbung korrekt wiedergeben, aber bei Änderungen an der Superklasse müssten auch alle Subklassen aktualisiert werden, was technisch problematisch wäre. Automatische Instanzerzeugung: Eine andere Möglichkeit wäre, für jede Instanz einer Subklasse automatisch Instanzen aller ihrer Superklassen zu erzeugen und diese Instanzen zu einer zu vereinen. Dies würde jedoch das Konzept der Identität von Objekten beeinträchtigen, da Objekte einer Subklasse mehrere Identitäten hätten."
+    },
+    {
+      "question": "Was ist ein Beispiel für eine abstrakte Klasse in SMALLTALK?",
+      "answer": "Ein Beispiel für eine abstrakte Klasse in SMALLTALK ist die Klasse \"Collection\". Ihre Abstraktheit zeigt sich darin, dass sie keine benannten Instanzvariablen hat und einige ihrer Methoden, wie \"add:\", nicht implementiert sind. Wenn jemand versuchen würde, die Methode \"add:\" auf einer Instanz von \"Collection\" oder einer ihrer Subklassen aufzurufen, würde dies zu einer Fehlermeldung führen."
+    },
+    {
+      "question": "Wie wird Delegation in prototypenbasierten objektorientierten Programmiersprachen genutzt?",
+      "answer": "Delegation ist eine Beziehung zwischen zwei Objekten, bei der ein Objekt (Delegierter) die Verantwortung für die Bearbeitung bestimmter Anfragen an ein anderes Objekt (Delegator) überträgt. In prototypenbasierten objektorientierten Programmiersprachen wird Delegation genutzt, um die Funktion der Vererbung zu übernehmen. Sie kann dynamisch eingerichtet werden und ist von Fragen der Generalisierung/Spezialisierung befreit, was sie zu einer beliebten Alternative zur Vererbung macht."
+    },
+    {
+      "question": "Wie kann man in Smalltalk automatische Zugriffsmethoden für alle benannten Instanzvariablen generieren?",
+      "answer": "Dies ist möglich, indem man eine neue Methode zur Klassendefinition in der Klasse \"Class\" oder \"Behavior\" hinzufügt, die die vorhandenen Methoden um die automatische Generierung der Zugriffsmethoden erweitert."
+    },
+    {
+      "question": "Wie wird der Zustand eines Objekts in Smalltalk verändert?",
+      "answer": "Der Zustand eines Objekts in Smalltalk wird verändert, indem die Werte seiner Instanzvariablen zugewiesen werden, was gleichbedeutend mit der Änderung seiner Beziehungen ist."
+    },
+    {
+      "question": "Wann entstehen Aliase in Smalltalk?",
+      "answer": "Aliase entstehen in Smalltalk immer bei der Zuweisung, wenn die Variable auf der linken Seite Verweissemantik hat."
+    },
+    {
+      "question": "Wie werden Informationen in der objektorientierten Programmierung in Smalltalk dargestellt?",
+      "answer": "In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht von Objekten dargestellt, das navigiert und manipuliert werden kann."
+    },
+    {
+      "question": "Wann sollte self class und wann self species in Smalltalk verwendet werden?",
+      "answer": "Wenn man eine Kopie oder Konvertierung durchführen möchte und kein Objekt des gleichen Typs zurückgegeben werden darf, sollte man self species anstelle von self class verwenden."
+    },
+    {
+      "question": "Wie werden Klassenvariablen und -methoden in SMALLTALK vererbt?",
+      "answer": "In SMALLTALK werden Klassenvariablen und -methoden von einer Klasse auf ihre Subklassen vererbt. Dies geschieht automatisch parallel zur Vererbungshierarchie der Klassen, die Instanzen der Metaklassen sind."
+    },
+    {
+      "question": "Wie werden Klassen und Metaklassen in SMALLTALK unterschieden?",
+      "answer": "In SMALLTALK gibt es zwei Arten von Objekten: solche, die instanziierbar sind (Klassen) und solche, die es nicht sind. Darüber hinaus gibt es eine Unterscheidung zwischen Klassen, die Metaklassen sind, und solchen, die es nicht sind. Diese Unterscheidungen müssen irgendwo getroffen werden. Die Klasse Object ist nicht die Wurzel der Vererbungshierarchie der Metaklassen, sondern erbt von einer für diesen Zweck vorgesehenen Klasse. Die Klasse Class ist die Superklasse aller Metaklassen, ist aber selbst keine Metaklasse. Die Klasse von Class ist Class class und erst Class class eine Metaklasse."
+    },
+    {
+      "question": "Wie ist die Vererbungshierarchie der Metaklassen in SMALLTALK organisiert?",
+      "answer": "In SMALLTALK können Metaklassen, die ebenfalls Klassen sind, voneinander erben. Die Vererbungshierarchie der Metaklassen wird parallel zur Vererbungshierarchie der Klassen, die Instanzen der Metaklassen sind, erstellt. Dies bedeutet, dass in SMALLTALK sowohl Instanzvariablen und -methoden als auch Klassenvariablen und -methoden von einer Klasse auf ihre Subklassen vererbt werden. Jede Metaklasse in SMALLTALK erbt automatisch von \"Object class\", der Metaklasse von \"Object\". Die Klassenmethoden, die allen Klassen zur Verfügung stehen sollen, einschließlich der Standardkonstruktoren \"new\" und \"new:\", werden in \"Object class\" (genauer gesagt als Instanzmethoden von \"Object class\") definiert. Um die Unterscheidung zwischen instanziierbaren Klassen (Klassen) und nicht instanziierbaren Klassen (Metaklassen) sowie zwischen Klassen und Metaklassen zu treffen, wird die Klasse \"Class\" verwendet. \"Class\" ist die Superklasse aller Metaklassen und stellt sicher, dass jede Instanz dieser Klasse eine Klasse ist. Obwohl \"Class\" die Superklasse aller Metaklassen ist, ist sie selbst keine Metaklasse. Die Klasse von \"Class\" ist \"Class class\", und erst \"Class class\" ist eine Metaklasse."
+    },
+    {
+      "question": "Wie werden Metaklassen in SMALLTALK erstellt?",
+      "answer": "In SMALLTALK werden Metaklassen automatisch erstellt, wenn eine neue Klasse definiert wird. Jede Klasse hat automatisch ihre eigene Metaklasse, die die Definitionen von Instanzvariablen und Methoden für diese Klasse enthält."
+    },
+    {
+      "question": "Wie können Programmierer in SMALLTALK geerbte Methoden löschen?",
+      "answer": "In SMALLTALK können Programmierer geerbte Methoden löschen, indem sie die Methode \"shouldNotImplement\" in der Subklasse implementieren und die geerbte Methode überschreiben. Wenn eine Klasse also eine geerbte Methode löschen möchte, überschreibt sie diese Methode einfach mit \"shouldNotImplement\". Diese Konvention ermöglicht es Programmierern, geerbte Methoden elegant auszulöschen, sollte dies erforderlich sein. Es ist jedoch wichtig zu beachten, dass der Wunsch, geerbte Methoden zu löschen, eine direkte Folge der Orientierung an Vererbung ist, die in dieser Textpassage kritisiert wird. Wenn die Superklasse auf Grundlage des Prinzips der Generalisierung ausgewählt wurde, besteht normalerweise keine Notwendigkeit, geerbte Methoden zu löschen, da alles, was für die Generalisierung sinnvoll ist, auch für ihre Spezialisierungen sinnvoll ist."
+    },
+    {
+      "question": "Wie werden Instanzvariablen in SMALLTALK standardmäßig initialisiert, nachdem eine Instanz erzeugt wurde?",
+      "answer": "Nach der Erzeugung einer Instanz in SMALLTALK haben alle Instanzvariablen standardmäßig den Wert \"nil\". Wenn diese Instanzvariablen sinnvolle Anfangswerte haben sollen, müssen sie explizit zugewiesen werden, normalerweise durch Aufrufen der Methode \"initialize\"."
+    },
+    {
+      "question": "Wie werden Klassendefinitionen in SMALLTALK umgesetzt?",
+      "answer": "In SMALLTALK erfolgt die Klassendefinition nicht in einer separaten Datei wie in vielen anderen objektorientierten Programmiersprachen. Stattdessen werden Klassendefinitionen durch Eintragungen in eine Datenstruktur oder das Erzeugen eines Objekts repräsentiert. Es gibt keine spezielle Syntax für Klassendefinitionen, nur ein Schema."
+    },
+    {
+      "question": "Wie funktioniert die Verwendung von super in SMALLTALK?",
+      "answer": "Wenn super als Nachrichtenempfänger in einer Methodendefinition verwendet wird, beginnt die Suche nach der zur Nachricht passenden Methodendefinition in der (direkten) Superklasse der Klasse, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet. Anders als bei self ist die Suche unabhängig von der Klasse des Objekts, für das super steht. Das bedeutet, dass super immer eine von der Klasse des konkreten Empfängerobjekts losgelöste Suche auslöst, die in der Superklasse der Klasse beginnt, in der super verwendet wird, und nicht in der Superklasse der Klasse, von der das (durch super bezeichnete) Empfängerobjekt eine direkte Instanz ist."
+    },
+    {
+      "question": "Warum werden in SMALLTALK keine aktiven Objekte verwendet?",
+      "answer": "In SMALLTALK wird Parallelverarbeitung nicht in Form von aktiven Objekten, sondern in Form von parallelen Prozessen implementiert. Dies liegt daran, dass aktive Objekte, die asynchron Nachrichten verarbeiten, in der Praxis sehr aufwendig wären."
+    },
+    {
+      "question": "Wie erfolgt die Synchronisation von parallelen Prozessen in SMALLTALK?",
+      "answer": "Die Synchronisation von parallelen Prozessen in SMALLTALK erfolgt zunächst mittels Semaphoren. Objekte der Klasse Semaphore verfügen über Methoden wie \"wait\" und \"signal\", um die Ausführung von Prozessen zu steuern. Semaphore-Objekte zählen die Anzahl der Signale und können Prozesse in den Schlaf versetzen oder aufwecken, abhängig von ihrem aktuellen Zustand. Die Synchronisation kann auch über die Klasse SharedQueue erfolgen, die Objekte aufnimmt und Synchronisation über \"next\" und \"nextPut:\" ermöglicht."
+    },
+    {
+      "question": "Wie funktioniert die Suche nach einer Methode in SMALLTALK?",
+      "answer": "Bei der Suche nach einer Methode wird zunächst im Methodenwörterbuch der Klasse des Empfängers nachgeschlagen. Wenn die Methode dort nicht gefunden wird, wird in der direkten Superklasse der Klasse des Objekts gesucht, und dieser Prozess setzt sich fort, bis die Methode gefunden wird oder bis zur Klasse \"Object\". Sobald die Methode gefunden wird, wird sie ausgeführt. Falls die Methode auch in \"Object\" nicht gefunden wird, wird die Nachricht \"doesNotUnderstand:\" an den ursprünglichen Empfänger mit der ursprünglichen Nachricht als Argument gesendet."
+    },
+    {
+      "question": "Wie können Zu-n-Beziehungen in SMALLTALK gepflegt werden?",
+      "answer": "In SMALLTALK werden Zu-n-Beziehungen standardmäßig mit den Methoden add: und remove: gepflegt. Diese Methoden sind in der abstrakten Klasse Collection definiert, und alle Klassen, die : n-Beziehungen repräsentieren, sind indirekte Instanzen von Collection. Diese Methoden bleiben zunächst abstrakt und müssen in den entsprechenden Subklassen implementiert werden."
+    },
+    {
+      "question": "Wie wird die Vererbung in SMALLTALK und vielen anderen objektorientierten Programmiersprachen umgesetzt?",
+      "answer": "In SMALLTALK und vielen anderen objektorientierten Programmiersprachen wird die Vererbung als ein Teilen der Klassendefinitionen realisiert. Das bedeutet, dass Vereinbarungen, die in einer Klasse getroffen wurden, automatisch auch für alle Subklassen gelten, es sei denn, diese spezifizieren etwas anderes. Die Vereinbarungen werden nicht übertragen oder kopiert, sondern einfach gemeinsam genutzt. Dies ermöglicht eine effiziente Vererbung von Eigenschaften und Verhalten, ohne die Probleme mit der Identität von Objekten oder der Notwendigkeit der Aktualisierung von Subklassen bei Änderungen in der Superklasse."
+    },
+    {
+      "question": "Wie kann man das Problem der Spezialisierung von Klassen lösen?",
+      "answer": "Das Problem der Spezialisierung von Klassen kann elegant gelöst werden, indem parallel zur spezialisierten Klasse eine Klasse \"NichtSpezialisierteKlasse\" eingeführt wird. Alle Eigenschaften, die andere Instanzen von derselben Generalisierung unterscheiden, können in der \"NichtSpezialisierteKlasse\" platziert werden. Dadurch bleibt die Hierarchie sauber und ermöglicht eine klare Unterscheidung zwischen spezialisierten und nicht spezialisierten Klassen."
+    },
+    {
+      "question": "Wie werden Klassen in SMALLTALK erzeugt?",
+      "answer": "In SMALLTALK werden Klassen erzeugt, indem man einer anderen Klasse eine entsprechende Nachricht sendet. Dies ist notwendig, da Instanzen in SMALLTALK grundsätzlich über Konstruktoren erstellt werden, und jede Klasse ist eine Instanz ihrer Metaklasse."
+    },
+    {
+      "question": "Wie kann in SMALLTALK verhindert werden, dass Instanzen einer abstrakten Klasse erzeugt werden?",
+      "answer": "In SMALLTALK erfolgt die Erkennung, dass eine abstrakte Klasse instanziiert wurde, zur Laufzeit, wenn versucht wird, eine nicht implementierte Methode aufzurufen. Um zu verhindern, dass Instanzen einer abstrakten Klasse überhaupt erzeugt werden, könnte man die Konstruktoren, insbesondere \"new\" und \"new:\", entsprechend überschreiben. Dies würde jedoch auch die Instanziierung der Klassen verhindern, die von der abstrakten Klasse erben, was oft nicht akzeptabel ist."
+    },
+    {
+      "question": "Wie wird die Unterscheidung nach den Parameterobjekten in SMALLTALK durchgeführt?",
+      "answer": "In SMALLTALK kann die Unterscheidung nach den Parameterobjekten mithilfe einer Technik namens \"Double Dispatch\" durchgeführt werden. Bei dieser Technik wird im Rumpf einer Methode dieselbe Methode noch einmal aufgerufen, wobei Empfänger (self) und Parameter vertauscht werden. Die Klasse des Empfängers wird im Nachrichtenselektor der neu aufgerufenen Methode kodiert. Dadurch erfolgt die dynamische Bindung zweimal hintereinander, einmal für den Empfänger und einmal für den Parameter, um die richtige Methode basierend auf beiden Objekten auszuwählen."
+    },
+    {
+      "question": "Wie ist die Definition einer Metaklasse aufgebaut?",
+      "answer": "Die Definition einer Metaklasse ist ähnlich wie die einer normalen Klasse aufgebaut, bestehend aus benannten Instanzvariablen und Instanzmethodendefinitionen. Der Klassenname kann jedoch nicht frei angegeben werden. Indizierte Instanzvariablen sind nicht vorgesehen."
+    },
+    {
+      "question": "Wie ist das Verhältnis von Klassen und Metaklassen in SMALLTALK?",
+      "answer": "Aufgrund der bestehenden 1-zu-1-Beziehung zwischen Klassen und Metaklassen werden diese in SMALLTALK nicht getrennt voneinander definiert, sondern in einem gemeinsamen Schema. Jede Klassendefinition verfügt demnach neben den Abschnitten zur Deklaration der Instanzvariablen und zur Definition der Methoden auch noch über zwei Abschnitte für die entsprechenden Angaben zur ihrer Metaklasse, die Angabe der sogenannten Klassenvariablen und -methoden."
+    },
+    {
+      "question": "Wie kann man ein Objekt vergrößern?",
+      "answer": "Eine Möglichkeit, ein Objekt zu vergrößern, ist das \"Umziehen\" der Repräsentation des Objekts in den Speicher. Dazu wird ein neues Objekt mit der doppelten Größe angelegt, die Daten werden in das neue Objekt kopiert und das alte Objekt wird durch das neue Objekt ersetzt. Die Methode grow erzeugt eine neue ArrayedCollection mit einer um 100 erhöhten Größe und kopiert den Inhalt der alten ArrayedCollection in die neue. Anschließend gibt sie die neue ArrayedCollection zurück."
+    },
+    {
+      "question": "Wie wird die Initialisierung von Instanzvariablen in Smalltalk durchgeführt?",
+      "answer": "In Smalltalk wird die Initialisierung von Instanzvariablen durchgeführt, indem die Methode \"initialize\" aufgerufen wird, die standardmäßig von den Methoden \"new\" und \"new:\" vorgesehen ist. Diese Methode kann alle Initialisierungen vornehmen, ohne dass etwas über den Aufbau der Instanzen nach außen verraten wird."
+    },
+    {
+      "question": "Wie funktioniert die Vererbung in SMALLTALK?",
+      "answer": "In SMALLTALK hat Vererbung eine Kopieren-und-Einfügen-Semantik, d.h. wenn man die Implementierung einer Methode aus der Superklasse in die Subklasse wiederholt, erhält man das gleiche Ergebnis."
+    },
+    {
+      "question": "Wann sollte man offene Rekursion nicht verwenden?",
+      "answer": "Man sollte offene Rekursion nicht verwenden, wenn sie zu Problemen führen kann, die als \"Fragile-base-class-Problem\" bekannt sind."
+    },
+    {
+      "question": "Wie würden aktive Objekte kommunizieren?",
+      "answer": "Aktive Objekte würden asynchron kommunizieren, indem sie Nachrichten (Methodenaufrufe) ohne Prozess empfangen und dann abarbeiten, wenn sie die Zeit dazu haben."
+    },
+    {
+      "question": "Wie wird Parallelverarbeitung in Smalltalk und Java umgesetzt?",
+      "answer": "In Smalltalk und Java wird Parallelverarbeitung durch parallele Prozesse umgesetzt, die zu einer Zeit eine Methode ausführen. Diese Prozesse besuchen mit dem Methodenaufruf die Empfängerobjekte, die jedoch selbst passiv bleiben und kein Eigenleben haben."
+    },
+    {
+      "question": "Wie wird eine Methode in SMALLTALK aufgerufen?",
+      "answer": "In SMALLTALK wird eine Methode auf einem Empfängerobjekt aufgerufen, indem zunächst geprüft wird, ob die Methode im zur Klasse des Empfängers gehörenden Methodenwörterbuch enthalten ist. Diese Prüfung kann man auch selbst durchführen, indem man die Instanzmethode includesSelector: der Klasse Behavior aufruft, die allen Klassen zur Verfügung steht."
+    },
+    {
+      "question": "Wie ist die Beziehung zwischen Klassen und Objekten in SMALLTALK?",
+      "answer": "In SMALLTALK gibt es eine 1:n-Beziehung zwischen Klassen und Objekten. Klassen stellen die Definitionen für Objekte bereit und repräsentieren die Objekte der Ebene 0 in ihrer Gesamtheit. Objekte werden durch Instanziierung von Klassen erstellt."
+    },
+    {
+      "question": "Wie passiert in SMALLTALK die Instanziierung?",
+      "answer": "In SMALLTALK wird normalerweise die Instanziierung eines Objekts durch Senden der Nachricht \"new\" (für Klassen ohne indizierte Instanzvariablen) oder \"new:\" (für Klassen mit indizierten Instanzvariablen) an die Klasse durchgeführt. Das neue Objekt wird im Speicher angelegt, und seine Instanzvariablen werden alle mit \"nil\" initialisiert."
+    },
+    {
+      "question": "Wie werden in Smalltalk Klassen verwaltet?",
+      "answer": "In Smalltalk werden alle Klassen, die in einem SMALLTALK-System zur Verfügung stehen, in einem gemeinsamen Namensraum verwaltet."
+    },
+    {
+      "question": "Wie funktionieren Factory-Methoden?",
+      "answer": "Factory-Methoden sind statische Methoden, die eine Instanz einer bestimmten Unterklasse erzeugen und zurückgeben, anstatt die Instanz direkt zu instanziieren. Sie entscheiden dynamisch, welche Unterklasse instanziiert werden soll, abhängig von den gegebenen Eingaben. Dadurch können sie die richtige Instanzklasse auswählen und eine Instanz dieser Klasse zurückgeben, ohne dass der Aufrufer sich um die Details der Instanziierung kümmern muss."
+    },
+    {
+      "question": "Wie hängt die Intension und Extension zusammen?",
+      "answer": "Je größer die Intension (die Menge der Eigenschaften) ist, desto kleiner ist die Extension (die Menge der Objekte, die diese Eigenschaften erfüllen)."
+    },
+    {
+      "question": "Wann wird das Empfängerobjekt und die Parameterobjekte bei der Auswahl einer Methode berücksichtigt?",
+      "answer": "Das Empfängerobjekt und die Parameterobjekte werden bei der Auswahl einer Methode berücksichtigt, wenn die Auswahl der geeigneten Methode von den tatsächlichen Parametern abhängt."
+    },
+    {
+      "question": "Wie wird die Parametrische Polymorphie in der objektorientierten Programmierung implementiert?",
+      "answer": "In der objektorientierten Programmierung wird Parametrische Polymorphie in der Regel durch Überladen von Methoden implementiert. Dabei werden mehrere Methoden mit dem gleichen Namen, aber unterschiedlichen Parametern definiert. Wenn eine Nachricht gesendet wird, wird die Methode mit den passenden Parametern ausgewählt und ausgeführt."
+    },
+    {
+      "question": "Wann spielen die tatsächlichen Parameter eine Rolle bei der Methodenauswahl?",
+      "answer": "Die tatsächlichen Parameter spielen eine Rolle bei der Methodenauswahl, wenn eine Methode für verschiedene Datentypen unterschiedlich implementiert ist, wie zum Beispiel bei arithmetischen Operatoren."
+    },
+    {
+      "question": "Was ist der Zweck von Konvertierungsmethoden in Collection?",
+      "answer": "Der Zweck von Konvertierungsmethoden in Collection ist es, eine Menge von Objekten aus einer Collection in eine andere zu übertragen, wobei die Eigenschaften der Ziel-Collection berücksichtigt werden, wie z.B. das Entfernen doppelter Elemente bei der Konvertierung in eine Menge (asSet) oder das Sortieren der Elemente bei der Konvertierung in eine sortierte Collection (asSortedCollection)."
+    },
+    {
+      "question": "Was ist ein Beispiel für eine instanziierbare Collection-Klasse in SMALLTALK?",
+      "answer": "Einige Beispiele für spezielle, instanziierbare (konkrete) Collection-Klassen in SMALLTALK sind: Set: Diese Klasse wird verwendet, um ungeordnete Collections darzustellen, in denen jedes Element höchstens einmal vorkommen darf, was einer Menge entspricht. Bag: Bag wird verwendet, um ungeordnete Collections darzustellen, in denen die Einschränkung aufgehoben ist, dass Elemente nur einmal vorkommen dürfen. In einer Bag können Elemente mehrmals vorhanden sein. SequenceableCollection oder IndexedCollection: Diese Klassen repräsentieren geordnete Collections, bei denen das i-te Element eindeutig bestimmt ist. Sie implementieren die Methoden \"at:\" und \"at:put:\", um auf Elemente zuzugreifen oder Elemente an einer bestimmten Position einzufügen oder zu ändern. Dictionary: Diese Klasse repräsentiert eine ungeordnete Collection, bei der jedes Element unter einem Schlüssel gespeichert wird. Die Methoden \"at:\" und \"at:put:\" werden verwendet, um auf die Elemente zuzugreifen oder sie zu ändern. Dabei können Schlüssel Objekte verschiedener Klassen sein, nicht nur Integer."
+    },
+    {
+      "question": "Was ist der Zweck von Klassen in SMALLTALK?",
+      "answer": "In SMALLTALK hat jede Klasse Instanz ihre eigenen Instanzvariablen und Methoden, die nur für sie angelegt werden können. Dies ermöglicht eine Programmierpraxis, bei der jede Klasse ihre eigenen Instanzvariablen und Methoden besitzt und die Programmiererin diese frei bestimmen kann, ohne dabei an andere Klassen denken zu müssen."
+    },
+    {
+      "question": "Was ist der Zweck von Konstruktoren in der objektorientierten Programmierung?",
+      "answer": "Konstruktoren sind spezielle Methoden in der objektorientierten Programmierung, die verwendet werden, um neue Objekte einer Klasse zu initialisieren. Sie werden aufgerufen, wenn ein neues Objekt erstellt wird und werden verwendet, um die Anfangswerte der Attribute des Objekts festzulegen. In dem gegebenen Beispiel, werden zwei alternative Konstruktoren für die Klasse \"Time\" definiert, die die neuen Objekte jeweils unterschiedlich initialisieren."
+    },
+    {
+      "question": "Was ist der Zweck der Vererbung?",
+      "answer": "Der Zweck der Vererbung ist es, die Definition einer Superklasse auf eine Subklasse zu übertragen, um die Wiederverwendung von Code zu erhöhen und die Wartbarkeit des Codes zu verbessern."
+    },
+    {
+      "question": "Wie unterscheidet sich die SortedCollection in SMALLTALK von anderen Collection-Klassen?",
+      "answer": "Eine SortedCollection ist eine Collection-Klasse in SMALLTALK, die eine Subklasse von OrderedCollection ist. Im Gegensatz zu anderen Collection-Klassen wird die Reihenfolge der Elemente in einer SortedCollection nicht von außen, durch Angabe eines Indexes oder die Reihenfolge der Einfügung, festgelegt. Stattdessen wird die Reihenfolge von innen durch eine Qualität der eingefügten Objekte bestimmt. Dies ermöglicht es, die in Beziehung stehenden Objekte in einer bestimmten Reihenfolge zu halten, unabhängig von der Reihenfolge, in der sie der Collection hinzugefügt wurden."
+    },
+    {
+      "question": "Wie Unterschiden sich Factory-Methode von Konstruktoren?",
+      "answer": "Eine Factory-Methode ist eine Methode, die eine neue Instanz liefert, ähnlich wie ein Konstruktor. Der Unterschied liegt darin, dass die Klasse der Instanz von anderen Faktoren als nur der Klasse, zu der die Methode gehört, abhängig gemacht wird. In SMALLTALK sind Factory-Methoden einfach zu implementieren und unterscheiden sich formal nicht von Konstruktoren, da es sich einfach um Klassenmethoden handelt."
+    },
+    {
+      "question": "Warum hat sich die klassenbasierte Form der objektorientierten Programmierung gegenüber der prototypenbasierten Form durchgesetzt?",
+      "answer": "Die klassenbasierte Form der objektorientierten Programmierung hat sich vermutlich aus verschiedenen Gründen durchgesetzt. Zum einen bieten Klassen ein etabliertes Ordnungskonzept, das in anderen Disziplinen wie Mathematik und Biologie verwendet wird, und das sich gut zur Strukturierung von objektorientierten Programmen eignet. Zum anderen eignen sich Klassen als Vorlagen für Typen, was die Integration von objektorientierter Programmierung in typisierte Sprachen ermöglicht. Die prototypenbasierte Form der Objektorientierung bietet hingegen Flexibilität bei der Anpassung von einzelnen Objekten an ihren Zweck und ist besonders nützlich in interaktiven Anwendungen."
+    },
+    {
+      "question": "Warum benötigen Klassen in SMALLTALK ihre eigenen Metaklassen?",
+      "answer": "Klassen in SMALLTALK benötigen ihre eigenen Metaklassen, damit sie ihre eigenen Instanzvariablen und Methoden definieren können, ohne die Definitionen anderer Klassen zu beeinflussen. Dies ermöglicht eine hohe Flexibilität und erlaubt es den Programmierern, das Verhalten von Klassen individuell anzupassen."
+    },
+    {
+      "question": "Warum erhalten Programmierer in SMALLTALK erst zur Laufzeit des Programms eine Fehlermeldung, wenn sie eine Nachricht an eine Instanz einer abstrakten Klasse senden?",
+      "answer": "In SMALLTALK und ähnlichen objektorientierten Programmiersprachen erhalten Programmierer zur Laufzeit des Programms eine Fehlermeldung, wenn sie eine Nachricht an eine Instanz einer abstrakten Klasse senden, da diese abstrakten Klassen unvollständig sind und daher nicht implementierte Methoden enthalten können. Die Fehlermeldung, die durch die Methode \"doesNotUnderstand:\" (in der Klasse \"Object\") ausgelöst wird, informiert die Programmierer darüber, dass die Methode in einer Subklasse implementiert werden sollte. Dieser Ansatz entspricht dem interaktiven Geist des SMALLTALK-Systems, bei dem das Programmieren als iteratives Zurechtbiegen und Erweitern eines bereits funktionierenden Systems betrachtet wird."
+    },
+    {
+      "question": "Warum ist eine Eins-zu-viele-Kommunikation im MVC-Pattern erforderlich?",
+      "answer": "Im MVC-Pattern gibt es verschiedene Ansichten auf ein logisches Modell. Wenn Änderungen im Modell potenziell alle Ansichten betreffen, müssen diese Änderungen alle Ansichten darüber informieren. Daher ist eine Eins-zu-viele-Kommunikation erforderlich, um sicherzustellen, dass alle betroffenen Ansichten aktualisiert werden."
+    },
+    {
+      "question": "Warum sind Generalisierung und Spezialisierung in der objektorientierten Programmierung relevant?",
+      "answer": "Obwohl Generalisierung und Spezialisierung eher theoretisch motivierte Konzepte sind, sind sie dennoch relevant, da sie dazu beitragen, die Struktur und Hierarchie von Klassen in objektorientierten Programmen zu definieren. Sie ermöglichen es, Klassen in Beziehung zueinander zu setzen und abstrakte Modelle für die Softwareentwicklung zu entwickeln. Diese Konzepte können in komplexen Softwareprojekten zur Verbesserung der Wartbarkeit und Erweiterbarkeit beitragen."
+    },
+    {
+      "question": "Warum gibt es in SMALLTALK mindestens eine Klasse, die keine Subklasse ist?",
+      "answer": "In SMALLTALK ist die Subklassenbeziehung nicht reflexiv, was bedeutet, dass jede Klasse mindestens eine Superklasse haben muss. Diese oberste Superklasse ist die Klasse \"Object\". In \"Object\" sind Definitionen enthalten, die den Instanzen aller Klassen zugutekommen sollen, und diese Methoden werden per Vererbung auf alle anderen Klassen übertragen."
+    },
+    {
+      "question": "Warum könnte die Vererbung zwischen Instanzen in der objektorientierten Programmierung das Verfolgen und Debuggen von Programmen erschweren?",
+      "answer": "Die Vererbung zwischen Instanzen kann das Verfolgen und Debuggen von Programmen erschweren, da sie die Beziehungen zwischen Objekten komplexer gestaltet. Wenn Objekte Eigenschaften und Verhalten von anderen Objekten erben können und diese Eigenschaften überschreiben oder löschen können, kann dies zu unvorhersehbarem Verhalten führen und die Fehlersuche erschweren."
+    },
+    {
+      "question": "Warum sind abstrakte Klassen in der objektorientierten Programmierung nicht instanziierbar?",
+      "answer": "Abstrakte Klassen sind in der Regel nicht instanziierbar, weil ihnen oft die notwendigen Informationen fehlen, um Instanzen vollständig zu initialisieren. Sie dienen als Vorlagen für Subklassen, die die fehlenden Details ergänzen."
+    },
+    {
+      "question": "Warum sind Klassen keine Instanzen einer speziellen Klasse \"Class\"?",
+      "answer": "Wenn Klassen Instanzen einer speziellen Klasse \"Class\" wären, hätten sie dieselbe Menge von Instanzvariablen und Methoden. Das würde aber bedeuten, dass alle Klassen gleich wären, was nicht der Fall ist. Jede Klasse hat ihre eigene, einzigartige Menge von Instanzvariablen und Methoden. Deshalb sind Klassen keine Instanzen einer speziellen Klasse \"Class\"."
+    },
+    {
+      "question": "Warum kann es sinnvoll sein, eine Methode wie \"new\" für bestimmte Klassen anders zu definieren?",
+      "answer": "Es kann sinnvoll sein, eine Methode wie \"new\" für bestimmte Klassen anders zu definieren, um die Instanzvariablen der neu erzeugten Instanzen bestimmte Startwerte zuzuweisen oder um das Verhalten der Methode an die Anforderungen der Klasse anzupassen."
+    },
+    {
+      "question": "Warum ist das Entfernen von Instanzvariablen oder Methoden unvereinbar mit der Spezialisierung?",
+      "answer": "Das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung, weil die Umkehrung der Spezialisierung, die Generalisierung, dann nicht aus dem bloßen Weglassen entstehen könnte. Zudem würde die Richtung von Spezialisierung und Generalisierung beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte."
+    },
+    {
+      "question": "Warum ist die Vererbung in der objektorientierten Programmierung problematisch?",
+      "answer": "Die Vererbung in der objektorientierten Programmierung ist problematisch, weil sie oft fälschlicherweise als ein Zeichen für eine Generalisierung/Spezialisierung interpretiert wird. Es ist jedoch möglich, dass eine Klasse Eigenschaften einer anderen Klasse erbt, ohne dass sie eine Spezialisierung der vererbenden Klasse ist. Ein klassisches Beispiel hierfür ist die Ableitung der Klasse Rechteck von der Klasse Quadrat, was zu unangenehmen Folgen führen kann."
+    },
+    {
+      "question": "Warum sollte das Attribut, das als Schlüssel in einem Dictionary verwendet wird, unveränderlich sein?",
+      "answer": "Das Attribut, das als Schlüssel in einem Dictionary verwendet wird, sollte unveränderlich sein, da das Objekt nach einer Änderung des Attributs immer noch unter dem alten Attributwert als Schlüssel gespeichert ist und nur unter diesem wiedergefunden wird. Wenn das Attribut veränderlich ist, kann es zu Problemen bei der Suche nach dem Objekt im Dictionary führen, da der alte Attributwert nicht mehr gültig ist."
+    }
+  ],
+  "ANALYZE": [
+    {
+      "question": "Was ist der Unterschied zwischen dem Konstruktoransatz und dem Klassenansatz in der objektorientierten Programmierung?",
+      "answer": "Beim Konstruktoransatz wird der Aufbau eines Objekts in einer Methode beschrieben, in der dem Objekt bei seiner Erzeugung Instanzvariablen und Methoden zugeordnet werden. Bei jedem Aufruf dieser Methode entsteht ein neues Objekt. Im Gegensatz dazu, erzeugt der Klassenansatz Objekte als Instanzen von bestimmten Vorlagen, die als Klassen bezeichnet werden. Alle Objekte, die von einer Klasse erzeugt werden, haben dieselben Instanzvariablen und Methoden."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen dem Prototypenansatz und dem Klassenansatz in der objektorientierten Programmierung?",
+      "answer": "Beim Prototypenansatz wird ein schon existierendes Objekt samt seiner Instanzvariablen und Methoden geklont und bei Bedarf um weitere Instanzvariablen und Methoden ergänzt. Im Gegensatz dazu, erzeugt der Klassenansatz Objekte als Instanzen von bestimmten Vorlagen, die als Klassen bezeichnet"
+    },
+    {
+      "question": "Was ist der Unterschied zwischen aktiven und passiven Objekten?",
+      "answer": "Aktive Objekte sind Objekte, die über einen eigenen Rechenprozess verfügen und Nachrichten asynchron empfangen und verarbeiten können. Passive Objekte hingegen sind Objekte, die nur aktiv sind, solange sie gerade eine Methode ausführen. In der Praxis werden jedoch passive Objekte verwendet, da aktive Objekte sehr aufwendig wären."
+    },
+    {
+      "question": "Was ist der wesentliche Nachteil von Arrays in SMALLTALK?",
+      "answer": "Der wesentliche Nachteil von Arrays in SMALLTALK ist, dass ihre Größe beschränkt ist. Das bedeutet, dass die Anzahl der Elemente in einem Array begrenzt ist, und es schwierig oder teuer sein kann, die Größe eines Arrays dynamisch zu ändern, um mehr Elemente aufzunehmen."
+    },
+    {
+      "question": "Welcher Vorteil ergibt sich aus der Verwendung von Zwischenobjekten in Zu-n-Beziehungen?",
+      "answer": "Ein entscheidender Vorteil der Verwendung von Zwischenobjekten in Bezug auf Zu-n-Beziehungen ist die Möglichkeit, verschiedene Arten von solchen Beziehungen zu definieren und diesen jeweils spezifisches Verhalten zuzuweisen, das auf die Art der Beziehung abgestimmt ist. Dies ermöglicht es, mengenwertige Beziehungen oder sortierte Beziehungen zu erstellen und Operationen wie das Hinzufügen oder Entfernen von Objekten individuell anzupassen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen lesbaren und schreibbaren Streams?",
+      "answer": "Lesbare Streams sind Ströme, die nur zum Lesen von Daten verwendet werden können, während schreibbare Streams zum Schreiben von Daten verwendet werden können."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einer Metaklasse und einer normalen Klasse?",
+      "answer": "Der Unterschied zwischen einer Metaklasse und einer normalen Klasse besteht darin, dass Metaklassen keine indizierten Instanzvariablen enthalten dürfen und der Klassenname nicht frei angegeben werden kann."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Instanzvariablen und Klassenvariablen?",
+      "answer": "Der Unterschied zwischen Instanzvariablen und Klassenvariablen liegt darin, dass Instanzvariablen jeweils zu einer Instanz gehören, während Klassenvariablen zu einer Klasse gehören. Das bedeutet, dass jede Instanz einer Klasse ihre eigenen Werte für die Instanzvariablen hat, während alle Instanzen einer Klasse die gleichen Werte für die Klassenvariablen teilen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Generalisierung und Klassifikation in der objektorientierten Programmierung?",
+      "answer": "Klassifikation ist eine Form der Ist-ein-Abstraktion, bei der man von einem Individuum zu seinem Allgemeinbegriff übergeht, während Generalisierung zwei Allgemeinbegriffe miteinander in Beziehung setzt. Ein weiterer Unterschied besteht darin, dass die Klassifikation nicht transitiv ist, während die Generalisierung es ist."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Konstruktoren und Initialisierung in Smalltalk?",
+      "answer": "In Smalltalk sind Konstruktoren Klassenmethoden, die neue Instanzen der jeweiligen Klasse zurückliefern. Nach der Erzeugung einer Instanz haben alle Instanzvariablen standardmäßig den Wert \"nil\". Wenn diese Instanzvariablen sinnvolle Anfangswerte haben sollen, müssen sie explizit zugewiesen werden. Dieser Vorgang wird als Initialisierung der Instanz bezeichnet. Somit ist der Unterschied, dass Konstruktor ein Klassenmethode ist, die eine neue Instanz erzeugt, während Initialisierung ein Vorgang ist, bei dem Instanzvariablen sinnvolle Anfangswerte zugewiesen bekommen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Konstruktoren in SMALLTALK und Konstruktoren in Sprachen wie C++, Java oder C-Sharp?",
+      "answer": "In SMALLTALK sind Konstruktoren Klassenmethoden, während sie in Sprachen wie C++, Java oder C-Sharp eine Art Zwitterstatus haben und sowohl auf der Klasse als auch auf der neuen Instanz aufgerufen werden können. SMALLTALK-Konstruktoren können nicht auf die Instanzvariablen der neu erzeugten Instanz zugreifen, während Konstruktoren in C++, Java oder C-Sharp dies können."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen self und super?",
+      "answer": "Der Unterschied liegt darin, dass die Suche bei self von der Klasse des Objekts abhängt, für das self steht, während die Suche bei super unabhängig von der Klasse des Objekts ist, für das super steht. Super beginnt die Suche immer mit der Superklasse der Klasse, in der super verwendet wird, und nicht mit der Superklasse der Klasse, von der das Empfängerobjekt eine direkte Instanz ist."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen dem klassenbasierten Methoden-Lookup und dem objektbasierten Methoden-Lookup?",
+      "answer": "Der Unterschied zwischen dem klassenbasierten Methoden-Lookup und dem objektbasierten Methoden-Lookup besteht darin, dass man beim objektbasierten Methoden-Lookup jedem Objekt sein eigenes Methodenwörterbuch zur Verfügung stellt, während beim klassenbasierten Methoden-Lookup die Methoden in der Klasse gespeichert sind."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen dynamischem und statischem Binden in der objektorientierten Programmierung?",
+      "answer": "Beim dynamischen Binden wird eine Nachricht an ein Objekt geschickt und es wird zur Laufzeit entschieden, welche Methode aufgerufen wird. Beim statischen Binden wird dies bereits zur Übersetzungszeit entschieden. Ein Vorteil des dynamischen Bindens ist die größere Flexibilität, allerdings müssen dafür bestimmte Laufzeitprüfungen durchgeführt werden. Statische Typprüfung kann das Risiko von Typfehlern verringern, schränkt aber die Flexibilität beim Programmieren ein."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen den Klassen \"Set\" und \"Bag\" in Smalltalk?",
+      "answer": "Die Klasse \"Set\" ist eine ungeordnete Collection, in der jedes Element höchstens einmal vorkommen darf, während die Klasse \"Bag\" eine ungeordnete Collection ist, in der die letzte Einschränkung aufgehoben ist, d.h. in der ein Element mehrfach vorkommen kann."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Spezialisierung und Instanziierung?",
+      "answer": "Spezialisierung und Instanziierung sind zwei verschiedene Vorgänge. Spezialisierung bedeutet, den Wertebereich einer Instanzvariable einzuschränken, während Instanziierung bedeutet, einer Instanzvariable eines Objekts ein Element aus dem Wertebereich zuzuweisen. Im Fall von \"Zweibeiner\" kann durch Spezialisierung der Wertebereich der Instanzvariable \"anzahlBeine\" auf {2} eingeschränkt werden, während durch Instanziierung einer Instanzvariable eines Objekts der Wert 2 zugewiesen wird."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Spezialisierung und Vererbung?",
+      "answer": "Spezialisierung und Vererbung scheinen Hand in Hand zu gehen, aber in der Praxis kann eine unbedachte Spezialisierung zu Komplikationen führen und eine Fixierung auf die Nutzung der Vererbung zu Problemen. Spezialisierung bezieht sich auf das Erstellen einer Unterklasse, die eine Oberklasse erweitert, während Vererbung ein Mechanismus ist, bei dem eine Unterklasse die Eigenschaften und Methoden einer Oberklasse erbt."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Vererbung und Generalisierung?",
+      "answer": "Vererbung und Generalisierung sind zwei verschiedene Konzepte. Wenn man denkt, man hätte mit der Vererbung auch eine Generalisierungsbeziehung geschaffen, ist man auf dem Holzweg. Ein Beispiel: Die Menge der Quadrate enthält nicht die Menge der Rechtecke, was eine charakteristische Begleiterscheinung der Generalisierung gewesen wäre. Der Unterschied liegt in der Intension und Extension: Die Intension von Rechteck ist umfangreicher als die von Quadrat, da sie eine Instanzvariable mehr enthält. Die Intension von Quadrat ist aber trotzdem restriktiver als die von Rechteck, da sie eine zusätzliche Bedingung enthält."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Generalisierung/Spezialisierung und Vererbung in der objektorientierten Programmierung?",
+      "answer": "Generalisierung/Spezialisierung und Vererbung sind zwei verschiedene Konzepte in der objektorientierten Programmierung. Generalisierung/Spezialisierung steht für die Ordnung eines Systems von Klassen mit Blick von außen und für das Ganze, während Vererbung für die Pragmatik des Programmierens mit Blick von innen und einem Fokus auf Wiederverwendung steht. Vererbung stellt eine Art genetischen Zusammenhang zwischen Klassen dar, während Generalisierung/Spezialisierung eher eine abstrakte Ordnung ist. Vererbung bringt Komplexität in ein System, während Generalisierung/Spezialisierung versucht, sie durch Strukturierung zu reduzieren."
+    },
+    {
+      "question": "Was sind die Vorteile des klassenbasierten Ansatzes gegenüber dem prototypenbasierten Ansatz?",
+      "answer": "Der klassenbasierte Ansatz ist besser geeignet, um massenhaft gleiche Objekte abzudecken, was in vielen Anwendungsdomänen der Fall ist. Im Vergleich zur Vererbung unter Instanzen, die der prototypenbasierte Ansatz bietet, ist die Vererbung unter Klassen im klassenbasierten Ansatz einfacher nachzuvollziehen und zu debuggen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen abstrakten und konkreten Klassen?",
+      "answer": "Abstrakte Klassen sind nicht instanziierbar, da sie in der Regel Angaben fehlen, die das Verhalten ihrer Instanzen vollständig spezifizieren. Konkrete Klassen hingegen haben eigene Instanzen und können instanziiert werden."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einer Shallow Copy und einer Deep Copy?",
+      "answer": "Bei einer Shallow Copy wird nur die oberste Ebene der Objektstruktur kopiert, während bei einer Deep Copy auch alle Unterobjekte rekursiv kopiert werden. Das heißt, beim flachen Klonen wird nur eine Referenz auf das Unterobjekt kopiert, während beim tiefen Klonen eine neue Kopie des Unterobjekts erstellt wird."
+    },
+    {
+      "question": "Wozu werden temporäre Variablen in Smalltalk verwendet?",
+      "answer": "Temporäre Variablen werden in Smalltalk verwendet, um Zwischenergebnissen Namen zu geben und die Lesbarkeit zu verbessern."
+    },
+    {
+      "question": "Was können Konvertierungsmethoden in Collections tun?",
+      "answer": "Konvertierungsmethoden in Collections können eine Menge von Objekten aus einer Collection in eine andere übertragen, wobei die Eigenschaften der Ziel-Collection berücksichtigt werden, z.B. asSet, das doppelte Elemente entfernt. Besonders interessant sind Konvertierungen in Collections, die strengere Bedingungen stellen, z.B. asSet und asSortedCollection."
+    },
+    {
+      "question": "Was passiert, wenn man die Attributwerte eines Objekts nachträglich ändert, die für die Sortierung herangezogen wurden?",
+      "answer": "Eine nachträgliche Änderung der Attributwerte, die zum Vergleich der Objekte für die Sortierung herangezogen wurden, bewirkt keine automatische Änderung der Reihenfolge."
+    },
+    {
+      "question": "Wozu dient das Klonen oder Kopieren?",
+      "answer": "Das Klonen/Kopieren wird verwendet, um eine unabhängige Kopie eines Objekts zu erstellen, das unabhängig von der Originalinstanz geändert werden kann, ohne die Originalinstanz zu beeinflussen. Es wird auch verwendet, um Objekte zu erstellen, die mit den gleichen Daten initialisiert werden sollen, oder um Objekte zu speichern, die später wiederhergestellt werden sollen."
+    },
+    {
+      "question": "Kann Vererbung in SMALLTALK auch auf Metaklassen angewendet werden?",
+      "answer": "Ja, Vererbung kann in SMALLTALK auch auf Metaklassen angewendet werden, da Metaklassen ebenfalls Klassen sind. Die Vererbungshierarchie der Metaklassen wird automatisch parallel zur Vererbungshierarchie der Klassen angelegt, die Instanzen der Metaklassen sind."
+    },
+    {
+      "question": "Wo werden die Klassenmethoden, die allen Klassen zur Verfügung stehen sollen, in SMALLTALK definiert?",
+      "answer": "Die Klassenmethoden, die allen Klassen zur Verfügung stehen sollen, werden in Object class definiert, der Metaklasse von Object."
+    },
+    {
+      "question": "Gibt es Gründe, die prototypenbasierte Form der objektorientierten Programmierung zu nutzen?",
+      "answer": "Ja, es gibt gute Gründe, die prototypenbasierte Form der objektorientierten Programmierung zu nutzen. Sie erlaubt eine hohe Flexibilität bei der Anpassung von Objekten an ihren jeweiligen Zweck, insbesondere in interaktiven Anwendungen. Ein Beispiel dafür ist die Programmierung von grafischen Benutzeroberflächen, bei der verschiedene Buttons verschiedene Ereignisse auslösen können. JavaScript ist eine erfolgreiche Programmiersprache für interaktive Webseiten und basiert auf dem Prototypenansatz."
+    },
+    {
+      "question": "Warum gibt es eine 1-zu-1-Beziehung zwischen Klassen und ihren Metaklassen in SMALLTALK?",
+      "answer": "Die 1-zu-1-Beziehung zwischen Klassen und ihren Metaklassen in SMALLTALK gewährleistet, dass jede Klasse ihre eigenen Instanzvariablen und Methoden definieren kann, ohne andere Klassen zu beeinflussen. Dadurch wird die Flexibilität und Unabhängigkeit der Klassen in SMALLTALK gewährleistet."
+    },
+    {
+      "question": "Warum ist es möglich, in SMALLTALK mehrere alternative Konstruktoren für eine Klasse zu definieren?",
+      "answer": "Es ist möglich, mehrere alternative Konstruktoren für eine Klasse in SMALLTALK zu definieren, da nicht immer alle Instanzen einer Klasse auf die gleiche Weise initialisiert werden müssen. Dies ermöglicht es, verschiedene Initialisierungsmethoden für verschiedene Anwendungsfälle anzubieten."
+    },
+    {
+      "question": "Was bedeutet es, dass die Subklassenbeziehung transitiv ist?",
+      "answer": "Die Transitivität der Subklassenbeziehung bedeutet, dass, wenn Klasse A eine Subklasse von Klasse B ist und Klasse B eine Subklasse von Klasse C ist, dann ist Klasse A auch eine Subklasse von Klasse C. Dies bedeutet, dass die Vererbung von Eigenschaften und Verhalten in der Klassenhierarchie entlang der Subklassenbeziehung in einer kaskadierenden Weise erfolgt."
+    },
+    {
+      "question": "Was unterscheidet ein direkte Subklasse und ein indirekte Subklasse?",
+      "answer": "Eine direkte Subklasse ist eine Klasse, die direkt von einer anderen Klasse erbt, ohne dass eine weitere Klasse dazwischen liegt. Eine indirekte Subklasse ist eine Klasse, die von einer Superklasse erbt, die selbst von einer anderen Klasse erbt. Mit anderen Worten, eine indirekte Subklasse ist eine Subklasse, die von einer Superklasse erbt, die ebenfalls eine Subklasse ist."
+    },
+    {
+      "question": "Warum muss in SMALLTALK das Empfängerobjekt einer Nachricht immer explizit angegeben werden?",
+      "answer": "In SMALLTALK muss das Empfängerobjekt einer Nachricht immer explizit angegeben werden, selbst wenn sich die dazu passende Methode in derselben Klasse befindet. Dies unterscheidet sich von einigen anderen Programmiersprachen wie Java, in denen das Empfängerobjekt manchmal implizit ist. Die Verwendung von self ist notwendig, um das Objekt zu identifizieren, auf dem die Methode ausgeführt wird, und auf dessen Instanzvariablen zugegriffen werden kann."
+    },
+    {
+      "question": "Was unterscheidet dynamische und statische Typisierung in Bezug auf das dynamische Binden?",
+      "answer": "In der dynamischen Bindung, wie sie in SMALLTALK verwendet wird, erfolgt die Auswahl der Methode zur Laufzeit und hängt von der Art des Empfängerobjekts ab. In der statischen Typisierung, wie sie in statisch typgeprüften Sprachen wie Java, C-Sharp und C++ verwendet wird, erfolgt die Typüberprüfung zur Übersetzungszeit und nicht zur Laufzeit. Statisch typisierte Sprachen erfordern in der Regel, dass der Programmierer den Datentyp der Objekte und deren Methoden im Voraus festlegt, während dynamisch typisierte Sprachen mehr Flexibilität bieten, da die Typüberprüfung erst zur Laufzeit erfolgt. Allerdings erhöht die dynamische Bindung das Risiko von Laufzeitfehlern, die in statisch typisierten Sprachen vermieden werden können, indem explizite Typüberprüfungen durchgeführt werden."
+    },
+    {
+      "question": "Gibt es Einschränkungen bei der Spezialisierung von Klassen?",
+      "answer": "Ja, es gibt Einschränkungen bei der Spezialisierung von Klassen. Das Entfernen von Instanzvariablen oder Methoden ist vollkommen unvereinbar mit der Spezialisierung, da dies die Umkehrung der Spezialisierung, die Generalisierung, verhindern würde. Es ist jedoch möglich, Eigenschaften durch Beschränkungen zu ändern oder hinzuzufügen, aber das Entfernen ist nicht erlaubt."
+    },
+    {
+      "question": "Warum kann die Vererbung allein nicht als Indikator für Generalisierung und Spezialisierung dienen?",
+      "answer": "Die Vererbung allein kann nicht als Indikator für Generalisierung und Spezialisierung dienen, da sie keinen kausalen Zusammenhang zwischen Klassen herstellt. Nur weil eine Klasse Eigenschaften von einer anderen geerbt hat, bedeutet das nicht zwangsläufig, dass die erbende Klasse eine Spezialisierung der vererbenden ist. Ein klassisches Beispiel dafür wurde bereits mit der Ableitung der Klasse \"Rechteck\" von der Klasse \"Quadrat\" gegeben. Es ist wichtig zu erkennen, dass die Vererbung nicht immer eindeutig auf eine Generalisierung/Spezialisierung hinweist und vorsichtige Analyse und Planung erfordert. In einigen Fällen kann eine zu starke Vererbung sogar zu unerwünschten Ergebnissen führen."
+    },
+    {
+      "question": "Was unterscheidet Extension und Intension?",
+      "answer": "Die Extension (Ausdehnung) ist die Menge der Objekte, die zu dieser Klasse gehören. Die Intension ist die Summe der Merkmale oder Eigenschaften, die den Begriff ausmachen und die Objekte charakterisieren, die zu dieser Klasse gehören. Mit steigender Intension wird die Extension kleiner, und umgekehrt."
+    },
+    {
+      "question": "Was könnte man tun, wenn man weitere Eigenschaften für eine Klasse haben möchte, die diese nicht mit allen anderen teilt?",
+      "answer": "In diesem Fall kann man eine Unterklasse erstellen, die die gewünschten Eigenschaften besitzt."
+    },
+    {
+      "question": "Was ermöglicht es in Smalltalk, dass jede Klasse ihre eigenen Instanzvariablen und Methoden besitzt?",
+      "answer": "In Smalltalk kann jede Klasse Instanz einer eigenen Klasse sein, in der diese Variablen und Methoden nur für sie angelegt werden können, da jede Klasse Instanz einer eigenen Klasse ist."
+    },
+    {
+      "question": "Was passiert, wenn eine Programmiererin eine abstrakte Klasse instanziiert und eine Nachricht an die entsprechende Instanz sendet?",
+      "answer": "Wenn eine Programmiererin eine abstrakte Klasse instanziiert und eine Nachricht an die entsprechende Instanz sendet, führt dies zu einer Fehlermeldung, die ihr anzeigt, dass die Methode (erst) in einer Subklasse implementiert werden sollte. Diese Fehlermeldung bekommt die Programmiererin allerdings erst zur Laufzeit des Programms zu Gesicht, was bedeutet, dass sie das Problem erst bemerkt, wenn es bereits zu spät ist."
+    },
+    {
+      "question": "Was bewirkt die Verwendung von super als Nachrichtenempfänger in einer Methodendefinition?",
+      "answer": "Die Verwendung von super als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der (direkten) Superklasse der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet."
+    },
+    {
+      "question": "Was bewirkt die Verwendung von self als Nachrichtenempfänger in einer Methodendefinition?",
+      "answer": "Die Verwendung von self als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet."
+    },
+    {
+      "question": "Was bewirkt die Verwendung von this als Nachrichtenempfänger in einer Methodendefinition?",
+      "answer": "Die Verwendung von this als Nachrichtenempfänger in einer Methodendefinition bewirkt, dass die Suche nach der zur Nachricht passenden, „aufgerufenen“ Methodendefinition in der Klasse beginnt, in der sich der aufrufende Ausdruck (die aufrufende Methode) befindet."
+    },
+    {
+      "question": "Was passiert, wenn an self eine Nachricht geschickt wird?",
+      "answer": "Wenn an self eine Nachricht geschickt wird, wird die zu dieser Nachricht passende Methode gesucht. Die Suche beginnt in der Klasse, in der die gerade ausgeführte Methode definiert ist. Wenn die Methode nicht in dieser Klasse gefunden wird, wird die Suche in der Kette der Superklassen fortgesetzt, bis die Methode gefunden wird."
+    },
+    {
+      "question": "Was passiert, wenn an self eine Nachricht geschickt wird, die in der Klasse des Objekts nicht definiert ist?",
+      "answer": "Wenn an self eine Nachricht geschickt wird, die in der Klasse des Objekts nicht definiert ist, wird die Suche nach der passenden Methode in der Kette der Superklassen fortgesetzt, bis die Methode gefunden wird."
+    },
+    {
+      "question": "Was versteht man unter Kopieren-und-Einfügen-Semantik bei Vererbung?",
+      "answer": "Bei der Kopieren-und-Einfügen-Semantik bei Vererbung wird die Implementierung der übergeordneten Klasse in die Unterklasse kopiert und kann dann in der Unterklasse gegebenenfalls angepasst werden. Wenn man die Implementierung von sagMirWasDuBist aus Super in Sub wiederholt hätte, hätte man das gleiche Ergebnis erzielt."
+    },
+    {
+      "question": "Sind Objekte in der objektorientierten Programmierung aktiv oder passiv?",
+      "answer": "Objekte in der objektorientierten Programmierung sind passiv, was bedeutet, dass sie nur aktiv sind, solange sie gerade eine Methode ausführen."
+    },
+    {
+      "question": "Warum werden in der objektorientierten Programmierung in der Praxis eher passive Objekte verwendet?",
+      "answer": "Aktive Objekte sind sehr aufwendig, weshalb in der objektorientierten Programmierung in der Praxis eher passive Objekte verwendet werden."
+    },
+    {
+      "question": "Kann es in der objektorientierten Programmierung Parallelverarbeitung geben?",
+      "answer": "Ja, in der objektorientierten Programmierung ist Parallelverarbeitung möglich, jedoch nicht in Form von aktiven Objekten, sondern in Form von parallelen Prozessen, die jeweils eine Methode ausführen."
+    },
+    {
+      "question": "Was passiert, wenn eine Methode nicht gefunden wird?",
+      "answer": "Wenn eine Methode nicht gefunden wird, wird in der direkten Superklasse der Klasse des Objekts weitergesucht und dann in deren direkter Superklasse usw. bis zur Klasse Object. Sobald die Methode gefunden wird, wird sie ausgeführt. Wird die Methode auch in Object nicht gefunden, kommt es zum Versenden der Nachricht doesNotUnderstand: an den ursprünglichen Empfänger mit der ursprünglichen, problematischen Nachricht als Argument."
+    },
+    {
+      "question": "Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind?",
+      "answer": "Wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, kann sie dies tun, wenn sie in der gleichen Klasse definiert ist. Wenn die Methode jedoch in einer Superklasse definiert ist, kann sie nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind, und nicht auf Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind."
+    },
+    {
+      "question": "Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, aber in der Unterklasse hinzugekommen sind?",
+      "answer": "Die Methode kann nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind. Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind, sind für die Methode also nicht (direkt) sichtbar."
+    },
+    {
+      "question": "Was passiert, wenn eine Methode auf Instanzvariablen zugreifen will, die für die Objekte der entsprechenden Klasse zugreifbar sind, aber in einer Superklasse definiert wurden?",
+      "answer": "Die Methode kann nur auf die Instanzvariablen zugreifen, die für die Objekte der entsprechenden Klasse zugreifbar sind. Instanzvariablen, die erst in der Klasse des Objekts hinzugekommen sind, sind für die Methode also nicht (direkt) sichtbar."
+    },
+    {
+      "question": "Was repräsentiert die \"Ist-eine-Instanz-von\"-Beziehungn?",
+      "answer": "Die \"Ist-eine-Instanz-von\"-Beziehung stellt die Beziehung zwischen einer Klasse und einer Instanz dar, was bedeutet, dass die Instanz ein Objekt der Klasse ist."
+    },
+    {
+      "question": "Was wäre eine Möglichkeit, die Vererbung umzusetzen?",
+      "answer": "Eine Möglichkeit wäre, die Definition einer Superklasse per Kopieren und Einfügen auf ihre Subklassen zu übertragen. Diese Methode würde die Semantik der Vererbung korrekt wiedergeben, würde aber das Problem mit sich bringen, dass bei einer Änderung einer Superklasse auch alle ihre Subklassen mit geändert werden müssten."
+    },
+    {
+      "question": "Was wäre problematisch, wenn jede Instanz einer Subklasse automatisch je eine Instanz aller ihrer Superklassen erzeugen würde?",
+      "answer": "Das wäre problematisch, weil ein Objekt einer Subklasse auf einmal mehrere Identitäten hätte, und zwar eine für sich selbst und eine pro Superklasse, von der sie erbt. Das Konzept der Identität von Objekten würde verletzt werden."
+    },
+    {
+      "question": "Kann eine Klasse neue Spezialisierungen hinzufügen, wenn sie bereits Generalisierungen besitzt?",
+      "answer": "Ja, eine Klasse kann neue Spezialisierungen hinzufügen, auch wenn sie bereits Generalisierungen besitzt. Das ist eine der größten Errungenschaften der objektorientierten Programmierung, dass solche Programmiererweiterungen modular, also ohne andere Teile des Programms zu beeinflussen, immer möglich sind."
+    },
+    {
+      "question": "Kann eine Klasse neue Spezialisierungen hinzufügen, wenn die Generalisierung bereits über Spezialisierungen verfügt?",
+      "answer": "Ja, eine Klasse kann neue Spezialisierungen hinzufügen, wenn die Generalisierung bereits über Spezialisierungen verfügt. Das ist eine der größten Errungenschaften der objektorientierten Programmierung, dass solche Programmiererweiterungen modular, also ohne andere Teile des Programms zu beeinflussen, immer möglich sind."
+    },
+    {
+      "question": "Was bedeutet es, wenn man von einer Klasse spezialisieren möchte, die selbst keine Generalisierung ist?",
+      "answer": "In diesem Fall spricht man von einer Spezialisierung durch Verengung (engl. narrowing). Dabei wird eine bestehende Klasse so spezialisiert, dass sie weniger Fähigkeiten besitzt als die ursprüngliche Klasse. Diese Art der Spezialisierung ist in der objektorientierten Programmierung eher unüblich, kann aber in manchen Fällen sinnvoll sein."
+    },
+    {
+      "question": "Was wird durch eine Subklassenbeziehung zwischen zwei Klassen ausgedrückt?",
+      "answer": "Durch eine Subklassenbeziehung zwischen zwei Klassen wird ausgedrückt, dass die Subklasse alle Instanzvariablen und Methoden der Superklasse erbt. Es wird jedoch nicht ausgedrückt, dass die Subklasse eine Spezialisierung der Superklasse ist oder die Superklasse eine Generalisierung der Subklasse. Diese Sicherstellung obliegt der Verantwortung des Programmierers."
+    },
+    {
+      "question": "Was muss bei der Definition einer Subklasse in SMALLTALK beachtet werden?",
+      "answer": "In SMALLTALK müssen bei der Definition einer Subklasse neue, benannte Instanz- und Klassenvariablen andere Namen als Variablen in Superklassen haben und indizierte Instanzvariablen müssen vorhanden sein, wenn die Superklasse solche hat. Methodendefinitionen mit derselben Signatur überschreiben einfach die geerbten Methoden."
+    },
+    {
+      "question": "Was repräsentieren die Instanzvariablennamen in SMALLTALK?",
+      "answer": "Die Instanzvariablennamen in SMALLTALK sind eine Liste von Symbolen, die die Namen der Instanzvariablen der neuen Klasse repräsentieren."
+    },
+    {
+      "question": "Kann man eine Instanzvariable löschen, die von einer übergeordneten Klasse geerbt wurde?",
+      "answer": "Ja, man kann eine Instanzvariable löschen, die von einer übergeordneten Klasse geerbt wurde. Allerdings muss man dann auch die Methoden, die diese Instanzvariable verwenden, überschreiben."
+    },
+    {
+      "question": "Was passiert, wenn man eine Instanzvariable löscht, die von einer übergeordneten Klasse geerbt wurde?",
+      "answer": "Wenn man eine Instanzvariable löscht, die von einer übergeordneten Klasse geerbt wurde, muss man auch die Methoden, die diese Instanzvariable verwenden, überschreiben."
+    },
+    {
+      "question": "Warum ist die Übertragung der Vererbung auf Klassen nicht vollkommen unnatürlich?",
+      "answer": "Die Übertragung der Vererbung auf Klassen ist nicht vollkommen unnatürlich, weil Programmierer in objektorientierten Programmen Klassen entwerfen, die die eigentliche „Schöpfung“ der objektorientierten Weltsicht abgeben. Zudem sind objektorientierte Programme nicht für die Ewigkeit gemacht, sondern unterliegen der ständigen Anpassung und somit sind auch Klassendefinitionen im ständigen Wandel."
+    },
+    {
+      "question": "Was passiert, wenn man versucht, eine nicht implementierte Methode in SMALLTALK aufzurufen?",
+      "answer": "Wenn man versucht, eine nicht implementierte Methode in SMALLTALK aufzurufen, erfolgt ein Hinweis, dass man eine abstrakte Klasse instanziiert hat."
+    },
+    {
+      "question": "Wozu dient die Intervall-Collection?",
+      "answer": "Die Intervall-Collection dient der Umsetzung von Zu-n-Beziehungen und enthält eine Anzahl von Elementen, die durch eine untere und obere Grenze bestimmt sind. Die untere Grenze ist inklusiv, die obere Grenze exklusiv. Die Anzahl der Elemente ist also die Differenz zwischen der oberen und unteren Grenze. Die Elemente eines Intervalls sind die ganzen Zahlen, die zwischen der unteren und oberen Grenze liegen."
+    },
+    {
+      "question": "Wofür werden indizierte Instanzvariablen verwendet?",
+      "answer": "Indizierte Instanzvariablen werden verwendet, um Zu-n-Beziehungen zwischen Objekten herzustellen. Sie sind speziell für diesen Zweck eingeführt worden, um die Häufigkeit des Vorkommens von Zu-n-Beziehungen in der Programmierung zu unterstützen."
+    },
+    {
+      "question": "Mit welchen drei Ansätzen lassen sich Objekte erzeugen?",
+      "answer": "Die drei Varianten der Objektorientierung sind der Konstruktoransatz, der Prototypenansatz und der Klassenansatz. Die klassenbasierte Form der Objektorientierung hat sich gegenüber der prototypenbasierten Form weitgehend durchgesetzt, da Klassen sich als (Vorlagen für) Typen eignen und somit die objektorientierte Programmierung Eigenschaften anderer, nicht objektorientierter, dafür aber typisierter Sprachen übernehmen kann. Die prototypenbasierte Form der Objektorientierung hat hingegen den Charme, dass sie mit weniger Konzepten auskommt und dass sie sehr viel flexibler einzelne Objekte an ihren jeweiligen Zweck anpassen kann."
+    },
+    {
+      "question": "Was sind die Unterschiede zwischen lesbarbaren und schreibbaren Streams?",
+      "answer": "Lesbare Streams ermöglichen das Lesen von Daten aus einer Quelle, während schreibbare Streams das Schreiben von Daten in eine Zielquelle ermöglichen. Lesbare Streams bieten Methoden zum Lesen von Daten, während schreibbare Streams Methoden zum Schreiben von Daten bereitstellen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen direkten und indirekten Instanzen?",
+      "answer": "Direkte Instanzen sind Elemente der Extension einer Klasse, während indirekte Instanzen Elemente der Extension einer Unterklasse sind, die nicht direkt der Oberklasse zugeordnet ist."
+    },
+    {
+      "question": "Ist das Entfernen von Instanzvariablen oder Methoden vereinbar mit einer Spezialisierung?",
+      "answer": "Nein, das Entfernen von Instanzvariablen oder Methoden ist unvereinbar mit der Spezialisierung. Die Richtung von Spezialisierung und Generalisierung würde beliebig werden, wenn in beide Richtungen nach Belieben hinzugefügt und entfernt werden dürfte."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Schlüssel und Wert in einem Dictionary?",
+      "answer": "Der Schlüssel (key) ist ein eindeutiger Bezeichner für ein Element in einem Dictionary, während der Wert (value) das Element selbst ist, das unter diesem Schlüssel gespeichert ist."
+    }
+  ]
+}

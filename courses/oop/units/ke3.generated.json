@@ -1,0 +1,1016 @@
+{
+  "REMEMBER": [
+    {
+      "question": "Was ist eine Typvariable in einer Typdefinition?",
+      "answer": "In der Typdefinition ist eine Typvariable ein Platzhalter für einen tatsächlichen Typ, der bei der Instantiierung der Klasse eingesetzt wird. Traditionell werden einzelne Großbuchstaben für Typvariablen verwendet, um versehentliches Verdecken eines tatsächlichen Typs zu vermeiden."
+    },
+    {
+      "question": "Was ist der Zweck der Typisierung in der Programmierung?",
+      "answer": "Der Zweck der Typisierung in der Programmierung ist es, die möglichen Werte einer Variablen oder Funktion einzuschränken und so die Fehleranfälligkeit zu verringern. Durch die Angabe eines Typs wird sichergestellt, dass nur Werte dieses Typs an die Variable oder Funktion übergeben werden können, was die Korrektheit des Programms erhöht."
+    },
+    {
+      "question": "Was ist die Bedeutung von Typparametern in einer parametrisierten Typdefinition?",
+      "answer": "Typparameter in einer parametrisierten Typdefinition sind Platzhalter für konkrete Typen, die bei der Instanziierung des Typs eingesetzt werden können. Sie ermöglichen es, den gleichen Code für verschiedene Typen wiederzuverwenden und die Typsicherheit zu erhalten."
+    },
+    {
+      "question": "Was ist parametrischer Polymorphismus?",
+      "answer": "Parametrischer Polymorphismus ist eine Technik in der objektorientierten Programmierung, bei der eine Typvariable innerhalb einer Typdefinition verwendet wird. Diese Typvariable kann später durch einen konkreten Typ ersetzt werden, wenn die Typdefinition instanziiert wird."
+    },
+    {
+      "question": "Was sind Metatypen?",
+      "answer": "Metatypen sind eine Möglichkeit, um die Typvariable innerhalb der mit ihr parametrisierten Typdefinition wertbeschränkt zu machen. Dabei sind die Wertebereiche der Metatypen Typen mit von den Metatypen vorgegebenen Eigenschaften. Diese Möglichkeit wird jedoch in der Praxis nicht genutzt."
+    },
+    {
+      "question": "Was ist Subtyping?",
+      "answer": "Subtyping ist eine Art der Beschränkung des Wertebereichs von Typvariablen, bei der ein tatsächlicher Typparameter (der Wert der Typvariable) ein Subtyp eines bestimmten Typs sein muss, der die benötigten Eigenschaften umfasst. Aufgrund der Regeln des Subtyping hat jeder solche Typ die Eigenschaften des Supertyps."
+    },
+    {
+      "question": "Was ist ein Subtyp?",
+      "answer": "Ein Subtyp ist ein Typ, dessen Werte oder Objekte überall auftauchen dürfen, wo ein Wert des Typs, von dem er ein Subtyp ist, verlangt wird. Subtyp ist eine Rolle in einer Beziehung zwischen zwei Typen, nämlich der Subtypenbeziehung, und die Gegenrolle heißt Supertyp."
+    },
+    {
+      "question": "Was bedeutet Zuweisungskompatibilität?",
+      "answer": "Zuweisungskompatibilität bedeutet, dass Objekte eines Subtyps überall auftauchen dürfen, wo Objekte seines Supertyps erwartet werden. Ein Subtyp ist also per Definition mit seinem Supertyp zuweisungskompatibel."
+    },
+    {
+      "question": "Was ist Typeinschränkung?",
+      "answer": "Typeinschränkung ist eine Möglichkeit, auf der Basis eines bereits bestehenden Typs einen neuen, verwandten Typen zu erzeugen, indem man ihn auf Basis des bestehenden Typs definiert, aber mit dem Entfernen von Eigenschaften (Methoden). Diese Form der Typeinschränkung stellt die Umkehrung der Typerweiterung dar, führt aber nicht zur Zuweisungskompatibilität."
+    },
+    {
+      "question": "Was ist die unter dem Gesichtspunkt der Zuweisungskompatibilität interessante Form der Typeinschränkung?",
+      "answer": "Die unter dem Gesichtspunkt der Zuweisungskompatibilität interessante Form der Typeinschränkung besteht darin, die verwendeten Typen einer Typdefinition durch andere, speziellere zu ersetzen. Diese Form der Typeinschränkung ergibt sich auf natürliche Weise, wenn man sich den Zusammenhang von Extensionen von definierten Typen und solchen, die in Typdefinitionen vorkommen, ansieht."
+    },
+    {
+      "question": "Was ist das Ziel der Typerweiterung ?",
+      "answer": "Das Ziel der Typerweiterung ist die Vereinigung von Typerweiterung und Typeinschränkung zu einer Beziehung zwischen Typen, nicht die Schaffung zweier Komplementäre."
+    },
+    {
+      "question": "Was ist Zuweisungskompatibilität?",
+      "answer": "Die Zuweisungskompatibilität ist eine Regel, die bestimmt, ob ein Wert einer Variablen zugewiesen werden kann. Wenn der Typ des Werts mit dem Typ der Variablen kompatibel ist, ist die Zuweisungskompatibilität gegeben."
+    },
+    {
+      "question": "Was ist die Typkonformität?",
+      "answer": "Die Typkonformität ist eine Regel, die bestimmt, ob ein Typ in eine Typerweiterung übergehen kann. Wenn der Typ des Werts mit dem Typ der Variablen kompatibel ist, ist die Typkonformität gegeben."
+    },
+    {
+      "question": "Was ist die Funktion von Typen in der objektorientierten Programmierung?",
+      "answer": "Typen dienen in der objektorientierten Programmierung nicht nur dazu, Objekte zu klassifizieren, sondern auch dazu, das Implementationsgeheimnis der Klassen zu wahren und die Einhaltung der Schnittstellen durch den Compiler zu gewährleisten. Diese Funktion von Typen wurde mit der Programmiersprache Java und ihrem Interface-als-Typ-Konzept weiterentwickelt, was zur interfacebasierten Programmierung führte."
+    },
+    {
+      "question": "Was ist die Auswirkung der Typeinschränkung auf die Zuweisungskompatibilität?",
+      "answer": "Die Typeinschränkung hebelt die Zuweisungskompatibilität aus, was bedeutet, dass die Zuweisung von Werten mit unverträglichen Typen nicht mehr möglich ist."
+    },
+    {
+      "question": "Was ist eine Deklaration in der Programmierung?",
+      "answer": "Eine Deklaration in Programmierung ist ein Vorgang, bei dem man Programmelemente, wie Variablen oder Funktionen, vor der ersten Verwendung bekannt gibt. Dabei wird der Bezeichner dem Compiler bekannt gegeben, damit er ihn in der Folge wiedererkennen und mit der Deklaration in Verbindung bringen kann."
+    },
+    {
+      "question": "Was sind formale Parameter in SMALLTALK?",
+      "answer": "Formale Parameter sind Variablen, die in der Deklaration einer Methode angegeben werden und Werte entgegennehmen, die bei einem Methodenaufruf übergeben werden."
+    },
+    {
+      "question": "Was ist die Bedingung für eine zulässige Zuweisung bei unterschiedlichen Typen?",
+      "answer": "Damit eine Zuweisung b an a, bei der sich die Typen von a und b unterscheiden, zulässig ist, muss die Extension des Typs von b eine Teilmenge der Extension des Typs von a sein."
+    },
+    {
+      "question": "Was ist eine Filterfunktion von Typen?",
+      "answer": "Eine Filterfunktion von Typen ist eine Funktion, die neben der formalen Funktion, Fehler zu vermeiden, auch eine inhaltliche Funktion erfüllt. Sie setzt voraus, dass dem Typ eine Bedeutung beigemessen wird, die über seine bloße Struktur hinausgeht. Diese Bedeutung wird heute hauptsächlich durch die Benennung des Typs vermittelt. Die Namensäquivalenz als Bedingung der Zuweisungskompatibilität verlangt, dass einer Variablen nur Werte gleicher Bedeutung zugewiesen werden können. Die Filterfunktion drückt also eher eine Absicht der Programmiererin aus als eine technische Notwendigkeit."
+    },
+    {
+      "question": "Was ist eine Schnittstelle in Bezug auf eine Klasse?",
+      "answer": "Eine Schnittstelle in Bezug auf eine Klasse ist das Verbergen der Implementierung und das Nach-außen-Treten der Elemente einer Klassendefinition, die für Benutzer einer Klasse zur Verwendung gedacht sind. Dieses Prinzip wird auch als Geheimnisprinzip bezeichnet."
+    },
+    {
+      "question": "Was sind Zugriffsmodifikatoren?",
+      "answer": "Zugriffsmodifikatoren sind spezielle Schlüsselwörter in Programmiersprachen wie Java und C++, die einem Element einer Klassendefinition vorangestellt werden, um dessen Zugreifbarkeit festzulegen. Sie legen gemeinsam mit der Klassendefinition, die die vollständige Implementierung beinhaltet, auch die Schnittstelle der Klasse fest."
+    },
+    {
+      "question": "Was ist eine absolut spezifizierte Schnittstelle einer Klasse?",
+      "answer": "Eine absolut spezifizierte Schnittstelle einer Klasse kommt, wenn sie wirklich keinerlei Implementierungsgeheimnisse verrät, einem Typ gleich. Sie besteht nur aus Deklarationen von Methoden und enthält keine Instanzvariablen."
+    },
+    {
+      "question": "Was ist strukturelle Typkonformität?",
+      "answer": "Strukturelle Typkonformität bedeutet, dass der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält."
+    },
+    {
+      "question": "Was ist namensgebundene Typkonformität?",
+      "answer": "Namensgebundene Typkonformität bedeutet, dass der konforme Typ nicht nur die Elemente des Typs, zu dem er konform sein soll, enthält, sondern dass er auch ausdrücklich als konform zu diesem Typ erklärt wurde."
+    },
+    {
+      "question": "Was ist statische Typisierung?",
+      "answer": "Statische Typisierung ist eine Eigenschaft von Sprachen, die die"
+    },
+    {
+      "question": "Was ist Zuweisungskompatibilität unter Typerweiterung?",
+      "answer": "Zuweisungskompatibilität unter Typerweiterung bezieht sich auf die Möglichkeit, Werte verschiedener Typen einander zuzuweisen, wenn der Zieltyp eine Erweiterung des Quelltyps ist. Funktionsaufrufe sind Anweisungen, die eine Funktion mit bestimmten Argumenten aufrufen. Wenn eine Funktion aufgerufen wird, werden implizite Zuweisungen durchgeführt, bei denen die Typen der Argumente mit den Parametern der Funktion kompatibel sein müssen. Diese Zuweisungskompatibilität spielt auch bei Funktionsaufrufen eine wichtige Rolle."
+    },
+    {
+      "question": "Was sind implizite Zuweisungen?",
+      "answer": "Implizite Zuweisungen treten bei Funktionsaufrufen auf, bei denen die Funktion eine Kopie des Objekts erhält, auf das die Funktionsargument-Variable verweist."
+    },
+    {
+      "question": "Was sind Funktionsaufrufe?",
+      "answer": "Funktionsaufrufe sind Anweisungen, die eine Funktion aufrufen und deren Ergebnis berechnen. Sie werden verwendet, um Werte zu berechnen, Objekte zu manipulieren oder die Kontrolle in einem Programm zu übertragen."
+    },
+    {
+      "question": "Was ist Typerweiterung?",
+      "answer": "Typerweiterung ist ein Konzept in der objektorientierten Programmierung, bei dem eine Unterklasse eine Oberklasse erweitert, indem sie neue Attribute und Methoden hinzufügt oder bestehende Methoden überschreibt."
+    },
+    {
+      "question": "Was ist Typäquivalenz?",
+      "answer": "Typäquivalenz bedeutet, dass sich zwei verschiedene Typdefinitionen bis auf ihre Namen gleichen, dass also z. B. in STRONGTALK die Mengen der Methodensignaturen, die die Typdefinitionen ausmachen, gleich sind."
+    },
+    {
+      "question": "Was ist die Voraussetzung für die Zuweisungskompatibilität von zwei Typen?",
+      "answer": "Die Voraussetzung für die Zuweisungskompatibilität von zwei Typen ist, dass sie identisch sind oder eine Typäquivalenz aufweisen, d.h. sich die Typdefinitionen bis auf ihre Namen gleichen."
+    },
+    {
+      "question": "Was bedeutet die Transitivität der Typäquivalenz?",
+      "answer": "Die Transitivität der Typäquivalenz bedeutet, dass wenn ein Typ A äquivalent zu einem Typ B ist und Typ B wiederum äquivalent zu einem Typ C ist, dann ist auch Typ A äquivalent zu Typ C. Diese Eigenschaft ist wichtig, um sicherzustellen, dass die Typäquivalenz konsistent ist und dass die Typisierung von Ausdrücken und Variablen in einem Programm konsistent bleibt."
+    },
+    {
+      "question": "Was ist strukturelle Typäquivalenz?",
+      "answer": "Strukturelle Typäquivalenz ist ein Verfahren, um festzustellen, ob zwei Typen gleich sind. Dabei werden die Definitionen der beteiligten Typen rekursiv expandiert, was bedeutet, dass in einer Typdefinition vorkommende Namen anderer Typen durch ihre Struktur ersetzt werden."
+    },
+    {
+      "question": "Was ist Strukturäquivalenz?",
+      "answer": "Strukturäquivalenz ist eine Bedingung der Zuweisungskompatibilität, die ausreicht, um Typfehler zu verhindern. Sie garantiert, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten durchgeführt werden können."
+    },
+    {
+      "question": "Was ist Type branding?",
+      "answer": "Type branding ist eine Technik, bei der jedem Typ eine für ihn charakteristische Methode exklusiv zugeordnet wird, sodass er mit keinem anderen mehr strukturäquivalent ist. Diese Technik wird gelegentlich in Sprachen mit Strukturäquivalenz angewendet, um semantische Fehler durch das Zuweisen von Objekten über Typgrenzen hinweg zu vermeiden."
+    },
+    {
+      "question": "Was ist die Bedingung für Typkompatibilität bei Zuweisungen in SMALLTALK?",
+      "answer": "Für Typkompatibilität bei Zuweisungen in SMALLTALK reicht es aus, dass der Typ der rechten Seite einer Zuweisung das Protokoll (die Menge der Methoden) des Typs der linken Seite enthält. Der Typ auf der rechten Seite einer Zuweisung darf also eine Erweiterung dessen auf der linken Seite um zusätzliche Methoden sein."
+    },
+    {
+      "question": "Was ist ein erweiternder Typ?",
+      "answer": "Ein erweiternder Typ, auch Untertyp genannt, ist eine Typdefinition, die auf einer bestehenden Typdefinition aufbaut und diese erweitert. Die Methodendeklarationen des erweiterten Typs werden dabei vererbt und müssen nicht noch einmal wiederholt werden."
+    },
+    {
+      "question": "Was sind Protokolle?",
+      "answer": "Protokolle sind eine Art von Typdefinition, die die Methoden und Eigenschaften beschreiben, die ein Objekt haben muss, um eine bestimmte Rolle zu erfüllen. Variablen spielen in Protokollen eine Rolle, indem sie als formale Parameter in Methoden auftauchen und als Typen für die Ein- und Ausgabeobjekte spezifiziert werden."
+    },
+    {
+      "question": "Was ist die Protokollbildung in STRONGTALK?",
+      "answer": "In STRONGTALK ist die Protokollbildung der einzige Typkonstruktor, mit dem man neue Typen definieren kann."
+    },
+    {
+      "question": "Was ist der einzige Typkonstruktor in STRONGTALK?",
+      "answer": "In STRONGTALK ist die Protokollbildung der einzige Typkonstruktor."
+    },
+    {
+      "question": "Was ist die Typisierung von Variablen ?",
+      "answer": "Die Typisierung von Variablen ist ein Konzept, bei dem jede Variable nur die Werte haben kann, für die sie vorgesehen ist. Sie wird erreicht, indem jeder Variablen ein Typ zugeordnet wird, und indem auch jedes Objekt sowie jeder Ausdruck, der für einen Wert oder ein Objekt steht, einen Typ hat. Dies geschieht durch Variablendeklarationen, die Zuordnung von Typen zu Literalen, die Instanziierung von Klassen und die Deklaration von Methoden, die angeben muss, welchen Typs die Objekte sind, die sie liefert."
+    },
+    {
+      "question": "Was ist Zuweisungskompatibilität unter Subtyping?",
+      "answer": "Zuweisungskompatibilität unter Subtyping erlaubt die Zuweisung von Objekten eines Subtyps an Variablen eines Supertyps."
+    },
+    {
+      "question": "Was ist ein Upcast in der Typumwandlung?",
+      "answer": "Ein Upcast ist eine Typumwandlung von einem Typ zu einem Supertyp. Upcasts sind immer typsicher."
+    },
+    {
+      "question": "Was ist kovariante Redefinition?",
+      "answer": "Kovariante Redefinition bezieht sich auf eine Situation, in der der Parametertyp einer Methode sich mit dem Empfängertyp ändert. Im Fall des rekursiv beschränkten parametrischen Polymorphismus wird der Parametertyp der Methode zu einem Subtyp des Empfängertyps, was keinen Widerspruch zur Kontravarianzregel des Subtyping darstellt."
+    },
+    {
+      "question": "Was ist Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie?",
+      "answer": "Kovariante Redefinition bei gleichzeitiger Inklusionspolymorphie ist eine Technik in der objektorientierten Programmierung, bei der ein Subtyp eine Methode seines Obertyps mit einem spezifischeren Rückgabetyp neu definieren kann, während er gleichzeitig die Liskov-Substitutionsprinzip einhält. Diese Technik kann jedoch nicht mit parametrischen Typen erreicht werden."
+    },
+    {
+      "question": "Was ist Parametrisierung von Typen?",
+      "answer": "Parametrisierung von Typen ist eine Möglichkeit, den Wertebereich eines Typs variabel zu halten, ohne die statische Typprüfung aufgeben zu müssen. Dabei wird der Typ mit einem oder mehreren anderen Typen parametrisiert."
+    },
+    {
+      "question": "Was ist eine parametrische Typdefinition?",
+      "answer": "Eine parametrische Typdefinition ist eine Art von Typdefinition, die Platzhalter für andere Typen verwendet, die durch Typparameter, auch Typvariablen genannt, vertreten werden. Diese Typvariablen werden erst bei der Verwendung eines parametrisierten Typs in der Deklaration eines anderen Programmelements mit einem Wert, also einem Typ, belegt."
+    },
+    {
+      "question": "Was sind formale Typparameter und tatsächliche Typparameter?",
+      "answer": "Formale Typparameter sind die Typvariablen, die in parametrischen Typdefinitionen vorkommen. Tatsächliche Typparameter sind die konkreten Typen, die bei der Verwendung des Typs in Deklarationen in die formalen Parameter eingesetzt werden."
+    },
+    {
+      "question": "Was ist Typsicherheit?",
+      "answer": "Typsicherheit ist die Eigenschaft einer Programmiersprache, die das Fehlen bestimmter Ausführungsfehler in allen Programmläufen gewährleistet."
+    },
+    {
+      "question": "Was sind rekursive Typen?",
+      "answer": "Rekursive Typen sind Typen, die sich in ihrer Definition selbst referenzieren. Sie sind ein wichtiges Instrument der Programmierung, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu ermöglichen. Allerdings bringen sie auch Probleme mit sich, wie zum Beispiel die Feststellung der strukturellen Äquivalenz zweier rekursiver Typen, die aufgrund der notwendigen Expansion unendlich große Definitionen ergeben kann."
+    },
+    {
+      "question": "Was ist das Problem bei der Verwendung von variablen Typen in einer parametrischen Typdefinition?",
+      "answer": "Das Problem ist, dass der Typ eines Methodenarguments (eines formalen Parameters einer Methode) variabel sein soll, aber der Typ bereits definiert ist. Dies tritt auf, wenn man beispielsweise den Test auf Gleichheit so definieren möchte, dass das Objekt, das gleich sein soll, vom selben Typ sein muss wie das Objekt, mit dem man Gleichheit feststellen möchte."
+    },
+    {
+      "question": "Was ist ein parametrischer Typ?",
+      "answer": "Ein parametrischer Typ ist ein Typ, der einen oder mehrere Typvariablen enthält, die bei der Instanziierung durch konkrete Typen ersetzt werden. Dies ermöglicht die Erstellung von generischen Klassen und Methoden, die für verschiedene Typen verwendet werden können."
+    },
+    {
+      "question": "Was ist eine stilistische Figur in Bezug auf den formalen Typparameter T von Equatable?",
+      "answer": "Eine stilistische Figur in Bezug auf den formalen Typparameter T von Equatable ist die Beschränkung von T auf einen Subtyp von Equatable[T]."
+    },
+    {
+      "question": "Was ist Typerweiterung als Basis des Subtyping?",
+      "answer": "Typerweiterung als Basis des Subtyping bedeutet, dass ein neuer Typ, der ein Supertyp ist, zusätzliche Eigenschaften und Methoden enthalten kann, aber die Eigenschaften und Methoden des Supertyps haben muss. Dadurch sind Typfehler ausgeschlossen, und es bleibt lediglich das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind."
+    },
+    {
+      "question": "Was ist Typerweiterung und warum bereitet sie keine technischen Probleme?",
+      "answer": "Typerweiterung ist eine Möglichkeit, eine neue Unterklasse von einer bestehenden Klasse abzuleiten, indem neue Attribute und Methoden hinzugefügt werden. Es bereitet keine technischen Probleme, weil es keine Typfehler verursacht, da die Unterklasse alle Merkmale der Oberklasse erbt und zusätzliche Merkmale hinzufügen kann. Das semantische Problem, dass Werte eines Subtyps inhaltlich keine Werte des Supertyps sind, kann nicht immer vermieden werden, aber es ist kein technisches Problem."
+    },
+    {
+      "question": "Welche Bedingungen müssen an die Parametertypen bei der Redefinition einer Methode gestellt werden, um eine Verletzung einer Typinvariante zu vermeiden?",
+      "answer": "Die Typinvariante muss für den neuen Parametertyp und den alten Parametertyp gelten, d.h. der neue Parametertyp muss eine Unterklasse des alten Parametertyps sein."
+    },
+    {
+      "question": "Was ist Kontravarianz und Kovarianz?",
+      "answer": "Kontravarianz und Kovarianz sind zwei Begriffe, die die Richtung der Variation von Parametern bei der Redefinition von Methoden beschreiben. Kontravarianz bezieht sich auf die Eingabeparameter, die gegenläufig zum Empfängertyp variieren, während Kovarianz sich auf den Ausgabeparameter bezieht, der gleichgerichtet zum Empfängertyp variiert."
+    },
+    {
+      "question": "Was ist das Problem bei der Gegenläufigkeit der Veränderung von Parameter- und Ergebnistypen beim Redefinieren?",
+      "answer": "Das Problem ist, dass wenn das Eingabe-Objekt und das Ausgabe-Objekt identisch sind, nicht einmal (bei der Eingabe) ein Supertyp und einmal (bei der Ausgabe) ein Subtyp zugedacht werden kann, da der Subtyp mehr Eigenschaften verlangt als der Supertyp garantiert."
+    },
+    {
+      "question": "Was ist Novarianz?",
+      "answer": "Novarianz ist die Unveränderlichkeit der Parametertypen in einem Programm."
+    },
+    {
+      "question": "Was ist die Kontravarianzregel für Parametertypen?",
+      "answer": "Die Kontravarianzregel für Parametertypen ist eine Regel in der objektorientierten Programmierung, die besagt, dass ein Untertyp eines Parametertyps als Argument für eine Methode verwendet werden kann, die den Obertyp des Parametertyps erwartet. Diese Regel wird infrage gestellt, weil sie in der Realität (der Interpretation oder Semantik) keine Bedeutung hat, aber in der Programmierpraxis nicht benötigt wird."
+    },
+    {
+      "question": "Was ist Inklusionspolymorphie?",
+      "answer": "Inklusionspolymorphie, auch bekannt als Subtyping oder Subtyp-Polymorphie, ist eine Form der Polymorphie, bei der ein Objekt eines Untertyps an einer Stelle verwendet werden kann, an der ein Objekt des Supertyps erwartet wird. Das bedeutet, dass eine Collection, die Objekte eines bestimmten Typs enthält, auch Objekte eines Untertyps dieses Typs enthalten kann."
+    },
+    {
+      "question": "Was ist eine Sicherheitslücke in der statischen Typprüfung, die durch die Inklusionspolymorphie entsteht?",
+      "answer": "Die Sicherheitslücke in der statischen Typprüfung, die durch die Inklusionspolymorphie entsteht, ist, dass der Compiler nicht oder nur sehr aufwendig feststellen kann, ob das Ergebnis von p kinder at: 1 vom Typ Object in eine Methode kinder von Typ Person umgewandelt werden kann."
+    },
+    {
+      "question": "Was ist der beschränkte parametrische Polymorphismus?",
+      "answer": "Der beschränkte parametrische Polymorphismus ist eine Technik, die es ermöglicht, Typen zu verwenden, die bestimmte Eigenschaften haben. Dadurch kann ein Typfehler bereits an der Stelle moniert werden, an der die unzulässige Wertzuweisung an die Typvariable stattfindet, anstatt erst später im Programm."
+    },
+    {
+      "question": "Welches Problem möchte man mit dem beschränkten parametrischen Polymorphismus lösen?",
+      "answer": "Mit dem beschränkten parametrischen Polymorphismus möchte man sicherstellen, dass die Typvariable innerhalb der mit ihr parametrisierten Typdefinition selbst wertbeschränkt ist und nur bestimmte, benötigte Protokolle für die als Werte zulässigen Typen erlaubt."
+    },
+    {
+      "question": "Welche Formen der Typeinschränkung gibt es?",
+      "answer": "Eine Form der Typeinschränkung besteht darin, einen Typ auf Basis eines anderen Typs zu definieren, indem man Eigenschaften (Methoden) entfernt. Diese Form führt jedoch nicht zur Zuweisungskompatibilität und wird in vielen Sprachen nicht unterstützt. Eine interessantere Form der Typeinschränkung besteht darin, die verwendeten Typen einer Typdefinition durch andere, speziellere Typen zu ersetzen, ohne Eigenschaften zu löschen."
+    },
+    {
+      "question": "Welche inhaltliche Funktionen können Typen neben ihrer formalen Rolle erfüllen?",
+      "answer": "Typen können in der Programmierung neben ihrer formalen Rolle, Fehler zu vermeiden, auch eine inhaltliche Funktion erfüllen. Diese inhaltliche Funktion wird vor allem durch die Benennung des Typs hergestellt, gepaart mit der Namensäquivalenz als Bedingung der Zuweisungskompatibilität. Sie verlangt, dass einer Variable nur Werte gleicher Bedeutung zugewiesen werden können."
+    },
+    {
+      "question": "Welche Rolle spielen Zugriffsmodifikatoren in Programmiersprachen wie Java und C++ bei der Festlegung der Schnittstelle einer Klasse?",
+      "answer": "Zugriffsmodifikatoren legen fest, welche Elemente einer Klassendefinition für Benutzer sichtbar sind und somit die Schnittstelle der Klasse beeinflussen. Sie regeln die Zugriffsberechtigungen auf Methoden und Instanzvariablen."
+    },
+    {
+      "question": "Was ist nominales Subtyping?",
+      "answer": "Nominales Subtyping bedeutet, dass ein Subtyp explizit aus einem namentlich erwähnten Supertyp abgeleitet sein muss, um als sein Subtyp zu gelten. In diesem Fall ist die Namensähnlichkeit entscheidend."
+    },
+    {
+      "question": "Was ist strukturelles Subtyping?",
+      "answer": "Strukturelles Subtyping liegt vor, wenn ein Typ die allgemeine Definition eines Subtyps erfüllt, unabhängig von seiner expliziten Nennung als Supertyp. Hier ist die Struktur und das Verhalten des Typs entscheidend, nicht seine explizite Nennung als Supertyp."
+    },
+    {
+      "question": "Welches der beiden Subtyping-Modelle, nominales Subtyping und strukturelles Subtyping, impliziert das andere?",
+      "answer": "Nominales Subtyping impliziert strukturelles Subtyping. Das bedeutet, wenn ein Subtyp nominal als Supertyp erwähnt wird, erfüllt er automatisch auch die strukturellen Kriterien eines Subtyps."
+    },
+    {
+      "question": "Welche Bedeutung hat die Typkonformität in Bezug auf die Zuweisungskompatibilität?",
+      "answer": "Typkonformität ist in vielen Sprachen eine notwendige Voraussetzung für die Zuweisungskompatibilität. Das bedeutet, dass ein Objekt eines typkonformen Typs einer Variable eines anderen, typgleichen Typs zugewiesen werden darf."
+    },
+    {
+      "question": "Welche beiden Varianten der Typkonformität gibt es, und wie unterscheiden sie sich?",
+      "answer": "Es gibt strukturelle Typkonformität und nominale Typkonformität. Bei struktureller Typkonformität müssen alle Elemente des konformen Typs im konformen Typ enthalten sein. Bei nominaler Typkonformität muss zusätzlich die Erweiterung eines anderen Typs explizit angegeben werden."
+    },
+    {
+      "question": "Welche Arten von Typäquivalenz gibt es, und wie unterscheiden sie sich?",
+      "answer": "Es gibt zwei Arten von Typäquivalenz: die nominale (Namensäquivalenz) und die strukturelle (Strukturäquivalenz) Typäquivalenz. Die nominale Typäquivalenz erfordert, dass zwei Deklarationen denselben Typnamen angeben, um Zuweisungskompatibilität zu haben. Die strukturelle Typäquivalenz hingegen erfordert nur, dass die Typen paarweise gleich definiert sind, unabhängig von ihren Namen."
+    },
+    {
+      "question": "Welche Eigenschaften gelten für die Typäquivalenz?",
+      "answer": "Die Typäquivalenz ist reflexiv, was bedeutet, dass jeder Typ zu sich selbst äquivalent ist. Sie ist auch transitiv, was bedeutet, dass wenn A äquivalent zu B ist und B äquivalent zu C ist, dann ist auch A äquivalent zu C."
+    },
+    {
+      "question": "Was sind Bezeichner in der Programmierung, und wie werden sie verwendet?",
+      "answer": "Bezeichner sind Namen, die in der Programmierung frei vergeben werden können. Sie werden verwendet, um Programmelemente zu identifizieren und auf sie zu verweisen, beispielsweise Variablen oder Methoden."
+    },
+    {
+      "question": "Welche Probleme können in untypisierten Sprachen auftreten?",
+      "answer": "In untypisierten Sprachen, in denen Variablen ohne Angabe eines Typs deklariert werden, kann es zu Problemen führen, da Variablen quasi implizit deklariert werden, wenn sie zum ersten Mal verwendet werden. Dies kann zu Schreibfehlern führen, bei denen versehentlich zwei Variablen mit dem gleichen Namen erstellt werden, die jedoch nichts miteinander zu tun haben. Dies erhöht das Risiko von Programmierfehlern."
+    },
+    {
+      "question": "Welche Rolle spielt Typinformation zur Laufzeit eines Programms?",
+      "answer": "Typinformation beeinflusst die Ausführung eines laufenden Programms, indem sie das Programm bei Verletzung einer Invariante durch einen dynamischen Typtest abbricht."
+    },
+    {
+      "question": "Was ist eine Typumwandlung?",
+      "answer": "Eine Typumwandlung (type cast) ist ein Verfahren, bei dem der vorgefundene Typ eines Ausdrucks (einer Variable oder eines Methodenaufrufs) in einen vorgegebenen Typ konvertiert wird. Dies geschieht, um dem Compiler oder Type Checker mitzuteilen, dass der Ausdruck den angegebenen Typ hat, auch wenn dies nicht automatisch sichergestellt ist."
+    },
+    {
+      "question": "Welche Richtungen von Typumwandlungen gibt es?",
+      "answer": "Typumwandlungen können in verschiedene Richtungen erfolgen: zu Supertypen (Upcast), zu Subtypen (Downcast) oder zu Typen, die weder Supertyp noch Subtyp des Ausgangstyps sind (Crosscast)."
+    },
+    {
+      "question": "Was ist das Kovarianzproblem im Zusammenhang mit parametrischem Polymorphismus?",
+      "answer": "Das Kovarianzproblem im Zusammenhang mit parametrischem Polymorphismus bezieht sich darauf, wie Eingabeparameter in Methoden kovariant, also flexibel, in Bezug auf ihren Typ angepasst werden können."
+    },
+    {
+      "question": "Was ist die Idee des parametrischen Polymorphismus?",
+      "answer": "Die Idee des parametrischen Polymorphismus besteht darin, aus einer Typdefinition durch Parametrisierung viele verschiedene Typen zu generieren, je nachdem, welche konkreten Typen als Typparameter verwendet werden."
+    },
+    {
+      "question": "Was sind Typen, die sich ausschließlich auf sich selbst beziehen?",
+      "answer": "Typen, die sich ausschließlich auf sich selbst beziehen, sind solche, deren Bedeutung nicht von anderen Typen abhängt. Ein Beispiel dafür ist der Typ \"Boolean\". Sie können Bedeutung erhalten, indem sie auf bekannte externe Formalismen abgebildet werden, wie die boolesche Algebra."
+    },
+    {
+      "question": "Was ist eine denotationale Semantik in Bezug auf Typisierung?",
+      "answer": "Eine denotationale Semantik ist eine Möglichkeit, Typen eine Bedeutung zuzuweisen, indem sie auf bekannte externe Formalismen abgebildet werden. Dies kann beispielsweise bedeuten, dass die Operationen eines Typs auf mathematische oder logische Konzepte abgebildet werden, die in der Programmierung verwendet werden."
+    },
+    {
+      "question": "Was ist eine operationale Semantik in Bezug auf Typisierung?",
+      "answer": "Eine operationale Semantik ist eine Möglichkeit, Typen eine Bedeutung zuzuweisen, indem sie auf Anweisungen einer (gedachten oder realen) Maschine abgebildet werden. Dies bedeutet, dass die Operationen eines Typs auf die Ausführung von Maschinenbefehlen oder anderen niedrigstufigen Operationen abgebildet werden."
+    },
+    {
+      "question": "Welches Problem ergibt sich bei der strukturellen Äquivalenz von rekursiven Typen?",
+      "answer": "Das Problem bei der strukturellen Äquivalenz von rekursiven Typen besteht darin, dass die Expansion rekursiver Typen unendlich große Definitionen ergeben kann, was die Feststellung der strukturellen Äquivalenz erschwert."
+    },
+    {
+      "question": "Was ist Kovarianz und Kontravarianz bei Methodenaufrufen im Zusammenhang mit Subtyping?",
+      "answer": "Bei Methodenaufrufen und Subtyping unterscheidet man zwischen Kovarianz und Kontravarianz. Kovarianz bezieht sich auf die Veränderung von Rückgabetypen, während Kontravarianz die Veränderung von Parametertypen beschreibt."
+    },
+    {
+      "question": "Was ist Kovarianz?",
+      "answer": "Kovarianz tritt auf, wenn der Rückgabetyp einer Methode in einem Subtyp ein Subtyp des Rückgabetyps in einem Supertyp ist. Dies bedeutet, dass der Subtyp mehr Werte zurückgeben kann als der Supertyp."
+    },
+    {
+      "question": "Was ist Kontravarianz?",
+      "answer": "Kontravarianz tritt auf, wenn die Parametertypen einer Methode in einem Subtyp Supertypen der Parametertypen in einem Supertyp sind. Dies bedeutet, dass der Subtyp Eingabeparameter akzeptiert, die allgemeiner sind als die des Supertyps."
+    },
+    {
+      "question": "Welcher konkrete Typ tritt an die Stelle einer Typvariable bei der Verwendung von Inklusionspolymorphie?",
+      "answer": "Bei der Verwendung von Inklusionspolymorphie tritt der konkrete Typ \"Object\" an die Stelle der Typvariable E."
+    },
+    {
+      "question": "Welche Art von Typfehler kann auftreten, wenn Inklusionspolymorphie verwendet wird?",
+      "answer": "Ein Typfehler kann auftreten, wenn Methoden auf Objekten eines konkreten Subtyps von \"Object\" aufgerufen werden, da die statische Typprüfung solche Methoden nicht unterstützt."
+    },
+    {
+      "question": "Welchen Kompromiss geht man bei der Verwendung parametrischen Typen ein?",
+      "answer": "Bei der Verwendung parametrischer Typen geht man einen Kompromiss ein, bei dem die erhöhte Typsicherheit außerhalb der Typdefinition durch eine geringere Typsicherheit innerhalb der Typdefinition erkauft wird."
+    },
+    {
+      "question": "Welche Art von Polymorphismus erlaubt die Sicherstellung von bestimmten Eigenschaften für eingesetzte Typen?",
+      "answer": "Der beschränkte parametrische Polymorphismus erlaubt die Sicherstellung von bestimmten Eigenschaften für eingesetzte Typen, um Typfehler frühzeitig zu erkennen."
+    },
+    {
+      "question": "Was ist ein Typ in der Programmierung?",
+      "answer": "Ein Typ in der Programmierung schränkt die möglichen Werte eines deklarierten Elements (z. B. einer Variable) ein. Ein Typ hat eine Intension (Definition) und eine Extension (Wertebereich), wobei er eine Menge von Elementen (Objekten) umfasst, die zu diesem Typ gehören. Typen sind die Grundlage von Typsystemen."
+    },
+    {
+      "question": "Welche Gründe gibt es, Variablen und andere Programmelemente zu typisieren?",
+      "answer": "Es gibt mindestens vier gute Gründe für die Typisierung von Variablen und anderen Programmelementen: Typisierung regelt das Speicher-Layout. Typisierung erlaubt die effizientere Ausführung eines Programms. Typisierung erhöht die Lesbarkeit eines Programms. Typisierung ermöglicht das automatische Finden von logischen Fehlern in einem Programm."
+    },
+    {
+      "question": "Was ist ein Typsystem?",
+      "answer": "Ein Typsystem umfasst Typausdrücke, Objekt- oder Wertausdrücke, Regeln, die Wertausdrücken Typen zuordnen, und Regeln, die von Wertausdrücken einzuhalten sind(zusammen die Typregeln)."
+    },
+    {
+      "question": "Was sind Gründe für die Verwendung von Typsystemen?",
+      "answer": "Ein Grund für die Verwendung von Typsystemen ist die dadurch entstehende Modularisierung von Programmen, nämlich wenn ein Typ zugleich eine Schnittstelle oder ein Interface ausdrückt."
+    },
+    {
+      "question": "Was ist ein logischer Fehler in einem Programm?",
+      "answer": "Ein logischer Fehler in einem Programm ist ein Fehler, bei dem das Programm zwar fehlerfrei läuft, aber das Ergebnis falsch ist. Im Gegensatz zu einem Programmabbruch, der auf einen Programmierfehler hinweist, bleibt ein logischer Fehler oft unbemerkt."
+    },
+    {
+      "question": "Was sind die Folgen eines logischen Fehlers in einem Programm?",
+      "answer": "Ein logischer Fehler in einem Programm kann dazu führen, dass das Programm weiterläuft, aber das Ergebnis falsch ist. Es ist schwieriger zu erkennen als ein Programmabbruch, da keine erkennbare Reaktion auf einen Programmierfehler stattfindet."
+    },
+    {
+      "question": "Was sind Typinvarianten?",
+      "answer": "Typinvarianten sind eine Möglichkeit, Variablenfehlbelegungen zu verhindern. Sie beschränken die Menge der zulässigen Werte einer Variablen. In typisierten Programmiersprachen erfolgt die Typannotation explizit und zwingend bei der Variablendeklaration. In nicht oder nur optional typisierten Sprachen kann sie auch hergeleitet (inferiert) werden."
+    },
+    {
+      "question": "Was sind Typannotationen?",
+      "answer": "Typannotationen sind eine Möglichkeit, Variablen mit expliziten Typinvarianten zu versehen, die die Menge ihrer zulässigen Werte beschränken. Sie werden in typisierten Programmiersprachen explizit und zwingend bei der Variablendeklaration angegeben, während sie in nicht oder nur optional typisierten Sprachen hergeleitet und implizit sein können."
+    },
+    {
+      "question": "Was sind semantische Fehler in einem Programm?",
+      "answer": "Semantische Fehler in einem Programm sind logische Fehler, die sich in unzulässigen Wertzuweisungen ausdrücken. Sie entstehen, wenn die tatsächliche Verwendung eines Programmelements nicht seiner intendierten Bedeutung entspricht, die im Typ des Programmelements spezifiziert ist."
+    },
+    {
+      "question": "Was ist der einzige Weg, eine mit der Typisierung einer Variablen ausgedrückte Invariante zu verletzen?",
+      "answer": "Der einzige Weg, eine mit der Typisierung einer Variablen ausgedrückte Invariante zu verletzen, ist per Wertzuweisung an die Variable."
+    },
+    {
+      "question": "Was ist eine Invariante?",
+      "answer": "Eine Invariante ist eine Bedingung, die während der Ausführung eines Programms immer erfüllt sein muss. Im gegebenen Beispiel ist die Invariante von i, dass die Werte immer vom Typ Integer sein müssen und somit nicht vom Typ String sein dürfen."
+    },
+    {
+      "question": "Was ist dynamische Typprüfung?",
+      "answer": "Dynamische Typprüfung ist eine Methode zur Gewährleistung von Typkorrektheit, bei der zur Laufzeit vor einer Variablenzuweisung geprüft wird, ob der zuzuweisende Wert den von der Variablen geforderten Typ hat. Der Nachteil ist, dass diese Prüfung zu spät kommt und häufig nur zu einem Programmabbruch führt."
+    },
+    {
+      "question": "Was ist dynamische Typisierung?",
+      "answer": "Dynamische Typisierung ist die Tatsache, dass der Typ eines Objekts zur Laufzeit bekannt ist. Im Gegensatz zur statischen Typisierung, bei der der Typ zur Übersetzungszeit bekannt ist."
+    },
+    {
+      "question": "Was ist statische Typprüfung?",
+      "answer": "Die statische Typprüfung ist ein Verfahren, bei dem die Typkorrektheit eines Programms bereits während der Übersetzungszeit geprüft wird. Im Gegensatz zur dynamischen Typprüfung, die zur Laufzeit erfolgt, wird bei der statischen Typprüfung der Beweis erbracht, dass bei keiner Ausführung eines Programms eine Typinvariante verletzt wird."
+    },
+    {
+      "question": "Was ist ein ausdruckskräftiges Typsystem?",
+      "answer": "Ein ausdruckskräftiges Typsystem ist ein Typsystem, das in einer Typannotation mehr Informationen unterbringen und damit mehr Typfehler aufdecken kann. Allerdings steigt mit der Ausdruckskraft auch die Komplexität des Typsystems und damit die Wahrscheinlichkeit, dass eine aufwändige Typprüfung notwendig ist. Besonders anspruchsvolle Typsysteme können außerdem die Gestaltung von Schnittstellen erschweren, so dass die beteiligten Programme nicht ohne weiteres zusammenarbeiten können."
+    },
+    {
+      "question": "Was bedeutet nominale Konformität?",
+      "answer": "Nominale Konformität bedeutet, dass für die Konformität einer Erweiterung nicht nur die Struktur, sondern auch der Name des Typs, der erweitert wird, explizit angegeben werden muss."
+    },
+    {
+      "question": "Was bedeutet es, wenn ein Typ reflexiv ist?",
+      "answer": "Wenn ein Typ reflexiv ist, bedeutet das, dass er eine Erweiterung eines anderen sein kann, ohne tatsächlich etwas hinzuzufügen."
+    },
+    {
+      "question": "Welche Arten von Typisierung bietet STRONGTALK?",
+      "answer": "STRONGTALK bietet zwei Arten von Typisierung: Die erste Art erfordert vom Compiler eine Prüfung, ob eine Klasse tatsächlich über alle Eigenschaften der von ihr genannten Typen verfügt. Bei der zweiten Art ist diese Prüfung automatisch der Fall, da der Typ gewissermaßen aus der Klasse erzeugt wird. Diese zweite Art wird von den meisten typisierten, objektorientierten Programmiersprachen bevorzugt, während die erste Art in Sprachen wie Java und C-Sharp vorkommt."
+    }
+  ],
+  "APPLY": [
+    {
+      "question": "Wie wird der Typ einer parametrischen Typdefinition konkretisiert?",
+      "answer": "Die Typdefinition wird durch Instanziierung der parametrischen Typdefinition mit einem konkreten Typen konkretisiert. Dieser Vorgang ergibt sich automatisch und muss nicht explizit hingeschrieben werden."
+    },
+    {
+      "question": "Wie oft kann eine parametrische Typdefinition in einem Programm verwendet werden?",
+      "answer": "Eine parametrische Typdefinition kann in einem Programm beliebig oft verwendet werden."
+    },
+    {
+      "question": "Wie hängt das Löschen von Eigenschaften (Methoden) mit der Typeinschränkung zusammen?",
+      "answer": "Das Löschen von Eigenschaften (Methoden) kann als ein Spezialfall der Typeinschränkung verstanden werden, bei der der Wertebereich auf die leere Menge eingeschränkt wird. In diesem Fall wäre die Methode nicht mehr aufrufbar, da es kein typkorrektes Parameterobjekt gäbe, was einer Löschung gleichkäme."
+    },
+    {
+      "question": "Wie kann man den Typ der in Beziehung stehenden Objekte bei der Deklaration von n-wertigen Attributen angeben?",
+      "answer": "Man kann den Typ der in Beziehung stehenden Objekte bei der Deklaration von n-wertigen Attributen angeben, indem man die Collection-Klassen als Typen für die Zwischenobjekte verwendet."
+    },
+    {
+      "question": "Wie wird Typkonformität in der Regel gehandhabt?",
+      "answer": "In der objektorientierten Programmierung wird die Typkonformität in der Regel namensgebunden gehandhabt."
+    },
+    {
+      "question": "Wann sind zwei Typen zuweisungskompatibel?",
+      "answer": "Zwei Typen sind zuweisungskompatibel, wenn sie identisch sind oder wenn sie eine Typäquivalenz aufweisen, d.h. wenn sie bis auf ihre Namen gleich sind."
+    },
+    {
+      "question": "Wie funktioniert Typerweiterung?",
+      "answer": "Typerweiterung wird zum Beispiel durch die Definition neuer Module erreicht, die den ursprünglichen Datentyp erweitern, indem sie neue Methoden hinzufügen. Diese neuen Module können dann verwendet werden, um auf die erweiterten Funktionen des Datentyps zuzugreifen, ohne den ursprünglichen Code zu ändern."
+    },
+    {
+      "question": "Wie wird ein Typ in SMALLTALK definiert?",
+      "answer": "In SMALLTALK wird ein Typ durch das Protokoll definiert, das heißt, durch die Menge der Methoden, die ein Objekt versteht."
+    },
+    {
+      "question": "Wie werden Typen in STRONGTALK definiert?",
+      "answer": "In STRONGTALK werden Typen in tabellarischer Form definiert und mit einem Namen versehen. Die Typdefinition enthält keine Typdefinitionen, sondern Namen."
+    },
+    {
+      "question": "Wie werden Typen in SMALLTALK verwendet?",
+      "answer": "In SMALLTALK werden keine Typen verwendet. Stattdessen findet man in SMALLTALK-Programmen manchmal Namen wie „aString“, „anInteger“ etc. für formale Parameter, die nahelegen, dass der Wert einer Variable Instanz einer bestimmten Klasse sein soll. Überprüft wird das jedoch nicht."
+    },
+    {
+      "question": "Wie werden Typen in Smalltalk definiert?",
+      "answer": "In Smalltalk werden keine Typen verwendet, stattdessen findet man in Smalltalk-Programmen manchmal Namen wie \"aString\", \"anInteger\" etc. für formale Parameter, die nahelegen, dass der Wert einer Variable Instanz einer bestimmten Klasse sein soll. Überprüft wird das jedoch nicht."
+    },
+    {
+      "question": "Wie können Typen in einer Programmiersprache mit Bedeutung versehen werden?",
+      "answer": "Es gibt verschiedene Möglichkeiten, Typen in einer Programmiersprache mit Bedeutung zu versehen. Eine Möglichkeit ist, sie auf bekannte externe Formalismen abzubilden, wie beispielsweise die boolesche Algebra für den Typ Boolean. Eine andere Möglichkeit ist, einen Typ und seine Operationen auf Anweisungen einer Maschine abzubilden. Für von der Programmiererin definierte Typen kann die Bedeutung vom Compiler \"induktiv über deren Aufbau\" aus der Bedeutung von Typen abgeleitet werden, die eine vorgegebene Semantik haben. Diese Art der Semantik wird operationale Semantik genannt. Eine weitere Möglichkeit ist, Typen über abstrakte Datentypen zu definieren, die in der Programmiersprache syntaktisch als eine Menge von Operationen beschrieben werden, deren Operanden alle selbst typisiert sind."
+    },
+    {
+      "question": "Wie kann man Rekursion in der Programmierung herstellen?",
+      "answer": "Eine Möglichkeit, Rekursion in der Programmierung herzustellen, ist die Verwendung eines nicht parametrischen Typs als Subtyp eines parametrisierten Typs, wobei man den zu definierenden Typ gleichzeitig als tatsächlichen Typparameter einsetzt."
+    },
+    {
+      "question": "Wie verändern sich die Eingabe- und Ausgabeparameter bei einer Methodenredefinition?",
+      "answer": "Bei einer Methodenredefinition dürfen sich die Eingabeparameter nur zu einem Supertypen hin und die Ausgabeparameter nur zu einem Subtyp hin verändern, um die Typkorrektheit des Programms zu gewährleisten."
+    },
+    {
+      "question": "Wie kann die Einschränkung von Ein- oder Rückgabetypen von Methoden die Zuweisungskompatibilität beeinflussen?",
+      "answer": "Die Einschränkung von Ein- oder Rückgabetypen von Methoden kann die Zuweisungskompatibilität beeinflussen, indem sie sicherstellt, dass die Extension des eingeschränkten Typs eine Teilmenge der Extension des einschränkenden Typs ist. Dies kann dazu beitragen, die Typkorrektheit von Zuweisungen zu gewährleisten."
+    },
+    {
+      "question": "Wie gewährleistet die Verwendung von Typen die Wahrung des Geheimnisprinzips und die Einhaltung von Schnittstellen?",
+      "answer": "Die Verwendung von Typen stellt sicher, dass über Variablen nur auf die Elemente einer Klasse zugegriffen wird, die Teil der Schnittstelle sind. Dadurch wird das Geheimnisprinzip gewahrt, und die Einhaltung von Schnittstellen wird durch den Compiler sichergestellt."
+    },
+    {
+      "question": "Wie verhält sich die Typkonformität in Bezug auf Reflexivität, Transitivität und Symmetrie?",
+      "answer": "Typkonformität ist reflexiv, da jeder Typ konform zu sich selbst ist. Sie ist transitiv, sodass wenn Typ A konform zu Typ B ist und Typ B konform zu Typ C ist, dann ist auch Typ A konform zu Typ C. Im Gegensatz zur Typäquivalenz ist Typkonformität nicht symmetrisch. Es gilt jedoch meistens die Antisymmetrie, was bedeutet, dass wenn Typ B zu Typ A und Typ A zu Typ B konform ist, dann müssen A und B identisch sein."
+    },
+    {
+      "question": "Wie verhält sich die Typäquivalenz in Bezug auf Symmetrie?",
+      "answer": "Typäquivalenz ist eine symmetrische Eigenschaft, was bedeutet, dass wenn Typ A äquivalent zu Typ B ist, dann ist auch Typ B äquivalent zu Typ A."
+    },
+    {
+      "question": "Wie können Typen und Klassen in einem Sprachkonstrukt trotz unterschiedlicher Zwecke zusammengefasst werden?",
+      "answer": "Obwohl Typen und Klassen unterschiedliche Zwecke haben, teilen sie sich strukturelle Ähnlichkeiten, die es ermöglichen, ihre Definition in einem Sprachkonstrukt zu kombinieren. Dies erleichtert die Verwendung beider Konzepte in einer Programmiersprache."
+    },
+    {
+      "question": "Wie steht Inklusionspolymorphie in Beziehung zum Subtyping?",
+      "answer": "Inklusionspolymorphie und Subtyping sind im Wesentlichen dasselbe Konzept. Beide Begriffe beschreiben, wie Objekte eines Subtyps anstelle ihres Supertyps verwendet werden können."
+    },
+    {
+      "question": "Wie werden Typfehler in STRONGTALK vermieden?",
+      "answer": "In STRONGTALK werden Typfehler vermieden, indem Variablen mit einem Protokoll als Typ typisiert werden. Wenn das Programm typkorrekt ist, bedeutet dies, dass jede Methode im Protokoll, die auf der Variable aufgerufen wird, auch für den Inhalt der Variable, das referenzierte Objekt, definiert ist."
+    },
+    {
+      "question": "Wie werden Typen in Variablendeklarationen verwendet?",
+      "answer": "Typen werden in Variablendeklarationen explizit angegeben, um jedem Objekt und Ausdruck im Programm einen Typ zuzuordnen."
+    },
+    {
+      "question": "Wie erfolgt die Zuweisung eines Typs an eine Typvariable?",
+      "answer": "Die Zuweisung eines Typs zu einer Typvariable erfolgt bei der Verwendung eines parametrisch definierten Typs in einer Deklaration, z. B. der Deklaration einer Variable oder des Rückgabewerts einer Methode. Diese Verwendung entspricht oberflächlich betrachtet dem Aufruf einer Methode oder eines Konstruktors, führt aber bereits zur Übersetzungszeit zu einer Zuweisung an die Typvariablen."
+    },
+    {
+      "question": "Wie wird eine Beschränkung des tatsächlichen Typparameters in der Typdefinition erreicht?",
+      "answer": "Die Beschränkung des tatsächlichen Typparameters wird erreicht, indem der formale Typparameter auf einen Subtyp beschränkt wird."
+    },
+    {
+      "question": "Wie können definierte Typen in STRONGTALK-Programmen verwendet werden?",
+      "answer": "Definierte Typen können in STRONGTALK-Programmen bei der Deklaration von (anderen) Typen, von Variablen, von Blöcken und von Methoden verwendet werden. Dies führt zu einer Typisierung der deklarierten Programmelemente."
+    },
+    {
+      "question": "Wie werden Variablen in STRONGTALK typisiert?",
+      "answer": "Variablen (einschließlich Instanzvariablen und temporäre Variablen) werden in STRONGTALK typisiert, indem ein Typname in spitzen Klammern an die Variable angehängt wird."
+    },
+    {
+      "question": "Wie bestimmt der Compiler den Speicherbedarf einer Variable?",
+      "answer": "Der Compiler kann anhand des Typs einer Variablen bestimmen, wie viel Speicherplatz er für die Aufnahme eines Wertes reservieren muss."
+    },
+    {
+      "question": "Wozu kann die Typisierung in der Entwurfsphase verwendet werden?",
+      "answer": "In der Entwurfsphase kann die Typisierung dazu verwendet werden, abstrakte Datentypen und Schnittstellen zu spezifizieren, bevor die Implementierung beginnt."
+    },
+    {
+      "question": "Wozu kann die Typisierung in der Testphase verwendet werden?",
+      "answer": "In der Testphase kann die Typisierung dazu verwendet werden, die Art der Daten zu überprüfen, die an Methoden übergeben werden."
+    },
+    {
+      "question": "Wozu dienen Typinformationen in der Dokumentation?",
+      "answer": "Typinformationen in der Dokumentation helfen anderen Entwicklern, den Code zu verstehen und korrekt zu verwenden."
+    },
+    {
+      "question": "Was ist der Zweck von Typvariablen in Typdefinitionen?",
+      "answer": "Der Zweck von Typvariablen in der Typdefinition ist, dass sie anstelle des Parameters und des Rückgabetyps T nennen, wobei T eine Typvariable ist. Typvariablen werden verwendet, um keinen tatsächlichen Typen zu verdecken, wie es sonst versehentlich passieren könnte. Typvariablen können auch zu einer parametrischen Klassendefinition beliebig viele Typen haben."
+    },
+    {
+      "question": "Was ist der Zweck von Typumwandlungen?",
+      "answer": "Typumwandlungen sind in der Programmierung entweder überflüssig oder unsicher. Wenn sie unverzichtbar sind, sollten sie mit einem Typtest abgesichert werden, um sicherzustellen, dass das Objekt, für das der typgewandelte Ausdruck steht, auch den gewünschten Typ hat."
+    },
+    {
+      "question": "Was ist der Zweck eines Typsystems?",
+      "answer": "Der Zweck eines Typsystems besteht darin, das Auftreten von Ausführungsfehlern während der Programmausführung zu verhindern."
+    },
+    {
+      "question": "Was ist ein Beispiel für eine parametrische Definition einer Collection?",
+      "answer": "Ein Beispiel für eine parametrische Definition einer Collection ist Dictionary, bei dem nicht nur der Elementtyp, sondern auch der Schlüsseltyp variabel gehalten werden sollte."
+    },
+    {
+      "question": "Was ist der Zweck der Deklaration von Programmelementen?",
+      "answer": "Die Deklaration von Programmelementen dient dazu, dem Compiler den Bezeichner bekanntzugeben, damit er ihn in der Folge wiedererkennen und mit der entsprechenden Definition in Verbindung bringen kann."
+    },
+    {
+      "question": "Was ist der Zweck der Typisierung in Programmiersprachen?",
+      "answer": "Der Zweck der Typisierung in Programmiersprachen ist es, den möglichen Wertebereich von Variablen und anderen Programmelementen einzuschränken. So lassen sich beispielsweise in einer Variable vom Typ Boolean nur Wahrheitswerte, in einer vom Typ String nur Zeichenketten speichern."
+    },
+    {
+      "question": "Was ist der Zweck von Typsystemen für die Fehlerentdeckung?",
+      "answer": "Typsysteme in der Fehlerentdeckung zielen darauf ab, einen Teil logischer Programmierfehler frühzeitig zu erkennen, indem sie Variablen daran hindern, Werte anzunehmen, die sie eigentlich nicht haben dürften. Dies hilft, Fehler zu vermeiden, die erst zur Laufzeit auftreten und in der Regel einen Programmabbruch verursachen. Diese Art von Fehlern werden als Typfehler bezeichnet."
+    },
+    {
+      "question": "Wie unterscheidet sich die Verwendung von Klassendefinitionen in STRONGTALK von anderen Sprachen wie Java oder C++?",
+      "answer": "In STRONGTALK sind formale Parameter in Klassendefinitionen typisiert, während in Java oder C++ Instanzvariablen nicht Teil einer Typdefinition sein können."
+    },
+    {
+      "question": "Warum werden Metatypen in der Praxis nicht genutzt?",
+      "answer": "Metatypen werden in der Praxis nicht genutzt, da sie eine zusätzliche Komplexität in die Sprache einführen und die Sprache unnötig erschweren würden. Zudem gibt es andere Möglichkeiten, um Typbeschränkungen zu erreichen, wie zum Beispiel die Verwendung von generischen Typen oder die Verwendung von Interfaces."
+    },
+    {
+      "question": "Warum sind Typsysteme, die kovariante Redefinition erlauben, kaum praxistauglich?",
+      "answer": "Typsysteme, die kovariante Redefinition erlauben, sind kaum praxistauglich, weil sie zu Problemen führen können, wenn Objekte mit unterschiedlichen Typen miteinander interagieren. Wenn beispielsweise eine Methode, die ein Objekt erwartet, das von Typ A ist, ein Objekt erhält, das von Typ B ist, aber B von A abgeleitet ist, kann dies zu unerwarteten Ergebnissen führen, wenn die Methode versucht, auf die spezifischen Eigenschaften von A zuzugreifen, die in B nicht vorhanden sind. Dies kann zu Laufzeitfehlern führen und die Wartbarkeit und Zuverlässigkeit des Codes beeinträchtigen."
+    },
+    {
+      "question": "Warum ist strukturelle Typkonformität in der objektorientierten Programmierung weniger gebräuchlich?",
+      "answer": "Strukturelle Typkonformität ist in der objektorientierten Programmierung weniger gebräuchlich, weil sie die statische Typisierung untergraben würde."
+    },
+    {
+      "question": "Warum ist Zuweisungskompatibilität unter Subtyping möglich?",
+      "answer": "Zuweisungskompatibilität unter Subtyping ist möglich, weil Subtypen alle Eigenschaften ihrer Supertypen erben und somit keine Typfehler auftreten können."
+    },
+    {
+      "question": "Warum sollte man auf Typumwandlungen verzichten?",
+      "answer": "Typumwandlungen können überflüssig oder unsicher sein. Daher ist es besser, auf sie zu verzichten, um Fehler zu vermeiden. Wenn sie unverzichtbar sind, sollten sie mit einem Typtest abgesichert werden, um sicherzustellen, dass das Objekt, für das der typgewandelte Ausdruck steht, den gewünschten Typ hat."
+    },
+    {
+      "question": "Warum ist die Typsicherheit eine nicht-triviale Eigenschaft?",
+      "answer": "Die Typsicherheit ist eine nicht-triviale Eigenschaft, weil eine sorgfältige Analyse erforderlich ist, um falsche und peinliche Behauptungen zur Typsicherheit zu vermeiden."
+    },
+    {
+      "question": "Warum ist die einfache Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung nur teilweise nützlich?",
+      "answer": "Die einfache Form des parametrischen Polymorphismus ist nur teilweise nützlich, da die Typvariablen selbst nicht typisiert sind, und somit innerhalb der Typdefinition keine Aussagen über den Typ getroffen werden können."
+    },
+    {
+      "question": "Warum führt die Typeinschränkung zur Problematik der Zuweisungskompatibilität?",
+      "answer": "Die Typeinschränkung kann die Zuweisungskompatibilität beeinträchtigen, da sie die Parameter-Typen in Methoden neu definiert und dadurch potenziell Konflikte bei der Zuweisung von Objekten unterschiedlicher Typen verursachen kann. Dies führt dazu, dass nicht alle Zuweisungen, die bei Typerweiterung basierend auf Typkonformität zulässig wären, bei Typeinschränkung ebenfalls zulässig sind."
+    },
+    {
+      "question": "Warum wird in der Praxis der objektorientierten Programmierung oft die Referenzsemantik verwendet?",
+      "answer": "In der Praxis der objektorientierten Programmierung wird oft die Referenzsemantik verwendet, da sie effizienter ist und es ermöglicht, auf dasselbe Objekt von verschiedenen Stellen im Code aus zuzugreifen. Dies erleichtert die Arbeit mit komplexen Datenstrukturen und verhindert unnötige Kopien von Objekten. Die Referenzsemantik ist daher die gebräuchlichere Semantik in vielen objektorientierten Programmiersprachen."
+    },
+    {
+      "question": "Warum ist die Teilmengenbeziehung bei der Typeinschränkung nicht immer offensichtlich?",
+      "answer": "Bei der Typeinschränkung, bei der Eigenschaften (Methoden) entfernt werden, kann die Extension des eingeschränkten Typs tatsächlich größer werden, da weniger spezifische Anforderungen gestellt werden. Dies kann zu einer scheinbaren Umkehrung der Teilmengenbeziehung führen."
+    },
+    {
+      "question": "Warum ist die Namensäquivalenz als Bedingung der Zuweisungskompatibilität wichtig?",
+      "answer": "Die Namensäquivalenz ist wichtig, da sie sicherstellt, dass einer Variable nur Werte gleicher Bedeutung zugewiesen werden können. Sie verhindert Zuweisungen zwischen Typen, die zwar strukturell gleich sind, aber unterschiedliche Bedeutungen haben. Dies ist entscheidend, um logische Programmierfehler zu vermeiden, die sonst schwer zu entdecken wären."
+    },
+    {
+      "question": "Warum gehört eine Instanz einer Subklasse nicht zwangsläufig zum Wertebereich des zur Superklasse gehörenden Typs?",
+      "answer": "Eine Instanz einer Subklasse gehört nicht zwangsläufig zum Wertebereich des zur Superklasse gehörenden Typs, da in der Subklasse Änderungen vorgenommen werden können, die eine Typkonformität vom zur Subklasse gehörenden zum zur Superklasse gehörenden Typ aufheben können. Zum Beispiel können Methoden gelöscht oder inkompatibel redefiniert werden."
+    },
+    {
+      "question": "Warum setzen die meisten gebräuchlichen, typisierten Programmiersprachen auf nominale Typkonformität als Bedingung für die Zuweisungskompatibilität?",
+      "answer": "Die meisten Programmiersprachen setzen auf nominale Typkonformität, da sie automatisch gegeben ist, wenn der Typ, von dem ein neuer per Erweiterung abgeleitet wird, genannt wird. Dies vermeidet aufwendige, fallweise Konformitätstests. Strukturelle Typsysteme, insbesondere solche ohne explizite Benennung von Typen, erschweren die Ausdrücklichkeit der Programmiererin bei der Definition ihrer Absicht (intendierte Semantik) und können Programme schwerer lesbar und debugbar machen. Fehlermeldungen aus strukturellen Typprüfungen sind oft schwer zu verstehen und beziehen sich nicht immer auf die eigentliche Fehlerquelle."
+    },
+    {
+      "question": "Warum wird die Unterscheidung zwischen Klassen und Typen in Sprachen, in denen jede Klasse einen Typ definiert, nicht klar getroffen?",
+      "answer": "In Sprachen, in denen Klassen auch Typen definieren, kann die Unterscheidung zwischen den beiden Konzepten verschwommen sein, da Programmierer möglicherweise nicht immer klar wahrnehmen, wie sie zur Laufzeit eines Programms wirken."
+    },
+    {
+      "question": "Warum ist die Typisierung von Variablen und Ausdrücken in einem Programm wichtig?",
+      "answer": "Die Typisierung von Variablen und Ausdrücken in einem Programm ist wichtig, um sicherzustellen, dass jede Variable nur Werte haben kann, für die sie vorgesehen ist. Dies gewährleistet die Einhaltung der Typinvariante und verhindert Typfehler im Programm."
+    },
+    {
+      "question": "Warum ist Zuweisungskompatibilität auch bei impliziten Zuweisungen wichtig?",
+      "answer": "Zuweisungskompatibilität ist auch bei impliziten Zuweisungen wichtig, da sie Typkorrektheit impliziert. Bei der Parameterübergabe von Methodenaufrufen oder impliziten Zuweisungen müssen die beteiligten Typen kompatibel sein, um Typfehler zu vermeiden."
+    },
+    {
+      "question": "Warum sind Upcasts immer typsicher, während Downcasts und Crosscasts unsicher sein können?",
+      "answer": "Upcasts sind immer typsicher, da sie von einem spezielleren Typ zu einem allgemeineren Typ erfolgen. Downcasts und Crosscasts können unsicher sein, da sie von einem allgemeineren Typ zu einem spezielleren oder nicht verwandten Typ erfolgen, was dazu führen kann, dass der Ausdruck zur Laufzeit nicht den erwarteten Typ hat."
+    },
+    {
+      "question": "Warum nennt man parametrische Typen auch generische Typen oder Generics?",
+      "answer": "Parametrische Typen werden auch als generische Typen oder Generics bezeichnet, weil sie die Idee verfolgen, aus einer Typdefinition generisch (theoretisch für beliebig viele Typen) viele Typen zu erzeugen, je nach Bedarf. Sie ermöglichen eine gewisse Generizität in der Typsicherung."
+    },
+    {
+      "question": "Warum ist die Kovarianz für Parametertypen in der Praxis nicht notwendig und kann sogar zu typinkorrekten Programmen führen?",
+      "answer": "Obwohl Kovarianz für Parametertypen auf den ersten Blick sinnvoll erscheint, kann sie in der Praxis zu typinkorrekten Programmen führen. Dies liegt daran, dass die Anzahl der möglichen Eingabewerte in einem Subtyp reduziert wird, wenn die Menge der Empfängerobjekte eingeschränkt wird. Dies führt dazu, dass die Parametertypen tatsächlich kontravariant sind. Kovarianz für Parametertypen würde typinkorrekte Programme ermöglichen."
+    },
+    {
+      "question": "Warum ist es vorteilhaft, wenn man den Typ einer Variablen kennt?",
+      "answer": "Wenn man den Typ einer Variablen kennt, kann der Compiler bestimmte Optimierungen durchführen, wie z.B. die Ganzzahladdition oder die Inkrement-Anweisung des Prozessors verwenden. Wenn der Compiler den Typ nicht kennt, muss das Programm vor der Ausführung der Addition erst prüfen, von welchem Typ der Wert von x ist, was zu Laufzeitverzögerungen führen kann."
+    },
+    {
+      "question": "Warum ist es sinnvoll, Variablen und Methoden mit Typen zu assoziieren?",
+      "answer": "Es ist sinnvoll, Variablen und Methoden mit Typen zu assoziieren, um die Bedeutung der Variablen und Methoden für den Nutzer zu verdeutlichen. Zum Beispiel kann eine Deklaration der Methode next, die ListElement als Typ des Ein- und Ausgabeparameters deklariert, nahelegen, dass sie das in einer Liste auf den Eingabeparameter folgende Element zurückliefert. Ohne die Angabe der Parametertypen müsste man als Nutzerin der Funktion, die ihre Implementation nicht kennt, schon über ihren Zweck spekulieren."
+    },
+    {
+      "question": "Erklären Sie Kovarianz und Kontravarianz in Bezug auf Redefinition von Methodenaufrufen im Subtyping?",
+      "answer": "Bei der Redefinition von Methodenaufrufen im Subtyping müssen die Parametertypen kontravariant und die Rückgabetypen kovariant sein. Dies bedeutet, dass die Eingabeparameter des Subtyps genereller sein dürfen als die des Supertyps, während der Subtyp mehr Werte zurückgeben kann als der Supertyp."
+    }
+  ],
+  "ANALYZE": [
+    {
+      "question": "Was versteht man unter parametrisierter Typdefinition?",
+      "answer": "Eine parametrisierte Typdefinition ist eine Möglichkeit, einen Typ in der Programmierung zu definieren, der einen oder mehrere Typparameter enthält. Diese Typparameter können bei der Instanziierung des Typs durch konkrete Typen ersetzt werden, um einen konkreten Typ zu erzeugen. Durch die Verwendung parametrisierter Typdefinitionen kann Code wiederverwendet werden, und die Typsicherheit wird erhalten."
+    },
+    {
+      "question": "Was ist der Nachteil der einfachen Form des parametrischen Polymorphismus?",
+      "answer": "Der Nachteil der einfachen Form des parametrischen Polymorphismus für die Typsicherheit in der objektorientierten Programmierung ist, dass die Typvariablen selbst nicht typisiert sind, und man daher innerhalb der Typdefinition keine Aussagen über den Typ treffen kann."
+    },
+    {
+      "question": "Was bedeutet die Beschränkung von Typvariablen?",
+      "answer": "Die Beschränkung von Typvariablen drückt aus, dass die Typen, die als Werte für die Typvariable eingesetzt werden dürfen, Subtypen des angegebenen Typs sein müssen."
+    },
+    {
+      "question": "Was passiert, wenn eine unzulässige Deklaration von Typvariablen durchgeführt wird?",
+      "answer": "Wenn eine unzulässige Deklaration von Typvariablen durchgeführt wird, führt dies zu einem Typfehler während der statischen Typprüfung."
+    },
+    {
+      "question": "Was impliziert die Definition von Subtypen in Bezug auf Zuweisungskompatibilität?",
+      "answer": "Die Definition von Subtypen impliziert Zuweisungskompatibilität, das heißt, Objekte eines Subtyps dürfen überall auftauchen, wo Objekte seines Supertyps erwartet werden, und sie dürfen auch Werte von jemandem zugreifen, der bei einer Zeichnung auf ihre Zeilen zugreifen will."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Typerweiterung und Typeinschränkung?",
+      "answer": "Typerweiterung erfolgt durch Hinzufügen von Eigenschaften (Methoden) zu einem bestehenden Typen, während Typeinschränkung durch Entfernen von Eigenschaften (Methoden) von einem bestehenden Typen erfolgt. Typerweiterung führt zur Zuweisungskompatibilität, während Typeinschränkung nicht dazu führt."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Wertsemantik und Referenzsemantik in Bezug auf Zuweisungskompatibilität in der objektorientierten Programmierung?",
+      "answer": "In der objektorientierten Programmierung ist bei der Zuweisungskompatibilität nur die Referenzsemantik relevant. Bei der Referenzsemantik wird nur der Verweis auf das Objekt kopiert und in der Variablen gespeichert, während bei der Wertsemantik eine Kopie des Objekts angefertigt wird. Dies führt dazu, dass bei der Referenzsemantik Änderungen am Objekt in einer Variablen auch das Objekt in einer anderen Variablen betrifft, wenn sie auf dasselbe Objekt verweisen. Bei der Wertsemantik hingegen betrifft eine Änderung am Objekt in einer Variablen nicht das Objekt in einer anderen Variablen, da es sich um eine Kopie handelt."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Deklaration und Definition einer Variablen?",
+      "answer": "Bei der Deklaration wird dem Bezeichner das zugeordnet, wofür er steht, während bei der Definition der Speicherplatz für die Variable zugewiesen wird. In manchen Kontexten wird der Begriff Definition aber auch für die Zuweisung eines Anfangswerts an eine Variable verwendet."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Deklaration und Definition einer Methode?",
+      "answer": "Bei der Deklaration wird die Signatur einer Methode bekannt gegeben, bei der Definition wird der Signatur der Methodenrumpf zugeordnet."
+    },
+    {
+      "question": "Was sind die Nachteile von Sprachen, die Variablen nicht deklarieren?",
+      "answer": "Wenn Variablen nicht deklariert werden, können Schreibfehler dazu führen, dass plötzlich zwei Variablen anstatt einer existieren, was zu Programmierfehlern führen kann. Diese Art von Fehlern ist schwer zu erkennen und zu beheben."
+    },
+    {
+      "question": "Was ist der Nachteil von Namensäquivalenz?",
+      "answer": "Der Nachteil von Namensäquivalenz ist, dass sie voraussetzt, dass getrennt voneinander entwickelte Programme dieselben Typen verwenden. Für die Interoperabilität von getrennt voneinander entwickelten Programmen kann dies ein echtes Hindernis sein."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen nominaler und struktureller Typäquivalenz?",
+      "answer": "Nominale Typäquivalenz erlaubt Äquivalenz von Typen, bei deren Definition man vom jeweils anderen nichts wusste. Strukturelle Typäquivalenz bietet mehr Flexibilität, hat jedoch den Nachteil, dass zufällige strukturelle Übereinstimmungen zu einer Äquivalenz führen können, die nicht der intendierten Semantik entspricht. Type branding führt in solchen Fällen optional eine Namensäquivalenz durch die Hintertür ein, mit dem Vorteil, dass diese optional ist."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einer Schnittstelle und einem Typ?",
+      "answer": "Eine absolut spezifizierte Schnittstelle einer Klasse kommt, wenn sie wirklich keinerlei Implementierungsgeheimnisse verrät, einem Typ gleich. Sie besteht nämlich nur aus Deklarationen von Methoden. Im Gegensatz dazu, werden bei einem Typ die Instanzvariablen der Objekte in die Schnittstelle der Klassen aufgenommen, was dem Gedanken des Geheimnisprinzips widerspricht."
+    },
+    {
+      "question": "Was passiert mit der Typkonformität zwischen Super- und Subklasse, wenn Methoden gelöscht oder inkompatibel redefiniert werden?",
+      "answer": "Wenn in der Subklasse Änderungen vorgenommen werden, die eine Typkonformität vom zur Subklasse gehörenden zum zur Superklasse gehörenden Typ aufheben, also z. B. Methoden gelöscht oder inkompatibel redefiniert werden, dann ist eine Instanz einer Subklasse nicht mehr dem Wertebereich des zur Superklasse gehörenden Typs zugehörig."
+    },
+    {
+      "question": "Was passiert, wenn in einer Subklasse Änderungen vorgenommen werden, die eine Typkonformität vom zur Subklasse gehörenden zum zur Superklasse gehörenden Typ aufheben?",
+      "answer": "Wenn in einer Subklasse Änderungen vorgenommen werden, die eine Typkonformität vom zur Subklasse gehörenden zum zur Superklasse gehörenden Typ aufheben, dann ist eine Instanz der Subklasse nicht mehr mit dem Typ der Superklasse kompatibel. Das ist in den meisten objektorientierten Programmiersprachen nicht erlaubt."
+    },
+    {
+      "question": "Was bedeutet die Antisymmetrie der Typkonformität?",
+      "answer": "Die Antisymmetrie der Typkonformität bedeutet, dass wenn ein Typ B typkonform zu einem Typ A ist und A zu B typkonform ist, dann müssen A und B identisch sein. Das heißt, dass es keine zwei verschiedenen Typen geben kann, die beide typkonform zu einander sind."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen struktureller Typkonformität und namensgebundener Typkonformität?",
+      "answer": "Strukturelle Typkonformität besteht, wenn der konforme Typ alle Elemente des Typs, zu dem er konform sein soll, enthält. Nominale Typkonformität hingegen bezieht sich auf die Übereinstimmung von Typnamen, unabhängig davon, ob die Typen strukturell identisch sind oder nicht."
+    },
+    {
+      "question": "Warum folgt die Konformität aus der Erweiterung?",
+      "answer": "Die Konformität folgt aus der Erweiterung, weil bei der Erweiterung alle Elemente des Typs, der erweitert wird, beim erweiternden erhalten bleiben."
+    },
+    {
+      "question": "Was bedeutet es, wenn ein Typ eine Erweiterung eines anderen ist, ohne tatsächlich etwas hinzuzufügen?",
+      "answer": "In diesem Fall spricht man von Typerweiterung, bei der ein Typ eine Untermenge eines anderen Typs ist und somit alle Eigenschaften und Methoden des übergeordneten Typs besitzt, aber keine zusätzlichen Eigenschaften oder Methoden hinzufügt. Dies ist eine reflexive Beziehung, was bedeutet, dass ein Typ auch sich selbst als Untertyp haben kann."
+    },
+    {
+      "question": "Ist Typäquivalenz gleichbedeutend mit Typkonformität?",
+      "answer": "Nein, Typäquivalenz impliziert Typkonformität, aber nicht umgekehrt. Zwei äquivalente Typen sind auch immer konform, aber ein konformer Typ ist nicht unbedingt äquivalent zu einem anderen Typ."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Strukturäquivalenz und Namensäquivalenz?",
+      "answer": "Strukturäquivalenz bedeutet, dass zwei Typen die gleiche Struktur haben, aber die Namen können unterschiedlich sein. Bei Namensäquivalenz hingegen haben die Namen eine von der Struktur unabhängige Bedeutung, d.h. sie sind identisch. Namensäquivalenz impliziert Strukturäquivalenz, aber nicht umgekehrt."
+    },
+    {
+      "question": "Was sind die Vorteile von Typerweiterung?",
+      "answer": "Die Vorteile von Typerweiterung sind, dass sie es ermöglicht, bestehenden Code wiederzuverwenden und neue Funktionalität hinzuzufügen, ohne den ursprünglichen Code zu ändern. Dies führt zu einer besseren Codequalität, da weniger Änderungen am Code vorgenommen werden müssen und die Wahrscheinlichkeit von Fehlern reduziert wird."
+    },
+    {
+      "question": "Was sind die Nachteile von Typerweiterung?",
+      "answer": "Die Nachteile von Typerweiterung sind, dass sie die Komplexität des Codes erhöhen kann, da es mehrere Versionen des gleichen Datentyps gibt. Dies kann zu Verwirrung führen und die Wartbarkeit des Codes beeinträchtigen. Außerdem kann Typerweiterung zu einer unkontrollierten Ausdehnung des Codes führen, wenn nicht sorgfältig geplant und implementiert wird."
+    },
+    {
+      "question": "Was wird verhindert, wenn man eine Variable mit einem Protokoll als Typ typisiert und das Programm typkorrekt ist?",
+      "answer": "Wenn man eine Variable mit einem Protokoll als Typ typisiert und das Programm typkorrekt ist, wird verhindert, dass Typfehler auftreten, also Fehler der Sorte „does not understand“, die auftreten, wenn eine Methode aufgerufen wird, die für den Inhalt der Variable, das referenzierte Objekt, nicht definiert ist."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen STRONGTALK und anderen Programmiersprachen hinsichtlich primitiver Typen?",
+      "answer": "Im Gegensatz zu STRONGTALK haben andere Programmiersprachen oft primitiver Typen, deren Definitionen nicht auf andere Typen zurückgeführt werden müssen. In STRONGTALK gibt es keine primitiven Typen, alle Typen sind selbstbezüglich."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Upcast, Downcast und Crosscast?",
+      "answer": "Upcasts sind Typumwandlungen zu Supertypen, Downcasts sind Typumwandlungen zu Subtypen und Crosscasts sind Typumwandlungen zu Typen, die weder Supertyp noch Subtyp des Ausgangstyps sind. Upcasts sind immer typsicher, Downcasts und Crosscasts hingegen nicht. Downcasts werden häufig verwendet, wenn kein parametrischer Polymorphismus zur Verfügung steht oder wenn ein Objekt seinem tatsächlichen Typ entsprechend behandelt werden soll. Crosscasts sind eher selten und stehen für einen Rollenwechsel eines Objekts."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Klassen und Typen?",
+      "answer": "Klassen definieren die Implementierung ihrer Objekte, während Typen frei von Implementierungsaspekten sind. Typen sind abstrakte Spezifikationen, die auf eine Typprüfung ohne Ansehen der Implementierung abzielen. Klassen können zumindest eine partielle Implementierung vorgeben, die anderen Klassen, ihren Subklassen, gemeinsam ist, so dass sie diese erben können."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Typen und Klassen?",
+      "answer": "Typen sind abstrakte Spezifikationen, die den Wertebereich von Variablen einschränken und das Protokoll von Objekten angeben. Klassen hingegen sind Konstrukte, die Objekte als Instanzen bilden erlauben und mit Implementierung versehen. Objekte können den Wertebereich von Typen ausmachen, aber Typen und Klassen sind nicht dasselbe."
+    },
+    {
+      "question": "Können Instanzvariablen ein Bestandteil einer Typdefinition in STRONGTALK sein?",
+      "answer": "Nein, anders als z. B. in Java oder C++, können Instanzvariablen kein Bestandteil einer Typdefinition in STRONGTALK sein."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Klassendefinitionen in Smalltalk und Strongtalk?",
+      "answer": "In Smalltalk werden in Klassendefinitionen keine Typen verwendet, während in Strongtalk die formalen Parameter der Methoden in den Klassendefinitionen typisiert sind. Zudem können in Strongtalk Instanzvariablen kein Bestandteil einer Typdefinition sein, im Gegensatz zu Java oder C++."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen kovarianter Redefinition und kontravarianter Redefinition?",
+      "answer": "Kovariante Redefinition tritt auf, wenn der Parametertyp der Methode sich mit dem Empfängertyp ändert, während kontravariante Redefinition auftritt, wenn der Parametertyp der Methode sich in die entgegengesetzte Richtung zum Empfängertyp ändert. In diesem Fall ist es kein Widerspruch zur Kontravarianzregel des Subtyping, da Integer unmittelbar zu einem Subtyp von Equatable[Integer] wird und nicht von Equatable[Object]. Equatable[Integer] und Equatable[Object] sind zwei vollkommen verschiedene Typen mit disjunkten Wertebereichen, und Equatable[T] ist kein Typ, sodass keinerlei Zuweisungskompatibilität und damit auch kein Problem mit Typkorrektheit besteht."
+    },
+    {
+      "question": "Kann das Problem der wünschenswerten kovarianten Redefinition von Eingabeparametern in Methoden mit parametrischen Polymorphismus gelöst werden?",
+      "answer": "Nur zum Teil, da parametrischer Polymorphismus zwar die Verwendung von verschiedenen Typen von Eingabeparametern ermöglicht, aber nicht die kovariante Redefinition von Eingabeparametern in Unterklassenmethoden."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen einer parametrischen Typdefinition und einer normalen Typdefinition?",
+      "answer": "Eine parametrische Typdefinition unterscheidet sich von einer normalen dadurch, dass in der Typdefinition verwendete, andere Typen durch Platzhalter, die Typparameter, vertreten werden können. Diese Platzhalter sind Variablen, deren Wert implizit auf Typen beschränkt ist. Diese Typvariablen werden erst bei der Verwendung eines parametrisierten Typs in der Deklaration eines anderen Programmelements mit einem Wert, also einem Typ, belegt."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen typisierten und nicht typisierten Programmiersprachen?",
+      "answer": "Im Gegensatz zu typisierten Programmiersprachen, in denen Programmelementen bei ihrer Deklaration Typen zugeordnet werden, sind nicht typisierte Sprachen so konzipiert, dass Typen bei der Deklaration entbehrlich sind. Typen beschränken die Menge der Objekte, für die ein Programmelement stehen kann, und die Arten von Operationen, die darauf angewendet werden können. Typregeln sind in der Regel ein fester Bestandteil der Sprache, aber in nicht typisierten Sprachen können Typen von der restlichen Sprachdefinition getrennt werden, um sie auszutauschen oder zu verbessern."
+    },
+    {
+      "question": "Wozu werden rekursive Typen verwendet?",
+      "answer": "Rekursive Typen werden verwendet, um dynamische Strukturen wie verschachtelte Listen oder Bäume zu definieren. Sie sind ein wichtiges Instrument der Programmierung, bringen aber auch Probleme mit sich, wie zum Beispiel die Schwierigkeit, die strukturelle Äquivalenz zweier rekursiver Typen festzustellen."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Invarianz, Kovarianz und Kontravarianz?",
+      "answer": "Invarianz, Kovarianz und Kontravarianz sind Konzepte in der objektorientierten Programmierung, die sich auf die Beziehung zwischen dem Typ eines Objekts und dem Typ eines seiner Untertypen beziehen. Invarianz bedeutet, dass der Typ eines Objekts unverändert bleibt, wenn es in ein Untertyp-Objekt konvertiert wird. Kovarianz bedeutet, dass der Typ eines Objekts sich auf die gleiche Weise ändert wie der Typ des Untertyps, wenn es in ein Untertyp-Objekt konvertiert wird. Kontravarianz bedeutet, dass der Typ eines Objekts sich entgegengesetzt zum Typ des Untertyps ändert, wenn es in ein Untertyp-Objekt konvertiert wird."
+    },
+    {
+      "question": "Wozu dient ein allgemeiner parametrischer Typ?",
+      "answer": "Ein allgemeiner parametrischer Typ dient dem Zweck, den Parametertyp des Tests variabel zu halten und nur für den Gleichheitstest verwendet zu werden."
+    },
+    {
+      "question": "Wozu dient ein parametrischer Typ im Gleichheitstest?",
+      "answer": "Ein parametrischer Typ wird im Gleichheitstest verwendet, um den Typ des Parameters variabel zu halten und einen allgemeinen Gleichheitstest zu definieren, der für verschiedene Typen verwendet werden kann."
+    },
+    {
+      "question": "Was passiert bei der Redefinition einer Methode mit den Eingabe- und Ausgabeparametern?",
+      "answer": "Bei der Redefinition einer Methode dürfen sich die Eingabeparameter nur zu einem Supertypen ändern, während die Ausgabeparameter nur zu einem Subtyp geändert werden dürfen, um die Typkorrektheit des Programms zu gewährleisten."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen parametrischen Polymorphismus und Inklusionspolymorphie?",
+      "answer": "Parametrischer Polymorphismus ist eine Technik, die es ermöglicht, dass eine Funktion oder Methode mit Argumenten verschiedener Typen aufgerufen werden kann, während Inklusionspolymorphie (Subtyping) eine Beziehung zwischen Typen ist, bei der ein Typ B ein Untertyp eines anderen Typs A ist, wenn ein Wert vom Typ B auch als Wert vom Typ A behandelt werden kann. Im Falle von Collections bedeutet dies, dass eine Collection, die auf Objekte eines bestimmten Typs ausgelegt ist, auch Objekte eines Untertyps dieses Typs aufnehmen kann."
+    },
+    {
+      "question": "Was ist der Nachteil einer erhöhten Typsicherheit außerhalb der Typdefinition?",
+      "answer": "Der Nachteil der erhöhten Typsicherheit außerhalb der Typdefinition ist die verminderte Typsicherheit innerhalb der Typdefinition."
+    },
+    {
+      "question": "Welchen Nachteil hat die Namensäquivalenz in Bezug auf die Interoperabilität von getrennt voneinander entwickelten Programmen?",
+      "answer": "Die Namensäquivalenz setzt voraus, dass getrennt voneinander entwickelte Programme zumindest an ihren Schnittstellen dieselben Typen verwenden. Dies kann ein Hindernis für die Interoperabilität von solchen Programmen, wie zum Beispiel Web Services, darstellen."
+    },
+    {
+      "question": "Was sind die Unterschiede zwischen struktureller Typäquivalenz und Namensäquivalenz in Bezug auf Flexibilität und Semantik?",
+      "answer": "Strukturelle Typäquivalenz bietet mehr Flexibilität als Namensäquivalenz, da sie die Äquivalenz von Typen erlaubt, deren Definition voneinander unabhängig ist. Allerdings können zufällige strukturelle Übereinstimmungen zu einer Äquivalenz führen, die nicht der intendierten Semantik entspricht. Um diesen Nachteil zu vermeiden, kann optional eine Namensäquivalenz durch Type branding eingeführt werden."
+    },
+    {
+      "question": "Welche Vorteile bietet nominale Typkonformität gegenüber struktureller Typkonformität?",
+      "answer": "Nominale Typkonformität bietet die Vorteile der Zuweisungskompatibilität und Abwesenheit von Typfehlern. Sie dient auch als Filterfunktion, da nur Objekte von solchen Typen Variablen zugewiesen werden können, für die die Programmiererin dies aus semantischen Überlegungen heraus ausdrücklich vorgesehen hat."
+    },
+    {
+      "question": "Was sind mögliche Nachteile der Strukturäquivalenz?",
+      "answer": "Bei Verwendung der Strukturäquivalenz können Typen, die inhaltlich nichts miteinander zu tun haben, fälschlicherweise als äquivalent betrachtet werden. Dies kann dazu führen, dass Objekte, die eigentlich unterschiedlichen Typen angehören, fälschlicherweise zugewiesen werden können, was zu semantischen Fehlern führen kann. Dieses Problem kann durch die Technik des \"Type Branding\" gelöst werden, bei der jedem Typ eine charakteristische Methode exklusiv zugeordnet wird, um die Strukturäquivalenz einzuschränken."
+    },
+    {
+      "question": "Was sind die Unterschiede zwischen abstrakten Datentypen und STRONGTALK-Typen?",
+      "answer": "Es gibt mindestens zwei wichtige Unterschiede: Abstrakte Datentypen sind nicht objektorientiert, während STRONGTALK-Typen objektorientiert sind und Objekte Zustand haben können. Abstrakte Datentypen haben Funktionen mit einem Argument mehr, das dem Typ des Datentyps selbst entspricht. In objektorientierten Sprachen entspricht dies dem Nachrichtenempfänger, dem impliziten Parameter \"self\"."
+    },
+    {
+      "question": "Welchen Vorteil bietet der parametrische Polymorphismus gegenüber der Inklusionspolymorphie?",
+      "answer": "Der parametrische Polymorphismus bietet den Vorteil einer erhöhten Typsicherheit, da Typfehler bereits zur Instanziierung des parametrischen Typs erkannt werden können."
+    },
+    {
+      "question": "Was passiert bei der Instanziierung eines parametrischen Typs mit einem konkreten Typen?",
+      "answer": "Der konkrete Typ wird in die formale Typvariable eingesetzt, und der resultierende Typ wird zur Verwendung im Programm definiert."
+    },
+    {
+      "question": "Warum könnte die Annotation von Variablen mit einem Supertypen ein Problem darstellen?",
+      "answer": "Die Annotation von Variablen mit dem Supertypen könnte ein Problem darstellen, da dies die Verwendung von Subtypen einschränken würde. Wenn Variablen mit dem Supertypen annotiert sind und nur Werte des Supertyps akzeptieren, könnten keine Objekte des Subtyps in diesen Variablen gespeichert werden, selbst wenn sie die gleiche Struktur oder das gleiche Verhalten aufweisen. Dies würde die Flexibilität des Typsystems einschränken und die Verwendung von Subtypen weniger nützlich machen."
+    },
+    {
+      "question": "Warum ist die Unterscheidung zwischen Wertsemantik und Referenzsemantik relevant, wenn es um Typeinschränkung geht?",
+      "answer": "Die Unterscheidung zwischen Wertsemantik und Referenzsemantik ist relevant, da sie Auswirkungen auf die Zuweisungskompatibilität hat. Unter Wertsemantik wird bei der Zuweisung eine Kopie des Objekts erstellt, während unter Referenzsemantik mehrere Variablen auf dasselbe Objekt verweisen können. In diesem Zusammenhang ist die Referenzsemantik interessanter, da Typeinschränkungen bei der Zuweisung von Aliasen (Variablen, die auf dasselbe Objekt verweisen) Probleme verursachen können, die bei Wertsemantik nicht auftreten."
+    },
+    {
+      "question": "Was bedeutet es, wenn die Extension eines Typs in der Extension eines anderen Typs enthalten ist?",
+      "answer": "Wenn die Extension eines Typs in der Extension eines anderen Typs enthalten ist, bedeutet dies, dass Objekte des ersten Typs an Stellen verwendet werden können, an denen Objekte des zweiten Typs erwartet werden, ohne die Typkorrektheit zu verletzen."
+    },
+    {
+      "question": "Warum kann es trotz der Harmonie von Typerweiterung und -einschränkung zu einem Verlust der Zuweisungskompatibilität kommen?",
+      "answer": "Der Verlust der Zuweisungskompatibilität kann aus der impliziten Allquantifiziertheit von Typinvarianten resultieren. Typsysteme mit solchen Invarianten sind nicht in der Lage, Aussagen über Wertebereiche zu treffen, die nicht implizit allquantifiziert sind."
+    },
+    {
+      "question": "Warum ist es wichtig, Implementierungen von Klassen hinter Schnittstellen zu verbergen?",
+      "answer": "Das Verbergen von Implementierungen hinter Schnittstellen ist wichtig, um das Geheimnisprinzip zu wahren und sicherzustellen, dass nur die für Benutzer einer Klasse vorgesehenen Elemente sichtbar sind."
+    },
+    {
+      "question": "Was unterscheidet eine absolute und eine relativ spezifizierte Schnittstelle einer Klasse?",
+      "answer": "Eine absolute Schnittstelle verrät keinerlei Implementierungsdetails und besteht nur aus Methodendeklarationen. Eine relative Schnittstelle kann sich je nach Lokalität oder anderen Eigenschaften von benutzender und benutzter Klasse unterscheiden und gibt mehr Einblicke in die Implementierung."
+    },
+    {
+      "question": "Was unterscheidet nominales und strukturelles Subtyping?",
+      "answer": "Beim Subtyping gibt es zwei Unterscheidungen: nominales und strukturelles Subtyping."
+    },
+    {
+      "question": "Warum reicht Strukturäquivalenz als Bedingung für Zuweisungskompatibilität aus?",
+      "answer": "Strukturäquivalenz reicht als Bedingung für Zuweisungskompatibilität aus, um Typfehler zu verhindern, die auf der Annahme einer nicht vorhandenen Methode bei einem Wert einer Variable basieren. Sie gewährleistet, dass die Methoden eines Programms auf den jeweiligen Empfängerobjekten mit den geforderten Parameterobjekten auch durchgeführt werden können."
+    },
+    {
+      "question": "Warum gibt es in STRONGTALK keine primitiven Typen?",
+      "answer": "In STRONGTALK gibt es keine primitiven Typen, da alle Typen in STRONGTALK auf andere Typen zurückgeführt werden können. Selbst wenn eine Typannotation weggelassen wird, hat die entsprechende Variable bzw. der Rückgabewert der Methode immer einen impliziten Typ. Dies ermöglicht es, Typen mit zwangsläufiger Selbstbezüglichkeit eine Bedeutung zuzuweisen."
+    },
+    {
+      "question": "Ist Zuweisungskompatibilität eine transitive Eigenschaft?",
+      "answer": "Ja, in der Regel ist Zuweisungskompatibilität eine transitive Eigenschaft. Wenn a zuweisungskompatibel mit b ist und b zuweisungskompatibel mit c ist, dann ist auch a zuweisungskompatibel mit c."
+    },
+    {
+      "question": "Warum kann es für die Programmiererin problematisch sein, ein Objekt eines Supertyps wie ein Objekt seines tatsächlichen Typs zu verwenden?",
+      "answer": "Es kann problematisch sein, ein Objekt eines Supertyps wie ein Objekt seines tatsächlichen Typs zu verwenden, da der Supertyp möglicherweise nicht alle Methoden und Eigenschaften des tatsächlichen Typs enthält, die die Programmiererin verwenden möchte."
+    },
+    {
+      "question": "Warum ergibt sich beim rekursiv beschränkten parametrischen Polymorphismus kein Widerspruch zur Kontravarianzregel des Subtyping?",
+      "answer": "Es ergibt sich kein Widerspruch zur Kontravarianzregel des Subtyping, da der Empfängertyp (z. B. Integer) lediglich zu einem Subtyp von Equatable[Integer] wird und nicht von Equatable[Object]."
+    },
+    {
+      "question": "Kann das Kovarianzproblem durch parametrische Typen gelöst werden?",
+      "answer": "Das Kovarianzproblem kann in bestimmten Fällen durch parametrische Typen gelöst werden, aber es gibt keine allgemeine Lösung, die in allen Fällen die kovariante Redefinition von Eingabeparametern in Methoden ermöglicht. Die Flexibilität ist begrenzt, und es kann zu Einschränkungen bei der Verwendung von parametrischen Typen führen."
+    },
+    {
+      "question": "Gibt es vollständig in sich selbst definierte Typsysteme, die von externen Einflüssen unabhängig sind?",
+      "answer": "Nein, es gibt keine vollständig in sich selbst definierten Typsysteme, die vollständig unabhängig von externen Einflüssen sind. Selbst in Typsystemen wie SMALLTALK oder STRONGTALK sind mindestens einige grundlegende Typen oder Konzepte, wie Wahrheitswerte oder Ganzzahlen, von externen Formalismen oder vorgegebenen Semantiken abhängig."
+    },
+    {
+      "question": "Warum wird in der Praxis trotz parametrischer Definitionen von Collectios oft auch auf Inklusionspolymorphie zurückgegriffen?",
+      "answer": "In der Praxis wird trotz Verwendung parametrischer Definitionen von Collections oft auf Inklusionspolymorphie zurückgegriffen, da heterogene Collections, die Objekte unterschiedlicher Subtypen enthalten, häufig vorkommen und Inklusionspolymorphie dies ermöglicht."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Intension und Extension eines Typs?",
+      "answer": "Die Intension eines Typs entspricht seiner Definition, während die Extension dem Wertebereich des Typs entspricht, also der Menge der Elemente (Objekte), die zu dem Typ gehören."
+    },
+    {
+      "question": "Wofür ist der Typ einer Variablen in der objektorientierten Programmierung relevant?",
+      "answer": "In der objektorientierten Programmierung ist der Typ einer Variablen nur für Variablen mit Wertsemantik relevant, was jedoch in Sprachen wie SMALLTALK, in denen Referenzsemantik vorherrscht, von untergeordneter Bedeutung ist."
+    },
+    {
+      "question": "Was ist der Vorteil einer expliziten Typisierung von Variablen?",
+      "answer": "Wenn man weiß, dass die Werte einer Variable immer vom selben Typ sind, also alle demselben Wertebereich entstammen, dann lassen sich bestimmte Optimierungen durchführen. Zum Beispiel kann der Compiler für die Übersetzung von x := x + 1 die Ganzzahladdition, ja sogar die Inkrement-Anweisung des Prozessors verwenden."
+    },
+    {
+      "question": "Warum ist es sinnvoll, temporären Variablen einen Hinweis auf den Typ der Werte zu geben?",
+      "answer": "Es ist sinnvoll, temporären Variablen einen Hinweis auf den Typ der Werte zu geben, um die Lesbarkeit des Codes zu verbessern und die Funktion der Variablen für die Nutzerin der Funktion, die die Implementation nicht kennt, transparenter zu gestalten."
+    },
+    {
+      "question": "Wozu dient die Verknüpfung von deklarierten Elementen mit Typen?",
+      "answer": "Die Verknüpfung von deklarierten Elementen mit Typen erlaubt die Angabe redundanter Information im Programm, was das Aufdecken von logischen Fehlern erleichtert. Denn nur wenn eine solche Redundanz vorliegt, können Widersprüche entstehen, die auf einen logischen Programmierfehler hinweisen."
+    },
+    {
+      "question": "Was ist ein Vorteil von Typsystemen?",
+      "answer": "Ein Vorteil von Typsystemen ist die dadurch entstehende Modularisierung von Programmen, wenn ein Typ zugleich eine Schnittstelle oder ein Interface ausdrückt."
+    },
+    {
+      "question": "Was ist der Nachteil der dynamischen Typprüfung?",
+      "answer": "Der Nachteil der dynamischen Typprüfung ist, dass sie zu spät kommt, nämlich zu einem Zeitpunkt, in dem man bereits nicht mehr viel anderes machen kann als einen Fehler zu signalisieren."
+    },
+    {
+      "question": "Gibt es in SMALLTALK eine Typisierung?",
+      "answer": "Nein, in SMALLTALK gibt es keine Typisierung, weder statisch noch dynamisch."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen dynamischer und statischer Typprüfung?",
+      "answer": "Dynamische Typprüfung findet zur Laufzeit eines Programms statt und wird vom Laufzeitsystem oder der Programmiererin durchgeführt, während statische Typprüfung zur Übersetzungszeit stattfindet und vom Compiler durchgeführt wird. Statische Typprüfung stellt sicher, dass bei keiner Ausführung eines Programms eine Typinvariante verletzt wird, während dynamische Typprüfung dies zur Laufzeit überprüft. Statische Typprüfung ist nützlicher als dynamische Typprüfung, lehnt aber auch Programme ab, die nützlich, sinnvoll und typkorrekt sind."
+    },
+    {
+      "question": "Was passiert, wenn das Typsystem eines Programms zu kompliziert wird?",
+      "answer": "Wenn das Typsystem eines Programms zu kompliziert wird, wird es schwieriger zu benutzen und kann sogar so kompliziert sein wie das Programm, dessen Fehler es entdecken soll. In diesem Fall muss man bei auftretenden Typfehlern prüfen, ob die Ursache in einem fehlerhaften Programm oder in fehlerhaften Typannotationen liegt."
+    },
+    {
+      "question": "Was passiert, wenn man versucht, möglichst wenige typkorrekte Programme durch die statische Typprüfung zurückzuweisen?",
+      "answer": "Wenn man versucht, möglichst wenige typkorrekte Programme durch die statische Typprüfung zurückzuweisen, wird das dazu notwendige Typsystem immer aufwendiger und schwieriger zu benutzen, bis es irgendwann so kompliziert ist wie das Programm, dessen Fehler es entdecken soll. In diesem Fall muss man bei auftretenden Typfehlern prüfen, ob die Ursache tatsächlich in einem fehlerhaften Programm oder in fehlerhaften Typannotationen liegt."
+    },
+    {
+      "question": "Was ist ein Nachteil von ausdruckskräftigen Typsystemen?",
+      "answer": "Ein Nachteil von ausdruckskräftigen Typsystemen ist, dass sie die Gestaltung von Schnittstellen erschweren können und die beteiligten Programme nicht ohne weiteres zusammenarbeiten können."
+    },
+    {
+      "question": "Was sieht die Typsicherheit bei der Verwendung von parametrischem Polymorphismus aus?",
+      "answer": "Die erhöhte Typsicherheit außerhalb der Typdefinition bedeutet, dass die Verwendung des parametrischen Typs sicherer ist, da er nur mit Typen von addierbaren Objekten instanziiert wird. Die verminderte Typsicherheit innerhalb der Typdefinition bedeutet, dass die Definition des parametrischen Typs nicht wissen kann, wie er hinterher verwendet wird, und daher bei der Addition auf die Verwendung von addierbaren Objekten angewiesen ist."
+    },
+    {
+      "question": "Welchen Vorteil bietet der parametrische Polymorphismus gegenüber der Inklusionspolymorphie?",
+      "answer": "Der parametrische Polymorphismus bietet den Vorteil einer erhöhten Typsicherheit, da Typfehler bereits zur Instanziierung des parametrischen Typs erkannt werden können."
+    },
+    {
+      "question": "Was geschieht bei der Festlegung von Strukturäquivalenz?",
+      "answer": "Bei der Feststellung von Strukturäquivalenz werden die Definitionen der beteiligten Typen rekursiv expandiert, wobei Namen anderer Typen durch ihre Struktur ersetzt werden. Diese Strukturäquivalenz ermöglicht es, Typen zu vergleichen, indem ihre Strukturen miteinander verglichen werden."
+    },
+    {
+      "question": "Was ermöglicht der parametrische Polymorphismus?",
+      "answer": "Der parametrische Polymorphismus ermöglicht die Definition eines nicht parametrischen Typs als Subtyp eines parametrisierten Typs, wodurch die gewünschte Rekursion indirekt hergestellt werden kann."
+    },
+    {
+      "question": "Wozu dient die Typisierung in den verschiedenen Phasen des Programmentwicklungsprozesses?",
+      "answer": "In der Entwurfsphase hilft die Typisierung, die Struktur des Programms zu definieren, indem sie abstrakte Datentypen und Schnittstellen spezifiziert. In der Implementierungsphase wird sie verwendet, um die Eingabeparameter und Rückgabewerte der Methoden zu spezifizieren und die Korrektheit der Implementierung zu überprüfen. In der Testphase kann die Typisierung dazu verwendet werden, die Testfälle zu definieren und die Ergebnisse zu überprüfen."
+    },
+    {
+      "question": "Wozu kann die Typisierung in der Implementierungsphase verwendet werden?",
+      "answer": "In der Implementierungsphase kann die Typisierung dazu verwendet werden, die richtigen Methoden für die richtigen Objekte aufzurufen."
+    },
+    {
+      "question": "Wozu kann die Typisierung in der Wartungsphase verwendet werden?",
+      "answer": "In der Wartungsphase kann die Typisierung dazu verwendet werden, die Auswirkungen von Änderungen zu verstehen und zu kontrollieren."
+    }
+  ]
+}

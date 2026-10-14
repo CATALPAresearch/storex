@@ -4,11 +4,11 @@ Use this to check that the microphone works before starting an exam.
 """
 import pyaudio
 
-from audio import microphone
-from utils.paths import output_file
+from oral_exam.audio import microphone
+from oral_exam.utils.paths import run_file
 
 SECONDS = 3
-FILENAME = output_file("microphone_test.wav")
+FILENAME = run_file("microphone_test.wav")
 
 interface = pyaudio.PyAudio()
 print('Recording')

@@ -1,15 +1,28 @@
 """
-One-off script that generates question-answer pairs for the teaching material.
+Step 2: have the text generation backend write question-answer pairs.
 
-Its output is data/chapters_processed, which is already part of the data set, so
-this only needs to run when the material changes.
+    python content_pipeline/02_generate_questions.py --course oop
+
+Reads the chapter texts of a course and appends a 'Frage:' / 'Antwort:' pair
+after every paragraph, writing each file back in place. Step 3 then collects
+those pairs into the course's unit files.
+
+This costs one request per paragraph, so it is run when the material changes,
+not routinely.
 """
+import argparse
 import glob
 import os
+import sys
 
 from pathlib import Path
 
-import llm
+REPOSITORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPOSITORY)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from _course import source_path  # noqa: E402
+from oral_exam import llm  # noqa: E402
 
 # Instruction the examples and the paragraph are rendered into
 INSTRUCTION = ("Du bist ein Professor an einer deutschen Universität.\n"
@@ -18,9 +31,6 @@ INSTRUCTION = ("Du bist ein Professor an einer deutschen Universität.\n"
                "{context}\n"
                "Gib nur das Frage-Antwort Paar zurück:")
 
-directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
-OUTPUT_PATH = INPUT_PATH
 EXCLUDED_FILES = ["Einsendeaufgaben", "FragenKE2", "FragenKE3", "FragenKE4", "FragenKE5", "FragenKE6", "FragenKE7"]
 
 
@@ -46,8 +56,8 @@ def read_txt(chapter_file):
     return content, title
 
 
-def write_txt(question_chapter, chapter_no):
-    outpath = OUTPUT_PATH + chapter_no + '.txt'
+def write_txt(question_chapter, chapter_no, output_path):
+    outpath = output_path + chapter_no + '.txt'
     with open(outpath, 'w', encoding='utf-8') as outfile:
         for lines in question_chapter:
             outfile.write("%s\n" % lines)
@@ -273,8 +283,16 @@ class QuestionAnswerGenerator:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Add question-answer pairs to the chapters.")
+    parser.add_argument("-c", "--course", required=True, help="Id of the course.")
+    parser.add_argument("--chapters", help="Override the chapter directory from the manifest.")
+    args = parser.parse_args()
+
+    input_path = source_path(args.course, "chapters", args.chapters).rstrip("/") + "/"
+    print(f"Annotating the chapters in {input_path}")
+
     qa_generator = QuestionAnswerGenerator()
-    files = glob.glob(INPUT_PATH + '*.txt')
+    files = glob.glob(input_path + '*.txt')
     for file in files:
         file_name = Path(file).stem
         if file_name in EXCLUDED_FILES:
@@ -294,7 +312,7 @@ def main():
                     i += 1
             chapter_with_questions.extend(questions)
             chapter_with_questions.append('\n')
-        write_txt(chapter_with_questions, file_name)
+        write_txt(chapter_with_questions, file_name, input_path)
         print(f"File {file_name} done!")
 
 

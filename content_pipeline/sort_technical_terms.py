@@ -1,8 +1,29 @@
+"""
+Helper: normalise the technical term list of a course.
+
+    python content_pipeline/sort_technical_terms.py --course oop
+
+Lower cases, transliterates umlauts, sorts and removes duplicates, writing the
+file back in place. The list itself is written by hand - this only tidies it.
+Synonyms are written as '[alias, aliasing]' on one line.
+"""
+import argparse
 import os
+import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-directory = os.path.dirname(os.path.dirname(__file__))
-index = os.path.join(directory, 'data/technical_terms.txt')
+from _course import materials_path  # noqa: E402
+
+_parser = argparse.ArgumentParser(description="Normalise a course's technical term list.")
+_parser.add_argument("-c", "--course", required=True, help="Id of the course.")
+_parser.add_argument("--file", help="Override the term list from the manifest.")
+_args = _parser.parse_args()
+
+index = _args.file or materials_path(_args.course, "technical_terms")
+if not index:
+    sys.exit(f"The course '{_args.course}' declares no materials.technical_terms.")
+print(f"Normalising {index}")
 
 
 def custom_sort_key(element):

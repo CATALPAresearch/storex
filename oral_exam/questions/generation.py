@@ -4,8 +4,8 @@ Class for generating questions.
 import logging
 import re
 
-import llm
-import models
+from oral_exam import llm
+from oral_exam import models
 
 logger = logging.getLogger(__name__)
 
@@ -54,16 +54,19 @@ def parse_question_answer(generated_text):
 
 
 class QuestionGenerator:
-    def __init__(self, text_generator):
+    def __init__(self, text_generator, course):
         """
-        Sets the text generation model. The vector store and its embeddings are
+        Sets the text generation model and the course whose teaching material
+        questions are generated from. The vector store and its embeddings are
         shared across exams, see models.py.
         """
         self.question_generator = text_generator
+        self.course = course
 
     @property
     def db(self):
-        return models.get_vectorstore()
+        """The course vector store, or None if the course has none."""
+        return models.get_vectorstore(self.course)
 
     def generate_question_answer(self, keyword, k=2):
         """
@@ -71,6 +74,11 @@ class QuestionGenerator:
         Returns None if no usable pair could be generated, so that the caller
         can fall back to a predefined question.
         """
+        # A course without teaching material cannot generate questions; the
+        # caller then falls back to a predefined one.
+        if self.db is None:
+            return None
+
         # Get a context for the keyword
         context = self.get_context(keyword, k)
         logger.debug("Context: %s", context)

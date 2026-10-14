@@ -8,7 +8,7 @@
 </head>
 <body>
 <main>
-  <h1>Trainingsprüfung <span class="subject">Objektorientierte Programmierung</span></h1>
+  <h1>Trainingsprüfung <span class="subject" id="subject"></span></h1>
 
   <section id="setup">
     <p class="intro">
@@ -16,6 +16,10 @@
       werden über das Mikrofon aufgenommen und automatisch transkribiert.
     </p>
     <form id="start-form">
+      <label id="course-field" hidden>
+        Kurs
+        <select id="course" name="course"></select>
+      </label>
       <label>
         Name
         <input id="name" name="name" type="text" required autocomplete="given-name"

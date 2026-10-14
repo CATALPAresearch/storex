@@ -6,10 +6,8 @@ import logging
 import random
 import re
 
-import questions.questions as questions
-
-from utils.helpers import KE, Level
-from utils.preprocessing import preprocess_text
+from oral_exam.utils.helpers import Level
+from oral_exam.utils.preprocessing import preprocess_text
 
 logger = logging.getLogger(__name__)
 
@@ -22,22 +20,15 @@ class QuestionManager:
     """
     Class for a question manager.
     """
-    def __init__(self, topic_manager):
+    def __init__(self, topic_manager, course):
         self.topic_manager = topic_manager
-        self.question_list = []
-        self.topic_list = []
-        for unit in KE:
-            # Append all questions per KE into the list of questions.
-            # Asking a question removes it from the pool, and the open question
-            # of a course unit gets a prefix spoken by the examiner, so the
-            # module level data is copied instead of being mutated in place.
-            # Without the copy a second exam in the same process would see a
-            # drained pool and a mangled question text.
-            ke_questions = f"{unit.name}_questions"
-            self.question_list.append(copy.deepcopy(getattr(questions, ke_questions)))
-            # Append all topics per KE into the list of topics
-            ke_topic = f"{unit.name}_topics"
-            self.topic_list.append(copy.deepcopy(getattr(questions, ke_topic)))
+        # Asking a question removes it from the pool, so the course data, which
+        # is shared by every exam in this process, is copied per exam.
+        self.question_list = copy.deepcopy([[list(level) for level in unit.questions]
+                                            for unit in course.units])
+        # The open question of a unit, or '' once it has been asked
+        self.topic_list = [unit.open_question.as_dict() if unit.open_question else ''
+                           for unit in course.units]
 
     def get_question(self):
         """
@@ -45,7 +36,7 @@ class QuestionManager:
         Raises NoQuestionsLeft if no question is available any more.
         """
         while True:
-            ke_index = self.topic_manager.get_topic().value
+            ke_index = self.topic_manager.get_topic()
             ke_level = self.topic_manager.get_level().value
 
             # Check if the course units open question was already asked
@@ -62,7 +53,7 @@ class QuestionManager:
             # a no-op at the last level of the last course unit, which would
             # spin this loop forever, so give up once nothing changes any more.
             self.topic_manager.increase_level()
-            if (self.topic_manager.get_topic().value == ke_index
+            if (self.topic_manager.get_topic() == ke_index
                     and self.topic_manager.get_level().value == ke_level):
                 raise NoQuestionsLeft("All predefined questions have been asked.")
 
@@ -78,7 +69,7 @@ class QuestionManager:
         """
         Select a question from the list of questions for the knowledge level in the specified course unit.
         """
-        ke_index = self.topic_manager.get_topic().value
+        ke_index = self.topic_manager.get_topic()
         # Escaped, because a technical term may hold regex syntax such as 'c++'
         keyword = re.escape(preprocess_text(keyword))
         question = ''
@@ -115,9 +106,12 @@ class QuestionManager:
 class TopicManager:
     """
     Training exam topic and level manager.
+
+    The topic is an index into the units of the course being examined.
     """
-    def __init__(self):
-        self.topic = KE.KE1
+    def __init__(self, course):
+        self.course = course
+        self.topic = 0
         self.level = Level.REMEMBER
 
     def get_topic(self):
@@ -126,11 +120,18 @@ class TopicManager:
     def get_level(self):
         return self.level
 
+    def current_unit(self):
+        return self.course.units[self.topic]
+
+    def unit_count(self):
+        return len(self.course.units)
+
     def increase_topic(self):
-        if self.topic.value < (len(KE) - 1):
-            self.topic = KE(self.topic.value + 1)
+        if self.topic < (self.unit_count() - 1):
+            self.topic += 1
             self.level = Level.REMEMBER
-            logger.info("Increased topic to %s at level %s!", self.topic.name, self.level.name)
+            logger.info("Increased topic to %s at level %s!",
+                        self.current_unit().id, self.level.name)
 
     def increase_level(self):
         if self.level.value < (len(Level) - 1):

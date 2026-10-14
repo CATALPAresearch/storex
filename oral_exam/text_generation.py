@@ -1,7 +1,7 @@
 """
 Class of a text generator.
 """
-import llm
+from oral_exam import llm
 
 
 class TextGenerator:

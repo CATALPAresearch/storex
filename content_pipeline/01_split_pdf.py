@@ -1,18 +1,43 @@
 """
-Script to split the content od the course text into files for each chapter.
+Step 1: split a course document into one text file per chapter.
+
+    python content_pipeline/01_split_pdf.py --course oop
+
+Be warned: this is a scraper written for one particular book. The German
+markers it looks for ('Kurseinheit 1:', 'Verzeichnis der Weblinks'), the page
+offsets and several hand patched special cases are specific to the OOP course
+text. For another document it has to be adapted, not merely configured.
+
+Its output still needs manual work before step 2: the raw chapters are cleaned
+up, renamed to KE*.txt and complemented by the FragenKE*.txt files. See the
+README in this directory.
 """
-import os
-import PyPDF2
-import re
-
+import argparse
 import logging
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger()
-logger.disabled = False
+import os
+import re
+import sys
 
-directory = os.path.dirname(os.path.dirname(__file__))
-INPUT_PATH = os.path.join(directory, 'data/pdf/Kurstext_OOP.pdf')
-OUTPUT_PATH = os.path.join(directory, 'data/chapters_raw/')
+import PyPDF2
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from _course import source_path  # noqa: E402
+
+_parser = argparse.ArgumentParser(description="Split a course document into chapters.")
+_parser.add_argument("-c", "--course", required=True, help="Id of the course.")
+_parser.add_argument("--document", help="Override the document from the manifest.")
+_parser.add_argument("--output", help="Override the output directory.")
+_args = _parser.parse_args()
+
+INPUT_PATH = source_path(_args.course, "document", _args.document)
+OUTPUT_PATH = (_args.output or source_path(_args.course, "chapters_raw")).rstrip("/") + "/"
+if not os.path.isdir(OUTPUT_PATH):
+    os.makedirs(OUTPUT_PATH, exist_ok=True)
+print(f"{INPUT_PATH} -> {OUTPUT_PATH}", file=sys.stderr)
 
 code_number = 1679
 footnote_number = 95

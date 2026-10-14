@@ -9,8 +9,8 @@ is reported as an event on the channel.
 """
 import logging
 
-from exam import ExamAborted, ExamManager, MicrophoneUnavailable
-from llm import LLMError
+from oral_exam.exam import ExamAborted, ExamManager, MicrophoneUnavailable
+from oral_exam.llm import LLMError
 
 logger = logging.getLogger(__name__)
 
