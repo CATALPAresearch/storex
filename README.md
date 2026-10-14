@@ -1,10 +1,6 @@
 # oral-exam-simulation
 
-_Oral Exam Trainer_ is a speech-based dialogue system that holds a mock oral
-examination with a student: it asks questions about a course, listens to the
-spoken answer, evaluates it, offers help when an answer misses the point and
-closes with constructive feedback. It was built for the course _Objektorientierte
-Programmierung_ at the FernUniversität in Hagen and now runs any course that
+_Oral Exam Trainer_ is a speech-based dialogue system that holds a mock oral examination with a student: it asks questions about a course, listens to the spoken answer, evaluates it, offers help when an answer misses the point and closes with constructive feedback. It was built for the course _Objektorientierte Programmierung_ at the FernUniversität in Hagen and now runs any course that
 brings its own content directory.
 
 <!-- development-related badges -->
@@ -27,8 +23,8 @@ brings its own content directory.
 ![](https://img.shields.io/badge/collects_audio_data-yes-blue)
 ![](https://img.shields.io/badge/audio_leaves_the_server-no-blue)
 ![](https://img.shields.io/badge/transcripts_sent_to_LLM_vendor-yes-blue)
-![](https://img.shields.io/badge/speech_recognition-Whisper_(local)-blue)
-![](https://img.shields.io/badge/speech_synthesis-Piper_(local)-blue)
+![](<https://img.shields.io/badge/speech_recognition-Whisper_(local)-blue>)
+![](<https://img.shields.io/badge/speech_synthesis-Piper_(local)-blue>)
 ![](https://img.shields.io/badge/text_generation-Mistral_via_KI:connect-blue)
 ![](https://img.shields.io/badge/human_in_the_loop-no-blue)
 
@@ -76,10 +72,7 @@ over a LAN address.
 
 ## Usage
 
-Open <http://localhost:5000>, pick a course, enter a name and start. Recording
-begins once the examiner has finished speaking and stops after three seconds of
-silence. Answers can also be typed, which is useful for a demonstration without
-a microphone.
+Open <http://localhost:5000>, pick a course, enter a name and start. Recording begins once the examiner has finished speaking and stops after three seconds of silence. Answers can also be typed, which is useful for a demonstration without a microphone.
 
 In the terminal, using the local microphone:
 
@@ -96,16 +89,16 @@ option.
 
 Each part carries its own documentation:
 
-| Directory | Contents | |
-|---|---|---|
-| `oral_exam/` | the application: dialogue, evaluation, speech, web interface | [readme](./oral_exam/README.md) |
-| `courses/` | the content, one directory per course, no code | [readme](./courses/README.md) |
-| `courselib/` | reads and validates that content | [readme](./courselib/README.md) |
-| `content_pipeline/` | turns a course document into a course | [readme](./content_pipeline/README.md) |
-| `finetuning/` | training scripts for the question generation models | |
-| `docs/` | the roadmap, and the evaluation results of the paper | |
-| `tests/` | the checks | |
-| `runs/` | whatever a local run produces; not versioned | |
+| Directory           | Contents                                                     |                                        |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| `oral_exam/`        | the application: dialogue, evaluation, speech, web interface | [readme](./oral_exam/README.md)        |
+| `courses/`          | the content, one directory per course, no code               | [readme](./courses/README.md)          |
+| `courselib/`        | reads and validates that content                             | [readme](./courselib/README.md)        |
+| `content_pipeline/` | turns a course document into a course                        | [readme](./content_pipeline/README.md) |
+| `finetuning/`       | training scripts for the question generation models          |                                        |
+| `docs/`             | the roadmap, and the evaluation results of the paper         |                                        |
+| `tests/`            | the checks                                                   |                                        |
+| `runs/`             | whatever a local run produces; not versioned                 |                                        |
 
 ## Troubleshooting
 
@@ -161,28 +154,27 @@ This software uses the following open source models and packages:
 [LangChain](https://www.langchain.com/),
 [Flask](https://flask.palletsprojects.com/).
 
-Text generation runs on [KI:connect](https://chat.kiconnect.nrw/), the language
-model service of the state of North Rhine-Westphalia.
+Text generation runs on [KI:connect](https://chat.kiconnect.nrw/), the language model service of the state of North Rhine-Westphalia.
 
 ## Citation
 
 **Cite this software:**
 
 ```bibtex
-@inproceedings{Seidel2024-OralExamTrainer,
-	title = {A Speech-based Dialogue System for Training Oral Examinations},
-	booktitle = {Proceedings of the 19th European Conference on Technology Enhanced Learning (EC-TEL)},
-	author = {Seidel, Niels and Hammesfahr, Luna},
-	year = {2024},
-	keywords = {oral examination, speech-based dialogue system},
+@misc{seidel_hammesfahr_2024storex,
+  title = {Speech-Based Dialogue System for Training Oral Examinations [Software]},
+  author = {Seidel, Niels and Hammesfahr, Luna},
+  year = 2024,
+  month = sep,
+  doi = {10.17605/OSF.IO/CERJ7},
+  howpublished = {OSF}
 }
+
 ```
 
 ## Research articles about the Oral Exam Trainer
 
-- Seidel, N., & Hammesfahr, L. (2024). A Speech-based Dialogue System for
-  Training Oral Examinations. _Proceedings of the 19th European Conference on
-  Technology Enhanced Learning (EC-TEL)._
+- Seidel, N., & Hammesfahr, L. (2024). A Speech-based Dialogue System for Training Oral Examinations. _Proceedings of the 19th European Conference on Technology Enhanced Learning (EC-TEL)._
 
 The measurements behind the paper are kept unchanged in
 [docs/evaluation/](./docs/evaluation/README.md).
