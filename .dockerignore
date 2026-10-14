@@ -1,0 +1,22 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+.DS_Store
+.claude
+
+# Only the vector store, the stop words and the technical terms are read at
+# runtime. The raw material and the training data belong to the data processing
+# and fine-tuning scripts.
+data/pdf
+data/chapters_raw
+data/chapters_processed
+data/dataset
+
+# Generated transcripts, mounted at runtime
+output
+testing/test_result*
+
+# Local configuration must not end up in an image layer
+.env

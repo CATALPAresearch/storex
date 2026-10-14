@@ -1,61 +1,96 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Script for starting a training exam.
 
 Command line arguments are parsed and the training exam is started with the correct parameters.
+This runs the exam in the terminal using the local microphone. For the web app,
+which records in the browser, see app.py and docker compose up.
 """
 import logging
 import sys
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
-from exam import ExamManager
+
+from exam import AudioUnavailable, ExamManager, MicrophoneUnavailable
+from llm import LLMError
+from utils import colours
+
+MIN_DURATION = 10
+MAX_DURATION = 60
 
 
-# Parse command line arguments
-parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-parser.add_argument("-n", "--name", help="Name to be used to address you during the training exam.")
-parser.add_argument("-t", "--time", default='25', help="Duration of the training exam in minutes between 10 and 60."
-                                                       "Default: 25.")
-parser.add_argument("-f", "--female", action='store_true',
-                    help="Form of address 'Frau' will be used during the training exam.")
-parser.add_argument("-m", "--male", action='store_true',
-                    help="Form of address 'Herr' will be used during the training exam.")
-parser.add_argument("--log", action='store_true',
-                    help="If set, logging info is enabled as console output.")
-parser.add_argument("--mute", action='store_true',
-                    help="If set, there will be no text-to-speech audio output. This can be set to increase the"
-                         " performance.")
-args = vars(parser.parse_args())
+def parse_arguments():
+    parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-n", "--name", help="Name to be used to address you during the training exam.")
+    parser.add_argument("-t", "--time", default='25',
+                        help=f"Duration of the training exam in minutes between {MIN_DURATION} and {MAX_DURATION}.")
+    parser.add_argument("-f", "--female", action='store_true',
+                        help="Form of address 'Frau' will be used during the training exam.")
+    parser.add_argument("-m", "--male", action='store_true',
+                        help="Form of address 'Herr' will be used during the training exam.")
+    parser.add_argument("--ai", action='store_true',
+                        help="Let a simulated student answer instead of you. Implies --mute and needs no microphone.")
+    parser.add_argument("--log", action='store_true',
+                        help="If set, logging info is enabled as console output.")
+    parser.add_argument("--mute", action='store_true',
+                        help="If set, there will be no text-to-speech audio output. This can be set to increase the"
+                             " performance.")
+    args = vars(parser.parse_args())
 
-# Check if a name was given
-if not args["name"]:
-    print("No name is given. Please provide your name after -n.\n"
-          "Type -h to see the help text.", file=sys.stderr)
-    exit(1)
+    # Check if a name was given
+    if not args["name"]:
+        sys.exit("No name is given. Please provide your name after -n.\n"
+                 "Type -h to see the help text.")
 
-# Check if a maximum of one form of address was give
-if args["female"] and args["male"]:
-    print("Two forms of address were given.\n"
-          "Type -h to see the help text.", file=sys.stderr)
-    exit(1)
+    # Check if a maximum of one form of address was given
+    if args["female"] and args["male"]:
+        sys.exit("Two forms of address were given.\n"
+                 "Type -h to see the help text.")
 
-# Check and exit if time is not between 10 and 60 minutes
-if int(args["time"]) > 60 or int(args["time"]) < 10:
-    print("The training exam can last 10 to 60 minutes. Please choose a duration in that time frame.\n"
-          "Type -h to see the help text.",
-          file=sys.stderr)
-    exit(1)
+    # Check and exit if time is not a number between 10 and 60 minutes
+    try:
+        duration = int(args["time"])
+    except ValueError:
+        sys.exit(f"'{args['time']}' is not a number of minutes.\n"
+                 "Type -h to see the help text.")
+    if not MIN_DURATION <= duration <= MAX_DURATION:
+        sys.exit(f"The training exam can last {MIN_DURATION} to {MAX_DURATION} minutes. "
+                 "Please choose a duration in that time frame.\n"
+                 "Type -h to see the help text.")
+    args["time"] = duration
 
-if args["log"]:
-    logging.basicConfig(level=logging.INFO)
-    logger = logging.getLogger()
-    logger.disabled = False
+    # The simulated student neither listens nor speaks
+    if args["ai"]:
+        args["mute"] = True
 
-logging.info("Starting...")
+    return args
 
-# Run exam with set arguments
-exam = ExamManager(args)
-exam.start_exam()
-#exam.mic_test()
 
-logging.info("Finished!")
+def main():
+    args = parse_arguments()
+
+    if args["log"]:
+        logging.basicConfig(level=logging.INFO)
+
+    logging.info("Starting...")
+
+    try:
+        exam = ExamManager(args)
+        exam.start_exam()
+    except (AudioUnavailable, MicrophoneUnavailable) as error:
+        colours.print_red(str(error))
+        return 1
+    except LLMError as error:
+        colours.print_red(f"Die Textgenerierung ist nicht erreichbar: {error}\n"
+                          "Bitte prüfen Sie BASE_URL, API_KEY und MODEL in der .env Datei.")
+        return 1
+    except KeyboardInterrupt:
+        print()
+        return 130
+
+    logging.info("Finished!")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mündliche Prüfung</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+  <h1>Trainingsprüfung <span class="subject">Objektorientierte Programmierung</span></h1>
+
+  <section id="setup">
+    <p class="intro">
+      Sie führen ein Prüfungsgespräch mit einem simulierten Prüfer. Ihre Antworten
+      werden über das Mikrofon aufgenommen und automatisch transkribiert.
+    </p>
+    <form id="start-form">
+      <label>
+        Name
+        <input id="name" name="name" type="text" required autocomplete="given-name"
+               placeholder="Wie sollen Sie angesprochen werden?">
+      </label>
+      <label>
+        Anrede
+        <select id="gender" name="gender">
+          <option value="">keine Angabe</option>
+          <option value="female">Frau</option>
+          <option value="male">Herr</option>
+        </select>
+      </label>
+      <label>
+        Dauer
+        <select id="minutes" name="minutes">
+          <option value="10">10 Minuten</option>
+          <option value="15">15 Minuten</option>
+          <option value="25" selected>25 Minuten</option>
+          <option value="40">40 Minuten</option>
+          <option value="60">60 Minuten</option>
+        </select>
+      </label>
+      <button type="submit" id="start">Prüfung beginnen</button>
+    </form>
+    <p id="setup-error" class="error" hidden></p>
+    <p class="hint">
+      Der erste Start kann einige Minuten dauern, weil die Sprachmodelle geladen werden.
+      Das Mikrofon funktioniert nur über <code>localhost</code> oder HTTPS.
+    </p>
+  </section>
+
+  <section id="exam" hidden>
+    <div id="status-bar">
+      <span id="state" class="state">Prüfung wird vorbereitet …</span>
+      <span id="clock" class="clock"></span>
+    </div>
+
+    <ol id="dialogue" aria-live="polite"></ol>
+
+    <div id="controls">
+      <div id="meter" hidden><span id="meter-level"></span></div>
+      <button id="stop-recording" type="button" hidden>Antwort beenden</button>
+      <form id="text-form" hidden>
+        <input id="text-answer" type="text" placeholder="Antwort eintippen" autocomplete="off">
+        <button type="submit">Senden</button>
+      </form>
+      <button id="cancel" type="button" class="secondary">Prüfung abbrechen</button>
+    </div>
+    <p id="exam-error" class="error" hidden></p>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,29 +1,39 @@
 """
 Class for paraphrasing questions.
 """
-import hf_token
+import logging
+import os
 
-from langchain.chains import LLMChain
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import PromptTemplate
+logger = logging.getLogger(__name__)
+
+TEMPLATE = ("Du bist ein Professor an einer deutschen Universität. "
+            "Erstelle eine einfache Prüfungsfrage zu dieser Antwort: {context}")
 
 
 class QuestionParaphraser:
     def __init__(self):
         """
         Initializes the question paraphraser.
+
+        PARAPHRASE_ENGINE selects the backend:
+        'local'     runs the fine-tuned question generation model of the paper
+                    locally, which is how the published pipeline worked before
+                    the Hugging Face inference API was shut down.
+        'kiconnect' asks the general purpose text generation backend instead.
         """
-        # Load prompt from template
-        template = ("Du bist ein Professor an einer deutschen Universität. "
-                    "Erstelle eine einfache Prüfungsfrage zu dieser Antwort: {context}")
-        prompt = PromptTemplate(template=template, input_variables=["context"])
-        # Load question generation model
-        llm = HuggingFaceHub(repo_id='LunaticTanuki/oop-de-qg-flan-t5-base-v6', model_kwargs={'max_new_tokens': 250})
-        # Create chain for question generation
-        self.llm_chain = LLMChain(prompt=prompt, llm=llm)
+        self.engine = os.getenv("PARAPHRASE_ENGINE", "local").lower()
+        logger.info("Paraphrasing engine: %s", self.engine)
 
     def paraphrase(self, answer):
         """
         Generates a new question for a given answer.
         """
-        return self.llm_chain.run(answer)
+        prompt = TEMPLATE.format(context=answer)
+
+        if self.engine == "local":
+            import models
+            generated = models.get_paraphraser_pipeline()(prompt, max_new_tokens=250)
+            return generated[0]["generated_text"].strip()
+
+        import llm
+        return llm.chat(prompt, max_tokens=250)

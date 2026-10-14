@@ -1,33 +1,23 @@
 """
 Class of a text generator.
 """
-import hf_token
-
-from langchain.chains import LLMChain
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import PromptTemplate
+import llm
 
 
 class TextGenerator:
     """
     Class of a text generator.
+
+    Wraps every query in the examiner persona and sends it to the configured
+    text generation backend (see llm.py).
     """
-    def __init__(self):
-        template = (""""[INST] Du bist ein Professor an einer deutschen Universität. Du hältst online mündliche Prüfungen ab.
-                    {query}[/INST]""")
-
-        prompt = PromptTemplate(template=template, input_variables=['query'])
-
-        llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
-                             model_kwargs={'max_new_tokens': 512, 'raw_response': True})
-
-        self.llm_chain = LLMChain(prompt=prompt,
-                                  llm=llm)
+    PERSONA = ("Du bist ein Professor an einer deutschen Universität. "
+               "Du hältst online mündliche Prüfungen ab.")
 
     def get_text(self, query):
-        text = self.llm_chain.run(query)
-        index = text.find("[/INST]")
+        """
+        Generates text for the given query.
 
-        if index != -1:
-            text = text[index + 8:]
-        return text
+        :raises llm.LLMError: if the text generation backend is unavailable.
+        """
+        return llm.chat(f"{self.PERSONA}\n{query}")

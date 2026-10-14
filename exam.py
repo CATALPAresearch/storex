@@ -3,18 +3,17 @@
 Class for training exam conversation manager.
 """
 import logging
+import os
 import random
 import threading
 import time
 
-import testing.ai_student
-from audio.speech_recognition import SpeechRecognition
-from audio.text_to_speech import TextToSpeech
-from evaluation import Evaluator
+import models
+
 from feedback_managing import FeedbackManager, check_feedback
 from questions.paraphrasing import QuestionParaphraser
 from questions.question_generation import QuestionGenerator
-from questions.question_managing import QuestionManager, TopicManager
+from questions.question_managing import NoQuestionsLeft, QuestionManager, TopicManager
 from text_generation import TextGenerator
 from utils import colours, preprocessing
 from utils.helpers import EvaluationType, KE, Level, QuestionType
@@ -22,33 +21,68 @@ from utils.helpers import EvaluationType, KE, Level, QuestionType
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
+
+# How long a single answer may take before it counts as silence. The web app
+# applies this while waiting for a browser upload; it also bounds what a single
+# turn can subtract from the remaining exam time.
+ANSWER_TIMEOUT = int(os.getenv("ANSWER_TIMEOUT", "120"))
+TURN_CAP = ANSWER_TIMEOUT + 60
+
+
+class ExamAborted(Exception):
+    """Raised when an exam cannot be continued, for example because the client is gone."""
+
+
+class MicrophoneUnavailable(ExamAborted):
+    """Raised when no audio at all was received during the microphone check."""
+
+
+class AudioUnavailable(ExamAborted):
+    """
+    Raised when the local audio stack is missing.
+
+    pyaudio and simpleaudio are the optional 'cli' extra and are deliberately
+    not installed in the container, where the browser handles the audio.
+    """
+    MESSAGE = ("Für Audio im Terminal fehlen pyaudio und simpleaudio. "
+               "Installieren Sie sie mit 'poetry install --extras cli', nutzen Sie "
+               "--mute und --ai ohne Audio, oder öffnen Sie die Web-App unter "
+               "http://localhost:5000.")
+
+    def __init__(self, message=None):
+        super().__init__(message or self.MESSAGE)
 
 
 class ExamManager:
     """
     Training exam conversation manager.
     """
-    def __init__(self, exam_parameters):
+    def __init__(self, exam_parameters, channel=None):
         """
         Sets the students parameters, stopwords, vector database, and models for question, text and audio generation,
         and starts the timer for the exam.
+
+        :param channel: if given, the examiner speaks and listens through this
+            channel instead of through the terminal and a local microphone. This
+            is what lets the web app drive the same conversation, see web/session.py.
         """
+        self.channel = channel
         self.ai_student = False
         # Set student parameters like name and gender
-        logger.info(f"Setting parameters: {exam_parameters}")
+        logger.info("Setting parameters: %s", exam_parameters)
         self.student = {
             'name': exam_parameters['name'],
             'nominative': "der*die Student*in",
             'accusative': "eine*n Studentin*en",
             'dative': "einem*r Studenten*in",
             'possessive': "seine*ihre"}
-        if exam_parameters['female']:
+        if exam_parameters.get('female'):
             self.student['nominative'] = "die Studentin"
             self.student['accusative'] = "eine Studentin"
             self.student['dative'] = "einer Studentin"
             self.student['possessive'] = "ihre"
-        elif exam_parameters['male']:
+        elif exam_parameters.get('male'):
             self.student['nominative'] = "der Student"
             self.student['accusative'] = "einen Studenten"
             self.student['dative'] = "einem Studenten"
@@ -73,18 +107,31 @@ class ExamManager:
         # Set specific topics to be targeted for questions
         self.targets = []
 
-        # Set audio models
-        self.mute = True if exam_parameters['mute'] else False
-        if not self.mute:
+        # Set audio models. The web app plays and records audio in the browser,
+        # so neither is loaded when a channel is used.
+        self.mute = bool(exam_parameters.get('mute'))
+        self.audio = None
+        self.transcription = None
+        if self.channel is None and not self.mute:
+            try:
+                from audio.text_to_speech import TextToSpeech
+            except ImportError as error:
+                raise AudioUnavailable() from error
             self.audio = TextToSpeech()
-        if 'ai' in exam_parameters.keys() and exam_parameters['ai']:
-            from testing.ai_student import Student, write_output
+        if exam_parameters.get('ai'):
+            from testing.ai_student import Student
             self.ai_student = Student()
-        else:
-            self.transcription = SpeechRecognition()
+        elif self.channel is None:
+            # Fail here rather than at the first question, when the microphone
+            # module would be imported for the recording
+            try:
+                import audio.microphone  # noqa: F401
+            except ImportError as error:
+                raise AudioUnavailable() from error
+            self.transcription = models.get_speech_recognition()
 
         # Set evaluator and feedback manager
-        self.evaluation = Evaluator()
+        self.evaluation = models.get_evaluator()
         self.feedback = FeedbackManager()
 
         # Set time manager with the exam duration
@@ -93,10 +140,13 @@ class ExamManager:
 
     def speak(self, text):
         """Outputs the given text via the speakers and in the terminal."""
-        if self.ai_student:
+        if self.channel is not None:
+            self.channel.say(text)
+        elif self.ai_student:
+            import testing.ai_student
             testing.ai_student.write_output(text)
         else:
-            print_thread = threading.Thread(target=colours.print_blue, args=text)
+            print_thread = threading.Thread(target=colours.print_blue, args=(text,))
             print_thread.start()
             if not self.mute:
                 self.audio.get_audio(text)
@@ -104,6 +154,9 @@ class ExamManager:
 
     def get_answer(self):
         """Gets the students answer."""
+        if self.channel is not None:
+            return self.channel.listen()
+
         answer = self.transcription.get_audio_to_text()
         if answer is not None:
             print("Ihre Antwort lautet (in etwa):")
@@ -112,17 +165,21 @@ class ExamManager:
 
     def ask_question(self, question):
         """Outputs the given question, gets the students answer and evaluates the answer."""
+        # The question text is not written back into the question, because the
+        # predefined questions are shared data: prefixing in place would leak
+        # into every later exam in the same process.
+        spoken_question = question['question']
         if self.prepend_question:
-            question['question'] = f"{self.prepend_question} {question['question']}"
+            spoken_question = f"{self.prepend_question} {spoken_question}"
             self.prepend_question = ""
 
         if self.ai_student:
             with self.time_manager:
-                answer = self.ai_student.get_answer(question['question'])
-                logger.info(f"AI answer: {answer}")
+                answer = self.ai_student.get_answer(spoken_question)
+                logger.info("AI answer: %s", answer)
         else:
             with self.time_manager:
-                self.speak(question['question'])
+                self.speak(spoken_question)
                 answer = self.get_answer()
         self.get_evaluation(question, answer)
 
@@ -140,7 +197,7 @@ class ExamManager:
         # Only check keywords for topic questions
         else:
             result = EvaluationType.MISSING_TOPIC
-        logger.info(f"Result: {result.name}")
+        logger.info("Result: %s", result.name)
 
         questioning_sounds = ["Ah?", "Achso?", "Hmm.", "Hm?", '']
         accepting_sound = ["Ok.", '']
@@ -164,10 +221,16 @@ class ExamManager:
                 self.prepend_question = random.choice(questioning_sounds)
 
                 # Get missed topics and add them as targets and save the data for feedback
-                missed_topics, max_topics = self.evaluation.evaluate_keywords(question, student_answer)
+                missed_topics, _ = self.evaluation.evaluate_keywords(question, student_answer)
                 self.targets.extend(missed_topics)
                 self.feedback.add_irrelevant()
-                if self.targets:
+                # Reiterate the question once, the same way a contradiction is
+                # handled; the irrelevant answer is then no longer held against
+                # the student, see start_exam.
+                if 'answer' in question:
+                    self.next_question = QuestionType.REPEAT
+                    self.repeating_reason = EvaluationType.OFF_TOPIC
+                elif self.targets:
                     self.next_question = QuestionType.SELECTED
                 else:
                     self.next_question = QuestionType.PREDEFINE
@@ -192,8 +255,9 @@ class ExamManager:
                 raise ValueError(f"Cannot assign {result}.")
 
         if self.ai_student:
+            import testing.ai_student
             testing.ai_student.write_output(f"[Eval:] Result: {result.name}")
-        logger.info(f"The next question should be: {self.next_question.name}")
+        logger.info("The next question should be: %s", self.next_question.name)
 
     def ask_predefined_question(self):
         """
@@ -201,27 +265,38 @@ class ExamManager:
         """
         # Get predefined question
         predefined_question = self.manager.get_question()
-        logger.info(f"Predefined question: {predefined_question}")
+        logger.info("Predefined question: %s", predefined_question)
 
         # Get the students answer to the question and get feedback on the answer
         self.ask_question(predefined_question)
 
         return predefined_question
 
-    def ask_generated_question(self):
+    def take_target(self):
         """
-        Gets, asks and returns a generated question.
+        Takes a random target topic and removes all of its occurrences.
+        A topic that was missed more often is more likely to be picked.
         """
-        # Get a random target (higher probability with more occurrences)
         target = random.choice(self.targets)
 
         # Remove all occurrences of the selected target from the targets
         self.targets = [t for t in self.targets if t != target]
-        logger.info(f"Target: {target}")
+        logger.info("Target: %s", target)
+        return target
 
-        # Get a generated question
-        generated_question = self.question_generator.generate_question_answer(target)
-        logger.info(f"Generated question: {generated_question}")
+    def ask_generated_question(self):
+        """
+        Gets, asks and returns a generated question.
+        Falls back to a predefined question if none could be generated.
+        """
+        if not self.targets:
+            return self.ask_predefined_question()
+
+        # Get a generated question for a random target
+        generated_question = self.question_generator.generate_question_answer(self.take_target())
+        logger.info("Generated question: %s", generated_question)
+        if generated_question is None:
+            return self.ask_predefined_question()
 
         # Get the students answer to the question and get feedback on the answer
         self.ask_question(generated_question)
@@ -233,9 +308,9 @@ class ExamManager:
         Gets, asks and returns a reiterated question.
         """
         # Get a Reiteration of the last question
-        repeating_question = self.last_question
+        repeating_question = dict(self.last_question)
         repeating_question['question'] = self.paraphraser.paraphrase(self.last_question['answer'])
-        logger.info(f"Generated reiteration: {repeating_question}")
+        logger.info("Generated reiteration: %s", repeating_question)
 
         # Get the students answer to the question and get feedback on the answer
         self.ask_question(repeating_question)
@@ -244,18 +319,14 @@ class ExamManager:
 
     def ask_selected_question(self):
         """
-        Gets, asks and returns a generated question.
+        Gets, asks and returns a question selected for a missed topic.
         """
-        # Get a random target (higher probability with more occurrences)
-        target = random.choice(self.targets)
+        if not self.targets:
+            return self.ask_predefined_question()
 
-        # Remove all occurrences of the selected target from the targets
-        self.targets = [t for t in self.targets if t != target]
-        logger.info(f"Target: {target}")
-
-        # Get selected question
-        selected_question = self.manager.select_question(target)
-        logger.info(f"Predefined question: {selected_question}")
+        # Get selected question for a random target
+        selected_question = self.manager.select_question(self.take_target())
+        logger.info("Selected question: %s", selected_question)
 
         # Get the students answer to the question and get feedback on the answer
         self.ask_question(selected_question)
@@ -263,7 +334,11 @@ class ExamManager:
         return selected_question
 
     def mic_test(self):
-        """Checks the microphone and greets the students."""
+        """
+        Checks the microphone and greets the students.
+
+        :raises MicrophoneUnavailable: if no audio was received at all.
+        """
         # Greet the student and check the microphone
         mic_query = (
             f"""Begrüße {self.student['accusative']} namens {self.student['name']} in 2 Sätzen zu einer mündlichen Prüfung.
@@ -274,11 +349,11 @@ class ExamManager:
 
         if not self.ai_student:
             mic_check = self.get_answer()
-            # Exit the exam if no sound was detected
+            # Stop the exam if no sound was detected
             if mic_check is None:
-                colours.print_red("Leider ist kein Audio über Ihr Mikrofon zu vernehmen. Bitte überprüfen Sie Ihr "
-                                  "Mikrophon und starten die Trainingsprüfung dann erneut.")
-                exit(1)
+                raise MicrophoneUnavailable(
+                    "Leider ist kein Audio über Ihr Mikrofon zu vernehmen. Bitte überprüfen Sie Ihr "
+                    "Mikrophon und starten die Trainingsprüfung dann erneut.")
 
     def start_exam(self):
         """
@@ -308,44 +383,53 @@ class ExamManager:
                     self.next_question = QuestionType.SELECTED
                 else:
                     self.next_question = QuestionType.PREDEFINE
+            # A reiteration needs a previous question that has a sample answer
+            if self.next_question == QuestionType.REPEAT and not isinstance(self.last_question, dict):
+                self.next_question = QuestionType.PREDEFINE
 
-            logger.info(f"The next question is: {self.next_question.name}")
+            logger.info("The next question is: %s", self.next_question.name)
             if self.ai_student:
+                import testing.ai_student
                 testing.ai_student.write_output(f"[Eval:] Question: {self.next_question.name}")
 
             # Match the question type for the next question
-            match self.next_question.value:
+            try:
+                match self.next_question.value:
 
-                case 0:  # Ask a predefined question
-                    repeated = False
-                    current_question = self.ask_predefined_question()
+                    case 0:  # Ask a predefined question
+                        repeated = False
+                        current_question = self.ask_predefined_question()
 
-                case 1:  # Generate a specific question
-                    repeated = False
-                    current_question = self.ask_generated_question()
+                    case 1:  # Generate a specific question
+                        repeated = False
+                        current_question = self.ask_generated_question()
 
-                case 2:  # Generate a reiteration of the question (once per question)
-                    current_question = self.ask_repeating_question()
-                    self.feedback.add_reiteration()
-                    if self.repeating_reason == EvaluationType.OFF_TOPIC:
-                        self.feedback.remove_irrelevant()
-                    elif self.repeating_reason == EvaluationType.CONTRADICTS:
-                        self.feedback.remove_contradiction()
-                    self.repeating_reason = None
-                    repeated = True
+                    case 2:  # Generate a reiteration of the question (once per question)
+                        current_question = self.ask_repeating_question()
+                        self.feedback.add_reiteration()
+                        if self.repeating_reason == EvaluationType.OFF_TOPIC:
+                            self.feedback.remove_irrelevant()
+                        elif self.repeating_reason == EvaluationType.CONTRADICTS:
+                            self.feedback.remove_contradiction()
+                        self.repeating_reason = None
+                        repeated = True
 
-                case 3:  # Select a question from the predefined questions
-                    repeated = False
-                    current_question = self.ask_selected_question()
+                    case 3:  # Select a question from the predefined questions
+                        repeated = False
+                        current_question = self.ask_selected_question()
 
-                case _:
-                    raise ValueError(f"Cannot assign {self.next_question}.")
+                    case _:
+                        raise ValueError(f"Cannot assign {self.next_question}.")
+            except NoQuestionsLeft:
+                logger.info("No questions left, ending the exam early.")
+                break
 
         # Give a feedback to the students
         self.time_manager.append_feedback()
         feedback_rules = self.feedback.construct_feedback(self.student['nominative'])
         logger.info(feedback_rules)
         if self.ai_student:
+            import testing.ai_student
             testing.ai_student.write_output(f"[Eval:] {feedback_rules}")
 
         feedback_query = (
@@ -365,22 +449,24 @@ class ExamManager:
         )
         goodbye = self.text_generator.get_text(goodbye_query)
         self.speak(goodbye)
-        delimiter = "-" * 50
-        print(f"{delimiter}End!{delimiter}")
-        exit(0)
+
+        if self.channel is None:
+            delimiter = "-" * 50
+            print(f"{delimiter}End!{delimiter}")
 
 
 class TimeManager:
     """
     Training exam time manager.
     """
-    def __init__(self, duration, topic_manager, feedback):
+    def __init__(self, duration, topic_manager, feedback, turn_cap=TURN_CAP):
         self.remaining_time = duration
         self.topic_manager = topic_manager
         self.last_known_topic = topic_manager.get_topic()
         self.topic_time = duration / len(KE)
         self.correct_answers = 0
         self.feedback = feedback
+        self.turn_cap = turn_cap
 
         self.start_time = None
 
@@ -389,11 +475,15 @@ class TimeManager:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        elapsed_time = time.time() - self.start_time
-        logger.info(f"Answer took {elapsed_time:.6f} seconds.")
+        # Capped, so that a student who walks away from the microphone or a
+        # browser tab that was closed cannot drive the remaining time far into
+        # the negative and skew the topic schedule on the way out.
+        elapsed_time = min(time.time() - self.start_time, self.turn_cap)
+        logger.info("Answer took %.6f seconds.", elapsed_time)
         self.remaining_time = self.remaining_time - elapsed_time
         self.topic_time = self.topic_time - elapsed_time
-        logger.info(f"Remaining time: {self.remaining_time:.6f} seconds ({self.topic_time:.6f} seconds in this topic).")
+        logger.info("Remaining time: %.6f seconds (%.6f seconds in this topic).",
+                    self.remaining_time, self.topic_time)
 
     def get_remaining_time(self):
         return self.remaining_time
@@ -409,20 +499,22 @@ class TimeManager:
         Checks if the topic got increased by the QuestionManager and calculates the new time per topic.
         Checks if the time for the current topic ran out and increases the topic.
         """
-        # Check if topic got increased or time for topic ran out
+        # Check if topic got increased or time for topic ran out. The last course
+        # unit has no successor, so it never triggers a topic change.
         topic = self.topic_manager.get_topic()
-        if topic != self.last_known_topic or (self.topic_time <= 0 and self.last_known_topic.value < len(KE)):
+        is_last_topic = self.last_known_topic.value >= len(KE) - 1
+        if topic != self.last_known_topic or (self.topic_time <= 0 and not is_last_topic):
             self.append_feedback()
 
             # Set new topic if time for topic ran out
-            if self.topic_time <= 0 and self.last_known_topic.value < len(KE):
+            if self.topic_time <= 0 and not is_last_topic:
                 self.topic_manager.increase_topic()
                 topic = self.topic_manager.get_topic()
 
             # Set new time for topic
             remaining_topics = len(KE) - topic.value
             self.topic_time = self.remaining_time / remaining_topics
-            logger.info(f"Next topic {topic.name} for {self.topic_time} seconds.")
+            logger.info("Next topic %s for %s seconds.", topic.name, self.topic_time)
 
             self.last_known_topic = topic
             self.correct_answers = 0
@@ -442,7 +534,6 @@ class TimeManager:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    logger.disabled = False
 
     dev_parameters = {"name": "Luna", "time": 10, "female": True, "male": False, "mute": True, "ai": False}
     exam = ExamManager(dev_parameters)

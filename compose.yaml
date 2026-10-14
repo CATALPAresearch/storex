@@ -1,0 +1,66 @@
+services:
+  exam:
+    build: .
+    image: oral-exam-simulation:latest
+    ports:
+      # The browser only grants microphone access in a secure context.
+      # http://localhost counts as one, a LAN address does not.
+      - "5000:5000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # Text generation backend, see example.env
+      - BASE_URL=${BASE_URL:-}
+      - API_KEY=${API_KEY:-}
+      - MODEL=${MODEL:-}
+      - DISABLE_LLM=${DISABLE_LLM:-false}
+      # piper renders a German voice model on the server, browser uses the
+      # operating system voice of the viewer
+      - TTS_ENGINE=${TTS_ENGINE:-piper}
+      - PIPER_VOICE=${PIPER_VOICE:-de_DE-thorsten-high}
+      # local runs the fine-tuned question generation model, kiconnect uses the backend
+      - PARAPHRASE_ENGINE=${PARAPHRASE_ENGINE:-local}
+      - MAX_SESSIONS=${MAX_SESSIONS:-2}
+      - ANSWER_TIMEOUT=${ANSWER_TIMEOUT:-120}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # The models come from the cache that 'docker compose run --rm warmup'
+      # filled, so the hub is not contacted at all. Set to 0 to let the app
+      # download missing models itself, which needs the container to reach
+      # huggingface.co.
+      - HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}
+      # Keep a blocked hub from stalling the start for minutes
+      - HF_HUB_ETAG_TIMEOUT=${HF_HUB_ETAG_TIMEOUT:-5}
+    volumes:
+      # Without this the models are downloaded again on every start
+      - hf-cache:/cache/huggingface
+      - ./output:/app/output
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      # The first start downloads several GB of model weights
+      start_period: 600s
+    restart: unless-stopped
+
+  # One-off: downloads the models into the cache volume.
+  #   docker compose run --rm warmup
+  # It uses the host network, because a bridge network cannot always reach
+  # huggingface.co. Afterwards the app starts from the cache, and setting
+  # HF_HUB_OFFLINE=1 keeps it from contacting the hub at all.
+  warmup:
+    build: .
+    image: oral-exam-simulation:latest
+    profiles: ["warmup"]
+    network_mode: host
+    environment:
+      - PARAPHRASE_ENGINE=${PARAPHRASE_ENGINE:-local}
+      - TTS_ENGINE=${TTS_ENGINE:-browser}
+    volumes:
+      - hf-cache:/cache/huggingface
+    command: python warmup.py
+
+volumes:
+  hf-cache:
+    name: oral-exam-hf-cache

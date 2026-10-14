@@ -1,15 +1,23 @@
 """
 Class for generating questions.
 """
-import hf_token
-import os
-import torch
-
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
-
 import logging
-logger = logging.getLogger()
+import re
+
+import llm
+import models
+
+logger = logging.getLogger(__name__)
+
+# The model is asked for 'Frage: ... / Antwort: ...', but instruction tuned
+# models like to decorate that ("**Frage:**") or to add a preamble, so the
+# labels are matched instead of split on positionally. They are anchored to the
+# start of a line, otherwise a preamble like "Hier ist eine Pruefungsfrage:"
+# would be mistaken for the label.
+QUESTION_PATTERN = re.compile(r"^[ \t>*\-]*Frage[ \t*]*:[ \t]*(.+?)[ \t]*$",
+                              re.IGNORECASE | re.MULTILINE)
+ANSWER_PATTERN = re.compile(r"^[ \t>*\-]*Antwort[ \t*]*:[ \t]*(.+?)(?=\n[ \t]*\n|\Z)",
+                            re.IGNORECASE | re.MULTILINE | re.DOTALL)
 
 
 def get_query(context):
@@ -25,44 +33,61 @@ def get_query(context):
     return query
 
 
+def parse_question_answer(generated_text):
+    """
+    Extracts the question and the sample answer from the model output.
+    Returns None if the output does not hold both.
+    """
+    question_match = QUESTION_PATTERN.search(generated_text)
+    answer_match = ANSWER_PATTERN.search(generated_text)
+    if not question_match or not answer_match:
+        logger.warning("Could not find a question and an answer in: %r", generated_text)
+        return None
+
+    question = question_match.group(1).strip().strip('*').strip()
+    answer = ' '.join(answer_match.group(1).split()).strip('*').strip()
+    if not question or not answer:
+        logger.warning("Question or answer was empty in: %r", generated_text)
+        return None
+
+    return {'question': question, 'answer': answer}
+
+
 class QuestionGenerator:
     def __init__(self, text_generator):
         """
-        Initializes the vector store and sets the text generation model.
+        Sets the text generation model. The vector store and its embeddings are
+        shared across exams, see models.py.
         """
-        # Load vectorstore embeddings
-        directory = os.path.dirname(os.path.dirname(__file__))
-        vectorstore = (os.path.join(directory, 'data/vectorStore'))
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        embedding_model = HuggingFaceEmbeddings(model_name='paraphrase-multilingual-MiniLM-L12-v2',
-                                                model_kwargs={'device': device})
-        # Load database
-        self.db = FAISS.load_local(vectorstore, embedding_model)
-
-        # Load question-answer model and create a question-answer chain
         self.question_generator = text_generator
+
+    @property
+    def db(self):
+        return models.get_vectorstore()
 
     def generate_question_answer(self, keyword, k=2):
         """
         Generates a question-answer pair for the context from the given keyword.
+        Returns None if no usable pair could be generated, so that the caller
+        can fall back to a predefined question.
         """
         # Get a context for the keyword
         context = self.get_context(keyword, k)
-        logger.debug(f"Context: {context}")
+        logger.debug("Context: %s", context)
+        if not context:
+            logger.warning("No context found for keyword '%s'.", keyword)
+            return None
 
         # Generate a question and answer from the context
-        question_query = get_query(context)
-        question_answer = self.question_generator.get_text(question_query)
+        try:
+            question_answer = self.question_generator.get_text(get_query(context))
+        except llm.LLMError as error:
+            logger.warning("Question generation failed: %s", error)
+            return None
 
-        # Find the question and the answer in the model output
-        question_line = question_answer.split('\n', 1)[0]
-        question = question_line.split(': ')[1].strip()
-        answer_lines = question_answer.split('\n', 1)[1]
-        answer = answer_lines.split(': ')[1].strip()
-
-        question_dict = {'question': question, 'answer': answer}
-        logger.debug(f"""Question: {question_dict['question']}
-                     Answer: {question_dict['answer']}""")
+        question_dict = parse_question_answer(question_answer)
+        if question_dict:
+            logger.debug("Question: %s / Answer: %s", question_dict['question'], question_dict['answer'])
         return question_dict
 
     def get_context(self, query, k):
@@ -72,7 +97,7 @@ class QuestionGenerator:
         """
         # Get context for query
         context_docs = self.db.similarity_search(query, k=k)
-        context_docs = [docs for docs in context_docs if not docs.page_content[0].isdigit()]
+        # Skip documents that start with a chapter number instead of prose
+        context_docs = [doc for doc in context_docs if doc.page_content and not doc.page_content[0].isdigit()]
 
-        context = ' '.join([doc.page_content for doc in context_docs])
-        return context
+        return ' '.join(doc.page_content for doc in context_docs)

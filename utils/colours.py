@@ -1,4 +1,3 @@
-import threading
 import time
 
 RESET = "\033[0m"

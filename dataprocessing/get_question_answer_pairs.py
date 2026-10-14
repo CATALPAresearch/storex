@@ -1,22 +1,44 @@
+"""
+One-off script that generates question-answer pairs for the teaching material.
+
+Its output is data/chapters_processed, which is already part of the data set, so
+this only needs to run when the material changes.
+"""
 import glob
 import os
 
-from langchain.chains import LLMChain
-from langchain.llms import HuggingFaceHub
-from langchain.prompts import FewShotPromptTemplate, PromptTemplate
 from pathlib import Path
 
+import llm
 
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = 'hf_xxx'
+# Instruction the examples and the paragraph are rendered into
+INSTRUCTION = ("Du bist ein Professor an einer deutschen Universität.\n"
+               "Erstelle einfache Frage-Antwort Paare für eine mündliche Prüfung.\n"
+               "Nutze nur Informationen aus folgendem Text:\n"
+               "{context}\n"
+               "Gib nur das Frage-Antwort Paar zurück:")
 
-directory = os.path.dirname(os.path.dirname(__file__))
+directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INPUT_PATH = os.path.join(directory, 'data/chapters_processed/')
 OUTPUT_PATH = INPUT_PATH
 EXCLUDED_FILES = ["Einsendeaufgaben", "FragenKE2", "FragenKE3", "FragenKE4", "FragenKE5", "FragenKE6", "FragenKE7"]
 
 
+def build_prompt(examples, context):
+    """
+    Renders a few-shot prompt: every example as instruction plus answer, then the
+    paragraph to generate for. This replaces langchain's FewShotPromptTemplate.
+    """
+    parts = []
+    for example in examples:
+        parts.append(INSTRUCTION.format(context=example['context']))
+        parts.append(example['question-answer'].replace('</s>', '').strip())
+    parts.append(INSTRUCTION.format(context=context))
+    return "\n\n".join(parts)
+
+
 def read_txt(chapter_file):
-    with open(chapter_file, 'r') as f:
+    with open(chapter_file, 'r', encoding='utf-8') as f:
         content = f.readlines()
         title = content.pop(0)
         content = [line for line in content if line != '\n' and not (line.startswith("Frage:") or
@@ -26,41 +48,18 @@ def read_txt(chapter_file):
 
 def write_txt(question_chapter, chapter_no):
     outpath = OUTPUT_PATH + chapter_no + '.txt'
-    with open(outpath, 'w') as outfile:
+    with open(outpath, 'w', encoding='utf-8') as outfile:
         for lines in question_chapter:
             outfile.write("%s\n" % lines)
 
 
 class QuestionAnswerGenerator:
     def __init__(self):
-        template = (
-            """<s>[INST] Du bist ein Professor an einer deutschen Universität.
-            Erstelle einfache Frage-Antwort Paare für eine mündliche Prüfung.
-            Nutze nur Informationen aus folgendem Text:
-            {context}
-            Gib nur das Frage-Antwort Paar zurück:[/INST]
-            {question-answer}
-            """)
-        self.example_prompt = PromptTemplate(input_variables=['context', 'question-answer'],
-                                             template=template)
+        self.remember_examples = self.get_remember_examples()
+        self.apply_examples = self.get_apply_examples()
+        self.analyze_examples = self.get_analyze_examples()
 
-        remember_prompt = self.get_remember_prompt()
-        apply_prompt = self.get_apply_prompt()
-        analyze_prompt = self.get_analyze_prompt()
-
-        llm = HuggingFaceHub(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
-                             model_kwargs={'max_new_tokens': 512, 'raw_response': True})
-
-        self.remember_chain = LLMChain(prompt=remember_prompt,
-                                       llm=llm)
-
-        self.apply_chain = LLMChain(prompt=apply_prompt,
-                                    llm=llm)
-
-        self.analyze_chain = LLMChain(prompt=analyze_prompt,
-                                      llm=llm)
-
-    def get_remember_prompt(self):
+    def get_remember_examples(self):
         remember_examples = [
             {
                 'context': "Ein Literal (von lat. littera, der Buchstabe) ist eine Repräsentation eines Objekts, die "
@@ -126,15 +125,9 @@ class QuestionAnswerGenerator:
             },
         ]
 
-        r_prompt = FewShotPromptTemplate(
-            examples=remember_examples,
-            example_prompt=self.example_prompt,
-            suffix="{input}",
-            input_variables=['input']
-        )
-        return r_prompt
+        return remember_examples
 
-    def get_apply_prompt(self):
+    def get_apply_examples(self):
         apply_examples = [
             {
                 'context': "In der objektorientierten Programmierung werden sämtliche Informationen als ein Geflecht "
@@ -191,15 +184,9 @@ class QuestionAnswerGenerator:
             },
         ]
 
-        ap_prompt = FewShotPromptTemplate(
-            examples=apply_examples,
-            example_prompt=self.example_prompt,
-            suffix="{input}",
-            input_variables=['input']
-        )
-        return ap_prompt
+        return apply_examples
 
-    def get_analyze_prompt(self):
+    def get_analyze_examples(self):
         analyze_examples = [
             {
                 'context': "Die Zuweisung ist ein elementares Konstrukt der objektorientierten Programmierung sowie "
@@ -273,29 +260,25 @@ class QuestionAnswerGenerator:
             }
         ]
 
-        an_prompt = FewShotPromptTemplate(
-            examples=analyze_examples,
-            example_prompt=self.example_prompt,
-            suffix="{input}",
-            input_variables=['input']
-        )
-        return an_prompt
+        return analyze_examples
 
     def get_remember_question(self, query):
-        return self.remember_chain.run(query)
+        return llm.chat(build_prompt(self.remember_examples, query))
 
     def get_apply_question(self, query):
-        return self.apply_chain.run(query)
+        return llm.chat(build_prompt(self.apply_examples, query))
 
     def get_analyze_question(self, query):
-        return self.analyze_chain.run(query)
+        return llm.chat(build_prompt(self.analyze_examples, query))
 
 
-qa_generator = QuestionAnswerGenerator()
-files = glob.glob(INPUT_PATH + '*.txt')
-for file in files:
-    file_name = Path(file).stem
-    if file_name not in EXCLUDED_FILES:
+def main():
+    qa_generator = QuestionAnswerGenerator()
+    files = glob.glob(INPUT_PATH + '*.txt')
+    for file in files:
+        file_name = Path(file).stem
+        if file_name in EXCLUDED_FILES:
+            continue
         chapter, headline = read_txt(file)
         chapter_with_questions = [headline]
         for paragraph in chapter:
@@ -313,3 +296,8 @@ for file in files:
             chapter_with_questions.append('\n')
         write_txt(chapter_with_questions, file_name)
         print(f"File {file_name} done!")
+
+
+# Generating the whole data set costs many requests, so it does not run on import
+if __name__ == "__main__":
+    main()

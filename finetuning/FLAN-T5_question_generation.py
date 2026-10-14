@@ -53,7 +53,8 @@ def preprocess_function(sample, padding='max_length'):
     # Pad and replace all tokenizer.pad_token_id in the labels with -100 to ignore padding in the loss
     if padding == 'max_length':
         labels['input_ids'] = [
-            [(l if l != tokenizer.pad_token_id else -100) for l in label] for label in labels['input_ids']
+            [(token if token != tokenizer.pad_token_id else -100) for token in label]
+            for label in labels['input_ids']
         ]
 
     model_inputs['labels'] = labels['input_ids']

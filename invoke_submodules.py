@@ -1,22 +1,20 @@
 """
 Script for invoking the submodules as standalone functionalities for development and testing purposes.
 """
-import os
+import logging
 import random
-import re
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from datetime import datetime
-from testing.test_data import students, evaluation_data
 
-import logging
+from testing.test_data import students, evaluation_data
+from utils.paths import output_file
+
 logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger()
-logger.disabled = False
+logger = logging.getLogger(__name__)
 
 date = datetime.now().strftime("%d-%m-%Y--%H-%M-%S")
-directory = os.path.dirname(__file__)
-OUTPUT_FILE = os.path.join(directory, f"testing/test_results_submodule_{date}")
+OUTPUT_FILE = output_file(f"test_results_submodule_{date}.txt")
 
 
 # Parse command line arguments
@@ -52,13 +50,13 @@ match args["module"]:
         from evaluation import Evaluator
 
         evaluator = Evaluator()
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("Answer Evaluation Testing\n\n")
 
         for answers in evaluation_data:
             result = evaluator.evaluate_answer(answers['correct_answer'], answers['student_answer'])
             match = 'yes' if result == answers['expected'] else 'no'
-            with open(OUTPUT_FILE, 'a', newline='') as file:
+            with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                 file.write(f"""Correct answer:    {answers['correct_answer']}
 Student answer:    {answers['student_answer']}
 Expected result:   {answers['expected'].name}
@@ -74,15 +72,17 @@ Match:             {match}\n\n""")
         text_gen = TextGenerator()
         generator = QuestionGenerator(text_gen)
 
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("Question Answer Generation Testing\n\n")
 
         for _ in range(30):
-            test_keyword = random.choice(preprocessing.technical_terms)
-            if test_keyword.startswith('['):
-                test_keyword = (re.split(' ', test_keyword)[0])[1:1]
+            # A term may be a list of synonyms, so ask for its canonical label
+            test_keyword = preprocessing.term_label(random.choice(preprocessing.technical_terms))
             question_answer = generator.generate_question_answer(test_keyword)
-            with open(OUTPUT_FILE, 'a', newline='') as file:
+            if question_answer is None:
+                logger.warning("No question generated for '%s'.", test_keyword)
+                continue
+            with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                 file.write(f"""Keyword:  {test_keyword}
 Question: {question_answer['question']}
 Answer:   {question_answer['answer']}\n\n""")
@@ -97,7 +97,7 @@ Answer:   {question_answer['answer']}\n\n""")
         qa_manager = QuestionManager(topic_manager)
         evaluated = [[], [], [], [], []]
 
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("""Question Selection Testing\n\n""")
 
         for i in range(3):
@@ -110,18 +110,16 @@ Answer:   {question_answer['answer']}\n\n""")
         for i in range(len(evaluated)):
             # Remove open question
             qa_manager.get_question()
-            with open(OUTPUT_FILE, 'a', newline='') as file:
+            with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                 file.write(f"_____Kurseinheit {i + 1}_____\n\n")
             for question in evaluated[i]:
                 keywords = preprocessing.extract_keywords(question['answer'])
                 if not keywords:
                     continue
                 test_keyword = random.choice(keywords)
-                if test_keyword.startswith('['):
-                    test_keyword = (re.split(' ', test_keyword)[0])[1:1]
-                logger.debug(f"Test Keyword: {test_keyword}")
+                logger.debug("Test Keyword: %s", test_keyword)
                 selected_question = qa_manager.select_question(test_keyword)
-                with open(OUTPUT_FILE, 'a', newline='') as file:
+                with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                     file.write(f"""Keyword:  {test_keyword}
 Question: {selected_question['question']}
 Answer:   {selected_question['answer']}\n\n""")
@@ -144,7 +142,7 @@ Answer:   {selected_question['answer']}\n\n""")
         for answer in question_answer:
             generations.append(paraphraser.paraphrase(answer['answer']))
 
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("""Paraphrasing / Help Testing
 
 Finetuned Model: 'LunaticTanuki/oop-de-qg-flan-t5-base-v6'\n\n""")
@@ -160,7 +158,7 @@ Previous question:   {answer['question']}\n\n""")
 
         text_gen = TextGenerator()
 
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("""Feedback Prompt Testing
 
 Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
@@ -173,25 +171,23 @@ Feedback Prompt: [INST] Du bist ein Professor an einer deutschen Universität.
         question_no = 25
 
         for student in students:
-            with open(OUTPUT_FILE, 'a', newline='') as file:
+            with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                 file.write(f"{student['nominative']}:        {student['name']}")
-            possible_value = []
             for _ in range(3):
                 feedback = FeedbackManager()
-                for i in range(question_no):
-                    possible_value.append(i)
+                for _ in range(question_no):
                     feedback.add_question()
-                for _ in range(random.choice(possible_value)):
+                # Draw a random count per category. This used to choose from a
+                # list that was being popped at the same time, which ran into
+                # IndexError for plausible draws.
+                for _ in range(random.randrange(question_no)):
                     feedback.add_reiteration()
-                for _ in range(random.choice(possible_value)):
+                for _ in range(random.randrange(question_no)):
                     feedback.add_contradiction()
-                    possible_value.pop()
-                for _ in range(random.choice(possible_value)):
+                for _ in range(random.randrange(question_no)):
                     feedback.add_irrelevant()
-                    possible_value.pop()
-                for i in range(random.choice(possible_value)):
+                for _ in range(random.randrange(question_no)):
                     feedback.add_missed(random.choice([0, 1, 2, 3, 4, 5]), 5)
-                    possible_value.pop()
                 ke_questions = []
                 for i in range(int(question_no / len(KE))):
                     ke_questions.append(i)
@@ -205,7 +201,7 @@ Nutze folgende Informationen zu {student['possessive']}n Leistungen:
 Gib nur das Feedback zurück:""")
                 feedback = text_gen.get_text(feedback_query)
                 feedback = check_feedback(feedback)
-                with open(OUTPUT_FILE, 'a', newline='') as file:
+                with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                     file.write(f"""Feedback rules:       {feedback_rules}
 Generiertes Feedback: {feedback}\n""")
 
@@ -213,7 +209,7 @@ Generiertes Feedback: {feedback}\n""")
         from text_generation import TextGenerator
         text_gen = TextGenerator()
 
-        with open(OUTPUT_FILE, 'a', newline='') as file:
+        with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
             file.write("""Begrüßung und Verabschiedung Prompt Testing
 
 Prompt Begrüßung:      [INST] Du bist ein Professor an einer deutschen Universität.
@@ -236,7 +232,7 @@ Gib nur die Begrüßung zurück:""")
 Gib nur die Verabschiedung zurück:""")
             goodbye = text_gen.get_text(goodbye_query)
 
-            with open(OUTPUT_FILE, 'a', newline='') as file:
+            with open(OUTPUT_FILE, 'a', encoding='utf-8', newline='') as file:
                 file.write(f"""{student['nominative']}:               {student['name']}
 Generierte Begrüßung:      {greeting}
 Generierte Verabschiedung: {goodbye}\n\n""")

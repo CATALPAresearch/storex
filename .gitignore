@@ -1,4 +1,14 @@
 .DS_Store
+.venv/
+__pycache__/
+*.pyc
+
+# Local configuration, holds the API key
+.env
+
+# Generated transcripts
+output/
+
 data/chapters_raw/*
 data/chapters_processed/*
 data/pdf/*

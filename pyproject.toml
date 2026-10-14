@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "oral-exam-simulation"
+version = "1.0.0"
+description = "Dialogue system that trains students for oral exams on object-oriented programming."
+authors = ["nise <niels.seidel@fernuni-hagen.de>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+# torch 2.0.1 ships cp311 wheels for linux/aarch64 and macos/arm64, but none for 3.12+.
+python = ">=3.11,<3.12"
+
+# --- Dialogue system core -------------------------------------------------
+transformers = "4.38.1"
+sentence-transformers = "2.6.1"
+torch = "2.0.1"
+numpy = "1.26.1"
+nltk = "3.9.1"
+faiss-cpu = "1.7.4"
+# Pinned on purpose: question_generation.py loads data/vectorStore without
+# allow_dangerous_deserialization, an argument that only exists from langchain 0.1 on.
+# Used for FAISS.load_local and HuggingFaceEmbeddings only - no remote inference.
+langchain = "0.0.352"
+
+# --- Web app --------------------------------------------------------------
+flask = "3.0.3"
+gunicorn = "^22.0.0"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
+
+# --- Text-to-speech (TTS_ENGINE=piper) ------------------------------------
+piper-tts = "1.8.0"
+
+# --- Microphone, host CLI only (poetry install --extras cli) --------------
+# Neither has a linux wheel: pyaudio needs portaudio19-dev, simpleaudio needs
+# libasound2-dev. Keeping them optional is what lets the container build
+# without any audio system libraries.
+pyaudio = { version = "0.2.14", optional = true }
+simpleaudio = { version = "1.0.4", optional = true }
+
+[tool.poetry.extras]
+cli = ["pyaudio", "simpleaudio"]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14.0"
+
+# Data processing and fine-tuning scripts (dataprocessing/, finetuning/).
+# Not needed to run an exam: poetry install --with research
+[tool.poetry.group.research]
+optional = true
+
+[tool.poetry.group.research.dependencies]
+datasets = "2.14.6"
+evaluate = "0.4.1"
+rouge-score = "0.1.2"
+tqdm = "4.66.1"
+PyPDF2 = "3.0.1"
+pytorch-lightning = "^2.0.0"
+sentencepiece = "^0.2.0"
+
+[tool.ruff]
+line-length = 120
+exclude = ["questions/questions.py"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

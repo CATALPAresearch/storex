@@ -3,7 +3,7 @@ Class for feedback managing.
 """
 import re
 
-from utils.helpers import FeedbackLevel, FeedbackType, KE, Level, topic_from_ke
+from utils.helpers import FeedbackLevel, FeedbackType, KE, topic_from_ke
 
 
 def get_grade(percentage):
@@ -24,17 +24,22 @@ def get_grade(percentage):
 
 
 def check_feedback(text):
-    text = text.split('\n')
-    text = list(filter(None, text))
-    for i, line in reversed(list(enumerate(text))):
+    """
+    Strips a letter style salutation and closing from generated feedback.
+    """
+    lines = [line for line in text.split('\n') if line.strip()]
+    for i, line in reversed(list(enumerate(lines))):
         if re.search("Grüße", line):
-            text = text[:i]
+            lines = lines[:i]
             break
 
-    greeting = text[0].strip().split(' ', 1)
-    text[0] = greeting[1] if "Liebe" in greeting[0] else text[0].strip()
-    text = ' '.join(text)
-    return text
+    # A model may answer with nothing but a salutation and a closing
+    if not lines:
+        return text.strip()
+
+    greeting = lines[0].strip().split(' ', 1)
+    lines[0] = greeting[1] if "Liebe" in greeting[0] and len(greeting) > 1 else lines[0].strip()
+    return ' '.join(lines)
 
 
 class FeedbackManager:
@@ -67,7 +72,7 @@ class FeedbackManager:
 
     def remove_irrelevant(self):
         if self.irrelevant_counter >= 1:
-            self.irrelevant_counter += 1
+            self.irrelevant_counter -= 1
 
     def add_irrelevant(self):
         self.irrelevant_counter += 1
