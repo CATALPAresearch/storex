@@ -18,7 +18,13 @@ import os
 import re
 import sys
 
-import PyPDF2
+try:
+    import PyPDF2
+except ImportError:  # pragma: no cover - depends on how the project was installed
+    sys.exit("This step needs PyPDF2, which belongs to the research extra and is not\n"
+             "part of the container image. Install it with:\n"
+             "    poetry install --with research\n"
+             "and run the step outside the container.")
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
