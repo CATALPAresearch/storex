@@ -4,6 +4,8 @@ Script for training a Flan-T5 model for the generation of answer-question pairs 
 import evaluate
 import nltk
 import numpy
+import os
+import sys
 import time
 import torch
 
@@ -14,7 +16,15 @@ from transformers import (AutoModelForSeq2SeqLM, AutoTokenizer, DataCollatorForS
 
 
 nltk.download("punkt")
-HfFolder.save_token("***REMOVED***")
+
+# Uploading the fine-tuned model to the Hugging Face Hub needs a write token.
+# It used to be hard coded here, which published it in every clone of this
+# repository; it is read from the environment instead.
+_token = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
+if not _token:
+    sys.exit("Set HUGGINGFACEHUB_API_TOKEN to a Hugging Face write token before "
+             "training. Create one at https://huggingface.co/settings/tokens")
+HfFolder.save_token(_token)
 
 # Set model and database paths from the huggingface hub
 pretrained_model = "google/flan-t5-base"
