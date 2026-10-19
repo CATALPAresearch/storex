@@ -8,6 +8,7 @@
 
 Later:
 
+- teste courses für 1884-Kurs
 - [ ] improve pre-processing pipeline for content preparation, e.g. PDF to text conversion/extraction, question generation/validation, related literature
 - [ ] support teachers authoring and processing course data
 - [ ] LTI interface
